@@ -115,6 +115,50 @@ export default function Home() {
           </button>
         </div>
       </section>
+            <section className="bg-black px-6 py-32 text-white">
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="text-sm font-semibold uppercase tracking-[0.35em] text-purple-400">
+            The Manifesto
+          </p>
+
+          <h2 className="mt-6 text-4xl font-bold leading-tight md:text-5xl">
+            We believe magical is possible.
+          </h2>
+
+          <p className="mt-10 text-xl leading-9 text-gray-300">
+            We reject the idea that reinvention belongs only to the young.
+          </p>
+
+          <p className="mt-6 text-xl leading-9 text-gray-300">
+            We believe life is not transformed by time.
+          </p>
+
+          <p className="mt-6 text-xl leading-9 text-gray-300">
+            It is transformed by intention.
+          </p>
+
+          <p className="mt-6 text-xl leading-9 text-gray-300">
+            This is The Back Half.
+          </p>
+        </div>
+      </section>
+            <footer className="border-t border-gray-200 bg-white px-6 py-12">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 md:flex-row">
+          <div>
+            <h3 className="text-xl font-bold">The Back Half</h3>
+            <p className="mt-2 text-gray-600">
+              Live by intention. Live in your fullness.
+            </p>
+          </div>
+
+          <div className="flex gap-8 text-sm font-medium text-gray-600">
+            <a href="#">Manifesto</a>
+            <a href="#">Book</a>
+            <a href="#">Community</a>
+            <a href="#">Contact</a>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }
