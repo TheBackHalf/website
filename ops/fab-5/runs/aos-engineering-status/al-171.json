@@ -1,0 +1,261 @@
+{
+  "aosWorkId": "al-171",
+  "source": "command_center",
+  "sourceReference": "August Launch row 171",
+  "deliverable": "Validate Cancellation, Renewal and Access Lifecycle",
+  "operatingAgent": "imani",
+  "kimberlyWalkerAiTreatedAsCapacity": false,
+  "founderAcceptanceAuthority": "Kimberly Walker (human)",
+  "founderAcceptance": null,
+  "founderAccepted": false,
+  "rowMarkedComplete": false,
+  "mutating": false,
+  "stripeDnsVercelUntouched": true,
+  "overall": "PASS",
+  "tested": 32,
+  "passed": 32,
+  "failed": 0,
+  "lifecycle": {
+    "purchase": "PASS",
+    "failedPayment": "PASS",
+    "communityRenewal": "PASS",
+    "cancellation": "PASS",
+    "expiration": "PASS",
+    "lifetimeBlueprint": "PASS",
+    "supportMessaging": "PASS",
+    "billingPortal": "PASS"
+  },
+  "defectsCorrected": [
+    {
+      "id": "AL171-D1",
+      "severity": "HIGH",
+      "finding": "Founding Architect Community was granted with addOneYear(grantedAt) instead of the approved October 25, 2026 through April 25, 2027 window.",
+      "correction": "Community inclusion now uses ARCHITECT_COMMUNITY_LAUNCH_AT and FOUNDING_ARCHITECT_COMMUNITY_ENDS_AT. Access is not active before Community launch."
+    },
+    {
+      "id": "AL171-D2",
+      "severity": "HIGH",
+      "finding": "Once a bundle Community row existed, later paid Community grants kept the bundle endsAt, so a Founding Architect who renewed at $50/month after April 25, 2027 would pay without receiving access.",
+      "correction": "Bundle-end lock applies only to duplicate bundle grants. Paid Community subscriptions take the later of the included window and the subscription period end."
+    },
+    {
+      "id": "AL171-D3",
+      "severity": "HIGH",
+      "finding": "revokeEntitlementsForPayment fell back to every entitlement on the user when session/payment-intent lookup missed, which could revoke lifetime Blueprint access after an unrelated Community refund.",
+      "correction": "Removed the account-wide fallback. Community refunds cannot revoke journey_access. Webhook/reconcile pass offerId so only that offer's kinds are revoked."
+    },
+    {
+      "id": "AL171-D4",
+      "severity": "MEDIUM",
+      "finding": "invoice.payment_failed and subscription sync updated every entitlement sharing a subscription id, and upsert spread undefined identifiers over existing rows.",
+      "correction": "Subscription handlers now mutate community_access only. Upsert omits undefined fields so lifetime identifiers are not wiped."
+    }
+  ],
+  "residualRisks": [
+    "Stripe Billing Portal configuration (what members can cancel/update) is Founder-owned Stripe dashboard state. This run did not modify Stripe, Cloudflare DNS, Vercel domains, or nameservers. Confirm the live portal configuration allows Community cancel-at-period-end only and does not present refunds.",
+    "Local billing ledger remains a file store; Stripe is system of record (Row 62). Production access checks depend on webhook/reconcile durability.",
+    "Live Stripe sandbox purchase/refund webhooks were not fired. Lifecycle rules were executed against isolated in-process stores with production handlers."
+  ],
+  "validationCommands": {
+    "typecheck": "PASS — npx tsc --noEmit (exit 0)",
+    "nearestTest": "PASS — npm run fab5:row171 (32/32)",
+    "build": "PASS — npm run build (exit 0)",
+    "npmTestScript": "absent — nearest package test is fab5:row171"
+  },
+  "nextAction": "await_founder_acceptance",
+  "notes": "Kimberly Walker (AI) is not execution capacity. Founder acceptance stays with Kimberly Walker (human). This deliverable is not marked complete.",
+  "tests": [
+    {
+      "id": "purchase-blueprint-lifetime",
+      "name": "Blueprint purchase grants lifetime Journey access with no end date",
+      "result": "PASS",
+      "detail": "kinds=journey_access endsAt=none"
+    },
+    {
+      "id": "purchase-blueprint-no-community",
+      "name": "Blueprint purchase does not grant Community access",
+      "result": "PASS",
+      "detail": "count=1"
+    },
+    {
+      "id": "failed-payment-no-grant",
+      "name": "Failed checkout payment records failure and grants no access",
+      "result": "PASS",
+      "detail": "async payment failed; no entitlements granted"
+    },
+    {
+      "id": "failed-incomplete-checkout-ignored",
+      "name": "Unpaid checkout.session.completed does not grant entitlements",
+      "result": "PASS",
+      "detail": "checkout incomplete payment_status=unpaid"
+    },
+    {
+      "id": "purchase-bundle-lifetime-journey",
+      "name": "Founding Architect grants lifetime Journey/Blueprint access",
+      "result": "PASS",
+      "detail": "endsAt=none"
+    },
+    {
+      "id": "purchase-bundle-six-month-window",
+      "name": "Founding Architect Community is Oct 25 2026 through Apr 25 2027, not one year",
+      "result": "PASS",
+      "detail": "startsAt=2026-10-25T00:00:00.000Z endsAt=2027-04-26T00:00:00.000Z"
+    },
+    {
+      "id": "community-not-active-before-launch",
+      "name": "Included Community access is not active before October 25, 2026",
+      "result": "PASS",
+      "detail": "before/during/last-day/after"
+    },
+    {
+      "id": "bundle-duplicate-does-not-extend",
+      "name": "Duplicate bundle webhook does not extend the included Community window",
+      "result": "PASS",
+      "detail": "endsAt=2027-04-26T00:00:00.000Z"
+    },
+    {
+      "id": "community-renewal-extends-paid-term",
+      "name": "Paid Community renewal after the included window extends Community access",
+      "result": "PASS",
+      "detail": "endsAt=2027-05-25T00:00:00.000Z status=active"
+    },
+    {
+      "id": "renewal-does-not-touch-lifetime",
+      "name": "Community renewal does not alter lifetime Journey/Blueprint access",
+      "result": "PASS",
+      "detail": "journey status=active endsAt=none"
+    },
+    {
+      "id": "cancellation-continues-through-paid-term",
+      "name": "Cancel-at-period-end keeps Community access through the paid date",
+      "result": "PASS",
+      "detail": "subscription active; entitlements=1 status=active duringPaid=true"
+    },
+    {
+      "id": "expiration-removes-community",
+      "name": "Fully canceled/expired Community subscription removes Community access",
+      "result": "PASS",
+      "detail": "subscription canceled; entitlements=1"
+    },
+    {
+      "id": "expiration-does-not-revoke-unrelated-lifetime",
+      "name": "Community expiration does not revoke a different account's lifetime Blueprint",
+      "result": "PASS",
+      "detail": "blueprint user journey still active"
+    },
+    {
+      "id": "failed-renewal-marks-past-due",
+      "name": "Failed Community invoice marks Community past_due and removes paid access",
+      "result": "PASS",
+      "detail": "marked 1 entitlement(s) past_due status=past_due"
+    },
+    {
+      "id": "failed-renewal-preserves-bundle-lifetime",
+      "name": "Failed Community payment cannot revoke Founding Architect lifetime Journey",
+      "result": "PASS",
+      "detail": "bundle journey still active"
+    },
+    {
+      "id": "community-refund-preserves-lifetime",
+      "name": "Community refund revokes Community only and cannot revoke lifetime Blueprint",
+      "result": "PASS",
+      "detail": "refund reconciled; revoked=1"
+    },
+    {
+      "id": "unmatched-refund-no-user-fallback",
+      "name": "Unmatched refund does not fall back to revoking every entitlement on the account",
+      "result": "PASS",
+      "detail": "revoked=0"
+    },
+    {
+      "id": "blueprint-refund-revokes-journey-only",
+      "name": "Blueprint refund revokes Journey access granted by that payment",
+      "result": "PASS",
+      "detail": "revoked=1"
+    },
+    {
+      "id": "portal-bundle-no-cancel-control",
+      "name": "Founding Architect included Community cannot be canceled separately in-app",
+      "result": "PASS",
+      "detail": "cancellationAvailable=false journey=true"
+    },
+    {
+      "id": "portal-one-time-no-cancel",
+      "name": "One-time Blueprint purchase has no cancellation control after payment",
+      "result": "PASS",
+      "detail": "cancellationAvailable=false"
+    },
+    {
+      "id": "portal-copy-cancel-not-refund",
+      "name": "Billing portal states cancellation is not a refund (EN/ES)",
+      "result": "PASS",
+      "detail": "en+es cancellation copy"
+    },
+    {
+      "id": "portal-does-not-trust-client-customer",
+      "name": "Billing portal action ignores client-supplied customer IDs",
+      "result": "PASS",
+      "detail": "portal.ts + actions.ts"
+    },
+    {
+      "id": "support-no-refund-category",
+      "name": "Support catalog has no refunds category",
+      "result": "PASS",
+      "detail": "refundCategoryPresent"
+    },
+    {
+      "id": "support-classifies-cancellation-as-membership-or-payment",
+      "name": "Cancellation and billing questions route to Membership or Payment",
+      "result": "PASS",
+      "detail": "cancel=MEMBERSHIP pay=PAYMENT_BILLING"
+    },
+    {
+      "id": "support-notification-copy",
+      "name": "Payment notifications state failed payments grant no access and cancellation continues through paid time",
+      "result": "PASS",
+      "detail": "en+es billing notification phrases"
+    },
+    {
+      "id": "support-lookup-safe-flags",
+      "name": "Support lookup exposes access flags without Stripe secrets",
+      "result": "PASS",
+      "detail": "support.ts"
+    },
+    {
+      "id": "account-snapshot-lifetime-and-community",
+      "name": "Account snapshot keeps Journey true while Community follows paid term",
+      "result": "PASS",
+      "detail": "{\"journeyAccess\":true,\"communityAccess\":false,\"communitySubscriptionStatus\":\"active\"}"
+    },
+    {
+      "id": "webhook-paid-checkout-idempotent-lifetime",
+      "name": "Paid checkout webhook is idempotent and does not attach an end date to Journey",
+      "result": "PASS",
+      "detail": "granted blueprint entitlements for user"
+    },
+    {
+      "id": "approved-terms-six-months",
+      "name": "Locked purchase terms and Membership Agreement use first six months, not first year",
+      "result": "PASS",
+      "detail": "offers + membership agreement"
+    },
+    {
+      "id": "approved-terms-no-refunds",
+      "name": "Approved terms: no refunds; cancellation prevents future billing only",
+      "result": "PASS",
+      "detail": "NO REFUNDS + cancel-at-period-end"
+    },
+    {
+      "id": "no-installment-path",
+      "name": "Installments are not an entitlement path at launch",
+      "result": "PASS",
+      "detail": "INSTALLMENTS_OFFERED_AT_LAUNCH=false"
+    },
+    {
+      "id": "offers-one-time-vs-subscription",
+      "name": "Blueprint/Bundle are one-time; Community is the only subscription",
+      "result": "PASS",
+      "detail": "offer modes"
+    }
+  ]
+}
