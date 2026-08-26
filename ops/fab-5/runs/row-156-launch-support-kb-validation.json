@@ -1,0 +1,108 @@
+{
+  "row": 156,
+  "aosWorkId": "al-156",
+  "runId": "r156-2026-08-26T16:10:53.332Z",
+  "founderAcceptance": null,
+  "founderAccepted": false,
+  "rowMarkedComplete": false,
+  "protocol": "ops/fab-5/ROW-156-LAUNCH-SUPPORT-KNOWLEDGE-BASE.md",
+  "operatorConsole": "/ops/admin/support/knowledge-base",
+  "tracker": "/ops/admin/support",
+  "form": "/support",
+  "mailbox": "support@thebackhalf.org",
+  "topics": [
+    "account-creation",
+    "verification",
+    "login",
+    "payment",
+    "receipts",
+    "onboarding",
+    "journey-progress",
+    "blueprint-downloads",
+    "lumina",
+    "cancellations",
+    "community-timing",
+    "technical-issues",
+    "escalation"
+  ],
+  "tests": {
+    "tested": 12,
+    "passed": 12,
+    "failed": 0,
+    "result": "PASS"
+  },
+  "results": [
+    {
+      "id": "T1",
+      "name": "REQUIRED TOPICS PRESENT",
+      "result": "PASS",
+      "detail": "account-creation,verification,login,payment,receipts,onboarding,journey-progress,blueprint-downloads,lumina,cancellations,community-timing,technical-issues,escalation"
+    },
+    {
+      "id": "T2",
+      "name": "NO FORBIDDEN PUBLIC PROMISES",
+      "result": "PASS",
+      "detail": "none"
+    },
+    {
+      "id": "T3",
+      "name": "NO REFUND CATEGORY AND NO-REFUND COPY",
+      "result": "PASS",
+      "detail": "refundCategory=false publicLine=Cancellation is not a refund. The Back Half standard policy is no refunds."
+    },
+    {
+      "id": "T4",
+      "name": "LIVE OFFER PRICES MATCH CHECKOUT",
+      "result": "PASS",
+      "detail": "$1,500; $1,750; $50/month"
+    },
+    {
+      "id": "T5",
+      "name": "COMMUNITY TIMING MATCHES APPROVED COPY",
+      "result": "PASS",
+      "detail": "Architect Community — Coming October 25, 2026; period=October 25, 2026 through April 25, 2027"
+    },
+    {
+      "id": "T6",
+      "name": "AGE AND VERIFICATION MATCH AUTH",
+      "result": "PASS",
+      "detail": "age=18 passwordMin=8 verifyHours=24"
+    },
+    {
+      "id": "T7",
+      "name": "SUPPORT CHANNELS AND SLA",
+      "result": "PASS",
+      "detail": "support@thebackhalf.org; 72h"
+    },
+    {
+      "id": "T8",
+      "name": "LUMINA IDENTITY AND SAFETY",
+      "result": "PASS",
+      "detail": "AI Guide; not person; not Founder; disclosure; no clinical advice"
+    },
+    {
+      "id": "T9",
+      "name": "CHECKOUT TERMS STILL NO REFUNDS AND OCTOBER 25",
+      "result": "PASS",
+      "detail": "purchase-terms and dictionary aligned with KB"
+    },
+    {
+      "id": "T10",
+      "name": "OPERATOR SURFACES EXIST AND STAY SUPPORT-SCOPED",
+      "result": "PASS",
+      "detail": "console link + /ops/admin/support/knowledge-base remains support:ops"
+    },
+    {
+      "id": "T11",
+      "name": "FOUNDER ACCEPTANCE NOT FABRICATED",
+      "result": "PASS",
+      "detail": "Row 156 protocol leaves Founder acceptance open"
+    },
+    {
+      "id": "T12",
+      "name": "INTERNAL BILLING GAP IS FLAGGED NOT PUBLISHED AS A YEAR",
+      "result": "PASS",
+      "detail": "participant six months; internal addOneYear gap routed to Imani"
+    }
+  ]
+}

@@ -70,6 +70,13 @@ export function SupportTicketConsole({
         <a href="/ops/support" className="underline decoration-bh-purple/30">
           Account lookup
         </a>
+        {" · "}
+        <a
+          href="/ops/admin/support/knowledge-base"
+          className="underline decoration-bh-purple/30"
+        >
+          Launch knowledge base
+        </a>
         {canAccessAdminOps ? (
           <>
             {" · "}
