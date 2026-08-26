@@ -853,5 +853,23 @@
     "url": "https://cursor.com/agents/bc-f2165ab0-a9ac-4b07-b72f-d2a06beed051",
     "branch": "cursor/aos-imani-al-177-2a85",
     "prUrl": "https://github.com/TheBackHalf/website/pull/40"
+  },
+  "githubCi": {
+    "commit": "0bc733dd874aae6bceeb530ad0510e68afb25a92",
+    "branch": "cursor/aos-imani-al-177-2a85",
+    "conclusion": "success",
+    "recordedAt": "2026-08-26T17:31:10Z",
+    "checks": [
+      {
+        "name": "Vercel",
+        "result": "PASS",
+        "url": "https://vercel.com/back-half/website/EB6pqDT85CF9gbQAFtttjQfFnuT7"
+      },
+      {
+        "name": "Vercel Preview Comments",
+        "result": "PASS",
+        "url": "https://vercel.com/github"
+      }
+    ]
   }
 }
