@@ -393,7 +393,9 @@
     "blockedReasonExpected": "founder_acceptance_required",
     "completeWork": false,
     "merge": false,
-    "deploy": false
+    "deploy": false,
+    "pullRequest": "https://github.com/TheBackHalf/website/pull/37",
+    "branch": "cursor/aos-michelle-al-173-2cf2"
   },
   "notes": "Michelle defined the ongoing monthly close for AOS work al-173. This is operations/orchestration, not Imani infra and not Nia brand. No Founder approval was fabricated. Command Center Complete was not written. No product, marketing, or legal files were changed. No Stripe, DNS, Vercel domain, or nameserver settings were changed. Secrets were not printed."
 }
