@@ -24,6 +24,13 @@
       "npm run test:download-a11y": "pass",
       "npm run build": "pass"
     },
+    "githubCi": {
+      "commit": "47eb18d041b77d0af40b86a4f07e4d8f9fe8ef09",
+      "branch": "cursor/aos-imani-al-136-71dd",
+      "conclusion": "success",
+      "checks": 2,
+      "detail": "Vercel pass; Vercel Preview Comments pass"
+    },
     "merged": false,
     "htmlPrintSmoke": {
       "guidebook": {
