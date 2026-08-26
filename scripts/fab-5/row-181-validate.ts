@@ -983,7 +983,7 @@ async function main(): Promise<void> {
     validation: {
       typecheck: "npx tsc --noEmit",
       test: "npm run fab5:row181",
-      build: "not_required_no_production_surface_change",
+      build: "npm run build",
     },
     owners: {
       technical: "Imani Heartbeat — Chief Technology & Risk Officer",

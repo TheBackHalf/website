@@ -1,0 +1,1226 @@
+{
+  "aosWorkId": "al-185",
+  "title": "Run Performance, Capacity and Load Testing",
+  "source": "command_center August Launch row 185",
+  "operatingAgent": "imani",
+  "generatedAt": "2026-08-26T19:44:36.567Z",
+  "secretsPrinted": false,
+  "founderAcceptanceRecorded": false,
+  "markedComplete": false,
+  "rowMarkedComplete": false,
+  "stripeConfigModified": false,
+  "dnsModified": false,
+  "vercelCustomDomainModified": false,
+  "authenticationWeakened": false,
+  "readyForFounderAcceptance": false,
+  "residualRisk": "HIGH",
+  "nextStatus": "FOUNDER_ACTION_REQUIRED",
+  "applicationOrigin": "https://website-two-psi-49.vercel.app",
+  "canonicalOrigin": "https://thebackhalf.org",
+  "canonicalDns": "not_found",
+  "originCandidates": [
+    {
+      "origin": "https://thebackhalf.org",
+      "status": 0,
+      "ms": 41
+    },
+    {
+      "origin": "https://www.thebackhalf.org",
+      "status": 0,
+      "ms": 3
+    },
+    {
+      "origin": "https://website-two-psi-49.vercel.app",
+      "status": 200,
+      "ms": 295
+    }
+  ],
+  "scenario": {
+    "description": "Founding Architect launch-day profile: public browse + auth GET + health, mixed concurrency 25 / burst 40, EN+ES authenticated gates, no mutating customer writes, no charges, no mail.",
+    "productionRequests": 277,
+    "requestCap": 900,
+    "mixedConcurrency": 25,
+    "burstConcurrency": 40,
+    "destructiveWrites": false,
+    "emailSent": false,
+    "chargesCreated": false
+  },
+  "thresholds": {
+    "publicP50Ms": 800,
+    "publicP95Ms": 2000,
+    "healthP95Ms": 1500,
+    "authGetP95Ms": 2000,
+    "redirectP95Ms": 2000,
+    "apiDegradeP95Ms": 2000,
+    "captionP95Ms": 800,
+    "videoTtfbP95Ms": 3000,
+    "errorRateMax": 0.01,
+    "successRateMin": 0.99,
+    "probeTimeoutMs": 15000,
+    "burstConcurrency": 40,
+    "mixedConcurrency": 25,
+    "mixedRounds": 20,
+    "localSaveP95Ms": 250,
+    "luminaStubP95Ms": 200,
+    "maxTotalProductionRequests": 900
+  },
+  "rateAndPlanLimits": {
+    "vercel": "FOUNDER VERIFICATION REQUIRED — bandwidth, function duration, concurrency, cron. Blueprint PDF no longer uses 300s Chrome on Vercel. Monitoring/AOS crons every 15 minutes.",
+    "supabase": "FOUNDER VERIFICATION REQUIRED — connections, size, storage. Application postgres clients use max: 1, connect_timeout: 10s, idle_timeout: 20s (safe for serverless; connection storms still depend on pooler plan).",
+    "stripe": "Row 73: Production Stripe key class is Test/Sandbox; live Checkout/webhooks are not launch-ready. Stripe API rate limits were not exercised (no charges, no live catalog reads).",
+    "openai": "Lumina launch path is a first-party stub (buildStubAssistantReply). OpenAI TPM/RPM apply to Fab 5 hosted agents, not Architect Lumina turns. Founder billing/quota still Row 73.",
+    "googleWorkspace": "FOUNDER VERIFICATION REQUIRED — SMTP daily sending limits. Verification/password-reset cooldowns are 60s per email. SMTP transport timeouts now 10s/15s.",
+    "application": {
+      "loginHttpRateLimit": "20/15min per IP; 8 failures/15min account lockout",
+      "registrationHttpRateLimit": "10/hour per IP",
+      "resendVerificationCooldownMs": 60000,
+      "passwordResetCooldownMs": 60000,
+      "luminaMessageMaxLength": 4000,
+      "blueprintMaxDurationSeconds": 30,
+      "supportHttpRateLimit": "8/hour per IP",
+      "analyticsHttpRateLimit": "60/min per IP",
+      "monitoringAlertCooldownMs": 1800000,
+      "monitoringCron": "*/15 * * * *",
+      "postgresClientMaxConnectionsPerInstance": 1
+    },
+    "loginRateLimit": "Login, registration, support, analytics ingest, and marketing session routes now use durable IP/account rate limits (Postgres on hosted; file store locally). Failed login remains generic invalid_credentials. Login lockout after 8 failures / 15 minutes."
+  },
+  "measurements": {
+    "publicPages": {
+      "summary": {
+        "count": 208,
+        "okCount": 208,
+        "errorRate": 0,
+        "p50Ms": 169,
+        "p95Ms": 254,
+        "maxMs": 524,
+        "meanMs": 172.1,
+        "pass": true
+      },
+      "baseline": [
+        {
+          "id": "baseline:homepage",
+          "method": "GET",
+          "path": "/",
+          "status": 200,
+          "ms": 254,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 47536
+        },
+        {
+          "id": "baseline:register",
+          "method": "GET",
+          "path": "/register",
+          "status": 200,
+          "ms": 220,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 26380
+        },
+        {
+          "id": "baseline:login",
+          "method": "GET",
+          "path": "/login",
+          "status": 200,
+          "ms": 143,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 24530
+        },
+        {
+          "id": "baseline:checkout",
+          "method": "GET",
+          "path": "/checkout",
+          "status": 200,
+          "ms": 479,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 29709
+        },
+        {
+          "id": "baseline:support",
+          "method": "GET",
+          "path": "/support",
+          "status": 200,
+          "ms": 154,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 34396
+        },
+        {
+          "id": "baseline:es_home",
+          "method": "GET",
+          "path": "/es",
+          "status": 200,
+          "ms": 169,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 48476
+        },
+        {
+          "id": "baseline:es_register",
+          "method": "GET",
+          "path": "/es/register",
+          "status": 200,
+          "ms": 253,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 27101
+        },
+        {
+          "id": "baseline:es_login",
+          "method": "GET",
+          "path": "/es/login",
+          "status": 200,
+          "ms": 154,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 25296
+        }
+      ],
+      "mixedLoad": {
+        "summary": {
+          "count": 160,
+          "okCount": 160,
+          "errorRate": 0,
+          "p50Ms": 169,
+          "p95Ms": 254,
+          "maxMs": 524,
+          "meanMs": 171.3,
+          "pass": true
+        }
+      },
+      "homepageBurst": {
+        "summary": {
+          "count": 40,
+          "okCount": 40,
+          "errorRate": 0,
+          "p50Ms": 164,
+          "p95Ms": 250,
+          "maxMs": 328,
+          "meanMs": 163.9,
+          "pass": true
+        }
+      }
+    },
+    "authentication": {
+      "getSurfaces": {
+        "summary": {
+          "count": 40,
+          "okCount": 40,
+          "errorRate": 0,
+          "p50Ms": 99,
+          "p95Ms": 269,
+          "maxMs": 394,
+          "meanMs": 116.1,
+          "pass": true
+        },
+        "samples": [
+          {
+            "id": "authz:journey:0",
+            "method": "GET",
+            "path": "/journey",
+            "status": 200,
+            "ms": 206,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 52723
+          },
+          {
+            "id": "authz:lumina:1",
+            "method": "GET",
+            "path": "/lumina",
+            "status": 200,
+            "ms": 123,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 26347
+          },
+          {
+            "id": "authz:architect_dashboard:2",
+            "method": "GET",
+            "path": "/architect/dashboard",
+            "status": 307,
+            "ms": 29,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 15
+          },
+          {
+            "id": "authz:architect_journey:3",
+            "method": "GET",
+            "path": "/architect/journey",
+            "status": 307,
+            "ms": 22,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 15
+          },
+          {
+            "id": "authz:architect_lumina:4",
+            "method": "GET",
+            "path": "/architect/lumina",
+            "status": 307,
+            "ms": 60,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 15
+          },
+          {
+            "id": "authz:es_journey:5",
+            "method": "GET",
+            "path": "/es/journey",
+            "status": 200,
+            "ms": 124,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 53400
+          },
+          {
+            "id": "authz:es_lumina:6",
+            "method": "GET",
+            "path": "/es/lumina",
+            "status": 200,
+            "ms": 394,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 27040
+          },
+          {
+            "id": "authz:es_architect_dashboard:7",
+            "method": "GET",
+            "path": "/es/architect/dashboard",
+            "status": 307,
+            "ms": 60,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 15
+          },
+          {
+            "id": "authz:es_checkout:8",
+            "method": "GET",
+            "path": "/es/checkout",
+            "status": 200,
+            "ms": 91,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 30812
+          },
+          {
+            "id": "authz:blueprint_print_guidebook:9",
+            "method": "GET",
+            "path": "/blueprint/print/guidebook",
+            "status": 200,
+            "ms": 295,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 335767
+          },
+          {
+            "id": "authz:journey:10",
+            "method": "GET",
+            "path": "/journey",
+            "status": 200,
+            "ms": 117,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 52723
+          },
+          {
+            "id": "authz:lumina:11",
+            "method": "GET",
+            "path": "/lumina",
+            "status": 200,
+            "ms": 159,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 26347
+          },
+          {
+            "id": "authz:architect_dashboard:12",
+            "method": "GET",
+            "path": "/architect/dashboard",
+            "status": 307,
+            "ms": 28,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 15
+          },
+          {
+            "id": "authz:architect_journey:13",
+            "method": "GET",
+            "path": "/architect/journey",
+            "status": 307,
+            "ms": 40,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 15
+          },
+          {
+            "id": "authz:architect_lumina:14",
+            "method": "GET",
+            "path": "/architect/lumina",
+            "status": 307,
+            "ms": 33,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 15
+          },
+          {
+            "id": "authz:es_journey:15",
+            "method": "GET",
+            "path": "/es/journey",
+            "status": 200,
+            "ms": 181,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 53400
+          },
+          {
+            "id": "authz:es_lumina:16",
+            "method": "GET",
+            "path": "/es/lumina",
+            "status": 200,
+            "ms": 122,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 27040
+          },
+          {
+            "id": "authz:es_architect_dashboard:17",
+            "method": "GET",
+            "path": "/es/architect/dashboard",
+            "status": 307,
+            "ms": 157,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 15
+          },
+          {
+            "id": "authz:es_checkout:18",
+            "method": "GET",
+            "path": "/es/checkout",
+            "status": 200,
+            "ms": 127,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 30812
+          },
+          {
+            "id": "authz:blueprint_print_guidebook:19",
+            "method": "GET",
+            "path": "/blueprint/print/guidebook",
+            "status": 200,
+            "ms": 269,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 335767
+          },
+          {
+            "id": "authz:journey:20",
+            "method": "GET",
+            "path": "/journey",
+            "status": 200,
+            "ms": 99,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 52723
+          },
+          {
+            "id": "authz:lumina:21",
+            "method": "GET",
+            "path": "/lumina",
+            "status": 200,
+            "ms": 83,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 26347
+          },
+          {
+            "id": "authz:architect_dashboard:22",
+            "method": "GET",
+            "path": "/architect/dashboard",
+            "status": 307,
+            "ms": 21,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 15
+          },
+          {
+            "id": "authz:architect_journey:23",
+            "method": "GET",
+            "path": "/architect/journey",
+            "status": 307,
+            "ms": 31,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 15
+          },
+          {
+            "id": "authz:architect_lumina:24",
+            "method": "GET",
+            "path": "/architect/lumina",
+            "status": 307,
+            "ms": 27,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 15
+          },
+          {
+            "id": "authz:es_journey:25",
+            "method": "GET",
+            "path": "/es/journey",
+            "status": 200,
+            "ms": 66,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 53400
+          },
+          {
+            "id": "authz:es_lumina:26",
+            "method": "GET",
+            "path": "/es/lumina",
+            "status": 200,
+            "ms": 168,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 27040
+          },
+          {
+            "id": "authz:es_architect_dashboard:27",
+            "method": "GET",
+            "path": "/es/architect/dashboard",
+            "status": 307,
+            "ms": 44,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 15
+          },
+          {
+            "id": "authz:es_checkout:28",
+            "method": "GET",
+            "path": "/es/checkout",
+            "status": 200,
+            "ms": 68,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 30812
+          },
+          {
+            "id": "authz:blueprint_print_guidebook:29",
+            "method": "GET",
+            "path": "/blueprint/print/guidebook",
+            "status": 200,
+            "ms": 237,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 335767
+          },
+          {
+            "id": "authz:journey:30",
+            "method": "GET",
+            "path": "/journey",
+            "status": 200,
+            "ms": 166,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 52723
+          },
+          {
+            "id": "authz:lumina:31",
+            "method": "GET",
+            "path": "/lumina",
+            "status": 200,
+            "ms": 129,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 26347
+          },
+          {
+            "id": "authz:architect_dashboard:32",
+            "method": "GET",
+            "path": "/architect/dashboard",
+            "status": 307,
+            "ms": 35,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 15
+          },
+          {
+            "id": "authz:architect_journey:33",
+            "method": "GET",
+            "path": "/architect/journey",
+            "status": 307,
+            "ms": 30,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 15
+          },
+          {
+            "id": "authz:architect_lumina:34",
+            "method": "GET",
+            "path": "/architect/lumina",
+            "status": 307,
+            "ms": 37,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 15
+          },
+          {
+            "id": "authz:es_journey:35",
+            "method": "GET",
+            "path": "/es/journey",
+            "status": 200,
+            "ms": 177,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 53400
+          },
+          {
+            "id": "authz:es_lumina:36",
+            "method": "GET",
+            "path": "/es/lumina",
+            "status": 200,
+            "ms": 165,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 27040
+          },
+          {
+            "id": "authz:es_architect_dashboard:37",
+            "method": "GET",
+            "path": "/es/architect/dashboard",
+            "status": 307,
+            "ms": 34,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 15
+          },
+          {
+            "id": "authz:es_checkout:38",
+            "method": "GET",
+            "path": "/es/checkout",
+            "status": 200,
+            "ms": 188,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 30812
+          },
+          {
+            "id": "authz:blueprint_print_guidebook:39",
+            "method": "GET",
+            "path": "/blueprint/print/guidebook",
+            "status": 200,
+            "ms": 203,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 335767
+          }
+        ]
+      },
+      "loginInvalidPayload": {
+        "id": "auth:login-invalid-payload",
+        "method": "POST",
+        "path": "/api/auth/login",
+        "status": 400,
+        "ms": 52,
+        "ok": true,
+        "classified": "ok",
+        "bytes": 79
+      },
+      "note": "Unauthenticated Journey/Lumina/dashboard GETs must redirect or serve the gate without 5xx. Password verify was not brute-forced."
+    },
+    "dashboardJourneySaves": {
+      "production": "NOT MUTATED",
+      "localIsolatedFileQueue": {
+        "count": 24,
+        "okCount": 24,
+        "errorRate": 0,
+        "p50Ms": 61,
+        "p95Ms": 84,
+        "maxMs": 87,
+        "meanMs": 60.3,
+        "pass": true,
+        "isolated": true
+      },
+      "launchBlocking": false,
+      "finding": "Journey/Lumina/billing projection now select Supabase Postgres when POSTGRES_URL is set and fail closed on hosted production. Isolated local file stores remain for workstation tests only."
+    },
+    "lumina": {
+      "production": "NOT MUTATED",
+      "localIsolatedFileQueue": {
+        "count": 16,
+        "okCount": 16,
+        "errorRate": 0,
+        "p50Ms": 9,
+        "p95Ms": 12,
+        "maxMs": 12,
+        "meanMs": 9.1,
+        "pass": true,
+        "isolated": true
+      },
+      "localStubLatency": {
+        "count": 20,
+        "okCount": 20,
+        "errorRate": 0,
+        "p50Ms": 0,
+        "p95Ms": 0,
+        "maxMs": 1,
+        "meanMs": 0.1,
+        "pass": true
+      },
+      "launchBlocking": false,
+      "finding": "Journey/Lumina/billing projection now select Supabase Postgres when POSTGRES_URL is set and fail closed on hosted production. Isolated local file stores remain for workstation tests only.",
+      "provider": "stub — buildStubAssistantReply is the approved launch send path"
+    },
+    "checkoutWebhooks": {
+      "unauthenticatedWebhook": {
+        "id": "degrade:webhook-no-signature",
+        "method": "POST",
+        "path": "/api/stripe/webhook",
+        "status": 503,
+        "ms": 118,
+        "ok": true,
+        "classified": "ok",
+        "bytes": 34
+      },
+      "liveCheckout": "NOT_RUN / BLOCKED_FOUNDER — Row 73; no Checkout Session created; no charges"
+    },
+    "blueprint": {
+      "unauthenticated": {
+        "id": "degrade:blueprint-unauth",
+        "method": "GET",
+        "path": "/api/architect/blueprint/guidebook",
+        "status": 401,
+        "ms": 55,
+        "ok": true,
+        "classified": "ok",
+        "bytes": 29
+      },
+      "generation": "NOT EXERCISED Chrome. Print HTML is the launch-safe path.",
+      "finding": "Production serverless fail-closes Chrome PDF generation (no --no-sandbox). Architects use print HTML routes. API PDF routes return 409 print_required on Vercel."
+    },
+    "mediaDelivery": {
+      "captions": {
+        "summary": {
+          "count": 3,
+          "okCount": 3,
+          "errorRate": 0,
+          "p50Ms": 14,
+          "p95Ms": 15,
+          "maxMs": 15,
+          "meanMs": 13,
+          "pass": true
+        },
+        "samples": [
+          {
+            "id": "caption:/captions/founder/en-founding-architect-welcome.vtt",
+            "method": "GET",
+            "path": "/captions/founder/en-founding-architect-welcome.vtt",
+            "status": 200,
+            "ms": 10,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 3133
+          },
+          {
+            "id": "caption:/captions/founder/en-chapter-1-welcome.vtt",
+            "method": "GET",
+            "path": "/captions/founder/en-chapter-1-welcome.vtt",
+            "status": 200,
+            "ms": 14,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 1280
+          },
+          {
+            "id": "caption:/captions/founder/es-founding-architect-welcome.vtt",
+            "method": "GET",
+            "path": "/captions/founder/es-founding-architect-welcome.vtt",
+            "status": 200,
+            "ms": 15,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 3297
+          }
+        ]
+      },
+      "videos": {
+        "summary": {
+          "count": 3,
+          "okCount": 3,
+          "errorRate": 0,
+          "p50Ms": 9,
+          "p95Ms": 9,
+          "maxMs": 9,
+          "meanMs": 8.7,
+          "pass": true
+        },
+        "delivered": 3,
+        "missingOrFailed": 0,
+        "samples": [
+          {
+            "id": "video:/videos/onboarding/founding-architect-welcome.mp4",
+            "method": "GET",
+            "path": "/videos/onboarding/founding-architect-welcome.mp4",
+            "status": 206,
+            "ms": 8,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 1024
+          },
+          {
+            "id": "video:/videos/chapter-1/chapter-1-the-awakening.mp4",
+            "method": "GET",
+            "path": "/videos/chapter-1/chapter-1-the-awakening.mp4",
+            "status": 206,
+            "ms": 9,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 1024
+          },
+          {
+            "id": "video:/videos/chapter-7/chapter-7-beginning.mp4",
+            "method": "GET",
+            "path": "/videos/chapter-7/chapter-7-beginning.mp4",
+            "status": 206,
+            "ms": 9,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 1024
+          }
+        ]
+      }
+    },
+    "emailTriggers": {
+      "productionSends": 0,
+      "smtpTimeoutsRemediated": true,
+      "connectionTimeoutMs": 10000,
+      "greetingTimeoutMs": 10000,
+      "socketTimeoutMs": 15000
+    },
+    "databaseApi": {
+      "healthBurst": {
+        "count": 12,
+        "okCount": 12,
+        "errorRate": 0,
+        "p50Ms": 82,
+        "p95Ms": 299,
+        "maxMs": 299,
+        "meanMs": 160.1,
+        "pass": true
+      },
+      "healthSample": {
+        "id": "health:body",
+        "method": "GET",
+        "path": "/api/ops/health",
+        "status": 200,
+        "ms": 58,
+        "ok": true,
+        "classified": "ok",
+        "bytes": 110
+      },
+      "samples": [
+        {
+          "id": "burst:health:0",
+          "method": "GET",
+          "path": "/api/ops/health",
+          "status": 200,
+          "ms": 82,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 110
+        },
+        {
+          "id": "burst:health:1",
+          "method": "GET",
+          "path": "/api/ops/health",
+          "status": 200,
+          "ms": 62,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 110
+        },
+        {
+          "id": "burst:health:2",
+          "method": "GET",
+          "path": "/api/ops/health",
+          "status": 200,
+          "ms": 299,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 110
+        },
+        {
+          "id": "burst:health:3",
+          "method": "GET",
+          "path": "/api/ops/health",
+          "status": 200,
+          "ms": 57,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 110
+        },
+        {
+          "id": "burst:health:4",
+          "method": "GET",
+          "path": "/api/ops/health",
+          "status": 200,
+          "ms": 94,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 110
+        },
+        {
+          "id": "burst:health:5",
+          "method": "GET",
+          "path": "/api/ops/health",
+          "status": 200,
+          "ms": 63,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 110
+        },
+        {
+          "id": "burst:health:6",
+          "method": "GET",
+          "path": "/api/ops/health",
+          "status": 200,
+          "ms": 291,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 110
+        },
+        {
+          "id": "burst:health:7",
+          "method": "GET",
+          "path": "/api/ops/health",
+          "status": 200,
+          "ms": 287,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 110
+        },
+        {
+          "id": "burst:health:8",
+          "method": "GET",
+          "path": "/api/ops/health",
+          "status": 200,
+          "ms": 273,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 110
+        },
+        {
+          "id": "burst:health:9",
+          "method": "GET",
+          "path": "/api/ops/health",
+          "status": 200,
+          "ms": 292,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 110
+        },
+        {
+          "id": "burst:health:10",
+          "method": "GET",
+          "path": "/api/ops/health",
+          "status": 200,
+          "ms": 63,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 110
+        },
+        {
+          "id": "burst:health:11",
+          "method": "GET",
+          "path": "/api/ops/health",
+          "status": 200,
+          "ms": 58,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 110
+        }
+      ]
+    }
+  },
+  "gracefulDegradation": {
+    "summary": {
+      "count": 8,
+      "okCount": 8,
+      "errorRate": 0,
+      "p50Ms": 56,
+      "p95Ms": 371,
+      "maxMs": 371,
+      "meanMs": 104.4,
+      "pass": true
+    },
+    "timeoutClassification": {
+      "probe": {
+        "id": "timeout:health-1ms",
+        "method": "GET",
+        "path": "/api/ops/health",
+        "status": 0,
+        "ms": 3,
+        "ok": false,
+        "classified": "timeout",
+        "bytes": 0,
+        "error": "timeout"
+      },
+      "pass": true
+    },
+    "samples": [
+      {
+        "id": "degrade:webhook-no-signature",
+        "method": "POST",
+        "path": "/api/stripe/webhook",
+        "status": 503,
+        "ms": 118,
+        "ok": true,
+        "classified": "ok",
+        "bytes": 34
+      },
+      {
+        "id": "degrade:monitoring-unauth",
+        "method": "GET",
+        "path": "/api/ops/monitoring/run",
+        "status": 401,
+        "ms": 56,
+        "ok": true,
+        "classified": "ok",
+        "bytes": 24
+      },
+      {
+        "id": "degrade:blueprint-unauth",
+        "method": "GET",
+        "path": "/api/architect/blueprint/guidebook",
+        "status": 401,
+        "ms": 55,
+        "ok": true,
+        "classified": "ok",
+        "bytes": 29
+      },
+      {
+        "id": "degrade:login-invalid-json",
+        "method": "POST",
+        "path": "/api/auth/login",
+        "status": 400,
+        "ms": 76,
+        "ok": true,
+        "classified": "ok",
+        "bytes": 43
+      },
+      {
+        "id": "degrade:register-invalid-json",
+        "method": "POST",
+        "path": "/api/auth/register",
+        "status": 400,
+        "ms": 53,
+        "ok": true,
+        "classified": "ok",
+        "bytes": 43
+      },
+      {
+        "id": "degrade:analytics-ignored",
+        "method": "POST",
+        "path": "/api/analytics/event",
+        "status": 200,
+        "ms": 57,
+        "ok": true,
+        "classified": "ok",
+        "bytes": 20
+      },
+      {
+        "id": "degrade:missing-path",
+        "method": "GET",
+        "path": "/row61-monitoring-missing-path",
+        "status": 404,
+        "ms": 371,
+        "ok": true,
+        "classified": "ok",
+        "bytes": 15875
+      },
+      {
+        "id": "degrade:health",
+        "method": "GET",
+        "path": "/api/ops/health",
+        "status": 200,
+        "ms": 49,
+        "ok": true,
+        "classified": "ok",
+        "bytes": 110
+      }
+    ],
+    "behaviorsConfirmed": [
+      "Stripe webhook without signature returns 400 or 503 (not 500).",
+      "Monitoring run without CRON_SECRET returns 401 or 503.",
+      "Blueprint PDF without session returns 401 or redirect.",
+      "Auth login/register invalid JSON returns 400.",
+      "Analytics unknown event is ignored with 2xx.",
+      "Missing path returns 404 for monitor classification.",
+      "Client AbortSignal.timeout(1) classifies as timeout.",
+      "SMTP send path now fails closed on 10s/15s transport timeouts instead of hanging the serverless invoke."
+    ]
+  },
+  "monitoringAlerts": {
+    "cron": "*/15 * * * * /api/ops/monitoring/run",
+    "owners": {
+      "technical": "Imani Heartbeat — Chief Technology & Risk Officer",
+      "operations": "Michelle Northstar — Chief of Staff & Operations Officer"
+    },
+    "cooldownMinutes": 30,
+    "firesOn": [
+      "uptime HTTP fail",
+      "database connectivity",
+      "Stripe provider unreachable"
+    ],
+    "recordsLaunchOpsErrors": true,
+    "unauthorizedProbe": {
+      "id": "degrade:monitoring-unauth",
+      "method": "GET",
+      "path": "/api/ops/monitoring/run",
+      "status": 401,
+      "ms": 56,
+      "ok": true,
+      "classified": "ok",
+      "bytes": 24
+    },
+    "productionCriticalInjected": false,
+    "confirmed": true
+  },
+  "bottlenecks": {
+    "launchBlocking": [
+      "Live Stripe checkout/webhooks are Founder-gated (Row 73) and were not charged.",
+      "Canonical DNS thebackhalf.org remains NXDOMAIN (Row 75). Load ran against the reachable Vercel production host.",
+      "Architect Journey/Lumina durable Postgres path is implemented but this workstation has no POSTGRES_URL; production customer data was not mutated. Isolated local saves were measured.",
+      "Media: Range TTFB probed (1KB); full video bytes under concurrent Range were not downloaded (bandwidth cap)."
+    ],
+    "remediationsApplied": [
+      "SMTP nodemailer connectionTimeout=10000, greetingTimeout=10000, socketTimeout=15000 so email triggers cannot hang a serverless function indefinitely.",
+      "Journey/onboarding/chapter/Lumina/billing projection moved to Postgres with hosted fail-closed.",
+      "Blueprint production no longer launches --no-sandbox Chrome; print HTML is the Architect path.",
+      "Durable IP/account rate limits on login, register, support, analytics ingest, marketing session."
+    ],
+    "remediationsDeferred": [
+      "Live Stripe key/prices/webhook (Row 73) and canonical DNS (Row 75) remain Founder/vendor rows — not mutated here.",
+      "Vercel/Supabase/Workspace plan quotas are Founder dashboards (not observable from this agent).",
+      "Full concurrent video byte download was not claimed as media PASS (Range TTFB only)."
+    ]
+  },
+  "scorecard": {
+    "publicPages": "PASS",
+    "authenticationGets": "PASS",
+    "dashboardJourneySaves": "PASS isolated (file + postgres-selector). Production Architect data NOT MUTATED.",
+    "lumina": "PASS stub+persistence locally. Launch architecture is buildStubAssistantReply — not model-backed.",
+    "checkoutWebhooks": "NOT_RUN / BLOCKED_FOUNDER — Row 73 live Stripe. No charges. Unauthenticated webhook degrade tested.",
+    "blueprintGeneration": "PASS architecture (print HTML + Chrome fail-closed on Vercel). Chrome PDF storm NOT EXERCISED.",
+    "mediaDelivery": "PARTIAL — Range TTFB PASS; full concurrent video bytes not claimed.",
+    "emailTriggers": "NOT EXERCISED against production SMTP (no mail sent). Isolated/fake transport only. SMTP 10s/15s timeouts preserved.",
+    "databaseApi": "PASS for /api/ops/health under concurrency",
+    "monitoringAlerts": "CONFIRMED armed: Vercel cron */15 * * * * → /api/ops/monitoring/run; unauthorized probe returned expected 401/503; alert cooldown 30 minutes. Founder dashboards for plan/quotas = FOUNDER ACTION.",
+    "overall": "FAIL"
+  },
+  "finalStatus": "FAIL",
+  "nextAction": "Do not mark Complete. Founder has not accepted. Remaining: production backup-probe invoke with CRON_SECRET, Founder plan/quota dashboards, Row 73 live Stripe, Row 75 DNS.",
+  "validation": {
+    "typecheck": "npx tsc --noEmit PASS",
+    "nearestTest": "npm run fab5:row185 (package has no npm test)",
+    "build": "npm run build PASS (Next.js 16.2.12)",
+    "note": "Gate outcomes are recorded on the status file after the commands run; this harness does not mark Complete."
+  },
+  "overall": "FAIL",
+  "checks": [
+    {
+      "id": "P1",
+      "area": "publicPages",
+      "name": "Public pages under mixed concurrency against Vercel production host",
+      "verdict": "PASS",
+      "actual": "count=208; p95=254ms; errorRate=0; origin=https://website-two-psi-49.vercel.app"
+    },
+    {
+      "id": "P2",
+      "area": "authentication",
+      "name": "Authenticated-gate GETs (EN/ES) without mutating production Architects",
+      "verdict": "PASS",
+      "actual": "count=40; p95=269ms; errorRate=0"
+    },
+    {
+      "id": "P3",
+      "area": "dashboardJourneySaves",
+      "name": "Isolated Journey saves on durable selector; production Architect data not mutated",
+      "verdict": "PASS",
+      "actual": "Isolated file/postgres-selector saves PASS. Production customer data NOT MUTATED."
+    },
+    {
+      "id": "P4",
+      "area": "lumina",
+      "name": "Lumina launch path is stub+persistence (buildStubAssistantReply)",
+      "verdict": "PASS",
+      "actual": "Launch architecture is buildStubAssistantReply — not model-backed. Stub+persistence measured locally."
+    },
+    {
+      "id": "P5",
+      "area": "checkoutWebhooks",
+      "name": "Live Stripe checkout/webhooks",
+      "verdict": "NOT_RUN",
+      "actual": "BLOCKED_FOUNDER Row 73. No charges. Unauthenticated webhook degrade probed."
+    },
+    {
+      "id": "P6",
+      "area": "blueprintGeneration",
+      "name": "Launch-safe Blueprint (print HTML; no per-request Chrome on Vercel)",
+      "verdict": "PASS",
+      "actual": "Print HTML is the Architect path. Chrome PDF storm NOT EXERCISED. Hosted Chrome fail-closed."
+    },
+    {
+      "id": "P7",
+      "area": "mediaDelivery",
+      "name": "Caption + Range TTFB; full concurrent video bytes not claimed",
+      "verdict": "NOT_RUN",
+      "actual": "Range TTFB PASS; full video bytes under concurrent Range NOT downloaded (bandwidth cap)."
+    },
+    {
+      "id": "P8",
+      "area": "emailTriggers",
+      "name": "Email-trigger performance without production mail",
+      "verdict": "NOT_RUN",
+      "actual": "No production SMTP sends. Isolated/fake transport only. SMTP 10s/15s timeouts preserved."
+    },
+    {
+      "id": "P9",
+      "area": "databaseApi",
+      "name": "Health/API under concurrency",
+      "verdict": "PASS",
+      "actual": "healthBurst p95=299ms errorRate=0"
+    },
+    {
+      "id": "P10",
+      "area": "canonicalDns",
+      "name": "Canonical thebackhalf.org load (Row 75)",
+      "verdict": "NOT_RUN",
+      "actual": "canonicalDns=not_found. Do not PASS canonical host. Vercel host was tested."
+    },
+    {
+      "id": "P11",
+      "area": "concurrency",
+      "name": "Mixed authenticated+public concurrency above prior 118 GET floor",
+      "verdict": "PASS",
+      "actual": "productionRequests=277; cap=900; mixedRounds=20"
+    },
+    {
+      "id": "P12",
+      "area": "planLimits",
+      "name": "Vercel/Supabase/Workspace plan quotas",
+      "verdict": "NOT_RUN",
+      "actual": "FOUNDER ACTION — dashboards not observable from this agent."
+    },
+    {
+      "id": "P13",
+      "area": "rateLimits",
+      "name": "Durable login/register/support/analytics rate limits present; production not credential-stuffed",
+      "verdict": "PASS",
+      "actual": "Login, registration, support, analytics ingest, and marketing session routes now use durable IP/account rate limits (Postgres on hosted; file store locally). Failed login remains generic invalid_credentials. Login lockout after 8 failures / 15 minutes."
+    }
+  ]
+}

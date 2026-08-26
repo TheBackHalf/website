@@ -1,0 +1,121 @@
+{
+  "aosWorkIdFamily": "aos-b2-imani-181-182-185",
+  "title": "Batch B2 shared root-cause (persistence, rate limits, Blueprint, SMTP)",
+  "source": "Founder Decision 2026-08-26 — Rows 181, 182, 185 NEEDS CHANGES",
+  "ownerAgent": "imani",
+  "generatedAt": "2026-08-26T19:52:00.000Z",
+  "founderAcceptanceRecorded": false,
+  "rowMarkedComplete": false,
+  "overall": "FAIL",
+  "residualRisk": "HIGH",
+  "nextStatus": "FOUNDER_ACTION_REQUIRED",
+  "unrelatedAgentsCancelled": false,
+  "hostedAosStopped": false,
+  "liveStripeChargeCreated": false,
+  "dnsModified": false,
+  "merged": false,
+  "deployed": false,
+  "pushedMain": false,
+  "sharedImplementationsOnce": true,
+  "checks": [
+    {
+      "id": "A",
+      "area": "durablePersistence",
+      "name": "Launch-critical Journey/Lumina/billing projection moved off .data/ to Postgres",
+      "verdict": "PASS",
+      "actual": "Journey progress/onboarding/chapters use bh_durable_documents collections; Lumina conversations/memories use dedicated tables; billing is a Stripe-aligned projection not a second ledger; hosted production fail-closed if POSTGRES_URL unset. Auth already used Postgres via getAuthStore."
+    },
+    {
+      "id": "A-backup",
+      "area": "backupRecovery",
+      "name": "New tables included in CRITICAL_PUBLIC_TABLES; isolated PGlite restore; production dump/WAL",
+      "verdict": "NOT_RUN",
+      "actual": "Isolated PGlite restore of a synthetic dump including bh_* tables PASS. Production logical export + WAL/PITR NOT_RUN in this workstation (no POSTGRES_URL). CRON_SECRET-gated /api/fab-5/aos/backup-probe implemented for hosted invoke. Destination is never production."
+    },
+    {
+      "id": "A-billing",
+      "area": "billingSystemOfRecord",
+      "name": "Stripe remains system of record",
+      "verdict": "PASS",
+      "actual": "Postgres billing tables are webhook/entitlement projection + local cache replacement. Restore does not reconstruct Stripe. .data/billing is not claimed as Production SoR."
+    },
+    {
+      "id": "B",
+      "area": "rateLimits",
+      "name": "IP- and account-keyed durable rate limits + login lockout",
+      "verdict": "PASS",
+      "actual": "Postgres (hosted) / file (local) consumeRateLimit on login, registration, support, analytics ingest, marketing session. Login lockout after 8 failures/15min still returns generic invalid_credentials. In-process-only limiter not used on Vercel."
+    },
+    {
+      "id": "C",
+      "area": "blueprintPuppeteer",
+      "name": "Production does not launch --no-sandbox Chrome per request",
+      "verdict": "PASS",
+      "actual": "Architect path is print HTML. Vercel Chrome launch fail-closed with user-safe blueprint_chrome_unavailable. maxDuration 30. BLUEPRINT_QA_OPEN not enabled by this change. Chrome PDF storm not exercised."
+    },
+    {
+      "id": "D",
+      "area": "smtp",
+      "name": "Nodemailer timeouts preserved",
+      "verdict": "PASS",
+      "actual": "lib/auth/email/smtp.ts connectionTimeout/greetingTimeout 10s, socketTimeout 15s. Email-trigger tests use isolated/fake transport. No production mail blast."
+    }
+  ],
+  "rootCauses": {
+    "A_durablePersistence": {
+      "problem": "Launch-critical Journey progress, onboarding, chapter state, and Lumina conversation/memory lived in .data/ file stores and would not survive Vercel serverless or Postgres restore.",
+      "fix": "lib/durable/{db,schema,documents}.ts — tagged-template SQL, schema ensure, hosted-production fail-closed. Stores select supabase_postgres vs file_local_development vs unconfigured_production.",
+      "tables": [
+        "bh_durable_documents (journey_progress, journey_onboarding, journey_chapter_1..7)",
+        "bh_lumina_conversations",
+        "bh_lumina_memories",
+        "bh_rate_limits",
+        "bh_billing_stripe_events",
+        "bh_billing_entitlements",
+        "bh_billing_purchases",
+        "bh_billing_account_access",
+        "bh_billing_notifications"
+      ],
+      "auth": "Production already uses Postgres via getAuthStore when POSTGRES_URL is set — not changed to file.",
+      "billing": "Stripe is SoR. Postgres is projection/cache. Isolated restore does not cover Stripe ledger.",
+      "backup": "CRITICAL_PUBLIC_TABLES includes new bh_* tables. Isolated restore uses in-memory PGlite. Hosted probe: GET /api/fab-5/aos/backup-probe (authorizeHeartbeatRequest / CRON_SECRET).",
+      "gap": "This Cloud Agent has no POSTGRES_URL. Production WAL and live logical export were not obtained. Do not fabricate WAL evidence. Row 181 cannot be ACCEPTANCE_READY."
+    },
+    "B_rateLimits": {
+      "problem": "Login/register/support/analytics lacked durable IP+account limits; in-process is not enough on Vercel.",
+      "fix": "lib/rate-limit/consume.ts + http.ts backed by bh_rate_limits (Postgres) or local file. Wired on login, register, support, analytics ingest, marketing session.",
+      "lockout": "8 failed logins / 15 minutes; response remains invalid_credentials.",
+      "authNotWeakened": true
+    },
+    "C_blueprint": {
+      "problem": "Per-request Puppeteer --no-sandbox on Vercel (F-12 / 300s Chrome) is unsafe and unscalable.",
+      "fix": "Print HTML Architect path; hosted Chrome launch fail-closed; no --no-sandbox in production serverless.",
+      "qaOpen": "BLUEPRINT_QA_OPEN not turned on by this branch."
+    },
+    "D_smtp": {
+      "problem": "Unbounded SMTP connect could hang serverless.",
+      "fix": "connectionTimeout/greetingTimeout 10000, socketTimeout 15000 preserved/present on this branch."
+    }
+  },
+  "rowRouting": {
+    "181": "ops/fab-5/runs/aos-engineering-status/al-181-correction.json",
+    "182Historical": "ops/fab-5/runs/aos-engineering-status/al-182.json",
+    "182Remediation": "ops/fab-5/runs/aos-engineering-status/al-182-remediation.json",
+    "185": "ops/fab-5/runs/aos-engineering-status/al-185-correction.json"
+  },
+  "pricesLocked": {
+    "blueprintCents": 50000,
+    "foundingArchitectCents": 75000,
+    "communityMonthlyCents": 5000,
+    "never": ["150000", "175000", "$1,500", "$1,750"]
+  },
+  "remainingRisks": [
+    "Production WAL/PITR dashboard proof and a live logical export remain Founder-held (or hosted backup-probe with CRON_SECRET).",
+    "Security headers in next.config.ts are undeployed; production probe is PARTIAL.",
+    "npm audit remaining HIGH transitive — not recklessly upgraded immediately before launch.",
+    "Live Stripe (Row 73) and canonical DNS (Row 75) are Founder-gated and were not mutated.",
+    "Architect application MFA is NOT launch scope (Row 69 is vendor/privileged MFA).",
+    "Account erasure is OUT OF LAUNCH SCOPE.",
+    "Lumina launch send path remains buildStubAssistantReply."
+  ]
+}

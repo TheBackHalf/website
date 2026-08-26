@@ -1,0 +1,120 @@
+{
+  "aosWorkId": "al-182",
+  "title": "Security review remediation (Batch B2 correction)",
+  "historicalReviewPreserved": "ops/fab-5/runs/aos-engineering-status/al-182.json",
+  "founderAcceptanceRecorded": false,
+  "rowMarkedComplete": false,
+  "overall": "FAIL",
+  "residualRisk": "HIGH",
+  "nextStatus": "CORRECTION_REQUIRED",
+  "authenticationWeakened": false,
+  "secretsPrinted": false,
+  "productionHeadersDeployed": false,
+  "checks": [
+    {
+      "id": "R1",
+      "area": "rateLimits",
+      "name": "Login/register/support/analytics IP+account rate limits",
+      "verdict": "PASS",
+      "actual": "Durable consumeRateLimit wired on login, register, support, analytics, marketing session."
+    },
+    {
+      "id": "R2",
+      "area": "rateLimits",
+      "name": "Failed login remains generic invalid_credentials; lockout after repeated failures",
+      "verdict": "PASS",
+      "actual": "Account lockout returns invalid_credentials. IP flood can 429."
+    },
+    {
+      "id": "R3",
+      "area": "adminAccess",
+      "name": "Founder-decision API bound to Founder human email allowlist",
+      "verdict": "PASS",
+      "actual": "admin:ops:access is insufficient; BH_FOUNDER_EMAIL / kimberly@thebackhalf.org required."
+    },
+    {
+      "id": "R4",
+      "area": "headers",
+      "name": "Security headers in next.config.ts",
+      "verdict": "PASS",
+      "actual": "CSP, nosniff, frame-ancestors/XFO, Referrer-Policy, Permissions-Policy, HSTS present in repo."
+    },
+    {
+      "id": "R5",
+      "area": "authentication",
+      "name": "Password reset bumps sessionVersion",
+      "verdict": "PASS",
+      "actual": "resetPasswordAction calls bumpSessionVersion after hash update."
+    },
+    {
+      "id": "R6",
+      "area": "permissions",
+      "name": "Role demotion invalidates JWT via sessionVersion + live proxy check",
+      "verdict": "PASS",
+      "actual": "setUserRole increments session_version; proxy.ts Node live check; requireAuthenticatedUser compares versions."
+    },
+    {
+      "id": "R7",
+      "area": "dependencyIssues",
+      "name": "npm audit launch-relevant HIGH",
+      "verdict": "PARTIAL",
+      "actual": "critical=0; high=11; moderate=1. No reckless Next/puppeteer upgrade. Residual transitive HIGH documented."
+    },
+    {
+      "id": "R8",
+      "area": "dependencyIssues",
+      "name": "Production does not launch Puppeteer --no-sandbox",
+      "verdict": "PASS",
+      "actual": "Hosted Chrome launch fail-closed; print HTML is the Architect path."
+    },
+    {
+      "id": "R9",
+      "area": "headers",
+      "name": "Production header probe (undeployed changes are PARTIAL)",
+      "verdict": "PARTIAL",
+      "actual": "host=https://website-two-psi-49.vercel.app; csp=absent; nosniff=absent; xfo=absent; referrer=absent. Repo headers are not production until this branch is deployed."
+    },
+    {
+      "id": "R10",
+      "area": "authentication",
+      "name": "Architect application MFA is not launch scope",
+      "verdict": "NOT_IN_SCOPE",
+      "actual": "Row 69 Complete covers vendor/privileged MFA. Architect participant TOTP not implemented. FOUNDER ACTION if Founder wants application MFA later."
+    }
+  ],
+  "npmAudit": {
+    "critical": 0,
+    "high": 11,
+    "moderate": 1,
+    "note": "Launch-relevant HIGH not recklessly upgraded immediately before launch. Transitive residual risk remains."
+  },
+  "productionProbe": {
+    "origin": "https://website-two-psi-49.vercel.app",
+    "headers": {
+      "csp": false,
+      "nosniff": "",
+      "xFrameOptions": null,
+      "referrerPolicy": null,
+      "permissionsPolicy": null,
+      "hsts": "max-age=63072000; includeSubDomains; preload"
+    }
+  },
+  "remediations": [
+    "F-01 rate limits + lockout",
+    "F-03 headers in next.config.ts (undeployed = PARTIAL on production)",
+    "F-04/F-07 sessionVersion + Node proxy live role check",
+    "F-06 Founder-only decision API",
+    "F-12 Chrome --no-sandbox removed; fail closed on Vercel",
+    "F-08 AUTH_SECRET fail-closed on Vercel"
+  ],
+  "notRemediatedLaunchHigh": [
+    "Architect application MFA classified FOUNDER_ACTION_REQUIRED / NOT_IN_SCOPE (Row 69 vendor MFA).",
+    "npm audit remaining HIGH transitive (no reckless upgrade).",
+    "Production header PASS requires deploy of this branch."
+  ],
+  "validation": {
+    "typecheck": "npx tsc --noEmit PASS",
+    "test": "npm run fab5:row182-security PASS (0 FAIL; R7/R9 PARTIAL; overall FAIL)",
+    "build": "npm run build PASS (Next.js 16.2.12)"
+  }
+}

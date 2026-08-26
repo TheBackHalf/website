@@ -1,0 +1,486 @@
+{
+  "aosWorkId": "al-181",
+  "title": "Run Data Integrity and Recovery Testing",
+  "source": "command_center August Launch row 181",
+  "ownerAgent": "imani",
+  "generatedAt": "2026-08-26T19:49:41.709Z",
+  "softwareChangeApplied": true,
+  "productMarketingLegalChanged": true,
+  "founderAcceptanceRecorded": false,
+  "rowMarkedComplete": false,
+  "overall": "FAIL",
+  "residualRisk": "HIGH",
+  "nextStatus": "FOUNDER_ACTION_REQUIRED",
+  "secretsPrinted": false,
+  "productionModified": "NO",
+  "liveStripeChargeCreated": false,
+  "summary": "Isolated integrity checks: 23 PASS, 2 NOT_RUN, 1 NOT_IN_SCOPE. Production WAL/logical-export restore was not attempted in this workstation (no POSTGRES_URL). Founder has not accepted. Row not marked Complete.",
+  "areas": {
+    "saving": "PASS",
+    "duplicateEvents": "PASS",
+    "backups": "NOT_RUN",
+    "restore": "NOT_RUN",
+    "deletion": "PASS",
+    "consentHistory": "PASS",
+    "crossSystemReconciliation": "PASS"
+  },
+  "tests": [
+    {
+      "id": "S1",
+      "area": "saving",
+      "name": "Atomic registration save",
+      "expected": "User, required consents, and verification token persist and re-read from a new store instance",
+      "actual": "user=true; consents=4; token=true; firstName=Integrity",
+      "verdict": "PASS"
+    },
+    {
+      "id": "S2",
+      "area": "saving",
+      "name": "Journey progress save",
+      "expected": "Progress upsert is durable on re-read",
+      "actual": "chapter=chapter-1-origin; status=in_progress; userMatch=true",
+      "verdict": "PASS"
+    },
+    {
+      "id": "S3",
+      "area": "saving",
+      "name": "Analytics event save",
+      "expected": "Controlled events persist and re-read by idempotency key",
+      "actual": "purchase=created; stored=true; page=created; backend=file_test_override",
+      "verdict": "PASS"
+    },
+    {
+      "id": "S4",
+      "area": "saving",
+      "name": "Save redacts prohibited fields",
+      "expected": "Password/token fields are not stored on the analytics event",
+      "actual": "hits=0; hasBlockedKeys=false; offerId=blueprint",
+      "verdict": "PASS"
+    },
+    {
+      "id": "S5",
+      "area": "saving",
+      "name": "Lumina memory save",
+      "expected": "Enabled memory write is retrievable for the same user",
+      "actual": "enable=ok; write=ok; summaries=1",
+      "verdict": "PASS"
+    },
+    {
+      "id": "S6",
+      "area": "saving",
+      "name": "KPI purchase save",
+      "expected": "Isolated KPI ledger records the sandbox purchase once",
+      "actual": "status=created; amount=50000; session=cs_test_al181_integrity",
+      "verdict": "PASS"
+    },
+    {
+      "id": "S7",
+      "area": "saving",
+      "name": "Launch-critical stores select durable Postgres in production",
+      "expected": "Lumina, Journey progress, and billing projection select supabase_postgres when configured and fail closed on hosted production",
+      "actual": "luminaPg=true; journeyPg=true; billingPg=true; failClosed=true",
+      "verdict": "PASS"
+    },
+    {
+      "id": "D1",
+      "area": "duplicate_events",
+      "name": "Analytics duplicate idempotency",
+      "expected": "Second write with the same idempotency key is duplicate; one stored row",
+      "actual": "second=duplicate; count=1",
+      "verdict": "PASS"
+    },
+    {
+      "id": "D2",
+      "area": "duplicate_events",
+      "name": "KPI purchase duplicate session",
+      "expected": "Same Stripe checkout session does not create a second purchase row or second revenue event",
+      "actual": "second=duplicate; purchases=1; events=1",
+      "verdict": "PASS"
+    },
+    {
+      "id": "D3",
+      "area": "duplicate_events",
+      "name": "Duplicate email registration rejected",
+      "expected": "Second persistEmailRegistration for the same email throws DUPLICATE_EMAIL",
+      "actual": "DUPLICATE_EMAIL",
+      "verdict": "PASS"
+    },
+    {
+      "id": "B1",
+      "area": "backups",
+      "name": "File-store backup snapshot",
+      "expected": "Backup file is written and restore returns consent count to the pre-mutation snapshot",
+      "actual": "before=5; mutated=6; restored=5; user=true",
+      "verdict": "PASS"
+    },
+    {
+      "id": "R1",
+      "area": "restore",
+      "name": "File-store restore",
+      "expected": "Restored analytics and KPI files still contain the saved purchase identifiers",
+      "actual": "analytics=true; kpiAmount=50000",
+      "verdict": "PASS"
+    },
+    {
+      "id": "R2",
+      "area": "restore",
+      "name": "Isolated pglite restore",
+      "expected": "Known dump restores analytics=2, purchases=1, all critical tables, dump removed; destination is not production",
+      "actual": "ok=true; tables=23; analytics=2; purchases=1; dumpRemoved=true; missing=none; error=none",
+      "verdict": "PASS"
+    },
+    {
+      "id": "R3",
+      "area": "restore",
+      "name": "Production Postgres isolated restore",
+      "expected": "Logical export restored into isolated pglite without modifying production",
+      "actual": "NOT_RUN (postgres_url_unconfigured_in_this_workstation)",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "B2",
+      "area": "backups",
+      "name": "Production WAL / platform backup probe",
+      "expected": "Production archive_mode and isolated restore can be re-verified when POSTGRES_URL is present",
+      "actual": "NOT_RUN (postgres_url_unconfigured_in_this_workstation)",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "X1",
+      "area": "deletion",
+      "name": "Verification token deletion retains account and consents",
+      "expected": "Deleting a verification token does not delete the user or consent history",
+      "actual": "tokenGone=true; user=true; consents=6",
+      "verdict": "PASS"
+    },
+    {
+      "id": "X2",
+      "area": "deletion",
+      "name": "Lumina memory clear retains identity and consent history",
+      "expected": "Clear removes durable summaries, does not wipe the account, and keeps consent records",
+      "actual": "clear=ok; summaries=0; firstName=Integrity; consents=6; luminaConsent=true",
+      "verdict": "PASS"
+    },
+    {
+      "id": "X3",
+      "area": "deletion",
+      "name": "Targeted test-event deletion",
+      "expected": "deleteTestEventsByKeys removes only the named test events",
+      "actual": "removed=1; dirtyGone=true; pageKept=true",
+      "verdict": "PASS"
+    },
+    {
+      "id": "X4",
+      "area": "deletion",
+      "name": "Account erasure is out of launch scope",
+      "expected": "Launch participant copy states account deletion is not available yet. Row 181 tests deletion of tokens, Lumina memory, and targeted events — not GDPR erasure.",
+      "actual": "deleteUser=false; deleteAccount=false; citations=content/i18n/dictionaries/en.ts account deletion which is not available yet",
+      "verdict": "NOT_IN_SCOPE"
+    },
+    {
+      "id": "C1",
+      "area": "consent_history",
+      "name": "Consent history is append-only",
+      "expected": "Recording the same consent type again appends a new history row instead of replacing",
+      "actual": "before=6; after=7; luminaRows=3",
+      "verdict": "PASS"
+    },
+    {
+      "id": "C2",
+      "area": "consent_history",
+      "name": "Required registration consents retained",
+      "expected": "terms, privacy, participant agreement, and AI disclosure remain in history",
+      "actual": "recorded=lumina_memory,terms_of_use,privacy_policy,participant_agreement,ai_disclosure; missing=none",
+      "verdict": "PASS"
+    },
+    {
+      "id": "C3",
+      "area": "consent_history",
+      "name": "No consent mutation APIs on AuthStore",
+      "expected": "AuthStore cannot delete or overwrite consent history",
+      "actual": "deleteConsent=false; updateConsent=false; eraseConsent=false",
+      "verdict": "PASS"
+    },
+    {
+      "id": "C4",
+      "area": "consent_history",
+      "name": "Support cannot mutate consent history",
+      "expected": "Support mutation helper is forbidden-by-design and does not write consent history",
+      "actual": "sourceDenies=true; runtime=no_request_session; consentsBefore=7; consentsAfter=7",
+      "verdict": "PASS"
+    },
+    {
+      "id": "Y1",
+      "area": "cross_system_reconciliation",
+      "name": "User identity reconciles across stores",
+      "expected": "Auth, consents, journey, and analytics all key to the same user id with no orphan consents",
+      "actual": "userPresent=true; consents=7; orphans=0; progressMatch=true; analyticsUserEvents=5",
+      "verdict": "PASS"
+    },
+    {
+      "id": "Y2",
+      "area": "cross_system_reconciliation",
+      "name": "Purchase identifiers reconcile analytics ↔ KPI",
+      "expected": "Same sandbox checkout session and amount in analytics purchase_completed and KPI purchase",
+      "actual": "analyticsSession=cs_test_al181_integrity; kpiSession=cs_test_al181_integrity; kpiAmount=50000",
+      "verdict": "PASS"
+    },
+    {
+      "id": "Y3",
+      "area": "cross_system_reconciliation",
+      "name": "Consent records reconcile to published document versions",
+      "expected": "Persisted registration consents keep the document id and version from the legal catalog",
+      "actual": "checked=4; versionsMatch=true",
+      "verdict": "PASS"
+    }
+  ],
+  "checks": [
+    {
+      "id": "S1",
+      "area": "saving",
+      "name": "Atomic registration save",
+      "expected": "User, required consents, and verification token persist and re-read from a new store instance",
+      "actual": "user=true; consents=4; token=true; firstName=Integrity",
+      "verdict": "PASS"
+    },
+    {
+      "id": "S2",
+      "area": "saving",
+      "name": "Journey progress save",
+      "expected": "Progress upsert is durable on re-read",
+      "actual": "chapter=chapter-1-origin; status=in_progress; userMatch=true",
+      "verdict": "PASS"
+    },
+    {
+      "id": "S3",
+      "area": "saving",
+      "name": "Analytics event save",
+      "expected": "Controlled events persist and re-read by idempotency key",
+      "actual": "purchase=created; stored=true; page=created; backend=file_test_override",
+      "verdict": "PASS"
+    },
+    {
+      "id": "S4",
+      "area": "saving",
+      "name": "Save redacts prohibited fields",
+      "expected": "Password/token fields are not stored on the analytics event",
+      "actual": "hits=0; hasBlockedKeys=false; offerId=blueprint",
+      "verdict": "PASS"
+    },
+    {
+      "id": "S5",
+      "area": "saving",
+      "name": "Lumina memory save",
+      "expected": "Enabled memory write is retrievable for the same user",
+      "actual": "enable=ok; write=ok; summaries=1",
+      "verdict": "PASS"
+    },
+    {
+      "id": "S6",
+      "area": "saving",
+      "name": "KPI purchase save",
+      "expected": "Isolated KPI ledger records the sandbox purchase once",
+      "actual": "status=created; amount=50000; session=cs_test_al181_integrity",
+      "verdict": "PASS"
+    },
+    {
+      "id": "S7",
+      "area": "saving",
+      "name": "Launch-critical stores select durable Postgres in production",
+      "expected": "Lumina, Journey progress, and billing projection select supabase_postgres when configured and fail closed on hosted production",
+      "actual": "luminaPg=true; journeyPg=true; billingPg=true; failClosed=true",
+      "verdict": "PASS"
+    },
+    {
+      "id": "D1",
+      "area": "duplicate_events",
+      "name": "Analytics duplicate idempotency",
+      "expected": "Second write with the same idempotency key is duplicate; one stored row",
+      "actual": "second=duplicate; count=1",
+      "verdict": "PASS"
+    },
+    {
+      "id": "D2",
+      "area": "duplicate_events",
+      "name": "KPI purchase duplicate session",
+      "expected": "Same Stripe checkout session does not create a second purchase row or second revenue event",
+      "actual": "second=duplicate; purchases=1; events=1",
+      "verdict": "PASS"
+    },
+    {
+      "id": "D3",
+      "area": "duplicate_events",
+      "name": "Duplicate email registration rejected",
+      "expected": "Second persistEmailRegistration for the same email throws DUPLICATE_EMAIL",
+      "actual": "DUPLICATE_EMAIL",
+      "verdict": "PASS"
+    },
+    {
+      "id": "B1",
+      "area": "backups",
+      "name": "File-store backup snapshot",
+      "expected": "Backup file is written and restore returns consent count to the pre-mutation snapshot",
+      "actual": "before=5; mutated=6; restored=5; user=true",
+      "verdict": "PASS"
+    },
+    {
+      "id": "R1",
+      "area": "restore",
+      "name": "File-store restore",
+      "expected": "Restored analytics and KPI files still contain the saved purchase identifiers",
+      "actual": "analytics=true; kpiAmount=50000",
+      "verdict": "PASS"
+    },
+    {
+      "id": "R2",
+      "area": "restore",
+      "name": "Isolated pglite restore",
+      "expected": "Known dump restores analytics=2, purchases=1, all critical tables, dump removed; destination is not production",
+      "actual": "ok=true; tables=23; analytics=2; purchases=1; dumpRemoved=true; missing=none; error=none",
+      "verdict": "PASS"
+    },
+    {
+      "id": "R3",
+      "area": "restore",
+      "name": "Production Postgres isolated restore",
+      "expected": "Logical export restored into isolated pglite without modifying production",
+      "actual": "NOT_RUN (postgres_url_unconfigured_in_this_workstation)",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "B2",
+      "area": "backups",
+      "name": "Production WAL / platform backup probe",
+      "expected": "Production archive_mode and isolated restore can be re-verified when POSTGRES_URL is present",
+      "actual": "NOT_RUN (postgres_url_unconfigured_in_this_workstation)",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "X1",
+      "area": "deletion",
+      "name": "Verification token deletion retains account and consents",
+      "expected": "Deleting a verification token does not delete the user or consent history",
+      "actual": "tokenGone=true; user=true; consents=6",
+      "verdict": "PASS"
+    },
+    {
+      "id": "X2",
+      "area": "deletion",
+      "name": "Lumina memory clear retains identity and consent history",
+      "expected": "Clear removes durable summaries, does not wipe the account, and keeps consent records",
+      "actual": "clear=ok; summaries=0; firstName=Integrity; consents=6; luminaConsent=true",
+      "verdict": "PASS"
+    },
+    {
+      "id": "X3",
+      "area": "deletion",
+      "name": "Targeted test-event deletion",
+      "expected": "deleteTestEventsByKeys removes only the named test events",
+      "actual": "removed=1; dirtyGone=true; pageKept=true",
+      "verdict": "PASS"
+    },
+    {
+      "id": "X4",
+      "area": "deletion",
+      "name": "Account erasure is out of launch scope",
+      "expected": "Launch participant copy states account deletion is not available yet. Row 181 tests deletion of tokens, Lumina memory, and targeted events — not GDPR erasure.",
+      "actual": "deleteUser=false; deleteAccount=false; citations=content/i18n/dictionaries/en.ts account deletion which is not available yet",
+      "verdict": "NOT_IN_SCOPE"
+    },
+    {
+      "id": "C1",
+      "area": "consent_history",
+      "name": "Consent history is append-only",
+      "expected": "Recording the same consent type again appends a new history row instead of replacing",
+      "actual": "before=6; after=7; luminaRows=3",
+      "verdict": "PASS"
+    },
+    {
+      "id": "C2",
+      "area": "consent_history",
+      "name": "Required registration consents retained",
+      "expected": "terms, privacy, participant agreement, and AI disclosure remain in history",
+      "actual": "recorded=lumina_memory,terms_of_use,privacy_policy,participant_agreement,ai_disclosure; missing=none",
+      "verdict": "PASS"
+    },
+    {
+      "id": "C3",
+      "area": "consent_history",
+      "name": "No consent mutation APIs on AuthStore",
+      "expected": "AuthStore cannot delete or overwrite consent history",
+      "actual": "deleteConsent=false; updateConsent=false; eraseConsent=false",
+      "verdict": "PASS"
+    },
+    {
+      "id": "C4",
+      "area": "consent_history",
+      "name": "Support cannot mutate consent history",
+      "expected": "Support mutation helper is forbidden-by-design and does not write consent history",
+      "actual": "sourceDenies=true; runtime=no_request_session; consentsBefore=7; consentsAfter=7",
+      "verdict": "PASS"
+    },
+    {
+      "id": "Y1",
+      "area": "cross_system_reconciliation",
+      "name": "User identity reconciles across stores",
+      "expected": "Auth, consents, journey, and analytics all key to the same user id with no orphan consents",
+      "actual": "userPresent=true; consents=7; orphans=0; progressMatch=true; analyticsUserEvents=5",
+      "verdict": "PASS"
+    },
+    {
+      "id": "Y2",
+      "area": "cross_system_reconciliation",
+      "name": "Purchase identifiers reconcile analytics ↔ KPI",
+      "expected": "Same sandbox checkout session and amount in analytics purchase_completed and KPI purchase",
+      "actual": "analyticsSession=cs_test_al181_integrity; kpiSession=cs_test_al181_integrity; kpiAmount=50000",
+      "verdict": "PASS"
+    },
+    {
+      "id": "Y3",
+      "area": "cross_system_reconciliation",
+      "name": "Consent records reconcile to published document versions",
+      "expected": "Persisted registration consents keep the document id and version from the legal catalog",
+      "actual": "checked=4; versionsMatch=true",
+      "verdict": "PASS"
+    }
+  ],
+  "productionPostgresRestore": {
+    "attempted": false,
+    "productionModified": "NO",
+    "reason": "postgres_url_unconfigured_in_this_workstation",
+    "restoreOk": null,
+    "integrity": null
+  },
+  "isolatedPgliteRestore": {
+    "ok": true,
+    "tablesRestored": 23,
+    "analyticsCount": 2,
+    "purchaseCount": 1,
+    "dumpRemoved": true,
+    "missingCriticalTables": []
+  },
+  "historicalRow62Evidence": {
+    "citedAsThisRun": false,
+    "file": "ops/fab-5/runs/row-62-backup-restore-validation.json",
+    "generatedAt": "2026-08-21T18:05:49.207Z",
+    "restoreOk": true,
+    "productionModifiedByRestore": "NO"
+  },
+  "remainingRisks": [
+    "This workstation has no POSTGRES_URL, so production Supabase WAL/PITR listing and a live logical export were not re-run. Isolated pglite restore of a known dump was executed instead. Prior Row 62 evidence (2026-08-21) recorded a production isolated restore PASS.",
+    "Production WAL/PITR dashboard proof and a live logical export from Production remain Founder-held unless the CRON_SECRET-gated /api/fab-5/aos/backup-probe is invoked on Vercel Production. This workstation has no POSTGRES_URL.",
+    "Stripe remains the payment system of record. Postgres billing tables are a webhook/entitlement projection; restoring them is not a Stripe ledger restore.",
+    "Account erasure is OUT OF LAUNCH SCOPE (participant copy: account deletion is not available yet). Deletion tests cover tokens, Lumina memory clear, and targeted events only."
+  ],
+  "validation": {
+    "typecheck": "npx tsc --noEmit PASS",
+    "test": "npm run fab5:row181 PASS (23 PASS, 2 NOT_RUN, 1 NOT_IN_SCOPE, 0 FAIL)",
+    "build": "npm run build PASS (Next.js 16.2.12)"
+  },
+  "owners": {
+    "technical": "Imani Heartbeat — Chief Technology & Risk Officer",
+    "operations": "Michelle Northstar — Chief of Staff & Operations Officer"
+  },
+  "nextAction": "FOUNDER_ACTION: invoke CRON_SECRET-gated /api/fab-5/aos/backup-probe on Vercel Production and confirm WAL/PITR from the Supabase dashboard. Do not mark Complete. Founder has not accepted.",
+  "blockedReason": "production_wal_and_logical_export_not_run_in_this_workstation"
+}
