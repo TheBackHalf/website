@@ -1,0 +1,424 @@
+{
+  "aos_work_id": "al-188",
+  "title": "Triage All Defects",
+  "operating_agent": "michelle",
+  "michelle_northstar": [
+    "operations",
+    "orchestration",
+    "Launch Readiness coordination"
+  ],
+  "source": "command_center August Launch row 188",
+  "spreadsheet_row": 188,
+  "excel_row": 189,
+  "phase": "Testing, Validation & Triple E",
+  "primary_workstream": "OPERATIONS",
+  "supporting_owners": ["imani", "nia"],
+  "assigned_repository": "TheBackHalf/website",
+  "branch": "cursor/aos-michelle-al-188-5603",
+  "recorded_at": "2026-08-26T15:45:00.000Z",
+  "deliverable_kind": "status_only",
+  "software_change_applied": false,
+  "product_files_changed": false,
+  "marketing_files_changed": false,
+  "legal_files_changed": false,
+  "stripe_config_changed": false,
+  "cloudflare_dns_changed": false,
+  "vercel_custom_domain_changed": false,
+  "nameservers_changed": false,
+  "authentication_weakened": false,
+  "launch_roadmap_changed": false,
+  "founder_notes_changed": false,
+  "status": "triage_recorded_awaiting_founder_acceptance",
+  "percent_complete_recorded": 80,
+  "row_marked_complete": false,
+  "founder_acceptance": null,
+  "founder_acceptance_recorded": false,
+  "kimberly_walker_ai_treated_as_execution_capacity": false,
+  "summary": "Michelle triaged currently known launch defects from production probes, ops evidence, and unmerged engineering PRs. Each open item has severity (critical / high / medium / low), owner, reproduction status, and a release requirement. Formal Testing rows 176–187 remain Not Started, so this is the complete triage of currently known defects, not a claim that every possible testing-derived defect has been collected. Row 188 is not Complete. Founder acceptance is not recorded.",
+  "taxonomy": {
+    "source": "ops/fab-5/operating-system.json incidentSeverity + ops/fab-5/ROW-151-LAUNCH-DASHBOARD.md error severity + August Launch row 189",
+    "levels": {
+      "critical": {
+        "maps_to": "SEV-1",
+        "meaning": "Launch unavailable on the canonical public URL; payment broadly failing; material security/privacy; widespread access failure; material data-loss risk; severe participant-impacting production failure.",
+        "row_189_class": "blockers, payment/access failures, data loss, security"
+      },
+      "high": {
+        "maps_to": "SEV-2",
+        "meaning": "Material degradation of important functionality or a meaningful participant cohort, including broken Journey progression, Lumina safety failures, and mobile failures that prevent use.",
+        "row_189_class": "broken Journey, Lumina safety, mobile failures"
+      },
+      "medium": {
+        "maps_to": "SEV-3",
+        "meaning": "Contained defect with a workaround; no material launch threat."
+      },
+      "low": {
+        "maps_to": "SEV-4",
+        "meaning": "Minor, cosmetic, or non-critical."
+      }
+    },
+    "release_requirement_values": [
+      "must_fix_before_launch",
+      "must_complete_before_launch_communications",
+      "post_launch_ok",
+      "accepted_remaining_risk",
+      "known_limitation_not_a_defect",
+      "closed_verified_not_a_current_defect"
+    ]
+  },
+  "scope": {
+    "michelle_did": "Classify, assign owner, confirm reproduction where possible without mutating production, set release requirement, and hand Row 189 the register.",
+    "michelle_did_not": [
+      "Take Imani security/infra ownership",
+      "Take Nia curriculum/brand ownership",
+      "Fix defects (that is August Launch row 189, Imani primary)",
+      "Run or close Testing rows 176–187",
+      "Change Stripe, Cloudflare DNS, Vercel custom-domain, or nameservers",
+      "Mark Command Center row 188 Complete",
+      "Record Founder acceptance"
+    ],
+    "reproduction_method": "Read-only production HTTP/DNS probes from this workstation plus code inspection of current main. No charges, no DNS edits, no secret printing, no live participant accounts created."
+  },
+  "coverage": {
+    "known_defects_as_of": "2026-08-26",
+    "formal_testing_complete": false,
+    "master_test_plan_row_175": "Complete in August Launch tab",
+    "testing_rows_not_started": [
+      { "row": 176, "deliverable": "Create Test Accounts and Data", "owner": "imani" },
+      { "row": 177, "deliverable": "Run Functional Testing", "owner": "imani" },
+      { "row": 178, "deliverable": "Run End-to-End Enrollment Testing", "owner": "imani" },
+      { "row": 179, "deliverable": "Run Payment and Subscription Testing", "owner": "imani" },
+      { "row": 180, "deliverable": "Run Lumina Evaluation", "owner": "nia" },
+      { "row": 181, "deliverable": "Run Data Integrity and Recovery Testing", "owner": "imani" },
+      { "row": 182, "deliverable": "Run Security Review", "owner": "imani" },
+      { "row": 183, "deliverable": "Run Accessibility Testing", "owner": "imani" },
+      { "row": 184, "deliverable": "Run Cross-Browser Compatibility Testing", "owner": "imani" },
+      { "row": 185, "deliverable": "Run Performance, Capacity and Load Testing", "owner": "imani" },
+      { "row": 186, "deliverable": "Test Priority Mobile Devices", "owner": "imani" },
+      { "row": 187, "deliverable": "Fix Responsive and Touch Issues", "owner": "imani" }
+    ],
+    "coverage_rule": "Defects discovered by rows 176–187 MUST be ingested into this register before Row 189 can be treated as having a complete input set. Absence of a mobile/browser/a11y/security-review packet is a coverage gap, not proof those areas are clean.",
+    "github_issues": "none_open_in_TheBackHalf/website"
+  },
+  "production_probe_2026_08_26": {
+    "canonical_apex_dns_a": "empty — SOA only (Cloudflare NS anirban / ulla)",
+    "canonical_www_dns": "NXDOMAIN (Status 3) for A and CNAME",
+    "https_thebackhalf_org": "FAIL — could not resolve host",
+    "https_www_thebackhalf_org": "FAIL — could not resolve host",
+    "production_host": "https://website-two-psi-49.vercel.app",
+    "production_deployment_id": "dpl_FjiGHQha8RA5VBtjmqw3N39WkCXB",
+    "http": {
+      "/": 200,
+      "/register": 200,
+      "/login": 200,
+      "/checkout": 200,
+      "/api/ops/health": 200
+    },
+    "health_body": {
+      "ok": true,
+      "environment": "production",
+      "checks": { "application": "ok", "database": "ok" }
+    },
+    "stripe_webhook_post": {
+      "url": "https://website-two-psi-49.vercel.app/api/stripe/webhook",
+      "http": 503,
+      "body": { "error": "webhook_not_configured" }
+    },
+    "register_google_signin_visible": false,
+    "register_google_client_notice_visible": false,
+    "checkout_founding_architect_copy_visible": true,
+    "checkout_price_1750_visible": true,
+    "secrets_printed": false
+  },
+  "counts": {
+    "open_critical": 2,
+    "open_high": 2,
+    "open_medium": 1,
+    "open_low": 1,
+    "accepted_remaining_risks": 2,
+    "known_limitations_not_defects": 4,
+    "closed_verified": 3,
+    "must_fix_before_launch": 3,
+    "must_complete_before_launch_communications": 1
+  },
+  "defects": [
+    {
+      "id": "D-188-C1",
+      "title": "Canonical public domain does not resolve",
+      "severity": "critical",
+      "sev": "SEV-1",
+      "owner": "founder",
+      "owner_name": "Kimberly M. Walker — Founder (Cloudflare DNS). Imani Heartbeat technical follow-up after records exist. Michelle coordinates.",
+      "supporting": ["imani", "michelle"],
+      "product_area": "website",
+      "reproduction": {
+        "confirmed": true,
+        "method": "live_dns_http",
+        "at": "2026-08-26T15:40:00.000Z",
+        "result": "thebackhalf.org has no A/AAAA/CNAME. www.thebackhalf.org is NXDOMAIN. HTTPS to both hostnames fails with could not resolve host. Production remains reachable only on website-two-psi-49.vercel.app."
+      },
+      "evidence": [
+        "ops/fab-5/row-75-status.json remainingBlockers",
+        "ops/fab-5/ROW-75-DOMAIN-DNS-SSL-CONTINUITY.md",
+        "2026-08-26 Cloudflare DNS-over-HTTPS: apex A records=[], www Status 3"
+      ],
+      "release_requirement": "must_fix_before_launch",
+      "row_189": true,
+      "why_release": "Public launch destination is https://thebackhalf.org/register. If the canonical name does not resolve, launch is unavailable on the approved URL even though the Vercel alias is up.",
+      "required_correction": "Founder adds Cloudflare DNS-only records (do not change nameservers or MX): A @ 10.0.1.2 and CNAME www → cname.vercel-dns.com. Then Imani confirms Vercel domain Valid / HTTPS. This agent did not and must not apply those records.",
+      "status": "open",
+      "related_rows": [75]
+    },
+    {
+      "id": "D-188-C2",
+      "title": "Live payment path is not production-ready",
+      "severity": "critical",
+      "sev": "SEV-1",
+      "owner": "founder",
+      "owner_name": "Kimberly M. Walker — Founder (Stripe Live secret). Imani Heartbeat connects live prices and webhook after the Live key is on Vercel Production. Michelle coordinates. Do not paste keys.",
+      "supporting": ["imani", "michelle"],
+      "product_area": "checkout_payment",
+      "reproduction": {
+        "confirmed": true,
+        "method": "live_http_plus_ops_evidence",
+        "at": "2026-08-26T15:40:00.000Z",
+        "result": "POST /api/stripe/webhook on website-two-psi-49.vercel.app returns HTTP 503 {error: webhook_not_configured}. Checkout UI loads (Founding Architect, $1,750) but Row 73 records Production STRIPE_SECRET_KEY as Test/Sandbox and STRIPE_PRICE_* plus STRIPE_WEBHOOK_SECRET absent. No live charge was created."
+      },
+      "evidence": [
+        "ops/fab-5/row-73-status.json remainingBlockers",
+        "ops/fab-5/ROW-73-VENDOR-CAPACITY-BILLING.md §3–§5",
+        "2026-08-26 POST https://website-two-psi-49.vercel.app/api/stripe/webhook → 503 webhook_not_configured"
+      ],
+      "release_requirement": "must_fix_before_launch",
+      "row_189": true,
+      "why_release": "Payment broadly cannot complete in Live mode. Row 189 explicitly includes payment/access failures.",
+      "required_correction": "Founder replaces Vercel Production STRIPE_SECRET_KEY with the Stripe Live secret (Sensitive). Imani then connects Live STRIPE_PRICE_BLUEPRINT / BUNDLE / COMMUNITY and STRIPE_WEBHOOK_SECRET to https://website-two-psi-49.vercel.app/api/stripe/webhook. Do not copy sandbox price IDs. Do not charge, refund, or payout from triage.",
+      "status": "open",
+      "cluster": [
+        "Production Stripe key is Test/Sandbox, not Live",
+        "STRIPE_PRICE_BLUEPRINT / BUNDLE / COMMUNITY names absent on Production",
+        "STRIPE_WEBHOOK_SECRET absent; webhook route returns 503"
+      ],
+      "related_rows": [73, 179]
+    },
+    {
+      "id": "D-188-H1",
+      "title": "Journey chapters can be opened out of sequence",
+      "severity": "high",
+      "sev": "SEV-2",
+      "owner": "imani",
+      "owner_name": "Imani Heartbeat — technology. Nia independently retests participant-facing progression after the fix. Michelle does not implement.",
+      "supporting": ["nia", "michelle"],
+      "product_area": "journey",
+      "reproduction": {
+        "confirmed": true,
+        "method": "code_inspection_on_main",
+        "at": "2026-08-26T15:42:00.000Z",
+        "result": "Authenticated Journey hub always renders open CTAs for Chapters I–VII. Chapter III+ section routes do not check that the previous chapter is complete. Onboarding blocks skip-ahead; Journey chapters do not. Unmerged PR https://github.com/TheBackHalf/website/pull/8 implements the lock/resume policy and is not merged."
+      },
+      "evidence": [
+        "components/app-shell/journey-entry-shell.tsx chapter 1–7 Link CTAs with no previous-chapter lock",
+        "app/architect/journey/chapter-3/[section]/page.tsx loads Chapter3Page without prior-chapter gate",
+        "https://github.com/TheBackHalf/website/pull/8 (open, unmerged)"
+      ],
+      "release_requirement": "must_fix_before_launch",
+      "row_189": true,
+      "why_release": "Row 189 requires fixing broken Journey. Sequential completion is the approved Architect path.",
+      "required_correction": "Imani: require previous-chapter completion before later chapters open; preserve drafts; do not un-complete a finished chapter on revisit; resume sequential next open work. Nia retests independently. Do not merge from this row.",
+      "status": "open",
+      "proposed_fix_pr": "https://github.com/TheBackHalf/website/pull/8",
+      "related_rows": [133, 189]
+    },
+    {
+      "id": "D-188-H2",
+      "title": "Locked Instagram and TikTok launch jobs are not loaded on native schedulers",
+      "severity": "high",
+      "sev": "SEV-2",
+      "owner": "founder",
+      "owner_name": "Kimberly M. Walker — Founder platform authorization. Nia is the public CX/social voice after native load. Michelle tracks continuity. Imani does not become the social voice.",
+      "supporting": ["nia", "michelle"],
+      "product_area": "launch_communications",
+      "reproduction": {
+        "confirmed": true,
+        "method": "ops_evidence",
+        "at": "2026-08-26T15:42:00.000Z",
+        "result": "Row 82 status remains implemented_founder_action_required. Native Instagram Professional / Meta Business Suite and TikTok native schedules for locked August 28–31 jobs are not Founder-confirmed. Company queue is not 'scheduled on platform.' This is not a second-admin defect."
+      },
+      "evidence": [
+        "ops/fab-5/row-82-status.json remainingBlockers",
+        "ops/fab-5/ROW-82-SOCIAL-PUBLISHING-SCHEDULING-SYSTEM.md",
+        "ops/fab-5/runs/row-82-social-publishing-validation.json instagramWithoutFounder=FAIL tiktokWithoutFounder=FAIL"
+      ],
+      "release_requirement": "must_complete_before_launch_communications",
+      "row_189": false,
+      "why_release": "Not a payment/access/Journey software defect. It is a launch-communications continuity blocker: posts beginning August 28 cannot execute without Founder native schedule load. Do not treat as Imani Row 189 code.",
+      "required_correction": "Founder loads locked August 28–31 Instagram jobs at 8:00 AM ET and TikTok jobs at 12:00 PM ET on the native schedulers. Do not publish now. Do not add a second human admin. Do not purchase a scheduler.",
+      "status": "open",
+      "related_rows": [77, 82, 79]
+    },
+    {
+      "id": "D-188-M1",
+      "title": "Architect Dashboard Welcome card shows two welcome lines",
+      "severity": "medium",
+      "sev": "SEV-3",
+      "owner": "nia",
+      "owner_name": "Nia Prism — experience copy. Imani only if a technical shell change is required after Nia's copy fix. Michelle coordinates.",
+      "supporting": ["imani", "michelle"],
+      "product_area": "architect_dashboard",
+      "reproduction": {
+        "confirmed": true,
+        "method": "code_inspection_on_main",
+        "at": "2026-08-26T15:42:00.000Z",
+        "result": "dashboard-shell.tsx still renders welcomeSlot heading ('Welcome' / 'Bienvenida') plus personalized body ('Welcome, {name}.' / 'Te damos la bienvenida, {name}.'). Dictionaries still contain welcomeSlot. Unmerged PR https://github.com/TheBackHalf/website/pull/2 collapses to one personalized line. Live authenticated dashboard was not opened from this workstation (auth gate)."
+      },
+      "evidence": [
+        "components/app-shell/dashboard-shell.tsx h2 welcomeSlot + p welcome",
+        "content/i18n/dictionaries/en.ts dashboard.welcomeSlot",
+        "content/i18n/dictionaries/es.ts dashboard.welcomeSlot",
+        "https://github.com/TheBackHalf/website/pull/2 (open, unmerged)"
+      ],
+      "release_requirement": "post_launch_ok",
+      "row_189": false,
+      "why_release": "Founder-observed copy defect with a workaround (meaning is still clear). Not a payment, access, data-loss, security, or broken-Journey blocker. Nia should still correct before launch if capacity allows; it does not hold Go/No-Go by itself.",
+      "required_correction": "One participant-facing welcome line, still personalized, English and Spanish. Merge of PR 2 is a Founder/review decision, not this row.",
+      "status": "open",
+      "proposed_fix_pr": "https://github.com/TheBackHalf/website/pull/2",
+      "related_rows": [74]
+    },
+    {
+      "id": "D-188-L1",
+      "title": "Urgent Founder SMS is not configured",
+      "severity": "low",
+      "sev": "SEV-4",
+      "owner": "founder",
+      "owner_name": "Kimberly M. Walker — Founder decision on Twilio. Michelle keeps email + dashboard as the operational path until then. Imani does not purchase Twilio from this row.",
+      "supporting": ["michelle", "imani"],
+      "product_area": "founder_notify",
+      "reproduction": {
+        "confirmed": true,
+        "method": "ops_evidence",
+        "at": "2026-08-26T15:42:00.000Z",
+        "result": "AOS permanent OS and autonomous-engineering validation record SMS as not_configured. Email + /ops/admin/agent-operations remain the operational escalation channels."
+      },
+      "evidence": [
+        "ops/fab-5/AOS-PERMANENT-OPERATING-SYSTEM.md SMS not required for engineering path",
+        "ops/fab-5/runs/aos-autonomous-engineering-validation.json sms.status=not_configured"
+      ],
+      "release_requirement": "post_launch_ok",
+      "row_189": false,
+      "why_release": "SMS is optional/secondary. Email + dashboard are operational. Not a participant-facing launch blocker.",
+      "required_correction": "Founder may approve Twilio later, or accept email + dashboard only. Do not invent a second pager product.",
+      "status": "open",
+      "related_rows": []
+    }
+  ],
+  "accepted_remaining_risks": [
+    {
+      "id": "R-188-A1",
+      "title": "Cloudflare MFA INACTIVE — Founder risk accepted",
+      "severity": "low",
+      "owner": "founder",
+      "reproduction_confirmed": true,
+      "evidence": [
+        "ops/fab-5/row-74-status.json cloudflareMfa",
+        "ops/fab-5/credential-account-recovery-register.json"
+      ],
+      "release_requirement": "accepted_remaining_risk",
+      "note": "Row 74 Founder-accepted 2026-08-25. Do not enable 2FA from this triage. Do not re-ask. Not a Row 189 software fix."
+    },
+    {
+      "id": "R-188-A2",
+      "title": "Google Sign-In OAuth optional and unconfigured",
+      "severity": "low",
+      "owner": "founder",
+      "reproduction_confirmed": true,
+      "evidence": [
+        "2026-08-26 production /register HTML contains neither Google Sign-In nor GOOGLE_CLIENT notices",
+        "ops/fab-5/vendor-saas-register.json auth.google optional"
+      ],
+      "release_requirement": "accepted_remaining_risk",
+      "note": "Email/password is the required launch path. Hide correction is verified on Production. Not a current participant-facing defect."
+    }
+  ],
+  "known_limitations_not_defects": [
+    {
+      "id": "L-188-K1",
+      "title": "Lumina replies are voice-consistent stubs (no live provider in send path)",
+      "severity": "medium",
+      "owner": "nia",
+      "release_requirement": "known_limitation_not_a_defect",
+      "evidence": [
+        "lib/lumina/actions/send-message.ts buildStubAssistantReply",
+        "scripts/lumina-eval/KNOWN_LIMITATIONS.md Blocks launch? NO for Row 81 stub interface"
+      ],
+      "note": "Not a Lumina safety failure. Do not treat stub depth as Row 189 unless a later eval finds a safety defect. Formal Row 180 Lumina Evaluation is still Not Started."
+    },
+    {
+      "id": "L-188-K2",
+      "title": "LinkedIn is a future enhancement, not an August 31 launch channel",
+      "severity": "low",
+      "owner": "nia",
+      "release_requirement": "known_limitation_not_a_defect",
+      "evidence": ["ops/fab-5/row-76-status.json linkedinLaunchRequirement", "Row 34 Founder legal review"]
+    },
+    {
+      "id": "L-188-K3",
+      "title": "Architect Community is not live August 31 (Coming October 25, 2026)",
+      "severity": "low",
+      "owner": "nia",
+      "release_requirement": "known_limitation_not_a_defect",
+      "evidence": ["Launch-Day Runbook §1", "content/i18n/dictionaries/en.ts Founding Architect copy"]
+    },
+    {
+      "id": "L-188-K4",
+      "title": "Community Guidelines remain pre-Community-launch",
+      "severity": "low",
+      "owner": "imani",
+      "release_requirement": "known_limitation_not_a_defect",
+      "evidence": ["ops/fab-5/ROW-32-LEGAL-IMPLEMENTATION-VERIFICATION.md August 31 launch blocker: NO"]
+    }
+  ],
+  "closed_verified_not_current_defects": [
+    {
+      "id": "X-188-V1",
+      "title": "Public Founding Architect enrollment no longer uses August 19 as opening date",
+      "result": "closed_verified_not_a_current_defect",
+      "evidence": [
+        "content/i18n/dictionaries/en.ts Enrollment August 31–December 31, 2026",
+        "ops/fab-5/runs/row-33-marketing-claims-validation.json"
+      ]
+    },
+    {
+      "id": "X-188-V2",
+      "title": "Production registration does not expose Google Sign-In or GOOGLE_CLIENT_* notices",
+      "result": "closed_verified_not_a_current_defect",
+      "evidence": ["2026-08-26 GET https://website-two-psi-49.vercel.app/register HTTP 200; Google strings absent"]
+    },
+    {
+      "id": "X-188-V3",
+      "title": "Application and database health on the Vercel Production alias",
+      "result": "closed_verified_not_a_current_defect",
+      "evidence": [
+        "2026-08-26 GET /api/ops/health HTTP 200 {ok:true, environment:production, checks.application:ok, checks.database:ok}"
+      ],
+      "note": "Does not clear D-188-C1. Canonical hostname still does not resolve."
+    }
+  ],
+  "row_189_handoff": {
+    "deliverable": "Resolve Critical and High Defects",
+    "primary_owner": "imani",
+    "supporting_owners": ["nia", "michelle"],
+    "must_fix_before_launch_owned_by_imani_after_founder_config": ["D-188-C1", "D-188-C2"],
+    "must_fix_before_launch_owned_by_imani_software": ["D-188-H1"],
+    "not_row_189_software": ["D-188-H2", "D-188-M1", "D-188-L1"],
+    "nia_retest_after_imani": ["D-188-H1", "D-188-M1"],
+    "instruction": "Imani fixes C2 (after Founder Live key) and H1. Founder applies C1 DNS and H2 native schedules. Nia corrects M1 if capacity allows. Michelle does not implement, merge, or deploy. Additional testing-row defects join this list when rows 176–187 produce packets."
+  },
+  "next_action": "Founder reviews this triage. Imani starts Row 189 against D-188-C2 (blocked on Founder Live Stripe key) and D-188-H1 (software). Founder DNS for D-188-C1 and native social load for D-188-H2 remain Founder-gated. Do not mark Row 188 Complete from this file.",
+  "validation": {
+    "typecheck": "skipped — status-only JSON; package.json has no typecheck script; no production code changed",
+    "test": "skipped — package.json has no test script; no production code changed",
+    "build": "skipped — change cannot affect production",
+    "reproduction_probes": "executed 2026-08-26 against DNS and website-two-psi-49.vercel.app"
+  }
+}
