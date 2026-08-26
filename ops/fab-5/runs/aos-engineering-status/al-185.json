@@ -1,0 +1,807 @@
+{
+  "aosWorkId": "al-185",
+  "title": "Run Performance, Capacity and Load Testing",
+  "source": "command_center August Launch row 185",
+  "operatingAgent": "imani",
+  "generatedAt": "2026-08-26T19:09:44.299Z",
+  "secretsPrinted": false,
+  "founderAcceptanceRecorded": false,
+  "markedComplete": false,
+  "stripeConfigModified": false,
+  "dnsModified": false,
+  "vercelCustomDomainModified": false,
+  "authenticationWeakened": false,
+  "readyForFounderAcceptance": false,
+  "applicationOrigin": "https://website-two-psi-49.vercel.app",
+  "canonicalOrigin": "https://thebackhalf.org",
+  "canonicalDns": "not_found",
+  "originCandidates": [
+    {
+      "origin": "https://thebackhalf.org",
+      "status": 0,
+      "ms": 40
+    },
+    {
+      "origin": "https://www.thebackhalf.org",
+      "status": 0,
+      "ms": 3
+    },
+    {
+      "origin": "https://website-two-psi-49.vercel.app",
+      "status": 200,
+      "ms": 105
+    }
+  ],
+  "scenario": {
+    "description": "Founding Architect launch-day profile: public browse + auth page GET + health, modest concurrency (10 mixed / 25 homepage burst), no mutating customer writes.",
+    "productionRequests": 118,
+    "requestCap": 450,
+    "mixedConcurrency": 10,
+    "burstConcurrency": 25,
+    "destructiveWrites": false,
+    "emailSent": false,
+    "chargesCreated": false
+  },
+  "thresholds": {
+    "publicP50Ms": 800,
+    "publicP95Ms": 2000,
+    "healthP95Ms": 1500,
+    "authGetP95Ms": 2000,
+    "redirectP95Ms": 2000,
+    "apiDegradeP95Ms": 2000,
+    "captionP95Ms": 800,
+    "videoTtfbP95Ms": 3000,
+    "errorRateMax": 0.01,
+    "successRateMin": 0.99,
+    "probeTimeoutMs": 15000,
+    "burstConcurrency": 25,
+    "mixedConcurrency": 10,
+    "mixedRounds": 6,
+    "localSaveP95Ms": 250,
+    "luminaStubP95Ms": 200,
+    "maxTotalProductionRequests": 450
+  },
+  "rateAndPlanLimits": {
+    "vercel": "FOUNDER VERIFICATION REQUIRED — bandwidth, function duration, concurrency, cron. Hobby default function budget is 10s; Pro allows maxDuration up to 300s (Blueprint uses 300s). Monitoring/AOS crons every 15 minutes.",
+    "supabase": "FOUNDER VERIFICATION REQUIRED — connections, size, storage. Application postgres clients use max: 1, connect_timeout: 10s, idle_timeout: 20s (safe for serverless; connection storms still depend on pooler plan).",
+    "stripe": "Row 73: Production Stripe key class is Test/Sandbox; live Checkout/webhooks are not launch-ready. Stripe API rate limits were not exercised (no charges, no live catalog reads).",
+    "openai": "Lumina launch path is a first-party stub (buildStubAssistantReply). OpenAI TPM/RPM apply to Fab 5 hosted agents, not Architect Lumina turns. Founder billing/quota still Row 73.",
+    "googleWorkspace": "FOUNDER VERIFICATION REQUIRED — SMTP daily sending limits. Verification/password-reset cooldowns are 60s per email. SMTP transport timeouts now 10s/15s.",
+    "application": {
+      "loginHttpRateLimit": "NONE",
+      "registrationHttpRateLimit": "NONE",
+      "resendVerificationCooldownMs": 60000,
+      "passwordResetCooldownMs": 60000,
+      "luminaMessageMaxLength": 4000,
+      "blueprintMaxDurationSeconds": 300,
+      "monitoringAlertCooldownMs": 1800000,
+      "monitoringCron": "*/15 * * * *",
+      "postgresClientMaxConnectionsPerInstance": 1
+    },
+    "loginRateLimit": "Login and registration HTTP routes have no request rate limit. Email verification resend and password-reset have 60s cooldowns only. Under credential-stuffing load, bcrypt verify on every POST is a capacity and abuse risk. Full login rate-limit is assigned to Row 182 Security Review rather than a weak per-instance memory limiter here."
+  },
+  "measurements": {
+    "publicPages": {
+      "summary": {
+        "count": 81,
+        "okCount": 81,
+        "errorRate": 0,
+        "p50Ms": 81,
+        "p95Ms": 310,
+        "maxMs": 423,
+        "meanMs": 106.4,
+        "pass": true
+      },
+      "baseline": [
+        {
+          "id": "baseline:homepage",
+          "method": "GET",
+          "path": "/",
+          "status": 200,
+          "ms": 114,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 47536
+        },
+        {
+          "id": "baseline:register",
+          "method": "GET",
+          "path": "/register",
+          "status": 200,
+          "ms": 148,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 26380
+        },
+        {
+          "id": "baseline:login",
+          "method": "GET",
+          "path": "/login",
+          "status": 200,
+          "ms": 148,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 24530
+        },
+        {
+          "id": "baseline:checkout",
+          "method": "GET",
+          "path": "/checkout",
+          "status": 200,
+          "ms": 173,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 29709
+        },
+        {
+          "id": "baseline:support",
+          "method": "GET",
+          "path": "/support",
+          "status": 200,
+          "ms": 72,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 34396
+        },
+        {
+          "id": "baseline:es_home",
+          "method": "GET",
+          "path": "/es",
+          "status": 200,
+          "ms": 112,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 48476
+        },
+        {
+          "id": "baseline:es_register",
+          "method": "GET",
+          "path": "/es/register",
+          "status": 200,
+          "ms": 53,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 27101
+        },
+        {
+          "id": "baseline:es_login",
+          "method": "GET",
+          "path": "/es/login",
+          "status": 200,
+          "ms": 91,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 25296
+        }
+      ],
+      "mixedLoad": {
+        "summary": {
+          "count": 48,
+          "okCount": 48,
+          "errorRate": 0,
+          "p50Ms": 67,
+          "p95Ms": 150,
+          "maxMs": 213,
+          "meanMs": 82.1,
+          "pass": true
+        }
+      },
+      "homepageBurst": {
+        "summary": {
+          "count": 25,
+          "okCount": 25,
+          "errorRate": 0,
+          "p50Ms": 95,
+          "p95Ms": 332,
+          "maxMs": 423,
+          "meanMs": 150.4,
+          "pass": true
+        }
+      }
+    },
+    "authentication": {
+      "getSurfaces": {
+        "summary": {
+          "count": 8,
+          "okCount": 8,
+          "errorRate": 0,
+          "p50Ms": 179,
+          "p95Ms": 600,
+          "maxMs": 600,
+          "meanMs": 189.1,
+          "pass": true
+        },
+        "samples": [
+          {
+            "id": "authz:journey",
+            "method": "GET",
+            "path": "/journey",
+            "status": 200,
+            "ms": 600,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 52723
+          },
+          {
+            "id": "authz:lumina",
+            "method": "GET",
+            "path": "/lumina",
+            "status": 200,
+            "ms": 213,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 26347
+          },
+          {
+            "id": "authz:architect_dashboard",
+            "method": "GET",
+            "path": "/architect/dashboard",
+            "status": 307,
+            "ms": 33,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 15
+          },
+          {
+            "id": "authz:architect_journey",
+            "method": "GET",
+            "path": "/architect/journey",
+            "status": 307,
+            "ms": 32,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 15
+          },
+          {
+            "id": "authz:architect_lumina",
+            "method": "GET",
+            "path": "/architect/lumina",
+            "status": 307,
+            "ms": 40,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 15
+          },
+          {
+            "id": "authz:es_journey",
+            "method": "GET",
+            "path": "/es/journey",
+            "status": 200,
+            "ms": 197,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 53400
+          },
+          {
+            "id": "authz:es_lumina",
+            "method": "GET",
+            "path": "/es/lumina",
+            "status": 200,
+            "ms": 179,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 27040
+          },
+          {
+            "id": "authz:es_checkout",
+            "method": "GET",
+            "path": "/es/checkout",
+            "status": 200,
+            "ms": 219,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 30812
+          }
+        ]
+      },
+      "loginInvalidPayload": {
+        "id": "auth:login-invalid-payload",
+        "method": "POST",
+        "path": "/api/auth/login",
+        "status": 400,
+        "ms": 52,
+        "ok": true,
+        "classified": "ok",
+        "bytes": 79
+      },
+      "note": "Unauthenticated Journey/Lumina/dashboard GETs must redirect or serve the gate without 5xx. Password verify was not brute-forced."
+    },
+    "dashboardJourneySaves": {
+      "production": "NOT MUTATED",
+      "localIsolatedFileQueue": {
+        "count": 24,
+        "okCount": 24,
+        "errorRate": 0,
+        "p50Ms": 75,
+        "p95Ms": 102,
+        "maxMs": 104,
+        "meanMs": 76.1,
+        "pass": true,
+        "isolated": true
+      },
+      "launchBlocking": true,
+      "finding": "Journey progress, onboarding, Chapters 1–7, and Lumina conversation/memory stores are process-local JSON files under .data/. Auth, analytics, marketing KPI, support, and launch-dashboard already use Supabase Postgres. On Vercel the application filesystem is ephemeral and not shared across serverless instances, so concurrent Architect Journey saves and Lumina turns cannot be the production system of record."
+    },
+    "lumina": {
+      "production": "NOT MUTATED",
+      "localIsolatedFileQueue": {
+        "count": 16,
+        "okCount": 16,
+        "errorRate": 0,
+        "p50Ms": 8,
+        "p95Ms": 10,
+        "maxMs": 10,
+        "meanMs": 7.8,
+        "pass": true,
+        "isolated": true
+      },
+      "localStubLatency": {
+        "count": 20,
+        "okCount": 20,
+        "errorRate": 0,
+        "p50Ms": 0,
+        "p95Ms": 0,
+        "maxMs": 1,
+        "meanMs": 0.1,
+        "pass": true
+      },
+      "launchBlocking": true,
+      "finding": "Journey progress, onboarding, Chapters 1–7, and Lumina conversation/memory stores are process-local JSON files under .data/. Auth, analytics, marketing KPI, support, and launch-dashboard already use Supabase Postgres. On Vercel the application filesystem is ephemeral and not shared across serverless instances, so concurrent Architect Journey saves and Lumina turns cannot be the production system of record.",
+      "provider": "stub — no model call on send path"
+    },
+    "checkoutWebhooks": {
+      "unauthenticatedWebhook": {
+        "id": "degrade:webhook-no-signature",
+        "method": "POST",
+        "path": "/api/stripe/webhook",
+        "status": 503,
+        "ms": 161,
+        "ok": true,
+        "classified": "ok",
+        "bytes": 34
+      },
+      "liveCheckout": "NOT EXERCISED — Stripe test/sandbox per Row 73; no Checkout Session created"
+    },
+    "blueprint": {
+      "unauthenticated": {
+        "id": "degrade:blueprint-unauth",
+        "method": "GET",
+        "path": "/api/architect/blueprint/guidebook",
+        "status": 401,
+        "ms": 61,
+        "ok": true,
+        "classified": "ok",
+        "bytes": 29
+      },
+      "generation": "NOT EXERCISED — would launch Puppeteer for up to 300s",
+      "finding": "Personalized Blueprint PDF routes launch Puppeteer with maxDuration=300s and protocolTimeout=300s. Vercel builds set PUPPETEER_SKIP_DOWNLOAD=1, so Chrome may be absent on the serverless image. Concurrent Blueprint generation is a launch-blocking capacity risk even if a browser binary is present (CPU/RAM/timeout)."
+    },
+    "mediaDelivery": {
+      "captions": {
+        "summary": {
+          "count": 3,
+          "okCount": 3,
+          "errorRate": 0,
+          "p50Ms": 10,
+          "p95Ms": 15,
+          "maxMs": 15,
+          "meanMs": 11.7,
+          "pass": true
+        },
+        "samples": [
+          {
+            "id": "caption:/captions/founder/en-founding-architect-welcome.vtt",
+            "method": "GET",
+            "path": "/captions/founder/en-founding-architect-welcome.vtt",
+            "status": 200,
+            "ms": 15,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 3133
+          },
+          {
+            "id": "caption:/captions/founder/en-chapter-1-welcome.vtt",
+            "method": "GET",
+            "path": "/captions/founder/en-chapter-1-welcome.vtt",
+            "status": 200,
+            "ms": 10,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 1280
+          },
+          {
+            "id": "caption:/captions/founder/es-founding-architect-welcome.vtt",
+            "method": "GET",
+            "path": "/captions/founder/es-founding-architect-welcome.vtt",
+            "status": 200,
+            "ms": 10,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 3297
+          }
+        ]
+      },
+      "videos": {
+        "summary": {
+          "count": 3,
+          "okCount": 3,
+          "errorRate": 0,
+          "p50Ms": 7,
+          "p95Ms": 13,
+          "maxMs": 13,
+          "meanMs": 9,
+          "pass": true
+        },
+        "delivered": 3,
+        "missingOrFailed": 0,
+        "samples": [
+          {
+            "id": "video:/videos/onboarding/founding-architect-welcome.mp4",
+            "method": "GET",
+            "path": "/videos/onboarding/founding-architect-welcome.mp4",
+            "status": 206,
+            "ms": 7,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 1024
+          },
+          {
+            "id": "video:/videos/chapter-1/chapter-1-the-awakening.mp4",
+            "method": "GET",
+            "path": "/videos/chapter-1/chapter-1-the-awakening.mp4",
+            "status": 206,
+            "ms": 7,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 1024
+          },
+          {
+            "id": "video:/videos/chapter-7/chapter-7-beginning.mp4",
+            "method": "GET",
+            "path": "/videos/chapter-7/chapter-7-beginning.mp4",
+            "status": 206,
+            "ms": 13,
+            "ok": true,
+            "classified": "ok",
+            "bytes": 1024
+          }
+        ]
+      }
+    },
+    "emailTriggers": {
+      "productionSends": 0,
+      "smtpTimeoutsRemediated": true,
+      "connectionTimeoutMs": 10000,
+      "greetingTimeoutMs": 10000,
+      "socketTimeoutMs": 15000
+    },
+    "databaseApi": {
+      "healthBurst": {
+        "count": 12,
+        "okCount": 12,
+        "errorRate": 0,
+        "p50Ms": 136,
+        "p95Ms": 348,
+        "maxMs": 348,
+        "meanMs": 185.4,
+        "pass": true
+      },
+      "healthSample": {
+        "id": "health:body",
+        "method": "GET",
+        "path": "/api/ops/health",
+        "status": 200,
+        "ms": 55,
+        "ok": true,
+        "classified": "ok",
+        "bytes": 110
+      },
+      "samples": [
+        {
+          "id": "burst:health:0",
+          "method": "GET",
+          "path": "/api/ops/health",
+          "status": 200,
+          "ms": 136,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 110
+        },
+        {
+          "id": "burst:health:1",
+          "method": "GET",
+          "path": "/api/ops/health",
+          "status": 200,
+          "ms": 126,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 110
+        },
+        {
+          "id": "burst:health:2",
+          "method": "GET",
+          "path": "/api/ops/health",
+          "status": 200,
+          "ms": 173,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 110
+        },
+        {
+          "id": "burst:health:3",
+          "method": "GET",
+          "path": "/api/ops/health",
+          "status": 200,
+          "ms": 133,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 110
+        },
+        {
+          "id": "burst:health:4",
+          "method": "GET",
+          "path": "/api/ops/health",
+          "status": 200,
+          "ms": 348,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 110
+        },
+        {
+          "id": "burst:health:5",
+          "method": "GET",
+          "path": "/api/ops/health",
+          "status": 200,
+          "ms": 135,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 110
+        },
+        {
+          "id": "burst:health:6",
+          "method": "GET",
+          "path": "/api/ops/health",
+          "status": 200,
+          "ms": 295,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 110
+        },
+        {
+          "id": "burst:health:7",
+          "method": "GET",
+          "path": "/api/ops/health",
+          "status": 200,
+          "ms": 131,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 110
+        },
+        {
+          "id": "burst:health:8",
+          "method": "GET",
+          "path": "/api/ops/health",
+          "status": 200,
+          "ms": 314,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 110
+        },
+        {
+          "id": "burst:health:9",
+          "method": "GET",
+          "path": "/api/ops/health",
+          "status": 200,
+          "ms": 172,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 110
+        },
+        {
+          "id": "burst:health:10",
+          "method": "GET",
+          "path": "/api/ops/health",
+          "status": 200,
+          "ms": 125,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 110
+        },
+        {
+          "id": "burst:health:11",
+          "method": "GET",
+          "path": "/api/ops/health",
+          "status": 200,
+          "ms": 137,
+          "ok": true,
+          "classified": "ok",
+          "bytes": 110
+        }
+      ]
+    }
+  },
+  "gracefulDegradation": {
+    "summary": {
+      "count": 8,
+      "okCount": 8,
+      "errorRate": 0,
+      "p50Ms": 62,
+      "p95Ms": 361,
+      "maxMs": 361,
+      "meanMs": 114,
+      "pass": true
+    },
+    "timeoutClassification": {
+      "probe": {
+        "id": "timeout:health-1ms",
+        "method": "GET",
+        "path": "/api/ops/health",
+        "status": 0,
+        "ms": 3,
+        "ok": false,
+        "classified": "timeout",
+        "bytes": 0,
+        "error": "timeout"
+      },
+      "pass": true
+    },
+    "samples": [
+      {
+        "id": "degrade:webhook-no-signature",
+        "method": "POST",
+        "path": "/api/stripe/webhook",
+        "status": 503,
+        "ms": 161,
+        "ok": true,
+        "classified": "ok",
+        "bytes": 34
+      },
+      {
+        "id": "degrade:monitoring-unauth",
+        "method": "GET",
+        "path": "/api/ops/monitoring/run",
+        "status": 401,
+        "ms": 64,
+        "ok": true,
+        "classified": "ok",
+        "bytes": 24
+      },
+      {
+        "id": "degrade:blueprint-unauth",
+        "method": "GET",
+        "path": "/api/architect/blueprint/guidebook",
+        "status": 401,
+        "ms": 61,
+        "ok": true,
+        "classified": "ok",
+        "bytes": 29
+      },
+      {
+        "id": "degrade:login-invalid-json",
+        "method": "POST",
+        "path": "/api/auth/login",
+        "status": 400,
+        "ms": 98,
+        "ok": true,
+        "classified": "ok",
+        "bytes": 43
+      },
+      {
+        "id": "degrade:register-invalid-json",
+        "method": "POST",
+        "path": "/api/auth/register",
+        "status": 400,
+        "ms": 62,
+        "ok": true,
+        "classified": "ok",
+        "bytes": 43
+      },
+      {
+        "id": "degrade:analytics-ignored",
+        "method": "POST",
+        "path": "/api/analytics/event",
+        "status": 200,
+        "ms": 54,
+        "ok": true,
+        "classified": "ok",
+        "bytes": 20
+      },
+      {
+        "id": "degrade:missing-path",
+        "method": "GET",
+        "path": "/row61-monitoring-missing-path",
+        "status": 404,
+        "ms": 361,
+        "ok": true,
+        "classified": "ok",
+        "bytes": 15875
+      },
+      {
+        "id": "degrade:health",
+        "method": "GET",
+        "path": "/api/ops/health",
+        "status": 200,
+        "ms": 51,
+        "ok": true,
+        "classified": "ok",
+        "bytes": 110
+      }
+    ],
+    "behaviorsConfirmed": [
+      "Stripe webhook without signature returns 400 or 503 (not 500).",
+      "Monitoring run without CRON_SECRET returns 401 or 503.",
+      "Blueprint PDF without session returns 401 or redirect.",
+      "Auth login/register invalid JSON returns 400.",
+      "Analytics unknown event is ignored with 2xx.",
+      "Missing path returns 404 for monitor classification.",
+      "Client AbortSignal.timeout(1) classifies as timeout.",
+      "SMTP send path now fails closed on 10s/15s transport timeouts instead of hanging the serverless invoke."
+    ]
+  },
+  "monitoringAlerts": {
+    "cron": "*/15 * * * * /api/ops/monitoring/run",
+    "owners": {
+      "technical": "Imani Heartbeat — Chief Technology & Risk Officer",
+      "operations": "Michelle Northstar — Chief of Staff & Operations Officer"
+    },
+    "cooldownMinutes": 30,
+    "firesOn": [
+      "uptime HTTP fail",
+      "database connectivity",
+      "Stripe provider unreachable"
+    ],
+    "recordsLaunchOpsErrors": true,
+    "unauthorizedProbe": {
+      "id": "degrade:monitoring-unauth",
+      "method": "GET",
+      "path": "/api/ops/monitoring/run",
+      "status": 401,
+      "ms": 64,
+      "ok": true,
+      "classified": "ok",
+      "bytes": 24
+    },
+    "productionCriticalInjected": false,
+    "confirmed": true
+  },
+  "bottlenecks": {
+    "launchBlocking": [
+      "Journey progress, onboarding, Chapters 1–7, and Lumina conversation/memory stores are process-local JSON files under .data/. Auth, analytics, marketing KPI, support, and launch-dashboard already use Supabase Postgres. On Vercel the application filesystem is ephemeral and not shared across serverless instances, so concurrent Architect Journey saves and Lumina turns cannot be the production system of record.",
+      "Personalized Blueprint PDF routes launch Puppeteer with maxDuration=300s and protocolTimeout=300s. Vercel builds set PUPPETEER_SKIP_DOWNLOAD=1, so Chrome may be absent on the serverless image. Concurrent Blueprint generation is a launch-blocking capacity risk even if a browser binary is present (CPU/RAM/timeout).",
+      "Canonical DNS thebackhalf.org remains unverified from this workstation (Row 75). Load ran against the reachable Vercel production host.",
+      "Row 73: Production Stripe key class is Test/Sandbox; live Checkout/webhooks are not launch-ready. Stripe API rate limits were not exercised (no charges, no live catalog reads)."
+    ],
+    "remediationsApplied": [
+      "SMTP nodemailer connectionTimeout=10000, greetingTimeout=10000, socketTimeout=15000 so email triggers cannot hang a serverless function indefinitely."
+    ],
+    "remediationsDeferred": [
+      "Postgres-backed Journey/onboarding/chapter/Lumina stores — required for production concurrency; too large/risk-bearing for this performance-evidence PR. Track as a dedicated Imani persistence work item before Founder acceptance of Row 185.",
+      "Blueprint generation should not launch Chrome per request on Vercel (pre-render, queue, or disable until a worker exists).",
+      "HTTP rate limits on /api/auth/login and /api/auth/register (Row 182).",
+      "Live Stripe key/prices/webhook (Row 73) and canonical DNS (Row 75) remain Founder/vendor rows — not mutated here."
+    ]
+  },
+  "scorecard": {
+    "publicPages": "PASS",
+    "authenticationGets": "PASS",
+    "dashboardJourneySaves": "FAIL — production Journey stores are file-backed; concurrent save capacity is not launch-ready. Local isolated file-queue test PASS",
+    "lumina": "FAIL — production Lumina store is file-backed. Stub reply latency PASS locally; no provider model is on the send path.",
+    "checkoutWebhooks": "PASS for graceful unauthenticated/invalid webhook handling. FAIL for live Checkout capacity (Stripe test mode, Row 73).",
+    "blueprintGeneration": "FAIL — Puppeteer/300s serverless generation is not load-safe; unauthenticated route correctly rejected.",
+    "mediaDelivery": "PASS",
+    "emailTriggers": "NOT EXERCISED against production SMTP (no mail sent). Code: nodemailer now has 10s connection/greeting and 15s socket timeouts; Workspace sending limits remain Founder-dashboard (Row 73/153).",
+    "databaseApi": "PASS for /api/ops/health under concurrency",
+    "monitoringAlerts": "CONFIRMED armed: Vercel cron */15 * * * * → /api/ops/monitoring/run; unauthorized probe returned expected 401/503; alert cooldown 30 minutes; uptime/database/payment failures record launch_ops_errors. No production CRITICAL injected.",
+    "overall": "FAIL"
+  },
+  "finalStatus": "FAIL",
+  "nextAction": "Do not mark Complete. Founder acceptance stays with Kimberly Walker (human). Imani follow-up: durable Journey/Lumina persistence, Blueprint generation capacity, then re-run this harness.",
+  "validation": {
+    "typecheck": "PASS — npx tsc --noEmit",
+    "nearestTest": "PASS — npm run fab5:row185 (package has no npm test)",
+    "build": "PASS — npm run build",
+    "packageHasNpmTest": false,
+    "merged": false,
+    "deployed": false
+  }
+}

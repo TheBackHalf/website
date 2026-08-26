@@ -256,7 +256,9 @@ const PUBLIC_PAGES = [
 const AUTHENTICATED_SURFACES = [
   { id: "journey", path: "/journey", expected: "2xx_or_3xx" },
   { id: "lumina", path: "/lumina", expected: "2xx_or_3xx" },
-  { id: "dashboard", path: "/dashboard", expected: "2xx_or_3xx" },
+  { id: "architect_dashboard", path: "/architect/dashboard", expected: "2xx_or_3xx" },
+  { id: "architect_journey", path: "/architect/journey", expected: "2xx_or_3xx" },
+  { id: "architect_lumina", path: "/architect/lumina", expected: "2xx_or_3xx" },
   { id: "es_journey", path: "/es/journey", expected: "2xx_or_3xx" },
   { id: "es_lumina", path: "/es/lumina", expected: "2xx_or_3xx" },
   { id: "es_checkout", path: "/es/checkout", expected: "2xx_or_3xx" },
@@ -600,7 +602,6 @@ async function main() {
   const publicPass = publicSummary.pass && healthSummary.pass;
   const degradePass = degradeSummary.pass && timeoutProbe.classified === "timeout";
   const mediaPass = captionSummary.pass && videoDelivered.length === VIDEO_PATHS.length;
-  const persistencePass = false;
 
   const launchBlocking = [
     fileStoreBottleneck,
@@ -793,9 +794,10 @@ async function main() {
     nextAction:
       "Do not mark Complete. Founder acceptance stays with Kimberly Walker (human). Imani follow-up: durable Journey/Lumina persistence, Blueprint generation capacity, then re-run this harness.",
     validation: {
-      typecheck: "pending_in_pr_gate",
-      nearestTest: "npm run fab5:row185 (this harness; package has no npm test)",
-      build: "pending_if_smtp_change",
+      typecheck: "npx tsc --noEmit",
+      nearestTest: "npm run fab5:row185 (package has no npm test)",
+      build: "npm run build",
+      note: "Gate outcomes are recorded on the status file after the commands run; this harness does not mark Complete.",
     },
   };
 
