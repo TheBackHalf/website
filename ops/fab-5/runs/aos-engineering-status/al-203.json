@@ -1,0 +1,155 @@
+{
+  "aosWorkId": "al-203",
+  "source": "command_center",
+  "sourceReference": "August Launch row 203",
+  "excelRow": 204,
+  "deliverable": "Create Production Change-Control Protocol",
+  "assignedOperatingAgent": "michelle",
+  "supportingOwners": ["imani"],
+  "generatedAt": "2026-08-26T15:50:00.000Z",
+  "cursorCloudAgent": {
+    "bcId": "bc-2cb5738c-a9b8-4862-8cff-63555de6175a",
+    "branch": "cursor/aos-michelle-al-203-f589",
+    "url": "https://cursor.com/agents/bc-2cb5738c-a9b8-4862-8cff-63555de6175a"
+  },
+  "softwareChangeApplied": false,
+  "productMarketingLegalChanged": false,
+  "stripeCloudflareVercelDnsChanged": false,
+  "authenticationWeakened": false,
+  "secretsExposed": false,
+  "founderAcceptance": null,
+  "founderAccepted": false,
+  "founderApprovalFabricated": false,
+  "rowMarkedComplete": false,
+  "commandCenterWorkbookUpdated": false,
+  "launchRowsJsonStatusUnchanged": true,
+  "merged": false,
+  "deployed": false,
+  "status": "ACCEPTANCE_READY",
+  "nextAction": "await_founder_acceptance",
+  "blockedReason": "founder_acceptance_required",
+  "protocolPath": "ops/fab-5/ROW-203-PRODUCTION-CHANGE-CONTROL-PROTOCOL.md",
+  "authoritySource": "ops/fab-5/operating-system.json",
+  "note": "Ops protocol only. Product, marketing, and legal files were not changed. Command Center / Founder-acceptance completion stays with Kimberly Walker (human).",
+  "coverage": {
+    "whoMayChangeProduction": true,
+    "requiredTesting": true,
+    "rollbackRequirements": true,
+    "emergencyChangeAuthority": true,
+    "documentation": true,
+    "unreviewedFixPrevention": true,
+    "windowFinalQaThroughStabilization": true
+  },
+  "whoMayChangeProduction": {
+    "founderHuman": "Vendor ADMIN. Class D. Blocker override. Sole acceptance of this protocol.",
+    "imani": "Technical execution of approved/tested Classes A–C. Emergency Class E containment/rollback with immediate Michelle notice. No Owner/Billing on Vercel; Founder executes vendor ADMIN when Imani lacks it.",
+    "michelle": "No vendor deploy. Evidence gate, coordination, pause of affected operations, decision-log record.",
+    "nia": "No vendor deploy. Participant-facing accept/block. May pause CX within experience/safety authority.",
+    "aosCursorCloudAgents": "Isolated branch and pull request only. Never merge. Never deploy.",
+    "kimberlyWalkerAi": "Not an operating agent. Not production-change capacity.",
+    "lumina": "No operating authority.",
+    "mergeToMain": "Treated as a production change when Vercel production tracks GitHub main."
+  },
+  "changeClasses": {
+    "A": "Routine reversible approved change — Imani after testing; Michelle verifies evidence.",
+    "B": "Participant-facing — Imani executes; Nia verifies.",
+    "C": "High-risk reversible — Imani + Michelle; Nia if participant-facing.",
+    "D": "Irreversible / data-destructive / material-scope — Founder before change.",
+    "E": "Emergency containment — Imani acts immediately, then notifies; not a feature shortcut."
+  },
+  "requiredTesting": [
+    "npx tsc --noEmit or npm run typecheck for TypeScript/application changes",
+    "npm test or nearest package/fab5 row script when present",
+    "npm run build when the change can affect the production application",
+    "Launch-critical HTTP: / /register /login /checkout /journey /lumina /support (+ /es as applicable)",
+    "Row 61 after any production deploy or rollback",
+    "Nia independent verification for Class B and Architect-facing Class C",
+    "Michelle evidence verification; executor is not final verifier"
+  ],
+  "rollbackRequirements": {
+    "namedPriorGitSha": true,
+    "namedPriorVercelDeploymentWhenKnown": true,
+    "owner": "imani",
+    "founderVendorAdminWhenRequired": true,
+    "neverRestoreOverProductionFirst": true,
+    "row62ForDatabase": true,
+    "row61VerifyAfter": true,
+    "independentRollbackToRestoreApprovedBehavior": "Class A — no prior Founder approval; notify Michelle immediately"
+  },
+  "emergencyChangeAuthority": {
+    "class": "E",
+    "imaniMay": [
+      "disable affected functionality",
+      "roll back",
+      "isolate",
+      "stop unsafe processing",
+      "revoke/rotate compromised access where technically authorized"
+    ],
+    "michelleMay": [
+      "incident coordination",
+      "pause affected operations",
+      "reprioritize",
+      "escalate",
+      "write the record"
+    ],
+    "niaMay": [
+      "block participant-facing release",
+      "pause participant-facing experience/content within authority"
+    ],
+    "doesNotPermit": [
+      "new features disguised as hotfixes",
+      "Stripe/DNS/domain mutation",
+      "destroying evidence",
+      "fabricating Founder approval"
+    ],
+    "afterActionHours": 4,
+    "sev1FounderImmediate": true
+  },
+  "documentation": {
+    "tracker": "ops/fab-5/decision-log.json",
+    "entryType": "production_change",
+    "duplicateTrackerCreated": false,
+    "aosStatusFilesAreNotProductionApproval": true
+  },
+  "launchCriticalSurfaces": [
+    "/",
+    "/register",
+    "/login",
+    "/checkout",
+    "/journey",
+    "/lumina",
+    "/support",
+    "analytics/launch-dashboard",
+    "essential transactional email",
+    "legal pages"
+  ],
+  "outOfScopeMutations": [
+    "Stripe configuration",
+    "Cloudflare DNS",
+    "Vercel custom-domain settings",
+    "thebackhalf.org nameservers",
+    "secrets/API keys",
+    "authentication-control weakening"
+  ],
+  "dependenciesNotClaimedSatisfied": [
+    "Feature Complete",
+    "Production Freeze (Row 218)",
+    "Go/No-Go (Row 217)"
+  ],
+  "relatedArtifactsUnchanged": [
+    "ops/fab-5/operating-system.json",
+    "ops/launch/LAUNCH-DAY-RUNBOOK-AUGUST-31-2026.md",
+    "ops/fab-5/ROW-61-PRODUCTION-MONITORING.md",
+    "ops/fab-5/ROW-62-BACKUP-DISASTER-RECOVERY.md"
+  ],
+  "validation": {
+    "typecheckCommand": "npx tsc --noEmit",
+    "typecheck": "PASS",
+    "typecheckExitCode": 0,
+    "npmTestScriptPresent": false,
+    "npmTest": "SKIPPED_NO_SCRIPT",
+    "buildRequired": false,
+    "build": "SKIPPED_OPS_ONLY",
+    "buildSkippedReason": "Ops protocol and status JSON only; production application not changed."
+  }
+}
