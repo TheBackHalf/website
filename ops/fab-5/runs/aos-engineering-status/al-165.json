@@ -13,7 +13,7 @@
   "workbookPrimaryOwnerNote": "Launch workbook lists Kimberly Walker (AI) as FINANCE workstream owner. Kimberly Walker (AI) is not an operating agent and was not treated as execution capacity. AOS assigned this engineering run to Nia Prism as supporting experience owner. Nia verified customer-facing pricing, terms, receipts, renewal language, and access correspondence. Nia did not change infrastructure, auth, payment systems, Stripe configuration, DNS, or Vercel custom-domain settings. Imani remains owner of Stripe/entitlement implementation.",
   "generatedAt": "2026-08-26T16:20:00.000Z",
   "branch": "cursor/aos-nia-al-165-fb69",
-  "pullRequest": null,
+  "pullRequest": "https://github.com/TheBackHalf/website/pull/21",
   "softwareChangeApplied": false,
   "productMarketingLegalFilesChanged": false,
   "stripeConfigModified": false,
