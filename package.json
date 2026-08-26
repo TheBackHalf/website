@@ -39,7 +39,8 @@
     "fab5:row79": "npx --yes tsx scripts/fab-5/row-79-validate.ts",
     "fab5:row82": "npx --yes tsx scripts/fab-5/row-82-validate.ts",
     "fab5:aos": "npx --yes tsx scripts/fab-5/aos-validate.ts",
-    "fab5:aos-prod": "npx --yes tsx scripts/fab-5/aos-production-invoke.ts"
+    "fab5:aos-prod": "npx --yes tsx scripts/fab-5/aos-production-invoke.ts",
+    "fab5:row184": "npx --yes tsx scripts/fab-5/row-184-cross-browser.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",

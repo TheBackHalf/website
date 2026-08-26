@@ -1,0 +1,1734 @@
+{
+  "aosWorkId": "al-184",
+  "row": 184,
+  "deliverable": "Run Cross-Browser Compatibility Testing",
+  "generatedAt": "2026-08-26T19:19:10.703Z",
+  "operatingAgent": "imani",
+  "founderAccepted": false,
+  "rowMarkedComplete": false,
+  "commandCenterStatus": "Not Started",
+  "evidenceAcceptanceState": "open",
+  "overall": "PASS_WITH_GAPS",
+  "secretsPrinted": false,
+  "stripeConfigModified": false,
+  "dnsModified": false,
+  "authenticationWeakened": false,
+  "productFilesChanged": true,
+  "matrix": {
+    "chrome": "Google Chrome stable via Playwright channel=chrome (Blink). Covers current Chrome.",
+    "edge": "Not installed on this Linux runner. Edge is Chromium/Blink; treated as Chrome-equivalent per documented matrix.",
+    "firefox": "Playwright Firefox 141 (Gecko).",
+    "safari": "Not available on Linux. Playwright WebKit 26 is the documented Safari / iOS Safari engine equivalent.",
+    "viewports": [
+      {
+        "id": "desktop",
+        "width": 1440,
+        "height": 900,
+        "isMobile": false
+      },
+      {
+        "id": "mobile",
+        "width": 390,
+        "height": 844,
+        "isMobile": true
+      }
+    ]
+  },
+  "origins": {
+    "production": "https://website-two-psi-49.vercel.app",
+    "local": "http://127.0.0.1:3184",
+    "canonicalApex": "https://thebackhalf.org (ENOTFOUND from this environment; DNS not changed)"
+  },
+  "counts": {
+    "PASS": 145,
+    "FAIL": 0,
+    "GAP": 12,
+    "BLOCKED": 0
+  },
+  "consoleErrors": [
+    "chrome/desktop console Failed to load resource: the server responded with a status of 404 ()",
+    "chrome/mobile console Failed to load resource: the server responded with a status of 404 ()",
+    "firefox/desktop pageerror Failed to load chunk /_next/static/chunks/2f5yh587j0g0p.js?dpl=dpl_EhwiyGTSVR8TAVxjbVcEhw3pwMGc from module 964893",
+    "firefox/mobile pageerror Failed to load chunk /_next/static/chunks/2f5yh587j0g0p.js?dpl=dpl_EhwiyGTSVR8TAVxjbVcEhw3pwMGc from module 964893",
+    "webkit/desktop pageerror /website-two-psi-49.vercel.app/api/eligibility/status due to access control checks.",
+    "webkit/desktop console Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "webkit/desktop pageerror /website-two-psi-49.vercel.app/register?_rsc=sW2A7HEmFQnSVIMx due to access control checks.",
+    "webkit/mobile pageerror /website-two-psi-49.vercel.app/support?_rsc=h2vb-LAkAGynSY5z due to access control checks.",
+    "webkit/mobile pageerror /website-two-psi-49.vercel.app/es/contact?_rsc=h2vb-LAkAGynSY5z due to access control checks.",
+    "webkit/mobile pageerror /website-two-psi-49.vercel.app/api/eligibility/status due to access control checks.",
+    "webkit/mobile console Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "webkit/mobile pageerror /website-two-psi-49.vercel.app/contact?_rsc=sW2A7HEmFQnSVIMx due to access control checks.",
+    "webkit/mobile pageerror /website-two-psi-49.vercel.app/login?_rsc=sW2A7HEmFQnSVIMx due to access control checks."
+  ],
+  "checks": [
+    {
+      "id": "DNS-APEX",
+      "area": "navigation",
+      "name": "thebackhalf.org resolves from this environment",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://thebackhalf.org",
+      "result": "GAP",
+      "detail": "fetch failed"
+    },
+    {
+      "id": "DNS-WWW",
+      "area": "navigation",
+      "name": "www.thebackhalf.org resolves from this environment",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://www.thebackhalf.org",
+      "result": "GAP",
+      "detail": "fetch failed"
+    },
+    {
+      "id": "PROD-ORIGIN",
+      "area": "navigation",
+      "name": "Production Vercel origin reachable",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "STATIC-MASK",
+      "area": "media",
+      "name": "Entrance masks include webkit + standard properties",
+      "engine": "static",
+      "viewport": "n/a",
+      "origin": "repo",
+      "result": "PASS",
+      "detail": "webkit+standard=true"
+    },
+    {
+      "id": "STATIC-DVH",
+      "area": "responsive",
+      "name": "Entrance uses 100dvh (current Safari/Chrome/Firefox)",
+      "engine": "static",
+      "viewport": "n/a",
+      "origin": "repo",
+      "result": "PASS",
+      "detail": "100dvh=true"
+    },
+    {
+      "id": "STATIC-INPUT-16PX",
+      "area": "forms",
+      "name": "Form inputs use text-base (≥16px) to avoid iOS Safari zoom",
+      "engine": "static",
+      "viewport": "n/a",
+      "origin": "repo",
+      "result": "PASS",
+      "detail": "bh-form-input text-base=true"
+    },
+    {
+      "id": "STATIC-PLAYSINLINE",
+      "area": "media",
+      "name": "Founder <video> sets playsInline for iOS Safari",
+      "engine": "static",
+      "viewport": "n/a",
+      "origin": "repo",
+      "result": "PASS",
+      "detail": "playsInline present on React video"
+    },
+    {
+      "id": "ASSET-VTT",
+      "area": "media",
+      "name": "HTTP /captions/founder/en-chapter-1-welcome.vtt",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 expected 200"
+    },
+    {
+      "id": "ASSET-VIDEO",
+      "area": "media",
+      "name": "HTTP /videos/chapter-1/chapter-1-the-awakening.mp4",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 expected 200"
+    },
+    {
+      "id": "ASSET-WELCOME",
+      "area": "media",
+      "name": "HTTP /videos/onboarding/founding-architect-welcome.mp4",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 expected 200"
+    },
+    {
+      "id": "ASSET-GUIDEBOOK-ANON",
+      "area": "media",
+      "name": "HTTP /api/architect/blueprint/guidebook",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 401 expected 401"
+    },
+    {
+      "id": "NAV-HOME",
+      "area": "navigation",
+      "name": "Homepage hero and document language",
+      "engine": "chrome",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "lang=en overflow=false"
+    },
+    {
+      "id": "NAV-CONTACT",
+      "area": "navigation",
+      "name": "Primary nav to Contact",
+      "engine": "chrome",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "https://website-two-psi-49.vercel.app/contact"
+    },
+    {
+      "id": "JOURNEY-PUBLIC",
+      "area": "journey",
+      "name": "Public Journey marketing page",
+      "engine": "chrome",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "h1=Every person deserves the opportunityto intentionally createa magical life."
+    },
+    {
+      "id": "LUMINA-PUBLIC",
+      "area": "lumina",
+      "name": "Public Lumina opening control",
+      "engine": "chrome",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "trigger=true expanded=true"
+    },
+    {
+      "id": "FORM-LOGIN",
+      "area": "forms",
+      "name": "Login empty-submit validation",
+      "engine": "chrome",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "required."
+    },
+    {
+      "id": "FORM-REGISTER-GATE",
+      "area": "forms",
+      "name": "Registration 18+ age gate",
+      "engine": "chrome",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "yesRadio=1 alreadyEligibleForm=false"
+    },
+    {
+      "id": "FORM-REGISTER",
+      "area": "forms",
+      "name": "Registration form after 18+ confirmation",
+      "engine": "chrome",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "firstNameControl=1"
+    },
+    {
+      "id": "FORM-FORGOT",
+      "area": "forms",
+      "name": "Forgot-password form",
+      "engine": "chrome",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "https://website-two-psi-49.vercel.app/forgot-password"
+    },
+    {
+      "id": "FORM-SUPPORT",
+      "area": "forms",
+      "name": "Support request (age gate or form)",
+      "engine": "chrome",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "Skip to main content THE BACK HALF ENGLISH ESPAÑOL MANIFESTO CONTACT SUPPORT S"
+    },
+    {
+      "id": "CHECKOUT-CATALOG",
+      "area": "checkout",
+      "name": "Checkout catalog offers and prices",
+      "engine": "chrome",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "$1,500 $1,500 $1,750 $1,750"
+    },
+    {
+      "id": "CHECKOUT-OFFER-GATE",
+      "area": "checkout",
+      "name": "Offer page requires eligibility or login",
+      "engine": "chrome",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "https://website-two-psi-49.vercel.app/login?next=%2Fcheckout%2Fblueprint"
+    },
+    {
+      "id": "AUTH-GATE",
+      "area": "authentication",
+      "name": "Unauthenticated Architect dashboard gate",
+      "engine": "chrome",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Fdashboard"
+    },
+    {
+      "id": "LANG-SWITCH",
+      "area": "language",
+      "name": "English → Español navigation",
+      "engine": "chrome",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "GAP",
+      "detail": "lang=en url=https://website-two-psi-49.vercel.app/es aria-current-es=true (html lang lags on client nav until DocumentLocale is deployed)"
+    },
+    {
+      "id": "A11Y-SKIP",
+      "area": "accessibility",
+      "name": "Skip-to-main control present",
+      "engine": "chrome",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "skipLinks=1"
+    },
+    {
+      "id": "A11Y-ZOOM",
+      "area": "accessibility",
+      "name": "200% zoom does not throw; page remains usable",
+      "engine": "chrome",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "narrowOverflow=false (informational; zoom CSS support varies)"
+    },
+    {
+      "id": "RESPONSIVE-OVERFLOW",
+      "area": "responsive",
+      "name": "Homepage horizontal overflow",
+      "engine": "chrome",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "overflow=false 1440x900"
+    },
+    {
+      "id": "NAV-LEGAL",
+      "area": "navigation",
+      "name": "Privacy Policy published",
+      "engine": "chrome",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "https://website-two-psi-49.vercel.app/legal/privacy-policy"
+    },
+    {
+      "id": "MEDIA-ENTRANCE",
+      "area": "media",
+      "name": "Cinematic entrance reduced-motion review surface",
+      "engine": "chrome",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "nodes=62 url=https://website-two-psi-49.vercel.app/entrance-review?motion=reduced"
+    },
+    {
+      "id": "NAV-HOME",
+      "area": "navigation",
+      "name": "Homepage hero and document language",
+      "engine": "chrome",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "lang=en overflow=false"
+    },
+    {
+      "id": "NAV-CONTACT",
+      "area": "navigation",
+      "name": "Primary nav to Contact",
+      "engine": "chrome",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "https://website-two-psi-49.vercel.app/contact"
+    },
+    {
+      "id": "JOURNEY-PUBLIC",
+      "area": "journey",
+      "name": "Public Journey marketing page",
+      "engine": "chrome",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "h1=Every person deserves the opportunityto intentionally createa magical life."
+    },
+    {
+      "id": "LUMINA-PUBLIC",
+      "area": "lumina",
+      "name": "Public Lumina opening control",
+      "engine": "chrome",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "trigger=true expanded=true"
+    },
+    {
+      "id": "FORM-LOGIN",
+      "area": "forms",
+      "name": "Login empty-submit validation",
+      "engine": "chrome",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "required."
+    },
+    {
+      "id": "FORM-REGISTER-GATE",
+      "area": "forms",
+      "name": "Registration 18+ age gate",
+      "engine": "chrome",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "yesRadio=1 alreadyEligibleForm=false"
+    },
+    {
+      "id": "FORM-REGISTER",
+      "area": "forms",
+      "name": "Registration form after 18+ confirmation",
+      "engine": "chrome",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "firstNameControl=1"
+    },
+    {
+      "id": "FORM-FORGOT",
+      "area": "forms",
+      "name": "Forgot-password form",
+      "engine": "chrome",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "https://website-two-psi-49.vercel.app/forgot-password"
+    },
+    {
+      "id": "FORM-SUPPORT",
+      "area": "forms",
+      "name": "Support request (age gate or form)",
+      "engine": "chrome",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "Skip to main content THE BACK HALF ENGLISH ESPAÑOL MANIFESTO CONTACT SUPPORT S"
+    },
+    {
+      "id": "CHECKOUT-CATALOG",
+      "area": "checkout",
+      "name": "Checkout catalog offers and prices",
+      "engine": "chrome",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "$1,500 $1,500 $1,750 $1,750"
+    },
+    {
+      "id": "CHECKOUT-OFFER-GATE",
+      "area": "checkout",
+      "name": "Offer page requires eligibility or login",
+      "engine": "chrome",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "https://website-two-psi-49.vercel.app/login?next=%2Fcheckout%2Fblueprint"
+    },
+    {
+      "id": "AUTH-GATE",
+      "area": "authentication",
+      "name": "Unauthenticated Architect dashboard gate",
+      "engine": "chrome",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Fdashboard"
+    },
+    {
+      "id": "LANG-SWITCH",
+      "area": "language",
+      "name": "English → Español navigation",
+      "engine": "chrome",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "GAP",
+      "detail": "lang=en url=https://website-two-psi-49.vercel.app/es aria-current-es=true (html lang lags on client nav until DocumentLocale is deployed)"
+    },
+    {
+      "id": "A11Y-SKIP",
+      "area": "accessibility",
+      "name": "Skip-to-main control present",
+      "engine": "chrome",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "skipLinks=1"
+    },
+    {
+      "id": "A11Y-ZOOM",
+      "area": "accessibility",
+      "name": "200% zoom does not throw; page remains usable",
+      "engine": "chrome",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "narrowOverflow=true (informational; zoom CSS support varies)"
+    },
+    {
+      "id": "RESPONSIVE-OVERFLOW",
+      "area": "responsive",
+      "name": "Homepage horizontal overflow",
+      "engine": "chrome",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "overflow=false 390x844"
+    },
+    {
+      "id": "NAV-LEGAL",
+      "area": "navigation",
+      "name": "Privacy Policy published",
+      "engine": "chrome",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "https://website-two-psi-49.vercel.app/legal/privacy-policy"
+    },
+    {
+      "id": "MEDIA-ENTRANCE",
+      "area": "media",
+      "name": "Cinematic entrance reduced-motion review surface",
+      "engine": "chrome",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "nodes=62 url=https://website-two-psi-49.vercel.app/entrance-review?motion=reduced"
+    },
+    {
+      "id": "NAV-HOME",
+      "area": "navigation",
+      "name": "Homepage hero and document language",
+      "engine": "firefox",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "lang=en overflow=false"
+    },
+    {
+      "id": "NAV-CONTACT",
+      "area": "navigation",
+      "name": "Primary nav to Contact",
+      "engine": "firefox",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "https://website-two-psi-49.vercel.app/contact"
+    },
+    {
+      "id": "JOURNEY-PUBLIC",
+      "area": "journey",
+      "name": "Public Journey marketing page",
+      "engine": "firefox",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "h1=Every person deserves the opportunityto intentionally createa magical life."
+    },
+    {
+      "id": "LUMINA-PUBLIC",
+      "area": "lumina",
+      "name": "Public Lumina opening control",
+      "engine": "firefox",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "trigger=true expanded=true"
+    },
+    {
+      "id": "FORM-LOGIN",
+      "area": "forms",
+      "name": "Login empty-submit validation",
+      "engine": "firefox",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "required."
+    },
+    {
+      "id": "FORM-REGISTER-GATE",
+      "area": "forms",
+      "name": "Registration 18+ age gate",
+      "engine": "firefox",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "yesRadio=1 alreadyEligibleForm=false"
+    },
+    {
+      "id": "FORM-REGISTER",
+      "area": "forms",
+      "name": "Registration form after 18+ confirmation",
+      "engine": "firefox",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "firstNameControl=1"
+    },
+    {
+      "id": "FORM-FORGOT",
+      "area": "forms",
+      "name": "Forgot-password form",
+      "engine": "firefox",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "https://website-two-psi-49.vercel.app/forgot-password"
+    },
+    {
+      "id": "FORM-SUPPORT",
+      "area": "forms",
+      "name": "Support request (age gate or form)",
+      "engine": "firefox",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "Skip to main content THE BACK HALF ENGLISH ESPAÑOL MANIFESTO CONTACT SUPPORT S"
+    },
+    {
+      "id": "CHECKOUT-CATALOG",
+      "area": "checkout",
+      "name": "Checkout catalog offers and prices",
+      "engine": "firefox",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "$1,500 $1,500 $1,750 $1,750"
+    },
+    {
+      "id": "CHECKOUT-OFFER-GATE",
+      "area": "checkout",
+      "name": "Offer page requires eligibility or login",
+      "engine": "firefox",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "https://website-two-psi-49.vercel.app/login?next=%2Fcheckout%2Fblueprint"
+    },
+    {
+      "id": "AUTH-GATE",
+      "area": "authentication",
+      "name": "Unauthenticated Architect dashboard gate",
+      "engine": "firefox",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Fdashboard"
+    },
+    {
+      "id": "LANG-SWITCH",
+      "area": "language",
+      "name": "English → Español navigation",
+      "engine": "firefox",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "GAP",
+      "detail": "lang=en url=https://website-two-psi-49.vercel.app/es aria-current-es=true (html lang lags on client nav until DocumentLocale is deployed)"
+    },
+    {
+      "id": "A11Y-SKIP",
+      "area": "accessibility",
+      "name": "Skip-to-main control present",
+      "engine": "firefox",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "skipLinks=1"
+    },
+    {
+      "id": "A11Y-ZOOM",
+      "area": "accessibility",
+      "name": "200% zoom does not throw; page remains usable",
+      "engine": "firefox",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "narrowOverflow=false (informational; zoom CSS support varies)"
+    },
+    {
+      "id": "RESPONSIVE-OVERFLOW",
+      "area": "responsive",
+      "name": "Homepage horizontal overflow",
+      "engine": "firefox",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "overflow=false 1440x900"
+    },
+    {
+      "id": "NAV-LEGAL",
+      "area": "navigation",
+      "name": "Privacy Policy published",
+      "engine": "firefox",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "https://website-two-psi-49.vercel.app/legal/privacy-policy"
+    },
+    {
+      "id": "MEDIA-ENTRANCE",
+      "area": "media",
+      "name": "Cinematic entrance reduced-motion review surface",
+      "engine": "firefox",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "nodes=62 url=https://website-two-psi-49.vercel.app/entrance-review?motion=reduced"
+    },
+    {
+      "id": "NAV-HOME",
+      "area": "navigation",
+      "name": "Homepage hero and document language",
+      "engine": "firefox",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "lang=en overflow=false"
+    },
+    {
+      "id": "NAV-CONTACT",
+      "area": "navigation",
+      "name": "Primary nav to Contact",
+      "engine": "firefox",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "https://website-two-psi-49.vercel.app/contact"
+    },
+    {
+      "id": "JOURNEY-PUBLIC",
+      "area": "journey",
+      "name": "Public Journey marketing page",
+      "engine": "firefox",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "h1=Every person deserves the opportunityto intentionally createa magical life."
+    },
+    {
+      "id": "LUMINA-PUBLIC",
+      "area": "lumina",
+      "name": "Public Lumina opening control",
+      "engine": "firefox",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "trigger=true expanded=true"
+    },
+    {
+      "id": "FORM-LOGIN",
+      "area": "forms",
+      "name": "Login empty-submit validation",
+      "engine": "firefox",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "required."
+    },
+    {
+      "id": "FORM-REGISTER-GATE",
+      "area": "forms",
+      "name": "Registration 18+ age gate",
+      "engine": "firefox",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "yesRadio=1 alreadyEligibleForm=false"
+    },
+    {
+      "id": "FORM-REGISTER",
+      "area": "forms",
+      "name": "Registration form after 18+ confirmation",
+      "engine": "firefox",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "firstNameControl=1"
+    },
+    {
+      "id": "FORM-FORGOT",
+      "area": "forms",
+      "name": "Forgot-password form",
+      "engine": "firefox",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "https://website-two-psi-49.vercel.app/forgot-password"
+    },
+    {
+      "id": "FORM-SUPPORT",
+      "area": "forms",
+      "name": "Support request (age gate or form)",
+      "engine": "firefox",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "Skip to main content THE BACK HALF ENGLISH ESPAÑOL MANIFESTO CONTACT SUPPORT S"
+    },
+    {
+      "id": "CHECKOUT-CATALOG",
+      "area": "checkout",
+      "name": "Checkout catalog offers and prices",
+      "engine": "firefox",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "$1,500 $1,500 $1,750 $1,750"
+    },
+    {
+      "id": "CHECKOUT-OFFER-GATE",
+      "area": "checkout",
+      "name": "Offer page requires eligibility or login",
+      "engine": "firefox",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "https://website-two-psi-49.vercel.app/login?next=%2Fcheckout%2Fblueprint"
+    },
+    {
+      "id": "AUTH-GATE",
+      "area": "authentication",
+      "name": "Unauthenticated Architect dashboard gate",
+      "engine": "firefox",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Fdashboard"
+    },
+    {
+      "id": "LANG-SWITCH",
+      "area": "language",
+      "name": "English → Español navigation",
+      "engine": "firefox",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "GAP",
+      "detail": "lang=en url=https://website-two-psi-49.vercel.app/es aria-current-es=true (html lang lags on client nav until DocumentLocale is deployed)"
+    },
+    {
+      "id": "A11Y-SKIP",
+      "area": "accessibility",
+      "name": "Skip-to-main control present",
+      "engine": "firefox",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "skipLinks=1"
+    },
+    {
+      "id": "A11Y-ZOOM",
+      "area": "accessibility",
+      "name": "200% zoom does not throw; page remains usable",
+      "engine": "firefox",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "narrowOverflow=false (informational; zoom CSS support varies)"
+    },
+    {
+      "id": "RESPONSIVE-OVERFLOW",
+      "area": "responsive",
+      "name": "Homepage horizontal overflow",
+      "engine": "firefox",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "overflow=false 390x844"
+    },
+    {
+      "id": "NAV-LEGAL",
+      "area": "navigation",
+      "name": "Privacy Policy published",
+      "engine": "firefox",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "https://website-two-psi-49.vercel.app/legal/privacy-policy"
+    },
+    {
+      "id": "MEDIA-ENTRANCE",
+      "area": "media",
+      "name": "Cinematic entrance reduced-motion review surface",
+      "engine": "firefox",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "nodes=62 url=https://website-two-psi-49.vercel.app/entrance-review?motion=reduced"
+    },
+    {
+      "id": "NAV-HOME",
+      "area": "navigation",
+      "name": "Homepage hero and document language",
+      "engine": "webkit",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "lang=en overflow=false"
+    },
+    {
+      "id": "NAV-CONTACT",
+      "area": "navigation",
+      "name": "Primary nav to Contact",
+      "engine": "webkit",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "https://website-two-psi-49.vercel.app/contact"
+    },
+    {
+      "id": "JOURNEY-PUBLIC",
+      "area": "journey",
+      "name": "Public Journey marketing page",
+      "engine": "webkit",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "h1=Every person deserves the opportunityto intentionally createa magical life."
+    },
+    {
+      "id": "LUMINA-PUBLIC",
+      "area": "lumina",
+      "name": "Public Lumina opening control",
+      "engine": "webkit",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "trigger=true expanded=true"
+    },
+    {
+      "id": "FORM-LOGIN",
+      "area": "forms",
+      "name": "Login empty-submit validation",
+      "engine": "webkit",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "required."
+    },
+    {
+      "id": "FORM-REGISTER-GATE",
+      "area": "forms",
+      "name": "Registration 18+ age gate",
+      "engine": "webkit",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "yesRadio=1 alreadyEligibleForm=false"
+    },
+    {
+      "id": "FORM-REGISTER",
+      "area": "forms",
+      "name": "Registration form after 18+ confirmation",
+      "engine": "webkit",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "firstNameControl=1"
+    },
+    {
+      "id": "FORM-FORGOT",
+      "area": "forms",
+      "name": "Forgot-password form",
+      "engine": "webkit",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "https://website-two-psi-49.vercel.app/forgot-password"
+    },
+    {
+      "id": "FORM-SUPPORT",
+      "area": "forms",
+      "name": "Support request (age gate or form)",
+      "engine": "webkit",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "Skip to main content THE BACK HALF ENGLISH ESPAÑOL MANIFESTO CONTACT SUPPORT Sup"
+    },
+    {
+      "id": "CHECKOUT-CATALOG",
+      "area": "checkout",
+      "name": "Checkout catalog offers and prices",
+      "engine": "webkit",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "$1,500 $1,500 $1,750 $1,750"
+    },
+    {
+      "id": "CHECKOUT-OFFER-GATE",
+      "area": "checkout",
+      "name": "Offer page requires eligibility or login",
+      "engine": "webkit",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "https://website-two-psi-49.vercel.app/login?next=%2Fcheckout%2Fblueprint"
+    },
+    {
+      "id": "AUTH-GATE",
+      "area": "authentication",
+      "name": "Unauthenticated Architect dashboard gate",
+      "engine": "webkit",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Fdashboard"
+    },
+    {
+      "id": "LANG-SWITCH",
+      "area": "language",
+      "name": "English → Español navigation",
+      "engine": "webkit",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "GAP",
+      "detail": "lang=en url=https://website-two-psi-49.vercel.app/es aria-current-es=true (html lang lags on client nav until DocumentLocale is deployed)"
+    },
+    {
+      "id": "A11Y-SKIP",
+      "area": "accessibility",
+      "name": "Skip-to-main control present",
+      "engine": "webkit",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "skipLinks=1"
+    },
+    {
+      "id": "A11Y-ZOOM",
+      "area": "accessibility",
+      "name": "200% zoom does not throw; page remains usable",
+      "engine": "webkit",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "narrowOverflow=false (informational; zoom CSS support varies)"
+    },
+    {
+      "id": "RESPONSIVE-OVERFLOW",
+      "area": "responsive",
+      "name": "Homepage horizontal overflow",
+      "engine": "webkit",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "overflow=false 1440x900"
+    },
+    {
+      "id": "NAV-LEGAL",
+      "area": "navigation",
+      "name": "Privacy Policy published",
+      "engine": "webkit",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "https://website-two-psi-49.vercel.app/legal/privacy-policy"
+    },
+    {
+      "id": "MEDIA-ENTRANCE",
+      "area": "media",
+      "name": "Cinematic entrance reduced-motion review surface",
+      "engine": "webkit",
+      "viewport": "desktop",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "nodes=62 url=https://website-two-psi-49.vercel.app/entrance-review?motion=reduced"
+    },
+    {
+      "id": "NAV-HOME",
+      "area": "navigation",
+      "name": "Homepage hero and document language",
+      "engine": "webkit",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "lang=en overflow=false"
+    },
+    {
+      "id": "NAV-CONTACT",
+      "area": "navigation",
+      "name": "Primary nav to Contact",
+      "engine": "webkit",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "https://website-two-psi-49.vercel.app/contact"
+    },
+    {
+      "id": "JOURNEY-PUBLIC",
+      "area": "journey",
+      "name": "Public Journey marketing page",
+      "engine": "webkit",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "h1=Every person deserves the opportunityto intentionally createa magical life."
+    },
+    {
+      "id": "LUMINA-PUBLIC",
+      "area": "lumina",
+      "name": "Public Lumina opening control",
+      "engine": "webkit",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "trigger=true expanded=true"
+    },
+    {
+      "id": "FORM-LOGIN",
+      "area": "forms",
+      "name": "Login empty-submit validation",
+      "engine": "webkit",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "required."
+    },
+    {
+      "id": "FORM-REGISTER-GATE",
+      "area": "forms",
+      "name": "Registration 18+ age gate",
+      "engine": "webkit",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "yesRadio=1 alreadyEligibleForm=false"
+    },
+    {
+      "id": "FORM-REGISTER",
+      "area": "forms",
+      "name": "Registration form after 18+ confirmation",
+      "engine": "webkit",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "firstNameControl=1"
+    },
+    {
+      "id": "FORM-FORGOT",
+      "area": "forms",
+      "name": "Forgot-password form",
+      "engine": "webkit",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "https://website-two-psi-49.vercel.app/forgot-password"
+    },
+    {
+      "id": "FORM-SUPPORT",
+      "area": "forms",
+      "name": "Support request (age gate or form)",
+      "engine": "webkit",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "Skip to main content THE BACK HALF ENGLISH ESPAÑOL MANIFESTO CONTACT SUPPORT Sup"
+    },
+    {
+      "id": "CHECKOUT-CATALOG",
+      "area": "checkout",
+      "name": "Checkout catalog offers and prices",
+      "engine": "webkit",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "$1,500 $1,500 $1,750 $1,750"
+    },
+    {
+      "id": "CHECKOUT-OFFER-GATE",
+      "area": "checkout",
+      "name": "Offer page requires eligibility or login",
+      "engine": "webkit",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "https://website-two-psi-49.vercel.app/login?next=%2Fcheckout%2Fblueprint"
+    },
+    {
+      "id": "AUTH-GATE",
+      "area": "authentication",
+      "name": "Unauthenticated Architect dashboard gate",
+      "engine": "webkit",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Fdashboard"
+    },
+    {
+      "id": "LANG-SWITCH",
+      "area": "language",
+      "name": "English → Español navigation",
+      "engine": "webkit",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "GAP",
+      "detail": "lang=en url=https://website-two-psi-49.vercel.app/es aria-current-es=true (html lang lags on client nav until DocumentLocale is deployed)"
+    },
+    {
+      "id": "A11Y-SKIP",
+      "area": "accessibility",
+      "name": "Skip-to-main control present",
+      "engine": "webkit",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "skipLinks=1"
+    },
+    {
+      "id": "A11Y-ZOOM",
+      "area": "accessibility",
+      "name": "200% zoom does not throw; page remains usable",
+      "engine": "webkit",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "narrowOverflow=true (informational; zoom CSS support varies)"
+    },
+    {
+      "id": "RESPONSIVE-OVERFLOW",
+      "area": "responsive",
+      "name": "Homepage horizontal overflow",
+      "engine": "webkit",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "overflow=false 390x844"
+    },
+    {
+      "id": "NAV-LEGAL",
+      "area": "navigation",
+      "name": "Privacy Policy published",
+      "engine": "webkit",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "https://website-two-psi-49.vercel.app/legal/privacy-policy"
+    },
+    {
+      "id": "MEDIA-ENTRANCE",
+      "area": "media",
+      "name": "Cinematic entrance reduced-motion review surface",
+      "engine": "webkit",
+      "viewport": "mobile",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "nodes=62 url=https://website-two-psi-49.vercel.app/entrance-review?motion=reduced"
+    },
+    {
+      "id": "LOCAL-SERVER",
+      "area": "authentication",
+      "name": "Local Next.js server for authenticated flows",
+      "engine": "node",
+      "viewport": "n/a",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "http://127.0.0.1:3184"
+    },
+    {
+      "id": "AUTH-LOGIN",
+      "area": "authentication",
+      "name": "Email/password login to Architect app",
+      "engine": "chrome",
+      "viewport": "desktop",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "http://127.0.0.1:3184/architect/dashboard Skip to application content THE BACK HALF ARCHITECT ENGLISH ESPAÑOL A Account menu Dashboard The Journey Lumina Architect Resources Settings Billing Support Loading your Architect dashboard…"
+    },
+    {
+      "id": "AUTH-DASHBOARD",
+      "area": "authentication",
+      "name": "Architect dashboard after login",
+      "engine": "chrome",
+      "viewport": "desktop",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "http://127.0.0.1:3184/architect/dashboard"
+    },
+    {
+      "id": "JOURNEY-APP",
+      "area": "journey",
+      "name": "Authenticated Journey entry",
+      "engine": "chrome",
+      "viewport": "desktop",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "http://127.0.0.1:3184/architect/journey"
+    },
+    {
+      "id": "MEDIA-VIDEO",
+      "area": "media",
+      "name": "Chapter I welcome video element",
+      "engine": "chrome",
+      "viewport": "desktop",
+      "origin": "http://127.0.0.1:3184",
+      "result": "GAP",
+      "detail": "videos=0 playsInline=false captionsTrack=false url=http://127.0.0.1:3184/architect/journey/chapter-1/welcome"
+    },
+    {
+      "id": "LUMINA-CHAT",
+      "area": "lumina",
+      "name": "Authenticated Lumina composer",
+      "engine": "chrome",
+      "viewport": "desktop",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "composer=1 url=http://127.0.0.1:3184/architect/lumina"
+    },
+    {
+      "id": "DOWNLOADS",
+      "area": "downloads",
+      "name": "Architect Blueprint download links",
+      "engine": "chrome",
+      "viewport": "desktop",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "links=9"
+    },
+    {
+      "id": "DOWNLOAD-GUIDEBOOK",
+      "area": "downloads",
+      "name": "Authenticated guidebook download response",
+      "engine": "chrome",
+      "viewport": "desktop",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "HTTP 200 type=application/pdf"
+    },
+    {
+      "id": "LANG-APP",
+      "area": "language",
+      "name": "Authenticated language switch to Español",
+      "engine": "chrome",
+      "viewport": "desktop",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "url=http://127.0.0.1:3184/es/architect/resources lang=es"
+    },
+    {
+      "id": "CHECKOUT-LOGGED-IN",
+      "area": "checkout",
+      "name": "Logged-in Blueprint offer consents",
+      "engine": "chrome",
+      "viewport": "desktop",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "http://127.0.0.1:3184/checkout/blueprint"
+    },
+    {
+      "id": "AUTH-LOGIN",
+      "area": "authentication",
+      "name": "Email/password login to Architect app",
+      "engine": "chrome",
+      "viewport": "mobile",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "http://127.0.0.1:3184/architect/dashboard Skip to application content Open navigation menu ☰ THE BACK HALF ARCHITECT ENGLISH ESPAÑOL A Account menu Dashboard The Journey Lumina Architect Resources Settings Billing Support Loading your Architect dashboard…"
+    },
+    {
+      "id": "AUTH-DASHBOARD",
+      "area": "authentication",
+      "name": "Architect dashboard after login",
+      "engine": "chrome",
+      "viewport": "mobile",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "http://127.0.0.1:3184/architect/dashboard"
+    },
+    {
+      "id": "RESPONSIVE-MOBILE-NAV",
+      "area": "responsive",
+      "name": "Architect mobile navigation toggle",
+      "engine": "chrome",
+      "viewport": "mobile",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "aria-expanded=true"
+    },
+    {
+      "id": "JOURNEY-APP",
+      "area": "journey",
+      "name": "Authenticated Journey entry",
+      "engine": "chrome",
+      "viewport": "mobile",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "http://127.0.0.1:3184/architect/journey"
+    },
+    {
+      "id": "MEDIA-VIDEO",
+      "area": "media",
+      "name": "Chapter I welcome video element",
+      "engine": "chrome",
+      "viewport": "mobile",
+      "origin": "http://127.0.0.1:3184",
+      "result": "GAP",
+      "detail": "videos=0 playsInline=false captionsTrack=false url=http://127.0.0.1:3184/architect/journey/chapter-1/welcome"
+    },
+    {
+      "id": "LUMINA-CHAT",
+      "area": "lumina",
+      "name": "Authenticated Lumina composer",
+      "engine": "chrome",
+      "viewport": "mobile",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "composer=1 url=http://127.0.0.1:3184/architect/lumina"
+    },
+    {
+      "id": "DOWNLOADS",
+      "area": "downloads",
+      "name": "Architect Blueprint download links",
+      "engine": "chrome",
+      "viewport": "mobile",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "links=9"
+    },
+    {
+      "id": "DOWNLOAD-GUIDEBOOK",
+      "area": "downloads",
+      "name": "Authenticated guidebook download response",
+      "engine": "chrome",
+      "viewport": "mobile",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "HTTP 200 type=application/pdf"
+    },
+    {
+      "id": "LANG-APP",
+      "area": "language",
+      "name": "Authenticated language switch to Español",
+      "engine": "chrome",
+      "viewport": "mobile",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "url=http://127.0.0.1:3184/es/architect/resources lang=es"
+    },
+    {
+      "id": "CHECKOUT-LOGGED-IN",
+      "area": "checkout",
+      "name": "Logged-in Blueprint offer consents",
+      "engine": "chrome",
+      "viewport": "mobile",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "http://127.0.0.1:3184/checkout/blueprint"
+    },
+    {
+      "id": "AUTH-LOGIN",
+      "area": "authentication",
+      "name": "Email/password login to Architect app",
+      "engine": "firefox",
+      "viewport": "desktop",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "http://127.0.0.1:3184/architect/dashboard Skip to application content THE BACK HALF ARCHITECT ENGLISH ESPAÑOL A Account menu Dashboard The Journey Lumina Architect Resources Settings Billing Support Loading your Architect dashboard…"
+    },
+    {
+      "id": "AUTH-DASHBOARD",
+      "area": "authentication",
+      "name": "Architect dashboard after login",
+      "engine": "firefox",
+      "viewport": "desktop",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "http://127.0.0.1:3184/architect/dashboard"
+    },
+    {
+      "id": "JOURNEY-APP",
+      "area": "journey",
+      "name": "Authenticated Journey entry",
+      "engine": "firefox",
+      "viewport": "desktop",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "http://127.0.0.1:3184/architect/journey"
+    },
+    {
+      "id": "MEDIA-VIDEO",
+      "area": "media",
+      "name": "Chapter I welcome video element",
+      "engine": "firefox",
+      "viewport": "desktop",
+      "origin": "http://127.0.0.1:3184",
+      "result": "GAP",
+      "detail": "videos=0 playsInline=false captionsTrack=false url=http://127.0.0.1:3184/architect/journey/chapter-1/welcome"
+    },
+    {
+      "id": "LUMINA-CHAT",
+      "area": "lumina",
+      "name": "Authenticated Lumina composer",
+      "engine": "firefox",
+      "viewport": "desktop",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "composer=1 url=http://127.0.0.1:3184/architect/lumina"
+    },
+    {
+      "id": "DOWNLOADS",
+      "area": "downloads",
+      "name": "Architect Blueprint download links",
+      "engine": "firefox",
+      "viewport": "desktop",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "links=9"
+    },
+    {
+      "id": "DOWNLOAD-GUIDEBOOK",
+      "area": "downloads",
+      "name": "Authenticated guidebook download response",
+      "engine": "firefox",
+      "viewport": "desktop",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "HTTP 200 type=application/pdf"
+    },
+    {
+      "id": "LANG-APP",
+      "area": "language",
+      "name": "Authenticated language switch to Español",
+      "engine": "firefox",
+      "viewport": "desktop",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "url=http://127.0.0.1:3184/es/architect/resources lang=es"
+    },
+    {
+      "id": "CHECKOUT-LOGGED-IN",
+      "area": "checkout",
+      "name": "Logged-in Blueprint offer consents",
+      "engine": "firefox",
+      "viewport": "desktop",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "http://127.0.0.1:3184/checkout/blueprint"
+    },
+    {
+      "id": "AUTH-LOGIN",
+      "area": "authentication",
+      "name": "Email/password login to Architect app",
+      "engine": "webkit",
+      "viewport": "desktop",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "http://127.0.0.1:3184/architect/dashboard Skip to application content THE BACK HALF ARCHITECT ENGLISH ESPAÑOL A Account menu Dashboard The Journey Lumina Architect Resources Settings Billing Support Loading your Architect dashboard…"
+    },
+    {
+      "id": "AUTH-DASHBOARD",
+      "area": "authentication",
+      "name": "Architect dashboard after login",
+      "engine": "webkit",
+      "viewport": "desktop",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "http://127.0.0.1:3184/architect/dashboard"
+    },
+    {
+      "id": "JOURNEY-APP",
+      "area": "journey",
+      "name": "Authenticated Journey entry",
+      "engine": "webkit",
+      "viewport": "desktop",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "http://127.0.0.1:3184/architect/journey"
+    },
+    {
+      "id": "MEDIA-VIDEO",
+      "area": "media",
+      "name": "Chapter I welcome video element",
+      "engine": "webkit",
+      "viewport": "desktop",
+      "origin": "http://127.0.0.1:3184",
+      "result": "GAP",
+      "detail": "videos=0 playsInline=false captionsTrack=false url=http://127.0.0.1:3184/architect/journey/chapter-1/welcome"
+    },
+    {
+      "id": "LUMINA-CHAT",
+      "area": "lumina",
+      "name": "Authenticated Lumina composer",
+      "engine": "webkit",
+      "viewport": "desktop",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "composer=1 url=http://127.0.0.1:3184/architect/lumina"
+    },
+    {
+      "id": "DOWNLOADS",
+      "area": "downloads",
+      "name": "Architect Blueprint download links",
+      "engine": "webkit",
+      "viewport": "desktop",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "links=9"
+    },
+    {
+      "id": "DOWNLOAD-GUIDEBOOK",
+      "area": "downloads",
+      "name": "Authenticated guidebook download response",
+      "engine": "webkit",
+      "viewport": "desktop",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "HTTP 200 type=application/pdf"
+    },
+    {
+      "id": "LANG-APP",
+      "area": "language",
+      "name": "Authenticated language switch to Español",
+      "engine": "webkit",
+      "viewport": "desktop",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "url=http://127.0.0.1:3184/es/architect/resources lang=es"
+    },
+    {
+      "id": "CHECKOUT-LOGGED-IN",
+      "area": "checkout",
+      "name": "Logged-in Blueprint offer consents",
+      "engine": "webkit",
+      "viewport": "desktop",
+      "origin": "http://127.0.0.1:3184",
+      "result": "PASS",
+      "detail": "http://127.0.0.1:3184/checkout/blueprint"
+    }
+  ],
+  "findings": [],
+  "gaps": [
+    {
+      "id": "DNS-APEX",
+      "detail": "fetch failed"
+    },
+    {
+      "id": "DNS-WWW",
+      "detail": "fetch failed"
+    },
+    {
+      "id": "LANG-SWITCH",
+      "detail": "lang=en url=https://website-two-psi-49.vercel.app/es aria-current-es=true (html lang lags on client nav until DocumentLocale is deployed)"
+    },
+    {
+      "id": "LANG-SWITCH",
+      "detail": "lang=en url=https://website-two-psi-49.vercel.app/es aria-current-es=true (html lang lags on client nav until DocumentLocale is deployed)"
+    },
+    {
+      "id": "LANG-SWITCH",
+      "detail": "lang=en url=https://website-two-psi-49.vercel.app/es aria-current-es=true (html lang lags on client nav until DocumentLocale is deployed)"
+    },
+    {
+      "id": "LANG-SWITCH",
+      "detail": "lang=en url=https://website-two-psi-49.vercel.app/es aria-current-es=true (html lang lags on client nav until DocumentLocale is deployed)"
+    },
+    {
+      "id": "LANG-SWITCH",
+      "detail": "lang=en url=https://website-two-psi-49.vercel.app/es aria-current-es=true (html lang lags on client nav until DocumentLocale is deployed)"
+    },
+    {
+      "id": "LANG-SWITCH",
+      "detail": "lang=en url=https://website-two-psi-49.vercel.app/es aria-current-es=true (html lang lags on client nav until DocumentLocale is deployed)"
+    },
+    {
+      "id": "MEDIA-VIDEO",
+      "detail": "videos=0 playsInline=false captionsTrack=false url=http://127.0.0.1:3184/architect/journey/chapter-1/welcome"
+    },
+    {
+      "id": "MEDIA-VIDEO",
+      "detail": "videos=0 playsInline=false captionsTrack=false url=http://127.0.0.1:3184/architect/journey/chapter-1/welcome"
+    },
+    {
+      "id": "MEDIA-VIDEO",
+      "detail": "videos=0 playsInline=false captionsTrack=false url=http://127.0.0.1:3184/architect/journey/chapter-1/welcome"
+    },
+    {
+      "id": "MEDIA-VIDEO",
+      "detail": "videos=0 playsInline=false captionsTrack=false url=http://127.0.0.1:3184/architect/journey/chapter-1/welcome"
+    }
+  ],
+  "notClaimed": [
+    "Native Safari on macOS/iOS hardware",
+    "Native Microsoft Edge on Windows",
+    "Canonical thebackhalf.org DNS from this Cloud Agent network",
+    "Live Stripe Checkout charge",
+    "Production Postgres participant accounts",
+    "Founder acceptance / Command Center Complete"
+  ],
+  "nextAction": "await_founder_acceptance",
+  "launchBlockingDefectsCorrected": [
+    {
+      "id": "html-lang-client-nav",
+      "summary": "Client-side EN/ES switching left document.documentElement.lang on the previous locale because the root layout does not re-render. Added DocumentLocale and persistLocale lang + Secure cookie.",
+      "files": [
+        "components/i18n/document-locale.tsx",
+        "app/layout.tsx",
+        "components/i18n/language-switcher.tsx"
+      ],
+      "verifiedLocal": "LANG-APP PASS lang=es on Chrome, Firefox, and WebKit after client navigation",
+      "productionUntilDeploy": "LANG-SWITCH remains GAP on current Vercel origin until this branch deploys"
+    }
+  ],
+  "validation": {
+    "typecheck": {
+      "command": "npx tsc --noEmit",
+      "result": "PASS"
+    },
+    "packageTestScript": {
+      "npmTest": "not present",
+      "nearest": "npm run fab5:row184",
+      "result": "PASS_WITH_GAPS",
+      "counts": {
+        "PASS": 145,
+        "FAIL": 0,
+        "GAP": 12,
+        "BLOCKED": 0
+      }
+    },
+    "productionBuild": {
+      "command": "npm run build",
+      "result": "PASS",
+      "ran": true
+    }
+  },
+  "host": {
+    "platform": "linux 6.12.94+",
+    "note": "Linux Cloud Agent. Safari and Edge native browsers unavailable; WebKit + Chromium equivalents used."
+  }
+}
