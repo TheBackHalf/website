@@ -31,6 +31,12 @@
     "productionBuild": {
       "ran": false,
       "reason": "Ops status file only. No production application, marketing, or legal files changed."
+    },
+    "githubCi": {
+      "commit": "b05f5e93004d0ed464ff47e3de46aa9d313d1df6",
+      "result": "PASS",
+      "checks": ["Vercel", "Vercel Preview Comments"],
+      "pr": "https://github.com/TheBackHalf/website/pull/43"
     }
   },
   "origins": {
