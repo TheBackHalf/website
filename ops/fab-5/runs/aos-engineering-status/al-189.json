@@ -13,7 +13,7 @@
   "workbookPrimaryOwnerNote": "Launch workbook and Command Center assign Row 189 TECHNOLOGY primary ownership to Imani Heartbeat. AOS assigned this engineering run to Nia Prism as supporting experience owner. Nia retested participant-facing Journey, Lumina safety, and public mobile-viewport surfaces. Nia did not change infrastructure, auth, or payment systems. Nia did not apply Cloudflare DNS, Stripe Live keys, Vercel custom-domain settings, or nameserver changes. Kimberly Walker (AI) is not an operating agent and was not treated as execution capacity.",
   "generatedAt": "2026-08-26T16:18:25.000Z",
   "branch": "cursor/aos-nia-al-189-2c80",
-  "pullRequest": null,
+  "pullRequest": "https://github.com/TheBackHalf/website/pull/23",
   "softwareChangeApplied": false,
   "productMarketingLegalFilesChanged": false,
   "stripeConfigModified": false,
