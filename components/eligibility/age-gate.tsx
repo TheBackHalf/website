@@ -148,7 +148,7 @@ export function AgeGate({ locale, next, onEligible }: AgeGateProps) {
           <div className="mt-4 space-y-3">
             <label
               htmlFor={yesId}
-              className="flex cursor-pointer items-start gap-3 font-sans text-sm font-light text-bh-ink"
+              className="bh-choice-row"
             >
               <input
                 id={yesId}
@@ -159,13 +159,12 @@ export function AgeGate({ locale, next, onEligible }: AgeGateProps) {
                 checked={choice === "yes"}
                 onChange={(event) => selectChoice(event.target.value)}
                 onClick={() => selectChoice("yes")}
-                className="mt-1 h-4 w-4 shrink-0 accent-[var(--bh-purple)]"
               />
               <span>{copy.yesLabel}</span>
             </label>
             <label
               htmlFor={noId}
-              className="flex cursor-pointer items-start gap-3 font-sans text-sm font-light text-bh-ink"
+              className="bh-choice-row"
             >
               <input
                 id={noId}
@@ -176,7 +175,6 @@ export function AgeGate({ locale, next, onEligible }: AgeGateProps) {
                 checked={choice === "no"}
                 onChange={(event) => selectChoice(event.target.value)}
                 onClick={() => selectChoice("no")}
-                className="mt-1 h-4 w-4 shrink-0 accent-[var(--bh-purple)]"
               />
               <span>{copy.noLabel}</span>
             </label>

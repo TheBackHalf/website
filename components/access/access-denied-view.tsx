@@ -12,7 +12,7 @@ export function AccessDeniedView({ locale }: AccessDeniedViewProps) {
   const copy = getDictionary(locale).access;
 
   return (
-    <main className="mx-auto flex min-h-[70vh] max-w-2xl flex-col justify-center px-6 py-16 text-bh-ink">
+    <main className="mx-auto flex min-h-[70dvh] max-w-2xl flex-col justify-center px-6 py-16 text-bh-ink">
       <h1 className="font-display text-4xl font-medium tracking-[-0.02em] md:text-5xl">
         {copy.deniedTitle}
       </h1>

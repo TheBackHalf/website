@@ -1,7 +1,8 @@
 import { headers } from "next/headers";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Outfit } from "next/font/google";
 import { ProductAnalyticsBeacon } from "@/components/analytics/product-analytics-beacon";
+import { KeyboardInsets } from "@/components/mobile/keyboard-insets";
 import { OrganizationJsonLd } from "@/components/seo/json-ld";
 import { createRootMetadata } from "@/lib/seo/metadata";
 import { isLocale } from "@/lib/i18n/config";
@@ -19,6 +20,13 @@ const sans = Outfit({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  interactiveWidget: "resizes-content",
+};
 
 export async function generateMetadata(): Promise<Metadata> {
   const headerStore = await headers();
@@ -41,7 +49,8 @@ export default async function RootLayout({
       lang={htmlLang}
       className={`${display.variable} ${sans.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col">
+      <body className="flex min-h-dvh flex-col overflow-x-clip">
+        <KeyboardInsets />
         <OrganizationJsonLd />
         <ProductAnalyticsBeacon />
         {children}

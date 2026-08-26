@@ -77,7 +77,7 @@ export function LuminaOpening({ onOpen, locale = "en" }: LuminaOpeningProps) {
 
       <HeroNav locale={locale} />
 
-      <div className="bh-reveal relative z-10 mx-auto flex min-h-[calc(100vh-6rem)] max-w-4xl flex-col items-center justify-center pt-20 md:pt-24">
+      <div className="bh-reveal relative z-10 mx-auto flex min-h-[calc(100dvh-6rem)] max-w-4xl flex-col items-center justify-center pt-20 md:pt-24">
         <h1
           id="lumina-opening-heading"
           className="bh-hero-eyebrow bh-eyebrow relative mb-6 text-bh-champagne md:mb-8"

@@ -57,7 +57,9 @@ export function AppShellNav({
       id={isMobile ? "architect-mobile-nav" : `${navId}-sidebar`}
       aria-label={dictionary.navLabel}
       className={navClasses}
-      {...(isMobile ? { "aria-hidden": !mobileOpen } : {})}
+      {...(isMobile
+        ? { "aria-hidden": !mobileOpen, ...(mobileOpen ? {} : { inert: true }) }
+        : {})}
     >
       <ul className="bh-app-nav-list" role="list">
         {architectNavItems.map(({ key, href, external }) => {
