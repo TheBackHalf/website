@@ -178,6 +178,18 @@ export const esDictionary: Dictionary = {
       "Este enlace para restablecer la contraseña ya se usó. Solicita uno nuevo.",
     missingToken: "Se requiere un enlace válido para restablecer la contraseña.",
   },
+  unsubscribe: {
+    title: "Darse de baja",
+    confirmedTitle: "Te diste de baja",
+    confirmed:
+      "Te diste de baja del correo de marketing de The Back Half. Las automatizaciones no te volverán a agregar.",
+    already:
+      "Esta dirección ya está dada de baja del correo de marketing de The Back Half. La supresión se mantiene.",
+    invalid: "Este enlace para darse de baja no es válido.",
+    missing: "Se requiere un enlace válido para darse de baja.",
+    transactionalNote:
+      "Los correos de cuenta, pago y soporte necesarios para operar tu relación con The Back Half aún pueden enviarse. No son mensajes de marketing.",
+  },
   metadata: {
     home: {
       title: "The Back Half — Magical is Possible",
@@ -250,6 +262,10 @@ export const esDictionary: Dictionary = {
       title: "Elegibilidad — The Back Half",
       description:
         "La plataforma The Back Half está disponible para personas de 18 años o más.",
+    },
+    unsubscribe: {
+      title: "Darse de baja — The Back Half",
+      description: "Darse de baja del correo de marketing de The Back Half.",
     },
     legal: (slug: string) => {
       const document = legalDocumentList.find((item) => item.slug === slug);

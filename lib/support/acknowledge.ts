@@ -1,4 +1,4 @@
-import { sendSmtpEmail } from "@/lib/auth/email/smtp";
+import { sendClassifiedEmail } from "@/lib/email/send";
 import {
   PUBLISHED_RESPONSE_HOURS,
   SUPPORT_FROM_NAME,
@@ -60,7 +60,8 @@ export async function sendSupportAcknowledgment(input: {
   const now = new Date().toISOString();
   const copy = buildAcknowledgmentText(input);
   const messageId = `<${input.ticketId.toLowerCase()}@thebackhalf.org>`;
-  const result = await sendSmtpEmail({
+  const result = await sendClassifiedEmail({
+    templateId: "support.acknowledgment",
     to: input.requesterEmail,
     subject: copy.subject,
     text: copy.text,
@@ -73,10 +74,14 @@ export async function sendSupportAcknowledgment(input: {
   });
 
   if (result.status === "sent") {
-    return { status: "sent", at: now, messageId: result.response };
+    return { status: "sent", at: now, messageId: result.smtpResponse };
   }
   if (result.status === "not_configured") {
     return { status: "not_configured", at: now, error: result.error };
   }
-  return { status: "failed", at: now, error: result.error };
+  return {
+    status: "failed",
+    at: now,
+    error: result.status === "failed" ? result.error : result.status,
+  };
 }

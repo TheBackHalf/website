@@ -14,6 +14,7 @@ export type LocalizedPath =
   | "/login"
   | "/forgot-password"
   | "/reset-password"
+  | "/unsubscribe"
   | "/checkout"
   | `/checkout/${string}`
   | "/eligibility"

@@ -314,6 +314,11 @@ export const ROW86_PRIVACY_RULES = [
   "Kit is not wired. There is no separate launch email-signup mechanism.",
 ] as const;
 
+export async function row86MayQueueEmail(email: string) {
+  const { assertAutomationMayAddRecipient } = await import("@/lib/email/list");
+  return assertAutomationMayAddRecipient(email);
+}
+
 export const ROW86_FOUNDER_DECISIONS = [
   {
     id: "contacts",

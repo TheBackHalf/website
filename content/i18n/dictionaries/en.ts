@@ -168,6 +168,18 @@ export const enDictionary: Dictionary = {
     usedToken: "This password reset link has already been used. Request a new one.",
     missingToken: "A valid password reset link is required.",
   },
+  unsubscribe: {
+    title: "Unsubscribe",
+    confirmedTitle: "You are unsubscribed",
+    confirmed:
+      "You have been unsubscribed from The Back Half marketing email. You will not be re-added by automations.",
+    already:
+      "This address is already unsubscribed from The Back Half marketing email. The suppression remains in place.",
+    invalid: "This unsubscribe link is invalid.",
+    missing: "A valid unsubscribe link is required.",
+    transactionalNote:
+      "Account, payment, and support emails that are required to operate your relationship with The Back Half may still be sent. They are not marketing messages.",
+  },
   metadata: {
     home: {
       title: siteSeoDefaults.title,
@@ -235,6 +247,10 @@ export const enDictionary: Dictionary = {
       title: "Eligibility — The Back Half",
       description:
         "The Back Half platform is available to individuals who are 18 years of age or older.",
+    },
+    unsubscribe: {
+      title: "Unsubscribe — The Back Half",
+      description: "Unsubscribe from The Back Half marketing email.",
     },
     legal: (slug: string) => {
       const document = legalDocumentList.find((item) => item.slug === slug);

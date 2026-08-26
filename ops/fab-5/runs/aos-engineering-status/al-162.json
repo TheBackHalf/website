@@ -1,0 +1,17 @@
+{
+  "aosWorkId": "al-162",
+  "row": 162,
+  "deliverable": "Implement Email Marketing Compliance and Suppression Controls",
+  "operatingAgent": "imani",
+  "repositorySoftwareChange": true,
+  "founderAcceptanceRecorded": false,
+  "rowMarkedComplete": false,
+  "validation": "ops/fab-5/runs/row-162-email-compliance-validation.json",
+  "passed": true,
+  "summary": {
+    "total": 16,
+    "pass": 16,
+    "fail": 0
+  },
+  "generatedAt": "2026-08-26T18:54:51.442Z"
+}

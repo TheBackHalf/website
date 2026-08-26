@@ -1,5 +1,5 @@
 import { getSiteUrl, isEmailDeliveryConfigured } from "@/lib/auth/config";
-import { sendSmtpEmail } from "@/lib/auth/email/smtp";
+import { sendClassifiedEmail } from "@/lib/email/send";
 import type { Locale } from "@/lib/i18n/config";
 
 type SendVerificationEmailInput = {
@@ -57,10 +57,12 @@ export async function sendVerificationEmail(
           "The Back Half",
         ].join("\n");
 
-  const result = await sendSmtpEmail({
+  const result = await sendClassifiedEmail({
+    templateId: "auth.verification",
     to: input.email,
     subject,
     text,
+    locale: input.locale,
   });
 
   if (result.status === "sent") {
@@ -68,8 +70,9 @@ export async function sendVerificationEmail(
   }
 
   if (process.env.NODE_ENV !== "production") {
+    const detail = "error" in result ? result.error : result.status;
     console.info(
-      `[Row 63] Verification email delivery failed (${result.error}). Fallback link for ${input.email}: ${verifyUrl}`,
+      `[Row 63] Verification email delivery failed (${detail}). Fallback link for ${input.email}: ${verifyUrl}`,
     );
     return { status: "logged" };
   }

@@ -165,6 +165,15 @@ export type Dictionary = {
     usedToken: string;
     missingToken: string;
   };
+  unsubscribe: {
+    title: TranslatedString;
+    confirmedTitle: TranslatedString;
+    confirmed: string;
+    already: string;
+    invalid: string;
+    missing: string;
+    transactionalNote: string;
+  };
   access: {
     deniedTitle: string;
     deniedDescription: string;
@@ -243,6 +252,7 @@ export type Dictionary = {
     checkoutCancel: { title: TranslatedString; description: TranslatedString };
     eligibility: { title: TranslatedString; description: TranslatedString };
     notEligible: { title: TranslatedString; description: TranslatedString };
+    unsubscribe: { title: TranslatedString; description: TranslatedString };
     legal: (slug: string) => {
       title: TranslatedString;
       description: TranslatedString;
