@@ -1,0 +1,684 @@
+{
+  "aosWorkId": "al-211",
+  "source": "command_center",
+  "sourceReference": "August Launch row 211",
+  "launchRow": 211,
+  "excelRow": 212,
+  "deliverable": "Create 7-Day Executive Post-Launch Plan",
+  "description": "Define September 1–7 owners and cadence for stabilization, marketing, sales reporting, support, defects, participant experience, Journey/Lumina quality, and Founder briefings. Do not allow operations to fall off after the first 72-hour stabilization window.",
+  "operatingAgent": "michelle",
+  "operatingAgentName": "Michelle Northstar",
+  "operatingAgentTitle": "Chief of Staff & Operations Officer",
+  "workbookPrimaryOwner": "michelle",
+  "supportingOwners": ["nia", "imani", "kimberly"],
+  "agentScope": "Michelle owns post-launch operations orchestration, cadence, incident coordination, logging/routing, pause of affected operations, unresolved-item tracking, and Founder briefing. Nia remains CX, social, Support, marketing execution, Triple E, and Journey/Lumina experience owner. Imani remains technical/security/monitoring/defect-fix owner. Kimberly Walker (human) is Founder acceptance and escalation only. Kimberly Walker (AI) is not an operating agent. Lumina is not an operating executive.",
+  "generatedAt": "2026-08-26T18:30:00.000Z",
+  "timezone": "America/New_York",
+  "launchDate": "2026-08-31",
+  "planPeriod": {
+    "label": "September 1–7, 2026",
+    "startEt": "2026-09-01T00:00:00-04:00",
+    "endEt": "2026-09-07T23:59:59-04:00",
+    "weekdays": [
+      { "date": "2026-09-01", "weekday": "Tuesday", "planDay": 1, "phase": "72_HOUR_STABILIZATION", "namedReview": "First 24-Hour Review" },
+      { "date": "2026-09-02", "weekday": "Wednesday", "planDay": 2, "phase": "72_HOUR_STABILIZATION", "namedReview": null },
+      { "date": "2026-09-03", "weekday": "Thursday", "planDay": 3, "phase": "72_HOUR_STABILIZATION", "namedReview": "72-Hour Stabilization Review" },
+      { "date": "2026-09-04", "weekday": "Friday", "planDay": 4, "phase": "DAYS_4_TO_7_CONTINUATION", "namedReview": null },
+      { "date": "2026-09-05", "weekday": "Saturday", "planDay": 5, "phase": "DAYS_4_TO_7_CONTINUATION", "namedReview": null },
+      { "date": "2026-09-06", "weekday": "Sunday", "planDay": 6, "phase": "DAYS_4_TO_7_CONTINUATION", "namedReview": null },
+      { "date": "2026-09-07", "weekday": "Monday", "planDay": 7, "phase": "DAYS_4_TO_7_CONTINUATION", "namedReview": "Week 1 Experience Review" }
+    ]
+  },
+  "mode": "ops-status-only",
+  "softwareChange": false,
+  "productMarketingLegalFilesChanged": false,
+  "filesWritten": [
+    "ops/fab-5/runs/aos-engineering-status/al-211.json"
+  ],
+  "markedComplete": false,
+  "workbookStatusUnchanged": true,
+  "founderAcceptance": "PENDING",
+  "founderAcceptanceAuthority": "Kimberly Walker (human)",
+  "doNotFabricateFounderApproval": true,
+  "planStatus": "DEFINED — READY FOR FOUNDER ACCEPTANCE REVIEW",
+  "nextAction": "await_founder_acceptance",
+  "purpose": "Single September 1–7 executive operating plan: owners and cadence for the eight named domains, with an explicit continuation rule so operations do not fall off after the first 72-hour stabilization window. This file does not rewrite product, marketing, or legal artifacts, does not start 72-hour stabilization, does not mark Row 211 Complete, and does not invent performance targets.",
+  "authorityRule": "Do not invent procedures. Use already-approved systems. If two sources conflict, Michelle surfaces the contradiction and does not resolve it by preference. Command Center snapshot dates (September 1–7) govern this plan; stale August 20–26 text in launch-rows.json is not used and is not rewritten here.",
+  "antiFallOffRule": {
+    "statement": "The 72-hour stabilization window is the opening intensity, not the end of operations. After the 72-Hour Stabilization Review on September 3, all eight domains continue through September 7 on the Days 4–7 cadence. No domain may go dark, be parked as handled-in-hypercare, or wait for the 30-day review.",
+    "stabilizationWindow": {
+      "label": "First 72-hour stabilization",
+      "covers": "Launch day August 31 plus September 1–3",
+      "reviewDate": "2026-09-03",
+      "owner": "michelle",
+      "priorityOrder": [
+        "reliability",
+        "access",
+        "payments",
+        "participant support",
+        "critical Journey/Lumina fixes"
+      ],
+      "beforeEnhancements": true
+    },
+    "continuationWindow": {
+      "label": "Days 4–7 continuation",
+      "covers": "September 4–7, 2026",
+      "owner": "michelle",
+      "rule": "Same eight domains. Same owners. Reduced social-sweep intensity on September 7 only (Row 83 business-day sweeps). All other domains stay daily. Weekend September 5–6 is still operating time, not a pause."
+    },
+    "notThisPlan": [
+      "30-Day Launch Performance Review Framework (August Launch row 212 / AOS al-212)",
+      "Post Launch 30-Day Operating Review (Day 30 — September 30)",
+      "Version 1.1 Prioritization (Days 21–30)",
+      "Begin 72-Hour Stabilization execution (August Launch row 226) — this plan defines cadence; it does not start stabilization"
+    ]
+  },
+  "sourcesUsed": [
+    "ops/fab-5/aos-command-center-snapshot.json (August Launch row 211 / excelRow 212; Post Launch Day 1 / Day 3 / Day 7 reviews)",
+    "ops/launch/LAUNCH-DAY-RUNBOOK-AUGUST-31-2026.md",
+    "ops/fab-5/operating-system.json",
+    "ops/fab-5/ROW-61-PRODUCTION-MONITORING.md",
+    "ops/fab-5/ROW-80-FIRST-30-DAY-POST-LAUNCH-CONTENT-PLAN.md",
+    "ops/fab-5/row-80-status.json",
+    "ops/fab-5/ROW-83-SOCIAL-ENGAGEMENT-RESPONSE-PROTOCOL.md",
+    "ops/fab-5/ROW-84-LAUNCH-MARKETING-KPI-DASHBOARD.md",
+    "ops/fab-5/ROW-86-LAUNCH-AUDIENCE-PARTNER-OUTREACH.md",
+    "ops/fab-5/row-86-status.json",
+    "ops/fab-5/ROW-151-LAUNCH-DASHBOARD.md",
+    "ops/fab-5/ROW-153-SUPPORT-CHANNELS-OPERATING-PROTOCOL.md",
+    "ops/fab-5/ROW-202-LAUNCH-DAY-RUNBOOK-VERIFICATION.md",
+    "ops/fab-5/runs/row-202-founder-acceptance-closure-2026-08-21.json",
+    "lib/launch-dashboard/brief.ts",
+    "vercel.json (hosted cycle and probe crons)",
+    "scripts/lumina-eval/README.md"
+  ],
+  "roles": {
+    "founder": {
+      "id": "founder",
+      "name": "Kimberly M. Walker",
+      "title": "Founder",
+      "september1to7Duty": "Escalation and reserved decisions only. Receives the Daily Founder Brief and immediate Attention-YES / SEV-1 / legal-reputational-privacy notices. Not the continuous monitor. Not routine Support. Not the social voice.",
+      "mayNot": [
+        "Be treated as September 1–7 continuous operator",
+        "Be asked to staff routine watch hours",
+        "Have Founder acceptance fabricated"
+      ]
+    },
+    "michelle": {
+      "id": "michelle",
+      "name": "Michelle Northstar",
+      "title": "Chief of Staff & Operations Officer",
+      "september1to7Duty": "Orchestrate the eight domains. Issue Daily Founder Briefs. Track unresolved items. Route Support/Privacy. Coordinate incidents. Pause affected operations. Consolidate named reviews (Sep 1, Sep 3, Sep 7). Prevent post-72-hour fall-off.",
+      "mayNot": [
+        "Take Imani security/infra ownership",
+        "Take Nia curriculum/brand/Triple E ownership",
+        "Administratively clear a valid Nia Triple E block or Imani tech/risk block",
+        "Send as Kimberly",
+        "Invent public claims, curriculum, or performance targets",
+        "Treat Kimberly Walker (AI) as execution capacity"
+      ]
+    },
+    "nia": {
+      "id": "nia",
+      "name": "Nia Prism",
+      "title": "Chief Experience & Transformation Officer",
+      "september1to7Duty": "Primary social voice and Support owner. Execute Row 80 Week 1 marketing from approved available assets. Validate participant experience and Journey/Lumina Triple E. Own Week 1 Experience Review on September 7. Retest participant-facing fixes.",
+      "mayNot": [
+        "Invent transformation stories or social proof",
+        "Represent Architect Community as live (Coming October 25, 2026)",
+        "Post LinkedIn or add X",
+        "Send as Kimberly",
+        "Clear an Imani technical/risk block"
+      ]
+    },
+    "imani": {
+      "id": "imani",
+      "name": "Imani Heartbeat",
+      "title": "Chief Technology & Risk Officer",
+      "september1to7Duty": "Production monitoring, technical/security containment, payment/access reliability, technical defect correction with evidence, Journey/Lumina technical behavior. Daily hosted heartbeat. Not the social voice.",
+      "mayNot": [
+        "Become the social voice if Nia and Michelle are unavailable",
+        "Change approved curriculum or brand copy",
+        "Restore over production as the first DR action",
+        "Issue refunds or change Stripe configuration from this plan",
+        "Clear a Nia Triple E block"
+      ]
+    },
+    "notOperators": [
+      "Lumina — participant-facing AI Guide only. Never monitors social, Support, or Founder briefings.",
+      "Kimberly Walker (AI) — not an operating agent and not execution capacity."
+    ]
+  },
+  "dailyOperatingRhythm": {
+    "timezone": "America/New_York",
+    "noStandingOvernightMonitor": true,
+    "firstSweepEachDay": "07:00 ET (September 1–6). September 7 social first sweep is 09:00 ET (Row 83 business-day cadence).",
+    "automatedAlwaysOn": [
+      { "what": "Row 61 production probes", "path": "GET /api/ops/monitoring/run", "cadence": "every 15 minutes", "owner": "imani" },
+      { "what": "Support inbound IMAP poll", "path": "GET /api/support/inbound", "cadence": "every 15 minutes", "owner": "nia-primary; michelle-routing" },
+      { "what": "AOS tick", "path": "GET /api/fab-5/aos/tick", "cadence": "every 15 minutes", "owner": "michelle-orchestration" }
+    ],
+    "hostedDailyCyclesUtc": [
+      { "agent": "imani", "path": "/api/fab-5/imani/heartbeat", "cronUtc": "0 14 * * *", "etDuringPlan": "10:00 AM ET", "owner": "imani" },
+      { "agent": "michelle", "path": "/api/fab-5/michelle/cycle", "cronUtc": "30 14 * * *", "etDuringPlan": "10:30 AM ET", "owner": "michelle" },
+      { "agent": "nia", "path": "/api/fab-5/nia/cycle", "cronUtc": "0 15 * * *", "etDuringPlan": "11:00 AM ET", "owner": "nia" }
+    ],
+    "watchWindows": {
+      "sep1to6": {
+        "dates": "2026-09-01 through 2026-09-06",
+        "socialAndSupportWatch": "07:00–22:00 ET",
+        "postingWindowSweeps": "Every 30 minutes 08:00–14:00 ET on any day a launch/post-launch post is scheduled; otherwise hourly",
+        "otherWatchHours": "Hourly 07:00–22:00 ET outside the posting window",
+        "michelleUnresolvedCheck": "Every 2 hours during watch hours",
+        "overnight": "No standing overnight monitor. Threat/legal/privacy seen overnight is acted on then (Row 83 §16/§17)."
+      },
+      "sep7": {
+        "date": "2026-09-07",
+        "socialSweeps": "Three business-day sweeps: 09:00 AM, 1:00 PM, 5:00 PM ET (Row 83 §2 / §17 Sep 7 onward)",
+        "otherDomains": "Daily reviews still run. Do not treat the social-sweep reduction as an operations shutdown.",
+        "michelleUnresolvedCheck": "After each of the three social sweeps, plus the Daily Founder Brief cycle"
+      }
+    },
+    "founderBriefingClock": {
+      "dailyBriefOwner": "michelle",
+      "source": "Row 151 generated Daily Founder Brief at /ops/admin/launch-dashboard (buildDailyFounderBrief)",
+      "when": "After the 10:30 AM ET Michelle cycle, using the same-day dashboard model. Issued every calendar day September 1–7 including Saturday and Sunday.",
+      "immediateEscalation": "Do not wait for the Daily Founder Brief when Founder Attention = YES, SEV-1, or Row 83 §11/§12 / OS Founder-reserved classes trigger.",
+      "founderDoesNotContinuouslyMonitor": true
+    },
+    "handoffFromLaunchDay": {
+      "from": "August 31 10:00 PM ET runbook close",
+      "to": "September 1 7:00 AM ET first sweep (Row 83 §16; runbook §13)",
+      "owner": "michelle",
+      "carries": [
+        "Final August 31 Launch Health",
+        "Unresolved incidents with owner",
+        "Support backlog (open, P1, approaching/overdue)",
+        "Purchase/conversion actuals — no invented targets",
+        "Monitoring status",
+        "Founder Attention YES/NO"
+      ]
+    }
+  },
+  "domains": {
+    "stabilization": {
+      "id": "stabilization",
+      "primaryOwner": "michelle",
+      "supporting": ["imani", "nia"],
+      "cadence": {
+        "sep1to3": "Hypercare. Reliability, access, payments, Support, and critical Journey/Lumina fixes before enhancements. Continuous automated probes. Human watch 07:00–22:00 ET.",
+        "sep4to7": "Stabilization continues as a daily operating domain, not a closed project. Open SEV-1/SEV-2 stay in hypercare until closed with evidence. Enhancements remain deferred unless they restore approved safe behavior."
+      },
+      "namedReviews": [
+        {
+          "name": "First 24-Hour Review",
+          "when": "2026-09-01",
+          "source": "Post Launch tab excelRow 2 / Day 1 — Sep 1",
+          "coordinates": "michelle",
+          "imaniValidates": ["systems", "payments", "access", "errors", "monitoring"],
+          "niaValidates": ["Architect experience", "Lumina behavior as experienced", "sentiment"],
+          "covers": ["enrollment", "payments", "access", "defects", "Lumina behavior", "support", "analytics signals", "participant sentiment"],
+          "founder": "Reserved decisions only. Brief includes Health, Attention, and Action Required."
+        },
+        {
+          "name": "72-Hour Stabilization Review",
+          "when": "2026-09-03",
+          "source": "Post Launch tab excelRow 3 / Day 3 — Sep 3; August Launch row 226 intent",
+          "coordinates": "michelle",
+          "mustConfirm": [
+            "Critical incidents closed or explicitly accepted-risk with owner",
+            "Fixes validated — Imani evidence for technical; Nia retest for participant-facing",
+            "First controlled maintenance release prioritized only if needed to restore approved behavior",
+            "Days 4–7 continuation owners and cadence confirmed — operations do not stop here"
+          ],
+          "noSelfCertification": true
+        }
+      ],
+      "systems": [
+        "/ops/admin/launch-dashboard",
+        "ops/fab-5/decision-log.json",
+        "Row 61 probes",
+        "Row 62 DR only if triggered — never restore over production first"
+      ]
+    },
+    "marketing": {
+      "id": "marketing",
+      "primaryOwner": "nia",
+      "supporting": ["michelle"],
+      "cadence": {
+        "sep1to6": "Row 83 launch-week social watch 07:00–22:00 ET. Execute Row 80 Week 1 (September 1–6, theme: Launch → orientation / understanding) from approved available assets only.",
+        "sep7": "Row 80 Week 2 begins (September 7–13, theme: Education / philosophy / Founder POV). Social watch drops to three business-day sweeps. Publishing continues only from approved available assets."
+      },
+      "row80ApprovedVolume": {
+        "instagram": "3 posts/day @backhalfco — Founder-accepted Row 80 plan",
+        "tiktok": "3 posts/day @backhalfco — Founder-accepted Row 80 plan",
+        "fullAssetProductionRequiredForThisPlan": false,
+        "executionRule": "Nia publishes only locked/approved available assets. Do not invent unpublished creatives. Do not treat missing finished assets as a license to skip social monitoring. Scheduling remains Row 82; this plan does not load or rewrite the queue."
+      },
+      "cta": {
+        "approved": "Become an Architect",
+        "destination": "https://thebackhalf.org/register",
+        "doNotPutEnrollmentCtaOnEveryPost": true
+      },
+      "community": "Coming October 25, 2026. Not live in September. Do not imply Community is live.",
+      "outOfScope": ["LinkedIn launch posting", "X / Twitter", "YouTube until Community", "invented transformation stories", "invented social proof"],
+      "partnerOutreach": {
+        "windowNamedInRow86": "EARLY POST-LAUNCH September 1–7",
+        "founderDecision": "DEFERRED — POST-LAUNCH (Row 86, 2026-08-24). Zero contacts in repository. Do not invent relationships. Do not scrape. Do not send.",
+        "ifFounderLaterAuthorizesANamedWarmContact": "Founder sends from kimberly@thebackhalf.org. Michelle logs. Nia does not run a partner campaign.",
+        "inboundOnSocial": "Nia T19 acknowledgement only. Michelle routes. Founder decides. No commitment."
+      },
+      "michelleRole": "Backup social monitor, unresolved tracker, pause of affected publishing during incidents. Does not take brand voice ownership."
+    },
+    "salesReporting": {
+      "id": "salesReporting",
+      "primaryOwner": "michelle",
+      "kpiOwner": "nia",
+      "instrumentationOwner": "imani",
+      "cadence": {
+        "everyDaySep1to7": "Daily actuals. Report; do not invent targets. Include Saturday and Sunday. Continue after September 3.",
+        "nativeSocialMetrics": "Manual Row 84 daily in the post-launch window (Instagram and TikTok only). LinkedIn is not a required reporting channel."
+      },
+      "systems": {
+        "launchDashboard": "/ops/admin/launch-dashboard",
+        "marketingKpi": "/ops/admin/launch-kpi",
+        "brief": "Row 151 Daily Founder Brief sections TRAFFIC, CONVERSION, REVENUE, ACTIVATION"
+      },
+      "campaignWindowNote": "Row 84 launch-campaign window ends 2026-09-01 12:00 AM ET exclusive (August 28–31 campaign). September 1–7 sales reporting still uses the same dashboards and daily snapshots for the immediate post-launch period. Do not rebuild a second sales system.",
+      "reportActuals": [
+        "purchases today and cumulative (historical 19 pre-launch purchases remain excluded)",
+        "gross/net revenue from billing store",
+        "registration started → completed",
+        "checkout started → paid",
+        "activation (paid ∩ onboarding started)",
+        "refunds note: The Back Half does not issue refunds; cancellation is not a refund"
+      ],
+      "doNotInventTargets": true,
+      "snapshotRule": "Row 151 daily snapshots persist. Dates before today (ET) freeze on first capture. Yesterday remains retrievable.",
+      "testData": "Live dashboards includeTest: false. Sandbox charges stay out of Founder reporting."
+    },
+    "support": {
+      "id": "support",
+      "primaryOwner": "nia",
+      "backupRouting": "michelle",
+      "technicalAfterRouting": "imani",
+      "cadence": {
+        "sep1to6": "Watch 07:00–22:00 ET. Inbound poll every 15 minutes always-on. Michelle unresolved check every 2 hours during watch. P1 is not a three-day queue item.",
+        "sep7": "Same SLA. Human sweeps align to 09:00 / 13:00 / 17:00 ET plus inbound cron. Do not park the queue because hypercare ended."
+      },
+      "channels": {
+        "mailbox": "support@thebackhalf.org",
+        "form": "https://thebackhalf.org/support",
+        "tracker": "/ops/admin/support",
+        "publicIdentity": "The Back Half Support. Never Kimberly."
+      },
+      "sla": {
+        "published": "Typically within 3 days, with a goal of 72 hours or less. Do not promise resolution time. Do not promise refunds.",
+        "P1": "4 hours internal due — broad access/checkout/payment/security/privacy/outage",
+        "P2": "24 hours — individual cannot access purchased experience; duplicate-charge; registration blocking entry; serious Lumina/Journey failure",
+        "P3": "72 hours — routine",
+        "P4": "72 hours — low"
+      },
+      "yellowTrigger": "Support approaching/overdue 72-hour expectation, or support backlog ≥ 10 → Launch Health YELLOW (Row 151).",
+      "socialHandoff": "Row 83 → Row 153 ticket source social_row83. Counted once. Michelle creates the ticket from the social-engagement log.",
+      "refunds": "None. Refund requests stay in Payment. Cancellation is not a refund."
+    },
+    "defects": {
+      "id": "defects",
+      "coordinator": "michelle",
+      "technicalOwner": "imani",
+      "experienceOwner": "nia",
+      "cadence": {
+        "sep1to3": "Triage at every Michelle unresolved check (every 2 hours during watch) plus immediate for SEV-1. Prioritize reliability, access, payments, Support, critical Journey/Lumina. No enhancements.",
+        "sep4to7": "Daily defect standup inside Michelle's cycle (10:30 AM ET) plus immediate SEV-1/SEV-2. Open defects do not reset to a 30-day backlog. Route nonessential ideas to the existing Version 1 Deferred-Enhancement Register (August Launch Row 6) — do not create a second register."
+      },
+      "severity": {
+        "SEV-1": "CRITICAL — Imani + Michelle + Nia if participant impact + Founder immediate",
+        "SEV-2": "HIGH — Michelle + domain owners; Founder if material launch/reputational/financial/reserved",
+        "SEV-3": "MODERATE — domain executive; Michelle tracks",
+        "SEV-4": "LOW — domain executive"
+      },
+      "verification": {
+        "technical": "Imani evidence required. Executor is not final verifier.",
+        "participantFacing": "Nia independent retest. Michelle cannot administratively clear a Triple E block.",
+        "productionChange": "Restore approved behavior only. Emergency containment is Imani then notify Michelle/Founder."
+      },
+      "logging": "ops/fab-5/decision-log.json for material items. Support tickets for Architect-reported defects. launch_ops_errors for application failures. Do not create a second defect tracker."
+    },
+    "participantExperience": {
+      "id": "participantExperience",
+      "primaryOwner": "nia",
+      "technicalValidation": "imani",
+      "consolidation": "michelle",
+      "cadence": {
+        "sep1to3": "Nia reviews actual Architect paths daily (register → checkout → access → onboarding). Sentiment and confusion themes from Support + social. Immediate Triple E block if experience materially fails the approved promise.",
+        "sep4to7": "Daily Nia cycle (11:00 AM ET) continues. Week 1 Experience Review on September 7 consolidates the week. Do not wait until Day 30."
+      },
+      "week1ExperienceReview": {
+        "when": "2026-09-07",
+        "source": "Post Launch tab excelRow 4 / Day 7 — Sep 7",
+        "owner": "nia",
+        "michelleConsolidates": true,
+        "covers": [
+          "activation",
+          "onboarding completion",
+          "Journey starts",
+          "support volume",
+          "email delivery",
+          "payment/access friction",
+          "early Triple E defects"
+        ]
+      },
+      "firstPartCompletion": "As first completions occur (Post Launch excelRow 5) — not gated to September 7, and not deferred if it happens during this week.",
+      "doNotInventCurriculumOrTestimonials": true
+    },
+    "journeyLuminaQuality": {
+      "id": "journeyLuminaQuality",
+      "experienceOwner": "nia",
+      "technicalOwner": "imani",
+      "coordinator": "michelle",
+      "cadence": {
+        "sep1to3": "Watch Support categories JOURNEY and LUMINA as P2 if serious failure. Imani validates save/progress/access technically. Nia validates usefulness, voice, bilingual quality, and Triple E. Critical fixes only.",
+        "sep4to7": "Daily category review in Nia's cycle. Imani heartbeat includes production-error review for Journey/Lumina surfaces. Optional eval:lumina is a stub-pipeline suite — do not treat it as live-LLM proof and do not require a new model this week."
+      },
+      "luminaIsNotAnOperator": true,
+      "privacy": "Do not log Lumina transcripts, Journey answers, or another Architect's private record in decision logs or social logs. Paraphrase.",
+      "communityNotLive": "Do not route Journey completion into a live Community. Community — Coming October 25, 2026."
+    },
+    "founderBriefings": {
+      "id": "founderBriefings",
+      "primaryOwner": "michelle",
+      "cadence": {
+        "daily": "Daily Founder Brief every calendar day September 1–7, including Saturday and Sunday, after the 10:30 AM ET Michelle cycle.",
+        "immediate": "Founder Attention YES; SEV-1; material legal/reputational; serious privacy/security; rollback / launch-stop; Row 83 §11/§12; OS six Founder-report classes.",
+        "namedReviews": "Michelle surfaces First 24-Hour (Sep 1), 72-Hour Stabilization (Sep 3), and Week 1 Experience (Sep 7) as the day's brief plus explicit review outcome. Founder is not asked to sit the review."
+      },
+      "briefFields": [
+        "Date",
+        "Launch Health GREEN/YELLOW/RED",
+        "Founder Attention YES/NO",
+        "Traffic",
+        "Conversion",
+        "Revenue",
+        "Activation",
+        "Errors",
+        "Support",
+        "Launch Risks",
+        "Action Required"
+      ],
+      "source": "lib/launch-dashboard/brief.ts via /ops/admin/launch-dashboard. Not reconstructed from memory.",
+      "osFounderReceivesOnly": [
+        "ACTION REQUIRED",
+        "DECISION REQUIRED",
+        "MATERIAL BLOCKER",
+        "MATERIAL RISK",
+        "ROW READY FOR FOUNDER ACCEPTANCE",
+        "SCHEDULE/LAUNCH THREAT"
+      ],
+      "ifNoAction": "Brief states: No Founder action required.",
+      "doNotSendOrdinaryCongratulationsVolumeToFounder": true
+    }
+  },
+  "dayByDay": [
+    {
+      "date": "2026-09-01",
+      "weekday": "Tuesday",
+      "planDay": 1,
+      "phase": "72_HOUR_STABILIZATION",
+      "headline": "Open the 7-day plan. First 24-Hour Review. Do not treat launch-day close as the end of operations.",
+      "mustDo": [
+        "07:00 ET Nia open-channel sweep of live Instagram and TikTok (first September 1 sweep).",
+        "Michelle picks up August 31 unresolved list and Support backlog.",
+        "Imani confirms Row 61 probes and Launch Health.",
+        "Nia Support watch; Michelle routes.",
+        "Sales actuals into Daily Founder Brief — no invented targets.",
+        "First 24-Hour Review: enrollment, payments, access, defects, Lumina behavior, support, analytics, sentiment. Michelle coordinates; Imani systems; Nia experience.",
+        "Marketing: Row 80 Week 1 orientation from approved available assets only."
+      ]
+    },
+    {
+      "date": "2026-09-02",
+      "weekday": "Wednesday",
+      "planDay": 2,
+      "phase": "72_HOUR_STABILIZATION",
+      "headline": "Continue hypercare. Same eight domains. Same owners.",
+      "mustDo": [
+        "Full launch-week watch 07:00–22:00 ET.",
+        "Michelle unresolved every 2 hours.",
+        "Daily Founder Brief after 10:30 AM ET cycle.",
+        "Defect triage: reliability/access/payments/Support/critical Journey-Lumina only.",
+        "Do not start enhancements."
+      ]
+    },
+    {
+      "date": "2026-09-03",
+      "weekday": "Thursday",
+      "planDay": 3,
+      "phase": "72_HOUR_STABILIZATION",
+      "headline": "72-Hour Stabilization Review. Confirm continuation through September 7 — this is the fall-off risk day.",
+      "mustDo": [
+        "72-Hour Stabilization Review: critical incidents closed or accepted-risk; Imani evidence; Nia retest for participant-facing; first controlled maintenance release only if needed to restore approved behavior.",
+        "Michelle records that Days 4–7 cadence remains in force for all eight domains.",
+        "Daily Founder Brief includes the review outcome and Action Required.",
+        "Do not declare stabilization finished as an operations stop."
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "weekday": "Friday",
+      "planDay": 4,
+      "phase": "DAYS_4_TO_7_CONTINUATION",
+      "headline": "Operations continue. Hypercare intensity may drop only where SEV-1/SEV-2 are closed. Nothing goes dark.",
+      "mustDo": [
+        "Launch-week social/support watch still applies (through Sep 6).",
+        "Daily sales reporting, Support, defects, experience, Journey/Lumina, Founder Brief.",
+        "Open SEV-1/SEV-2 remain hypercare until closed."
+      ]
+    },
+    {
+      "date": "2026-09-05",
+      "weekday": "Saturday",
+      "planDay": 5,
+      "phase": "DAYS_4_TO_7_CONTINUATION",
+      "headline": "Weekend is operating time. Daily Founder Brief still issues.",
+      "mustDo": [
+        "Social/support watch 07:00–22:00 ET.",
+        "Automated probes and inbound poll continue.",
+        "Hosted daily cycles still run (UTC crons are daily, not weekday-only).",
+        "Do not skip sales reporting or Support because it is Saturday."
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "weekday": "Sunday",
+      "planDay": 6,
+      "phase": "DAYS_4_TO_7_CONTINUATION",
+      "headline": "Last launch-week social cadence day (Row 83 §17 window ends with Sep 6).",
+      "mustDo": [
+        "Same eight-domain cadence as Saturday.",
+        "Michelle notes that September 7 social sweeps change to three business-day checks — other domains do not drop."
+      ]
+    },
+    {
+      "date": "2026-09-07",
+      "weekday": "Monday",
+      "planDay": 7,
+      "phase": "DAYS_4_TO_7_CONTINUATION",
+      "headline": "Week 1 Experience Review. Social sweep reduction is not an operations shutdown.",
+      "mustDo": [
+        "Social: 09:00 / 13:00 / 17:00 ET sweeps (Row 83 Sep 7 onward).",
+        "Nia Week 1 Experience Review: activation, onboarding completion, Journey starts, support volume, email delivery, payment/access friction, early Triple E defects.",
+        "Michelle consolidates into the Daily Founder Brief.",
+        "Sales actuals for the full September 1–7 window.",
+        "Open defects, Support SLA, and Journey/Lumina quality carry forward — they are not closed by calendar.",
+        "Do not wait for Day 30 to keep operating."
+      ]
+    }
+  ],
+  "raci": [
+    {
+      "action": "Prevent post-72-hour operational fall-off",
+      "responsible": "michelle",
+      "accountable": "michelle",
+      "consulted": "imani-nia",
+      "informed": "founder-via-daily-brief"
+    },
+    {
+      "action": "First 24-Hour Review (Sep 1)",
+      "responsible": "michelle",
+      "accountable": "michelle",
+      "consulted": "imani-systems; nia-experience",
+      "informed": "founder-reserved-only"
+    },
+    {
+      "action": "72-Hour Stabilization Review (Sep 3)",
+      "responsible": "michelle",
+      "accountable": "michelle",
+      "consulted": "imani-evidence; nia-retest",
+      "informed": "founder-if-Attention-YES-or-accepted-risk"
+    },
+    {
+      "action": "Week 1 Experience Review (Sep 7)",
+      "responsible": "nia",
+      "accountable": "nia",
+      "consulted": "imani-technical; michelle-consolidation",
+      "informed": "founder-via-daily-brief"
+    },
+    {
+      "action": "Daily Founder Brief Sep 1–7 including weekend",
+      "responsible": "michelle",
+      "accountable": "michelle",
+      "consulted": "imani-nia-source-systems",
+      "informed": "founder"
+    },
+    {
+      "action": "Production monitoring / technical containment",
+      "responsible": "imani",
+      "accountable": "imani",
+      "consulted": "michelle",
+      "informed": "founder-if-SEV-1-or-Attention-YES"
+    },
+    {
+      "action": "Social publishing and replies Sep 1–7",
+      "responsible": "nia",
+      "accountable": "nia",
+      "consulted": "michelle-backup",
+      "informed": "founder-exceptions-only"
+    },
+    {
+      "action": "Support mailbox/form/tickets",
+      "responsible": "nia",
+      "accountable": "nia",
+      "consulted": "michelle-routing; imani-if-technical-security",
+      "informed": "founder-if-escalation-criteria"
+    },
+    {
+      "action": "Sales / conversion / revenue reporting (actuals only)",
+      "responsible": "michelle",
+      "accountable": "michelle",
+      "consulted": "nia-kpi; imani-instrumentation",
+      "informed": "founder-via-daily-brief"
+    },
+    {
+      "action": "Technical defect correction restoring approved behavior",
+      "responsible": "imani",
+      "accountable": "imani",
+      "consulted": "michelle; nia-if-participant-facing",
+      "informed": "founder-if-SEV-1-or-reserved"
+    },
+    {
+      "action": "Triple E / Journey / Lumina experience quality",
+      "responsible": "nia",
+      "accountable": "nia",
+      "consulted": "imani-technical-behavior",
+      "informed": "michelle; founder-if-material-experience-failure"
+    }
+  ],
+  "coverageGaps": {
+    "niaUnavailable": "Michelle covers social and Support using the Row 83 library and Row 153 protocol. Imani does not become the social voice.",
+    "michelleUnavailable": "Imani continues technical monitoring. Nia continues CX/Support/social. Log FOUNDER ACTION REQUIRED — operations coverage gap for orchestration/briefing. Founder is still not the default monitor.",
+    "imaniUnavailable": "Michelle records the technical-coverage gap. Do not invent a second technology owner. SEV-1 still notifies Founder immediately.",
+    "founderUnavailable": "Continue approved, reversible, in-authority, non-material work. Queue Founder-reserved items. Never increase authority (operating-system.json founderUnavailableMode)."
+  },
+  "knownConstraintsAndGaps": [
+    {
+      "id": "stale-august-20-26-workbook-text",
+      "severity": "SURFACED — NOT RESOLVED HERE",
+      "fact": "launch-rows.json row 211 description still says Define August 20–26 owners. The Command Center snapshot and this AOS assignment say September 1–7.",
+      "planImplication": "This plan uses September 1–7. Michelle does not rewrite launch-rows.json in this deliverable."
+    },
+    {
+      "id": "row-80-assets-not-all-produced",
+      "severity": "LOCKED CONSTRAINT",
+      "fact": "Row 80 is Complete as a content PLAN. Full production of 180 finished assets is not required to complete Row 80. Scheduling is not required to complete Row 80.",
+      "planImplication": "September 1–7 marketing cadence follows the plan when assets exist. Missing finished assets do not authorize invented posts and do not excuse social/support monitoring."
+    },
+    {
+      "id": "partner-outreach-deferred",
+      "severity": "LOCKED CONSTRAINT",
+      "fact": "Row 86 Founder decision 2026-08-24: DEFERRED — POST-LAUNCH. Row 86 names September 1–7 as the baseline early post-launch window for contacts without a warm relationship. Repository contacts: 0.",
+      "planImplication": "No partner campaign in this plan unless Founder later names a contact and authorizes a send from kimberly@."
+    },
+    {
+      "id": "row-84-campaign-window-ended",
+      "severity": "PROCESS",
+      "fact": "Row 84 campaign window ends 2026-09-01 12:00 AM ET exclusive.",
+      "planImplication": "Use the same KPI dashboards for post-launch actuals. Do not invent a new sales-reporting product. Do not invent targets."
+    },
+    {
+      "id": "row-151-founder-acceptance-pending",
+      "severity": "PROCESS",
+      "fact": "row-151-status.json founderAccepted=false, technicalStatus ready_for_founder_acceptance.",
+      "planImplication": "This plan still uses the existing dashboard and brief as the operating briefing system because the runbook already points there. Do not mark Row 151 Complete."
+    },
+    {
+      "id": "lumina-eval-is-stub-pipeline",
+      "severity": "LOCKED CONSTRAINT",
+      "fact": "scripts/lumina-eval evaluates the current stub pipeline (no LLM provider).",
+      "planImplication": "Journey/Lumina quality this week is production-behavior plus Architect-facing Triple E, not a claim of live-model eval."
+    },
+    {
+      "id": "row-211-not-complete",
+      "severity": "PROCESS",
+      "fact": "August Launch row 211 remains Not Started in the workbook snapshot. This status file defines the 7-day plan for Founder acceptance review.",
+      "planImplication": "Do not mark Row 211 Complete. Founder acceptance stays with Kimberly Walker (human)."
+    }
+  ],
+  "prohibitions": [
+    "Do not push to main, merge, force-push, or deploy from this work.",
+    "Do not modify Stripe, Cloudflare DNS, Vercel custom-domain settings, or thebackhalf.org nameservers.",
+    "Do not print, commit, or expose secrets, API keys, or credentials.",
+    "Do not weaken authentication or security controls.",
+    "Do not change product, marketing, or legal files for this deliverable.",
+    "Do not invent performance targets, partners, testimonials, or curriculum.",
+    "Do not treat the 72-Hour Stabilization Review as the end of operations.",
+    "Do not skip Saturday/Sunday Daily Founder Briefs, sales actuals, or Support.",
+    "Do not treat Kimberly Walker (AI) as execution capacity.",
+    "Do not fabricate Founder approval or mark Founder-acceptance deliverables complete.",
+    "Do not send as Kimberly. Do not represent Community as live."
+  ],
+  "validation": {
+    "softwareChange": false,
+    "productionImpact": false,
+    "typecheck": "not required — ops status JSON only; no application TypeScript changed",
+    "test": "not required — no package test covers this ops status file; no npm test script in package.json",
+    "build": "not required — change cannot affect production"
+  },
+  "evidence": {
+    "commandPlan": "ops/fab-5/runs/aos-engineering-status/al-211.json",
+    "doesNotMarkRowComplete": true,
+    "doesNotStartStabilizationExecution": true,
+    "doesNotInventTargets": true,
+    "coversAllEightDomains": [
+      "stabilization",
+      "marketing",
+      "salesReporting",
+      "support",
+      "defects",
+      "participantExperience",
+      "journeyLuminaQuality",
+      "founderBriefings"
+    ],
+    "continuationThroughSep7After72HourWindow": true
+  }
+}
