@@ -1,0 +1,464 @@
+{
+  "aosWorkId": "al-198",
+  "row": 198,
+  "excelRow": 199,
+  "tab": "August Launch",
+  "source": "command_center",
+  "sourceReference": "August Launch row 198",
+  "deliverable": "Conduct Independent Fab 5 Triple E Review",
+  "description": "Nia Prism independently reviews the ACTUAL production experience—not the developer completion report—from discovery through enrollment, onboarding, Journey, Lumina, Blueprint, and support. Record every Energy, Elegance, and Excellence defect and block release for unresolved critical experience failures.",
+  "operatingAgent": "nia",
+  "operatingAgentFull": "Nia Prism — Chief Experience & Transformation Officer",
+  "supportingOwner": "michelle",
+  "generatedAt": "2026-08-26T17:22:00.000Z",
+  "branch": "cursor/aos-nia-al-198-77bf",
+  "pullRequest": "https://github.com/TheBackHalf/website/pull/39",
+  "softwareChangeApplied": false,
+  "productMarketingLegalFilesChanged": false,
+  "stripeConfigModified": false,
+  "dnsModified": false,
+  "vercelCustomDomainModified": false,
+  "nameserversModified": false,
+  "authModified": false,
+  "secretsPrinted": false,
+  "kimberlyWalkerAiTreatedAsOperatingAgent": false,
+  "commandCenterStatusNotUpdated": true,
+  "markedComplete": false,
+  "founderAcceptance": null,
+  "founderAcceptanceRecorded": false,
+  "founderAccepted": false,
+  "readyForFounderAcceptanceReview": false,
+  "deliverableKind": "status_only",
+  "tripleESource": "ops/fab-5/operating-system.json nia.mission; ops/fab-5/launch-rows.json Independent Fab 5 Triple E Review (Energy, Elegance, and Excellence)",
+  "architectPromise": "Protect the Architect promise: Energy, Elegant, Excellent — and keep every participant-facing surface aligned with approved curriculum, brand, and transformation outcomes.",
+  "overallResult": "TRIPLE_E_FAIL",
+  "niaReleaseBlock": true,
+  "releaseImpact": "NIA RELEASE BLOCK",
+  "overallSummary": "Independent Triple E review of the actual production experience fails. Canonical public discovery (https://thebackhalf.org) does not resolve. The reachable production host (https://website-two-psi-49.vercel.app) still shows participant-facing 'Approved copy pending' on Home, Journey, and Contact; Lumina's public page has no identity body; Spanish home H1 remains English; homepage has no skip link; canonical/OG/sitemap identity points at a different Vercel preview host; live payment completion is webhook_not_configured HTTP 503; entitled Journey on this main still opens later chapters with no sequential gate. Nia did not treat Imani/Michelle completion reports as acceptance. Entitled onboarding, Journey, Lumina conversation, and Blueprint downloads were not exercised as a logged-in paying Architect (no production account created). Row 198 is not Complete. Founder acceptance is not recorded.",
+  "authority": {
+    "experienceOwner": "Nia Prism — independent Triple E review, release block, content/experience fidelity. May not invent missing approved copy.",
+    "technologyOwner": "Imani Heartbeat — production host/canonical URL config, skip-link, Journey progression gate, Stripe webhook after Founder Live keys",
+    "operationsOwner": "Michelle Northstar — sequencing, evidence, escalation of missing approved copy. Cannot administratively clear this Triple E block.",
+    "founder": "Kimberly Walker (human) — sole Founder acceptance authority. Cloudflare DNS for thebackhalf.org remains Founder-gated. Missing approved Standards/life-area/Contact/Lumina body copy is Founder-reserved if it does not already exist in approved sources. Nia will not invent it.",
+    "clearance": "Only Nia may clear this Triple E block, after independent retest of the actual production experience. Imani may correct technical defects. Michelle may coordinate. Kimberly Walker (AI) is not an operating agent.",
+    "niaDidNotChange": [
+      "infrastructure",
+      "auth",
+      "payment systems",
+      "Stripe configuration",
+      "Cloudflare DNS",
+      "Vercel custom-domain settings",
+      "thebackhalf.org nameservers",
+      "Journey curriculum manuscript",
+      "Lumina approved voice content",
+      "legal files",
+      "product, marketing, or legal files"
+    ]
+  },
+  "dependency": {
+    "named": "Feature-Complete Production Experience",
+    "status": "NOT EVIDENCED AS COMPLETE",
+    "note": "Row 198 remains blocked by the named dependency in launch-rows.json. This review still inspected the actual reachable production host rather than waiting on a developer completion report. Absence of feature-complete evidence is itself a Triple E / Excellence gap."
+  },
+  "method": [
+    "Did not use developer completion reports as acceptance. Actual experience wins over specification PASS (nia-engines T3).",
+    "Read-only DNS-over-HTTPS and HTTP probes of https://thebackhalf.org and https://website-two-psi-49.vercel.app on 2026-08-26.",
+    "Fetched production HTML for Home, Register, Login, Journey, Lumina, Support, Contact, Checkout, Eligibility, legal pages, ES home, sitemap, robots.",
+    "Browser walk of the public participant path on the reachable production host: Home → Journey → Lumina (Meet Lumina click) → Register (age gate then form, not submitted) → Checkout (Continue on Founding Architect, stopped at login; no card entry) → Support (form not submitted) → Contact → Eligibility → /architect/journey (auth redirect).",
+    "Inspected this branch (equals main at start) for entitled Journey hub skip-ahead, Lumina page body, homepage skip-link, hero Spanish H1, chapter-2-service prerequisite absence.",
+    "Did not create production accounts, did not charge Stripe, did not mutate DNS, did not merge, did not deploy."
+  ],
+  "productionProbe2026_08_26T17_05Z": {
+    "canonicalApexDnsA": "empty — SOA only (Cloudflare NS anirban.ns.cloudflare.com / dns.cloudflare.com)",
+    "canonicalWwwDns": "NXDOMAIN (Status 3)",
+    "httpsThebackhalfOrg": "FAIL — Could not resolve host: thebackhalf.org",
+    "httpsWwwThebackhalfOrg": "FAIL — Could not resolve host: www.thebackhalf.org",
+    "productionHostReviewed": "https://website-two-psi-49.vercel.app",
+    "productionDeploymentId": "dpl_E7SLCPa181a7CFGqnCHpFigpTZFd",
+    "http": {
+      "/": 200,
+      "/register": 200,
+      "/login": 200,
+      "/journey": 200,
+      "/lumina": 200,
+      "/support": 200,
+      "/contact": 200,
+      "/checkout": 200,
+      "/eligibility": 200,
+      "/es": 200,
+      "/legal/ai-disclosure": 200,
+      "/legal/privacy-policy": 200,
+      "/legal/terms-of-use": 200,
+      "/blueprint": 404,
+      "/architect": "307 → /eligibility?next=/architect",
+      "/architect/journey": "307 → /eligibility?next=/architect/journey",
+      "/architect/lumina": "307 → /eligibility?next=/architect/lumina",
+      "/architect/onboarding": "307 → /eligibility?next=/architect/onboarding",
+      "/architect/resources": "307 → /eligibility?next=/architect/resources",
+      "/api/ops/health": 200
+    },
+    "healthBody": {
+      "ok": true,
+      "environment": "production",
+      "checks": { "application": "ok", "database": "ok" }
+    },
+    "stripeWebhookPost": {
+      "url": "https://website-two-psi-49.vercel.app/api/stripe/webhook",
+      "http": 503,
+      "body": { "error": "webhook_not_configured" }
+    },
+    "canonicalAndOg": "Production HTML canonical, hreflang, og:url, JSON-LD, robots Sitemap, and sitemap.xml loc all name https://website-4zfoye5d3-back-half.vercel.app — a different Vercel host than the production app actually served.",
+    "inPageLanguageSwitcher": "Relative / and /es — clicking Español on production stayed on website-two-psi-49.vercel.app.",
+    "secretsPrinted": false,
+    "liveChargeCreated": false,
+    "productionAccountCreated": false
+  },
+  "surfaces": {
+    "discovery": {
+      "status": "BLOCKED",
+      "actual": "thebackhalf.org does not resolve. Reachable host serves Magical is Possible. hero, manifesto, founder, Lumina teaser, and a public Standards section that literally reads Approved copy pending. Homepage has no skip link. Spanish /es keeps English H1 Magical is Possible. Final CTA still says Be the first to receive updates while the button says Become an Architect."
+    },
+    "enrollment": {
+      "status": "FAIL",
+      "actual": "Public /register age-gates then shows first/last/email/password + four legal acknowledgments after 18+ confirmation. Google sign-in not visible (googleAuthEnabled=false). Checkout catalog shows $1,500 / $1,750 / $50 with Founder-locked dates. Continue on Founding Architect goes to login — expected. Stripe webhook is HTTP 503 webhook_not_configured, so paid enrollment cannot complete in production."
+    },
+    "onboarding": {
+      "status": "UNVERIFIED_ENTITLED",
+      "actual": "Unauthenticated /architect/onboarding redirects to eligibility. No production Architect session was created. Code on this main requires entitled user + sequential onboarding steps. Not independently Triple-E tested as a live participant."
+    },
+    "journey": {
+      "status": "BLOCKED",
+      "actual": "Public /journey names seven stages. Stages 1–3 have approved headings. Stage 4 is title-only Standards. Stage 5 shows six life areas each labeled Approved copy pending. Stages 6–7 are titles only. Entitled hub on this main renders Open links for Chapters I–VII with no lock; chapter-2-service starts Chapter II with no Chapter I completion check."
+    },
+    "lumina": {
+      "status": "BLOCKED",
+      "actual": "Public /lumina is a Meet Lumina button over the avatar, then empty section shells repeating Meet Lumina, then a legal-link-only AI Disclosure (full text lives at /legal/ai-disclosure). No participant-facing identity body. Entitled /architect/lumina is auth-gated and was not opened as a paying Architect. Stub conversational depth is a known limitation, not a new safety finding in this row."
+    },
+    "blueprint": {
+      "status": "UNVERIFIED_ENTITLED",
+      "actual": "Public /blueprint is 404. Architect Resources and /api/architect/blueprint/* are auth-gated. /blueprint/print/guidebook returned HTTP 200 titled Blueprint Production without an Architect session. Personalized Blueprint representing actual Journey work was not independently verified in an entitled session. Adjacent Row 197 alignment work is not Founder-accepted and is not on this production host."
+    },
+    "support": {
+      "status": "PASS_WITH_DEFECTS",
+      "actual": "Public /support presents Architect support intro, support@thebackhalf.org, 3-day / 72-hour response expectation, urgent-concerns routing, and a crisis boundary (not a crisis service). Form appears after age handling in the browser. Contact page still shows Approved copy pending. Canonical mailbox named in production copy (support@thebackhalf.org) is not reachable via the named public domain until DNS exists."
+    }
+  },
+  "touchpoints": [
+    {
+      "id": "TEE-198-C1",
+      "touchpoint": "discovery-canonical-url",
+      "expectedExperience": "Public launch destination https://thebackhalf.org is a living Architect invitation matching approved brand.",
+      "actualExperience": "thebackhalf.org and www.thebackhalf.org do not resolve (SOA only / NXDOMAIN). curl: Could not resolve host.",
+      "tripleE": {
+        "Energy": { "result": "FAIL", "evidence": "There is no public front door at the URL named in launch communications." },
+        "Elegance": { "result": "FAIL", "evidence": "Brand destination is an unresolved hostname." },
+        "Excellence": { "result": "FAIL", "evidence": "Actual discovery experience is a DNS failure, not the approved site." }
+      },
+      "severity": "CRITICAL",
+      "releaseImpact": "NIA RELEASE BLOCK",
+      "status": "BLOCKED",
+      "owner": "founder",
+      "imaniFollowUp": "After Founder adds DNS-only A @ 10.0.1.2 and CNAME www → cname.vercel-dns.com, confirm Vercel domain Valid/HTTPS. Do not change nameservers or MX.",
+      "correctionRequired": "Founder Cloudflare DNS. Nia retests https://thebackhalf.org independently.",
+      "retestRequired": true,
+      "accessibilityFail": false
+    },
+    {
+      "id": "TEE-198-C2",
+      "touchpoint": "discovery-home-approved-copy-pending",
+      "expectedExperience": "Homepage Standards (and every public section) carries approved Architect copy. Placeholder language is not participant-facing.",
+      "actualExperience": "Production #standards renders eyebrow Standards, heading Standards, and body 'Approved copy pending' (ES: Contenido aprobado pendiente).",
+      "tripleE": {
+        "Energy": { "result": "FAIL", "evidence": "The invitation collapses into a construction note on the primary discovery surface." },
+        "Elegance": { "result": "FAIL", "evidence": "Placeholder class bh-copy-pending is visible in production." },
+        "Excellence": { "result": "FAIL", "evidence": "CONTENT EXISTS is not CONTENT APPROVED AND DELIVERED. Spec of a section is not the approved Standards promise." }
+      },
+      "severity": "CRITICAL",
+      "releaseImpact": "NIA RELEASE BLOCK",
+      "status": "BLOCKED",
+      "owner": "nia",
+      "escalation": "If approved Standards body is missing from Founder sources, escalate to Michelle then Founder. Do not invent copy. If approved copy exists, Nia specifies and Imani implements.",
+      "retestRequired": true
+    },
+    {
+      "id": "TEE-198-C3",
+      "touchpoint": "journey-marketing-life-areas-pending",
+      "expectedExperience": "Public Journey presents seven coherent stages with approved headings and life-area language. No pending placeholders.",
+      "actualExperience": "Production /journey shows six life-area cards (Health, Relationships, Purpose, Career, Adventure, Contribution) each labeled Approved copy pending. Stage 4 is the word Standards twice. Expansion and The Beginning are titles without body.",
+      "tripleE": {
+        "Energy": { "result": "FAIL", "evidence": "The Journey invitation is unfinished at the Architect life-area heart of the product." },
+        "Elegance": { "result": "FAIL", "evidence": "Six identical pending badges on the public Journey page." },
+        "Excellence": { "result": "FAIL", "evidence": "Approved life-area labels exist; body is pending in production. Existence of stage chrome is not Excellence." }
+      },
+      "severity": "CRITICAL",
+      "releaseImpact": "NIA RELEASE BLOCK",
+      "status": "BLOCKED",
+      "owner": "nia",
+      "retestRequired": true
+    },
+    {
+      "id": "TEE-198-C4",
+      "touchpoint": "lumina-public-identity",
+      "expectedExperience": "Meet Lumina delivers approved identity: who Lumina is, how she guides, and a coherent opening into the Architect relationship — Energy, Elegant, Excellent.",
+      "actualExperience": "Production /lumina: H1 Meet Lumina, button Meet Lumina, then empty section shells with the same eyebrow, then a link-only AI Disclosure. Browser click of Meet Lumina revealed no identity body. Full AI Disclosure document does exist at /legal/ai-disclosure (not a missing-legal finding).",
+      "tripleE": {
+        "Energy": { "result": "FAIL", "evidence": "Opening Lumina does not introduce a living guide; it repeats the title." },
+        "Elegance": { "result": "FAIL", "evidence": "Empty shells after a cinematic trigger are not an Elegant presence." },
+        "Excellence": { "result": "FAIL", "evidence": "content/lumina.ts marks bodyPending false but production has no body. Identity is not delivered." }
+      },
+      "severity": "CRITICAL",
+      "releaseImpact": "NIA RELEASE BLOCK",
+      "status": "BLOCKED",
+      "owner": "nia",
+      "retestRequired": true
+    },
+    {
+      "id": "TEE-198-C5",
+      "touchpoint": "enrollment-live-payment-completion",
+      "expectedExperience": "A confirmed 18+ adult can complete an approved offer through Stripe Checkout and receive Architect entitlement.",
+      "actualExperience": "Checkout catalog is visible and Continue on Founding Architect correctly requires sign-in. POST /api/stripe/webhook → HTTP 503 {error: webhook_not_configured}. No live charge was created. Nia did not change Stripe.",
+      "tripleE": {
+        "Energy": { "result": "FAIL", "evidence": "The Become an Architect path cannot complete in production." },
+        "Elegance": { "result": "FAIL", "evidence": "Offer cards look complete; the payment completion contract is not." },
+        "Excellence": { "result": "FAIL", "evidence": "FUNCTION WORKS LOCALLY / SPEC PASS is not EXPERIENCE TESTED. Webhook is not configured on the production host." }
+      },
+      "severity": "CRITICAL",
+      "releaseImpact": "NIA RELEASE BLOCK",
+      "status": "BLOCKED",
+      "owner": "founder",
+      "imaniFollowUp": "After Founder Live Stripe secret, configure live prices/webhook. Nia retests participant-facing enrollment without inventing prices.",
+      "retestRequired": true
+    },
+    {
+      "id": "TEE-198-C6",
+      "touchpoint": "home-skip-link-accessibility",
+      "expectedExperience": "Keyboard users can skip to main content on the highest-traffic public surface.",
+      "actualExperience": "Production homepage HTML has no Skip to main content control. /register, /journey, /lumina, /support, /contact, /checkout, /eligibility do. Nia engines treat critical accessibility failure as BLOCKER.",
+      "tripleE": {
+        "Energy": { "result": "FAIL", "evidence": "First interaction for keyboard users is trapped in hero nav." },
+        "Elegance": { "result": "FAIL", "evidence": "Inconsistent with every other launch page that already uses SkipLink." },
+        "Excellence": { "result": "FAIL", "evidence": "WCAG 2.4.1 Bypass Blocks fail on the public front door of the reachable host." }
+      },
+      "severity": "BLOCKER",
+      "releaseImpact": "NIA RELEASE BLOCK",
+      "status": "BLOCKED",
+      "owner": "imani",
+      "correctionRequired": "Add the existing SkipLink to HomePageView targeting a unique main id. Do not change homepage marketing copy.",
+      "retestRequired": true,
+      "accessibilityFail": true
+    },
+    {
+      "id": "TEE-198-H1",
+      "touchpoint": "journey-chapter-sequence",
+      "expectedExperience": "An entitled Architect meets chapters in approved sequence. Later chapters are locked until the previous chapter is complete; completed chapters remain revisitable.",
+      "actualExperience": "This main / production-equivalent code: journey-entry-shell.tsx entitled+onboarded path renders <Link> to Chapters I–VII with no lock. loadChapter2ForUser requires entitled onboarding only; not_started Chapter II is written in_progress with no Chapter I completion check. lib/journey/progress/gate.ts is absent on this branch. Live entitled browser pass was NOT run (no production account).",
+      "tripleE": {
+        "Energy": { "result": "FAIL", "evidence": "Transformation arc can be skipped; Energy of the Journey is sequence." },
+        "Elegance": { "result": "FAIL", "evidence": "Open/Resume on later chapters while earlier work is not_started is incoherent." },
+        "Excellence": { "result": "FAIL", "evidence": "Curriculum integrity is compromised if Chapter II can start without Chapter I." }
+      },
+      "severity": "CRITICAL",
+      "releaseImpact": "NIA RELEASE BLOCK",
+      "status": "BLOCKED",
+      "owner": "imani",
+      "note": "Imani PR #8 (Row 133) is the proposed software fix and remains unmerged. Nia does not duplicate that engine. Independent entitled browser retest is still required after it lands on production.",
+      "retestRequired": true
+    },
+    {
+      "id": "TEE-198-H2",
+      "touchpoint": "brand-canonical-identity-mismatch",
+      "expectedExperience": "Canonical, Open Graph, JSON-LD, and sitemap name the public Back Half origin the visitor is actually on (thebackhalf.org once DNS exists; until then the real production host).",
+      "actualExperience": "Served from website-two-psi-49.vercel.app but canonical/og/json-ld/sitemap/robots Sitemap name https://website-4zfoye5d3-back-half.vercel.app. getSiteUrl() uses NEXT_PUBLIC_SITE_URL / VERCEL_URL. In-page language links are relative and stayed on the production host in browser.",
+      "tripleE": {
+        "Energy": { "result": "FAIL", "evidence": "Shared/search identity points at a different preview host." },
+        "Elegance": { "result": "FAIL", "evidence": "Two Vercel hostnames for one brand is not Elegant." },
+        "Excellence": { "result": "FAIL", "evidence": "metadataBase is not the host being reviewed." }
+      },
+      "severity": "HIGH",
+      "releaseImpact": "NIA RELEASE BLOCK",
+      "status": "BLOCKED",
+      "owner": "imani",
+      "correctionRequired": "Set production site URL to the approved public origin. Do not change Cloudflare DNS or Vercel custom-domain from this Nia row.",
+      "retestRequired": true
+    },
+    {
+      "id": "TEE-198-H3",
+      "touchpoint": "spanish-home-h1",
+      "expectedExperience": "Spanish discovery carries approved Spanish brand language in the primary headline.",
+      "actualExperience": "HeroSection h1 is hardcoded Magical is Possible. for both locales. Browser confirmed /es still shows English H1 while subtext and later sections translate.",
+      "tripleE": {
+        "Energy": { "result": "FAIL", "evidence": "The first Spanish sentence is English." },
+        "Elegance": { "result": "FAIL", "evidence": "Mixed-language hero is not Elegant bilingual presence." },
+        "Excellence": { "result": "FAIL", "evidence": "Locale routing exists; the headline was not localized." }
+      },
+      "severity": "HIGH",
+      "releaseImpact": "NIA RELEASE BLOCK",
+      "status": "BLOCKED",
+      "owner": "nia",
+      "correctionRequired": "Use approved Spanish headline if one exists in Founder sources. Do not invent a new brand line. If none exists, escalate; do not ship English H1 as Spanish.",
+      "retestRequired": true
+    },
+    {
+      "id": "TEE-198-H4",
+      "touchpoint": "contact-approved-copy-pending",
+      "expectedExperience": "Contact is a finished Architect hospitality surface.",
+      "actualExperience": "Production /contact hero still renders Approved copy pending (contactPage.introPending=true). Support mailbox and Support CTA are present underneath.",
+      "tripleE": {
+        "Energy": { "result": "FAIL", "evidence": "First Contact message is a placeholder." },
+        "Elegance": { "result": "FAIL", "evidence": "Pending badge on a public utility page." },
+        "Excellence": { "result": "FAIL", "evidence": "Intro is explicitly pending in content/contact-support.ts and in production." }
+      },
+      "severity": "HIGH",
+      "releaseImpact": "NIA RELEASE BLOCK",
+      "status": "BLOCKED",
+      "owner": "nia",
+      "retestRequired": true
+    },
+    {
+      "id": "TEE-198-M1",
+      "touchpoint": "cta-waitlist-voice",
+      "expectedExperience": "Launch-week enrollment voice matches Become an Architect, not a prelaunch waitlist.",
+      "actualExperience": "Approved homepage/Lumina CTA body: Be the first to receive updates, inspiration, and exclusive access to The Back Half. Button: Become an Architect. This is locked approved copy in content/journey-stages.ts journeyCta.",
+      "tripleE": {
+        "Energy": { "result": "FAIL", "evidence": "Waitlist energy contradicts enrollment five days before 31 August 2026." },
+        "Elegance": { "result": "FAIL", "evidence": "Button and body disagree." },
+        "Excellence": { "result": "UNVERIFIED", "evidence": "Copy is approved-as-written. Nia may not autonomously rewrite the brand promise. Escalated, not rewritten." }
+      },
+      "severity": "MAJOR",
+      "releaseImpact": "CORRECT THEN RETEST",
+      "status": "FAIL",
+      "owner": "michelle",
+      "correctionRequired": "Escalate copy conflict to Michelle/Founder. Nia does not invent replacement CTA body in this row.",
+      "retestRequired": true
+    },
+    {
+      "id": "TEE-198-M2",
+      "touchpoint": "support-mailbox-named-unresolvable-domain",
+      "expectedExperience": "support@thebackhalf.org is a reachable Architect support path named on the public site.",
+      "actualExperience": "Mailbox string is correctly shown on /support and /contact. Domain thebackhalf.org does not resolve, so the named email identity is not a proven live path from this review workstation. Form itself rendered after age handling; not submitted.",
+      "tripleE": {
+        "Energy": { "result": "FAIL", "evidence": "Support identity depends on a domain that does not resolve." },
+        "Elegance": { "result": "PASS", "evidence": "Page structure, crisis boundary, and response expectation are present and coherent." },
+        "Excellence": { "result": "UNVERIFIED", "evidence": "Form was not submitted. SMTP/IMAP operational proof is owned by other rows and is not Triple E acceptance." }
+      },
+      "severity": "MAJOR",
+      "releaseImpact": "CORRECT THEN RETEST",
+      "status": "FAIL",
+      "owner": "founder",
+      "note": "Clears with TEE-198-C1 DNS plus independent support send/receive retest. Nia did not send mail.",
+      "retestRequired": true
+    },
+    {
+      "id": "TEE-198-M3",
+      "touchpoint": "entitled-onboarding-journey-lumina-blueprint",
+      "expectedExperience": "Nia independently walks entitled onboarding, Journey chapters, Lumina conversation, and personalized Blueprint downloads on production.",
+      "actualExperience": "Those surfaces 307 to eligibility/login. Nia did not create a production account or pay. Public Blueprint route 404. Print guidebook at /blueprint/print/guidebook returned 200 without a session (title Blueprint Production) — not a personalized Architect Blueprint.",
+      "tripleE": {
+        "Energy": { "result": "UNVERIFIED", "evidence": "No entitled session." },
+        "Elegance": { "result": "UNVERIFIED", "evidence": "No entitled session." },
+        "Excellence": { "result": "UNVERIFIED", "evidence": "Self-report of implementation is not evidence. UNVERIFIED entitled experience cannot be Triple E PASS." }
+      },
+      "severity": "CRITICAL",
+      "releaseImpact": "NIA RELEASE BLOCK",
+      "status": "BLOCKED",
+      "owner": "michelle",
+      "correctionRequired": "Provide a non-production-mutating entitled review path or Founder-authorized test Architect. Nia retests independently. Do not treat code inspection as entitled-experience PASS.",
+      "retestRequired": true
+    },
+    {
+      "id": "TEE-198-N1",
+      "touchpoint": "register-login-eligibility-checkout-catalog",
+      "expectedExperience": "Age gate, registration fields, login, and offer catalog match approved 18+ / pricing decisions.",
+      "actualExperience": "Browser: 18+ gate then registration fields and four legal acknowledgments. Login is present. Checkout shows $1,500 Blueprint, $1,750 Founding Architect with October 25 2026 / April 25 2027 / Aug 31–Dec 31 2026 copy, $50/month Community coming October 25 2026. Continue requires auth. Google sign-in not shown.",
+      "tripleE": {
+        "Energy": { "result": "PASS", "evidence": "Become an Architect and Choose your path are clear invitations on the reachable host." },
+        "Elegance": { "result": "PASS", "evidence": "Offer cards, 18+ disclosure, and legal acknowledgments are coherent. Google absence is not a Triple E block by itself." },
+        "Excellence": { "result": "PASS", "evidence": "Catalog and age gate match locked pricing/eligibility copy on the surfaces inspected. Payment completion is tracked separately as TEE-198-C5." }
+      },
+      "severity": "MINOR",
+      "releaseImpact": "NONE",
+      "status": "PASS",
+      "owner": "nia",
+      "retestRequired": false
+    },
+    {
+      "id": "TEE-198-N2",
+      "touchpoint": "support-crisis-boundary",
+      "expectedExperience": "Support states it is not a crisis service and points people in danger to local emergency/crisis resources.",
+      "actualExperience": "Production /support includes If you are in danger / The Back Half Support is not a crisis service. Mailbox and 3-day / 72-hour expectation are present.",
+      "tripleE": {
+        "Energy": { "result": "PASS", "evidence": "Hospitality without over-claiming care." },
+        "Elegance": { "result": "PASS", "evidence": "Crisis boundary is quiet and clear." },
+        "Excellence": { "result": "PASS", "evidence": "Matches approved support crisis copy on the public page." }
+      },
+      "severity": "MINOR",
+      "releaseImpact": "NONE",
+      "status": "PASS",
+      "owner": "nia",
+      "retestRequired": false
+    }
+  ],
+  "counts": {
+    "criticalOrBlockerOpen": 8,
+    "highOpen": 3,
+    "majorOpen": 2,
+    "passTouchpoints": 2,
+    "niaReleaseBlocks": 11,
+    "entitledSurfacesIndependentlyWalked": false
+  },
+  "whatPassedOnReachableHost": [
+    "Application and database health ok on website-two-psi-49.vercel.app",
+    "Age eligibility copy and gate on /eligibility and /register",
+    "Registration form fields and legal acknowledgments after 18+ confirmation (not submitted)",
+    "Login, forgot-password, legal documents at approved slugs (privacy-policy, terms-of-use, participant-agreement, membership-agreement, ai-disclosure)",
+    "Checkout offer catalog with locked prices and Founding Architect dates",
+    "Support crisis boundary, mailbox string, response expectation",
+    "Auth/eligibility gating of /architect/*",
+    "In-page language switcher stayed on the production host",
+    "Viewport meta width=device-width, initial-scale=1 on public pages"
+  ],
+  "notClaimed": [
+    "August Launch row 198 is not Complete",
+    "Founder acceptance is not recorded",
+    "PRODUCTION-READY / GO FOR LAUNCH is not declared",
+    "Triple E PASS is not declared",
+    "Entitled onboarding / Journey / Lumina / Blueprint were not independently walked as a paying Architect",
+    "No deploy",
+    "No Stripe, DNS, auth, or nameserver change",
+    "Missing approved copy was not invented"
+  ],
+  "imaniHandoff": [
+    {
+      "defect": "TEE-198-C6 homepage skip link",
+      "technicalCorrectionRequired": "Add existing SkipLink to HomePageView. Do not change marketing copy."
+    },
+    {
+      "defect": "TEE-198-H1 Journey chapter sequence",
+      "technicalCorrectionRequired": "Land sequential chapter gate (proposed on Imani PR #8). Nia retests entitled EN/ES hub."
+    },
+    {
+      "defect": "TEE-198-H2 canonical/OG/sitemap host",
+      "technicalCorrectionRequired": "Production NEXT_PUBLIC_SITE_URL must be the approved public origin, not a preview Vercel hostname."
+    },
+    {
+      "defect": "TEE-198-C5 webhook_not_configured",
+      "technicalCorrectionRequired": "After Founder Live Stripe, configure webhook. Nia does not touch Stripe."
+    }
+  ],
+  "michelleHandoff": {
+    "status": "BLOCKED",
+    "finding": "Independent Fab 5 Triple E Review fails on actual production experience. NIA RELEASE BLOCK in force.",
+    "severity": "CRITICAL",
+    "releaseImpact": "NIA RELEASE BLOCK",
+    "correction": "Do not mark Command Center Complete. Do not administratively clear this block. Sequence Founder DNS + missing approved copy, Imani technical corrections, then Nia independent retest of the actual production path.",
+    "retest": true,
+    "scopeClassification": "LAUNCH",
+    "confidence": "high"
+  },
+  "nextAction": "Do not ship. Founder applies canonical DNS (TEE-198-C1) and Live Stripe (TEE-198-C5). Supply or confirm approved copy for Home Standards, Journey life areas, Contact intro, Lumina identity, and Spanish H1 — Nia will not invent it. Imani implements skip-link, sequential Journey gate, and production site URL. After those land on the actual public host, Nia independently retests discovery → enrollment → entitled onboarding/Journey/Lumina/Blueprint → support. This file is not Founder acceptance.",
+  "validation": {
+    "typecheck": "PASS — ./node_modules/.bin/tsc --noEmit (package.json has no typecheck script). Status-only JSON.",
+    "test": "package.json has no test script. Nearest experience evidence is this independent production probe + browser walk, not a unit suite.",
+    "build": "skipped — status-only JSON; change cannot affect production"
+  }
+}
