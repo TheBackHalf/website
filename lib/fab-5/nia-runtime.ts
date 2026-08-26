@@ -1,3 +1,4 @@
+import { isAiControlSkipError } from "@/lib/ai-controls/gate";
 import { authorizeHeartbeatRequest } from "@/lib/fab-5/heartbeat";
 import { loadFab5OpenAiEnv } from "@/lib/fab-5/env";
 import { createLiveFab5Agents, runLiveAgent } from "@/lib/fab-5/live-runner";
@@ -139,6 +140,7 @@ async function niaOpenAi(): Promise<"PASS" | "FAIL" | "SKIPPED"> {
       }),
     ]);
     if ("timedOut" in raced) return "FAIL";
+    if (raced.capture.error && isAiControlSkipError(raced.capture.error)) return "SKIPPED";
     return raced.capture.error ? "FAIL" : "PASS";
   } catch {
     return "FAIL";

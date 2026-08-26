@@ -24,6 +24,9 @@ import { runSafetyCases } from "./cases/safety";
 import { runUsefulnessCases } from "./cases/usefulness";
 import { runVoiceCases } from "./cases/voice";
 import { setupEvalHarness, withFreshConversation, type EvalUsers } from "./harness";
+import { resetAiControlStoreForTests } from "@/lib/ai-controls/store";
+import { setAiEmergencyDisableForTests } from "@/lib/ai-controls/env";
+import { setLuminaProviderAdapterForTests } from "@/lib/ai-controls/lumina";
 
 type CategoryKey =
   | "VOICE"
@@ -50,6 +53,9 @@ async function runCategory(
   category: CategoryKey,
   fn: () => Promise<void>,
 ): Promise<CategoryResult> {
+  resetAiControlStoreForTests();
+  setAiEmergencyDisableForTests(null);
+  setLuminaProviderAdapterForTests(null);
   try {
     await fn();
     return { category, status: "PASS" };

@@ -870,6 +870,10 @@ export type Dictionary = {
       responding: string;
       retry: string;
       errorGeneric: string;
+      errorRateLimited: string;
+      errorQuota: string;
+      errorDisabled: string;
+      errorUnavailable: string;
       citationsLabel: string;
       externalLinkHint: string;
       architectLabel: string;

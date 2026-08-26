@@ -6,6 +6,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { timingSafeEqual } from "node:crypto";
 import path from "node:path";
 
+import { isAiControlSkipError } from "@/lib/ai-controls/gate";
 import { loadServerEnvAllowlist } from "@/lib/fab-5/access";
 import { classifyCommand } from "@/lib/fab-5/decision-engine";
 import { loadFab5OpenAiEnv } from "@/lib/fab-5/env";
@@ -175,6 +176,7 @@ async function openaiHostedInvoke(): Promise<"PASS" | "FAIL" | "SKIPPED"> {
       }),
     ]);
     if ("timedOut" in raced) return "FAIL";
+    if (raced.capture.error && isAiControlSkipError(raced.capture.error)) return "SKIPPED";
     return raced.capture.error ? "FAIL" : "PASS";
   } catch {
     return "FAIL";
@@ -342,7 +344,7 @@ export async function runImaniHeartbeat(input: {
   } else if (openaiLive === "SKIPPED") {
     escalations.push({
       kind: "unavailable_credentials",
-      reason: "OPENAI_API_KEY is not in this runtime. Live model invocation skipped.",
+      reason: "OPENAI_API_KEY missing, emergency disable, or usage/spend cap skipped live invocation.",
     });
   } else {
     succeeded.push("openai_live");

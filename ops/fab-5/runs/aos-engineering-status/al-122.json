@@ -1,0 +1,28 @@
+{
+  "aosWorkId": "al-122",
+  "source": "command_center",
+  "sourceReference": "August Launch row 122",
+  "title": "Establish Production AI Usage, Cost and Failure Controls",
+  "ownerAgent": "imani",
+  "status": "ACCEPTANCE_READY",
+  "founderAcceptance": null,
+  "founderAcceptanceRequired": true,
+  "merged": false,
+  "deployed": false,
+  "evidence": [
+    "ops/fab-5/runs/row-122-ai-controls-validation.json"
+  ],
+  "tests": {
+    "passed": 31,
+    "failed": 0,
+    "total": 31
+  },
+  "validation": {
+    "typecheck": "npx tsc --noEmit exit 0",
+    "testAiControls": "npm run test:ai-controls 31/31 PASS",
+    "luminaEval": "npm run eval:lumina allPassed=true",
+    "build": "npm run build exit 0"
+  },
+  "nextAction": "await_founder_acceptance",
+  "at": "2026-08-26T15:28:00.000Z"
+}

@@ -1,0 +1,256 @@
+{
+  "row": 122,
+  "aosWorkId": "al-122",
+  "title": "Establish Production AI Usage, Cost and Failure Controls",
+  "at": "2026-08-26T15:25:34.284Z",
+  "ownerAgent": "imani",
+  "founderAcceptance": null,
+  "founderAcceptanceRecorded": false,
+  "services": {
+    "lumina": {
+      "provider": "none",
+      "model": null,
+      "launchState": "first_party_stub",
+      "usageLimits": {
+        "perActorPerMinute": 20,
+        "perActorPerTenMinutes": 80,
+        "perActorPerDay": 200,
+        "globalPerDay": 4000
+      },
+      "timeoutMs": 12000,
+      "emergencyDisable": "AI_DISABLE_LUMINA=1 or AI_EMERGENCY_DISABLE=1",
+      "fallback": "If a live provider is later attached and is unavailable or quota-exhausted, continue the first-party stub so Architect conversation still works."
+    },
+    "ai_kimberly": {
+      "provider": "none",
+      "launchState": "disabled_no_public_chat",
+      "emergencyDisable": "Already off at launch. AI_DISABLE_AI_KIMBERLY=1 keeps it off."
+    },
+    "fab5": {
+      "provider": "openai",
+      "model": "gpt-5.6-luna",
+      "usageLimits": {
+        "perActorPerMinute": 4,
+        "perActorPerTenMinutes": 12,
+        "perActorPerDay": 40,
+        "globalPerDay": 80
+      },
+      "spend": {
+        "estimateUsdPer1kTokens": 0.015,
+        "estimateUsdPerRequestWhenTokensUnknown": 0.04,
+        "dailySoftAlertUsd": 15,
+        "dailyHardStopUsd": 40,
+        "monthlyHardStopUsd": 250,
+        "founderRequiredForUnbudgetedMaterialSpend": true
+      },
+      "timeoutMs": 25000,
+      "maxAttempts": 2,
+      "emergencyDisable": "AI_DISABLE_FAB5=1 or AI_EMERGENCY_DISABLE=1"
+    }
+  },
+  "emergencyDisableProcedure": [
+    "Set Vercel Production env AI_EMERGENCY_DISABLE=1 to stop Lumina live/stub sends, Fab 5 live model calls, and any AI Kimberly invoke. Per-service: AI_DISABLE_LUMINA=1, AI_DISABLE_FAB5=1, AI_DISABLE_AI_KIMBERLY=1.",
+    "Do not rotate or paste API keys in chat, traces, or git. Do not weaken auth.",
+    "Confirm degraded behavior: Lumina returns service_disabled; Fab 5 skips live invocation and continues first-party agents; AI Kimberly remains off (no public chat at launch).",
+    "Founder-owned OpenAI dashboard: pause usage, set billing alerts, or disable the key if spend is out of control. Material unbudgeted spend remains Kimberly Walker (human) reserved.",
+    "Re-enable by unsetting the env var(s) after the incident is contained. Do not mark this row Complete; Founder acceptance stays with Kimberly Walker (human)."
+  ],
+  "tests": [
+    {
+      "id": "P1",
+      "name": "Catalog covers Lumina, AI Kimberly, and Fab 5",
+      "pass": true,
+      "detail": "services=lumina,ai_kimberly,fab5"
+    },
+    {
+      "id": "P2",
+      "name": "Each service defines required control fields",
+      "pass": true,
+      "detail": "provider,modelSource,usageLimits,spend,rateLimitBehavior,timeoutRetry,fallback,degradedExperience,logging,privacy,emergencyDisable"
+    },
+    {
+      "id": "P3",
+      "name": "Lumina is first-party stub (no OpenAI at launch)",
+      "pass": true,
+      "detail": "provider=none"
+    },
+    {
+      "id": "P4",
+      "name": "AI Kimberly is disabled with no public chat",
+      "pass": true,
+      "detail": "disabled_no_public_chat"
+    },
+    {
+      "id": "P5",
+      "name": "Fab 5 uses OpenAI with bounded timeout/retry",
+      "pass": true,
+      "detail": "model=gpt-5.6-luna fallback=gpt-5.6-luna"
+    },
+    {
+      "id": "P6",
+      "name": "Emergency disable procedure is explicit",
+      "pass": true,
+      "detail": "5 steps"
+    },
+    {
+      "id": "P7",
+      "name": "Material unbudgeted spend stays Founder-reserved",
+      "pass": true,
+      "detail": "kimberly_human_only"
+    },
+    {
+      "id": "K1",
+      "name": "AI Kimberly invoke is denied at launch",
+      "pass": true,
+      "detail": "AI Kimberly has no public participant chat at launch."
+    },
+    {
+      "id": "L1",
+      "name": "Lumina stub call is allowed under default limits",
+      "pass": true,
+      "detail": "allow"
+    },
+    {
+      "id": "L2",
+      "name": "Lumina emergency disable denies sends",
+      "pass": true,
+      "detail": "Emergency disable is active for this AI service."
+    },
+    {
+      "id": "L3",
+      "name": "Lumina daily quota denies further sends",
+      "pass": true,
+      "detail": "Per-actor daily request quota reached."
+    },
+    {
+      "id": "L4",
+      "name": "Lumina per-minute rate limit denies burst",
+      "pass": true,
+      "detail": "Per-actor per-minute limit reached."
+    },
+    {
+      "id": "L5",
+      "name": "Lumina live provider unavailable falls back to first-party stub",
+      "pass": true,
+      "detail": "{\"status\":\"ok\",\"source\":\"stub\",\"spendAlerts\":[]}"
+    },
+    {
+      "id": "L6",
+      "name": "Lumina live provider quota falls back to first-party stub",
+      "pass": true,
+      "detail": "{\"status\":\"ok\",\"source\":\"stub\",\"spendAlerts\":[]}"
+    },
+    {
+      "id": "L7",
+      "name": "Lumina send path returns service_disabled when kill switch is on",
+      "pass": true,
+      "detail": "status=error code=service_disabled"
+    },
+    {
+      "id": "L8",
+      "name": "Lumina send path returns quota_exceeded when daily quota is reached",
+      "pass": true,
+      "detail": "status=error code=quota_exceeded"
+    },
+    {
+      "id": "L9",
+      "name": "Lumina send still succeeds via stub when live provider is down",
+      "pass": true,
+      "detail": "status=ok"
+    },
+    {
+      "id": "F1",
+      "name": "Fab 5 live call is allowed under default limits",
+      "pass": true,
+      "detail": "allow"
+    },
+    {
+      "id": "F2",
+      "name": "Fab 5 live-runner skips OpenAI when emergency disable is on",
+      "pass": true,
+      "detail": "AI_CONTROL_SKIP:deny_disabled"
+    },
+    {
+      "id": "F3",
+      "name": "Fab 5 skips live call when application quota is reached",
+      "pass": true,
+      "detail": "AI_CONTROL_SKIP:deny_quota"
+    },
+    {
+      "id": "F4",
+      "name": "Fab 5 spend hard stop denies live calls and flags Founder",
+      "pass": true,
+      "detail": "Estimated day spend 40.00 reached hard stop 40."
+    },
+    {
+      "id": "F5",
+      "name": "Fab 5 spend soft alert allows the call and records an alert",
+      "pass": true,
+      "detail": "alerts=1"
+    },
+    {
+      "id": "F6",
+      "name": "Nia live research does not invoke OpenAI when disabled",
+      "pass": true,
+      "detail": "AI_CONTROL_SKIP:deny_disabled"
+    },
+    {
+      "id": "C1",
+      "name": "Classify insufficient_quota as non-retryable quota",
+      "pass": true,
+      "detail": "quota"
+    },
+    {
+      "id": "C2",
+      "name": "Classify 503 unavailable as retryable",
+      "pass": true,
+      "detail": "unavailable"
+    },
+    {
+      "id": "C3",
+      "name": "Classify 429 as non-retryable rate_limited",
+      "pass": true,
+      "detail": "rate_limited"
+    },
+    {
+      "id": "R1",
+      "name": "Unavailable provider is retried once then fails closed",
+      "pass": true,
+      "detail": "attempts=2"
+    },
+    {
+      "id": "R2",
+      "name": "Quota errors are not retried",
+      "pass": true,
+      "detail": "attempts=1"
+    },
+    {
+      "id": "R3",
+      "name": "Timeouts are retried then fail closed",
+      "pass": true,
+      "detail": "attempts=2 class=timeout"
+    },
+    {
+      "id": "G1",
+      "name": "Control logs do not leak secrets, prompts, or raw actor ids",
+      "pass": true,
+      "detail": "redacted"
+    },
+    {
+      "id": "G2",
+      "name": "Lumina stub usage is recorded at $0",
+      "pass": true,
+      "detail": "estimatedUsd=0"
+    }
+  ],
+  "summary": {
+    "passed": 31,
+    "failed": 0,
+    "total": 31
+  },
+  "secretExposure": "NO",
+  "stripeMutated": "NO",
+  "dnsMutated": "NO",
+  "merged": false,
+  "note": "Application-level controls and estimated spend caps. OpenAI dashboard billing alerts remain Founder-owned. Do not treat this as Founder acceptance."
+}

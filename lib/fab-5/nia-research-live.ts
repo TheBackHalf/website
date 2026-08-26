@@ -2,6 +2,10 @@ import { Agent, Runner, getDefaultModel, setDefaultOpenAIKey, setSensitiveDataLo
 
 import { loadFab5OpenAiEnv } from "@/lib/fab-5/env";
 import { LIVE_MODEL_FALLBACK, redactSecrets } from "@/lib/fab-5/live-runner";
+import { aiControlSkipError, evaluateAiCall } from "@/lib/ai-controls/gate";
+import { withAiTimeoutAndRetry } from "@/lib/ai-controls/invoke";
+import { logAiControlEvent } from "@/lib/ai-controls/logging";
+import { recordAiUsage } from "@/lib/ai-controls/store";
 import {
   RESEARCH_BUDGET,
   canonicalUrl,
@@ -96,19 +100,33 @@ export async function niaLiveWebResearch(input: {
   maxSearches?: number;
   allowedDomains?: string[];
 }): Promise<LiveResearchHit> {
+  const empty = {
+    output: "",
+    sources: [] as ResearchSource[],
+    searchesExecuted: 0,
+    modelCalls: 0,
+    timedOut: false,
+    usage: { requests: 0, inputTokens: 0, outputTokens: 0, totalTokens: 0 },
+  };
+  const actorId = "fab5:nia-research";
+  const gate = evaluateAiCall({ service: "fab5", actorId });
+  if (!gate.allow) {
+    return {
+      invokedLive: false,
+      model: "",
+      ...empty,
+      error: aiControlSkipError(gate.decision),
+    };
+  }
+
   const loaded = loadFab5OpenAiEnv();
   const key = process.env.OPENAI_API_KEY?.trim();
   if (!loaded.keyPresent || !key) {
     return {
       invokedLive: false,
       model: "",
-      output: "",
-      sources: [],
-      searchesExecuted: 0,
-      modelCalls: 0,
-      timedOut: false,
+      ...empty,
       error: "OPENAI_API_KEY_MISSING",
-      usage: { requests: 0, inputTokens: 0, outputTokens: 0, totalTokens: 0 },
     };
   }
   setSensitiveDataLoggingEnabled(false);
@@ -139,92 +157,96 @@ export async function niaLiveWebResearch(input: {
     tracingDisabled: true,
     modelSettings: { parallelToolCalls: false },
   });
-  const started = Date.now();
-  try {
-    const raced = await Promise.race([
+  const timed = await withAiTimeoutAndRetry({
+    timeoutMs: Math.min(gate.policy.timeoutRetry.timeoutMs, RESEARCH_BUDGET.maxExecutionMs),
+    maxAttempts: gate.policy.timeoutRetry.maxAttempts,
+    retryOn: gate.policy.timeoutRetry.retryOn,
+    neverRetry: gate.policy.timeoutRetry.neverRetry,
+    run: () =>
       runner.run(
         agent,
         `LIVE RESEARCH (max ${maxSearches} searches). Question: ${input.question}\nCite official URLs. If unknown, say UNKNOWN. Do not invent competitors.`,
         { maxTurns: Math.max(2, maxSearches) },
       ),
-      new Promise<{ timedOut: true }>((resolve) => {
-        setTimeout(() => resolve({ timedOut: true }), RESEARCH_BUDGET.maxExecutionMs);
-      }),
-    ]);
-    if ("timedOut" in raced) {
-      return {
-        invokedLive: true,
-        model,
-        output: "",
-        sources: [],
-        searchesExecuted: 0,
-        modelCalls: 1,
-        timedOut: true,
-        error: "research_timeout",
-        usage: { requests: 0, inputTokens: 0, outputTokens: 0, totalTokens: 0 },
-      };
-    }
-    const output = redactSecrets(
-      typeof raced.finalOutput === "string" ? raced.finalOutput : JSON.stringify(raced.finalOutput ?? ""),
-    );
-    const titled = extractTitledUrls({ items: raced.newItems, raw: raced.rawResponses, output }).slice(
-      0,
-      RESEARCH_BUDGET.maxSources,
-    );
-    const accessedAt = new Date().toISOString();
-    const sources: ResearchSource[] = titled.map((item, index) => {
-      const classed = classifySourceTier({ url: item.url, publisher: item.publisher });
-      return {
-        sourceId: `${input.researchId}-s${index + 1}`,
-        researchId: input.researchId,
-        title: item.title.slice(0, 240),
-        publisher: item.publisher,
-        url: item.url,
-        canonicalUrl: canonicalUrl(item.url),
-        publicationDate: null,
-        accessedAt,
-        sourceType: classed.communitySentiment ? "community" : classed.primarySecondary === "PRIMARY" ? "official" : "secondary",
-        primarySecondary: classed.primarySecondary,
-        relevantClaim: output.slice(0, 400),
-        reliability: classed.reliability,
-        tier: classed.tier,
-        communitySentiment: classed.communitySentiment,
-      };
+  });
+  if ("failure" in timed) {
+    logAiControlEvent({
+      service: "fab5",
+      actorId,
+      decision: "provider_failure",
+      reason: timed.failure.message,
+      estimatedUsd: 0,
+      requests: timed.attempts,
+      tokens: 0,
+      failureClass: timed.failure.class,
+      founderActionRequired: timed.failure.class === "quota",
     });
-    const toolBlob = JSON.stringify(raced.newItems ?? []);
-    const searchesExecuted = Math.min(
-      maxSearches,
-      Math.max(1, (toolBlob.match(/web_search/g) ?? []).length || (sources.length > 0 ? 1 : 0)),
-    );
-    const usage = { requests: raced.rawResponses.length, inputTokens: 0, outputTokens: 0, totalTokens: 0 };
-    for (const response of raced.rawResponses) {
-      usage.inputTokens += response.usage?.inputTokens ?? 0;
-      usage.outputTokens += response.usage?.outputTokens ?? 0;
-      usage.totalTokens += response.usage?.totalTokens ?? 0;
-    }
-    void started;
-    return {
-      invokedLive: true,
-      model,
-      output,
-      sources,
-      searchesExecuted,
-      modelCalls: usage.requests || 1,
-      timedOut: false,
-      error: null,
-      usage,
-    };
-  } catch (error) {
     return {
       invokedLive: true,
       model,
       output: "",
       sources: [],
       searchesExecuted: 0,
-      modelCalls: 1,
-      timedOut: false,
-      error: redactSecrets(error instanceof Error ? error.message : String(error)),
+      modelCalls: timed.attempts,
+      timedOut: timed.failure.class === "timeout",
+      error: timed.failure.class === "timeout" ? "research_timeout" : redactSecrets(timed.failure.message),
       usage: { requests: 0, inputTokens: 0, outputTokens: 0, totalTokens: 0 },
     };
   }
+  const raced = timed.value;
+  const output = redactSecrets(
+    typeof raced.finalOutput === "string" ? raced.finalOutput : JSON.stringify(raced.finalOutput ?? ""),
+  );
+  const titled = extractTitledUrls({ items: raced.newItems, raw: raced.rawResponses, output }).slice(
+    0,
+    RESEARCH_BUDGET.maxSources,
+  );
+  const accessedAt = new Date().toISOString();
+  const sources: ResearchSource[] = titled.map((item, index) => {
+    const classed = classifySourceTier({ url: item.url, publisher: item.publisher });
+    return {
+      sourceId: `${input.researchId}-s${index + 1}`,
+      researchId: input.researchId,
+      title: item.title.slice(0, 240),
+      publisher: item.publisher,
+      url: item.url,
+      canonicalUrl: canonicalUrl(item.url),
+      publicationDate: null,
+      accessedAt,
+      sourceType: classed.communitySentiment ? "community" : classed.primarySecondary === "PRIMARY" ? "official" : "secondary",
+      primarySecondary: classed.primarySecondary,
+      relevantClaim: output.slice(0, 400),
+      reliability: classed.reliability,
+      tier: classed.tier,
+      communitySentiment: classed.communitySentiment,
+    };
+  });
+  const toolBlob = JSON.stringify(raced.newItems ?? []);
+  const searchesExecuted = Math.min(
+    maxSearches,
+    Math.max(1, (toolBlob.match(/web_search/g) ?? []).length || (sources.length > 0 ? 1 : 0)),
+  );
+  const usage = { requests: raced.rawResponses.length, inputTokens: 0, outputTokens: 0, totalTokens: 0 };
+  for (const response of raced.rawResponses) {
+    usage.inputTokens += response.usage?.inputTokens ?? 0;
+    usage.outputTokens += response.usage?.outputTokens ?? 0;
+    usage.totalTokens += response.usage?.totalTokens ?? 0;
+  }
+  recordAiUsage({
+    service: "fab5",
+    actorId,
+    requests: Math.max(1, usage.requests),
+    tokens: usage.totalTokens,
+  });
+  return {
+    invokedLive: true,
+    model,
+    output,
+    sources,
+    searchesExecuted,
+    modelCalls: usage.requests || 1,
+    timedOut: false,
+    error: null,
+    usage,
+  };
 }

@@ -102,11 +102,23 @@ export function LuminaConversationPanel({
     send(opener);
   }, [topic, isLoadingInitial, isPending, locale, send]);
 
+  const errorCopy =
+    error === "rate_limited"
+      ? copy.errorRateLimited
+      : error === "quota_exceeded"
+        ? copy.errorQuota
+        : error === "service_disabled"
+          ? copy.errorDisabled
+          : error === "provider_unavailable"
+            ? copy.errorUnavailable
+            : copy.errorGeneric;
+  const showRetry = error !== "service_disabled";
+
   const statusText =
     status === "sending"
       ? copy.responding
       : error
-        ? copy.errorGeneric
+        ? errorCopy
         : "";
 
   return (
@@ -169,15 +181,17 @@ export function LuminaConversationPanel({
           {error ? (
             <div className="bh-lumina-chat-error">
               <StatusNotice variant="error">
-                <p>{copy.errorGeneric}</p>
-                <button
-                  type="button"
-                  className="bh-lumina-chat-retry"
-                  onClick={retryLastFailed}
-                  disabled={isPending}
-                >
-                  {copy.retry}
-                </button>
+                <p>{errorCopy}</p>
+                {showRetry ? (
+                  <button
+                    type="button"
+                    className="bh-lumina-chat-retry"
+                    onClick={retryLastFailed}
+                    disabled={isPending}
+                  >
+                    {copy.retry}
+                  </button>
+                ) : null}
               </StatusNotice>
             </div>
           ) : null}
