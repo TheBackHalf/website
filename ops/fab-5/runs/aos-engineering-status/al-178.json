@@ -1,0 +1,283 @@
+{
+  "aosWorkId": "al-178",
+  "row": 178,
+  "excelRow": 179,
+  "source": "command_center August Launch row 178",
+  "deliverable": "Run End-to-End Enrollment Testing",
+  "description": "Test discovery through purchase, account, onboarding, assessment, Journey, completion, and membership access.",
+  "generatedAt": "2026-08-26T17:40:00.000Z",
+  "operatingAgent": "imani",
+  "cloudAgentRun": "https://cursor.com/agents/bc-419bd61e-c13a-48ac-a167-4f382c874f2f",
+  "branch": "cursor/aos-imani-al-178-b1e5",
+  "founderAccepted": false,
+  "rowMarkedComplete": false,
+  "commandCenterStatus": "Not Started",
+  "evidenceAcceptanceState": "open",
+  "overall": "PASS_WITH_GAPS",
+  "mechanicalPass": true,
+  "secretsPrinted": false,
+  "stripeConfigModified": false,
+  "dnsOrDomainModified": false,
+  "validation": {
+    "typecheck": {
+      "command": "npx tsc --noEmit",
+      "result": "PASS"
+    },
+    "packageTestScript": {
+      "npmTest": "not present",
+      "nearest": "local Puppeteer enrollment walk + production HTTP/browser probes",
+      "result": "PASS_WITH_GAPS"
+    },
+    "productionBuild": {
+      "ran": false,
+      "reason": "Ops status file only. No production application, marketing, or legal files changed."
+    },
+    "githubCi": {
+      "commit": "b05f5e93004d0ed464ff47e3de46aa9d313d1df6",
+      "result": "PASS",
+      "checks": ["Vercel", "Vercel Preview Comments"],
+      "pr": "https://github.com/TheBackHalf/website/pull/43"
+    }
+  },
+  "origins": {
+    "canonical": {
+      "url": "https://thebackhalf.org",
+      "result": "UNREACHABLE",
+      "error": "ENOTFOUND"
+    },
+    "www": {
+      "url": "https://www.thebackhalf.org",
+      "result": "UNREACHABLE",
+      "error": "ENOTFOUND"
+    },
+    "vercelProduction": {
+      "url": "https://website-two-psi-49.vercel.app",
+      "result": "REACHABLE",
+      "health": {
+        "ok": true,
+        "environment": "production",
+        "database": "ok"
+      }
+    },
+    "local": {
+      "url": "http://127.0.0.1:3000",
+      "result": "REACHABLE"
+    }
+  },
+  "stages": {
+    "discovery": {
+      "result": "PASS",
+      "evidence": [
+        "Production homepage Become an Architect CTA navigates to /register",
+        "Production /journey loads seven chapters",
+        "Local homepage CTA and /journey load"
+      ]
+    },
+    "purchase": {
+      "result": "PASS_WITH_GAPS",
+      "evidence": [
+        "Catalog shows Blueprint $1,500, Founding Architect $1,750, Community $50/month",
+        "Unconfirmed visitors hitting /checkout/{offer} redirect to /eligibility",
+        "Eligible unauthenticated visitors redirect to /login?next=/checkout/{offer}",
+        "Authenticated local Founding Architect form loads; Stripe session is not_configured without sandbox key"
+      ],
+      "notExecuted": "Live Stripe Checkout charge, webhook entitlement grant, receipts"
+    },
+    "account": {
+      "result": "PASS",
+      "evidence": [
+        "18+ gate then registration form (first/last/email/password + four legal acknowledgments)",
+        "Local email registration creates account and lands on /register/confirmation (verify-email required)",
+        "Unverified login remains on /login",
+        "Verified login reaches /architect/dashboard",
+        "Spanish /es/register loads"
+      ]
+    },
+    "onboarding": {
+      "result": "PASS_WITH_GAPS",
+      "evidence": [
+        "journey_access incomplete user is redirected dashboard \u2192 /architect/onboarding/welcome",
+        "Not-entitled user is redirected to /checkout?need=journey_access",
+        "Community-only user is redirected to /architect/dashboard (community_only)"
+      ],
+      "gap": "Automated Continue on welcome did not change URL; remaining onboarding steps (preferences, consent, lumina, assessment, awakening) were not click-completed in this run."
+    },
+    "assessment": {
+      "result": "PASS_WITH_GAPS",
+      "evidence": [
+        "Entitled user can open /architect/assessment/aliveness",
+        "Completed user Journey entry exposes View Aliveness Results"
+      ],
+      "gap": "Full 45-statement Aliveness Index was not filled and submitted in the browser."
+    },
+    "journey": {
+      "result": "PASS",
+      "evidence": [
+        "Not-entitled \u2192 /checkout?need=journey_access",
+        "Entitled completed onboarding loads /architect/journey with Chapter One and chapter entry controls"
+      ]
+    },
+    "completion": {
+      "result": "PASS_WITH_GAPS",
+      "evidence": [
+        "Seeded completed user reaches /architect/journey/chapter-7/welcome",
+        "Journey entry shows REVIEW CHAPTER SEVEN",
+        "Code path: completing Chapter VII records journey_completed"
+      ],
+      "gap": "Chapters I\u2013VII were not click-completed from empty state in this run."
+    },
+    "membership": {
+      "result": "PASS_WITH_GAPS",
+      "evidence": [
+        "Unauthenticated /architect/* redirects to eligibility then login",
+        "No journey_access: dashboard without Journey, onboarding/journey blocked",
+        "Bundle-seeded user billing: Journey access active and Community access active; Architect Resources reachable",
+        "Community-only billing: Community access active and Journey access not active"
+      ],
+      "gap": "Membership was granted via local entitlement seed, not a live Stripe purchase. Billing showed no purchases/invoices on file."
+    }
+  },
+  "browserVerification": {
+    "productionOrigin": "https://website-two-psi-49.vercel.app",
+    "result": "PASS",
+    "flows": [
+      {
+        "id": "BV1",
+        "name": "Homepage Become an Architect",
+        "result": "PASS",
+        "detail": "CTA to /register"
+      },
+      {
+        "id": "BV2",
+        "name": "Register 18+ gate then form",
+        "result": "PASS",
+        "detail": "Yes, I am 18 or older \u2192 first/last/email/password + four consents. Form not submitted on production."
+      },
+      {
+        "id": "BV3",
+        "name": "Login form",
+        "result": "PASS",
+        "detail": "Email/password Sign in"
+      },
+      {
+        "id": "BV4",
+        "name": "Checkout catalog",
+        "result": "PASS",
+        "detail": "Blueprint $1,500; Founding Architect $1,750; Community $50/month"
+      },
+      {
+        "id": "BV5",
+        "name": "Founding Architect requires login",
+        "result": "PASS",
+        "detail": "/login?next=%2Fcheckout%2Fbundle after 18+ cookie"
+      },
+      {
+        "id": "BV6",
+        "name": "Architect dashboard unauthenticated",
+        "result": "PASS",
+        "detail": "/login?next=%2Farchitect%2Fdashboard"
+      },
+      {
+        "id": "BV7",
+        "name": "Journey marketing",
+        "result": "PASS",
+        "detail": "Seven chapters visible"
+      },
+      {
+        "id": "BV8",
+        "name": "Spanish register",
+        "result": "PASS",
+        "detail": "/es/register Convi\u00e9rtete en Architect"
+      }
+    ]
+  },
+  "localAuthenticatedWalk": {
+    "origin": "http://127.0.0.1:3000",
+    "result": "PASS",
+    "passed": 24,
+    "failed": 0,
+    "note": "File-store seeds only. No production accounts created. No live charges."
+  },
+  "codePathVerification": {
+    "eligibilityThenLoginThenCheckoutOffer": true,
+    "createCheckoutSessionRequiresAuthAgeConsentServerPrice": true,
+    "offerGrants": {
+      "blueprint": [
+        "journey_access"
+      ],
+      "bundle": [
+        "journey_access",
+        "community_access"
+      ],
+      "community": [
+        "community_access"
+      ]
+    },
+    "checkoutSuccessNext": "journeyAccess \u2192 /architect/onboarding else /architect/dashboard",
+    "onboardingRequiresJourneyAccess": true,
+    "communityOnlyBlockedFromOnboarding": true,
+    "chapter7RecordsJourneyCompleted": true,
+    "billingStoreImplementation": "file (.data/billing/database.json)"
+  },
+  "counts": {
+    "PASS": 33,
+    "FAIL": 0,
+    "GAP": 5,
+    "BLOCKED": 1
+  },
+  "findings": [
+    {
+      "id": "B1",
+      "result": "BLOCKED",
+      "name": "Canonical public domain did not resolve from this environment",
+      "detail": "getaddrinfo ENOTFOUND thebackhalf.org and www.thebackhalf.org. Enrollment probes used https://website-two-psi-49.vercel.app. DNS/nameservers were not modified."
+    },
+    {
+      "id": "G1",
+      "result": "GAP",
+      "name": "Live paid purchase path not executed",
+      "detail": "Stripe configuration is out of scope. No sandbox key in this environment. A live charge was not created. Row 179 covers payment/subscription testing."
+    },
+    {
+      "id": "G2",
+      "result": "GAP",
+      "name": "Billing entitlements persist in a local file store",
+      "detail": "getBillingStore() uses createFileBillingStore(). Auth users can persist in Postgres when configured. Production post-purchase membership durability after webhook grant was not live-verified."
+    },
+    {
+      "id": "G3",
+      "result": "GAP",
+      "name": "Onboarding Continue from welcome did not advance in automation",
+      "detail": "Welcome loaded at /architect/onboarding/welcome. Automated Continue left the same URL. Preferences through awakening were not click-completed."
+    },
+    {
+      "id": "G4",
+      "result": "GAP",
+      "name": "Assessment and Journey completion were not click-walked from empty state",
+      "detail": "Assessment route opened. Completed-user Chapter VII welcome opened. Full Aliveness Index and seven-chapter completion were not filled in the browser."
+    },
+    {
+      "id": "G5",
+      "result": "GAP",
+      "name": "No production test accounts used",
+      "detail": "Row 176 production test accounts were not available in this run. Local file-store seeds were used for authenticated stages."
+    }
+  ],
+  "notClaimed": [
+    "Founder acceptance / Command Center Complete",
+    "Live Stripe Checkout charge, webhook signature success, receipts, or refunds",
+    "Canonical thebackhalf.org DNS from this Cloud Agent environment",
+    "SMTP verification email delivery",
+    "Google OAuth live registration",
+    "Production Postgres participant accounts",
+    "Click-complete of every onboarding step, Aliveness Index, and chapters I\u2013VII from empty state"
+  ],
+  "nextAction": "Row 179 should execute sandbox/live payment and webhook recovery. Canonical DNS reachability remains a launch-domain check (Row 75). Command Center row 178 stays open. Kimberly Walker (human) remains the sole Founder acceptance authority.",
+  "artifacts": [
+    "/opt/cursor/artifacts/screenshots/al178_discovery_home.png",
+    "/opt/cursor/artifacts/screenshots/al178_checkout_catalog.png",
+    "/opt/cursor/artifacts/screenshots/al178_register_after_age_gate.png",
+    "/opt/cursor/artifacts/screenshots/al178_journey_entitled.png",
+    "/opt/cursor/artifacts/screenshots/al178_membership_billing.png"
+  ]
+}
