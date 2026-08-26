@@ -1,0 +1,284 @@
+{
+  "aosWorkId": "al-155",
+  "row": 155,
+  "excelRow": 156,
+  "tab": "August Launch",
+  "source": "command_center",
+  "sourceReference": "August Launch row 155",
+  "deliverable": "Operationalize Architect Support",
+  "description": "Move from support-page design to an actual operating support function. Confirm support inbox, intake flow, ownership, response target, escalation categories, payment/access escalation, Lumina escalation, legal/privacy escalation, issue tracking, and backup coverage. Send and receive a real test request.",
+  "operatingAgent": "nia",
+  "operatingAgentFull": "Nia Prism — Chief Experience & Transformation Officer",
+  "workbookPrimaryOwner": "michelle",
+  "workbookPrimaryOwnerNote": "Launch workbook lists Michelle Northstar as OPERATIONS workstream owner. AOS assigned this execution to Nia Prism, who is the primary support / customer-experience operator. That split is preserved. Nia did not assume Michelle's operations-workstream ownership or Imani's technical ownership.",
+  "generatedAt": "2026-08-26T15:50:30.000Z",
+  "timezoneNote": "America/New_York for published 72-hour expectation; timestamps in this file are UTC unless labeled ET.",
+  "branch": "cursor/aos-nia-al-155-a058",
+  "pullRequest": "https://github.com/TheBackHalf/website/pull/15",
+  "softwareChangeApplied": false,
+  "productMarketingLegalFilesChanged": false,
+  "stripeConfigModified": false,
+  "dnsModified": false,
+  "vercelCustomDomainModified": false,
+  "authModified": false,
+  "secretsPrinted": false,
+  "kimberlyWalkerAiTreatedAsOperatingAgent": false,
+  "commandCenterStatusNotUpdated": true,
+  "markedComplete": false,
+  "founderAcceptance": null,
+  "founderAcceptanceRecorded": false,
+  "founderAccepted": false,
+  "readyForFounderAcceptanceReview": true,
+  "method": [
+    "Inspected Row 153 operating protocol, ticket catalog/classifier/escalation, /support page, inbound IMAP poll, and ops console.",
+    "Probed live production on the Row 75 technical host https://website-two-psi-49.vercel.app (canonical thebackhalf.org still does not resolve).",
+    "Confirmed Google Workspace MX for support@thebackhalf.org without changing DNS.",
+    "Submitted one labeled GENERAL production form request after age attestation. Did not send a live P1, privacy, payment-card, or legal email.",
+    "Received the automated acknowledgment at a disposable mailbox created for this test.",
+    "Confirmed payment/access, Lumina, privacy, and legal routing from the production classifier without creating additional live tickets."
+  ],
+  "authority": {
+    "primarySupportOwner": "Nia Prism — Chief Experience & Transformation Officer",
+    "backupRoutingOwner": "Michelle Northstar — Chief of Staff & Operations Officer",
+    "technicalSecurityOwner": "Imani Heartbeat — Chief Technology & Risk Officer",
+    "founder": "Kimberly Walker (human) — escalation only; sole Founder acceptance authority",
+    "kimberlyWalkerAi": "Not an operating agent. Not support coverage. Not execution capacity.",
+    "lumina": "Not an operating executive. Does not monitor support.",
+    "publicIdentity": "The Back Half Support from support@thebackhalf.org. Never reply as Kimberly or from a personal Founder mailbox.",
+    "noLegalMailbox": true
+  },
+  "confirmations": {
+    "supportInbox": {
+      "status": "CONFIRMED",
+      "address": "support@thebackhalf.org",
+      "publicSender": "The Back Half Support",
+      "mx": [
+        "1 aspmx.l.google.com.",
+        "5 alt1.aspmx.l.google.com.",
+        "5 alt2.aspmx.l.google.com.",
+        "10 alt3.aspmx.l.google.com.",
+        "10 alt4.aspmx.l.google.com."
+      ],
+      "privacyMailboxReserved": "privacy@thebackhalf.org (not a second tracker; Privacy is a ticket category)",
+      "note": "Google Workspace MX is live. Canonical website A/AAAA records are still absent (Row 75). Outbound SMTP from this mailbox delivered the live acknowledgment below. This row did not change MX, SPF, DKIM, DMARC, nameservers, or Cloudflare DNS."
+    },
+    "intakeFlow": {
+      "status": "CONFIRMED",
+      "publicFormCanonical": "https://thebackhalf.org/support",
+      "publicFormCanonicalResolves": false,
+      "publicFormProductionHost": "https://website-two-psi-49.vercel.app/support",
+      "publicFormProductionHttp": 200,
+      "spanishForm": "https://website-two-psi-49.vercel.app/es/support",
+      "spanishFormHttp": 200,
+      "formFields": [
+        "Name",
+        "Email",
+        "Support Category",
+        "Subject",
+        "Message",
+        "optional Are you already an Architect?"
+      ],
+      "formProhibitsSecrets": true,
+      "ageGate": "POST /api/eligibility/confirm attestedAdult=true → eligible cookie; POST /api/support/request without it returns age_ineligible",
+      "emailIntake": "IMAP poll GET /api/support/inbound (Vercel cron */15) plus console Fetch inbound mail; replies with [BH-S-…] attach to the existing ticket",
+      "socialHandoff": "Row 83 private acknowledgment → support@ or /support → ticket source social_row83",
+      "liveFormPost": "PASS — status=received ticketId=BH-S-20260826-UJSUM acknowledgment=sent"
+    },
+    "ownership": {
+      "status": "CONFIRMED",
+      "primary": "nia — Nia Prism, routine CX / Architect-experience tickets (ONBOARDING, JOURNEY, LUMINA, DOWNLOADS, MEMBERSHIP, GENERAL, OTHER)",
+      "backup": "michelle — Michelle Northstar, routing and default owner for ACCOUNT_LOGIN, REGISTRATION, PAYMENT_BILLING, TECHNICAL, PRIVACY",
+      "technical": "imani — Imani Heartbeat after routing for technical, security, privacy/security investigation",
+      "founder": "Escalation only when legal, reputational, or Founder-criteria are met",
+      "consoleStates": "Nia primary / Michelle backup / Imani technical are printed on /ops/admin/support"
+    },
+    "responseTarget": {
+      "status": "CONFIRMED",
+      "publishedArchitectExpectation": "We typically respond within 3 days, with a goal of 72 hours or less. This is a response expectation, not a promise of immediate resolution.",
+      "doNotPromiseResolutionTime": true,
+      "doNotPromiseRefunds": true,
+      "internalSlaHours": {
+        "P1": 4,
+        "P2": 24,
+        "P3": 72,
+        "P4": 72
+      },
+      "p1NotOrdinaryThreeDayQueue": true,
+      "liveAcknowledgmentTimingParagraph": "We typically respond within 3 days, with a goal of 72 hours or less. Urgent security and privacy concerns are prioritized."
+    },
+    "escalationCategories": {
+      "status": "CONFIRMED",
+      "ids": [
+        "ACCOUNT_LOGIN",
+        "REGISTRATION",
+        "PAYMENT_BILLING",
+        "ONBOARDING",
+        "JOURNEY",
+        "LUMINA",
+        "DOWNLOADS_MATERIALS",
+        "MEMBERSHIP",
+        "PRIVACY",
+        "TECHNICAL",
+        "GENERAL",
+        "OTHER"
+      ],
+      "refundCategoryPresent": false,
+      "refundHandling": "The Back Half does not issue refunds. Payment questions, including refund requests, stay in Payment.",
+      "priorities": ["P1", "P2", "P3", "P4"],
+      "ticketStatuses": [
+        "NEW",
+        "IN_PROGRESS",
+        "WAITING_ON_ARCHITECT",
+        "ESCALATED",
+        "RESOLVED",
+        "CLOSED"
+      ]
+    },
+    "paymentAccessEscalation": {
+      "status": "CONFIRMED",
+      "category": "PAYMENT_BILLING (label: Payment) and ACCOUNT_LOGIN for access/login",
+      "individualCannotAccessPurchasedExperience": {
+        "priority": "P2",
+        "internalDueHours": 24,
+        "defaultOwner": "michelle",
+        "autoEscalationTargets": [],
+        "note": "P2 High. Not treated as a three-day informational queue item. No public refund promise."
+      },
+      "paymentOrCheckoutOutage": {
+        "priority": "P1",
+        "internalDueHours": 4,
+        "defaultOwner": "michelle",
+        "autoEscalation": "Imani Heartbeat for outage / material access failure; Founder if exception/chargeback severity"
+      },
+      "classifierProbe": "PAYMENT_BILLING + cannot-access-after-purchase → P2 / michelle / no auto-escalation"
+    },
+    "luminaEscalation": {
+      "status": "CONFIRMED",
+      "category": "LUMINA",
+      "defaultOwner": "nia",
+      "defaultPriority": "P2",
+      "materialFailure": {
+        "trigger": "cannot continue / cannot access / materially preventing / after purchase, or P1",
+        "targets": ["nia"],
+        "reason": "Material Architect-experience failure.",
+        "backup": "Michelle Northstar"
+      },
+      "classifierProbe": "LUMINA + Lumina is not working / cannot continue → P2 / nia / escalate nia"
+    },
+    "legalPrivacyEscalation": {
+      "status": "CONFIRMED",
+      "privacy": {
+        "category": "PRIVACY",
+        "priority": "P1",
+        "defaultOwner": "michelle",
+        "autoEscalationTargets": ["imani"],
+        "reason": "Technical, security, or privacy/security incident.",
+        "doNotRepeatSecrets": true,
+        "noSecondTracker": true
+      },
+      "legal": {
+        "trigger": "attorney / lawyer / lawsuit / litigation / subpoena / regulator / legal threat",
+        "targets": ["founder"],
+        "reason": "Legal / reputational matter. Do not invent a legal@ mailbox.",
+        "publicReply": "No substantive social/legal reply. Decision log ACTION REQUIRED."
+      },
+      "classifierProbePrivacy": "PRIVACY → P1 / michelle / escalate imani",
+      "classifierProbeLegal": "attorney + litigation → escalate founder; no legal@ created"
+    },
+    "issueTracking": {
+      "status": "CONFIRMED",
+      "console": "/ops/admin/support",
+      "consoleLiveHttp": 307,
+      "consoleLiveLocation": "/login?next=%2Fops%2Fadmin%2Fsupport",
+      "storeProduction": "support_tickets (Postgres; hosted production does not fall back to .data/)",
+      "storeLocal": ".data/support/tickets.json (gitignored; local/tests only)",
+      "ticketIdFormat": "BH-S-YYYYMMDD-XXXXX",
+      "dashboard": "/ops/admin/launch-dashboard (Row 151 support strip)",
+      "liveTicketCreated": "BH-S-20260826-UJSUM",
+      "adminFetchInbound": "Fetch inbound mail on the console; Vercel Hobby may not honor 15-minute cron"
+    },
+    "backupCoverage": {
+      "status": "CONFIRMED",
+      "primary": "Nia Prism — Architect support / CX voice / ticket operation",
+      "backup": "Michelle Northstar — backup, routing, operational coverage, unresolved-list cadence",
+      "technicalAfterRouting": "Imani Heartbeat",
+      "founder": "Escalation only. Not routine coverage.",
+      "recoveryPath": "Nia → Michelle → Founder",
+      "watchHours": "Launch-day / first-72-hour watch remains 7:00 AM–10:00 PM ET. No standing overnight monitor.",
+      "row157": "First-72-Hour Support Coverage Plan is a separate Command Center row (al-157). This row confirms the standing backup model; it does not close Row 157 or Row 201."
+    }
+  },
+  "realTestRequest": {
+    "status": "PASS",
+    "send": "PASS",
+    "receive": "PASS",
+    "kind": "live_production_form_plus_smtp_acknowledgment",
+    "notSynthetic": true,
+    "host": "https://website-two-psi-49.vercel.app",
+    "endpoint": "POST /api/support/request",
+    "category": "GENERAL",
+    "priorityExpected": "P3",
+    "ownerExpected": "nia",
+    "submittedAtUtc": "2026-08-26T15:48:00.000Z",
+    "ticketId": "BH-S-20260826-UJSUM",
+    "apiResult": {
+      "status": "received",
+      "ticketId": "BH-S-20260826-UJSUM",
+      "acknowledgment": "sent"
+    },
+    "acknowledgmentReceived": {
+      "fromName": "The Back Half Support",
+      "fromAddress": "support@thebackhalf.org",
+      "subject": "We received your request [BH-S-20260826-UJSUM]",
+      "containsTicketId": true,
+      "containsPublishedSla": true,
+      "containsSecretWarning": true,
+      "replyToIdentity": "The Back Half Support / support@thebackhalf.org",
+      "body": "Hello AOS Nia Operational Test,\n\nThank you for writing to The Back Half Support.\n\nWe received your request and created ticket BH-S-20260826-UJSUM.\n\nWe typically respond within 3 days, with a goal of 72 hours or less. Urgent security and privacy concerns are prioritized.\n\nPlease do not send passwords, payment-card information, or other sensitive account information in reply.\n\nThis is an automated acknowledgment. A member of The Back Half Support will follow up.\n\nThe Back Half Support\nsupport@thebackhalf.org"
+    },
+    "operatorNote": "This is a controlled AOS al-155 operational test. Not a live Architect issue. Nia/Michelle should close BH-S-20260826-UJSUM after review. No password or payment-card data was sent."
+  },
+  "dependencies": {
+    "contactAndSupportPagesRow96": "Complete in launch workbook. /support and /es/support render on the production host.",
+    "businessEmailRow67": "Complete in launch workbook. MX to Google is live. SPF/DKIM/DMARC publication is not this row (Row 161).",
+    "row153ConfigureSupportChannels": "Operating protocol exists. Protocol file records Founder Acceptance 2026-08-21. Launch workbook still shows Row 153 In Progress / founderActionRequired. This row did not rewrite Row 153 status.",
+    "row75CanonicalDns": "OPEN. thebackhalf.org / www do not resolve. Public form URL in copy is https://thebackhalf.org/support. Operating proof used the established Vercel technical host. DNS was not changed.",
+    "row157First72HourCoverage": "Separate deliverable. Standing backup is confirmed here.",
+    "row161EmailDeliverability": "SPF TXT is not a v=spf1 record; DKIM/DMARC lookups for common selectors NXDOMAIN. Not changed. Not claimed closed."
+  },
+  "knownLimitations": [
+    "Canonical https://thebackhalf.org/support does not resolve until Row 75 address records exist. The operating function was proven on https://website-two-psi-49.vercel.app/support.",
+    "SPF/DKIM/DMARC are incomplete on thebackhalf.org. The live acknowledgment still arrived at an external mailbox. Full sender-authentication proof belongs to Row 161.",
+    "This workstation has no .env.local. Production SMTP on Vercel sent the acknowledgment. SMTP_PASSWORD was not printed.",
+    "No additional live P1 / privacy / legal tickets were created. Those paths are confirmed by the production classifier and the accepted Row 153 protocol/tests.",
+    "BH-S-20260826-UJSUM remains in the production tracker until an operator closes it."
+  ],
+  "notDone": [
+    "Did not mark Command Center / August Launch row 155 Complete.",
+    "Did not record Founder acceptance. Acceptance stays with Kimberly Walker (human).",
+    "Did not change product, marketing, or legal files.",
+    "Did not change Stripe, Cloudflare DNS, Vercel custom-domain settings, nameservers, auth, or payment systems.",
+    "Did not invent a legal@ mailbox or a nia@ mailbox.",
+    "Did not treat Kimberly Walker (AI) as execution capacity.",
+    "Did not merge or deploy."
+  ],
+  "founderActionsRequired": [
+    "Founder acceptance of Row 155 remains with Kimberly Walker (human). Do not treat this PR as silent completion."
+  ],
+  "protocol": "ops/fab-5/ROW-153-SUPPORT-CHANNELS-OPERATING-PROTOCOL.md",
+  "relatedEvidence": [
+    "ops/fab-5/runs/row-153-support-channels-validation.json",
+    "ops/fab-5/runs/row-153-smtp-delivery-verification.json",
+    "ops/fab-5/row-153-status.json"
+  ],
+  "validation": {
+    "typecheck": "PASS — npx tsc --noEmit (no npm run typecheck script)",
+    "test": "SKIP — no npm test script in package.json",
+    "build": "SKIP — ops status JSON only; production app not changed",
+    "nearestSupportValidation": "npx tsx classifier probe for payment/Lumina/privacy/legal routing — PASS",
+    "merged": false,
+    "deployed": false
+  },
+  "finalStatus": "OPERATING FUNCTION CONFIRMED — ACCEPTANCE READY. Support inbox, intake, ownership, 72-hour response target, escalation categories, payment/access escalation, Lumina escalation, legal/privacy escalation, issue tracking, and Michelle backup coverage are in place. A real production test request created ticket BH-S-20260826-UJSUM and the automated acknowledgment was received from The Back Half Support <support@thebackhalf.org>. Founder acceptance is not recorded. Row 155 is not marked Complete.",
+  "aosIngestRecommendation": "Park as ACCEPTANCE_READY / await_founder_acceptance. Do not auto-complete Command Center row 155."
+}
