@@ -362,9 +362,10 @@ async function main() {
     );
     push(
       "offer-auth-at-purchase",
-      "Specific offer continues to login with next=/checkout/{id}",
+      "Specific offer continues to eligibility or login with checkout next",
       offerLogin.status === 307 &&
-        (offerLogin.location ?? "").includes("/login") &&
+        Boolean(offerLogin.location) &&
+        /\/(eligibility|login)/.test(offerLogin.location ?? "") &&
         (offerLogin.location ?? "").includes("checkout"),
       offerLogin.location ?? `HTTP ${offerLogin.status}`,
     );
