@@ -3,17 +3,23 @@
   "row": 197,
   "deliverable": "Validate Blueprint-to-Journey Alignment",
   "ownerAgent": "nia",
-  "generatedAt": "2026-08-26T16:37:12.824Z",
+  "generatedAt": "2026-08-26T19:53:03.547Z",
   "result": "PASS",
-  "passed": 64,
+  "passed": 101,
   "failed": 0,
   "founderAcceptance": null,
   "founderAcceptanceAuthority": "Kimberly Walker (human)",
-  "prUrl": "https://github.com/TheBackHalf/website/pull/30",
-  "validation": {
-    "typecheck": "PASS — npx tsc --noEmit",
-    "test": "PASS — npm run fab5:row197 (64 checks; no npm test script present)",
-    "build": "PASS — npm run build"
+  "acceptanceGate": {
+    "fixtureOnly": false,
+    "persistedStorePopulate": true,
+    "guidebookPersonalizationPath": true,
+    "hostedBackendNotFile": true,
+    "postgresLiveRoundTrip": "SKIPPED"
+  },
+  "durability": {
+    "backend": "file_local_development",
+    "productionSourceOfTruth": "Local development file fallback. Not the production system of record.",
+    "dataDirIsSourceOfTruth": false
   },
   "checks": [
     {
@@ -399,6 +405,228 @@
       "name": "Saved answers are Architect-scoped (fixture isolation)",
       "result": "PASS",
       "detail": "alpha and beta fixtures do not share answers"
+    },
+    {
+      "id": "hosted-postgres-not-file",
+      "name": "Hosted production with Postgres uses bh_journey_chapters, not .data/journey",
+      "result": "PASS",
+      "detail": "backend=supabase_postgres"
+    },
+    {
+      "id": "hosted-unconfigured-not-file",
+      "name": "Hosted production without Postgres fails closed instead of using ephemeral files",
+      "result": "PASS",
+      "detail": "backend=unconfigured_production"
+    },
+    {
+      "id": "persist-ch1-0",
+      "name": "chapter-1-awakening:0 matches saved Journey store answers",
+      "result": "PASS",
+      "detail": "AL197-A-ALIVENESS-Q1"
+    },
+    {
+      "id": "persist-ch1-1",
+      "name": "chapter-1-awakening:1 matches saved Journey store answers",
+      "result": "PASS",
+      "detail": "AL197-A-ALIVENESS-Q2"
+    },
+    {
+      "id": "persist-ch1-2",
+      "name": "chapter-1-awakening:2 matches saved Journey store answers",
+      "result": "PASS",
+      "detail": "AL197-A-ALIVENESS-Q3"
+    },
+    {
+      "id": "persist-ch1-3",
+      "name": "chapter-1-awakening:3 matches saved Journey store answers",
+      "result": "PASS",
+      "detail": "AL197-A-ALIVENESS-Q4"
+    },
+    {
+      "id": "persist-ch1-4",
+      "name": "chapter-1-awakening:4 matches saved Journey store answers",
+      "result": "PASS",
+      "detail": "AL197-A-ALIVENESS-Q5"
+    },
+    {
+      "id": "persist-ch2-0",
+      "name": "chapter-2-mirror:0 matches saved Journey store answers",
+      "result": "PASS",
+      "detail": "AL197-A-MIRROR-STEP1"
+    },
+    {
+      "id": "persist-ch2-1",
+      "name": "chapter-2-mirror:1 matches saved Journey store answers",
+      "result": "PASS",
+      "detail": "AL197-A-MIRROR-STEP2"
+    },
+    {
+      "id": "persist-ch2-2",
+      "name": "chapter-2-mirror:2 matches saved Journey store answers",
+      "result": "PASS",
+      "detail": "AL197-A-MIRROR-STEP3 | from purpose | define success | calendar evidence"
+    },
+    {
+      "id": "persist-ch2-3",
+      "name": "chapter-2-mirror:3 matches saved Journey store answers",
+      "result": "PASS",
+      "detail": "Identity: AL197-A-MIRROR-STEP4"
+    },
+    {
+      "id": "persist-ch3-0",
+      "name": "chapter-3-decision:0 matches saved Journey store answers",
+      "result": "PASS",
+      "detail": "What decision have you been postponing?\nAL197-A-CH3-REFLECTION"
+    },
+    {
+      "id": "persist-ch3-1",
+      "name": "chapter-3-decision:1 matches saved Journey store answers",
+      "result": "PASS",
+      "detail": "AL197-A-CH3-DECISION"
+    },
+    {
+      "id": "persist-ch4-0",
+      "name": "chapter-4-standards:0 matches saved Journey store answers",
+      "result": "PASS",
+      "detail": "What standards have been quietly shaping your life until now?\nAL197-A-CH4-REFLECTION"
+    },
+    {
+      "id": "persist-ch4-1",
+      "name": "chapter-4-standards:1 matches saved Journey store answers",
+      "result": "PASS",
+      "detail": "Standard One: AL197-A-CH4-STANDARD-ONE"
+    },
+    {
+      "id": "persist-ch5-0",
+      "name": "chapter-5-architect:0 matches saved Journey store answers",
+      "result": "PASS",
+      "detail": "What identity have you been carrying that no longer serves you?\nAL197-A-CH5-REFLECTION"
+    },
+    {
+      "id": "persist-ch5-1",
+      "name": "chapter-5-architect:1 matches saved Journey store answers",
+      "result": "PASS",
+      "detail": "AL197-A-CH5-IDENTITY"
+    },
+    {
+      "id": "persist-ch6-0",
+      "name": "chapter-6-expansion:0 matches saved Journey store answers",
+      "result": "PASS",
+      "detail": "How has your transformation already influenced the people around you?\nAL197-A-CH6-REFLECTION"
+    },
+    {
+      "id": "persist-ch6-1",
+      "name": "chapter-6-expansion:1 matches saved Journey store answers",
+      "result": "PASS",
+      "detail": "For Yourself: AL197-A-CH6-YOURSELF"
+    },
+    {
+      "id": "persist-ch7-0",
+      "name": "chapter-7-beginning:0 matches saved Journey store answers",
+      "result": "PASS",
+      "detail": "What has changed most within you during this Journey?\nAL197-A-CH7-REFLECTION"
+    },
+    {
+      "id": "persist-ch7-1",
+      "name": "chapter-7-beginning:1 matches saved Journey store answers",
+      "result": "PASS",
+      "detail": "Beginning today, I will intentionally create a life that... AL197-A-CH7-DECLARATION"
+    },
+    {
+      "id": "persist-ch4-reflection-isolated",
+      "name": "Persisted Chapter IV reflection stays on index 0",
+      "result": "PASS",
+      "detail": "reflection=What standards have been quietly shaping your life until now?\nAL197-A-CH4-REFLECTION"
+    },
+    {
+      "id": "persist-ch4-practice-isolated",
+      "name": "Persisted Chapter IV practice stays on index 1",
+      "result": "PASS",
+      "detail": "practice=Standard One: AL197-A-CH4-STANDARD-ONE\nAL197-A-CH4-COMMIT"
+    },
+    {
+      "id": "persist-ch1-foundry-excluded",
+      "name": "Persisted Chapter I Foundry reflection is not a Blueprint key",
+      "result": "PASS",
+      "detail": "Foundry digital reflection stayed out of guidebook responses"
+    },
+    {
+      "id": "persist-architect-isolation",
+      "name": "Architect B answers do not leak into Architect A guidebook keys",
+      "result": "PASS",
+      "detail": "A and B chapter stores remain scoped by userId"
+    },
+    {
+      "id": "guidebook-ch4-page-count",
+      "name": "Downloadable Chapter IV has two participant writing pages",
+      "result": "PASS",
+      "detail": "pages=2 headings=Reflection | Practice"
+    },
+    {
+      "id": "guidebook-ch4-html-reflection",
+      "name": "Chapter IV reflection HTML contains saved reflection, not practice",
+      "result": "PASS",
+      "detail": "<section class=\"bh-bp-page bh-bp-exercise-page\" data-variant=\"print\"><header class=\"bh-bp-page-header\"><span class=\"bh-bp-page-header-text\">The Standards</span></header><div class="
+    },
+    {
+      "id": "guidebook-ch4-html-practice",
+      "name": "Chapter IV practice HTML contains saved standards, not reflection",
+      "result": "PASS",
+      "detail": "<section class=\"bh-bp-page bh-bp-exercise-page\" data-variant=\"print\"><header class=\"bh-bp-page-header\"><span class=\"bh-bp-page-header-text\">The Standards</span></header><div class="
+    },
+    {
+      "id": "guidebook-roman-labels",
+      "name": "Guidebook chapter labels use Chapter I–VII Roman terminology",
+      "result": "PASS",
+      "detail": "Chapter I — The Awakening | Chapter II — The Mirror | Chapter III — The Decision | Chapter IV — The Standards | Chapter V — Becoming the Architect | Chapter VI — Expansion | Chapter VII — The Beginning"
+    },
+    {
+      "id": "guidebook-founder-only-absent",
+      "name": "Downloadable guidebook HTML excludes Three Lives and Founder Closing Reflections",
+      "result": "PASS",
+      "detail": "Founder-only exercises were not rendered as writing pages"
+    },
+    {
+      "id": "guidebook-artifact-decision",
+      "name": "Decision Statement artifact uses persisted Chapter III practice",
+      "result": "PASS",
+      "detail": "Beginning today, I choose to AL197-A-CH3-DECISION | AL197-A-CH3-COMMIT"
+    },
+    {
+      "id": "guidebook-artifact-standards",
+      "name": "Back Half Standards artifact uses persisted Chapter IV practice",
+      "result": "PASS",
+      "detail": "Standard One: AL197-A-CH4-STANDARD-ONE | AL197-A-CH4-COMMIT"
+    },
+    {
+      "id": "guidebook-artifact-standards-not-reflection",
+      "name": "Back Half Standards artifact does not print Chapter IV reflection",
+      "result": "PASS",
+      "detail": "Standard One: AL197-A-CH4-STANDARD-ONE | AL197-A-CH4-COMMIT"
+    },
+    {
+      "id": "guidebook-artifact-identity",
+      "name": "Architect Identity artifact uses persisted Chapter V practice",
+      "result": "PASS",
+      "detail": "I am an Architect who AL197-A-CH5-IDENTITY | AL197-A-CH5-COMMIT"
+    },
+    {
+      "id": "guidebook-artifact-expansion",
+      "name": "Expansion Plan artifact uses persisted Chapter VI practice",
+      "result": "PASS",
+      "detail": "1. I Will Continue Growing By... AL197-A-CH6-YOURSELF | 2. I Will Intentionally Encourage Others By... AL197-A-CH6-SOMEONE | 3. I Will Contribute To My Community By... AL197-A-CH6-WORLD | AL197-A-CH6-COMMIT"
+    },
+    {
+      "id": "guidebook-artifact-declaration",
+      "name": "Declaration artifact uses persisted Chapter VII practice",
+      "result": "PASS",
+      "detail": "Beginning today, I will intentionally create a life that... AL197-A-CH7-DECLARATION | AL197-A-JORDAN | 2026-08-26"
+    },
+    {
+      "id": "postgres-chapter4-round-trip",
+      "name": "Shared bh_journey_chapters Postgres round-trip",
+      "result": "PASS",
+      "detail": "SKIPPED_NO_POSTGRES_URL — hosted Vercel path uses bh_journey_chapters when POSTGRES_URL is present; this agent has no URL"
     }
   ],
   "spec": {
@@ -559,8 +787,10 @@
   },
   "notes": [
     "Chapter I–II Foundry reflection questions remain Journey-digital; Blueprint pages are Aliveness Project / Mirror steps.",
-    "Chapter IV now emits Architect Reflection + The Standards Exercise, matching reserved exercisePageCount 2.",
+    "Chapter IV emits Architect Reflection (index 0) + The Standards Exercise (index 1), matching reserved exercisePageCount 2.",
     "Three Lives and Founder Closing Reflections are excluded from participant Blueprint writing pages.",
+    "Saved answers are persisted through Chapter I–VII store APIs, then loaded via loadArchitectGuidebookResponses.",
+    "Hosted production uses shared bh_journey_chapters Postgres (same POSTGRES_URL client as B2). Filesystem fallback is disabled on Vercel.",
     "Founder acceptance stays with Kimberly Walker (human). This run does not mark the Command Center row complete."
   ]
 }

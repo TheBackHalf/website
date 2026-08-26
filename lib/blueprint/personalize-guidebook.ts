@@ -17,8 +17,10 @@ export function exerciseResponseKey(
 }
 
 /**
- * Build populated response map from journey chapter payloads.
- * Accepts loosely shaped saved data so Ch1–Ch3 stores can feed the Blueprint.
+ * Loose bucket assembler — not the production guidebook path.
+ * Production print uses mapSavedJourneyToBlueprintResponses via
+ * loadArchitectGuidebookResponses. Do not use this for Chapter IV;
+ * it collapses reflection + practice onto sequential indexes.
  */
 export function assembleBlueprintResponses(input: {
   firstName?: string | null;
