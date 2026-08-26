@@ -1,0 +1,564 @@
+{
+  "aosWorkId": "al-164",
+  "excelRow": 165,
+  "commandCenterOrder": 164,
+  "launchRowsNumber": 164,
+  "tab": "August Launch",
+  "phase": "Finance, Risk, Privacy & Business Operations",
+  "deliverable": "Create Launch Cash and Spend Control",
+  "description": "Establish remaining launch budget, actual spend to date, commitments, contingency remaining, approval authority, and daily launch-period spend tracking. No unplanned tool/vendor spend without visibility.",
+  "assignedOperatingAgent": "michelle",
+  "assignedTitle": "Michelle Northstar — Chief of Staff & Operations Officer",
+  "workbookPrimaryOwner": "kimberly",
+  "workbookSupportingOwners": ["michelle"],
+  "michelleScope": "operations, orchestration, Launch Readiness coordination of launch cash/spend control. Does not take Imani security/infra ownership or Nia curriculum/brand ownership. Does not treat Kimberly Walker (AI) as execution capacity.",
+  "kimberlyWalkerAiUsedAsOperatingCapacity": false,
+  "softwareChangeApplied": false,
+  "productMarketingLegalFilesChanged": false,
+  "stripeConfigModified": false,
+  "cloudflareDnsModified": false,
+  "vercelCustomDomainModified": false,
+  "nameserversModified": false,
+  "secretsPrinted": false,
+  "authenticationWeakened": false,
+  "merged": false,
+  "deployed": false,
+  "rowMarkedComplete": false,
+  "founderAcceptanceRecorded": false,
+  "founderAcceptance": null,
+  "acceptanceAuthority": "Kimberly Walker (human) only. This file does not record Founder acceptance. Dollar actuals, vendor invoices, and remaining-cap certification require Founder-verified figures. Do not treat this control as a certified remaining-cash number.",
+  "generatedAt": "2026-08-26T17:10:00.000Z",
+  "asOfDate": "2026-08-26",
+  "mode": "operations-orchestration-spend-control-status-only",
+  "status": "CONTROL_ESTABLISHED — ACCEPTANCE_READY",
+  "percentCompleteClaimed": null,
+  "workbookStatusUnchanged": "Not Started",
+  "syntheticLabel": "No bank, Stripe, vendor console, or card statement was opened. No purchase, refund, payout, or vendor signup was made. No dollar actual was invented.",
+  "purpose": "Give Launch Readiness a single cash/spend control so remaining cap, known commitments, contingency, approval authority, and daily launch-period spend are visible. Stop unplanned tool/vendor spend from occurring without a logged, classed, and (where required) Founder-approved record.",
+  "lockedFacts": {
+    "companyLaunch": "August 31, 2026",
+    "approvedLaunchBudgetCap": "$5,000",
+    "capSource": "August Launch excelRow 4 / order 3 — Approve $5,000 Launch Budget — workbook status Complete; ops/fab-5/operating-system.json spendingAuthority.approvedLaunchBudgetCap",
+    "doNotInventOtherDollarThresholds": true,
+    "entity": "KLW Group, LLC — authorized to operate as a Georgia business; EIN obtained (workbook excelRow 10 Complete). Do not invent a second legal entity.",
+    "taxDayNoted": "April 15 (workbook excelRow 14 notes for KLW Group, LLC)",
+    "noRefundPolicy": true,
+    "sources": [
+      "ops/fab-5/aos-command-center-snapshot.json",
+      "ops/fab-5/launch-rows.json number 164 / excelRow 165",
+      "ops/fab-5/operating-system.json spendingAuthority",
+      "ops/fab-5/runs/row-19-authority-escalation-validation.json spendingAuthority",
+      "ops/fab-5/vendor-saas-register.json",
+      "ops/fab-5/ROW-73-VENDOR-CAPACITY-BILLING.md",
+      "ops/fab-5/runs/row-73-vendor-capacity-billing-validation.json"
+    ]
+  },
+  "scope": {
+    "inScope": [
+      "Remaining launch budget formula against the $5,000 cap",
+      "Actual spend-to-date posture from repository evidence (honest unverified, not a fabricated $0)",
+      "Open commitments from the Row 72 vendor register and workbook cost notes",
+      "Contingency remaining posture (reserved uses named; dollar size not invented)",
+      "Approval authority for spend classes A–D",
+      "Daily launch-period spend tracking protocol and initialized log",
+      "Freeze on unplanned tool/vendor spend without visibility"
+    ],
+    "outOfScope": [
+      "Product, marketing, legal, Journey, Lumina, or checkout file changes",
+      "Stripe, Cloudflare DNS, Vercel custom-domain, or nameserver changes",
+      "Opening business banking or standing up an accounting product (Rows 10–11)",
+      "Inventing a contingency dollar amount or any spend threshold other than the $5,000 cap",
+      "Inventing vendor invoice amounts, card charges, or remaining-cash dollars",
+      "Marking Command Center row Complete or recording Founder acceptance",
+      "Treating Kimberly Walker (AI) as execution capacity",
+      "Imani Row 73 billing-console work or Nia paid-media creative"
+    ]
+  },
+  "dependencies": {
+    "namedInWorkbook": "Accounting; Launch Budget",
+    "launchBudget": {
+      "excelRow": 4,
+      "order": 3,
+      "deliverable": "Approve $5,000 Launch Budget",
+      "status": "Complete",
+      "cost": "$5,000 total cap",
+      "note": "Cap is locked. Work-package dollar allocation table is not present in the Command Center snapshot. This control does not invent one."
+    },
+    "businessBanking": {
+      "excelRow": 11,
+      "order": 10,
+      "deliverable": "Open Business Banking",
+      "status": "Not Started",
+      "owner": "Kimberly Walker (human)",
+      "note": "Operating, tax-reserve, and payment-settlement accounts are not evidenced in this repository. Cash actuals cannot be reconciled to a company bank ledger until this row is done."
+    },
+    "accounting": {
+      "excelRow": 12,
+      "order": 11,
+      "deliverable": "Set Up Accounting",
+      "status": "Not Started",
+      "owner": "Michelle Northstar",
+      "workbookCost": "$0-$25/month",
+      "blockedBy": "Business Banking",
+      "note": "Chart of accounts, expense categories, revenue tracking, and receipt process are not built. This spend control is the launch-period ledger until accounting exists. Do not buy an accounting product from this row without Class B/C logging or Class D Founder approval."
+    },
+    "vendorRegister": {
+      "row": 72,
+      "status": "Founder accepted 2026-08-24 in ops/fab-5/vendor-saas-register.json",
+      "note": "Single vendor source of truth. This control does not create a second register."
+    },
+    "vendorCapacityBilling": {
+      "row": 73,
+      "status": "NOT READY FOR FOUNDER ACCEPTANCE",
+      "note": "Plan names, payment-method status, and remaining quota dollars are FOUNDER VERIFICATION REQUIRED. Stripe Production key is Test/Sandbox. Do not copy those billing amounts from this row."
+    },
+    "dailyOperatingRhythm": {
+      "excelRow": 5,
+      "order": 4,
+      "status": "Complete",
+      "note": "Founder daily brief already includes budget tracking and end-of-day completion review. Launch-period spend log below is the budget line for that rhythm."
+    },
+    "authorityMatrix": {
+      "excelRow": 20,
+      "order": 19,
+      "status": "Complete",
+      "evidence": "ops/fab-5/operating-system.json spendingAuthority; ops/fab-5/runs/row-19-authority-escalation-validation.json"
+    },
+    "dailyRevenueReconciliation": {
+      "aosWorkId": "al-163",
+      "excelRow": 164,
+      "status": "Not Started",
+      "note": "Revenue (Stripe inflows, fees, settlement) is a sibling control. This file is cash OUT / spend control only. Do not mix inbound revenue into remaining launch budget."
+    }
+  },
+  "remainingLaunchBudget": {
+    "capUsd": 5000,
+    "capDisplay": "$5,000",
+    "formula": "remaining = $5,000 − verifiedActualSpendToDate − verifiedOpenCommitmentsChargedAgainstCap",
+    "verifiedActualSpendToDateUsd": null,
+    "verifiedOpenCommitmentsUsd": null,
+    "remainingUsd": null,
+    "remainingDisplay": "FOUNDER VERIFICATION REQUIRED",
+    "remainingCertified": false,
+    "doNotTreatUnverifiedAsZero": true,
+    "reasonRemainingUncertified": "No bank ledger, accounting system, vendor invoice, or Founder-attested spend total exists in this repository. Treating remaining as $5,000 would falsely imply $0 has been spent. Domain, hosting, email, legal/entity, creative, and AI/tooling costs are expected to have occurred; amounts are not evidenced here.",
+    "hardRule": "No spend may push known or estimated remaining below $0 against the $5,000 cap. Until remaining is certified, new/unplanned spend is frozen (Class D). Continuation of already-approved launch vendors is Class B and must still be logged."
+  },
+  "actualSpendToDate": {
+    "asOf": "2026-08-26",
+    "certifiedUsd": null,
+    "certifiedDisplay": "UNVERIFIED — FOUNDER VERIFICATION REQUIRED",
+    "repositoryEvidenceOfInvoices": "NONE",
+    "repositoryEvidenceOfBankLedger": "NONE",
+    "aosCostEventsNote": "lib/fab-5/aos/schema.ts aos_cost_events records agent action units (hosted_inspect, cursor_cloud_agent_launch), not USD. Do not convert units to dollars.",
+    "knownLikelySpendCategoriesWithoutAmounts": [
+      "Legal entity formation (workbook excelRow 9 Complete; planned $50-$250)",
+      "Business name / domain / handle checks (excelRow 8 Complete; planned $0-$250)",
+      "Trademark filings classes 41, 9, 35 (excelRow 24 Complete; planned $350+ per class — amounts not evidenced)",
+      "Domain and business email (excelRow 68 Complete; planned $25-$150)",
+      "Hosting and database (excelRow 69 Complete; planned $25-$150/month)",
+      "Google Workspace seats (Row 72/73 — amount FOUNDER VERIFICATION REQUIRED)",
+      "OpenAI API usage for Fab 5 hosted cycles (Row 72/73 — amount FOUNDER VERIFICATION REQUIRED)",
+      "Cursor Founder seat (Row 72/73 — amount FOUNDER VERIFICATION REQUIRED)",
+      "GitHub org (Row 72/73 — amount FOUNDER VERIFICATION REQUIRED)",
+      "HeyGen media production if a paid account was used (Row 72/73 — amount FOUNDER VERIFICATION REQUIRED; 28 mp4s already rendered)",
+      "Creative/logo/video/translation workbook ranges on Complete rows — not evidenced as invoices"
+    ],
+    "doNotInventTotal": true,
+    "founderAction": "Attest actual launch spend to date from cards/accounts used for The Back Half, with vendor, date, amount, and receipt status. Do not paste account numbers, card numbers, or secrets. Record the attested total against this control."
+  },
+  "commitments": {
+    "definition": "Known or expected cash outflows that count against the $5,000 cap if paid from launch funds: existing approved vendors, auto-renewals through launch, and workbook-planned remaining work that would require spend.",
+    "newVendorOutsideRegister": "FORBIDDEN without Class D Founder approval and a logged entry",
+    "launchCriticalVendorsFromRow72": [
+      {
+        "id": "vercel",
+        "vendor": "Vercel",
+        "commitmentType": "existing_approved_vendor",
+        "spendClassIfContinuing": "B",
+        "amountUsd": null,
+        "amountStatus": "FOUNDER VERIFICATION REQUIRED — Vercel Billing",
+        "throughLaunch": "Must remain paid through August 31, 2026",
+        "row73Rating": "YELLOW"
+      },
+      {
+        "id": "supabase",
+        "vendor": "Supabase Postgres",
+        "commitmentType": "existing_approved_vendor",
+        "spendClassIfContinuing": "B",
+        "amountUsd": null,
+        "amountStatus": "FOUNDER VERIFICATION REQUIRED — Supabase Billing",
+        "throughLaunch": "Must remain paid/unpaused through August 31, 2026",
+        "row73Rating": "YELLOW"
+      },
+      {
+        "id": "stripe",
+        "vendor": "Stripe",
+        "commitmentType": "existing_approved_vendor_processing_fees",
+        "spendClassIfContinuing": "B",
+        "amountUsd": null,
+        "amountStatus": "Transaction fees on revenue (workbook excelRow 106). Processing fees are cost of sales, not a new tool purchase. Production is still Stripe Test/Sandbox (Row 73 RED) — live fees have not started.",
+        "throughLaunch": "Live Checkout is blocked until Founder replaces Production STRIPE_SECRET_KEY with Live. This control does not change Stripe.",
+        "row73Rating": "RED"
+      },
+      {
+        "id": "google_workspace",
+        "vendor": "Google Workspace",
+        "commitmentType": "existing_approved_vendor",
+        "spendClassIfContinuing": "B",
+        "amountUsd": null,
+        "amountStatus": "FOUNDER VERIFICATION REQUIRED — Google Admin Billing",
+        "throughLaunch": "support@ and kimberly@ must remain enabled",
+        "row73Rating": "YELLOW"
+      },
+      {
+        "id": "openai",
+        "vendor": "OpenAI",
+        "commitmentType": "existing_approved_vendor_usage",
+        "spendClassIfContinuing": "B",
+        "amountUsd": null,
+        "amountStatus": "FOUNDER VERIFICATION REQUIRED — OpenAI Billing. Usage-based. Do not buy additional credits from this row.",
+        "throughLaunch": "Required for Fab 5 hosted cycles only. Not Lumina runtime.",
+        "row73Rating": "YELLOW"
+      },
+      {
+        "id": "heygen",
+        "vendor": "HeyGen",
+        "commitmentType": "existing_approved_vendor_non_runtime",
+        "spendClassIfContinuing": "B",
+        "amountUsd": null,
+        "amountStatus": "FOUNDER VERIFICATION REQUIRED only if remaining pre-launch media still needs generation. Launch-day playback does not require HeyGen online.",
+        "throughLaunch": "No new generation authorized from this control",
+        "row73Rating": "GREEN"
+      },
+      {
+        "id": "cursor",
+        "vendor": "Cursor",
+        "commitmentType": "existing_approved_vendor",
+        "spendClassIfContinuing": "B",
+        "amountUsd": null,
+        "amountStatus": "FOUNDER VERIFICATION REQUIRED — Cursor Billing. Founder human seat only. Do not provision seats to AI executives.",
+        "throughLaunch": "Not a customer-runtime dependency",
+        "row73Rating": "YELLOW"
+      },
+      {
+        "id": "github",
+        "vendor": "GitHub",
+        "commitmentType": "existing_approved_vendor",
+        "spendClassIfContinuing": "B",
+        "amountUsd": null,
+        "amountStatus": "FOUNDER VERIFICATION REQUIRED if on a paid plan",
+        "throughLaunch": "Source / deploy origin",
+        "row73Rating": "GREEN"
+      },
+      {
+        "id": "domain_dns",
+        "vendor": "Domain registrar / DNS for thebackhalf.org",
+        "commitmentType": "existing_approved_vendor",
+        "spendClassIfContinuing": "B",
+        "amountUsd": null,
+        "amountStatus": "FOUNDER VERIFICATION REQUIRED — registrar identity not in repository (Row 75)",
+        "throughLaunch": "Auto-renew/payment method is a Row 75 Founder action. Do not change DNS from this control.",
+        "row73Rating": "RED"
+      },
+      {
+        "id": "instagram",
+        "vendor": "Instagram (@backhalfco)",
+        "commitmentType": "existing_approved_channel_unpaid",
+        "spendClassIfContinuing": "B",
+        "amountUsd": 0,
+        "amountStatus": "Unpaid publishing is the approved launch path. Any Meta/Instagram paid boost is unplanned until Founder Class D approval.",
+        "throughLaunch": "Handle @backhalfco locked",
+        "row73Rating": "GREEN"
+      },
+      {
+        "id": "tiktok",
+        "vendor": "TikTok (@backhalfco)",
+        "commitmentType": "existing_approved_channel_unpaid",
+        "spendClassIfContinuing": "B",
+        "amountUsd": 0,
+        "amountStatus": "Unpaid publishing is the approved launch path. Any paid TikTok product is unplanned until Founder Class D approval.",
+        "throughLaunch": "Handle @backhalfco locked",
+        "row73Rating": "GREEN"
+      },
+      {
+        "id": "google_cloud_oauth",
+        "vendor": "Google Cloud / Google Sign-In OAuth",
+        "commitmentType": "optional_not_launch_critical",
+        "spendClassIfContinuing": "B",
+        "amountUsd": null,
+        "amountStatus": "Optional. Email/password is the required launch auth path. Do not incur Cloud billing to close this row.",
+        "throughLaunch": "Not required",
+        "row73Rating": "not_launch_critical"
+      }
+    ],
+    "explicitlyNotAuthorizedFromThisControl": [
+      "ElevenLabs",
+      "Resend",
+      "Kit (ConvertKit)",
+      "Google Analytics (GA4)",
+      "Microsoft Clarity",
+      "Apple Sign-In vendor spend",
+      "LinkedIn (future enhancement, not launch)",
+      "YouTube spend",
+      "Sentry / Datadog / other APM",
+      "Twilio / SMS until separately authorized",
+      "Paid Meta / Instagram / TikTok boosts or ads",
+      "Any new SaaS not on the Row 72 register"
+    ],
+    "workbookPlannedRangesAreNotAuthorizationToSpendTheHighEnd": {
+      "note": "August Launch rows carry many $0–$N and $N–$M planning ranges. Summing those ranges would exceed the $5,000 cap. Ranges are planning hints, not a second budget. The cap is the only approved dollar limit. Remaining incomplete rows with a non-zero planned range still require Class B/C logging if they spend, or Class D if they are new/unbudgeted/material.",
+      "incompleteNonZeroOrVariableRowsStillOpen": [
+        { "excelRow": 12, "deliverable": "Set Up Accounting", "planned": "$0-$25/month", "status": "Not Started" },
+        { "excelRow": 74, "deliverable": "Verify Launch-Critical Vendor Capacity and Billing", "planned": "Variable", "status": "In Progress" },
+        { "excelRow": 76, "deliverable": "Validate Domain, DNS, SSL and Renewal Continuity", "planned": "Variable", "status": "In Progress" },
+        { "excelRow": 83, "deliverable": "Implement Social Publishing and Scheduling System", "planned": "$0-$100/month", "status": "In Progress" },
+        { "excelRow": 123, "deliverable": "Establish Production AI Usage, Cost and Failure Controls", "planned": "Variable", "status": "Not Started" },
+        { "excelRow": 137, "deliverable": "Validate Downloadable Document Accessibility", "planned": "Variable", "status": "Not Started" },
+        { "excelRow": 138, "deliverable": "Produce and QA Spanish Founder Videos", "planned": "Variable", "status": "Not Started" },
+        { "excelRow": 139, "deliverable": "Complete Founder Media Accessibility Assets", "planned": "Variable", "status": "Not Started" },
+        { "excelRow": 140, "deliverable": "Produce Spanish Blueprint and Downloadable Participant Assets", "planned": "Variable", "status": "Not Started" },
+        { "excelRow": 141, "deliverable": "Publish Final Bilingual Legal Documents and Validate Equivalence", "planned": "Variable", "status": "Not Started" },
+        { "excelRow": 142, "deliverable": "Complete Third-Party Data Processing and AI Privacy Review", "planned": "Variable", "status": "Not Started" },
+        { "excelRow": 143, "deliverable": "Implement and QA Bilingual AI Kimberly Experience", "planned": "Variable", "status": "Not Started" },
+        { "excelRow": 146, "deliverable": "Build Bilingual Email Templates", "planned": "$0-$100", "status": "Not Started" },
+        { "excelRow": 147, "deliverable": "Configure Transactional Email", "planned": "$0-$50/month", "status": "Not Started" },
+        { "excelRow": 149, "deliverable": "Test Email Deliverability", "planned": "$0-$100", "status": "Not Started" },
+        { "excelRow": 158, "deliverable": "Create First-72-Hour Support Coverage Plan", "planned": "$0-$500", "status": "Not Started" },
+        { "excelRow": 169, "deliverable": "Validate Cookie and Tracking Consent", "planned": "$0-$100/month", "status": "Not Started" },
+        { "excelRow": 174, "deliverable": "Establish Monthly Bookkeeping and Financial Close", "planned": "Variable", "status": "Not Started" },
+        { "excelRow": 178, "deliverable": "Run Functional Testing", "planned": "$250-$750", "status": "Not Started" },
+        { "excelRow": 181, "deliverable": "Run Lumina Evaluation", "planned": "$0-$250", "status": "Not Started" },
+        { "excelRow": 183, "deliverable": "Run Security Review", "planned": "$250-$750", "status": "Not Started" },
+        { "excelRow": 184, "deliverable": "Run Accessibility Review", "planned": "$0-$250", "status": "Not Started" },
+        { "excelRow": 185, "deliverable": "Run Cross-Browser Compatibility Testing", "planned": "Variable", "status": "Not Started" },
+        { "excelRow": 186, "deliverable": "Run Performance, Capacity and Load Testing", "planned": "Variable", "status": "Not Started" },
+        { "excelRow": 187, "deliverable": "Test Priority Mobile Devices", "planned": "$100-$400", "status": "Not Started" },
+        { "excelRow": 191, "deliverable": "Run Regression Testing", "planned": "$0-$250", "status": "Not Started" },
+        { "excelRow": 194, "deliverable": "Resolve Validation Blockers", "planned": "Included in contingency", "status": "Not Started" },
+        { "excelRow": 195, "deliverable": "Complete Production Security Audit", "planned": "$0-$500", "status": "Not Started" },
+        { "excelRow": 202, "deliverable": "Confirm Launch Staffing and Coverage", "planned": "$0-$500", "status": "Not Started" },
+        { "excelRow": 224, "deliverable": "Resolve Launch-Day Incidents", "planned": "Contingency reserve", "status": "Planned" },
+        { "excelRow": 226, "deliverable": "Begin 72-Hour Stabilization", "planned": "Contingency reserve", "status": "Planned" }
+      ],
+      "deferredNotALaunchCommitment": [
+        { "excelRow": 167, "deliverable": "Confirm Business Insurance Coverage", "planned": "Variable", "status": "Deferred" }
+      ]
+    }
+  },
+  "contingencyRemaining": {
+    "purposeNamedInWorkbook": [
+      "Preserve a contingency reserve and prohibit unapproved scope additions (excelRow 4)",
+      "Resolve Validation Blockers (excelRow 194 — Included in contingency)",
+      "Resolve Launch-Day Incidents (excelRow 224 — Contingency reserve)",
+      "Begin 72-Hour Stabilization (excelRow 226 — Contingency reserve)",
+      "Post Launch 72-Hour Stabilization Review (Post Launch excelRow 3 — Contingency reserve)"
+    ],
+    "reserveUsd": null,
+    "reserveDisplay": "UNQUANTIFIED — do not invent a dollar size",
+    "drawsUsd": 0,
+    "drawsEvidence": "NONE recorded against contingency in this repository",
+    "remainingUsd": null,
+    "remainingCertified": false,
+    "rule": "Contingency is not a slush fund for new tools or vendors. It is reserved for launch-critical incident response, validation blockers, and 72-hour stabilization. Any draw is Class C if already contemplated as contingency in the approved plan and logged; Class D if it is new, unbudgeted, or material beyond that reservation. Founder approval is required before treating a new vendor purchase as a contingency draw.",
+    "reasonUnquantified": "Row 3 Complete evidence locks the $5,000 total cap and the existence of a contingency reserve. It does not record a contingency dollar split (for example, no $X operating / $Y contingency table is in the snapshot). Inventing a split would violate spendingAuthority.doNotInventOtherDollarThresholds."
+  },
+  "approvalAuthority": {
+    "source": "ops/fab-5/operating-system.json spendingAuthority (Row 19 Complete)",
+    "approvedLaunchBudgetCap": "$5,000",
+    "doNotInventOtherDollarThresholds": true,
+    "classes": {
+      "A": "Zero-dollar operational/technical decisions — delegated executive authority. No cash movement.",
+      "B": "Already-approved vendor/tool/configuration within approved plan and budget — domain executive executes; Michelle tracks.",
+      "C": "Budgeted spend already explicitly approved — domain executive executes within that authorization; Michelle tracks.",
+      "D": "New, unbudgeted, or material spend — Founder approval required. No PO, contract, payment, or vendor commitment until the Founder explicitly approves and the decision is recorded."
+    },
+    "executors": {
+      "michelle": "Tracks all spend. Coordinates freeze, daily log, and Founder Decision Queue for Class D. May not approve Class D. May not spend from Imani or Nia budgets independently of the class rules.",
+      "imani": "May execute Class B/C tech-vendor continuation within the approved plan (Vercel, Supabase, OpenAI, GitHub, domain renewal as already-approved). May not add a new vendor or unbudgeted tool.",
+      "nia": "May execute Class B/C experience/channel continuation (unpaid Instagram/TikTok publishing). May not buy ads, boosts, or new creative vendors without Class D.",
+      "kimberlyWalkerHuman": "Sole Class D authority. Sole Founder acceptance authority. Sole banking/identity/payment-method owner.",
+      "kimberlyWalkerAi": "Not an operating agent. Not spend authority."
+    },
+    "row19TestsPreserved": {
+      "T6_budgetedApprovedSpend": "May proceed as Class C if already approved, inside the $5,000 cap, not a new contractual commitment, and logged by Michelle.",
+      "T7_unbudgetedMaterialSpend": "Do not proceed. Founder-reserved. No purchase until recorded Founder approval."
+    },
+    "freeze": {
+      "title": "No unplanned tool/vendor spend without visibility",
+      "inEffect": true,
+      "effectiveFrom": "2026-08-26",
+      "rules": [
+        "Every cash outflow during the launch period must have a daily-log entry before or immediately after the charge (same calendar day).",
+        "New vendors, paid ads/boosts, extra AI credit packs, new SaaS seats, and unbudgeted tools are Class D — blocked until Founder approval is recorded in aos_founder_decisions or an equivalent Founder-attested decision record.",
+        "Already-approved vendor auto-renewals (Class B) may continue so launch does not go dark; Michelle logs the amount when Founder or the vendor invoice makes it visible.",
+        "Workbook cost ranges are not a shopping list. Incomplete rows with $250–$750 testing/audit ranges do not authorize hiring vendors from this control.",
+        "If remaining cap is uncertified, treat capacity as scarce: do not initiate new Class C spend until Founder attests actuals or explicitly authorizes the specific Class C item.",
+        "Stripe, DNS, custom domain, and nameservers remain out of scope for agent mutation regardless of spend class."
+      ]
+    }
+  },
+  "dailyLaunchPeriodSpendTracking": {
+    "owner": "Michelle Northstar",
+    "includedInFounderDailyBrief": true,
+    "dailyBriefSource": "August Launch excelRow 5 / order 4 — Create Daily Launch Operating Rhythm (Complete)",
+    "period": {
+      "launchPeriodStart": "2026-08-26",
+      "launchDay": "2026-08-31",
+      "stabilizationEnd": "2026-09-03",
+      "timezone": "America/New_York",
+      "note": "Daily log runs from this control's establishment through launch day and the named 72-hour stabilization window. After 2026-09-03, spend tracking continues via Row 174 monthly close once accounting exists."
+    },
+    "cadence": {
+      "duringDay": "Log each spend event when known. Do not batch unlogged vendor charges overnight.",
+      "endOfDay": "Michelle includes: verified spend today, unverified items awaiting Founder receipt, running verified total vs $5,000 cap, contingency draws, Class D items queued, freeze exceptions (Class B continuations).",
+      "launchDay": "Same log, higher frequency if incident spend is requested. Incident spend uses contingency rules, not a new budget."
+    },
+    "entryFields": [
+      "date",
+      "vendorOrPayee",
+      "purpose",
+      "amountUsd",
+      "currency",
+      "spendClass",
+      "approvalEvidence",
+      "countsAgainstCap",
+      "contingencyDraw",
+      "receiptStatus",
+      "loggedBy",
+      "notes"
+    ],
+    "visibilityRule": "If it is not in this log (or a Founder-attested appendix referenced here), it is not visible. Unlogged spend is a control failure even if the vendor was otherwise approved.",
+    "initializedLog": [
+      {
+        "date": "2026-08-26",
+        "vendorOrPayee": null,
+        "purpose": "Control established. No verified USD spend recorded from repository evidence this day.",
+        "amountUsd": null,
+        "currency": "USD",
+        "spendClass": null,
+        "approvalEvidence": "n/a — no spend logged",
+        "countsAgainstCap": false,
+        "contingencyDraw": false,
+        "receiptStatus": "NONE_IN_REPOSITORY",
+        "loggedBy": "michelle",
+        "notes": "UNVERIFIED actuals remain outstanding. Freeze on unplanned spend is in effect."
+      },
+      {
+        "date": "2026-08-27",
+        "vendorOrPayee": null,
+        "purpose": "Placeholder — no spend logged yet",
+        "amountUsd": null,
+        "spendClass": null,
+        "receiptStatus": "PENDING_DAY",
+        "loggedBy": "michelle",
+        "notes": "Update when the day occurs. Do not backfill invented amounts."
+      },
+      {
+        "date": "2026-08-28",
+        "vendorOrPayee": null,
+        "purpose": "Placeholder — prelaunch social window begins; unpaid publishing only",
+        "amountUsd": null,
+        "spendClass": null,
+        "receiptStatus": "PENDING_DAY",
+        "loggedBy": "michelle",
+        "notes": "Paid boosts remain Class D / frozen unless Founder approves."
+      },
+      {
+        "date": "2026-08-29",
+        "vendorOrPayee": null,
+        "purpose": "Placeholder — no spend logged yet",
+        "amountUsd": null,
+        "spendClass": null,
+        "receiptStatus": "PENDING_DAY",
+        "loggedBy": "michelle",
+        "notes": "Update when the day occurs."
+      },
+      {
+        "date": "2026-08-30",
+        "vendorOrPayee": null,
+        "purpose": "Placeholder — no spend logged yet",
+        "amountUsd": null,
+        "spendClass": null,
+        "receiptStatus": "PENDING_DAY",
+        "loggedBy": "michelle",
+        "notes": "Update when the day occurs."
+      },
+      {
+        "date": "2026-08-31",
+        "vendorOrPayee": null,
+        "purpose": "Placeholder — launch day. Incident spend only via contingency rules.",
+        "amountUsd": null,
+        "spendClass": null,
+        "receiptStatus": "PENDING_DAY",
+        "loggedBy": "michelle",
+        "notes": "Update during launch-day operations."
+      },
+      {
+        "date": "2026-09-01",
+        "vendorOrPayee": null,
+        "purpose": "Placeholder — 72-hour stabilization day 1",
+        "amountUsd": null,
+        "spendClass": null,
+        "receiptStatus": "PENDING_DAY",
+        "loggedBy": "michelle",
+        "notes": "Contingency draws only if required and logged."
+      },
+      {
+        "date": "2026-09-02",
+        "vendorOrPayee": null,
+        "purpose": "Placeholder — 72-hour stabilization day 2",
+        "amountUsd": null,
+        "spendClass": null,
+        "receiptStatus": "PENDING_DAY",
+        "loggedBy": "michelle",
+        "notes": "Update when the day occurs."
+      },
+      {
+        "date": "2026-09-03",
+        "vendorOrPayee": null,
+        "purpose": "Placeholder — 72-hour stabilization day 3",
+        "amountUsd": null,
+        "spendClass": null,
+        "receiptStatus": "PENDING_DAY",
+        "loggedBy": "michelle",
+        "notes": "Update when the day occurs."
+      }
+    ]
+  },
+  "controlSummary": {
+    "remainingLaunchBudget": "FOUNDER VERIFICATION REQUIRED — cap $5,000; remaining not certified",
+    "actualSpendToDate": "UNVERIFIED — no ledger/invoices in repository; do not record as $0",
+    "commitments": "Row 72 approved vendors continue as Class B with unverified amounts; paid ads and new vendors frozen; workbook ranges are not extra budget",
+    "contingencyRemaining": "UNQUANTIFIED reserve still available for named incident/stabilization uses; $0 draws recorded; do not invent a dollar size",
+    "approvalAuthority": "Classes A–D from Row 19; Kimberly Walker (human) is sole Class D and acceptance authority",
+    "dailyTracking": "Initialized 2026-08-26 through 2026-09-03; freeze on unplanned tool/vendor spend in effect"
+  },
+  "founderActionsRequired": [
+    "Attest actual launch spend to date (vendor, date, amount, receipt status). Do not paste secrets or account numbers.",
+    "Confirm current vendor invoices/auto-renew amounts for Vercel, Supabase, Google Workspace, OpenAI, Cursor, GitHub, domain registrar, and HeyGen if still billed (Row 73).",
+    "Open business banking (excelRow 11) so future spend settles to company accounts.",
+    "Do not approve unplanned tools, vendors, or paid social without a Class D record and a daily-log entry.",
+    "Accept or reject this spend-control framework. Acceptance is not implied by this file."
+  ],
+  "agentHandoffs": {
+    "imani": "Do not add vendors or paid tooling. Continue existing approved infrastructure. Surface any vendor invoice or quota-exhaustion risk to Michelle for the daily log. Stripe/DNS/domain mutation remains forbidden from this path.",
+    "nia": "Do not purchase ads, boosts, stock, or new creative vendors. Unpaid @backhalfco publishing continues. Any paid distribution is Class D.",
+    "michelleNext": "Keep the daily log. Route Class D to the Founder Decision Queue. Do not mark this Command Center row Complete. After Founder attests actuals, update remaining and commitments in a follow-on status revision — still without fabricating acceptance."
+  },
+  "aosReturn": {
+    "softwareChangeApplied": false,
+    "statusFile": "ops/fab-5/runs/aos-engineering-status/al-164.json",
+    "recommendedWorkStatus": "ACCEPTANCE_READY",
+    "nextAction": "await_founder_acceptance",
+    "blockedReason": "founder_acceptance_required",
+    "doNotMarkComplete": true,
+    "doNotMerge": true,
+    "doNotDeploy": true
+  },
+  "validation": {
+    "typecheck": "PASS — ./node_modules/.bin/tsc --noEmit (2026-08-26)",
+    "npmTestScript": "absent — package.json has no test script",
+    "productionBuild": "not_run — ops JSON only; no production code change"
+  }
+}
