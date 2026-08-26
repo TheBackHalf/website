@@ -28,6 +28,11 @@ import {
   migrateCurrentSectionId,
   needsTeachingProgressMigration,
 } from "@/lib/journey/chapters/legacy-teaching";
+import {
+  createPostgresChapterDocumentAdapter,
+  rejectUnconfiguredJourneyStore,
+} from "@/lib/journey/chapters/postgres-store";
+import { createJourneyChapterStoreInstance } from "@/lib/journey/chapters/runtime";
 
 const DEFAULT_DATA_DIR = ".data/journey";
 const DEFAULT_DB_FILE = "chapter-6.json";
@@ -269,9 +274,32 @@ export function createFileChapter6Store(options?: {
 
 let storeInstance: Chapter6Store | null = null;
 
+function createPostgresChapter6Store(): Chapter6Store {
+  const docs = createPostgresChapterDocumentAdapter<Chapter6Record>({
+    chapterId: "chapter-6-expansion",
+    normalize: normalizeRecord,
+    invalidMessage: "Invalid Chapter VI payload.",
+  });
+  return {
+    findChapter6ForUser: (userId) => docs.find(userId),
+    saveChapter6: (record) => docs.save(record),
+  };
+}
+
+function createUnconfiguredChapter6Store(): Chapter6Store {
+  return {
+    findChapter6ForUser: rejectUnconfiguredJourneyStore,
+    saveChapter6: rejectUnconfiguredJourneyStore,
+  };
+}
+
 export function getChapter6Store(): Chapter6Store {
   if (!storeInstance) {
-    storeInstance = createFileChapter6Store();
+    storeInstance = createJourneyChapterStoreInstance({
+      file: () => createFileChapter6Store(),
+      postgres: createPostgresChapter6Store,
+      unconfigured: createUnconfiguredChapter6Store,
+    });
   }
   return storeInstance;
 }

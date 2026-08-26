@@ -29,6 +29,11 @@ import {
   migrateChapter2CurrentSectionId,
   needsChapterStructureMigration,
 } from "@/lib/journey/chapters/legacy-teaching";
+import {
+  createPostgresChapterDocumentAdapter,
+  rejectUnconfiguredJourneyStore,
+} from "@/lib/journey/chapters/postgres-store";
+import { createJourneyChapterStoreInstance } from "@/lib/journey/chapters/runtime";
 
 const DEFAULT_DATA_DIR = ".data/journey";
 const DEFAULT_DB_FILE = "chapter-2.json";
@@ -328,9 +333,32 @@ export function createFileChapter2Store(options?: {
 
 let storeInstance: Chapter2Store | null = null;
 
+function createPostgresChapter2Store(): Chapter2Store {
+  const docs = createPostgresChapterDocumentAdapter<Chapter2Record>({
+    chapterId: "chapter-2-mirror",
+    normalize: normalizeRecord,
+    invalidMessage: "Invalid Chapter II payload.",
+  });
+  return {
+    findChapter2ForUser: (userId) => docs.find(userId),
+    saveChapter2: (record) => docs.save(record),
+  };
+}
+
+function createUnconfiguredChapter2Store(): Chapter2Store {
+  return {
+    findChapter2ForUser: rejectUnconfiguredJourneyStore,
+    saveChapter2: rejectUnconfiguredJourneyStore,
+  };
+}
+
 export function getChapter2Store(): Chapter2Store {
   if (!storeInstance) {
-    storeInstance = createFileChapter2Store();
+    storeInstance = createJourneyChapterStoreInstance({
+      file: () => createFileChapter2Store(),
+      postgres: createPostgresChapter2Store,
+      unconfigured: createUnconfiguredChapter2Store,
+    });
   }
   return storeInstance;
 }
