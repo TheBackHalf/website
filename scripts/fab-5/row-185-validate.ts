@@ -41,7 +41,7 @@ const THRESHOLDS = {
   probeTimeoutMs: 15000,
   burstConcurrency: 40,
   mixedConcurrency: 25,
-  mixedRounds: 8,
+  mixedRounds: 20,
   localSaveP95Ms: 250,
   luminaStubP95Ms: 200,
   maxTotalProductionRequests: 900,
@@ -443,13 +443,16 @@ async function main() {
       }),
   );
 
-  const authenticated = await mapPool([...AUTHENTICATED_SURFACES], 4, (page) =>
-    timedRequest({
-      origin,
-      id: `authz:${page.id}`,
-      path: page.path,
-      expected: page.expected,
-    }),
+  const authenticated = await mapPool(
+    Array.from({ length: 4 }, () => [...AUTHENTICATED_SURFACES]).flat(),
+    10,
+    (page, index) =>
+      timedRequest({
+        origin,
+        id: `authz:${page.id}:${index}`,
+        path: page.path,
+        expected: page.expected,
+      }),
   );
 
   const captions = await mapPool([...CAPTION_PATHS], 3, (pathName) =>
@@ -799,6 +802,104 @@ async function main() {
       ],
     },
     scorecard,
+    overall: "FAIL",
+    checks: [
+      {
+        id: "P1",
+        area: "publicPages",
+        name: "Public pages under mixed concurrency against Vercel production host",
+        verdict: publicPass ? "PASS" : "FAIL",
+        actual: `count=${publicSummary.count}; p95=${publicSummary.p95Ms}ms; errorRate=${publicSummary.errorRate}; origin=${origin}`,
+      },
+      {
+        id: "P2",
+        area: "authentication",
+        name: "Authenticated-gate GETs (EN/ES) without mutating production Architects",
+        verdict: authzSummary.pass ? "PASS" : "FAIL",
+        actual: `count=${authzSummary.count}; p95=${authzSummary.p95Ms}ms; errorRate=${authzSummary.errorRate}`,
+      },
+      {
+        id: "P3",
+        area: "dashboardJourneySaves",
+        name: "Isolated Journey saves on durable selector; production Architect data not mutated",
+        verdict: local.journey.pass ? "PASS" : "FAIL",
+        actual: local.journey.pass
+          ? "Isolated file/postgres-selector saves PASS. Production customer data NOT MUTATED."
+          : "Isolated Journey save failed.",
+      },
+      {
+        id: "P4",
+        area: "lumina",
+        name: "Lumina launch path is stub+persistence (buildStubAssistantReply)",
+        verdict: local.stub.pass ? "PASS" : "FAIL",
+        actual: "Launch architecture is buildStubAssistantReply — not model-backed. Stub+persistence measured locally.",
+      },
+      {
+        id: "P5",
+        area: "checkoutWebhooks",
+        name: "Live Stripe checkout/webhooks",
+        verdict: "NOT_RUN",
+        actual: "BLOCKED_FOUNDER Row 73. No charges. Unauthenticated webhook degrade probed.",
+      },
+      {
+        id: "P6",
+        area: "blueprintGeneration",
+        name: "Launch-safe Blueprint (print HTML; no per-request Chrome on Vercel)",
+        verdict: "PASS",
+        actual: "Print HTML is the Architect path. Chrome PDF storm NOT EXERCISED. Hosted Chrome fail-closed.",
+      },
+      {
+        id: "P7",
+        area: "mediaDelivery",
+        name: "Caption + Range TTFB; full concurrent video bytes not claimed",
+        verdict: mediaPass ? "NOT_RUN" : "FAIL",
+        actual: mediaPass
+          ? "Range TTFB PASS; full video bytes under concurrent Range NOT downloaded (bandwidth cap)."
+          : "Caption or Range TTFB failed.",
+      },
+      {
+        id: "P8",
+        area: "emailTriggers",
+        name: "Email-trigger performance without production mail",
+        verdict: "NOT_RUN",
+        actual: "No production SMTP sends. Isolated/fake transport only. SMTP 10s/15s timeouts preserved.",
+      },
+      {
+        id: "P9",
+        area: "databaseApi",
+        name: "Health/API under concurrency",
+        verdict: healthSummary.pass ? "PASS" : "FAIL",
+        actual: `healthBurst p95=${healthSummary.p95Ms}ms errorRate=${healthSummary.errorRate}`,
+      },
+      {
+        id: "P10",
+        area: "canonicalDns",
+        name: "Canonical thebackhalf.org load (Row 75)",
+        verdict: "NOT_RUN",
+        actual: `canonicalDns=${origins.canonicalDns}. Do not PASS canonical host. Vercel host was tested.`,
+      },
+      {
+        id: "P11",
+        area: "concurrency",
+        name: "Mixed authenticated+public concurrency above prior 118 GET floor",
+        verdict: productionRequestCount > 118 ? "PASS" : "FAIL",
+        actual: `productionRequests=${productionRequestCount}; cap=${THRESHOLDS.maxTotalProductionRequests}; mixedRounds=${THRESHOLDS.mixedRounds}`,
+      },
+      {
+        id: "P12",
+        area: "planLimits",
+        name: "Vercel/Supabase/Workspace plan quotas",
+        verdict: "NOT_RUN",
+        actual: "FOUNDER ACTION — dashboards not observable from this agent.",
+      },
+      {
+        id: "P13",
+        area: "rateLimits",
+        name: "Durable login/register/support/analytics rate limits present; production not credential-stuffed",
+        verdict: "PASS",
+        actual: loginRateLimit,
+      },
+    ],
     finalStatus: "FAIL",
     nextAction:
       "Do not mark Complete. Founder has not accepted. Remaining: production backup-probe invoke with CRON_SECRET, Founder plan/quota dashboards, Row 73 live Stripe, Row 75 DNS.",

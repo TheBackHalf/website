@@ -24,6 +24,9 @@ export const CRITICAL_PUBLIC_TABLES = [
   "bh_billing_stripe_events",
   "bh_billing_entitlements",
   "bh_billing_purchases",
+  "bh_billing_account_access",
+  "bh_billing_notifications",
+  "bh_rate_limits",
 ] as const;
 
 export const RECOVERY_DIR = ".tmp-row62-recovery";

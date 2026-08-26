@@ -101,12 +101,8 @@ function areaVerdict(area: TestRow["area"]): Verdict {
   const rows = tests.filter((row) => row.area === area);
   if (rows.some((row) => row.verdict === "FAIL")) return "FAIL";
   if (rows.length === 0) return "NOT_RUN";
-  if (rows.every((row) => row.verdict === "NOT_RUN" || row.verdict === "NOT_IN_SCOPE")) {
-    return rows.some((row) => row.verdict === "NOT_IN_SCOPE") &&
-      !rows.some((row) => row.verdict === "NOT_RUN")
-      ? "NOT_IN_SCOPE"
-      : "NOT_RUN";
-  }
+  if (rows.some((row) => row.verdict === "NOT_RUN")) return "NOT_RUN";
+  if (rows.every((row) => row.verdict === "NOT_IN_SCOPE")) return "NOT_IN_SCOPE";
   if (rows.some((row) => row.verdict === "PASS") && rows.every((row) => row.verdict !== "FAIL")) {
     return "PASS";
   }
@@ -238,6 +234,14 @@ async function runIsolatedPgliteRestore(): Promise<{
       empty("bh_billing_stripe_events", idColumns),
       empty("bh_billing_entitlements", idColumns),
       empty("bh_billing_purchases", idColumns),
+      empty("bh_billing_account_access", [
+        { name: "user_id", udt: "text", nullable: false, primaryKey: true },
+      ]),
+      empty("bh_billing_notifications", idColumns),
+      empty("bh_rate_limits", [
+        { name: "bucket", udt: "text", nullable: false, primaryKey: true },
+        { name: "rate_key", udt: "text", nullable: false, primaryKey: true },
+      ]),
     ],
   };
 
@@ -912,7 +916,8 @@ async function main(): Promise<void> {
   const passed = tests.filter((row) => row.verdict === "PASS");
   const notRun = tests.filter((row) => row.verdict === "NOT_RUN");
   const notInScope = tests.filter((row) => row.verdict === "NOT_IN_SCOPE");
-  const overall: Verdict = failed.length === 0 && passed.length > 0 ? "PASS" : "FAIL";
+  const overall: Verdict =
+    failed.length > 0 || !production.attempted ? "FAIL" : "PASS";
   const nextStatus =
     failed.length > 0
       ? "CORRECTION_REQUIRED"
@@ -952,13 +957,13 @@ async function main(): Promise<void> {
     secretsPrinted: false,
     productionModified: production.productionModified === "YES" ? "YES" : "NO",
     liveStripeChargeCreated: false,
-    overall,
     summary:
-      overall === "PASS"
-        ? `Executed ${passed.length} isolated integrity checks across saving, duplicate events, backups, restore, deletion, consent history, and cross-system reconciliation. ${notRun.length} production-only checks were not run because Postgres is unconfigured in this workstation.`
-        : `Data integrity testing failed ${failed.length} check(s). Branch left unmerged.`,
+      failed.length > 0
+        ? `Data integrity testing failed ${failed.length} check(s). Branch left unmerged. Founder has not accepted. Row not marked Complete.`
+        : `Isolated integrity checks: ${passed.length} PASS, ${notRun.length} NOT_RUN, ${notInScope.length} NOT_IN_SCOPE. Production WAL/logical-export restore was not attempted in this workstation (no POSTGRES_URL). Founder has not accepted. Row not marked Complete.`,
     areas,
     tests,
+    checks: tests,
     productionPostgresRestore: {
       attempted: production.attempted,
       productionModified: production.productionModified,
@@ -984,8 +989,9 @@ async function main(): Promise<void> {
       technical: "Imani Heartbeat — Chief Technology & Risk Officer",
       operations: "Michelle Northstar — Chief of Staff & Operations Officer",
     },
-    nextAction: "await_founder_acceptance",
-    blockedReason: "founder_acceptance_required",
+    nextAction:
+      "FOUNDER_ACTION: invoke CRON_SECRET-gated /api/fab-5/aos/backup-probe on Vercel Production and confirm WAL/PITR from the Supabase dashboard. Do not mark Complete. Founder has not accepted.",
+    blockedReason: "production_wal_and_logical_export_not_run_in_this_workstation",
   };
 
   await mkdir("ops/fab-5/runs/aos-engineering-status", { recursive: true });
@@ -1020,7 +1026,7 @@ async function main(): Promise<void> {
   resetMarketingKpiStoreForTests();
   await rm(tmpRoot, { recursive: true, force: true });
 
-  if (overall !== "PASS") {
+  if (failed.length > 0) {
     process.exitCode = 1;
   }
 }
