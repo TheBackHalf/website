@@ -4,20 +4,41 @@
   "sourceReference": "August Launch row 197",
   "ownerAgent": "nia",
   "title": "Validate Blueprint-to-Journey Alignment",
-  "generatedAt": "2026-08-26T16:37:12.824Z",
+  "generatedAt": "2026-08-26T16:40:00.000Z",
   "technicalStatus": "complete",
   "founderAcceptance": null,
   "nextAction": "await_founder_acceptance",
   "result": "PASS",
   "passed": 64,
   "failed": 0,
+  "prUrl": "https://github.com/TheBackHalf/website/pull/30",
+  "branch": "cursor/aos-nia-al-197-e7c1",
+  "merged": false,
   "evidence": [
     "ops/fab-5/runs/row-197-blueprint-journey-alignment.json",
     "lib/blueprint/journey-alignment.ts",
-    "lib/blueprint/map-journey-to-blueprint.ts"
+    "lib/blueprint/map-journey-to-blueprint.ts",
+    "https://github.com/TheBackHalf/website/pull/30"
   ],
   "failedChecks": [],
   "softwareChange": true,
+  "validation": {
+    "typecheck": {
+      "command": "npx tsc --noEmit",
+      "result": "PASS"
+    },
+    "test": {
+      "command": "npm run fab5:row197",
+      "note": "No npm test script in package.json; nearest package test is the Row 197 alignment validator.",
+      "result": "PASS",
+      "passed": 64,
+      "failed": 0
+    },
+    "build": {
+      "command": "npm run build",
+      "result": "PASS"
+    }
+  },
   "notes": [
     "Chapter I–II Foundry reflection questions remain Journey-digital; Blueprint pages are Aliveness Project / Mirror steps.",
     "Chapter IV now emits Architect Reflection + The Standards Exercise, matching reserved exercisePageCount 2.",
