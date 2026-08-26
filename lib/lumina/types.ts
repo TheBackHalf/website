@@ -44,7 +44,11 @@ export type LuminaSendErrorCode =
   | "invalid_input"
   | "not_found"
   | "send_failed"
-  | "age_ineligible";
+  | "age_ineligible"
+  | "rate_limited"
+  | "quota_exceeded"
+  | "service_disabled"
+  | "provider_unavailable";
 
 export type LuminaConversationView = {
   conversation: LuminaConversation;

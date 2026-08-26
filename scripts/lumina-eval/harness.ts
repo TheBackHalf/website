@@ -2,6 +2,11 @@ import { mkdtemp, rm } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 
+import { setAiEmergencyDisableForTests } from "@/lib/ai-controls/env";
+import { resetAiControlLogsForTests } from "@/lib/ai-controls/logging";
+import { setLuminaProviderAdapterForTests } from "@/lib/ai-controls/lumina";
+import { resetAiControlStoreForTests, setAiControlClockForTests } from "@/lib/ai-controls/store";
+
 import {
   createFileAuthStore,
   getAuthStore,
@@ -65,6 +70,11 @@ export async function setupEvalHarness(): Promise<EvalHarness> {
   setLuminaStoreForTests(createFileLuminaStore({ dataDir: luminaDir }));
   setLuminaMemoryStoreForTests(createLuminaMemoryStore());
   resetLuminaContextFixturesForTests();
+  resetAiControlStoreForTests();
+  resetAiControlLogsForTests();
+  setAiEmergencyDisableForTests(null);
+  setLuminaProviderAdapterForTests(null);
+  setAiControlClockForTests(null);
 
   const userA = await seedUser({
     email: "eval-user-a@example.test",
@@ -89,6 +99,11 @@ export async function setupEvalHarness(): Promise<EvalHarness> {
       setLuminaMemoryStoreForTests(undefined);
       setLuminaStoreForTests(undefined);
       setAuthStoreForTests(null);
+      resetAiControlStoreForTests();
+      resetAiControlLogsForTests();
+      setAiEmergencyDisableForTests(null);
+      setLuminaProviderAdapterForTests(null);
+      setAiControlClockForTests(null);
       await rm(rootDir, { recursive: true, force: true });
     },
   };

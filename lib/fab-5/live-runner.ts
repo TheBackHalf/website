@@ -9,6 +9,11 @@ import {
 } from "@openai/agents";
 import { z } from "zod";
 
+import { classifyProviderError } from "@/lib/ai-controls/classify";
+import { aiControlSkipError, evaluateAiCall } from "@/lib/ai-controls/gate";
+import { withAiTimeoutAndRetry } from "@/lib/ai-controls/invoke";
+import { logAiControlEvent } from "@/lib/ai-controls/logging";
+import { recordAiUsage } from "@/lib/ai-controls/store";
 import { appendTrace, createTrace, persistTrace } from "@/lib/fab-5/audit";
 import { loadFab5OpenAiEnv } from "@/lib/fab-5/env";
 import { getLaunchRow, loadOperatingSystem } from "@/lib/fab-5/os";
@@ -467,52 +472,109 @@ export async function runLiveAgent(
     maxTurns?: number;
   } = {},
 ): Promise<{ capture: LiveRunCapture; tracePath?: string }> {
-  const { model } = options.model ? { model: options.model } : configureLiveClient();
+  const label = options.label ?? "michelle";
+  const actorId = `fab5:${label}`;
+  const startedAt = new Date().toISOString();
+  const emptyUsage = { requests: 0, inputTokens: 0, outputTokens: 0, totalTokens: 0 };
+  const deniedCapture = (model: string, error: string): LiveRunCapture => ({
+    command,
+    model,
+    finalOutput: "",
+    toolNames: [],
+    toolSequence: [],
+    responseCount: 0,
+    usage: emptyUsage,
+    startedAt,
+    endedAt: new Date().toISOString(),
+    error,
+  });
+
+  const gate = evaluateAiCall({ service: "fab5", actorId });
+  if (!gate.allow) {
+    return { capture: deniedCapture(getDefaultModel() || LIVE_MODEL_FALLBACK, aiControlSkipError(gate.decision)) };
+  }
+
+  let model: string;
+  try {
+    model = options.model ? options.model : configureLiveClient().model;
+  } catch (error) {
+    const failure = classifyProviderError(error);
+    logAiControlEvent({
+      service: "fab5",
+      actorId,
+      decision: "provider_failure",
+      reason: failure.message,
+      estimatedUsd: 0,
+      requests: 0,
+      tokens: 0,
+      failureClass: failure.class,
+      founderActionRequired: false,
+    });
+    return { capture: deniedCapture(LIVE_MODEL_FALLBACK, redactSecrets(failure.message)) };
+  }
   const runner = new Runner({
     model,
     tracingDisabled: true,
     modelSettings: { parallelToolCalls: options.sequentialTools ? false : true },
   });
 
-  const startedAt = new Date().toISOString();
-  try {
-    const result = await runner.run(agent, command, { maxTurns: options.maxTurns ?? 16 });
-    const endedAt = new Date().toISOString();
-    const output = redactSecrets(
-      typeof result.finalOutput === "string" ? result.finalOutput : JSON.stringify(result.finalOutput ?? ""),
-    );
-    const toolSequence = collectToolSequence(result.newItems);
-    const capture: LiveRunCapture = {
-      command,
-      model,
-      finalOutput: output,
-      toolNames: [...new Set(toolSequence)],
-      toolSequence,
-      lastAgent: result.lastAgent?.name,
-      responseCount: result.rawResponses.length,
-      usage: sumUsage(result.rawResponses),
-      startedAt,
-      endedAt,
+  const timed = await withAiTimeoutAndRetry({
+    timeoutMs: gate.policy.timeoutRetry.timeoutMs,
+    maxAttempts: gate.policy.timeoutRetry.maxAttempts,
+    retryOn: gate.policy.timeoutRetry.retryOn,
+    neverRetry: gate.policy.timeoutRetry.neverRetry,
+    run: () => runner.run(agent, command, { maxTurns: options.maxTurns ?? 16 }),
+  });
+
+  if ("failure" in timed) {
+    const failure = timed.failure;
+    logAiControlEvent({
+      service: "fab5",
+      actorId,
+      decision: "provider_failure",
+      reason: failure.message,
+      estimatedUsd: 0,
+      requests: timed.attempts,
+      tokens: 0,
+      failureClass: failure.class,
+      founderActionRequired: failure.class === "quota" || failure.class === "spend_hard_stop",
+    });
+    const skipQuota = failure.class === "quota" || failure.class === "rate_limited";
+    return {
+      capture: deniedCapture(
+        model,
+        skipQuota ? aiControlSkipError("deny_quota") : redactSecrets(failure.message),
+      ),
     };
-    const tracePath = await persistLiveTrace(capture, options.persistDir, options.label ?? "michelle");
-    return { capture, tracePath };
-  } catch (error) {
-    const endedAt = new Date().toISOString();
-    const message = redactSecrets(error instanceof Error ? error.message : String(error));
-    const capture: LiveRunCapture = {
-      command,
-      model,
-      finalOutput: "",
-      toolNames: [],
-      toolSequence: [],
-      responseCount: 0,
-      usage: { requests: 0, inputTokens: 0, outputTokens: 0, totalTokens: 0 },
-      startedAt,
-      endedAt,
-      error: message,
-    };
-    return { capture };
   }
+
+  const result = timed.value;
+  const endedAt = new Date().toISOString();
+  const output = redactSecrets(
+    typeof result.finalOutput === "string" ? result.finalOutput : JSON.stringify(result.finalOutput ?? ""),
+  );
+  const toolSequence = collectToolSequence(result.newItems);
+  const usage = sumUsage(result.rawResponses);
+  const capture: LiveRunCapture = {
+    command,
+    model,
+    finalOutput: output,
+    toolNames: [...new Set(toolSequence)],
+    toolSequence,
+    lastAgent: result.lastAgent?.name,
+    responseCount: result.rawResponses.length,
+    usage,
+    startedAt,
+    endedAt,
+  };
+  recordAiUsage({
+    service: "fab5",
+    actorId,
+    requests: Math.max(1, usage.requests),
+    tokens: usage.totalTokens,
+  });
+  const tracePath = await persistLiveTrace(capture, options.persistDir, label);
+  return { capture, tracePath };
 }
 
 async function persistLiveTrace(

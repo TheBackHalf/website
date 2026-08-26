@@ -1,5 +1,6 @@
 "use server";
 
+import { authorizeLuminaTurn } from "@/lib/ai-controls/lumina";
 import { AccessDeniedError, requireAuthenticatedUser } from "@/lib/auth/access";
 import { getAuthStore } from "@/lib/auth/store";
 import { isLocale } from "@/lib/i18n/config";
@@ -151,6 +152,25 @@ export async function sendLuminaMessageForUser(
         chapter7: journeyContext.chapter7,
       };
 
+      const controlled = await authorizeLuminaTurn(userId);
+      if (controlled.status === "denied") {
+        const { trackProductEvent } = await import("@/lib/analytics/track");
+        await trackProductEvent({
+          name: "lumina_error",
+          userId,
+          locale,
+          productArea: "lumina",
+          idempotencyKey: `lumina_error:${owned.id}:${lastUser.id}:${controlled.code}`,
+          payload: {
+            conversationId: owned.id,
+            errorCategory: controlled.code,
+            errorCode: controlled.code,
+            responseStatus: "error",
+          },
+        });
+        return { status: "error", code: controlled.code, conversation: owned };
+      }
+
       // Retry completes the pending turn. Force-error applies only on initial send
       // so the Retry control can be validated without duplicating the user message.
       const stub = buildStubAssistantReply(lastUser.content, stubContext);
@@ -239,6 +259,29 @@ export async function sendLuminaMessageForUser(
       return {
         status: "error",
         code: "send_failed",
+        conversation: persisted,
+      };
+    }
+
+    const controlled = await authorizeLuminaTurn(userId);
+    if (controlled.status === "denied") {
+      const persisted = await persistConversation(next);
+      await trackProductEvent({
+        name: "lumina_error",
+        userId,
+        locale,
+        productArea: "lumina",
+        idempotencyKey: `lumina_error:${owned.id}:${userMessage.id}:${controlled.code}`,
+        payload: {
+          conversationId: owned.id,
+          errorCategory: controlled.code,
+          errorCode: controlled.code,
+          responseStatus: "error",
+        },
+      });
+      return {
+        status: "error",
+        code: controlled.code,
         conversation: persisted,
       };
     }
