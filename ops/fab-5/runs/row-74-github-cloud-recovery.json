@@ -1,0 +1,91 @@
+{
+  "generatedAt": "2026-08-26T11:04:00.000Z",
+  "row": "74-github-cloud-engineering-recovery",
+  "title": "GITHUB / CLOUD ENGINEERING RECOVERY",
+  "secretsPrinted": false,
+  "founderAcceptanceRecorded": false,
+  "row74MarkedComplete": false,
+  "row75Started": false,
+  "launchSprintReleased": false,
+  "audit": {
+    "localBranch": "main",
+    "previousOriginMain": "fc7407265ece2e304a5500c6a98d4f02485e3a3f",
+    "previousOriginMainMessage": "Complete homepage structure",
+    "productionWasVercelCliUploadNotGit": true,
+    "whyHomepageOnly": "Git history stopped at the July 27 homepage. Subsequent launch application work remained in the working tree and was deployed with vercel --prod, never committed to origin/main."
+  },
+  "synchronization": {
+    "fullAppCommit": "41889083004231a223124d20e33f942b1dbdfb7b",
+    "aosRelaunchCommit": "2024787dca1fabdc7a006123a48cceaad90c42af",
+    "originMain": "2024787dca1fabdc7a006123a48cceaad90c42af",
+    "forcePush": false,
+    "secretsExcluded": true,
+    "envLocalIgnored": true,
+    "tmpScratchIgnored": true,
+    "githubLargeFileWarning": "public/videos/Founding Architect Welcome/Founding Architect Welcome_1080p.mp4 is 56.08 MB (under GitHub 100 MB hard limit; push accepted)"
+  },
+  "freshCheckout": {
+    "cloneHead": "41889083004231a223124d20e33f942b1dbdfb7b",
+    "clonePath": "%TEMP%/bh-row74-origin-main",
+    "surfacesPresent": [
+      "app/register/page.tsx",
+      "app/login/page.tsx",
+      "app/architect/page.tsx",
+      "components/app-shell/dashboard-shell.tsx",
+      "app/checkout/page.tsx",
+      "app/lumina/page.tsx",
+      "app/architect/lumina/page.tsx",
+      "app/support/page.tsx",
+      "app/ops/admin/agent-operations/page.tsx",
+      "lib/fab-5/aos/engine.ts",
+      "app/api/fab-5/aos/tick/route.ts",
+      "content/i18n/dictionaries/es.ts"
+    ]
+  },
+  "validation": {
+    "typecheck": "npx tsc --noEmit exit 0",
+    "build": "npx next build / npm run build exit 0"
+  },
+  "productionRegression": {
+    "host": "https://website-two-psi-49.vercel.app",
+    "health": 200,
+    "register": 200,
+    "login": 200,
+    "checkout": 200,
+    "lumina": 200,
+    "support": 200,
+    "es": 200,
+    "registerPageTitle": "Become an Architect — The Back Half",
+    "customDomainDnsFromThisWorkstation": "www.thebackhalf.org did not resolve here; Vercel still aliases it. Domain work remains Row 75 — not opened."
+  },
+  "productionDeploymentAfterSync": {
+    "id": "dpl_5nKv5deASyQGqkmWdhWS6FEAweL6",
+    "url": "https://website-dosuzsfir-back-half.vercel.app",
+    "inspector": "https://vercel.com/back-half/website/5nKv5deASyQGqkmWdhWS6FEAweL6",
+    "aliased": "https://www.thebackhalf.org"
+  },
+  "dashboardEngineeringE2E": {
+    "workId": "aos-row74-nia-dashboard-welcome",
+    "owner": "nia",
+    "aosLaunchTick": {
+      "at": "2026-08-26T10:54:17.290Z",
+      "claimed": ["aos-row74-nia-dashboard-welcome"],
+      "engineeringJobsLaunched": 1
+    },
+    "branch": "cursor/aos-nia-aos-row74-nia-dashboard-welcome-7d42",
+    "pullRequest": "https://github.com/TheBackHalf/website/pull/2",
+    "merged": false,
+    "softwareChangeApplied": true,
+    "filesChanged": [
+      "components/app-shell/dashboard-shell.tsx",
+      "content/i18n/dictionaries/en.ts",
+      "content/i18n/dictionaries/es.ts",
+      "content/i18n/types.ts",
+      "app/globals.css"
+    ],
+    "defectAddressed": "Welcome card now uses a single personalized heading (Welcome, {name}.) instead of Welcome + Welcome, {name}.",
+    "aosIngestAsOf": "2026-08-26T11:03:38.160Z polled=1 ingested=0 — Cursor run not yet terminal; GitHub PR result retrieved independently",
+    "priorBlockedPr": "https://github.com/TheBackHalf/website/pull/1"
+  },
+  "sixtyFourLaunchItemsStillHeld": true
+}
