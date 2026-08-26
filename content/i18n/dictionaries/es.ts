@@ -374,6 +374,7 @@ export const esDictionary: Dictionary = {
       currentChapter: "Capítulo actual del Journey",
       progress: "Progreso del Journey",
       continueJourney: "Continuar el Journey",
+      continueCeremony: "Abrir Finalización del Journey",
       continueOnboarding: "Continuar la incorporación",
       continueCheckout: "Obtener acceso al Journey",
       resourcesPreview: "Recursos de Architect",
@@ -1067,6 +1068,31 @@ export const esDictionary: Dictionary = {
       mediaTranscript: "Transcripción",
       translationPendingNote: "",
       error: "Algo salió mal. Inténtalo de nuevo.",
+    },
+    ceremony: {
+      eyebrow: "Finalización del Journey",
+      title: "Finalización del Journey",
+      description:
+        "Tu trabajo del Journey permanece guardado con esta cuenta de Architect. Esta no es la línea de meta. Es la línea de salida.",
+      founderTitle: "Felicitaciones del Founder",
+      certificateTitle: "Certificado de finalización de Architect",
+      certificateBody:
+        "Descarga tu Certificado de finalización de Architect personalizado. Está disponible después de completar el Journey.",
+      portfolioTitle: "Portafolio de Architect",
+      portfolioBody:
+        "Artefactos completados del Journey reunidos desde esta cuenta de Architect. Un PDF de portafolio compilado permanece como un entregable aparte.",
+      luminaTitle: "Reflexión final de Lumina",
+      luminaBody:
+        "Reflexiona con Lumina sobre lo que creaste — sin reescribir tu trabajo.",
+      luminaCta: "Comenzar la reflexión final de Lumina",
+      communityTitle: "Architect Community",
+      communityNotLive:
+        "Architect Community no está en vivo el 31 de agosto de 2026.",
+      communityFoundingIncluded:
+        "Founding Architect incluye los primeros seis meses de acceso a Architect Community desde el 25 de octubre de 2026 hasta el 25 de abril de 2027.",
+      communityStandalone:
+        "$50/mes después de completar el Blueprint. Architect Community — Próximamente el 25 de octubre de 2026.",
+      communityCta: "Ver la oferta de Architect Community",
     },
     lumina: {
       title: "Lumina",

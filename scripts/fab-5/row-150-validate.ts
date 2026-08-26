@@ -629,7 +629,7 @@ async function main() {
     requiredProperties: "chapterId / assetId=certificate",
     actualProperties: JSON.stringify(completionEvents.map((e) => e.payload)),
     destinationConfirmed: "first-party analytics ledger",
-    detail: "No separate ceremony product exists; completion experience is Chapter 7 completion",
+    detail: "Chapter 7 complete hosts the Row 135 Threshold Ceremony; locked Row 150 taxonomy still uses completion_experience_viewed",
   });
 
   // T12 — Membership states that exist

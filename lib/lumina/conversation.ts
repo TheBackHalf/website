@@ -25,6 +25,8 @@ export const LUMINA_FIXTURE_AWAKENING_MARKER = "[fixture-awakening]";
 export const LUMINA_FIXTURE_MIRROR_MARKER = "[fixture-mirror]";
 export const LUMINA_FIXTURE_DECISION_MARKER = "[fixture-decision]";
 export const LUMINA_FIXTURE_STANDARDS_MARKER = "[fixture-standards]";
+export const LUMINA_FIXTURE_BEGINNING_MARKER = "[fixture-beginning]";
+export const LUMINA_FIXTURE_THRESHOLD_MARKER = "[fixture-threshold]";
 
 export function createConversation(userId: string, now = new Date().toISOString()): LuminaConversation {
   return {
@@ -207,6 +209,9 @@ export function contentRequestsExpansionDiscussion(content: string): boolean {
 }
 
 export function contentRequestsBeginningDiscussion(content: string): boolean {
+  if (content.includes(LUMINA_FIXTURE_BEGINNING_MARKER)) {
+    return true;
+  }
   const normalized = content.toLowerCase();
   return (
     normalized.includes("topic=beginning") ||
@@ -216,6 +221,19 @@ export function contentRequestsBeginningDiscussion(content: string): boolean {
     normalized.includes("capítulo vii") ||
     normalized.includes("capitulo vii") ||
     normalized.includes("back half declaration")
+  );
+}
+
+export function contentRequestsThresholdReflection(content: string): boolean {
+  if (content.includes(LUMINA_FIXTURE_THRESHOLD_MARKER)) {
+    return true;
+  }
+  const normalized = content.toLowerCase();
+  return (
+    normalized.includes("topic=threshold") ||
+    normalized.includes("final lumina reflection") ||
+    normalized.includes("reflexión final de lumina") ||
+    normalized.includes("reflexion final de lumina")
   );
 }
 
@@ -842,6 +860,22 @@ export function buildStubAssistantReply(
         locale === "es"
           ? `Aún no veo progreso guardado de Chapter VII — The Beginning. Cuando entres al capítulo y guardes tus reflexiones o Back Half Declaration, podré acompañarte con ese contexto.`
           : `I do not yet see saved Chapter VII — The Beginning progress. When you enter the chapter and save your reflections or Back Half Declaration, I can meet you with that context.`;
+    }
+  }
+
+  if (contentRequestsThresholdReflection(userContent)) {
+    const chapter7 = context?.chapter7;
+    const journeyComplete = context?.journeyState === "journey_completed";
+    if (chapter7?.status === "complete" || journeyComplete) {
+      content =
+        locale === "es"
+          ? `Puedo ver que tu Journey está completo, incluido Chapter VII — The Beginning, tu Back Half Declaration y tu Weekly Commitment. Your Journey does not end here—it begins here. This is not the finish line. It's the starting line. Cuando quieras, podemos reflexionar sobre lo que creaste — sin reescribir tu trabajo.`
+          : `I can see that your Journey is complete, including Chapter VII — The Beginning, your Back Half Declaration, and your Weekly Commitment. Your Journey does not end here—it begins here. This is not the finish line. It's the starting line. When you are ready, we can reflect on what you created — without rewriting your work.`;
+    } else {
+      content =
+        locale === "es"
+          ? `La reflexión final de Lumina está disponible después de completar el Journey. Completa Chapter VII — The Beginning para abrir esa reflexión — sin reescribir tu trabajo.`
+          : `The final Lumina reflection is available after Journey completion. Complete Chapter VII — The Beginning to open that reflection — without rewriting your work.`;
     }
   }
 

@@ -35,6 +35,7 @@ import {
   getChapter6Path,
   getChapter7Path,
 } from "@/lib/journey/chapters/paths";
+import { getThresholdCeremonyPath } from "@/lib/journey/completion/threshold-ceremony";
 import { getChapter1Store } from "@/lib/journey/chapters/store";
 import {
   getOnboardingStateForUser,
@@ -54,7 +55,8 @@ export type ArchitectDashboardContinueKind =
 export type ArchitectDashboardContinueLabelKey =
   | "continueCheckout"
   | "continueOnboarding"
-  | "continueJourney";
+  | "continueJourney"
+  | "continueCeremony";
 
 export type ArchitectDashboardProgressKind =
   | "no_access"
@@ -193,6 +195,13 @@ export async function buildArchitectContinueActionWithChapter(
   // and chapter records can advance independently of prior completion flags
   // (e.g. Chapter VII opened after Chapter VI), so prefer live chapter state.
   if (chapter7) {
+    if (chapter7.status === "completed") {
+      return {
+        ...base,
+        href: getThresholdCeremonyPath(locale),
+        labelKey: "continueCeremony",
+      };
+    }
     return {
       ...base,
       href: getChapter7Path(locale, resolveChapter7ResumeSection(chapter7)),

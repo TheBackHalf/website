@@ -16,8 +16,18 @@ import type { Locale } from "@/lib/i18n/config";
 
 type LuminaConversationPanelProps = {
   locale: Locale;
-  /** Row 84–87 — results/chapter CTA topic (safe query). */
-  topic?: "aliveness" | "awakening" | "mirror" | "decision" | "standards" | "architect" | "expansion" | "beginning" | null;
+  /** Row 84–87 + Row 135 — results/chapter/ceremony CTA topic (safe query). */
+  topic?:
+    | "aliveness"
+    | "awakening"
+    | "mirror"
+    | "decision"
+    | "standards"
+    | "architect"
+    | "expansion"
+    | "beginning"
+    | "threshold"
+    | null;
 };
 
 export function LuminaConversationPanel({
@@ -61,14 +71,19 @@ export function LuminaConversationPanel({
       topic !== "standards" &&
       topic !== "architect" &&
       topic !== "expansion" &&
-      topic !== "beginning"
+      topic !== "beginning" &&
+      topic !== "threshold"
     ) {
       return;
     }
     if (isLoadingInitial || isPending || topicSentRef.current) return;
     topicSentRef.current = true;
     const opener =
-      topic === "beginning"
+      topic === "threshold"
+        ? locale === "es"
+          ? "Quiero una reflexión final de Lumina sobre completar el Journey."
+          : "I want a final Lumina reflection on completing the Journey."
+        : topic === "beginning"
         ? locale === "es"
           ? "Quiero hablar sobre el Capítulo Siete — El Comienzo y mi Back Half Declaration."
           : "I want to discuss Chapter Seven — The Beginning and my Back Half Declaration."

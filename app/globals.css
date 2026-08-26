@@ -1619,6 +1619,18 @@
     @apply mt-4 font-sans text-xs font-light text-bh-muted;
   }
 
+  .bh-ceremony {
+    @apply min-w-0;
+  }
+
+  .bh-ceremony-intro {
+    @apply mb-2;
+  }
+
+  .bh-ceremony-section {
+    @apply mt-10 border-t border-bh-purple/10 pt-8;
+  }
+
   .bh-app-settings-sections {
     @apply grid gap-4;
   }
