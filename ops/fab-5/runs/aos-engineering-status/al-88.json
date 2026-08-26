@@ -11,6 +11,8 @@
   "generatedAt": "2026-08-26T15:18:12.000Z",
   "auditWindow": "2026-08-26T15:13:00.000Z/2026-08-26T15:18:12.000Z",
   "timezoneNote": "America/New_York for launch posting clocks; timestamps here are UTC.",
+  "branch": "cursor/aos-nia-al-88-59ff",
+  "pullRequest": "https://github.com/TheBackHalf/website/pull/6",
   "softwareChangeApplied": false,
   "productMarketingLegalFilesChanged": false,
   "stripeConfigModified": false,
