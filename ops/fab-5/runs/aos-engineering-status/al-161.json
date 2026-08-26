@@ -1,0 +1,359 @@
+{
+  "aosWorkId": "al-161",
+  "row": 161,
+  "excelRow": 162,
+  "source": "command_center",
+  "sourceReference": "August Launch row 161",
+  "title": "Validate Business Email Deliverability",
+  "phase": "Email, Analytics, Support & Architect Experience",
+  "primaryWorkstream": "TECHNOLOGY",
+  "ownerAgent": "imani",
+  "author": "Imani Heartbeat — Chief Technology & Risk Officer",
+  "supportingOwners": ["michelle"],
+  "generatedAt": "2026-08-26T16:04:00.000Z",
+  "probedAt": "2026-08-26T16:02:33.000Z",
+  "branch": "cursor/aos-imani-al-161-2901",
+  "deliverableKind": "status_only",
+  "softwareChange": false,
+  "productMarketingLegalFilesChanged": false,
+  "launchRoadmapChanged": false,
+  "founderNotesChanged": false,
+  "secretsPrinted": false,
+  "dnsChanged": false,
+  "cloudflareDnsChanged": false,
+  "nameserversChanged": false,
+  "mxChanged": false,
+  "stripeChanged": false,
+  "vercelCustomDomainChanged": false,
+  "authenticationWeakened": false,
+  "liveEmailSentThisRun": false,
+  "markedComplete": false,
+  "rowMarkedComplete": false,
+  "founderAcceptance": null,
+  "founderAccepted": false,
+  "founderAcceptanceFabricated": false,
+  "kimberlyWalkerAiTreatedAsExecutionCapacity": false,
+  "status": "NOT READY — live authentication FAIL",
+  "technicalStatus": "validation_complete_deliverability_not_ready",
+  "percentCompleteClaim": "Do not treat this file as Row 161 Complete. Do not update launch-rows.json percentComplete from this work.",
+  "finalStatus": "ROW 161 IS NOT COMPLETE. Live public DNS for thebackhalf.org has Google Workspace MX and a Google site-verification TXT, but no SPF, no DKIM, and no DMARC. End-to-end sender workflows were not re-sent from this environment (SMTP env absent). Spam placement was not observed in Gmail/Outlook/Yahoo. Bounce handling is not on main. Founder acceptance is not recorded.",
+  "scopeNote": "AOS instructed: if this deliverable is not a repository software change, write status only to this file and do not change product, marketing, or legal files. Imani did not modify Cloudflare DNS, nameservers, Stripe, Vercel custom domains, or authentication. Imani did not send live mail to Architects or the Founder from this run.",
+  "dependenciesObserved": {
+    "googleWorkspace": {
+      "namedDependency": "Google Workspace",
+      "workbookRow67": "Secure Domain and Business Email — workbook Complete. Live DNS does not currently show SPF/DKIM/DMARC even though that row's description includes them. Launch-rows.json was not rewritten.",
+      "mx": "PASS — Google Workspace MX present 2026-08-26",
+      "smtpHistorical": "Row 153 SMTP authentication PASS and actual email delivery PASS on 2026-08-21 from support@thebackhalf.org. Not re-sent this run.",
+      "thisEnvironmentSmtp": "ABSENT — SMTP_HOST, SMTP_USER, SMTP_PASSWORD, SMTP_FROM all unset. Live send not possible here."
+    },
+    "emailAutomation": {
+      "namedDependency": "Email Automation / Configure Transactional Email",
+      "row": 146,
+      "workbookStatus": "Not Started on current main",
+      "unmergedPr": "https://github.com/TheBackHalf/website/pull/17",
+      "unmergedPrState": "OPEN draft as of this run",
+      "note": "PR 17 implements sender-domain lock, bounce ingest, suppression, unsubscribe, and DNS inspection on Google Workspace SMTP. It is not merged and is not production. Row 161 did not implement those controls."
+    },
+    "supportChannels": {
+      "row": 153,
+      "status": "Complete — Founder accepted 2026-08-21",
+      "mailbox": "support@thebackhalf.org",
+      "senderIdentity": "The Back Half Support",
+      "evidence": [
+        "ops/fab-5/row-153-status.json",
+        "ops/fab-5/runs/row-153-smtp-delivery-verification.json"
+      ]
+    }
+  },
+  "dns": {
+    "method": "Cloudflare DNS-over-HTTPS (cloudflare-dns.com), Google DNS-over-HTTPS (dns.google), and dig against 10.0.0.2. Read-only. No records written.",
+    "domain": "thebackhalf.org",
+    "nameservers": ["anirban.ns.cloudflare.com", "ulla.ns.cloudflare.com"],
+    "soa": "anirban.ns.cloudflare.com. dns.cloudflare.com. 2410503114 10000 2400 604800 1800",
+    "mx": {
+      "result": "PASS",
+      "records": [
+        "1 aspmx.l.google.com.",
+        "5 alt1.aspmx.l.google.com.",
+        "5 alt2.aspmx.l.google.com.",
+        "10 alt3.aspmx.l.google.com.",
+        "10 alt4.aspmx.l.google.com."
+      ]
+    },
+    "spf": {
+      "result": "FAIL",
+      "query": "TXT thebackhalf.org",
+      "dnsStatus": "NOERROR",
+      "records": ["google-site-verification=-8AEQpygIWRqteAiOE8a36AwBx6HLAkvd1gLo-6f6Uk"],
+      "vSpf1Present": false,
+      "note": "Apex TXT is Google site verification only. There is no v=spf1 include:_spf.google.com record. Receivers checking SPF on thebackhalf.org will not find an authorizing policy."
+    },
+    "dkim": {
+      "result": "FAIL",
+      "selectorsProbed": [
+        "google._domainkey.thebackhalf.org",
+        "default._domainkey.thebackhalf.org",
+        "selector1._domainkey.thebackhalf.org",
+        "selector2._domainkey.thebackhalf.org",
+        "k1._domainkey.thebackhalf.org",
+        "s1._domainkey.thebackhalf.org",
+        "20230601._domainkey.thebackhalf.org",
+        "google2._domainkey.thebackhalf.org",
+        "smtp._domainkey.thebackhalf.org",
+        "gm1._domainkey.thebackhalf.org",
+        "google1._domainkey.thebackhalf.org",
+        "cf2024-1._domainkey.thebackhalf.org",
+        "mail._domainkey.thebackhalf.org",
+        "dkim._domainkey.thebackhalf.org",
+        "_domainkey.thebackhalf.org"
+      ],
+      "dnsStatus": "NXDOMAIN for every selector probed (TXT and CNAME where applicable)",
+      "vDkim1Present": false,
+      "note": "Google Workspace default selector google._domainkey is NXDOMAIN. No alternate selector was published. Custom-domain DKIM cannot verify until Founder generates the key in Workspace Admin and publishes the TXT on Cloudflare."
+    },
+    "dmarc": {
+      "result": "FAIL",
+      "query": "TXT _dmarc.thebackhalf.org",
+      "dnsStatus": "NXDOMAIN",
+      "vDmarc1Present": false
+    },
+    "optionalNotRequired": {
+      "bimi": "NXDOMAIN _bimi.thebackhalf.org",
+      "mtaSts": "NXDOMAIN _mta-sts.thebackhalf.org",
+      "tlsRpt": "NXDOMAIN _smtp._tls.thebackhalf.org"
+    },
+    "overallAuthentication": "FAIL"
+  },
+  "productionSenders": [
+    {
+      "address": "support@thebackhalf.org",
+      "role": "Public support sender and Google Workspace SMTP identity (SMTP_FROM / SMTP_USER in .env.example)",
+      "brandedFromNameInCode": "The Back Half Support",
+      "replyToInCode": "support@thebackhalf.org",
+      "workflows": [
+        "Support form acknowledgment (lib/support/acknowledge.ts)",
+        "Default From for verification, password reset, and billing when SMTP_FROM is support@"
+      ],
+      "liveSendThisRun": "NOT SENT — SMTP env absent",
+      "historicalSend": "PASS 2026-08-21 Row 153 smtp-delivery-verification (googleWorkspaceAccepted, actualEmailDelivery PASS). Secrets not reprinted.",
+      "deliverabilityNow": "FAIL pending SPF/DKIM/DMARC"
+    },
+    {
+      "address": "kimberly@thebackhalf.org",
+      "role": "Founder mailbox. Approved launch-email From. Legal/contact. Recovery mailbox. Not the public support sender.",
+      "brandedFromNameInCopy": "The Back Half",
+      "workflows": [
+        "Row 199 launch email copy (content/launch/row199-communications.ts) — Founder-approved, not sent, not loaded into a sending platform",
+        "AOS founder notify destination (FOUNDER_NOTIFY_EMAIL fallback)"
+      ],
+      "liveSendThisRun": "NOT SENT — by design and SMTP absent",
+      "deliverabilityNow": "FAIL pending same-domain SPF/DKIM/DMARC. Do not send launch mail until authentication is published."
+    },
+    {
+      "address": "privacy@thebackhalf.org",
+      "role": "Reserved. Not a public Version 1 sender.",
+      "workflows": ["Privacy requests enter Row 153 tracker as category Privacy"],
+      "liveSendThisRun": "NOT SENT",
+      "deliverabilityNow": "N/A as sender; inbound still depends on Workspace MX (PASS)"
+    }
+  ],
+  "workflows": [
+    {
+      "id": "support_acknowledgment",
+      "path": "lib/support/acknowledge.ts",
+      "fromName": "The Back Half Support",
+      "fromAddress": "supportFromAddress() → SMTP_FROM if it is support@, else SMTP_USER if support@, else SMTP_FROM or support@",
+      "replyTo": "support@thebackhalf.org",
+      "result": "CODE PASS for From/Reply-To and branded name. LIVE SEND NOT REPEATED. AUTH DNS FAIL."
+    },
+    {
+      "id": "auth_verification",
+      "path": "lib/auth/email/send-verification.ts",
+      "fromName": "none — sendSmtpEmail uses SMTP_FROM with no fromName",
+      "replyTo": "none — replies inherit SMTP_FROM envelope if the MUA uses From",
+      "result": "GAP — no branded sender name and no explicit Reply-To. LIVE SEND NOT PERFORMED. AUTH DNS FAIL."
+    },
+    {
+      "id": "auth_password_reset",
+      "path": "lib/auth/email/send-password-reset.ts",
+      "fromName": "none",
+      "replyTo": "none",
+      "result": "GAP — same as verification. LIVE SEND NOT PERFORMED. AUTH DNS FAIL."
+    },
+    {
+      "id": "billing_notifications",
+      "path": "lib/billing/notifications.ts",
+      "templates": [
+        "payment_success",
+        "payment_failed",
+        "subscription_activated",
+        "subscription_canceled"
+      ],
+      "fromName": "none",
+      "replyTo": "none",
+      "result": "GAP — no branded name, no Reply-To. LIVE SEND NOT PERFORMED. AUTH DNS FAIL."
+    },
+    {
+      "id": "aos_founder_notify",
+      "path": "lib/fab-5/aos/notify.ts",
+      "fromName": "The Back Half Operations",
+      "fromAddress": "SMTP_FROM",
+      "replyTo": "none",
+      "to": "FOUNDER_NOTIFY_EMAIL or kimberly@thebackhalf.org",
+      "result": "CODE PARTIAL — branded operations name present; Reply-To unset so a Founder reply would hit SMTP_FROM (support@). LIVE SEND NOT PERFORMED."
+    },
+    {
+      "id": "launch_email_kimberly",
+      "path": "content/launch/row199-communications.ts",
+      "fromName": "The Back Half",
+      "fromEmail": "kimberly@thebackhalf.org",
+      "sent": false,
+      "loadedIntoPlatform": false,
+      "result": "COPY LOCKED, NOT OPERATIONAL. Do not send until SPF/DKIM/DMARC exist. AUTH DNS FAIL."
+    }
+  ],
+  "fromReplyToBrandedNames": {
+    "support": "PASS in code — From name The Back Half Support, Reply-To support@thebackhalf.org. Protocol: do not reply as Kimberly or from a personal Founder mailbox.",
+    "authAndBilling": "FAIL/GAP on current main — no fromName, no replyTo argument.",
+    "operations": "PARTIAL — fromName set, replyTo unset.",
+    "row146Unmerged": "PR 17 would default From name The Back Half and Reply-To support@thebackhalf.org for the transactional send layer. Not production."
+  },
+  "supportRouting": {
+    "publicMailbox": "support@thebackhalf.org",
+    "form": "/support HTTP 200 on https://website-two-psi-49.vercel.app/support",
+    "canonicalForm": "https://thebackhalf.org/support does not resolve (Row 75 apex A/AAAA/CNAME empty). Not changed.",
+    "imapPoll": "lib/support/imap.ts — uses SMTP_USER/SMTP_PASSWORD; Vercel cron /api/support/inbound",
+    "ticketThreading": "In-Reply-To / subject ticket id attaches to existing case (lib/support/inbound.ts)",
+    "privacy": "privacy@ reserved; Privacy category on the same tracker",
+    "result": "CODE/PROTOCOL PASS (Row 153 Founder-accepted). Canonical hostname routing blocked by Row 75 DNS. IMAP not exercised this run (credentials absent)."
+  },
+  "bounceHandling": {
+    "onCurrentMain": "FAIL — no bounce classifier, no suppression store, no /api/email/bounce. Inbound mailer-daemon would be ingested as a support ticket.",
+    "unmergedRow146": "PR 17 adds SMTP error classification, mailer-daemon ingest without a ticket, signed POST /api/email/bounce, and hard-bounce suppression. Not merged. Unit tests in that PR are file-store tests, not live DSN from Gmail.",
+    "thisRun": "No live bounce generated. Do not send to a known-invalid address from production without Founder review."
+  },
+  "spamPlacement": {
+    "gmail": "NOT TESTED — no live send, no inbox access",
+    "outlook": "NOT TESTED",
+    "yahoo": "NOT TESTED",
+    "mobile": "NOT TESTED",
+    "risk": "HIGH until SPF/DKIM/DMARC are published. Google-originated smtp.gmail.com traffic may still reach Gmail inboxes, but other receivers checking thebackhalf.org SPF/DKIM/DMARC will fail or lack alignment. This is not proof of inbox placement.",
+    "result": "INCONCLUSIVE / NOT VERIFIED"
+  },
+  "mailboxIdentityWhenReplying": {
+    "supportAcks": "CODE PASS — Reply-To and From address are support@. Live reply identity not observed this run.",
+    "authBilling": "IMPLICIT — no Reply-To; MUA reply uses From (SMTP_FROM). If production SMTP_FROM is support@, replies should land on support@, not kimberly@. Not live-verified.",
+    "founderLaunchMail": "Intended From kimberly@. Not sent."
+  },
+  "checks": [
+    {
+      "id": "C1",
+      "name": "SPF published for thebackhalf.org",
+      "result": "FAIL"
+    },
+    {
+      "id": "C2",
+      "name": "DKIM published (google._domainkey or other selector)",
+      "result": "FAIL"
+    },
+    {
+      "id": "C3",
+      "name": "DMARC published at _dmarc.thebackhalf.org",
+      "result": "FAIL"
+    },
+    {
+      "id": "C4",
+      "name": "Google Workspace MX present",
+      "result": "PASS"
+    },
+    {
+      "id": "C5",
+      "name": "Support From/Reply-To branded identity in code",
+      "result": "PASS"
+    },
+    {
+      "id": "C6",
+      "name": "Auth and billing From/Reply-To branded identity in code",
+      "result": "FAIL"
+    },
+    {
+      "id": "C7",
+      "name": "End-to-end live send of all production workflows this run",
+      "result": "FAIL — SMTP env absent; live send not performed"
+    },
+    {
+      "id": "C8",
+      "name": "Historical support SMTP delivery (Row 153, 2026-08-21)",
+      "result": "PASS — prior evidence only; not refreshed"
+    },
+    {
+      "id": "C9",
+      "name": "Spam placement across major inboxes",
+      "result": "NOT TESTED"
+    },
+    {
+      "id": "C10",
+      "name": "Support routing (form + IMAP + tickets)",
+      "result": "PASS code/protocol; IMAP not exercised this run"
+    },
+    {
+      "id": "C11",
+      "name": "Bounced-email handling on production main",
+      "result": "FAIL — not implemented on current main"
+    },
+    {
+      "id": "C12",
+      "name": "Correct mailbox identity when replying (live)",
+      "result": "NOT TESTED"
+    },
+    {
+      "id": "C13",
+      "name": "DNS / Stripe / nameservers / auth controls unchanged",
+      "result": "PASS"
+    }
+  ],
+  "overall": {
+    "passed": 4,
+    "failed": 6,
+    "notTested": 3,
+    "verdict": "FAIL — not launch-ready for business email deliverability"
+  },
+  "remainingBlockers": [
+    "FOUNDER ACTION — Cloudflare DNS (do not change nameservers or MX): publish SPF TXT on thebackhalf.org, publish Google Workspace DKIM TXT at the selector Workspace Admin shows (typically google._domainkey), publish DMARC TXT at _dmarc.thebackhalf.org. Imani did not and must not apply these records from this agent.",
+    "FOUNDER ACTION — Google Workspace Admin: Authenticate email / DKIM generate-and-start, then copy the TXT to Cloudflare. Super-admin is Founder-held.",
+    "Row 146 Configure Transactional Email is Not Started on main (unmerged PR 17). Bounce handling, suppression, and a unified From/Reply-To layer are not production.",
+    "Live end-to-end send, spam-folder observation, and reply-identity checks require production SMTP credentials and a controlled test inbox after DNS is published. This environment has no SMTP secrets."
+  ],
+  "recommendedFounderDnsNotApplied": {
+    "warning": "Recommendations only. Do not treat this as a change set applied by Imani. Do not modify nameservers or MX. Proxy grey-cloud / DNS-only.",
+    "spf": {
+      "type": "TXT",
+      "name": "@",
+      "content": "v=spf1 include:_spf.google.com ~all",
+      "source": "Google Workspace SPF for domains that send via Google"
+    },
+    "dkim": {
+      "type": "TXT",
+      "name": "google._domainkey (or the selector Workspace Admin displays)",
+      "content": "Generate in Google Workspace Admin → Apps → Google Workspace → Gmail → Authenticate email. Paste the TXT value Cloudflare shows. Do not invent a DKIM key in git."
+    },
+    "dmarc": {
+      "type": "TXT",
+      "name": "_dmarc",
+      "content": "v=DMARC1; p=none; rua=mailto:support@thebackhalf.org",
+      "note": "Start at p=none. Use an existing mailbox (support@). Do not invent dmarc@ or legal@. Tighten to p=quarantine only after Founder review of reports."
+    }
+  },
+  "nextAction": "FOUNDER ACTION — publish SPF, DKIM, and DMARC on Cloudflare from Google Workspace Admin values. Do not mark Row 161 Complete. After DNS exists, Imani re-probes authentication and (with Founder-held SMTP) runs a controlled send to a test inbox for placement and Reply-To identity. Review/merge of Row 146 (PR 17) is a separate Founder/review decision.",
+  "validation": {
+    "typecheck": "skipped — status-only JSON; package.json has no typecheck script; no production code changed",
+    "test": "skipped — package.json has no test script; no production code changed",
+    "build": "skipped — change cannot affect production",
+    "dnsProbes": "executed 2026-08-26T16:02:33Z Cloudflare DoH + Google DoH + dig",
+    "productionProbes": {
+      "https://website-two-psi-49.vercel.app/api/ops/health": "HTTP 200 {ok:true, environment:production, checks.application:ok, checks.database:ok}",
+      "https://website-two-psi-49.vercel.app/support": "HTTP 200"
+    }
+  },
+  "notes": "Imani Heartbeat validation only. Kimberly Walker (AI) was not used as execution capacity. Kimberly Walker (human) remains sole Founder acceptance authority. This result returns to AOS as evidence, not as Command Center Complete."
+}
