@@ -300,8 +300,9 @@ async function handleInvoicePaymentFailed(
     };
   }
 
-  const entitlements =
-    await getBillingStore().findEntitlementsBySubscriptionId(subscriptionId);
+  const entitlements = (
+    await getBillingStore().findEntitlementsBySubscriptionId(subscriptionId)
+  ).filter((entry) => entry.kind === "community_access");
 
   for (const entitlement of entitlements) {
     await getBillingStore().upsertEntitlement({
@@ -349,8 +350,9 @@ async function syncSubscription(
     metadataUserId: subscription.metadata?.bh_user_id,
   });
 
-  const entitlements =
-    await getBillingStore().findEntitlementsBySubscriptionId(subscription.id);
+  const entitlements = (
+    await getBillingStore().findEntitlementsBySubscriptionId(subscription.id)
+  ).filter((entry) => entry.kind === "community_access");
 
   const endsAt = subscriptionPeriodEndIso(subscription);
   const fullyCanceled =
@@ -451,6 +453,7 @@ async function handleChargeRefunded(
     chargeId: charge.id,
     eventId: event.id,
     reason: "charge.refunded",
+    offerId: purchase?.offerId,
   });
 
   const revokedKinds =

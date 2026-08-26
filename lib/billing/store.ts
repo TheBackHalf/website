@@ -10,8 +10,26 @@ import type {
   StripeEventLogRecord,
 } from "@/lib/billing/types";
 
-const DATA_DIR = ".data/billing";
-const DB_FILE = ".data/billing/database.json";
+const DEFAULT_DB_FILE = ".data/billing/database.json";
+
+let overrideDbFile: string | undefined;
+
+function resolveDbFile(): string {
+  return (
+    overrideDbFile ??
+    process.env.BILLING_DB_FILE?.trim() ??
+    DEFAULT_DB_FILE
+  );
+}
+
+function resolveDataDir(): string {
+  return path.dirname(resolveDbFile());
+}
+
+/** Test-only — point the file ledger at an isolated temp path. */
+export function setBillingDbFileForTests(file: string | null): void {
+  overrideDbFile = file ?? undefined;
+}
 
 const emptyDatabase = (): BillingDatabase => ({
   entitlements: [],
@@ -44,7 +62,7 @@ function enqueueWrite<T>(operation: () => Promise<T>): Promise<T> {
 
 async function readDatabase(): Promise<BillingDatabase> {
   try {
-    const raw = await readFile(DB_FILE, "utf8");
+    const raw = await readFile(resolveDbFile(), "utf8");
     return normalizeDatabase(JSON.parse(raw) as BillingDatabase);
   } catch (error) {
     const nodeError = error as NodeJS.ErrnoException;
@@ -56,10 +74,11 @@ async function readDatabase(): Promise<BillingDatabase> {
 }
 
 async function writeDatabase(database: BillingDatabase): Promise<void> {
-  await mkdir(DATA_DIR, { recursive: true });
-  const tempFile = `${DB_FILE}.${process.pid}.${Date.now()}.tmp`;
+  const dbFile = resolveDbFile();
+  await mkdir(resolveDataDir(), { recursive: true });
+  const tempFile = `${dbFile}.${process.pid}.${Date.now()}.tmp`;
   await writeFile(tempFile, JSON.stringify(database, null, 2), "utf8");
-  await rename(tempFile, DB_FILE);
+  await rename(tempFile, dbFile);
 }
 
 function queueKpiMirror(record: PurchaseRecord): void {
@@ -181,16 +200,19 @@ export function createFileBillingStore(): BillingStore {
 
         if (existingIndex >= 0) {
           const current = database.entitlements[existingIndex]!;
+          const incoming = omitUndefinedFields(input);
           const updated: EntitlementRecord = {
             ...current,
-            ...input,
+            ...incoming,
             id: current.id,
-            // Never extend a one-year bundle term on duplicate events.
+            // Never extend the included Founding Architect Community window
+            // on duplicate bundle events. Paid Community renewals may move
+            // endsAt forward.
             grantedAt: current.grantedAt,
             startsAt: current.startsAt,
             endsAt:
-              input.endsAt !== undefined
-                ? mergeEndsAt(current, input)
+              incoming.endsAt !== undefined
+                ? mergeEndsAt(current, incoming)
                 : current.endsAt,
             updatedAt: now,
           };
@@ -282,9 +304,10 @@ export function createFileBillingStore(): BillingStore {
 
         if (existingIndex >= 0) {
           const current = database.purchases[existingIndex]!;
+          const incoming = omitUndefinedFields(input);
           const updated: PurchaseRecord = {
             ...current,
-            ...input,
+            ...incoming,
             id: current.id,
             createdAt: current.createdAt,
             updatedAt: now,
@@ -422,9 +445,18 @@ export function createFileBillingStore(): BillingStore {
   };
 }
 
+function omitUndefinedFields<T extends object>(input: T): T {
+  const entries = Object.entries(input as Record<string, unknown>).filter(
+    ([, value]) => value !== undefined,
+  );
+  return Object.fromEntries(entries) as T;
+}
+
 /**
- * Duplicate bundle events must not extend the included Community year.
- * Subscription renewals may move endsAt forward.
+ * Duplicate bundle events must not extend the included Founding Architect
+ * Community window. Paid Community subscription renewals may move endsAt
+ * forward. Converting from the included window to a paid subscription keeps
+ * the later of the two paid-through dates.
  */
 function mergeEndsAt(
   current: EntitlementRecord,
@@ -435,19 +467,18 @@ function mergeEndsAt(
   }
 
   if (incoming.sourceOfferId === "bundle" && current.sourceOfferId === "bundle") {
-    // Keep the earlier/original end for the included year.
     if (current.endsAt && incoming.endsAt) {
       return current.endsAt < incoming.endsAt ? current.endsAt : incoming.endsAt;
     }
     return current.endsAt ?? incoming.endsAt;
   }
 
-  if (
-    incoming.stripeSubscriptionId &&
-    current.stripeSubscriptionId === incoming.stripeSubscriptionId
-  ) {
-    // Subscription renewals: take the later paid-through date.
-    if (current.endsAt && incoming.endsAt) {
+  if (current.endsAt && incoming.endsAt) {
+    if (
+      incoming.stripeSubscriptionId &&
+      (current.stripeSubscriptionId === incoming.stripeSubscriptionId ||
+        current.sourceOfferId === "bundle")
+    ) {
       return current.endsAt > incoming.endsAt ? current.endsAt : incoming.endsAt;
     }
   }
