@@ -1,12 +1,51 @@
 {
   "aosWorkId": "al-209",
-  "softwareChange": true,
-  "deliverable": "Create Launch-Day Executive Dashboard",
+  "source": "command_center",
+  "sourceReference": "August Launch row 209",
+  "title": "Create Launch-Day Executive Dashboard",
   "ownerAgent": "nia",
-  "dashboard": "/ops/admin/executive-dashboard",
-  "review": "/_internal/row209-executive-dashboard-review",
-  "validation": "ops/fab-5/runs/row-209-executive-dashboard-validation.json",
+  "repositorySoftwareChange": true,
+  "softwareChange": true,
+  "status": "ACCEPTANCE_READY",
+  "founderAcceptance": null,
   "founderAccepted": false,
   "rowMarkedComplete": false,
-  "note": "Repository software change: one executive view composing Row 151, Row 84, Row 61, Row 153, and AOS Founder decisions. Founder acceptance stays with Kimberly Walker (human)."
+  "priorFounderDecision": "NEEDS_CHANGES",
+  "deliverable": "Create Launch-Day Executive Dashboard",
+  "dashboard": "/ops/admin/executive-dashboard",
+  "review": "/_internal/row209-executive-dashboard-review",
+  "summary": "Corrected Row 209 after Founder NEEDS CHANGES: executive dashboard is operable on the deployable admin app; authenticated admin loads EN/ES; architect/support denied; empty/unconfirmed telemetry is N/A not false GREEN; executive rollup cannot go GREEN while required panels are N/A; T22 authenticated access, T23 review route, T24 real desktop 1440 and mobile 390 browser validation all PASS (25/25). Founder acceptance is not recorded. Do not merge. Do not mark the August Launch row complete.",
+  "evidence": [
+    "app/ops/admin/executive-dashboard/page.tsx",
+    "app/es/ops/admin/executive-dashboard/page.tsx",
+    "app/%5Finternal/row209-executive-dashboard-review/page.tsx",
+    "lib/executive-dashboard/compose.ts",
+    "components/executive-dashboard/executive-dashboard-view.tsx",
+    "ops/fab-5/runs/row-209-executive-dashboard-validation.json",
+    "ops/fab-5/runs/row-209-browser-desktop.png",
+    "ops/fab-5/runs/row-209-browser-mobile.png"
+  ],
+  "validation": {
+    "script": "npm run fab5:row209",
+    "required": ["npm run fab5:row209"],
+    "results": {
+      "fab5:row209": "PASS 25/25",
+      "acceptanceReady": true,
+      "authenticatedAdminEnEs": true,
+      "architectSupportDenied": true,
+      "desktopBrowser": true,
+      "mobileBrowser": true,
+      "falseGreenBlocked": true
+    }
+  },
+  "note": "Repository software change: one executive view composing Row 151, Row 84, Row 61, Row 153, and AOS Founder decisions. Founder acceptance stays with Kimberly Walker (human).",
+  "constraintsHonored": {
+    "didNotPushMain": true,
+    "didNotMerge": true,
+    "didNotWeakenAuth": true,
+    "didNotExposeSecrets": true,
+    "didNotChangeStripeCloudflareVercelDns": true,
+    "didNotMarkFounderAcceptanceComplete": true,
+    "didNotMarkRowComplete": true
+  }
 }

@@ -32,8 +32,7 @@ function rate(value: number | null | undefined): string {
 export function worstPanelStatus(statuses: PanelStatus[]): PanelStatus {
   if (statuses.includes("RED")) return "RED";
   if (statuses.includes("YELLOW")) return "YELLOW";
-  const known = statuses.filter((status) => status !== "N/A");
-  if (known.length === 0) return "N/A";
+  if (statuses.includes("N/A") || statuses.length === 0) return "N/A";
   return "GREEN";
 }
 

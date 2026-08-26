@@ -685,6 +685,19 @@ async function main() {
     detail: `withProbe enrollment=${panel(zeroModel, "enrollment-revenue")?.status} payments=${panel(zeroModel, "payments")?.status}; empty enrollment=${panel(emptyModel, "enrollment-revenue")?.status}`,
   });
 
+  tests.push({
+    id: "T21b",
+    name: "Partial telemetry cannot paint executive status GREEN",
+    result: mark(
+      purchaseModel.executiveStatus !== "GREEN" &&
+        panel(purchaseModel, "traffic-conversion")?.status === "GREEN" &&
+        panel(purchaseModel, "production-health")?.status === "N/A" &&
+        emptyModel.executiveStatus === "N/A" &&
+        zeroModel.executiveStatus !== "GREEN",
+    ),
+    detail: `purchaseExec=${purchaseModel.executiveStatus} emptyExec=${emptyModel.executiveStatus} zeroExec=${zeroModel.executiveStatus}`,
+  });
+
   for (const test of tests) {
     if (test.result === "FAIL") failures.push(`${test.id} ${test.name}: ${test.detail}`);
   }

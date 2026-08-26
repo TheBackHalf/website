@@ -145,10 +145,10 @@ export function ExecutiveDashboardView({
         data-executive-status={model.executiveStatus}
       >
         <h2 id="exec-strip" className="font-display text-2xl">
-          Launch Health: {model.launchHealth}
+          Executive status: {model.executiveStatus}
         </h2>
         <p className="mt-2 font-sans text-sm">
-          Executive status: {model.executiveStatus} · Today (ET): {model.dateEt} ·{" "}
+          Row 151 launch health: {model.launchHealth} · Today (ET): {model.dateEt} ·{" "}
           {model.launchLabel} · {model.launchDayNumber}
         </p>
         <p className="mt-1 font-sans text-sm">

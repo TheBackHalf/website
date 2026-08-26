@@ -1,7 +1,7 @@
 {
   "row": 209,
   "aosWorkId": "al-209",
-  "generatedAt": "2026-08-26T18:24:43.692Z",
+  "generatedAt": "2026-08-26T20:16:30.778Z",
   "founderAccepted": false,
   "rowMarkedComplete": false,
   "dashboard": "/ops/admin/executive-dashboard",
@@ -9,9 +9,9 @@
   "tests": [
     {
       "id": "T1",
-      "name": "Empty environment exposes all 10 required panels without false RED",
+      "name": "Empty environment exposes all 10 required panels as N/A, not false GREEN",
       "result": "PASS",
-      "detail": "panels=enrollment-revenue:GREEN,traffic-conversion:GREEN,production-health:N/A,payments:GREEN,account-access:GREEN,lumina-health:N/A,support-volume:GREEN,marketing-performance:GREEN,critical-incidents:GREEN,founder-decisions:N/A"
+      "detail": "panels=enrollment-revenue:N/A:unconfirmed,traffic-conversion:N/A:unconfirmed,production-health:N/A:unconfirmed,payments:N/A:unconfirmed,account-access:N/A:unconfirmed,lumina-health:N/A:unconfirmed,support-volume:N/A:unconfirmed,marketing-performance:N/A:unconfirmed,critical-incidents:N/A:unconfirmed,founder-decisions:N/A:unconfirmed"
     },
     {
       "id": "T2",
@@ -107,7 +107,7 @@
       "id": "T17",
       "name": "View is responsive and renders every required panel id",
       "result": "PASS",
-      "detail": "Desktop two-column grid, mobile stacked, readable padding"
+      "detail": "Desktop two-column grid, mobile stacked, N/A visually distinct from GREEN"
     },
     {
       "id": "T18",
@@ -126,9 +126,39 @@
       "name": "Auth, Stripe webhook, and middleware files were not modified for this row",
       "result": "PASS",
       "detail": "New route is covered by existing /ops/admin prefix. No auth/payment system edits."
+    },
+    {
+      "id": "T21",
+      "name": "Zero activity with Row 61 payments PASS is honest GREEN, not N/A",
+      "result": "PASS",
+      "detail": "withProbe enrollment=GREEN payments=GREEN; empty enrollment=N/A"
+    },
+    {
+      "id": "T21b",
+      "name": "Partial telemetry cannot paint executive status GREEN",
+      "result": "PASS",
+      "detail": "purchaseExec=YELLOW emptyExec=N/A zeroExec=N/A"
+    },
+    {
+      "id": "T22",
+      "name": "Authenticated admin loads EN/ES executive dashboard; architect/support denied",
+      "result": "PASS",
+      "detail": "none=307:/login?next=%2Fops%2Fadmin%2Fexecutive-dashboard esNone=307:/es/login?next=%2Fes%2Fops%2Fadmin%2Fexecutive-dashboard architect=307:/access-denied support=307:/access-denied admin=200 adminEs=200 marker=true esMarker=true panels=true esPanels=true falseGreen=false esFalseGreen=false actions=false approve=false"
+    },
+    {
+      "id": "T23",
+      "name": "Localhost review route renders the same executive view (not production)",
+      "result": "PASS",
+      "detail": "review=200 localhostOnlyAsserted=true"
+    },
+    {
+      "id": "T24",
+      "name": "Real desktop and mobile browser validation of the live executive view",
+      "result": "PASS",
+      "detail": "desktopPanels=10 desktopOverflow=false exec=N/A mobilePanels=10 stacked=true mobileOverflow=false falseGreen=false"
     }
   ],
   "failures": [],
-  "passCount": 20,
+  "passCount": 25,
   "failCount": 0
 }

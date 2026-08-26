@@ -58,7 +58,26 @@ async function request(
 
 function redirectedTo(result: { status: number; location: string | null }, fragment: string): boolean {
   if (result.status !== 307 && result.status !== 302 && result.status !== 303) return false;
-  return (result.location ?? "").includes(fragment);
+  const location = result.location ?? "";
+  try {
+    return decodeURIComponent(location).includes(fragment) || location.includes(fragment);
+  } catch {
+    return location.includes(fragment);
+  }
+}
+
+function loginNextPath(
+  result: { status: number; location: string | null },
+  expectedPath: string,
+): boolean {
+  if (!redirectedTo(result, "/login")) return false;
+  const location = result.location ?? "";
+  try {
+    const url = new URL(location, "http://127.0.0.1");
+    return url.searchParams.get("next") === expectedPath;
+  } catch {
+    return decodeURIComponent(location).includes(`next=${expectedPath}`);
+  }
 }
 
 function hasFalseGreen(html: string): boolean {
@@ -93,14 +112,17 @@ async function startDevServer(port: string): Promise<{ origin: string; stop: () 
   if (await waitForOrigin(origin, 2000)) {
     return { origin, stop: () => undefined };
   }
+  const nextBin = path.join(process.cwd(), "node_modules", ".bin", "next");
+  const logs: string[] = [];
   const child: ChildProcess = spawn(
-    "npx",
-    ["next", "dev", "--port", port, "--hostname", "127.0.0.1"],
+    nextBin,
+    ["dev", "--turbopack", "--port", port, "--hostname", "127.0.0.1"],
     {
       cwd: process.cwd(),
       env: {
         ...process.env,
         NODE_ENV: "development",
+        AUTH_SECRET: process.env.AUTH_SECRET || "development-only-auth-secret",
         PORT: port,
         MARKETING_KPI_DB_FILE: "",
         LAUNCH_DASHBOARD_DB_FILE: "",
@@ -113,14 +135,13 @@ async function startDevServer(port: string): Promise<{ origin: string; stop: () 
   const markReady = () => {
     ready = true;
   };
-  child.stdout?.on("data", (chunk: Buffer) => {
+  const collect = (chunk: Buffer) => {
     const text = chunk.toString();
+    logs.push(text);
     if (text.includes("Ready") || text.includes("started server")) markReady();
-  });
-  child.stderr?.on("data", (chunk: Buffer) => {
-    const text = chunk.toString();
-    if (text.includes("Ready") || text.includes("started server")) markReady();
-  });
+  };
+  child.stdout?.on("data", collect);
+  child.stderr?.on("data", collect);
   const start = Date.now();
   while (Date.now() - start < 120_000) {
     if (ready && (await waitForOrigin(origin, 2000))) {
@@ -141,7 +162,8 @@ async function startDevServer(port: string): Promise<{ origin: string; stop: () 
     }
   }
   child.kill("SIGTERM");
-  throw new Error(`row209_dev_server_not_ready_${origin}`);
+  const hint = logs.join("").replace(/\s+/g, " ").slice(-400);
+  throw new Error(`row209_dev_server_not_ready_${origin}${hint ? `:${hint}` : ""}`);
 }
 
 export async function runRow209LiveTests(): Promise<LiveTest[]> {
@@ -177,8 +199,7 @@ export async function runRow209LiveTests(): Promise<LiveTest[]> {
       id: "T22",
       name: "Authenticated admin loads EN/ES executive dashboard; architect/support denied",
       result:
-        redirectedTo(none, "/login") &&
-        (none.location ?? "").includes("next=/ops/admin/executive-dashboard") &&
+        loginNextPath(none, "/ops/admin/executive-dashboard") &&
         redirectedTo(esNone, "/login") &&
         redirectedTo(architect, "/access-denied") &&
         redirectedTo(support, "/access-denied") &&
@@ -194,7 +215,7 @@ export async function runRow209LiveTests(): Promise<LiveTest[]> {
         !admin.body.includes("approve-decision")
           ? "PASS"
           : "FAIL",
-      detail: `none=${none.status}:${none.location} esNone=${esNone.status} architect=${architect.status}:${architect.location} support=${support.status}:${support.location} admin=${admin.status} adminEs=${adminEs.status} panels=${allPanelsPresent(admin.body)} falseGreen=${hasFalseGreen(admin.body)}`,
+      detail: `none=${none.status}:${none.location} esNone=${esNone.status}:${esNone.location} architect=${architect.status}:${architect.location} support=${support.status}:${support.location} admin=${admin.status} adminEs=${adminEs.status} marker=${admin.body.includes('data-bh-executive-dashboard="row-209"')} esMarker=${adminEs.body.includes('data-bh-executive-dashboard="row-209"')} panels=${allPanelsPresent(admin.body)} esPanels=${allPanelsPresent(adminEs.body)} falseGreen=${hasFalseGreen(admin.body)} esFalseGreen=${hasFalseGreen(adminEs.body)} actions=${admin.body.includes("FounderDecisionActions")} approve=${admin.body.includes("approve-decision")}`,
     });
 
     tests.push({
@@ -245,6 +266,7 @@ export async function runRow209LiveTests(): Promise<LiveTest[]> {
         return {
           hasRoot: Boolean(root),
           title: document.querySelector("h1")?.textContent?.trim() ?? "",
+          executiveStatus: root?.getAttribute("data-executive-status") ?? "",
           panelCount: panels.length,
           panels,
           overflow: document.documentElement.scrollWidth > window.innerWidth + 24,
@@ -294,6 +316,10 @@ export async function runRow209LiveTests(): Promise<LiveTest[]> {
         desktop.panelCount === 10 &&
         EXECUTIVE_PANEL_IDS.every((id) => desktop.panels.some((panel) => panel.id === id && panel.visible)) &&
         !desktop.panels.some((panel) => panel.status === "GREEN" && panel.telemetry === "unconfirmed") &&
+        !(
+          desktop.executiveStatus === "GREEN" &&
+          desktop.panels.some((panel) => panel.status === "N/A")
+        ) &&
         !desktop.overflow;
       const mobilePass =
         mobile.hasRoot &&
@@ -307,7 +333,7 @@ export async function runRow209LiveTests(): Promise<LiveTest[]> {
         id: "T24",
         name: "Real desktop and mobile browser validation of the live executive view",
         result: desktopPass && mobilePass ? "PASS" : "FAIL",
-        detail: `desktopPanels=${desktop.panelCount} desktopOverflow=${desktop.overflow} mobilePanels=${mobile.panelCount} stacked=${mobile.stacked} mobileOverflow=${mobile.overflow} falseGreen=${mobile.falseGreen}`,
+        detail: `desktopPanels=${desktop.panelCount} desktopOverflow=${desktop.overflow} exec=${desktop.executiveStatus} mobilePanels=${mobile.panelCount} stacked=${mobile.stacked} mobileOverflow=${mobile.overflow} falseGreen=${mobile.falseGreen}`,
       });
 
       await mkdir("/opt/cursor/artifacts", { recursive: true });
