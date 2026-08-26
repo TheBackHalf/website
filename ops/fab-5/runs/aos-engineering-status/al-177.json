@@ -851,6 +851,7 @@
   "cursorCloudAgent": {
     "bcId": "bc-f2165ab0-a9ac-4b07-b72f-d2a06beed051",
     "url": "https://cursor.com/agents/bc-f2165ab0-a9ac-4b07-b72f-d2a06beed051",
-    "branch": "cursor/aos-imani-al-177-2a85"
+    "branch": "cursor/aos-imani-al-177-2a85",
+    "prUrl": "https://github.com/TheBackHalf/website/pull/40"
   }
 }
