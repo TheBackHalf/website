@@ -1,0 +1,370 @@
+{
+  "aosWorkId": "aos-sprint-lr-223",
+  "row": 223,
+  "excelRow": 224,
+  "tab": "August Launch",
+  "source": "company_objective",
+  "sourceReference": "launch-readiness-row-223",
+  "commandCenterOrder": 223,
+  "phase": "Launch Day",
+  "deliverable": "Resolve Launch-Day Incidents",
+  "title": "Resolve Launch-Day Incidents",
+  "description": "Apply the incident plan, communicate clearly, and fix or roll back any launch-critical issue.",
+  "workbookNextAction": "Resolve launch-day incidents per the incident plan.",
+  "kind": "engineering_status_only",
+  "deliverableKind": "status_only",
+  "softwareChangeApplied": false,
+  "productFilesChanged": false,
+  "marketingFilesChanged": false,
+  "legalFilesChanged": false,
+  "productMarketingLegalFilesChanged": false,
+  "stripeConfigModified": false,
+  "stripeCloudflareVercelDnsTouched": false,
+  "dnsModified": false,
+  "vercelCustomDomainModified": false,
+  "nameserversModified": false,
+  "authControlsWeakened": false,
+  "authModified": false,
+  "secretsPrinted": false,
+  "secretsExposed": false,
+  "operatingAgent": "imani",
+  "ownerAgent": "imani",
+  "operatingAgentFull": "Imani Heartbeat — Chief Technology & Risk Officer",
+  "supportingOwners": ["michelle", "nia"],
+  "workbookPrimaryOwner": "imani",
+  "workbookPrimaryWorkstream": "TECHNOLOGY",
+  "kimberlyWalkerAiTreatedAsOperatingAgent": false,
+  "kimberlyWalkerAiTreatedAsCapacity": false,
+  "founderAcceptanceAuthority": "Kimberly Walker (human)",
+  "founderAcceptance": null,
+  "founderAccepted": false,
+  "founderAcceptanceRecorded": false,
+  "rowMarkedComplete": false,
+  "markedComplete": false,
+  "commandCenterStatusNotUpdated": true,
+  "commandCenterStatus": "Planned",
+  "percentCompleteRecorded": 0,
+  "evidenceAcceptanceState": "open",
+  "readyForFounderAcceptanceReview": false,
+  "remainingLaunchCriticalUntilFounderAcceptance": true,
+  "row75Started": false,
+  "row75Touched": false,
+  "heldUntil": "aos-row74-launch-sprint-kickoff",
+  "heldUntilNote": "Queued by Michelle after recursive dependency analysis. Held until Founder kickoff. This file records inspect-only status. It does not release the sprint, mark Row 223 Complete, or start Row 75.",
+  "generatedAt": "2026-08-26T19:47:20.000Z",
+  "branch": "cursor/aos-imani-aos-sprint-lr-223-06ee",
+  "cloudAgentUrl": "https://cursor.com/agents/bc-75db6515-1236-4e78-8727-a95eb8e0b625",
+  "pullRequest": null,
+  "prUrl": null,
+  "merged": false,
+  "deployed": false,
+  "overallResult": "LAUNCH_DAY_INCIDENT_RESOLUTION_NOT_EXECUTED",
+  "result": "HELD",
+  "blockingLaunchDefectsFound": true,
+  "launchDayIncidentsResolved": 0,
+  "launchDayIncidentsOpen": 0,
+  "launchDayHasStarted": false,
+  "presentedAsSuccessfulCompletionOfRow223": false,
+  "summary": "Imani Heartbeat inspected Launch Readiness row 223 on 2026-08-26. This is not a repository software change. Launch day is Monday, August 31, 2026; it has not started. There are no launch-day incidents to apply the incident plan against. Named dependency Production Monitoring (Row 61) is Complete and Founder-accepted. Named dependency Hypercare Command Center (Row 208) remains Not Started. The incident plan, SEV model, and rollback authority already exist in the operating system and Launch-Day Runbook. Working Vercel production origin health is HTTP 200 with database=ok. Canonical https://thebackhalf.org and www do not resolve from this environment. POST /api/stripe/webhook returns 503 webhook_not_configured. Those are pre-launch conditions owned by other rows (Row 75 DNS Founder action; Row 73 Stripe Live). They were not mutated here. Stripe, Cloudflare DNS, Vercel custom-domain, nameservers, and auth were not touched. Row 223 is not Complete. Founder acceptance is not recorded. Row 75 was not started.",
+  "authority": {
+    "technologyOwner": "Imani Heartbeat — technical/risk owner. Production monitoring, containment, rollback to restore approved safe behavior, emergency shutdown, disaster recovery. This run.",
+    "operationsOwner": "Michelle Northstar — incident coordination, logging/routing, pause of affected operations, Founder surfacing.",
+    "experienceOwner": "Nia Prism — participant/experience impact; public CX pause within experience/safety authority.",
+    "founder": "Kimberly Walker (human) — sole Founder acceptance authority. Final authority for material launch-stop, irreversible production action, legal/reputational communication, Go/No-Go. Do not fabricate Founder approval.",
+    "imaniIndependentContainment": "Imani may contain, disable affected functionality, roll back, isolate, or execute emergency shutdown to prevent material technical or security harm, then notify Michelle and Founder (operating-system.json decisionRights + Launch-Day Runbook §2/§9).",
+    "imaniDidNotChange": [
+      "product application code",
+      "marketing files",
+      "legal files",
+      "curriculum/brand voice",
+      "Founder-facing marketing copy",
+      "Stripe configuration",
+      "Cloudflare DNS",
+      "Vercel custom-domain settings",
+      "thebackhalf.org nameservers",
+      "authentication or security controls",
+      "Row 75 Domain/DNS/SSL artifacts",
+      "Launch-Day Runbook body",
+      "Command Center workbook status"
+    ]
+  },
+  "whyNotASoftwareChange": {
+    "reason": "Row 223 is a Launch Day operational activity: apply the existing incident plan when a launch-critical issue occurs, communicate, and fix or roll back. It is not a pre-launch feature build.",
+    "calendar": {
+      "todayUtc": "2026-08-26",
+      "launchDate": "2026-08-31",
+      "launchDayReached": false,
+      "daysUntilLaunch": 5
+    },
+    "noLaunchDayIncidentToResolve": true,
+    "instructionFollowed": "If this deliverable is not a repository software change, write status only to ops/fab-5/runs/aos-engineering-status/aos-sprint-lr-223.json and do not change product, marketing, or legal files."
+  },
+  "dependency": {
+    "blockedByWorkbook": "Production Monitoring; Hypercare Command Center",
+    "productionMonitoring": {
+      "row": 61,
+      "deliverable": "Configure Production Monitoring",
+      "workbookStatus": "Complete",
+      "founderAccepted": true,
+      "founderAcceptedAt": "2026-08-21",
+      "statusFile": "ops/fab-5/row-61-status.json",
+      "sourceOfTruth": "ops/fab-5/ROW-61-PRODUCTION-MONITORING.md",
+      "validation": "ops/fab-5/runs/row-61-production-monitoring-validation.json",
+      "thisRunReExecutedValidator": false,
+      "thisRunDidNotOverwriteRow61Evidence": true
+    },
+    "hypercareCommandCenter": {
+      "row": 208,
+      "deliverable": "Establish Hypercare Command Center",
+      "description": "Define first 30-day monitoring cadence, issue triage, and daily reviews.",
+      "workbookStatus": "Not Started",
+      "percentComplete": 0,
+      "primaryOwner": "michelle",
+      "statusFilePresent": false,
+      "thisRunDidNotEstablishHypercare": true,
+      "thisRunDidNotStartMichelleOwnedRow208": true
+    },
+    "rollbackPlan": {
+      "row": 207,
+      "deliverable": "Create Rollback Plan",
+      "workbookStatus": "Complete",
+      "percentComplete": 100,
+      "usedAs": "Existing rollback authority referenced; not rewritten."
+    },
+    "launchDayRunbook": {
+      "row": 202,
+      "namedRunbookPath": "ops/launch/LAUNCH-DAY-RUNBOOK-AUGUST-31-2026.md",
+      "row202StatusFile": "ops/fab-5/row-202-status.json",
+      "row202StatusClaimsFounderAccepted": true,
+      "row202StatusFounderAcceptedAt": "2026-08-21",
+      "runbookMarkdownHeaderStillSays": "DRAFT — FOUNDER ACCEPTANCE REVIEW. Not sent. Not published. Row 202 not Complete.",
+      "thisRunDidNotRewriteRunbook": true,
+      "incidentSection": "§8 Incident response",
+      "rollbackSection": "§9 Pause / rollback"
+    }
+  },
+  "incidentPlanLocated": {
+    "result": "PASS — plan exists; not applied because no launch-day incident exists",
+    "sources": [
+      "ops/fab-5/operating-system.json incidentSeverity + incidentEscalationPath + decisionRights",
+      "ops/launch/LAUNCH-DAY-RUNBOOK-AUGUST-31-2026.md §8–§10",
+      "ops/fab-5/ROW-61-PRODUCTION-MONITORING.md",
+      "ops/fab-5/ROW-62-BACKUP-DISASTER-RECOVERY.md"
+    ],
+    "escalationPath": [
+      "DETECTION",
+      "CLASSIFICATION",
+      "DOMAIN OWNER",
+      "CONTAINMENT",
+      "EVIDENCE",
+      "MICHELLE COORDINATION",
+      "CROSS-FUNCTIONAL SUPPORT IF NEEDED",
+      "FOUNDER/HUMAN EXPERT ONLY IF TRIGGERED",
+      "CORRECTION",
+      "RETEST",
+      "RESOLUTION",
+      "AUDIT CLOSE"
+    ],
+    "severity": {
+      "SEV-1": {
+        "name": "CRITICAL",
+        "notify": ["imani", "michelle", "nia-if-participant-impact", "founder-immediate", "human-expert-if-required"],
+        "examples": [
+          "launch unavailable",
+          "material security/privacy incident",
+          "payment system broadly failing",
+          "widespread account/access failure",
+          "material data-loss risk",
+          "severe participant-impacting production failure"
+        ]
+      },
+      "SEV-2": {
+        "name": "HIGH",
+        "notify": ["michelle", "domain-owners", "founder-if-material-launch-reputational-financial-or-reserved"]
+      },
+      "SEV-3": {
+        "name": "MODERATE",
+        "notify": ["domain-executive", "michelle-tracks"]
+      },
+      "SEV-4": {
+        "name": "LOW",
+        "notify": ["domain-executive"]
+      }
+    },
+    "runbookIncidentTypes": [
+      "Application outage",
+      "Registration failure",
+      "Login failure",
+      "Checkout / payment failure",
+      "Database failure",
+      "Severe application error",
+      "Support surge",
+      "Privacy / security incident",
+      "Material reputational / legal"
+    ],
+    "rollbackRulesPreserved": [
+      "Imani may roll back to restore approved safe behavior without prior Founder approval when delay creates material technical or security harm, then notify Michelle and Founder.",
+      "Founder remains final authority for material launch-stop / resume and irreversible production actions.",
+      "Row 62: never restore over production as the first action.",
+      "Do not invent a second deploy platform.",
+      "No refund promise. The Back Half does not issue refunds."
+    ]
+  },
+  "productionInspect2026_08_26T19_47Z": {
+    "method": "Public HTTP probes from this Cloud Agent workstation. No secrets printed. Monitoring cron not invoked (GET /api/ops/monitoring/run without bearer → 401 unauthorized; CRON_SECRET not used).",
+    "canonical": {
+      "url": "https://thebackhalf.org",
+      "result": "UNREACHABLE",
+      "error": "Could not resolve host (no address associated with hostname)"
+    },
+    "www": {
+      "url": "https://www.thebackhalf.org",
+      "result": "UNREACHABLE",
+      "error": "NXDOMAIN / name or service not known"
+    },
+    "vercelProduction": {
+      "url": "https://website-two-psi-49.vercel.app",
+      "result": "REACHABLE",
+      "health": {
+        "path": "/api/ops/health",
+        "httpStatus": 200,
+        "ok": true,
+        "environment": "production",
+        "service": "the-back-half",
+        "application": "ok",
+        "database": "ok"
+      }
+    },
+    "uptimePathsOnWorkingHost": [
+      { "path": "/", "httpStatus": 200, "result": "PASS" },
+      { "path": "/register", "httpStatus": 200, "result": "PASS" },
+      { "path": "/login", "httpStatus": 200, "result": "PASS" },
+      { "path": "/checkout", "httpStatus": 200, "result": "PASS" },
+      { "path": "/api/ops/health", "httpStatus": 200, "result": "PASS" },
+      { "path": "/support", "httpStatus": 200, "result": "PASS" }
+    ],
+    "regressionPathsOnWorkingHost": [
+      { "path": "/es", "httpStatus": 200, "result": "PASS" },
+      { "path": "/es/register", "httpStatus": 200, "result": "PASS" },
+      { "path": "/es/login", "httpStatus": 200, "result": "PASS" },
+      { "path": "/es/checkout", "httpStatus": 200, "result": "PASS" },
+      { "path": "/journey", "httpStatus": 200, "result": "PASS" },
+      { "path": "/lumina", "httpStatus": 200, "result": "PASS" }
+    ],
+    "missingPath": {
+      "path": "/this-path-must-not-exist-row223",
+      "httpStatus": 404,
+      "result": "PASS — missing path classifies as missing, not a site outage"
+    },
+    "paymentsWebhook": {
+      "method": "POST /api/stripe/webhook with empty JSON body (no Stripe signature, no charge, no secret printed)",
+      "httpStatus": 503,
+      "body": { "error": "webhook_not_configured" },
+      "result": "FAIL — live payment webhook not configured on working host",
+      "outOfScope": "Stripe configuration must not be modified by this AOS engineering path."
+    },
+    "monitoringCron": {
+      "path": "GET /api/ops/monitoring/run",
+      "httpStatus": 401,
+      "body": { "error": "unauthorized" },
+      "result": "EXPECTED — bearer required. Not invoked with a secret."
+    }
+  },
+  "preLaunchConditionsThatWouldBecomeLaunchDayIncidentsIfUnfixed": [
+    {
+      "id": "LR223-C1",
+      "severityIfLaunchDay": "SEV-1",
+      "area": "canonical_dns",
+      "finding": "https://thebackhalf.org and https://www.thebackhalf.org do not resolve from this environment. Runbook destination https://thebackhalf.org/register is unreachable. Working origin remains https://website-two-psi-49.vercel.app.",
+      "owner": "Founder (Cloudflare DNS records) with Imani technical follow-up after records exist. Row 75.",
+      "actionThisRun": "Not mutated. DNS, nameservers, and Vercel custom-domain settings were not changed. Row 75 was not started.",
+      "statusFile": "ops/fab-5/row-75-status.json"
+    },
+    {
+      "id": "LR223-C2",
+      "severityIfLaunchDay": "SEV-1",
+      "area": "payments_webhook",
+      "finding": "POST /api/stripe/webhook on the working production host returns 503 webhook_not_configured. A live paid purchase path cannot complete. Adjacent Nia Row 206 rehearsal recorded the same result. This is not a new defect discovered by inventing a charge.",
+      "owner": "Imani technical; Founder-gated live Stripe key (Row 73). Stripe configuration is out of scope for this path.",
+      "actionThisRun": "Not mutated. No charge, refund, price change, or webhook secret write."
+    }
+  ],
+  "incidentsThisRun": {
+    "launchDayIncidentsDetected": [],
+    "launchDayIncidentsResolved": [],
+    "rollbackExecuted": false,
+    "emergencyShutdownExecuted": false,
+    "publicIncidentCommunicationSent": false,
+    "founderNotifiedByThisRun": false,
+    "note": "Pre-launch conditions C1/C2 are not classified as August 31 launch-day incidents. They are existing launch-readiness blockers. Applying the launch-day incident plan against them now would be a false execution of Row 223."
+  },
+  "whatWasNotDone": [
+    "Did not mark Row 223 Complete",
+    "Did not record Founder acceptance",
+    "Did not start Row 75",
+    "Did not establish Hypercare Command Center (Row 208 — Michelle-owned)",
+    "Did not apply the incident plan against a launch-day incident (none exists)",
+    "Did not fix or roll back production",
+    "Did not deploy",
+    "Did not merge",
+    "Did not modify Stripe, Cloudflare DNS, Vercel custom-domain, or nameservers",
+    "Did not weaken authentication or security controls",
+    "Did not print secrets",
+    "Did not change product, marketing, or legal files",
+    "Did not treat Kimberly Walker (AI) as execution capacity"
+  ],
+  "notClaimed": [
+    "August Launch row 223 is not Complete",
+    "Founder acceptance is not recorded",
+    "Launch-day incidents were not resolved because launch day has not started",
+    "Hypercare Command Center is not established",
+    "Canonical thebackhalf.org DNS is not resolved",
+    "Live Stripe webhook is not configured",
+    "GO FOR LAUNCH / PRODUCTION-READY is not declared",
+    "No deploy",
+    "No rollback"
+  ],
+  "nextAction": "Do not mark Row 223 Complete from this file. Keep the incident plan, Row 61 monitoring, and Row 207 rollback authority in place. Hypercare Command Center (Row 208) remains Michelle-owned and Not Started. Canonical DNS remains Founder-gated Row 75 — do not start it from this work. Live Stripe webhook remains Founder-gated Row 73. On August 31, Imani applies the existing incident plan only if a launch-critical issue occurs. Founder acceptance stays with Kimberly Walker (human).",
+  "relatedRows": {
+    "row61": "COMPLETE — Founder accepted 2026-08-21. Not re-marked.",
+    "row62": "COMPLETE — Founder accepted 2026-08-21. Restore-over-production-first remains prohibited.",
+    "row73": "PRESERVED — live Stripe key Founder-gated. Not mutated.",
+    "row74": "Not Complete. Kickoff hold aos-row74-launch-sprint-kickoff preserved. Not re-done.",
+    "row75": "NOT STARTED by this work. Existing not_ready_founder_dns_required status preserved.",
+    "row202": "Status file claims Complete / Founder accepted 2026-08-21. Runbook markdown header still says DRAFT. This run did not reconcile or rewrite.",
+    "row207": "Complete in launch-rows.json. Rollback plan referenced, not rewritten.",
+    "row208": "Not Started. Hypercare not established."
+  },
+  "sourceOfTruth": [
+    "ops/fab-5/launch-rows.json",
+    "ops/fab-5/operating-system.json",
+    "ops/launch/LAUNCH-DAY-RUNBOOK-AUGUST-31-2026.md",
+    "ops/fab-5/ROW-61-PRODUCTION-MONITORING.md",
+    "ops/fab-5/ROW-62-BACKUP-DISASTER-RECOVERY.md",
+    "ops/fab-5/row-61-status.json",
+    "ops/fab-5/row-75-status.json",
+    "ops/fab-5/row-202-status.json"
+  ],
+  "validation": {
+    "typecheck": {
+      "command": "npx tsc --noEmit",
+      "result": "PENDING_AT_FILE_WRITE",
+      "note": "No typecheck script in package.json."
+    },
+    "packageTestScript": {
+      "npmTest": "not present",
+      "nearest": "npm run fab5:row61 (not re-run; would overwrite official Row 61 evidence)",
+      "result": "SKIPPED_NO_PACKAGE_TEST_AND_NO_PRODUCTION_CODE_CHANGE"
+    },
+    "productionBuild": {
+      "command": "npm run build",
+      "ran": false,
+      "result": "SKIPPED",
+      "reason": "Ops status JSON only. Change cannot affect production application behavior."
+    },
+    "githubCi": {
+      "result": "PENDING"
+    }
+  },
+  "cost": "Contingency reserve (workbook). No spend executed this run."
+}
