@@ -207,7 +207,7 @@ export function HomePageView({ locale }: HomePageViewProps) {
 
         containerClassName="max-w-5xl"
 
-        className="flex min-h-[70vh] items-center md:min-h-[80vh]"
+        className="flex min-h-[70dvh] items-center md:min-h-[80dvh]"
 
         backdrop={
 
@@ -417,7 +417,7 @@ export function HomePageView({ locale }: HomePageViewProps) {
 
         containerClassName="max-w-5xl"
 
-        className="flex min-h-[65vh] items-center md:min-h-[75vh]"
+        className="flex min-h-[65dvh] items-center md:min-h-[75dvh]"
 
         backdrop={
 

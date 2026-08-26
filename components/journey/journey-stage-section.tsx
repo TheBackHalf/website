@@ -146,7 +146,7 @@ export function JourneyStageSection({
 
         stage.order === 1 && "py-32 md:py-48 lg:py-56",
 
-        isArchitect && "min-h-[70vh] md:min-h-[75vh]",
+        isArchitect && "min-h-[70dvh] md:min-h-[75dvh]",
 
         stage.order === 7 && "pb-32 md:pb-40",
 

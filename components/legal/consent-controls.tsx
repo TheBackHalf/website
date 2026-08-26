@@ -35,7 +35,7 @@ export function ConsentCheckbox({
 
   return (
     <div className="bh-consent-item">
-      <div className="flex items-start gap-3">
+      <div className="flex min-h-11 items-start gap-3">
         <input
           id={id}
           type="checkbox"
@@ -137,7 +137,7 @@ export function BillingConsentCheckbox({
 
   return (
     <div className="bh-consent-item">
-      <div className="flex items-start gap-3">
+      <div className="flex min-h-11 items-start gap-3">
         <input
           id={id}
           type="checkbox"

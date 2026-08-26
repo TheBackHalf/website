@@ -113,7 +113,7 @@ export function LuminaPageContent({ locale = "en" }: LuminaPageContentProps) {
 
               className={cn(
 
-                index === 0 && "min-h-[60vh] md:min-h-[70vh]",
+                index === 0 && "min-h-[60dvh] md:min-h-[70dvh]",
 
                 index === 1 && "pb-8 md:pb-12",
 
