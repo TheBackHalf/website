@@ -12,6 +12,13 @@ export type BlueprintDownloadAsset = {
 export function getBlueprintDownloadAssets(): BlueprintDownloadAsset[] {
   return [
     {
+      id: "portfolio",
+      filename: BLUEPRINT_EXPORT_FILES.portfolio,
+      /** Assembled Architect Portfolio of completed Journey artifacts. */
+      href: "/api/architect/blueprint/portfolio",
+      label: "Architect Portfolio",
+    },
+    {
       id: "guidebook",
       filename: BLUEPRINT_EXPORT_FILES.guidebook,
       /** Personalized PDF generated from the Architect's saved Journey responses. */

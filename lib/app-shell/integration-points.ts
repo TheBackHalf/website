@@ -140,6 +140,15 @@ export const appShellIntegrationPoints = {
     exportScript: "npm run export:blueprint",
     status: "pending" as const,
   },
+  /** Row 134 — Architect Portfolio assembly and download */
+  architectPortfolio: {
+    row: 134,
+    path: "lib/blueprint/portfolio.ts",
+    printRoute: "/blueprint/print/portfolio",
+    downloadRoute: "/api/architect/blueprint/portfolio",
+    uiSlot: "components/app-shell/resources-shell.tsx",
+    status: "connected" as const,
+  },
   /** Row 83 — Journey onboarding flow (welcome → Awakening entry) */
   journeyOnboarding: {
     row: 83,

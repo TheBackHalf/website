@@ -1104,3 +1104,76 @@ a.bh-bp-toc-label:hover {
     padding-top: 0;
   }
 }
+
+/* ——— Architect Portfolio (row 134) ——— */
+.bh-bp-portfolio-contents-summary {
+  margin: 0 0 1.25rem;
+  font-size: 0.92rem;
+  color: var(--bh-muted);
+}
+
+.bh-bp-portfolio-contents-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bh-bp-portfolio-contents-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid oklch(0.42 0.14 305 / 0.12);
+  font-size: 0.95rem;
+}
+
+.bh-bp-portfolio-contents-label {
+  color: var(--bh-ink);
+}
+
+.bh-bp-portfolio-status-included,
+.bh-bp-portfolio-status-awaiting {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.bh-bp-portfolio-status-included {
+  color: var(--bh-purple);
+}
+
+.bh-bp-portfolio-status-awaiting {
+  color: var(--bh-muted);
+}
+
+.bh-bp-portfolio-priorities-total {
+  margin: 0 0 1.25rem;
+  font-family: var(--font-bh-display);
+  font-size: 1.15rem;
+  color: var(--bh-night);
+}
+
+.bh-bp-portfolio-priorities-highlight {
+  margin-bottom: 1.15rem;
+}
+
+.bh-bp-portfolio-priorities-highlight p {
+  margin: 0.35rem 0 0;
+}
+
+.bh-bp-portfolio-priorities-domain-list {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+}
+
+.bh-bp-portfolio-priorities-domain-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid oklch(0.42 0.14 305 / 0.1);
+  font-size: 0.92rem;
+}
+

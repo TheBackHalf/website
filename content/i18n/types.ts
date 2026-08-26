@@ -881,6 +881,15 @@ export type Dictionary = {
     resources: {
       title: TranslatedString;
       description: TranslatedString;
+      portfolioHeading: TranslatedString;
+      portfolioDescription: TranslatedString;
+      portfolioDownload: TranslatedString;
+      portfolioProgress: TranslatedString;
+      includedLabel: TranslatedString;
+      awaitingLabel: TranslatedString;
+      individualHeading: TranslatedString;
+      individualDescription: TranslatedString;
+      downloadPdf: TranslatedString;
     };
     billing: {
       title: TranslatedString;
