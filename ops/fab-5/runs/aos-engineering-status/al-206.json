@@ -361,6 +361,7 @@
     "typecheck": "PASS — ./node_modules/.bin/tsc --noEmit (package.json has no typecheck script)",
     "test": "nearest package script npm run eval:lumina PASS (all 12 categories including SAFETY). package.json has no test script.",
     "build": "skipped — status-only JSON; change cannot affect production",
+    "githubCi": "PASS — 2 checks on 36b187ce1400096139b47277f569d5a98cdce750 (Vercel; Vercel Preview Comments). Not a go-live pass.",
     "stripeConfigModified": false,
     "dnsModified": false
   }
