@@ -1,0 +1,626 @@
+{
+  "aosWorkId": "al-216",
+  "operatingAgent": "michelle",
+  "operatingAgentName": "Michelle Northstar",
+  "role": "Chief of Staff & Operations Officer",
+  "roleBoundary": "Operations, orchestration, Launch Readiness coordination. Did not take Imani security/infra ownership or Nia curriculum/brand ownership. Did not treat Kimberly Walker (AI) as execution capacity. Did not modify Stripe, Cloudflare DNS, Vercel custom-domain settings, or thebackhalf.org nameservers.",
+  "founderAcceptanceAuthority": "Kimberly Walker (human) only. This file does not fabricate Founder approval and does not mark the Command Center row Complete. Founder acceptance of this audit, if given, is acceptance of the findings — not GO FOR LAUNCH and not THE COMPANY IS LAUNCH READY.",
+  "deliverable": "Complete Final Business-Ready Acceptance Audit",
+  "source": {
+    "type": "command_center",
+    "tab": "August Launch",
+    "aosWorkId": "al-216",
+    "workstreamsId": "216",
+    "excelRow": 217,
+    "order": 216,
+    "numberingNote": "AOS al-216 / workstreams id 216 maps to Complete Final Business-Ready Acceptance Audit. In the 8.25.2026 Command Center snapshot that row is excelRow 217 (order 216). excelRow 216 is Verify Founder Absence Operating Capability (order 215), which remains Not Started and is not this deliverable. Row 217 Complete Go/No-Go Review remains Founder-reserved and is not this file."
+  },
+  "generatedAt": "2026-08-26T16:35:00Z",
+  "auditDate": "2026-08-26",
+  "launchDateLocked": "2026-08-31",
+  "daysUntilLockedLaunchDate": 5,
+  "snapshotIngestedAt": "2026-08-25T14:54:06.405683+00:00",
+  "authoritativeWorkbook": "C:\\Users\\smyle\\OneDrive\\Desktop\\The Back Half\\The Back Half\\Founder Command Center\\The_Back_Half_Founder_Command_Center_8.25.2026 through Launch.xlsx",
+  "technicalStatus": "independent_audit_executed_not_business_ready",
+  "aosRecommendedWorkStatus": "ACCEPTANCE_READY",
+  "commandCenterRowStatusUnchanged": "Not Started",
+  "workbookRowNotMarkedComplete": true,
+  "founderAcceptance": "NOT RECORDED",
+  "founderAccepted": false,
+  "declaredGoForLaunch": false,
+  "declaredCompanyIsLaunchReady": false,
+  "declaredBusinessReadyToLaunchAndOperate": false,
+  "row217CompleteGoNoGoNotExecuted": true,
+  "workbookNotModified": true,
+  "launchRowsAdapterNotModified": true,
+  "acceptanceRecordNotModified": true,
+  "decisionLogNotModified": true,
+  "productMarketingLegalFilesNotModified": true,
+  "stripeCloudflareVercelDnsNotModified": true,
+  "authenticationNotWeakened": true,
+  "softwareChangeApplied": false,
+  "kimberlyWalkerAiTreatedAsOperatingAgent": false,
+  "secretsPrinted": false,
+  "dependency": {
+    "name": "All Launch Readiness Requirements",
+    "allLaunchReadinessRowsEvidenced": false,
+    "howAuditProceeded": "The assigned dependency is not met. Michelle still executed the independent business-ready audit against the current evidence corpus because the purpose of this row is to tell the truth about whether the company can LAUNCH and OPERATE. Waiting for every remaining row to self-report Complete would hide the finding. A status cell is not evidence. Unmerged PRs are not Complete."
+  },
+  "methodology": {
+    "coordinator": "michelle",
+    "rule": "No row is Complete based solely on self-report. Michelle consolidates evidence. Applicable Fab 5 executives certify their domains. Kimberly Walker (human) resolves only accepted-risk / no-go decisions. This run does not invent those certifications or those Founder decisions.",
+    "allowedDomainVerdicts": ["READY", "READY WITH ACCEPTED RISK", "NO-GO"],
+    "overallRule": "The company is business-ready to LAUNCH and OPERATE only if every named domain is READY or READY WITH ACCEPTED RISK and the accepted risks are ledgered. Any launch-stopping NO-GO makes the package NOT READY. Michelle does not convert a NO-GO into READY by convenience.",
+    "thisRunLiveSignatures": {
+      "michelle": "YES — coordinator and independent consolidator for this file",
+      "imani": "NO — not a live countersignature of this al-216 file. Technology, security, privacy-implementation, vendor, and AI findings are Michelle consolidations from Imani evidence packages, local row status/validation files, and open Imani PRs.",
+      "nia": "NO — not a live countersignature of this al-216 file. Product, bilingual, accessibility, marketing/sales, and support-experience findings are Michelle consolidations from Nia evidence packages, Founder-accepted marketing rows, and open Nia PRs.",
+      "kimberly_human": "NO — Founder did not resolve accepted-risk or no-go decisions in this run",
+      "kimberly_walker_ai": "NO — not an operating agent; not used as execution or certification capacity"
+    },
+    "evidenceSources": [
+      "ops/fab-5/aos-command-center-snapshot.json (8.25.2026 workbook ingest)",
+      "ops/fab-5/acceptance-record.json (authentic Founder acceptance ledger)",
+      "ops/fab-5/decision-log.json founder_acceptance entries with owner=founder",
+      "ops/fab-5/operating-system.json (Founder-accepted Rows 15–19)",
+      "Local row-*-status.json and ops/fab-5/runs/* validation files as specialist evidence packages, not as fabricated Founder approval",
+      "Open AOS engineering PRs on 2026-08-26 (in-flight, unmerged, not Complete)",
+      "Michelle al-205 re-audit pack (PR #14, unmerged): 26 of 133 workbook Complete rows have authentic Founder-acceptance evidence",
+      "Michelle al-213 functional Go/No-Go pack (PR #24, unmerged): consolidated functional verdict NO-GO — used as a sibling input, independently re-checked",
+      "Live read-only probes on 2026-08-26T16:32:36Z from this workstation"
+    ],
+    "notAcceptanceEvidence": [
+      "Command Center status cell alone",
+      "This JSON file",
+      "Unmerged PRs",
+      "Agent-written row-*-status.json founderAccepted=true without acceptance-record / decision-log corroboration",
+      "Agent-written ops/fab-5/runs/*founder-acceptance-closure*.json without ledger corroboration",
+      "launch-rows.json workbookStatus Complete with founderAcceptance null"
+    ],
+    "relationshipToAl213": "Row 213 is Fab 5 functional domain Go/No-Go. Row 216 is the final independent audit that the company can both LAUNCH and OPERATE across the fifteen named business-ready domains. They are not the same deliverable. This audit independently re-probed production and re-read the ledgers; it agrees with al-213's NO-GO package and does not treat that sibling file as Founder acceptance."
+  },
+  "prerequisiteFinding": {
+    "required": "After all Launch Readiness rows are evidenced",
+    "met": false,
+    "workbookSnapshot_8_25": {
+      "augustLaunchRows": 225,
+      "completeCells": 133,
+      "notStarted": 77,
+      "inProgress": 4,
+      "deferred": 2,
+      "removedFromLaunchScope": 2,
+      "planned": 7,
+      "inProgressRows": [73, 74, 75, 82],
+      "deferredRows": [86, 166],
+      "removedFromLaunchScopeRows": [191, 192]
+    },
+    "authenticFounderComplete": {
+      "source": "acceptance-record.json plus decision-log founder_acceptance owner=founder plus al-205 kept-Complete Founder-owned cells",
+      "acceptanceRecordNumbers": [15, 16, 17, 18, 19, 20, 33, 50, 51, 60, 61, 62, 72, 76, 150, 153],
+      "additionalDecisionLogFounderAcceptance": [74, 77, 79],
+      "al205KeptCompleteIncludingFounderOwnedCells": [1, 2, 3, 7, 8, 9, 15, 16, 17, 18, 19, 20, 22, 33, 50, 51, 60, 61, 62, 72, 76, 77, 79, 81, 150, 153],
+      "al205KeptCompleteCount": 26,
+      "al205ReopenedCount": 107,
+      "note": "Row 74 has decision-log founder_acceptance 2026-08-25 while the 8.25 workbook cell is still In Progress. Ledger vs workbook drift is recorded, not silently closed."
+    },
+    "implication": "133 Complete cells are not 133 evidenced rows. 77 rows are still Not Started. The Launch Evidence Repository (Row 204) is Not Started. This audit cannot close Command Center Row 216 as Complete."
+  },
+  "liveProbesAtAudit": {
+    "at": "2026-08-26T16:32:36Z",
+    "from": "this Cloud Agent workstation; read-only; no charges; no DNS edits; no secret printing",
+    "canonicalApexDns": "NO A/AAAA/CNAME observed for thebackhalf.org. NS are ulla.ns.cloudflare.com and anirban.ns.cloudflare.com (SOA/NS only).",
+    "canonicalWwwDns": "NO A/CNAME observed for www.thebackhalf.org",
+    "canonicalHttps": "FAIL — curl could not resolve host thebackhalf.org",
+    "mx": "PASS — Google Workspace MX (aspmx.l.google.com and alts)",
+    "apexTxt": "Google site-verification only; no SPF record observed",
+    "technicalHost": "https://website-two-psi-49.vercel.app",
+    "http": {
+      "/": 200,
+      "/register": 200,
+      "/login": 200,
+      "/checkout": 200,
+      "/support": 200,
+      "/legal/privacy-policy": 200,
+      "/es": 200,
+      "/es/legal/privacy-policy": 200,
+      "/api/ops/health": 200,
+      "POST /api/stripe/webhook": 503
+    },
+    "healthBody": {
+      "ok": true,
+      "environment": "production",
+      "service": "the-back-half",
+      "checks": { "application": "ok", "database": "ok" }
+    },
+    "stripeWebhookBody": { "error": "webhook_not_configured" },
+    "stripeKeyClassEvidence": {
+      "file": "ops/fab-5/runs/row-73-stripe-key-class.json",
+      "generatedAt": "2026-08-25T23:30:00.000Z",
+      "vercelProductionStripeKeyClass": "test",
+      "secretPrinted": false
+    },
+    "spanishLegalPrivacyHtml": "Production /es/legal/privacy-policy HTTP 200 and page text includes pending-translation language. English Version 1.0 is not presented as an approved Spanish legal instrument on this probe."
+  },
+  "consolidatedVerdict": {
+    "result": "NOT READY TO LAUNCH AND OPERATE",
+    "launchVerdict": "NO-GO",
+    "operateVerdict": "NO-GO",
+    "scope": "Final business-ready acceptance audit only. This is not August Launch Row 217 Complete Go/No-Go Review, not production freeze, not GO FOR LAUNCH, and not THE COMPANY IS LAUNCH READY.",
+    "reason": "The prerequisite (all Launch Readiness rows evidenced) is not met. Thirteen of fifteen named domains certify NO-GO on current evidence. Insurance/risk is READY WITH ACCEPTED RISK only as a workbook Deferred cell that is not ledgered. Fab 5 is READY WITH ACCEPTED RISK for autonomous core operations, explicitly not full business autonomy. No domain certifies READY. Live payments cannot settle. Canonical public DNS does not resolve. Testing spine, bilingual legal equivalence, accessibility defects, accounting, and post-launch cadence remain open.",
+    "readyCount": 0,
+    "readyWithAcceptedRiskCount": 2,
+    "noGoCount": 13,
+    "genuineExecutiveConflictRequiringFounder": false,
+    "founderReservedDecisionsOpenedByThisAudit": false,
+    "alreadyOpenFounderReservedActions": [
+      "Row 73 — replace Vercel Production STRIPE_SECRET_KEY with Stripe Live (do not paste the key into chat)",
+      "Row 75 — add canonical thebackhalf.org DNS in Cloudflare (A @ 10.0.1.2 and CNAME www → cname.vercel-dns.com, DNS-only) plus auto-renew/payment/expiration confirmation",
+      "Row 10 — open business banking (Founder identity/signature)",
+      "Row 14 — sales-tax / checkout tax treatment (workbook Complete cell contradicts Notes; al-205 reopened to Not Started)",
+      "Row 23 — launch-critical trademark filings (Founder-reserved; no USPTO evidence)",
+      "Row 82 — load locked August 28–31 Instagram/TikTok jobs into native schedulers (do not publish now)",
+      "Row 166 — business insurance already Founder-deferred in the 8.25 workbook; not in acceptance-record.json",
+      "Row 217 — final consolidated Go/No-Go remains Founder-reserved and is not this row"
+    ]
+  },
+  "domains": [
+    {
+      "id": "legal_entity_compliance",
+      "label": "Legal entity / compliance",
+      "domainOwner": "kimberly_human",
+      "supportingCertifier": "imani",
+      "michelleRole": "consolidate; do not issue legal conclusions; do not file government instruments",
+      "certificationMethod": "michelle_consolidation_from_founder_owned_and_imani_evidence",
+      "verdict": "NO-GO",
+      "launchStopping": true,
+      "operateStopping": true,
+      "summary": "Entity formation (KLW Group, LLC) and EIN are Founder-owned Complete cells that al-205 kept. That is not a full compliance operating system. Licenses/registrations rest on a one-line workbook note. Tax-day is a one-line note, not a filing calendar. Trademark filings are a class list, not USPTO evidence. Corporate compliance calendar (Row 172) is Not Started. Independent counsel for Row 34 is recorded as NOT COMPLETED in the local package and is not ledgered.",
+      "evidence": [
+        "8.25 snapshot Rows 8–9 Complete, empty Notes; al-205 kept Complete as Founder-owned real-world filings",
+        "Row 12 Complete Notes: 'KLW Group, LLC has an EIN; Authorized to operate as Georgia business' — not a registration/permit evidence pack",
+        "Row 23 Complete Notes: 'Trademark Classes: 41, 9, 35' — Row 34 validation records filings still Not Started at 0% with no USPTO certificate",
+        "Row 172 Create Corporate Compliance and Records Calendar: Not Started",
+        "Row 34 local status: independentLegalCounselReview NOT COMPLETED; not in acceptance-record.json"
+      ],
+      "requiredBeforeReady": [
+        "Founder confirms entity/EIN/Georgia authorization evidence location, or accepts residual documentation risk in the ledger",
+        "Row 23 remains Founder-reserved; Michelle does not file trademarks",
+        "Row 172 calendar exists with owners, due dates, and evidence location"
+      ]
+    },
+    {
+      "id": "finance_tax",
+      "label": "Finance / tax",
+      "domainOwner": "kimberly_human",
+      "michelleRole": "record evidence only; do not execute Founder banking/filings; do not use Kimberly Walker (AI) as capacity",
+      "certificationMethod": "michelle_consolidation_founder_owned_domain",
+      "verdict": "NO-GO",
+      "launchStopping": true,
+      "operateStopping": true,
+      "summary": "The company cannot take live money or run tax operations. Business banking is Not Started. Production Stripe is Test/Sandbox and the live webhook is not configured. Sales-tax workbook Complete contradicts its own Notes. Tax calendar is a single April 15 note, not a nexus/filing/payment control system.",
+      "evidence": [
+        "Workbook Not Started: Rows 10 (banking), 163 (daily revenue reconciliation), 164 (cash/spend control), 165 (financial customer journey), 170 (chargebacks/disputes)",
+        "Row 13 Complete Notes: 'Tax day for KLW Group, LLC is April 15th' — not a filing calendar",
+        "Row 14 Complete Notes: 'This will be addressed as part of tax submission' — al-205 reopened to Not Started",
+        "Row 73: overallVendorCapacity FAIL; overallBillingContinuity FAIL; knownLaunchStoppingVendorCondition YES",
+        "Live probe: POST /api/stripe/webhook → 503 webhook_not_configured; row-73-stripe-key-class.json vercelProductionStripeKeyClass=test",
+        "Nia PR #21 (al-165): overallResult FAIL — live Checkout amounts unverified; tax not configured in session creation"
+      ],
+      "requiredBeforeReady": [
+        "Founder opens operating/tax-reserve/settlement accounts (Row 10)",
+        "Stripe Live connected so settlement/reconciliation can exist",
+        "Founder decides Row 14 tax treatment with qualified tax professional; Imani configures only after that decision"
+      ],
+      "note": "Kimberly Walker (AI) is listed as FINANCE primaryExecutive in launch-rows.json for routing labels only. She is not an operating agent and was not assigned execution."
+    },
+    {
+      "id": "insurance_risk",
+      "label": "Insurance / risk",
+      "domainOwner": "kimberly_human",
+      "michelleRole": "do not un-defer a Founder workbook status; do not purchase coverage; do not invent residual-risk acceptance in the ledger",
+      "certificationMethod": "michelle_consolidation_founder_owned_domain",
+      "verdict": "READY WITH ACCEPTED RISK",
+      "launchStopping": false,
+      "operateStopping": false,
+      "summary": "August Launch Row 166 is Deferred, assigned to Kim. The Post Launch tab restates that the Founder elected to launch without business insurance and accepted residual risk. That election is not in acceptance-record.json. Michelle does not un-defer Row 166 and does not convert Deferred into Complete. Kimberly must still ledger whether this remains accepted residual risk.",
+      "evidence": [
+        "8.25 snapshot Row 166 status Deferred, percentComplete 0, Notes empty, assignedAgent Kim",
+        "Post Launch insurance reassessment description: Founder has elected to launch without business insurance and accepted the residual risk",
+        "acceptance-record.json does not include Row 166",
+        "No carrier, policy, limits, deductible, or claim-contact evidence in this repository"
+      ],
+      "acceptedRisksAlreadyOnRecord": [
+        "Workbook Deferred for Row 166 — Michelle does not un-defer it"
+      ],
+      "requiredBeforeReady": [
+        "Kimberly Walker (human) ledgers whether launching without GL/E&O/cyber/media coverage remains accepted residual risk. This file does not record that acceptance."
+      ]
+    },
+    {
+      "id": "technology_security",
+      "label": "Technology / security",
+      "domainOwner": "imani",
+      "michelleRole": "consolidate Imani evidence; do not take security/infra ownership",
+      "certificationMethod": "michelle_consolidation_from_specialist_evidence",
+      "verdict": "NO-GO",
+      "launchStopping": true,
+      "operateStopping": true,
+      "summary": "The production application is up on the Vercel technical host with database health ok. The canonical public domain is not attached. Production Stripe is Test/Sandbox. SPF/DKIM/DMARC fail. Security review, production security audit, and the testing spine are Not Started. Unmerged Imani PRs are not Complete.",
+      "evidence": [
+        "Independent probe 2026-08-26T16:32:36Z: website-two-psi-49.vercel.app HTTP 200 and /api/ops/health application=ok database=ok; thebackhalf.org does not resolve",
+        "Row 75 status: technicalStatus not_ready_founder_dns_required; remainingBlockers canonical A/AAAA/CNAME missing",
+        "Imani PR #19 (al-161): SPF/DKIM/DMARC FAIL; this audit independently observed apex TXT = Google site-verification only",
+        "Workbook Not Started technology/security rows include 122, 146–148, 161, 169, 176–182, 184–187, 189, 190, 194, 218",
+        "Founder-accepted technology subset: Rows 61 monitoring, 62 backup/DR, 72 vendor register"
+      ],
+      "openSpecialistWork": [
+        "https://github.com/TheBackHalf/website/pull/7",
+        "https://github.com/TheBackHalf/website/pull/8",
+        "https://github.com/TheBackHalf/website/pull/17",
+        "https://github.com/TheBackHalf/website/pull/19",
+        "https://github.com/TheBackHalf/website/pull/20"
+      ],
+      "acceptedRisksAlreadyOnRecord": [
+        "Cloudflare MFA INACTIVE — Founder residual risk on Row 74 decision-log acceptance 2026-08-25; not a technical PASS"
+      ],
+      "requiredBeforeReady": [
+        "Canonical DNS/SSL for thebackhalf.org (Founder Cloudflare action; Imani verifies; this audit did not change DNS)",
+        "Stripe Live secret on Vercel Production and live webhook/prices (Founder pastes Live key in Vercel; do not paste into chat)",
+        "SPF/DKIM/DMARC for @thebackhalf.org",
+        "Imani security review / production security audit (182/194) evidenced, or Founder accepts specific residual security-test risk — Michelle will not invent that acceptance"
+      ]
+    },
+    {
+      "id": "product",
+      "label": "Product",
+      "domainOwner": "nia",
+      "supportingCertifier": "imani",
+      "michelleRole": "consolidate; do not rewrite Journey, Blueprint, or Lumina",
+      "certificationMethod": "michelle_consolidation_from_specialist_evidence",
+      "verdict": "NO-GO",
+      "launchStopping": true,
+      "operateStopping": true,
+      "summary": "English Founder videos and printable Blueprint/certificate have authentic Founder acceptance. The product cannot be certified as a complete paid Journey: progression/save is unmerged, Triple E is Not Started, public stranger-path is Not Started, payments are Test mode, and workbook-Complete chapter builds were reopened by al-205 for lack of authentic Founder evidence.",
+      "evidence": [
+        "al-205 kept Complete product-adjacent: Rows 50, 51, 33, 60",
+        "Workbook Not Started: 133–135, 198, 214; Imani PR #8 implements Row 133 on an isolated branch and is not merged",
+        "Nia PR #21 financial journey FAIL; live Checkout amounts cannot be verified",
+        "Rows 191–192 Founder-removed from pre-launch scope — real participant validation begins post-launch, which increases the weight of still-open Triple E (198) and public discovery-to-purchase (214)"
+      ],
+      "openSpecialistWork": [
+        "https://github.com/TheBackHalf/website/pull/8",
+        "https://github.com/TheBackHalf/website/pull/16",
+        "https://github.com/TheBackHalf/website/pull/21"
+      ],
+      "requiredBeforeReady": [
+        "Nia Triple E (Row 198) with pass/fail examples against approved sources",
+        "Nia public discovery-to-purchase (Row 214) after marketing live + production release candidate",
+        "Imani 133–135 implementation merged only after Nia teachability evidence",
+        "Live payments correspond to locked six-month Founding Architect terms"
+      ]
+    },
+    {
+      "id": "bilingual_experience",
+      "label": "Bilingual experience",
+      "domainOwner": "nia",
+      "supportingCertifier": "imani",
+      "michelleRole": "consolidate; do not auto-translate legal meaning; do not invent Spanish legal bodies",
+      "certificationMethod": "michelle_consolidation_from_specialist_evidence",
+      "verdict": "NO-GO",
+      "launchStopping": true,
+      "operateStopping": true,
+      "summary": "Spanish public chrome exists: /es returns HTTP 200. That is not bilingual legal, curriculum, email, or AI-Founder equivalence. Spanish legal manuscripts remain pending approved translation. Spanish Blueprint assets, bilingual email templates, and bilingual AI Kimberly QA are Not Started or unmerged. Michelle will not treat an English Version 1.0 page as a Spanish legal instrument.",
+      "evidence": [
+        "Live probe: /es HTTP 200; /es/legal/privacy-policy HTTP 200 with pending-translation language",
+        "Row 32 local package: spanishLegalManuscripts PENDING APPROVED TRANSLATION",
+        "Workbook Not Started: 137, 139, 140, 142, 145",
+        "Imani PR #16 (al-142) and related bilingual work are unmerged and not Founder-accepted"
+      ],
+      "openSpecialistWork": [
+        "https://github.com/TheBackHalf/website/pull/16"
+      ],
+      "acceptedRisksAlreadyOnRecord": [
+        "Spanish legal manuscripts pending approved translation — documented in Row 32 local package; not ledgered as Founder-accepted residual risk in acceptance-record.json"
+      ],
+      "requiredBeforeReady": [
+        "Row 140 bilingual legal equivalence after approved Spanish manuscripts — human legal review if meaning is a legal question",
+        "Nia Spanish Founder videos / Spanish Blueprint / bilingual email (137, 139, 145) evidenced or Founder-accepted residual risk",
+        "Nia accepts bilingual AI Kimberly (142) against approved Spanish Voice Bible — Michelle does not rewrite copy"
+      ]
+    },
+    {
+      "id": "accessibility",
+      "label": "Accessibility",
+      "domainOwner": "nia",
+      "supportingCertifier": "imani",
+      "michelleRole": "consolidate; Imani implements; Nia accepts; Michelle does not change experience markup as Nia",
+      "certificationMethod": "michelle_consolidation_from_specialist_evidence",
+      "verdict": "NO-GO",
+      "launchStopping": true,
+      "operateStopping": true,
+      "summary": "Workbook Row 31 Complete is not authentic Founder Complete (al-205). Nia executed Row 183 against the repository application and found 12 open defects (5 high), including no homepage skip link and purple-on-cream contrast failures. No live assistive-technology pass on the canonical host is possible while DNS does not resolve. This is not launch-ready accessibility.",
+      "evidence": [
+        "Nia PR #25 (al-183): accessibilityLaunchReady false; reviewStatus executed; high=5 medium=5 low=2",
+        "Workbook Row 183 Not Started; Row 136 Not Started; Row 138 Not Started",
+        "al-183 method: no automated axe/screen-reader session; live production fetch unreachable from that environment — this audit independently confirmed canonical DNS empty",
+        "Imani PR #12 (al-136 downloadable document accessibility) unmerged"
+      ],
+      "openSpecialistWork": [
+        "https://github.com/TheBackHalf/website/pull/12",
+        "https://github.com/TheBackHalf/website/pull/25"
+      ],
+      "requiredBeforeReady": [
+        "Imani implements Nia al-183 high findings; Nia re-accepts",
+        "Live keyboard/screen-reader pass on the canonical host after DNS exists, or Founder accepts residual AT-test risk — Michelle will not invent that acceptance"
+      ]
+    },
+    {
+      "id": "marketing_sales",
+      "label": "Marketing / sales",
+      "domainOwner": "nia",
+      "michelleRole": "consolidate Nia evidence; do not take brand/copy ownership; do not change CTAs",
+      "certificationMethod": "michelle_consolidation_from_specialist_evidence",
+      "verdict": "NO-GO",
+      "launchStopping": true,
+      "operateStopping": true,
+      "summary": "Official channels, governance, launch-day campaign package, and platform-native assets have authentic Founder acceptance. Native scheduler load is still Founder action. Pre-launch execution window is August 28–30 and is Not Started. Enrollment CTAs point at https://thebackhalf.org/register, which has no canonical DNS. A company cannot sell on a URL that does not resolve.",
+      "evidence": [
+        "al-205 kept Complete: Rows 33, 76, 77, 79, 81",
+        "Row 82 status: implemented_founder_action_required; livePublishEnabled false",
+        "Workbook Not Started: 85, 87, 88, 200, 210",
+        "Row 86 Deferred; local row-86-status deferred_post_launch, launchBlocker false",
+        "Independent probe: https://thebackhalf.org/register cannot resolve"
+      ],
+      "openSpecialistWork": [
+        "https://github.com/TheBackHalf/website/pull/4",
+        "https://github.com/TheBackHalf/website/pull/6"
+      ],
+      "acceptedRisksAlreadyOnRecord": [
+        "LinkedIn is a future enhancement, not a launch requirement",
+        "X/Twitter is not a launch channel",
+        "Row 86 audience/partner outreach Founder-deferred until post-launch / before October 25 community"
+      ],
+      "requiredBeforeReady": [
+        "Founder native schedule load for locked August 28–31 jobs (Row 82)",
+        "Canonical enrollment URL reachable, or Nia/Imani use only the approved technical-host fallback with Founder-accepted CTA change — Michelle will not change CTAs",
+        "Row 87 execution window 2026-08-28 through 2026-08-30"
+      ]
+    },
+    {
+      "id": "support",
+      "label": "Support",
+      "domainOwner": "nia",
+      "backupOwner": "michelle",
+      "michelleRole": "backup routing and coverage coordination; do not take Nia CX ownership",
+      "certificationMethod": "michelle_owned_backup_plus_nia_evidence",
+      "verdict": "NO-GO",
+      "launchStopping": true,
+      "operateStopping": true,
+      "summary": "Support channel configuration has authentic Founder acceptance: support@ mailbox, form, tickets, acknowledgment, SMTP delivery evidence. Operating the function through launch is incomplete: Operationalize Architect Support, Launch Support Knowledge Base, and First-72-Hour Coverage are Not Started in the workbook. In-flight Nia/Michelle PRs are unmerged. Channels without coverage are not an operating support system.",
+      "evidence": [
+        "acceptance-record.json Row 153 Complete; SMTP delivery PASS historically",
+        "Live probe: /support HTTP 200 on the technical host",
+        "Workbook Not Started: 155, 156, 157, 201",
+        "Open PRs #15 (al-155), #22 (al-156), #3 (al-157) — unmerged, not Founder-accepted"
+      ],
+      "openSpecialistWork": [
+        "https://github.com/TheBackHalf/website/pull/3",
+        "https://github.com/TheBackHalf/website/pull/15",
+        "https://github.com/TheBackHalf/website/pull/22"
+      ],
+      "requiredBeforeReady": [
+        "Nia operational support (155) plus knowledge base (156) evidenced against production behavior",
+        "Michelle first-72-hour coverage (157) and launch staffing (201) evidenced or Founder-accepted residual coverage risk"
+      ]
+    },
+    {
+      "id": "privacy",
+      "label": "Privacy",
+      "domainOwner": "imani",
+      "michelleRole": "escalate; do not issue legal conclusions; do not rewrite legal meaning",
+      "certificationMethod": "michelle_consolidation_from_specialist_evidence",
+      "verdict": "NO-GO",
+      "launchStopping": true,
+      "operateStopping": true,
+      "summary": "18+ eligibility has authentic Founder acceptance. English Version 1.0 legal surfaces exist in the product. Rows 32 and 34 are Complete in the workbook and in agent closure files, but they are not in acceptance-record.json. Privacy rights operationalization, cookies/tracking consent, third-party/AI privacy review, and email-marketing suppression are Not Started or in-flight. A company cannot operate privacy rights on inventory-only PRs.",
+      "evidence": [
+        "acceptance-record.json includes Row 60 and does not include Rows 32 or 34",
+        "Workbook Not Started: 140, 141, 162, 167, 168, 169",
+        "Imani PR #11 al-141 inventory states legal conclusions are not issued; PR #26 al-167 implements a privacy-rights process on an isolated branch and is not merged or Founder-accepted",
+        "Live /es/legal/privacy-policy still pending approved translation"
+      ],
+      "openSpecialistWork": [
+        "https://github.com/TheBackHalf/website/pull/10",
+        "https://github.com/TheBackHalf/website/pull/11",
+        "https://github.com/TheBackHalf/website/pull/26"
+      ],
+      "requiredBeforeReady": [
+        "Founder ledger-accept Rows 32/34 against the current Version 1.0 package, or reject and reopen",
+        "Imani evidence for 141/167/168 in production (not only unmerged PRs) or Founder-accepted residual privacy-ops risk"
+      ]
+    },
+    {
+      "id": "ai_operations",
+      "label": "AI operations",
+      "domainOwner": "imani",
+      "supportingOwner": "nia",
+      "michelleRole": "consolidate; Kimberly Walker (AI) is participant-facing digital twin only, not an operating executive",
+      "certificationMethod": "michelle_consolidation_from_specialist_evidence",
+      "verdict": "NO-GO",
+      "launchStopping": true,
+      "operateStopping": true,
+      "summary": "Fab 5 multi-agent OS has authentic Founder acceptance (Rows 15–17). Production AI usage/cost/failure controls (Row 122) are Not Started in the workbook; Imani PR #7 is unmerged. Lumina evaluation (Row 180) is Not Started. Imani PR #7 states Lumina is a first-party stub with no OpenAI at launch and public AI Kimberly chat is denied. That is a control posture, not a completed production-AI certification. AOS permanent OS remains pending_founder_acceptance in the decision log.",
+      "evidence": [
+        "al-205 kept Complete: Rows 15, 16, 17",
+        "Row 16 productionReadiness: VALIDATED FOR AUTONOMOUS CORE OPERATIONS — NOT FULL BUSINESS AUTONOMY",
+        "Workbook Row 122 Not Started; Row 180 Not Started; Row 142 Not Started",
+        "decision-log.json aos-permanent-operating-system status pending_founder_acceptance",
+        "operating-system.json: Lumina and Kimberly Walker (AI) autonomousOperatingAgent false"
+      ],
+      "openSpecialistWork": [
+        "https://github.com/TheBackHalf/website/pull/7",
+        "https://github.com/TheBackHalf/website/pull/16"
+      ],
+      "requiredBeforeReady": [
+        "Imani Row 122 controls evidenced in production (quota, fallback, emergency disable, cost) and Nia-reviewed for participant-facing degraded copy",
+        "Nia Row 180 Lumina evaluation run, or Founder accepts launch with stub Lumina — Michelle will not invent that acceptance"
+      ]
+    },
+    {
+      "id": "fab_5",
+      "label": "Fab 5",
+      "domainOwner": "michelle",
+      "michelleRole": "owned-domain certification of the operating-agent system; do not expand authority",
+      "certificationMethod": "michelle_owned_domain",
+      "verdict": "READY WITH ACCEPTED RISK",
+      "launchStopping": false,
+      "operateStopping": false,
+      "summary": "The three operating agents, authority matrix, workstreams, access matrix, and evidence gates have authentic Founder acceptance. The accepted production-readiness statement is autonomous core operations, not full business autonomy. Founder-absence operating capability (Row 215) is Not Started. This audit run itself is evidence that AOS can launch an isolated engineering agent — it is not evidence that the Fab 5 can operate the whole company through launch week without the still-open NO-GO domains.",
+      "evidence": [
+        "acceptance-record.json Rows 15–20",
+        "Row 16: NOT FULL BUSINESS AUTONOMY; support/privacy mailbox, social, community, and deploy credentials remain downstream in that row's original package, with later Row 153 SMTP evidence for support@",
+        "Workbook Row 215 Verify Founder Absence Operating Capability: Not Started",
+        "decision-log pending_founder_acceptance: aos-permanent-operating-system"
+      ],
+      "acceptedRisksAlreadyOnRecord": [
+        "Row 16: validated for autonomous core operations only",
+        "Kimberly Walker (AI) is not an operating agent — preserved"
+      ],
+      "requiredBeforeReady": [
+        "None additional to keep the Fab 5 model itself READY WITH ACCEPTED RISK",
+        "Row 215 founder-absence simulation remains a separate operations row and is not certified here"
+      ]
+    },
+    {
+      "id": "vendor_continuity",
+      "label": "Vendor continuity",
+      "domainOwner": "imani",
+      "michelleRole": "consolidate; do not rebuild the vendor register; do not print secrets",
+      "certificationMethod": "michelle_consolidation_from_specialist_evidence",
+      "verdict": "NO-GO",
+      "launchStopping": true,
+      "operateStopping": true,
+      "summary": "The vendor/SaaS register has authentic Founder acceptance (Row 72). Launch-critical capacity and billing (Row 73) is FAIL. Domain/DNS/SSL continuity (Row 75) is not ready. A register without live payments and without a public domain is not vendor continuity.",
+      "evidence": [
+        "acceptance-record.json Row 72 Complete; thebackhalf.org SOA-only finding preserved, not marked resolved",
+        "Row 73 status: overallVendorCapacity FAIL; overallBillingContinuity FAIL; Production STRIPE_SECRET_KEY is Test/Sandbox",
+        "Row 75 status: not_ready_founder_dns_required",
+        "Independent probe confirms both payment-webhook and canonical-DNS failures on 2026-08-26"
+      ],
+      "requiredBeforeReady": [
+        "Close Row 73 after Stripe Live is connected (Founder dashboard action; Imani re-verifies)",
+        "Close Row 75 after Founder adds canonical DNS; Imani verifies SSL/renewal without this audit changing DNS"
+      ]
+    },
+    {
+      "id": "accounting",
+      "label": "Accounting",
+      "domainOwner": "kimberly_human",
+      "michelleRole": "record evidence; do not stand up books; do not use Kimberly Walker (AI) as capacity",
+      "certificationMethod": "michelle_consolidation_founder_owned_domain",
+      "verdict": "NO-GO",
+      "launchStopping": true,
+      "operateStopping": true,
+      "summary": "There is no evidenced chart of accounts, receipt process, daily revenue reconciliation, or monthly close. Accounting is blocked on business banking, which is Not Started. The company cannot operate financially on workbook intent.",
+      "evidence": [
+        "Workbook Row 11 Set Up Accounting: Not Started, blocked by Business Banking",
+        "Workbook Row 163 Operationalize Daily Revenue Reconciliation: Not Started",
+        "Workbook Row 173 Establish Monthly Bookkeeping and Financial Close: Not Started",
+        "Workbook Row 10 Open Business Banking: Not Started, founderActionRequired true"
+      ],
+      "requiredBeforeReady": [
+        "Founder opens banking (Row 10)",
+        "Chart of accounts / receipt process (Row 11) then reconciliation and close (163, 173)"
+      ]
+    },
+    {
+      "id": "post_launch_cadence",
+      "label": "Post-launch cadence",
+      "domainOwner": "michelle",
+      "michelleRole": "owned-domain certification of operating cadence; do not invent Founder check-in load",
+      "certificationMethod": "michelle_owned_domain",
+      "verdict": "NO-GO",
+      "launchStopping": true,
+      "operateStopping": true,
+      "summary": "Hypercare, 7-day executive plan, 30-day performance review framework, launch-day executive dashboard, and 72-hour stabilization are Not Started or Planned. Row 80's local status file claims Founder acceptance while decision-log still has pending_founder_acceptance. A company that cannot describe the first 30 operating days is not ready to operate after launch.",
+      "evidence": [
+        "Workbook Not Started: 208, 209, 211, 212, 215; Planned: 222, 224, 225",
+        "Michelle PR #18 (al-208) records a hypercare plan on an isolated branch — unmerged, not Founder-accepted",
+        "Row 80 local status founderAccepted true; decision-log row-80-first-30-day-post-launch-content-plan status pending_founder_acceptance — al-205 reopened to Partial/In Progress",
+        "Launch-Day Runbook header: DRAFT — FOUNDER ACCEPTANCE REVIEW. Row 202 not Complete."
+      ],
+      "openSpecialistWork": [
+        "https://github.com/TheBackHalf/website/pull/18"
+      ],
+      "requiredBeforeReady": [
+        "Founder-accept or rewrite Row 202 runbook out of DRAFT",
+        "Hypercare (208), 7-day plan (211), and 30-day review framework (212) evidenced",
+        "Do not treat Row 80 agent status as Founder-accepted until the decision log matches"
+      ]
+    }
+  ],
+  "contradictionCheck": {
+    "performed": true,
+    "result": "NO GENUINE IMANI–NIA EXECUTIVE CONFLICT REQUIRING FOUNDER IN THIS AUDIT",
+    "notes": [
+      "Imani and Nia have not issued opposing formal release blocks in this run.",
+      "Workbook Complete cells frequently contradict Notes, local status files, and the authentic acceptance ledger. Michelle treats that as an evidence-quality contradiction already documented in al-205, not as an Imani vs Nia dispute.",
+      "Canonical CTA https://thebackhalf.org/register (Nia/marketing package and Launch-Day Runbook) contradicts live DNS (Imani Row 75 and this audit's probe). Both packages already record the dependency; neither executive has asked to change the locked launch date or the CTA. Founder DNS action is already queued.",
+      "Row 202 runbook DRAFT vs local closure Complete is an operations evidence contradiction, not a specialist conflict.",
+      "Row 80 local founderAccepted=true vs decision-log pending_founder_acceptance is an operations evidence contradiction. Michelle does not keep that row Complete.",
+      "al-213 functional package is NO-GO. This business-ready audit is independently NO-GO. Agreement is not a substitute for live Imani/Nia countersignature of this file."
+    ]
+  },
+  "criticalDefectsStillOpen": {
+    "source": "Michelle al-188 triage (PR #9, unmerged) plus Nia al-189 (PR #23, unmerged) plus this audit's independent probes",
+    "formalTestingSpineComplete": false,
+    "itemsConfirmedThisAudit": [
+      {
+        "id": "D-216-C1",
+        "severity": "critical",
+        "finding": "Canonical thebackhalf.org does not resolve (no A/AAAA/CNAME)",
+        "reproduction": "dig +short A/AAAA/CNAME empty; curl https://thebackhalf.org/ could not resolve host — 2026-08-26T16:32:36Z"
+      },
+      {
+        "id": "D-216-C2",
+        "severity": "critical",
+        "finding": "Production Stripe is Test/Sandbox; live webhook not configured",
+        "reproduction": "POST /api/stripe/webhook → 503 webhook_not_configured; row-73-stripe-key-class.json vercelProductionStripeKeyClass=test"
+      },
+      {
+        "id": "D-216-H1",
+        "severity": "high",
+        "finding": "Business email authentication incomplete (no SPF/DKIM/DMARC)",
+        "reproduction": "apex TXT is Google site-verification only; Imani al-161 FAIL"
+      }
+    ],
+    "note": "Absence of Testing rows 176–187 packets is a coverage gap, not proof those areas are clean. Nia al-183 already added accessibility high defects."
+  },
+  "whatThisAuditDoesNotDo": [
+    "Does not complete Row 216 in the Command Center",
+    "Does not complete Row 217",
+    "Does not freeze production (Row 218)",
+    "Does not publish the website or open enrollment (Rows 219–220)",
+    "Does not change the locked August 31, 2026 launch date",
+    "Does not reduce Version 1 scope",
+    "Does not accept residual risk on the Founder's behalf",
+    "Does not merge or deploy",
+    "Does not modify product, marketing, legal, Stripe, DNS, or auth",
+    "Does not treat Kimberly Walker (AI) as execution capacity"
+  ],
+  "nextAction": [
+    "Do not mark Command Center excel row 217 / AOS al-216 Complete. Founder acceptance stays with Kimberly Walker (human).",
+    "Treat this file as the independent business-ready findings pack. Accepting it, if Kimberly does, accepts that the company is NOT READY TO LAUNCH AND OPERATE on 2026-08-26 evidence. It is not GO FOR LAUNCH.",
+    "Imani recertifies technology/security, privacy implementation, vendor continuity, and AI against this pack if any verdict is wrong; Nia recertifies product, bilingual, accessibility, marketing/sales, and support experience the same way. Disagreement that exceeds Michelle authority escalates as a genuine conflict.",
+    "Already-open Founder actions remain: Stripe Live key, canonical DNS, banking, native social schedule load, insurance residual-risk ledgering. This audit does not add a new Founder Decision Queue item beyond those reserved items already required by prior rows.",
+    "Do not sequence Row 217 until this audit and Row 213 are Founder-accepted as findings packs, or Kimberly explicitly sequences 217 against remaining NO-GO domains. Michelle will not self-certify launch.",
+    "Create the Launch Evidence Repository (Row 204) so later Complete cells cannot rest on a status cell alone."
+  ],
+  "validation": {
+    "typecheck": "SKIPPED — status-only JSON; package.json has no typecheck script; no production code changed",
+    "test": "SKIPPED — package.json has no test script; no production code changed",
+    "build": "SKIPPED — change cannot affect production runtime",
+    "jsonParse": "PASS",
+    "filesChanged": ["ops/fab-5/runs/aos-engineering-status/al-216.json"]
+  }
+}
