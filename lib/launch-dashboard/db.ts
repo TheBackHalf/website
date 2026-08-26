@@ -76,6 +76,16 @@ CREATE TABLE IF NOT EXISTS support_tickets (
   payload JSONB NOT NULL
 );
 CREATE INDEX IF NOT EXISTS support_tickets_test_idx ON support_tickets (test);
+CREATE TABLE IF NOT EXISTS privacy_rights_requests (
+  id TEXT PRIMARY KEY,
+  created_at TIMESTAMPTZ NOT NULL,
+  updated_at TIMESTAMPTZ NOT NULL,
+  test BOOLEAN NOT NULL DEFAULT FALSE,
+  requester_email TEXT NOT NULL,
+  payload JSONB NOT NULL
+);
+CREATE INDEX IF NOT EXISTS privacy_rights_requests_email_idx
+  ON privacy_rights_requests (requester_email);
 CREATE TABLE IF NOT EXISTS launch_dashboard_meta (
   key TEXT PRIMARY KEY,
   value JSONB NOT NULL,

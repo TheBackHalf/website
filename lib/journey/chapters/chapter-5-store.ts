@@ -174,6 +174,7 @@ function normalizeDatabase(raw: Chapter5Database): Chapter5Database {
 export type Chapter5Store = {
   findChapter5ForUser(userId: string): Promise<Chapter5Record | undefined>;
   saveChapter5(record: Chapter5Record): Promise<Chapter5Record>;
+  deleteForUser(userId: string): Promise<number>;
 };
 
 export function createFileChapter5Store(options?: {
@@ -258,6 +259,21 @@ export function createFileChapter5Store(options?: {
         }
         await writeDatabase(database);
         return normalized;
+      });
+    },
+
+    deleteForUser(userId) {
+      return enqueueWrite(async () => {
+        const trimmed = userId.trim();
+        if (!trimmed) return 0;
+        const database = await readDatabase();
+        const remaining = database.records.filter((entry) => entry.userId !== trimmed);
+        const removed = database.records.length - remaining.length;
+        if (removed > 0) {
+          database.records = remaining;
+          await writeDatabase(database);
+        }
+        return removed;
       });
     },
   };

@@ -1,0 +1,31 @@
+{
+  "aosWorkId": "al-167",
+  "source": "command_center",
+  "sourceReference": "August Launch row 167",
+  "title": "Operationalize Privacy Rights and Data Governance",
+  "ownerAgent": "imani",
+  "repositorySoftwareChange": true,
+  "status": "implemented_pending_founder_acceptance",
+  "founderAcceptance": null,
+  "summary": "Implemented the privacy-rights operating process: access, correction, deletion, export, consent withdrawal, inquiries, identity verification, response tracking, retention/deletion against a mapped system inventory, and owner/escalation paths. Founder acceptance is not recorded.",
+  "evidence": [
+    "ops/fab-5/privacy-data-map.json",
+    "ops/fab-5/privacy-legal-holds.json",
+    "ops/fab-5/ROW-167-PRIVACY-RIGHTS-DATA-GOVERNANCE.md",
+    "lib/privacy/",
+    "/privacy/request",
+    "/ops/admin/privacy-rights"
+  ],
+  "validation": {
+    "script": "npm run fab5:row167",
+    "required": ["npx tsc --noEmit", "npm run fab5:row167", "npm run build"]
+  },
+  "constraintsHonored": {
+    "didNotPushMain": true,
+    "didNotMerge": true,
+    "didNotWeakenAuth": true,
+    "didNotExposeSecrets": true,
+    "didNotChangeStripeCloudflareVercelDns": true,
+    "didNotMarkFounderAcceptanceComplete": true
+  }
+}

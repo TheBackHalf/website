@@ -150,6 +150,17 @@ export async function GET(request: Request) {
   };
 
   const existingGoogleUser = await store.findUserByGoogleId(googleProfile.googleId);
+  if (existingGoogleUser?.deletedAt) {
+    await trackGoogleOAuthAnalytics({
+      intent: intent === "login" ? "login" : "register",
+      locale: resolvedLocale,
+      errorCategory: "invalid_credentials",
+      analytics,
+    });
+    return NextResponse.redirect(
+      `${redirectBase}${authReturnPath(intent, resolvedLocale)}?google=conflict`,
+    );
+  }
   if (existingGoogleUser) {
     const sessionUser = await syncConfiguredRole(existingGoogleUser);
     const sessionToken = await createSessionToken(sessionUser);

@@ -154,6 +154,8 @@ export type LuminaStore = {
   findMemoryForUser(userId: string): Promise<LuminaMemoryRecord | undefined>;
   saveMemory(record: LuminaMemoryRecord): Promise<LuminaMemoryRecord>;
   clearMemoryPayloadForUser(userId: string): Promise<LuminaMemoryRecord>;
+  listConversationsForUser(userId: string): Promise<LuminaConversation[]>;
+  eraseParticipantDataForUser(userId: string): Promise<void>;
 };
 
 export type CreateFileLuminaStoreOptions = {
@@ -294,6 +296,28 @@ export function createFileLuminaStore(
         const saved = upsertMemoryInDatabase(database, cleared);
         await writeDatabase(dataDir, dbFile, database);
         return saved;
+      });
+    },
+
+    listConversationsForUser(userId) {
+      return enqueueWrite(async () => {
+        const database = await readDatabase(dbFile);
+        return database.conversations
+          .filter((entry) => entry.userId === userId)
+          .map((entry) => normalizeConversation(entry));
+      });
+    },
+
+    eraseParticipantDataForUser(userId) {
+      return enqueueWrite(async () => {
+        const database = await readDatabase(dbFile);
+        database.conversations = database.conversations.filter(
+          (entry) => entry.userId !== userId,
+        );
+        database.memories = database.memories.filter(
+          (entry) => entry.userId !== userId,
+        );
+        await writeDatabase(dataDir, dbFile, database);
       });
     },
   };

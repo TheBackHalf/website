@@ -90,4 +90,6 @@ export type AuthStore = {
   deletePasswordResetTokensForUser(userId: string): Promise<void>;
   getLastResendAt(email: string): Promise<string | undefined>;
   setLastResendAt(email: string, timestamp: string): Promise<void>;
+  /** Privacy-rights deletion: disable login and strip identifiers. Retains the row and consent audit. */
+  anonymizeDeletedUser(id: string): Promise<UserRecord | undefined>;
 };

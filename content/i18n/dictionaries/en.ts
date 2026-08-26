@@ -474,7 +474,7 @@ export const enDictionary: Dictionary = {
       googleNotLinked: "Google account not linked",
       signOut: "Sign out",
       accountDeletionUnavailable:
-        "Account deletion is not available yet. An approved deletion or deactivation process has not been configured.",
+        "To request access, correction, deletion, export, or consent withdrawal, use the privacy rights request process. Identity is verified before personal information is released or deleted.",
     },
     journey: {
       title: "The Journey",

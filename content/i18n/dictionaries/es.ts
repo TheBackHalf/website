@@ -496,7 +496,7 @@ export const esDictionary: Dictionary = {
       googleNotLinked: "Cuenta de Google no vinculada",
       signOut: "Cerrar sesión",
       accountDeletionUnavailable:
-        "La eliminación de cuenta aún no está disponible. No se ha configurado un proceso aprobado de eliminación o desactivación.",
+        "Para solicitar acceso, corrección, eliminación, exportación o retiro de consentimiento, usa el proceso de derechos de privacidad. Verificamos la identidad antes de entregar o eliminar información personal.",
     },
     journey: {
       title: "El Journey",

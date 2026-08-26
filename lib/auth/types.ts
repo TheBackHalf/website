@@ -35,6 +35,11 @@ export type UserRecord = {
    */
   ageEligible?: boolean;
   ageEligibleConfirmedAt?: string;
+  /**
+   * Set when a verified privacy-rights deletion has anonymized the account.
+   * Login and Google Sign-In must treat this as a non-account.
+   */
+  deletedAt?: string;
   createdAt: string;
   updatedAt: string;
 };

@@ -202,6 +202,7 @@ function normalizeDatabase(raw: Chapter1Database): Chapter1Database {
 export type Chapter1Store = {
   findChapter1ForUser(userId: string): Promise<Chapter1Record | undefined>;
   saveChapter1(record: Chapter1Record): Promise<Chapter1Record>;
+  deleteForUser(userId: string): Promise<number>;
 };
 
 export function createFileChapter1Store(options?: {
@@ -286,6 +287,21 @@ export function createFileChapter1Store(options?: {
         }
         await writeDatabase(database);
         return normalized;
+      });
+    },
+
+    deleteForUser(userId) {
+      return enqueueWrite(async () => {
+        const trimmed = userId.trim();
+        if (!trimmed) return 0;
+        const database = await readDatabase();
+        const remaining = database.records.filter((entry) => entry.userId !== trimmed);
+        const removed = database.records.length - remaining.length;
+        if (removed > 0) {
+          database.records = remaining;
+          await writeDatabase(database);
+        }
+        return removed;
       });
     },
   };

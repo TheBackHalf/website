@@ -45,7 +45,7 @@ export async function loginWithEmailAction(
   const normalizedEmail = normalizeEmail(input.email);
   const user = await store.findUserByEmail(normalizedEmail);
 
-  if (!user?.passwordHash || !user.emailVerified) {
+  if (!user || user.deletedAt || !user.passwordHash || !user.emailVerified) {
     await trackProductEvent({
       name: "auth_failed",
       productArea: "auth",

@@ -356,6 +356,11 @@ export function ProfilePreferencesForm({
 
         <StatusNotice variant="pending" className="mt-6">
           <p>{copy.accountDeletionUnavailable}</p>
+          <p className="mt-2">
+            <Link href={locale === "es" ? "/es/privacy/request" : "/privacy/request"} className="bh-app-settings-link">
+              {locale === "es" ? "Solicitud de derechos de privacidad" : "Privacy rights request"}
+            </Link>
+          </p>
         </StatusNotice>
       </section>
     </form>

@@ -108,8 +108,16 @@ export function SupportPageView({ locale }: SupportPageViewProps) {
           </SectionHeading>
           <p className="mt-8 max-w-2xl font-sans text-base font-light leading-relaxed text-bh-muted">
             {english
-              ? "Urgent security and privacy concerns are prioritized. Use the form or the support mailbox and describe the situation without including passwords or payment-card information."
-              : "Los asuntos urgentes de seguridad y privacidad se priorizan. Usa el formulario o el correo de soporte y describe la situación sin incluir contraseñas ni datos de tarjetas de pago."}
+              ? "Urgent security and privacy concerns are prioritized. Use the form or the support mailbox and describe the situation without including passwords or payment-card information. Privacy rights requests (access, correction, deletion, export, or consent withdrawal) can also be submitted at the privacy request form or privacy@thebackhalf.org."
+              : "Los asuntos urgentes de seguridad y privacidad se priorizan. Usa el formulario o el correo de soporte y describe la situación sin incluir contraseñas ni datos de tarjetas de pago. Las solicitudes de derechos de privacidad (acceso, corrección, eliminación, exportación o retiro de consentimiento) también pueden enviarse en el formulario de privacidad o a privacy@thebackhalf.org."}
+          </p>
+          <p className="mt-4 font-sans text-base font-light text-bh-ink">
+            <a
+              className="underline decoration-bh-purple/30"
+              href={english ? "/privacy/request" : "/es/privacy/request"}
+            >
+              {english ? "Privacy rights request" : "Solicitud de derechos de privacidad"}
+            </a>
           </p>
         </SectionShell>
 

@@ -200,6 +200,31 @@ export async function createSupportTicket(
 
   const saved = await store.upsert(ticket);
   await projectToDashboard(saved);
+  try {
+    const { openPrivacyRequestFromSupportTicket } = await import(
+      "@/lib/privacy/from-support"
+    );
+    const privacyRequestId = await openPrivacyRequestFromSupportTicket(saved);
+    if (privacyRequestId) {
+      const linked: SupportTicket = {
+        ...saved,
+        history: [
+          ...saved.history,
+          {
+            at: new Date().toISOString(),
+            actor: "system",
+            type: "privacy_request",
+            note: `Opened privacy-rights request ${privacyRequestId}.`,
+          },
+        ],
+      };
+      const next = await store.upsert(linked);
+      await projectToDashboard(next);
+      return next;
+    }
+  } catch {
+    // Privacy-rights tracking must not block support tickets.
+  }
   return saved;
 }
 
