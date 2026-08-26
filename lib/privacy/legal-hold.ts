@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import { normalizeEmail } from "@/lib/auth/normalize-email";
+import defaultHolds from "@/ops/fab-5/privacy-legal-holds.json";
 
 export type PrivacyLegalHold = {
   id: string;
@@ -13,17 +14,21 @@ type HoldsFile = {
   holds?: PrivacyLegalHold[];
 };
 
-const DEFAULT_HOLDS_PATH = "ops/fab-5/privacy-legal-holds.json";
+function holdsFromUnknown(raw: HoldsFile | undefined): PrivacyLegalHold[] {
+  return Array.isArray(raw?.holds) ? raw.holds : [];
+}
 
 export function loadPrivacyLegalHolds(): PrivacyLegalHold[] {
-  const holdsPath = process.env.PRIVACY_LEGAL_HOLDS_FILE || DEFAULT_HOLDS_PATH;
-  try {
-    const raw = readFileSync(holdsPath, "utf8");
-    const parsed = JSON.parse(raw) as HoldsFile;
-    return Array.isArray(parsed.holds) ? parsed.holds : [];
-  } catch {
-    return [];
+  const override = process.env.PRIVACY_LEGAL_HOLDS_FILE;
+  if (override) {
+    try {
+      const raw = readFileSync(/* turbopackIgnore: true */ override, "utf8");
+      return holdsFromUnknown(JSON.parse(raw) as HoldsFile);
+    } catch {
+      return [];
+    }
   }
+  return holdsFromUnknown(defaultHolds as HoldsFile);
 }
 
 export function activeLegalHoldFor(input: {

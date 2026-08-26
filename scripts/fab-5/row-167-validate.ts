@@ -182,10 +182,10 @@ async function main() {
       Boolean(exportResult.exportPackage?.account) &&
         pack.includes(user.email) &&
         !pack.includes(passwordHash) &&
-        !pack.includes("\"passwordHash\"") &&
+        !("passwordHash" in (exportResult.exportPackage?.account ?? {})) &&
         (exportResult.exportPackage?.omitted ?? []).includes("passwordHash"),
     ),
-    detail: `systems=${exportResult.exportPackage?.systems.length ?? 0}`,
+    detail: `systems=${exportResult.exportPackage?.systems.length ?? 0} omitted=${(exportResult.exportPackage?.omitted ?? []).join(",")}`,
   });
 
   const correction = await createPrivacyRequest({

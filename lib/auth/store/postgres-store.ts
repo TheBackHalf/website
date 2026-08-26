@@ -529,9 +529,11 @@ export function createPostgresAuthStore(): AuthStore {
         suffix += 1;
         arcCode = `ARC-${compact.slice(0, 5)}${suffix}`;
       }
+      const now = new Date().toISOString();
+      const deletedEmail = `deleted.${id.replace(/-/g, "")}@invalid.thebackhalf.internal`;
       const updated: UserRecord = {
         ...current,
-        email: `deleted.${id.replace(/-/g, "")}@invalid.thebackhalf.internal`,
+        email: deletedEmail,
         firstName: "Deleted",
         lastName: "Architect",
         passwordHash: undefined,
@@ -539,21 +541,21 @@ export function createPostgresAuthStore(): AuthStore {
         emailVerified: false,
         pronunciation: undefined,
         arcCode,
-        deletedAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
+        deletedAt: now,
+        updatedAt: now,
       };
       await sql`
         UPDATE bh_auth_users SET
-          email = ${updated.email},
+          email = ${deletedEmail},
           first_name = ${updated.firstName},
           last_name = ${updated.lastName},
           password_hash = NULL,
           google_id = NULL,
-          arc_code = ${updated.arcCode},
+          arc_code = ${arcCode},
           email_verified = FALSE,
           pronunciation = NULL,
-          deleted_at = ${updated.deletedAt},
-          updated_at = ${updated.updatedAt}
+          deleted_at = ${now},
+          updated_at = ${now}
         WHERE id = ${id}
       `;
       return updated;

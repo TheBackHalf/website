@@ -1,0 +1,77 @@
+{
+  "row": 167,
+  "aosWorkId": "al-167",
+  "deliverable": "Operationalize Privacy Rights and Data Governance",
+  "generatedAt": "2026-08-26T16:30:53.822Z",
+  "result": "PASS",
+  "tests": [
+    {
+      "id": "T1",
+      "name": "Data map has systems, owners, and escalation",
+      "result": "PASS",
+      "detail": "systems=19 owners=imani,michelle"
+    },
+    {
+      "id": "T2",
+      "name": "Incident vs rights classification",
+      "result": "PASS",
+      "detail": "incident vs deletion classified"
+    },
+    {
+      "id": "T3",
+      "name": "Access request tracks identity pending",
+      "result": "PASS",
+      "detail": "id=BH-PR-20260826-PCRR2 status=IDENTITY_PENDING"
+    },
+    {
+      "id": "T4",
+      "name": "Verified access fulfills without secrets",
+      "result": "PASS",
+      "detail": "status=FULFILLED owner=imani"
+    },
+    {
+      "id": "T5",
+      "name": "Export package includes account and omits password hash",
+      "result": "PASS",
+      "detail": "systems=12 omitted=passwordHash,googleId,verificationTokens,passwordResetTokens,identityTokenHash,paymentCardData"
+    },
+    {
+      "id": "T6",
+      "name": "Verified correction updates profile",
+      "result": "PASS",
+      "detail": "lastName=Corrected"
+    },
+    {
+      "id": "T7",
+      "name": "Support Privacy rights ticket opens tracker request",
+      "result": "PASS",
+      "detail": "ticket=BH-S-20260826-855RE linked=true"
+    },
+    {
+      "id": "T8",
+      "name": "Public form creates tracked inquiry",
+      "result": "PASS",
+      "detail": "BH-PR-20260826-DSHA5"
+    },
+    {
+      "id": "T9",
+      "name": "Legal hold pauses deletion",
+      "result": "PASS",
+      "detail": "status=WAITING_ON_REQUESTER hold=true"
+    },
+    {
+      "id": "T10",
+      "name": "Verified deletion anonymizes account and keeps consent audit",
+      "result": "PASS",
+      "detail": "deletedAt=2026-08-26T16:30:53.820Z consents=1 login=invalid_credentials status=PARTIALLY_FULFILLED"
+    },
+    {
+      "id": "T11",
+      "name": "Mailbox and owners are established",
+      "result": "PASS",
+      "detail": "privacy@thebackhalf.org"
+    }
+  ],
+  "founderAcceptance": null,
+  "note": "Operational process implemented. Founder acceptance remains with Kimberly Walker (human)."
+}

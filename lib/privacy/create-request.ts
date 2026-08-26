@@ -10,6 +10,7 @@ import {
   OPEN_PRIVACY_REQUEST_STATUSES,
   privacySlaStateFor,
   type PrivacyRequestType,
+  type PrivacySource,
 } from "@/lib/privacy/catalog";
 import { sendPrivacyAcknowledgment } from "@/lib/privacy/acknowledge";
 import { classifyPrivacyText } from "@/lib/privacy/classify";
@@ -20,7 +21,6 @@ import type {
   PrivacyCorrectionPayload,
   PrivacyIdentity,
   PrivacyRequest,
-  PrivacySource,
 } from "@/lib/privacy/types";
 import type { Locale } from "@/lib/i18n/config";
 
@@ -63,7 +63,7 @@ export async function createPrivacyRequest(
     const ageMs = Date.now() - Date.parse(entry.createdAt);
     return Number.isFinite(ageMs) && ageMs >= 0 && ageMs < 15 * 60 * 1000;
   });
-  if (recent) return recent;
+  if (recent) return { request: recent };
 
   const session = await getServerSession().catch(() => null);
   const sessionMatch = Boolean(

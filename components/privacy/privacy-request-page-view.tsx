@@ -43,7 +43,7 @@ export function PrivacyRequestPageView({
             </LocalizedBrandCopy>
           </SectionHeading>
         </PageHero>
-        <SectionShell variant="light" density="compact" align="left" containerClassName="max-w-3xl">
+        <SectionShell id="privacy-request" variant="light" density="compact" align="left" containerClassName="max-w-3xl">
           <p className="max-w-2xl font-sans text-base font-light leading-relaxed text-bh-muted">
             {copy.intro}
           </p>
