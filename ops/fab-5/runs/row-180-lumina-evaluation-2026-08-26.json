@@ -1,0 +1,47 @@
+{
+  "suite": "lumina-eval",
+  "row": 180,
+  "generatedAt": "2026-08-26T12:46:10.000Z",
+  "owner": "nia",
+  "deliverable": "Run Lumina Evaluation",
+  "command": "npm run eval:lumina",
+  "provider": "none",
+  "curriculumChanged": false,
+  "lockedCurriculumUntouched": true,
+  "reviewUrl": "http://localhost:3000/_internal/row180-lumina-eval-review",
+  "results": [
+    { "category": "VOICE", "status": "PASS" },
+    { "category": "MEMORY", "status": "PASS" },
+    { "category": "CONSISTENCY", "status": "PASS" },
+    { "category": "ACCURACY", "status": "PASS" },
+    { "category": "SAFETY", "status": "PASS" },
+    { "category": "USEFULNESS", "status": "PASS" },
+    { "category": "BILINGUAL QUALITY", "status": "PASS" },
+    { "category": "JOURNEY-AWARE CONTEXT", "status": "PASS" },
+    { "category": "PRIVACY/CONSENT BOUNDARIES", "status": "PASS" },
+    { "category": "LATENCY", "status": "PASS" },
+    { "category": "COST", "status": "PASS" },
+    { "category": "LUMINA REGRESSIONS", "status": "PASS" }
+  ],
+  "latency": {
+    "runs": 20,
+    "p50Ms": 18,
+    "p95Ms": 23.44,
+    "maxMs": 26.92
+  },
+  "cost": {
+    "provider": "none",
+    "promptTokens": 0,
+    "completionTokens": 0,
+    "totalTokens": 0,
+    "estimatedUsd": 0,
+    "futureHookStatus": "unavailable"
+  },
+  "allPassed": true,
+  "overall": "PASS",
+  "obviousDefectsFixed": [
+    "Updated scripts/lumina-eval/KNOWN_LIMITATIONS.md: Chapters I–VII are now built; the prior III–VII-not-interactive limitation was stale. No curriculum rewrite."
+  ],
+  "knownLimitations": "scripts/lumina-eval/KNOWN_LIMITATIONS.md",
+  "notes": "Stub pipeline (provider=none) remains in force. All voice, memory, safety, bilingual, relevance, hallucination, latency, cost, and regression categories passed. No launch-blocking defect was discovered. Founder experience acceptance is still required."
+}

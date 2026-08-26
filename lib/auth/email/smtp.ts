@@ -4,6 +4,7 @@ export type OutboundEmail = {
   to: string;
   subject: string;
   text: string;
+  html?: string;
   fromName?: string;
   fromAddress?: string;
   replyTo?: string;
@@ -104,6 +105,7 @@ export async function sendSmtpEmail(
       to: message.to,
       subject: message.subject,
       text: message.text,
+      ...(message.html ? { html: message.html } : {}),
       replyTo: message.replyTo,
       messageId: message.messageId,
       inReplyTo: message.inReplyTo,

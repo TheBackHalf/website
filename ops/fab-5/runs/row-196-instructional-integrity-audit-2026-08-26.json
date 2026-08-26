@@ -1,0 +1,362 @@
+{
+  "row": 196,
+  "generatedAt": "2026-08-26T12:46:02.060Z",
+  "curriculumRewritten": false,
+  "chaptersAudited": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "results": [
+    {
+      "chapter": 1,
+      "roman": "I",
+      "titleEn": "Chapter One — The Awakening",
+      "titleEs": "Capítulo Uno — El Despertar",
+      "components": {
+        "founderWelcome": {
+          "en": true,
+          "es": true,
+          "detail": "Founder Welcome manuscript block"
+        },
+        "coreTeaching": {
+          "en": true,
+          "es": true,
+          "detail": "Core Teaching present and rendered on Founder Welcome"
+        },
+        "reflectionQuestions": {
+          "en": true,
+          "es": true,
+          "detail": "5 EN / 5 ES prompts"
+        },
+        "intentionalPractice": {
+          "en": true,
+          "es": true,
+          "detail": "Aliveness Project (5 questions)"
+        },
+        "weeklyCommitment": {
+          "en": true,
+          "es": true,
+          "detail": "This week, I choose awareness over autopilot."
+        },
+        "founderClosing": {
+          "en": true,
+          "es": true,
+          "detail": "Founder Closing Reflection manuscript block"
+        }
+      },
+      "reflectionCountEn": 5,
+      "reflectionCountEs": 5,
+      "idParity": true,
+      "progressionRole": "Awakening — honesty about the present before design work"
+    },
+    {
+      "chapter": 2,
+      "roman": "II",
+      "titleEn": "Chapter Two — The Mirror",
+      "titleEs": "Capítulo Dos — El Espejo",
+      "components": {
+        "founderWelcome": {
+          "en": true,
+          "es": true,
+          "detail": "Founder Welcome manuscript block"
+        },
+        "coreTeaching": {
+          "en": true,
+          "es": true,
+          "detail": "Core Teaching present and rendered on Founder Welcome"
+        },
+        "reflectionQuestions": {
+          "en": true,
+          "es": true,
+          "detail": "7 EN / 7 ES prompts"
+        },
+        "intentionalPractice": {
+          "en": true,
+          "es": true,
+          "detail": "The Back Half Mirror (four steps)"
+        },
+        "weeklyCommitment": {
+          "en": true,
+          "es": true,
+          "detail": "This week, I choose honesty over comfort."
+        },
+        "founderClosing": {
+          "en": true,
+          "es": true,
+          "detail": "Founder Closing Reflection manuscript block"
+        }
+      },
+      "reflectionCountEn": 7,
+      "reflectionCountEs": 7,
+      "idParity": true,
+      "progressionRole": "Mirror — see expectation vs intention before deciding"
+    },
+    {
+      "chapter": 3,
+      "roman": "III",
+      "titleEn": "Chapter III — The Decision",
+      "titleEs": "Capítulo III — La Decisión",
+      "components": {
+        "founderWelcome": {
+          "en": true,
+          "es": true,
+          "detail": "Founder Welcome manuscript block"
+        },
+        "coreTeaching": {
+          "en": true,
+          "es": true,
+          "detail": "Core Teaching present and rendered on Founder Welcome"
+        },
+        "reflectionQuestions": {
+          "en": true,
+          "es": true,
+          "detail": "7 EN / 7 ES prompts"
+        },
+        "intentionalPractice": {
+          "en": true,
+          "es": true,
+          "detail": "Intentional Practice"
+        },
+        "weeklyCommitment": {
+          "en": true,
+          "es": true,
+          "detail": "This week, I choose intention over expectation."
+        },
+        "founderClosing": {
+          "en": true,
+          "es": true,
+          "detail": "Founder Closing Reflection manuscript block"
+        }
+      },
+      "reflectionCountEn": 7,
+      "reflectionCountEs": 7,
+      "idParity": true,
+      "progressionRole": "Decision — choose intention after seeing clearly"
+    },
+    {
+      "chapter": 4,
+      "roman": "IV",
+      "titleEn": "Chapter IV — The Standards",
+      "titleEs": "Capítulo IV — Los Estándares",
+      "components": {
+        "founderWelcome": {
+          "en": true,
+          "es": true,
+          "detail": "Founder Welcome manuscript block"
+        },
+        "coreTeaching": {
+          "en": true,
+          "es": true,
+          "detail": "Core Teaching present and rendered on Founder Welcome"
+        },
+        "reflectionQuestions": {
+          "en": true,
+          "es": true,
+          "detail": "7 EN / 7 ES prompts"
+        },
+        "intentionalPractice": {
+          "en": true,
+          "es": true,
+          "detail": "Intentional Practice"
+        },
+        "weeklyCommitment": {
+          "en": true,
+          "es": true,
+          "detail": "This week, I choose standards over excuses."
+        },
+        "founderClosing": {
+          "en": true,
+          "es": true,
+          "detail": "Founder Closing Reflection manuscript block"
+        }
+      },
+      "reflectionCountEn": 7,
+      "reflectionCountEs": 7,
+      "idParity": true,
+      "progressionRole": "Standards — convert the decision into daily practice"
+    },
+    {
+      "chapter": 5,
+      "roman": "V",
+      "titleEn": "Chapter V — Becoming the Architect",
+      "titleEs": "Capítulo V — Convertirse en Architect",
+      "components": {
+        "founderWelcome": {
+          "en": true,
+          "es": true,
+          "detail": "Founder Welcome manuscript block"
+        },
+        "coreTeaching": {
+          "en": true,
+          "es": true,
+          "detail": "Core Teaching present and rendered on Founder Welcome"
+        },
+        "reflectionQuestions": {
+          "en": true,
+          "es": true,
+          "detail": "7 EN / 7 ES prompts"
+        },
+        "intentionalPractice": {
+          "en": true,
+          "es": true,
+          "detail": "Intentional Practice"
+        },
+        "weeklyCommitment": {
+          "en": true,
+          "es": true,
+          "detail": "This week, I choose to live as the Architect of my life."
+        },
+        "founderClosing": {
+          "en": true,
+          "es": true,
+          "detail": "Founder Closing Reflection manuscript block"
+        }
+      },
+      "reflectionCountEn": 7,
+      "reflectionCountEs": 7,
+      "idParity": true,
+      "progressionRole": "Architect identity — live as the person who decided"
+    },
+    {
+      "chapter": 6,
+      "roman": "VI",
+      "titleEn": "Chapter VI — Expansion",
+      "titleEs": "Capítulo VI — Expansión",
+      "components": {
+        "founderWelcome": {
+          "en": true,
+          "es": true,
+          "detail": "Founder Welcome manuscript block"
+        },
+        "coreTeaching": {
+          "en": true,
+          "es": true,
+          "detail": "Core Teaching present and rendered on Founder Welcome"
+        },
+        "reflectionQuestions": {
+          "en": true,
+          "es": true,
+          "detail": "7 EN / 7 ES prompts"
+        },
+        "intentionalPractice": {
+          "en": true,
+          "es": true,
+          "detail": "Intentional Practice"
+        },
+        "weeklyCommitment": {
+          "en": true,
+          "es": true,
+          "detail": "This week, I choose contribution over complacency."
+        },
+        "founderClosing": {
+          "en": true,
+          "es": true,
+          "detail": "Founder Closing Reflection manuscript block"
+        }
+      },
+      "reflectionCountEn": 7,
+      "reflectionCountEs": 7,
+      "idParity": true,
+      "progressionRole": "Expansion — extend the identity beyond the self"
+    },
+    {
+      "chapter": 7,
+      "roman": "VII",
+      "titleEn": "Chapter VII — The Beginning",
+      "titleEs": "Capítulo VII — El Comienzo",
+      "components": {
+        "founderWelcome": {
+          "en": true,
+          "es": true,
+          "detail": "Founder Welcome manuscript block"
+        },
+        "coreTeaching": {
+          "en": true,
+          "es": true,
+          "detail": "Core Teaching present and rendered on Founder Welcome"
+        },
+        "reflectionQuestions": {
+          "en": true,
+          "es": true,
+          "detail": "7 EN / 7 ES prompts"
+        },
+        "intentionalPractice": {
+          "en": true,
+          "es": true,
+          "detail": "Intentional Practice"
+        },
+        "weeklyCommitment": {
+          "en": true,
+          "es": true,
+          "detail": "Today, and every day, I choose to live intentionally and create a life of fullness, purpose, and possibility."
+        },
+        "founderClosing": {
+          "en": true,
+          "es": true,
+          "detail": "Founder Closing Reflection manuscript block"
+        }
+      },
+      "reflectionCountEn": 7,
+      "reflectionCountEs": 7,
+      "idParity": true,
+      "progressionRole": "Beginning — close the Journey with a living declaration"
+    }
+  ],
+  "defects": [
+    {
+      "chapter": 1,
+      "locale": "es",
+      "component": "weeklyCommitment",
+      "severity": "medium",
+      "status": "open",
+      "summary": "Chapter I Spanish weekly commitment still uses the English approved wording. Do not invent a translation; Human Spanish QA remains."
+    },
+    {
+      "chapter": 1,
+      "locale": "es",
+      "component": "founderClosing",
+      "severity": "medium",
+      "status": "open",
+      "summary": "Chapter I Spanish Founder Closing Reflection is still English. Do not invent a translation; Human Spanish QA remains."
+    },
+    {
+      "chapter": 2,
+      "locale": "es",
+      "component": "weeklyCommitment",
+      "severity": "medium",
+      "status": "open",
+      "summary": "Chapter II Spanish weekly commitment still uses the English approved wording. Do not invent a translation; Human Spanish QA remains."
+    },
+    {
+      "chapter": 2,
+      "locale": "es",
+      "component": "founderClosing",
+      "severity": "medium",
+      "status": "open",
+      "summary": "Chapter II Spanish Founder Closing Reflection is still English. Do not invent a translation; Human Spanish QA remains."
+    },
+    {
+      "chapter": 2,
+      "locale": "es",
+      "component": "reflectionQuestions",
+      "severity": "medium",
+      "status": "open",
+      "summary": "Chapter II Spanish reflection prompts remain English because no approved Spanish manuscript is present. Do not invent a translation."
+    },
+    {
+      "chapter": 0,
+      "locale": "en",
+      "component": "coreTeaching",
+      "severity": "info",
+      "status": "fixed_this_pass",
+      "summary": "Core Teaching existed in approved content but was not shown as a participant step. Restored on the Founder Welcome surface for Chapters I–VII without adding a new progress section or rewriting copy."
+    }
+  ],
+  "coreTeachingNowRenderedOnWelcome": true,
+  "overall": "PASS_WITH_FINDINGS"
+}

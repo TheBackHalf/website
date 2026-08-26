@@ -10,6 +10,7 @@ import {
   BeginningReflectionWork,
 } from "@/components/journey/chapter-7/beginning-work";
 import { FounderMediaPlacement } from "@/components/journey/chapter-1/founder-media-placement";
+import { CoreTeachingBlock } from "@/components/journey/core-teaching-block";
 import { StatusNotice } from "@/components/design-system";
 import {
   CHAPTER_7_SECTIONS,
@@ -83,6 +84,7 @@ export function Chapter7Experience({
 
   const welcomeText = content.personalizeWelcome(content.founderWelcomeRaw);
   const welcomeLines = content.formatForDisplay(welcomeText);
+  const teachingLines = content.formatForDisplay(content.coreTeachingRaw);
   const closingLines = content.formatForDisplay(content.founderClosingRaw);
   const congratulationsLines = content.formatForDisplay(
     content.founderCongratulationsRaw,
@@ -201,6 +203,10 @@ export function Chapter7Experience({
               <p key={line}>{line}</p>
             ))}
           </div>
+          <CoreTeachingBlock
+            heading={resolveAppShellLabel(locale, copy.sectionTeaching)}
+            lines={teachingLines}
+          />
           <div className="bh-onboarding-actions">
             <button
               type="button"

@@ -19,6 +19,7 @@ import { issueFingerprint, redactSensitive } from "@/lib/support/sanitize";
 import { getSupportStore } from "@/lib/support/store";
 import type { SupportSource } from "@/lib/support/catalog";
 import type { SupportTicket } from "@/lib/support/ticket-types";
+import type { Locale } from "@/lib/i18n/config";
 
 export function mapTicketCategoryToDashboard(
   category: SupportTicketCategory,
@@ -101,6 +102,7 @@ export type CreateSupportTicketInput = {
   emailThreadKey?: string;
   test?: boolean;
   acknowledge?: boolean;
+  locale?: Locale;
 };
 
 export async function createSupportTicket(
@@ -185,6 +187,7 @@ export async function createSupportTicket(
       requesterName: ticket.requesterName,
       requesterEmail: ticket.requesterEmail,
       priority: ticket.priority,
+      locale: input.locale,
       inReplyTo: input.emailMessageId,
     });
     ticket.history.push({

@@ -10,6 +10,7 @@ import {
   DecisionReflectionWork,
 } from "@/components/journey/chapter-3/decision-work";
 import { FounderMediaPlacement } from "@/components/journey/chapter-1/founder-media-placement";
+import { CoreTeachingBlock } from "@/components/journey/core-teaching-block";
 import { StatusNotice } from "@/components/design-system";
 import {
   CHAPTER_3_SECTIONS,
@@ -88,6 +89,7 @@ export function Chapter3Experience({
     firstName,
   );
   const welcomeLines = content.formatForDisplay(welcomeText);
+  const teachingLines = content.formatForDisplay(content.coreTeachingRaw);
   const closingLines = content.formatForDisplay(content.founderClosingRaw);
   const welcomeMedia = getChapter3MediaForSection("welcome", locale);
 
@@ -190,6 +192,10 @@ export function Chapter3Experience({
               <p key={line}>{line}</p>
             ))}
           </div>
+          <CoreTeachingBlock
+            heading={resolveAppShellLabel(locale, copy.sectionTeaching)}
+            lines={teachingLines}
+          />
           <div className="bh-onboarding-actions">
             <button
               type="button"

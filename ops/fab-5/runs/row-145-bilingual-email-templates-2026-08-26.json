@@ -1,0 +1,428 @@
+{
+  "row": 145,
+  "generatedAt": "2026-08-26T12:46:02.884Z",
+  "owner": "nia",
+  "deliverable": "Build Bilingual Email Templates",
+  "stripeCharged": false,
+  "socialPublished": false,
+  "launchEmailSent": false,
+  "reviewUrl": "http://localhost:3000/_internal/row145-email-templates-review",
+  "inventory": [
+    {
+      "id": "verify_account",
+      "category": "account_access",
+      "locales": [
+        "en",
+        "es"
+      ]
+    },
+    {
+      "id": "password_reset",
+      "category": "account_access",
+      "locales": [
+        "en",
+        "es"
+      ]
+    },
+    {
+      "id": "purchase_confirmed",
+      "category": "purchase",
+      "locales": [
+        "en",
+        "es"
+      ]
+    },
+    {
+      "id": "payment_failed",
+      "category": "billing",
+      "locales": [
+        "en",
+        "es"
+      ]
+    },
+    {
+      "id": "community_activated",
+      "category": "community",
+      "locales": [
+        "en",
+        "es"
+      ]
+    },
+    {
+      "id": "community_canceled",
+      "category": "community",
+      "locales": [
+        "en",
+        "es"
+      ]
+    },
+    {
+      "id": "refund_notice",
+      "category": "billing",
+      "locales": [
+        "en",
+        "es"
+      ]
+    },
+    {
+      "id": "journey_chapter_complete",
+      "category": "journey_progress",
+      "locales": [
+        "en",
+        "es"
+      ]
+    },
+    {
+      "id": "journey_weekly_commitment",
+      "category": "journey_progress",
+      "locales": [
+        "en",
+        "es"
+      ]
+    },
+    {
+      "id": "support_acknowledgment",
+      "category": "support",
+      "locales": [
+        "en",
+        "es"
+      ]
+    },
+    {
+      "id": "launch_announcement",
+      "category": "launch",
+      "locales": [
+        "en",
+        "es"
+      ]
+    }
+  ],
+  "validation": {
+    "inventory": [
+      {
+        "id": "verify_account",
+        "category": "account_access",
+        "locales": [
+          "en",
+          "es"
+        ]
+      },
+      {
+        "id": "password_reset",
+        "category": "account_access",
+        "locales": [
+          "en",
+          "es"
+        ]
+      },
+      {
+        "id": "purchase_confirmed",
+        "category": "purchase",
+        "locales": [
+          "en",
+          "es"
+        ]
+      },
+      {
+        "id": "payment_failed",
+        "category": "billing",
+        "locales": [
+          "en",
+          "es"
+        ]
+      },
+      {
+        "id": "community_activated",
+        "category": "community",
+        "locales": [
+          "en",
+          "es"
+        ]
+      },
+      {
+        "id": "community_canceled",
+        "category": "community",
+        "locales": [
+          "en",
+          "es"
+        ]
+      },
+      {
+        "id": "refund_notice",
+        "category": "billing",
+        "locales": [
+          "en",
+          "es"
+        ]
+      },
+      {
+        "id": "journey_chapter_complete",
+        "category": "journey_progress",
+        "locales": [
+          "en",
+          "es"
+        ]
+      },
+      {
+        "id": "journey_weekly_commitment",
+        "category": "journey_progress",
+        "locales": [
+          "en",
+          "es"
+        ]
+      },
+      {
+        "id": "support_acknowledgment",
+        "category": "support",
+        "locales": [
+          "en",
+          "es"
+        ]
+      },
+      {
+        "id": "launch_announcement",
+        "category": "launch",
+        "locales": [
+          "en",
+          "es"
+        ]
+      }
+    ],
+    "results": [
+      {
+        "id": "verify_account",
+        "locale": "en",
+        "hasHtml": true,
+        "hasText": true,
+        "hasLang": true,
+        "hasPlainFallback": true,
+        "claims": [],
+        "sendAuthorized": true
+      },
+      {
+        "id": "verify_account",
+        "locale": "es",
+        "hasHtml": true,
+        "hasText": true,
+        "hasLang": true,
+        "hasPlainFallback": true,
+        "claims": [],
+        "sendAuthorized": true
+      },
+      {
+        "id": "password_reset",
+        "locale": "en",
+        "hasHtml": true,
+        "hasText": true,
+        "hasLang": true,
+        "hasPlainFallback": true,
+        "claims": [],
+        "sendAuthorized": true
+      },
+      {
+        "id": "password_reset",
+        "locale": "es",
+        "hasHtml": true,
+        "hasText": true,
+        "hasLang": true,
+        "hasPlainFallback": true,
+        "claims": [],
+        "sendAuthorized": true
+      },
+      {
+        "id": "purchase_confirmed",
+        "locale": "en",
+        "hasHtml": true,
+        "hasText": true,
+        "hasLang": true,
+        "hasPlainFallback": true,
+        "claims": [],
+        "sendAuthorized": true
+      },
+      {
+        "id": "purchase_confirmed",
+        "locale": "es",
+        "hasHtml": true,
+        "hasText": true,
+        "hasLang": true,
+        "hasPlainFallback": true,
+        "claims": [],
+        "sendAuthorized": true
+      },
+      {
+        "id": "payment_failed",
+        "locale": "en",
+        "hasHtml": true,
+        "hasText": true,
+        "hasLang": true,
+        "hasPlainFallback": true,
+        "claims": [],
+        "sendAuthorized": true
+      },
+      {
+        "id": "payment_failed",
+        "locale": "es",
+        "hasHtml": true,
+        "hasText": true,
+        "hasLang": true,
+        "hasPlainFallback": true,
+        "claims": [],
+        "sendAuthorized": true
+      },
+      {
+        "id": "community_activated",
+        "locale": "en",
+        "hasHtml": true,
+        "hasText": true,
+        "hasLang": true,
+        "hasPlainFallback": true,
+        "claims": [],
+        "sendAuthorized": true
+      },
+      {
+        "id": "community_activated",
+        "locale": "es",
+        "hasHtml": true,
+        "hasText": true,
+        "hasLang": true,
+        "hasPlainFallback": true,
+        "claims": [],
+        "sendAuthorized": true
+      },
+      {
+        "id": "community_canceled",
+        "locale": "en",
+        "hasHtml": true,
+        "hasText": true,
+        "hasLang": true,
+        "hasPlainFallback": true,
+        "claims": [],
+        "sendAuthorized": true
+      },
+      {
+        "id": "community_canceled",
+        "locale": "es",
+        "hasHtml": true,
+        "hasText": true,
+        "hasLang": true,
+        "hasPlainFallback": true,
+        "claims": [],
+        "sendAuthorized": true
+      },
+      {
+        "id": "refund_notice",
+        "locale": "en",
+        "hasHtml": true,
+        "hasText": true,
+        "hasLang": true,
+        "hasPlainFallback": true,
+        "claims": [],
+        "sendAuthorized": true
+      },
+      {
+        "id": "refund_notice",
+        "locale": "es",
+        "hasHtml": true,
+        "hasText": true,
+        "hasLang": true,
+        "hasPlainFallback": true,
+        "claims": [],
+        "sendAuthorized": true
+      },
+      {
+        "id": "journey_chapter_complete",
+        "locale": "en",
+        "hasHtml": true,
+        "hasText": true,
+        "hasLang": true,
+        "hasPlainFallback": true,
+        "claims": [],
+        "sendAuthorized": true
+      },
+      {
+        "id": "journey_chapter_complete",
+        "locale": "es",
+        "hasHtml": true,
+        "hasText": true,
+        "hasLang": true,
+        "hasPlainFallback": true,
+        "claims": [],
+        "sendAuthorized": true
+      },
+      {
+        "id": "journey_weekly_commitment",
+        "locale": "en",
+        "hasHtml": true,
+        "hasText": true,
+        "hasLang": true,
+        "hasPlainFallback": true,
+        "claims": [],
+        "sendAuthorized": true
+      },
+      {
+        "id": "journey_weekly_commitment",
+        "locale": "es",
+        "hasHtml": true,
+        "hasText": true,
+        "hasLang": true,
+        "hasPlainFallback": true,
+        "claims": [],
+        "sendAuthorized": true
+      },
+      {
+        "id": "support_acknowledgment",
+        "locale": "en",
+        "hasHtml": true,
+        "hasText": true,
+        "hasLang": true,
+        "hasPlainFallback": true,
+        "claims": [],
+        "sendAuthorized": true
+      },
+      {
+        "id": "support_acknowledgment",
+        "locale": "es",
+        "hasHtml": true,
+        "hasText": true,
+        "hasLang": true,
+        "hasPlainFallback": true,
+        "claims": [],
+        "sendAuthorized": true
+      },
+      {
+        "id": "launch_announcement",
+        "locale": "en",
+        "hasHtml": true,
+        "hasText": true,
+        "hasLang": true,
+        "hasPlainFallback": true,
+        "claims": [],
+        "sendAuthorized": false
+      },
+      {
+        "id": "launch_announcement",
+        "locale": "es",
+        "hasHtml": true,
+        "hasText": true,
+        "hasLang": true,
+        "hasPlainFallback": true,
+        "claims": [],
+        "sendAuthorized": false
+      }
+    ],
+    "allPassed": true,
+    "missingCategories": []
+  },
+  "wiredSenders": [
+    "lib/auth/email/send-verification.ts",
+    "lib/auth/email/send-password-reset.ts",
+    "lib/billing/notifications.ts",
+    "lib/support/acknowledge.ts",
+    "lib/email/send-journey-progress.ts"
+  ],
+  "existingAlreadyBilingual": [
+    "verify_account",
+    "password_reset"
+  ],
+  "notes": "Branded HTML + plain-text fallback + EN/ES language logic. Launch announcement is templated from Row 199 approved copy and is not sent. Journey progress templates exist and are not auto-dripped."
+}

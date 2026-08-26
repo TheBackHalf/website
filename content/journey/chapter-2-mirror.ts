@@ -77,13 +77,22 @@ export const chapter2CoreTeachingRaw = chapter_2_mirror.paragraphs[5] ?? "";
  * Handles both collapsed manuscript text (period immediately followed by a
  * capital) and already-spaced text produced by joining manuscript paragraphs.
  */
+export function restoreManuscriptSpacing(raw: string): string {
+  return raw
+    .replace(/Chapter Two([A-Z])/g, "Chapter Two. $1")
+    .replace(/\.\.\.([A-Za-z“"‘'])/g, "... $1")
+    .replace(/([.?!])([A-Za-z“"‘'])/g, "$1 $2")
+    .replace(/([a-z])([A-Z])/g, "$1 $2")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
 export function formatManuscriptForDisplay(raw: string): string[] {
-  const trimmed = raw.trim();
-  if (!trimmed) {
+  const spaced = restoreManuscriptSpacing(raw.trim());
+  if (!spaced) {
     return [];
   }
-  return trimmed
-    .replace(/([.?!])([A-Z“"‘'])/g, "$1 $2")
+  return spaced
     .split(/(?<=[.?!])\s+(?=[A-Z“"‘'])/)
     .map((part) => part.trim())
     .filter(Boolean);
@@ -101,19 +110,17 @@ export function personalizeChapter2Welcome(
   const literalGreeting = "Welcome back, Architect.";
 
   if (name) {
-    return raw
-      .replace(placeholder, `Welcome back, ${name}.`)
-      .replace(fallback, "")
-      .replace(literalGreeting, `Welcome back, ${name}.`)
-      .replace(/\s{2,}/g, " ")
-      .trim();
+    return restoreManuscriptSpacing(
+      raw
+        .replace(placeholder, `Welcome back, ${name}.`)
+        .replace(fallback, "")
+        .replace(literalGreeting, `Welcome back, ${name}.`),
+    );
   }
 
-  return raw
-    .replace(placeholder, "")
-    .replace(fallback, literalGreeting)
-    .replace(/\s{2,}/g, " ")
-    .trim();
+  return restoreManuscriptSpacing(
+    raw.replace(placeholder, "").replace(fallback, literalGreeting),
+  );
 }
 
 export const MIRROR_STEP_ONE = {

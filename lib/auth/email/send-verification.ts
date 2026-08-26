@@ -1,5 +1,6 @@
 import { getSiteUrl, isEmailDeliveryConfigured } from "@/lib/auth/config";
 import { sendSmtpEmail } from "@/lib/auth/email/smtp";
+import { renderParticipantEmail } from "@/lib/email/templates";
 import type { Locale } from "@/lib/i18n/config";
 
 type SendVerificationEmailInput = {
@@ -13,6 +14,10 @@ export async function sendVerificationEmail(
   input: SendVerificationEmailInput,
 ): Promise<{ status: "sent" } | { status: "logged" } | { status: "not_configured" }> {
   const verifyUrl = `${getSiteUrl()}/api/auth/verify-email?token=${encodeURIComponent(input.token)}&locale=${input.locale}`;
+  const rendered = renderParticipantEmail("verify_account", input.locale, {
+    firstName: input.firstName,
+    verifyUrl,
+  });
 
   if (!isEmailDeliveryConfigured()) {
     if (process.env.NODE_ENV !== "production") {
@@ -25,42 +30,12 @@ export async function sendVerificationEmail(
     return { status: "not_configured" };
   }
 
-  const subject =
-    input.locale === "es"
-      ? "Verifica tu cuenta de The Back Half"
-      : "Verify your Back Half account";
-
-  const text =
-    input.locale === "es"
-      ? [
-          `Hola ${input.firstName},`,
-          "",
-          "Verifica tu cuenta de The Back Half:",
-          verifyUrl,
-          "",
-          "Este enlace expira en 24 horas.",
-          "",
-          "Si no creaste esta cuenta, puedes ignorar este mensaje.",
-          "",
-          "The Back Half",
-        ].join("\n")
-      : [
-          `Hello ${input.firstName},`,
-          "",
-          "Verify your Back Half account:",
-          verifyUrl,
-          "",
-          "This link expires in 24 hours.",
-          "",
-          "If you did not create this account, you can ignore this message.",
-          "",
-          "The Back Half",
-        ].join("\n");
-
   const result = await sendSmtpEmail({
     to: input.email,
-    subject,
-    text,
+    subject: rendered.subject,
+    text: rendered.text,
+    html: rendered.html,
+    fromName: rendered.fromName,
   });
 
   if (result.status === "sent") {

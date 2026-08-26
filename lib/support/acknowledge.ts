@@ -5,6 +5,8 @@ import {
   SUPPORT_MAILBOX,
   type SupportPriority,
 } from "@/lib/support/catalog";
+import { renderParticipantEmail } from "@/lib/email/templates";
+import type { Locale } from "@/lib/i18n/config";
 import type { SupportAcknowledgment } from "@/lib/support/ticket-types";
 
 export function supportFromAddress(): string {
@@ -20,34 +22,20 @@ export function buildAcknowledgmentText(input: {
   ticketId: string;
   requesterName: string;
   priority: SupportPriority;
-}): { subject: string; text: string } {
-  const subject = `We received your request [${input.ticketId}]`;
-  const greeting = input.requesterName.trim()
-    ? `Hello ${input.requesterName.trim()},`
-    : "Hello,";
-  const timing =
-    input.priority === "P1"
-      ? "This has been marked urgent and prioritized. We will not treat it as an ordinary three-day queue item."
-      : `We typically respond within 3 days, with a goal of ${PUBLISHED_RESPONSE_HOURS} hours or less. Urgent security and privacy concerns are prioritized.`;
-
-  const text = [
-    greeting,
-    "",
-    "Thank you for writing to The Back Half Support.",
-    "",
-    `We received your request and created ticket ${input.ticketId}.`,
-    "",
-    timing,
-    "",
-    "Please do not send passwords, payment-card information, or other sensitive account information in reply.",
-    "",
-    "This is an automated acknowledgment. A member of The Back Half Support will follow up.",
-    "",
-    "The Back Half Support",
-    SUPPORT_MAILBOX,
-  ].join("\n");
-
-  return { subject, text };
+  locale?: Locale;
+}): { subject: string; text: string; html: string } {
+  const locale: Locale = input.locale === "es" ? "es" : "en";
+  const rendered = renderParticipantEmail("support_acknowledgment", locale, {
+    firstName: input.requesterName,
+    ticketId: input.ticketId,
+    supportMailbox: SUPPORT_MAILBOX,
+    priorityUrgent: input.priority === "P1",
+  });
+  return {
+    subject: rendered.subject,
+    text: rendered.text,
+    html: rendered.html,
+  };
 }
 
 export async function sendSupportAcknowledgment(input: {
@@ -55,6 +43,7 @@ export async function sendSupportAcknowledgment(input: {
   requesterName: string;
   requesterEmail: string;
   priority: SupportPriority;
+  locale?: Locale;
   inReplyTo?: string;
 }): Promise<SupportAcknowledgment> {
   const now = new Date().toISOString();
@@ -64,6 +53,7 @@ export async function sendSupportAcknowledgment(input: {
     to: input.requesterEmail,
     subject: copy.subject,
     text: copy.text,
+    html: copy.html,
     fromName: SUPPORT_FROM_NAME,
     fromAddress: supportFromAddress(),
     replyTo: SUPPORT_MAILBOX,
@@ -79,4 +69,9 @@ export async function sendSupportAcknowledgment(input: {
     return { status: "not_configured", at: now, error: result.error };
   }
   return { status: "failed", at: now, error: result.error };
+}
+
+/** Published timing remains the Row 153 SLA copy; kept for validators. */
+export function publishedSupportResponseHours(): number {
+  return PUBLISHED_RESPONSE_HOURS;
 }

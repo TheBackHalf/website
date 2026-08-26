@@ -10,6 +10,7 @@ import {
   MirrorReflectionWork,
 } from "@/components/journey/chapter-2/mirror-work";
 import { FounderMediaPlacement } from "@/components/journey/chapter-1/founder-media-placement";
+import { CoreTeachingBlock } from "@/components/journey/core-teaching-block";
 import { StatusNotice } from "@/components/design-system";
 import {
   CHAPTER_2_SECTIONS,
@@ -86,6 +87,7 @@ export function Chapter2Experience({
     firstName,
   );
   const welcomeLines = content.formatForDisplay(welcomeText);
+  const teachingLines = content.formatForDisplay(content.coreTeachingRaw);
   const closingLines = content.formatForDisplay(content.founderClosingRaw);
   const exerciseComplete = isMirrorExerciseComplete(answers);
   const reflectionComplete = isMirrorReflectionComplete(reflectionAnswers);
@@ -187,6 +189,10 @@ export function Chapter2Experience({
               <p key={line}>{line}</p>
             ))}
           </div>
+          <CoreTeachingBlock
+            heading={resolveAppShellLabel(locale, copy.sectionTeaching)}
+            lines={teachingLines}
+          />
           <div className="bh-onboarding-actions">
             <button
               type="button"

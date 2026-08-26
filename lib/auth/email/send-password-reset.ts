@@ -1,6 +1,8 @@
 import { getSiteUrl, isEmailDeliveryConfigured } from "@/lib/auth/config";
 import { sendSmtpEmail } from "@/lib/auth/email/smtp";
+import { renderParticipantEmail } from "@/lib/email/templates";
 import type { Locale } from "@/lib/i18n/config";
+import { getLocalizedPath } from "@/lib/i18n/routing";
 
 type SendPasswordResetEmailInput = {
   email: string;
@@ -12,7 +14,11 @@ type SendPasswordResetEmailInput = {
 export async function sendPasswordResetEmail(
   input: SendPasswordResetEmailInput,
 ): Promise<{ status: "sent" } | { status: "logged" } | { status: "not_configured" }> {
-  const resetUrl = `${getSiteUrl()}/reset-password?token=${encodeURIComponent(input.token)}`;
+  const resetUrl = `${getSiteUrl()}${getLocalizedPath("/reset-password", input.locale)}?token=${encodeURIComponent(input.token)}`;
+  const rendered = renderParticipantEmail("password_reset", input.locale, {
+    firstName: input.firstName,
+    resetUrl,
+  });
 
   if (!isEmailDeliveryConfigured()) {
     if (process.env.NODE_ENV !== "production") {
@@ -25,44 +31,12 @@ export async function sendPasswordResetEmail(
     return { status: "not_configured" };
   }
 
-  const subject =
-    input.locale === "es"
-      ? "Restablece tu contraseña de The Back Half"
-      : "Reset your Back Half password";
-
-  const text =
-    input.locale === "es"
-      ? [
-          `Hola ${input.firstName},`,
-          "",
-          "Recibimos una solicitud para restablecer la contraseña de tu cuenta de The Back Half.",
-          "",
-          `Restablecer contraseña: ${resetUrl}`,
-          "",
-          "Este enlace expira en 24 horas.",
-          "",
-          "Si no solicitaste este cambio, no es necesario hacer nada. Tu contraseña actual seguirá siendo válida.",
-          "",
-          "The Back Half",
-        ].join("\n")
-      : [
-          `Hello ${input.firstName},`,
-          "",
-          "We received a request to reset the password for your Back Half account.",
-          "",
-          `Reset password: ${resetUrl}`,
-          "",
-          "This link expires in 24 hours.",
-          "",
-          "If you did not request this change, no action is needed. Your current password will remain valid.",
-          "",
-          "The Back Half",
-        ].join("\n");
-
   const result = await sendSmtpEmail({
     to: input.email,
-    subject,
-    text,
+    subject: rendered.subject,
+    text: rendered.text,
+    html: rendered.html,
+    fromName: rendered.fromName,
   });
 
   if (result.status === "sent") {

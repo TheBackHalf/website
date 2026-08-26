@@ -1,8 +1,12 @@
+import { getSiteUrl } from "@/lib/auth/config";
 import { sendSmtpEmail } from "@/lib/auth/email/smtp";
 import { getAuthStore } from "@/lib/auth/store";
 import { getBillingStore } from "@/lib/billing/store";
 import type { BillingNotificationTemplate } from "@/lib/billing/types";
 import type { CheckoutOfferId } from "@/lib/checkout/offers";
+import { renderParticipantEmail } from "@/lib/email/templates";
+import type { ParticipantEmailTemplateId } from "@/lib/email/templates";
+import { getLocalizedArchitectPath } from "@/lib/app-shell/routing";
 import type { Locale } from "@/lib/i18n/config";
 
 function offerLabel(offerId: CheckoutOfferId | undefined, locale: Locale): string {
@@ -24,142 +28,49 @@ function offerLabel(offerId: CheckoutOfferId | undefined, locale: Locale): strin
   }
 }
 
+function billingTemplateId(
+  template: BillingNotificationTemplate,
+): ParticipantEmailTemplateId {
+  switch (template) {
+    case "payment_success":
+      return "purchase_confirmed";
+    case "payment_failed":
+      return "payment_failed";
+    case "subscription_activated":
+      return "community_activated";
+    case "subscription_canceled":
+      return "community_canceled";
+    case "refund_notice":
+      return "refund_notice";
+  }
+}
+
 function buildMessage(input: {
   template: BillingNotificationTemplate;
   locale: Locale;
   firstName: string;
   offerId?: CheckoutOfferId;
-}): { subject: string; text: string } {
+}): { subject: string; text: string; html: string; fromName: string } {
   const offer = offerLabel(input.offerId, input.locale);
-  const name = input.firstName || (input.locale === "es" ? "Architect" : "Architect");
-
-  if (input.locale === "es") {
-    switch (input.template) {
-      case "payment_success":
-        return {
-          subject: "Pago confirmado — The Back Half",
-          text: [
-            `Hola ${name},`,
-            "",
-            `Tu pago de ${offer} se confirmó correctamente.`,
-            "Tu acceso se actualiza automáticamente en tu cuenta.",
-            "",
-            "The Back Half",
-          ].join("\n"),
-        };
-      case "payment_failed":
-        return {
-          subject: "No se pudo completar el pago — The Back Half",
-          text: [
-            `Hola ${name},`,
-            "",
-            `No pudimos completar el pago de ${offer}.`,
-            "No se otorgó acceso de pago. Puedes intentar de nuevo cuando estés listo.",
-            "",
-            "The Back Half",
-          ].join("\n"),
-        };
-      case "subscription_activated":
-        return {
-          subject: "Membresía Community activada — The Back Half",
-          text: [
-            `Hola ${name},`,
-            "",
-            "Tu membresía Community de The Back Half está activa.",
-            "Bienvenido al espacio.",
-            "",
-            "The Back Half",
-          ].join("\n"),
-        };
-      case "subscription_canceled":
-        return {
-          subject: "Membresía Community cancelada — The Back Half",
-          text: [
-            `Hola ${name},`,
-            "",
-            "Tu membresía Community de The Back Half fue cancelada.",
-            "Si aún tienes tiempo pagado restante, el acceso continúa hasta esa fecha.",
-            "",
-            "The Back Half",
-          ].join("\n"),
-        };
-      case "refund_notice":
-        return {
-          subject: "Reembolso procesado — The Back Half",
-          text: [
-            `Hola ${name},`,
-            "",
-            `Se procesó un reembolso relacionado con ${offer}.`,
-            "El acceso asociado se ha actualizado en tu cuenta.",
-            "",
-            "The Back Half",
-          ].join("\n"),
-        };
-    }
-  }
-
-  switch (input.template) {
-    case "payment_success":
-      return {
-        subject: "Payment confirmed — The Back Half",
-        text: [
-          `Hello ${name},`,
-          "",
-          `Your payment for ${offer} was confirmed.`,
-          "Your account access updates automatically.",
-          "",
-          "The Back Half",
-        ].join("\n"),
-      };
-    case "payment_failed":
-      return {
-        subject: "Payment could not be completed — The Back Half",
-        text: [
-          `Hello ${name},`,
-          "",
-          `We could not complete payment for ${offer}.`,
-          "No paid access was granted. You can try again when ready.",
-          "",
-          "The Back Half",
-        ].join("\n"),
-      };
-    case "subscription_activated":
-      return {
-        subject: "Community membership activated — The Back Half",
-        text: [
-          `Hello ${name},`,
-          "",
-          "Your The Back Half Community membership is active.",
-          "Welcome in.",
-          "",
-          "The Back Half",
-        ].join("\n"),
-      };
-    case "subscription_canceled":
-      return {
-        subject: "Community membership canceled — The Back Half",
-        text: [
-          `Hello ${name},`,
-          "",
-          "Your The Back Half Community membership was canceled.",
-          "If paid time remains, access continues through that date.",
-          "",
-          "The Back Half",
-        ].join("\n"),
-      };
-    case "refund_notice":
-      return {
-        subject: "Refund processed — The Back Half",
-        text: [
-          `Hello ${name},`,
-          "",
-          `A refund related to ${offer} was processed.`,
-          "Associated access has been updated on your account.",
-          "",
-          "The Back Half",
-        ].join("\n"),
-      };
-  }
+  const site = getSiteUrl();
+  const dashboardUrl = `${site}${getLocalizedArchitectPath("dashboard", input.locale)}`;
+  const billingUrl = `${site}${getLocalizedArchitectPath("billing", input.locale)}`;
+  const rendered = renderParticipantEmail(
+    billingTemplateId(input.template),
+    input.locale,
+    {
+      firstName: input.firstName,
+      offerName: offer,
+      dashboardUrl,
+      billingUrl,
+    },
+  );
+  return {
+    subject: rendered.subject,
+    text: rendered.text,
+    html: rendered.html,
+    fromName: rendered.fromName,
+  };
 }
 
 /**
@@ -208,6 +119,8 @@ export async function sendBillingNotification(input: {
     to: user.email,
     subject: message.subject,
     text: message.text,
+    html: message.html,
+    fromName: message.fromName,
   });
 
   if (result.status === "sent") {

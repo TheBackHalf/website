@@ -24,6 +24,7 @@ export async function submitSupportRequest(
       message: data.message,
       source: "form",
       channel: "web",
+      locale: data.locale,
       test: data.email.includes("row153.") && data.email.endsWith("@example.com"),
     });
 
