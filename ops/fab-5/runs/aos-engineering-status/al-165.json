@@ -1,0 +1,360 @@
+{
+  "aosWorkId": "al-165",
+  "row": 165,
+  "excelRow": 166,
+  "tab": "August Launch",
+  "source": "command_center",
+  "sourceReference": "August Launch row 165",
+  "deliverable": "Validate Financial Customer Journey",
+  "description": "Independently verify displayed pricing, checkout amount, tax behavior where applicable, receipts, subscription terms, Community renewal language, failed-payment behavior, and account access correspond to locked pricing decisions.",
+  "operatingAgent": "nia",
+  "operatingAgentFull": "Nia Prism — Chief Experience & Transformation Officer",
+  "workbookPrimaryOwner": "kimberly",
+  "workbookPrimaryOwnerNote": "Launch workbook lists Kimberly Walker (AI) as FINANCE workstream owner. Kimberly Walker (AI) is not an operating agent and was not treated as execution capacity. AOS assigned this engineering run to Nia Prism as supporting experience owner. Nia verified customer-facing pricing, terms, receipts, renewal language, and access correspondence. Nia did not change infrastructure, auth, payment systems, Stripe configuration, DNS, or Vercel custom-domain settings. Imani remains owner of Stripe/entitlement implementation.",
+  "generatedAt": "2026-08-26T16:20:00.000Z",
+  "branch": "cursor/aos-nia-al-165-fb69",
+  "pullRequest": "https://github.com/TheBackHalf/website/pull/21",
+  "softwareChangeApplied": false,
+  "productMarketingLegalFilesChanged": false,
+  "stripeConfigModified": false,
+  "dnsModified": false,
+  "vercelCustomDomainModified": false,
+  "authModified": false,
+  "secretsPrinted": false,
+  "kimberlyWalkerAiTreatedAsOperatingAgent": false,
+  "commandCenterStatusNotUpdated": true,
+  "markedComplete": false,
+  "founderAcceptance": null,
+  "founderAcceptanceRecorded": false,
+  "founderAccepted": false,
+  "readyForFounderAcceptanceReview": false,
+  "overallResult": "FAIL",
+  "overallSummary": "Displayed catalog prices and six-month Founding Architect copy match the current locked pricing decision. The rest of the financial customer journey does not fully correspond: live Checkout amounts cannot be verified, tax is not configured in session creation, Founding Architect does not create a $50/month renewal, bundle community access is granted for one year from purchase instead of October 25, 2026 through April 25, 2027, and Community checkout is not gated on Blueprint completion. Payments Complete is not met. This row is not Complete and is not presented for Founder acceptance.",
+  "method": [
+    "Read locked pricing from Founder-accepted Rows 32–34, Membership Agreement Version 1.0, checkout catalog/purchase terms, and Command Center Row 95.",
+    "Inspected checkout, billing, webhook, entitlement, notification, and success/cancel code without modifying it.",
+    "Fetched production catalog HTML on the Row 75 technical host https://website-two-psi-49.vercel.app (canonical thebackhalf.org did not resolve from this environment; WebFetch of thebackhalf.org/checkout returned HTTP 500).",
+    "Compared displayed EN/ES catalog amounts and Community renewal language to locked six-month terms.",
+    "Did not create a live Stripe charge, change Stripe products/prices, or open Billing Portal as another Architect.",
+    "Did not treat Command Center Row 95 first-year language as the current Founder decision after Rows 32–34 explicitly superseded it."
+  ],
+  "authority": {
+    "experienceOwner": "Nia Prism — displayed pricing, terms language, receipts presentation, renewal copy, failed-payment customer language, account-access experience",
+    "technologyOwner": "Imani Heartbeat — Stripe session, webhooks, entitlements, tax configuration, live price IDs",
+    "financeWorkbookOwner": "Kimberly Walker (AI) is workbook FINANCE owner only — not execution capacity",
+    "founder": "Kimberly Walker (human) — sole Founder acceptance authority. Pricing changes remain Founder-reserved.",
+    "niaDidNotChange": [
+      "infrastructure",
+      "auth",
+      "payment systems",
+      "Stripe configuration",
+      "Cloudflare DNS",
+      "Vercel custom-domain settings",
+      "thebackhalf.org nameservers"
+    ]
+  },
+  "dependencies": {
+    "workbook": "Payments Complete; Pricing Locked",
+    "pricingLocked": {
+      "status": "LOCKED_AS_CURRENT_FOUNDER_DECISION",
+      "currentDecision": "six_months_not_first_year",
+      "evidence": [
+        "Row 34 Founder-accepted: Architect Community launches October 25, 2026; Founding Architect Community benefit is first six months (October 25, 2026 through April 25, 2027), not first year.",
+        "Row 32/33 Founder-accepted checkout and marketing copy use first six months.",
+        "Membership Agreement Version 1.0 §7 uses first six months and April 25, 2027.",
+        "Launch-day runbook: Founding Architect Community benefit is first six months. Not first year."
+      ]
+    },
+    "paymentsComplete": {
+      "status": "NOT_MET",
+      "evidence": [
+        "Row 73 vendor/capacity validation: payments FAIL. Vercel Production STRIPE_SECRET_KEY is Stripe Test/Sandbox, not Live.",
+        "Row 73: STRIPE_PRICE_BLUEPRINT / STRIPE_PRICE_BUNDLE / STRIPE_PRICE_COMMUNITY and/or STRIPE_WEBHOOK_SECRET reported absent on Production.",
+        "ops/fab-5/runs/row-73-stripe-key-class.json: vercelProductionStripeKeyClass=test.",
+        "This row did not re-open Stripe or claim Payments Complete."
+      ]
+    }
+  },
+  "lockedPricingDecision": {
+    "authority": "Current Founder-accepted legal/marketing (Rows 32–34) and checkout catalog — not the stale Command Center Row 95 first-year sentence",
+    "offers": [
+      {
+        "id": "blueprint",
+        "name": "The Back Half Blueprint",
+        "amount": "$1,500",
+        "amountCents": 150000,
+        "currency": "usd",
+        "mode": "one-time payment",
+        "includes": "Journey / Blueprint access"
+      },
+      {
+        "id": "bundle",
+        "name": "Founding Architect",
+        "amount": "$1,750",
+        "amountCents": 175000,
+        "currency": "usd",
+        "mode": "one-time payment",
+        "includes": "Blueprint + first six months of Architect Community",
+        "communityWindow": "October 25, 2026 through April 25, 2027",
+        "enrollmentWindow": "August 31–December 31, 2026",
+        "doesNotInclude": "first year of Community; Year 2 automatic membership"
+      },
+      {
+        "id": "community",
+        "name": "The Back Half Community",
+        "amount": "$50/month",
+        "amountCents": 5000,
+        "currency": "usd",
+        "mode": "monthly subscription",
+        "availabilityCopy": "after Blueprint completion; Founding Architect renews at $50/month after the first six months",
+        "communityLiveDate": "October 25, 2026 — not live on August 31, 2026"
+      }
+    ],
+    "otherLockedTerms": [
+      "No refunds. Cancellation is not a refund.",
+      "No coupons / promotion codes.",
+      "No installments / BNPL at launch. Card-only.",
+      "Participants must be at least 18."
+    ],
+    "staleSourcesNotUsedAsCurrent": [
+      {
+        "source": "ops/fab-5/aos-command-center-snapshot.json Row 95",
+        "text": "Founding Architect includes the Blueprint plus the first year of Community; Community renews at $50/month beginning Year 2; enrollment August 31–December 31, 2026",
+        "whyNotCurrent": "Rows 32–34 Founder-accepted first six months / April 25, 2027 and rejected first year."
+      },
+      {
+        "source": "ops/fab-5/launch-rows.json Row 95",
+        "text": "first year of Community; enrollment August 19–December 31, 2026; Year 2 renewal",
+        "whyNotCurrent": "August 19 public opening and first-year benefit were superseded. Customer-facing copy uses August 31 and first six months."
+      }
+    ]
+  },
+  "checks": {
+    "displayedPricing": {
+      "result": "PASS_WITH_NOTES",
+      "productionHost": "https://website-two-psi-49.vercel.app/checkout",
+      "canonicalDomain": "thebackhalf.org did not resolve from this agent environment; WebFetch of https://thebackhalf.org/checkout returned HTTP 500",
+      "englishCatalog": {
+        "blueprint": "$1,500 one-time — matches locked $1,500",
+        "foundingArchitect": "$1,750 one-time; first six months; October 25, 2026 through April 25, 2027; enrollment August 31–December 31, 2026 — matches current locked decision",
+        "community": "$50/month after Blueprint completion; Coming October 25, 2026; Founding Architect renews at $50/month after the first six months — matches locked amounts and six-month language"
+      },
+      "spanishCatalog": {
+        "blueprint": "$1,500 compra única — matches",
+        "foundingArchitect": "$1,750 compra única; primeros seis meses; 25 de octubre de 2026 al 25 de abril de 2027 — matches",
+        "communityDescription": "$50/mes — matches",
+        "communityPriceDisplay": "FAIL note — large price still renders as $50/month (English /month) on /es/checkout because formatOfferPrice is locale-unaware"
+      },
+      "notes": [
+        "Catalog CTAs are live Continue links. Enrollment copy says August 31–December 31, 2026, but the catalog does not disable Founding Architect purchase before August 31.",
+        "Offer detail pages require 18+ eligibility attestation before the price form is shown.",
+        "Material purchase terms on the offer form are English-only even when locale is es."
+      ]
+    },
+    "checkoutAmount": {
+      "result": "CODE_PASS_LIVE_UNVERIFIED",
+      "code": [
+        "lib/checkout/offers.ts amounts: blueprint 150000, bundle 175000, community 5000 usd.",
+        "createCheckoutSession retrieves the configured Stripe price and rejects unless unit_amount, currency, and one-time vs monthly recurring match the catalog.",
+        "Clients cannot supply price IDs or amounts. authorizeCheckoutPriceSelection ignores clientPriceId and clientAmount.",
+        ".env.example sandbox Price IDs are documented as $1,500 / $1,750 / $50/month. Values were not printed beyond those already in .env.example."
+      ],
+      "live": [
+        "No live Checkout session was created.",
+        "Row 73 reports Production Stripe is test-mode and STRIPE_PRICE_* missing, so a production charged amount cannot be independently confirmed against Live prices.",
+        "Success page shows offer name, not the charged amount."
+      ]
+    },
+    "taxBehavior": {
+      "result": "UNVERIFIED_NOT_CONFIGURED_IN_SESSION",
+      "code": [
+        "stripe.checkout.sessions.create does not set automatic_tax.",
+        "billing_address_collection is auto.",
+        "Checkout copy does not itemize taxes (Row 34 taxesNote: Founder/legal judgment if tax-inclusive language is required)."
+      ],
+      "live": "No Checkout session was created, so Stripe Tax calculation, tax on receipts, and tax-inclusive vs exclusive display were not observed.",
+      "correspondence": "Cannot confirm tax behavior corresponds to a locked tax decision. No locked tax-inclusive/exclusive Founder decision was found beyond the Row 34 note."
+    },
+    "receipts": {
+      "result": "DESIGNED_NOT_LIVE_VERIFIED",
+      "code": [
+        "Architect Billing lists Stripe invoices (paid/open) and one-time charge receipt_url values.",
+        "Failed/unpaid invoices are not presented as successful receipts.",
+        "Payment-success email confirms payment but does not include amount, tax, or a receipt link.",
+        "Checkout success page does not show amount or receipt."
+      ],
+      "live": "No paid purchase was completed, so hosted Stripe receipts/invoices were not opened.",
+      "experienceNotes": [
+        "Billing copy still says 'One-time Blueprint and Bundle purchases' instead of Founding Architect.",
+        "Payment-success email labels the bundle 'The Back Half Journey + Community Bundle' instead of Founding Architect."
+      ]
+    },
+    "subscriptionTerms": {
+      "result": "FAIL",
+      "displayed": [
+        "Community is labeled Monthly / $50/month and is Stripe Checkout mode=subscription, interval=month.",
+        "Blueprint and Founding Architect are One-time / mode=payment.",
+        "Membership Agreement: recurring memberships automatically renew until canceled.",
+        "Billing: Community may be cancelled through Manage billing; cancellation stops future renewals; cancellation is not a refund."
+      ],
+      "implementationGap": "Founding Architect is a one-time payment only. Checkout does not create a Stripe subscription, trial, or subscription_schedule for $50/month after April 25, 2027. Renewal after the included Community period requires a separate Community checkout. That does not correspond to customer-facing 'Founding Architect renews at $50/month after the first six months' if the customer reasonably expects automatic conversion."
+    },
+    "communityRenewalLanguage": {
+      "result": "COPY_PASS_ACCESS_FAIL",
+      "customerFacingCopy": "PASS — EN/ES catalog, purchase terms, Membership Agreement Version 1.0, and billing acknowledgment all state first six months (October 25, 2026 through April 25, 2027) then $50/month. They do not say first year / Year 2.",
+      "accountAccessImplementation": "FAIL — grantOfferEntitlements defaults Founding Architect community_access endsAt to addOneYear(grantedAt) when communityEndsAt is omitted. handleCheckoutCompleted only computes communityEndsAt for offerId=community. Bundle purchase therefore grants one year from grant timestamp, starting immediately, not October 25, 2026 through April 25, 2027.",
+      "opsTrackerDrift": "Command Center / launch-rows Row 95 still describe first year and Year 2. Those sentences are stale relative to Founder-accepted Rows 32–34. Nia did not edit product, marketing, or legal files."
+    },
+    "failedPaymentBehavior": {
+      "result": "CODE_PARTIAL_LIVE_UNVERIFIED",
+      "cardDeclineOnStripeCheckout": "Typical card decline remains on Stripe Checkout before session completion. Cancel page states no payment was taken and no access was granted. Not live-exercised.",
+      "asyncPaymentFailed": "checkout.session.async_payment_failed records purchase status=failed and does not grant entitlements.",
+      "communityInvoiceFailed": "invoice.payment_failed marks community_access past_due. isEntitlementCurrentlyActive does not unlock past_due, revoked, or expired. Journey access from a prior Blueprint/FA purchase is not revoked by a later Community invoice failure.",
+      "customerLanguage": [
+        "Failed-payment email: no paid access granted; try again. Does not name retry URL, amount, or dunning window.",
+        "Failed-payment email uses 'Journey + Community Bundle' for offerId=bundle.",
+        "Architect Billing can show Failed status on the purchase list."
+      ],
+      "live": "No failed charge was created. Stripe dunning retries and Billing Portal update-payment-method were not observed."
+    },
+    "accountAccess": {
+      "result": "FAIL",
+      "blueprint": "journey_access with no endsAt — corresponds to one-time Blueprint.",
+      "foundingArchitect": "journey_access plus community_access. Community window is addOneYear(grantedAt) from purchase, starts immediately — does not correspond to October 25, 2026 through April 25, 2027.",
+      "communityStandalone": "community_access through Stripe subscription period end. Checkout does not require an active Blueprint/journey_access entitlement despite copy 'after Blueprint completion'.",
+      "journeyRoute": "/architect/journey requires journey_access. Unpaid users redirect to checkout.",
+      "communityProductSurface": "No dedicated Architect Community route using requireEntitlement('community_access') was found. community_access currently affects billing flags and snapshots more than a live Community product (Community is not live until October 25, 2026).",
+      "pastDue": "past_due community_access does not unlock. Canceled-at-period-end retains access through endsAt."
+    }
+  },
+  "correspondenceMatrix": [
+    {
+      "item": "Displayed Blueprint $1,500",
+      "locked": "$1,500 one-time",
+      "observed": "$1,500 on EN/ES catalog and offers.ts 150000",
+      "result": "PASS"
+    },
+    {
+      "item": "Displayed Founding Architect $1,750",
+      "locked": "$1,750 one-time",
+      "observed": "$1,750 on EN/ES catalog and offers.ts 175000",
+      "result": "PASS"
+    },
+    {
+      "item": "Displayed Community $50/month",
+      "locked": "$50/month",
+      "observed": "$50/month EN; ES description $50/mes but large price $50/month",
+      "result": "PASS_WITH_ES_DISPLAY_NOTE"
+    },
+    {
+      "item": "Founding Architect Community duration",
+      "locked": "first six months, October 25, 2026 through April 25, 2027",
+      "observed": "copy PASS; entitlement addOneYear(grantedAt) FAIL",
+      "result": "FAIL"
+    },
+    {
+      "item": "Checkout charged amount",
+      "locked": "catalog cents vs Stripe unit_amount",
+      "observed": "server mismatch guard present; live Stripe prices not independently retrieved",
+      "result": "LIVE_UNVERIFIED"
+    },
+    {
+      "item": "Tax",
+      "locked": "no locked tax-inclusive decision found",
+      "observed": "automatic_tax not set; copy does not itemize tax",
+      "result": "UNVERIFIED"
+    },
+    {
+      "item": "Receipts",
+      "locked": "customer should have invoice/receipt corresponding to amount paid",
+      "observed": "Billing page designed to link Stripe hosted documents; success email/page omit amount; not live-verified",
+      "result": "LIVE_UNVERIFIED"
+    },
+    {
+      "item": "Subscription / FA renewal",
+      "locked": "Community $50/month after FA six months / after Blueprint completion",
+      "observed": "standalone Community is a monthly Stripe subscription; FA does not schedule $50/month conversion",
+      "result": "FAIL"
+    },
+    {
+      "item": "Failed payment",
+      "locked": "no paid access without successful payment",
+      "observed": "async fail and past_due code withhold access; live card-decline path not exercised",
+      "result": "CODE_PASS_LIVE_UNVERIFIED"
+    },
+    {
+      "item": "Account access vs purchase",
+      "locked": "Blueprint → Journey; FA → Journey + Community window; Community after Blueprint",
+      "observed": "Journey gate exists; FA Community window wrong; Community checkout ungated",
+      "result": "FAIL"
+    }
+  ],
+  "defects": [
+    {
+      "id": "AL165-D1",
+      "severity": "HIGH",
+      "owner": "imani",
+      "summary": "Founding Architect community_access uses addOneYear(grantedAt) instead of October 25, 2026 through April 25, 2027.",
+      "customerImpact": "A Founding Architect could show Community access immediately and for twelve months, contradicting purchase terms."
+    },
+    {
+      "id": "AL165-D2",
+      "severity": "HIGH",
+      "owner": "imani",
+      "summary": "Founding Architect does not create or schedule a $50/month Community subscription after the included period.",
+      "customerImpact": "Renewal language on checkout is not implemented as billing behavior."
+    },
+    {
+      "id": "AL165-D3",
+      "severity": "HIGH",
+      "owner": "imani",
+      "summary": "Standalone Community checkout is not gated on Blueprint completion.",
+      "customerImpact": "Copy says $50/month after Blueprint completion; checkout allows the Community offer without journey_access."
+    },
+    {
+      "id": "AL165-D4",
+      "severity": "HIGH",
+      "owner": "imani",
+      "summary": "Payments Complete is not met: Production Stripe is test-mode and live price IDs were reported missing.",
+      "customerImpact": "Charged amount, tax, receipts, failed payment, and access cannot be proven on Live Stripe."
+    },
+    {
+      "id": "AL165-D5",
+      "severity": "MEDIUM",
+      "owner": "nia",
+      "summary": "Customer-facing billing/email still names the bundle 'Journey + Community Bundle' / 'Bundle' instead of Founding Architect. Spanish catalog large price uses /month. Purchase-terms list is English-only on es checkout.",
+      "customerImpact": "Receipts and confirmation language can disagree with the named offer the customer bought. Not fixed in this run (status-only)."
+    },
+    {
+      "id": "AL165-D6",
+      "severity": "LOW",
+      "owner": "michelle",
+      "summary": "Command Center / launch-rows Row 95 still encode first year / Year 2 / (in launch-rows) August 19 enrollment.",
+      "customerImpact": "Internal tracker drift only. Customer checkout copy is six months / August 31. Not edited here."
+    }
+  ],
+  "whatWasNotDone": [
+    "Did not mark Row 165 Complete.",
+    "Did not record Founder acceptance.",
+    "Did not change product, marketing, or legal files.",
+    "Did not modify Stripe, Cloudflare DNS, Vercel custom-domain settings, auth, or payment systems.",
+    "Did not create a live charge, refund, or failed-payment fixture.",
+    "Did not invent a tax decision.",
+    "Did not treat Kimberly Walker (AI) as an operating agent."
+  ],
+  "nextAction": "Do not accept Row 165. Payments must be Live-complete (Imani/Founder Stripe). Entitlement window, FA renewal, and Community gating must correspond to locked six-month / $50/month terms before this journey can be re-validated. Nia can later correct bundle naming and ES price-display copy without changing payment systems. Founder acceptance stays with Kimberly Walker (human).",
+  "validation": {
+    "typecheck": {
+      "command": "./node_modules/.bin/tsc --noEmit",
+      "result": "PASS"
+    },
+    "test": {
+      "command": "npm test",
+      "result": "no test script in package.json"
+    },
+    "build": {
+      "command": "npm run build",
+      "result": "skipped — ops status JSON only; production code unchanged"
+    }
+  }
+}
