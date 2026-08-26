@@ -1,0 +1,255 @@
+{
+  "generatedAt": "2026-08-26T17:08:37.724Z",
+  "aosWorkId": "al-176",
+  "source": "command_center",
+  "sourceReference": "August Launch row 176",
+  "excelRow": 177,
+  "deliverable": "Create Test Accounts and Data",
+  "operatingAgent": "imani",
+  "founderAcceptanceRecorded": false,
+  "rowMarkedComplete": false,
+  "secretsPrinted": false,
+  "productionWrite": false,
+  "installmentsOfferedAtLaunch": false,
+  "catalog": [
+    {
+      "id": "qa176-en-new-unpaid",
+      "email": "qa176.en.new@example.com",
+      "locale": "en",
+      "lifecycle": "new",
+      "payment": "none",
+      "progress": "incomplete",
+      "role": "architect"
+    },
+    {
+      "id": "qa176-es-new-unpaid",
+      "email": "qa176.es.new@example.com",
+      "locale": "es",
+      "lifecycle": "new",
+      "payment": "none",
+      "progress": "incomplete",
+      "role": "architect"
+    },
+    {
+      "id": "qa176-en-returning-paid-incomplete",
+      "email": "qa176.en.paid.incomplete@example.com",
+      "locale": "en",
+      "lifecycle": "returning",
+      "payment": "paid",
+      "progress": "incomplete",
+      "role": "architect"
+    },
+    {
+      "id": "qa176-es-returning-paid-incomplete",
+      "email": "qa176.es.paid.incomplete@example.com",
+      "locale": "es",
+      "lifecycle": "returning",
+      "payment": "paid",
+      "progress": "incomplete",
+      "role": "architect"
+    },
+    {
+      "id": "qa176-en-returning-paid-complete",
+      "email": "qa176.en.paid.complete@example.com",
+      "locale": "en",
+      "lifecycle": "returning",
+      "payment": "paid",
+      "progress": "complete",
+      "role": "architect"
+    },
+    {
+      "id": "qa176-es-returning-paid-complete",
+      "email": "qa176.es.paid.complete@example.com",
+      "locale": "es",
+      "lifecycle": "returning",
+      "payment": "paid",
+      "progress": "complete",
+      "role": "architect"
+    },
+    {
+      "id": "qa176-en-installment-not-offered",
+      "email": "qa176.en.installment@example.com",
+      "locale": "en",
+      "lifecycle": "new",
+      "payment": "installment_not_offered",
+      "progress": "incomplete",
+      "role": "architect"
+    },
+    {
+      "id": "qa176-es-installment-not-offered",
+      "email": "qa176.es.installment@example.com",
+      "locale": "es",
+      "lifecycle": "new",
+      "payment": "installment_not_offered",
+      "progress": "incomplete",
+      "role": "architect"
+    },
+    {
+      "id": "qa176-en-support",
+      "email": "qa176.en.support@example.com",
+      "locale": "en",
+      "lifecycle": "returning",
+      "payment": "none",
+      "progress": "not_applicable",
+      "role": "support"
+    },
+    {
+      "id": "qa176-es-support",
+      "email": "qa176.es.support@example.com",
+      "locale": "es",
+      "lifecycle": "returning",
+      "payment": "none",
+      "progress": "not_applicable",
+      "role": "support"
+    },
+    {
+      "id": "qa176-en-admin",
+      "email": "qa176.en.admin@example.com",
+      "locale": "en",
+      "lifecycle": "returning",
+      "payment": "none",
+      "progress": "not_applicable",
+      "role": "admin"
+    }
+  ],
+  "coverage": {
+    "ok": true,
+    "missing": [],
+    "covered": [
+      "english",
+      "spanish",
+      "new",
+      "returning",
+      "paid",
+      "installment",
+      "incomplete",
+      "complete",
+      "support",
+      "admin"
+    ]
+  },
+  "tests": [
+    {
+      "id": "coverage",
+      "name": "Catalog covers English/Spanish, new/returning, paid/installment, incomplete/complete, support, and admin",
+      "result": "PASS",
+      "detail": "covered=english,spanish,new,returning,paid,installment,incomplete,complete,support,admin"
+    },
+    {
+      "id": "installment-policy",
+      "name": "Launch policy does not offer installments",
+      "result": "PASS",
+      "detail": "INSTALLMENTS_OFFERED_AT_LAUNCH=false"
+    },
+    {
+      "id": "example-emails",
+      "name": "All test accounts use example.com mailboxes",
+      "result": "PASS",
+      "detail": "all @example.com"
+    },
+    {
+      "id": "isolated-seed",
+      "name": "Seed succeeds against isolated file stores",
+      "result": "PASS",
+      "detail": "accounts=11 tmp=/tmp/qa176-KbyHCv"
+    },
+    {
+      "id": "no-production-write",
+      "name": "Seed reports productionWrite=false",
+      "result": "PASS",
+      "detail": "productionWrite=false"
+    },
+    {
+      "id": "qa176-en-new-unpaid",
+      "name": "English new unpaid incomplete architect",
+      "result": "PASS",
+      "detail": "locale=en verified=false access=false onboarding=in_progress"
+    },
+    {
+      "id": "qa176-es-new-unpaid",
+      "name": "Spanish new unpaid incomplete architect",
+      "result": "PASS",
+      "detail": "locale=es verified=false access=false"
+    },
+    {
+      "id": "qa176-en-returning-paid-incomplete",
+      "name": "English returning paid incomplete",
+      "result": "PASS",
+      "detail": "paid=paid chapter1=in_progress access=true"
+    },
+    {
+      "id": "qa176-es-returning-paid-incomplete",
+      "name": "Spanish returning paid incomplete",
+      "result": "PASS",
+      "detail": "locale=es chapter1=in_progress access=true"
+    },
+    {
+      "id": "qa176-en-returning-paid-complete",
+      "name": "English returning paid complete",
+      "result": "PASS",
+      "detail": "chapter1=completed onboarding=completed"
+    },
+    {
+      "id": "qa176-es-returning-paid-complete",
+      "name": "Spanish returning paid complete",
+      "result": "PASS",
+      "detail": "locale=es chapter1=completed"
+    },
+    {
+      "id": "qa176-en-installment-not-offered",
+      "name": "English installment case has no installment entitlement",
+      "result": "PASS",
+      "detail": "payment=installment_not_offered access=false installmentPresent=false"
+    },
+    {
+      "id": "qa176-es-installment-not-offered",
+      "name": "Spanish installment case has no installment entitlement",
+      "result": "PASS",
+      "detail": "locale=es installmentPresent=false"
+    },
+    {
+      "id": "qa176-en-support",
+      "name": "English support operator role",
+      "result": "PASS",
+      "detail": "role=support"
+    },
+    {
+      "id": "qa176-es-support",
+      "name": "Spanish support operator role",
+      "result": "PASS",
+      "detail": "role=support locale=es"
+    },
+    {
+      "id": "qa176-en-admin",
+      "name": "Admin operator role",
+      "result": "PASS",
+      "detail": "role=admin"
+    },
+    {
+      "id": "support-tickets",
+      "name": "Disposable EN/ES support tickets seeded as test records",
+      "result": "PASS",
+      "detail": "tickets=BH-S-QA176-EN,BH-S-QA176-ES"
+    },
+    {
+      "id": "hosted-guard",
+      "name": "This validation run is not a Vercel hosted production write",
+      "result": "PASS",
+      "detail": "VERCEL= VERCEL_ENV="
+    }
+  ],
+  "summary": {
+    "pass": 18,
+    "fail": 0,
+    "total": 18
+  },
+  "overall": "PASS",
+  "nextAction": "await_founder_acceptance",
+  "blockedReason": "founder_acceptance_required",
+  "notes": [
+    "Installment cases exist so testers can confirm installments are not offered at launch.",
+    "Passwords are not stored in git. Local seed requires LAUNCH_QA_PASSWORD.",
+    "Hosted Vercel seed is blocked. Isolated file stores were used for this validation.",
+    "Do not merge as silent completion. Founder acceptance stays with Kimberly Walker (human)."
+  ]
+}
