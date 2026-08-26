@@ -68,6 +68,20 @@
   font-family: var(--font-bh-sans);
   font-weight: 300;
   line-height: 1.6;
+  /* Secondary print text must stay darker than marketing --bh-muted. */
+  --bh-bp-text-secondary: oklch(0.32 0.06 305);
+}
+
+.bh-bp-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .bh-bp-screen-notice {
@@ -146,7 +160,7 @@
   font-size: 0.55rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--bh-muted);
+  color: var(--bh-bp-text-secondary);
   isolation: isolate;
 }
 
@@ -176,7 +190,7 @@
   font-size: 0.62rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--bh-muted);
+  color: var(--bh-bp-text-secondary);
   margin-bottom: 0.5rem;
 }
 
@@ -379,9 +393,9 @@
   background:
     linear-gradient(
       180deg,
-      oklch(0.18 0.04 305 / 0.55) 0%,
-      oklch(0.16 0.05 305 / 0.72) 45%,
-      oklch(0.14 0.05 305 / 0.88) 100%
+      oklch(0.14 0.05 305 / 0.72) 0%,
+      oklch(0.12 0.05 305 / 0.84) 45%,
+      oklch(0.10 0.05 305 / 0.93) 100%
     );
 }
 
@@ -402,6 +416,7 @@
   max-width: 7.05in;
   text-align: center;
   color: white;
+  text-shadow: 0 0.08rem 0.28rem rgb(18 10 28 / 0.55);
 }
 
 .bh-bp-cover-mark {
@@ -436,6 +451,7 @@
 .bh-bp-title-main .bh-bp-prose,
 .bh-bp-title-main .bh-bp-prose p,
 .bh-bp-title-main .bh-bp-title-copy,
+.bh-bp-title-main h1.bh-bp-title-copy,
 .bh-bp-title-main .bh-bp-title-copy p {
   margin: 0;
   font-family: inherit;
@@ -561,7 +577,7 @@ a.bh-bp-toc-label:hover {
   font-size: 0.78rem;
   letter-spacing: 0.06em;
   text-align: right;
-  color: var(--bh-muted);
+  color: var(--bh-bp-text-secondary);
 }
 
 /* ——— Section pages ——— */
@@ -650,7 +666,7 @@ a.bh-bp-toc-label:hover {
   font-size: 0.72rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--bh-muted);
+  color: var(--bh-bp-text-secondary);
 }
 
 .bh-bp-chapter-rule {
@@ -713,7 +729,7 @@ a.bh-bp-toc-label:hover {
   background: oklch(0.99 0.008 85);
   font-size: 0.88rem;
   line-height: 1.5;
-  color: var(--bh-muted);
+  color: var(--bh-ink);
 }
 
 .bh-bp-exercise-examples-label {
@@ -795,7 +811,7 @@ a.bh-bp-toc-label:hover {
 .bh-bp-copyright-copy {
   font-size: 0.88rem;
   line-height: 1.55;
-  color: var(--bh-muted);
+  color: var(--bh-ink);
 }
 
 .bh-bp-copyright-copy a {
@@ -858,11 +874,11 @@ a.bh-bp-toc-label:hover {
 
 .bh-bp-certificate-field-label {
   display: block;
+  margin: 0 0 0.35rem;
   font-size: 0.62rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--bh-muted);
-  margin-bottom: 0.35rem;
+  color: var(--bh-bp-text-secondary);
 }
 
 .bh-bp-certificate-field-line {
@@ -873,11 +889,11 @@ a.bh-bp-toc-label:hover {
 
 .bh-bp-certificate-field-value {
   display: block;
+  margin: 0 0 0.35rem;
   font-family: var(--font-bh-display);
   font-size: 1.2rem;
   color: var(--bh-ink);
   text-align: center;
-  margin-bottom: 0.35rem;
 }
 
 .bh-bp-certificate-border {
@@ -933,7 +949,7 @@ a.bh-bp-toc-label:hover {
   font-size: 0.58rem;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: var(--bh-muted);
+  color: var(--bh-bp-text-secondary);
 }
 
 .bh-bp-signature-page .bh-bp-section-heading,
@@ -1033,7 +1049,7 @@ a.bh-bp-toc-label:hover {
   height: 0.72rem;
   border: 1px solid oklch(0.42 0.14 305 / 0.38);
   font-size: 0.5rem;
-  color: var(--bh-muted);
+  color: var(--bh-bp-text-secondary);
 }
 
 .bh-bp-alive-score,

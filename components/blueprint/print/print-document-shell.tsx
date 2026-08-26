@@ -22,6 +22,7 @@ export function PrintDocumentShell({
       data-document={title}
       role="document"
       aria-label={title}
+      lang="en"
     >
       <div className="bh-bp-screen-notice" aria-hidden="true">
         Blueprint print preview

@@ -1,4 +1,3 @@
-import { ApprovedCopySlot } from "@/components/blueprint/approved-copy-slot";
 import { PrintPage } from "@/components/blueprint/print/print-page";
 import type { BlueprintPrintVariant } from "@/content/blueprint/types";
 import type { ManuscriptBlock } from "@/content/blueprint/manuscript";
@@ -39,12 +38,11 @@ export function TitlePage({ variant = "print", title, subtitle }: TitlePageProps
         />
         <p className="bh-bp-title-eyebrow">The Back Half</p>
         <div className="bh-bp-title-main">
-          <ApprovedCopySlot
-            label="Title"
-            manuscript={formattedTitle}
-            className="bh-bp-title-copy"
-            format={false}
-          />
+          <h1 className="bh-bp-title-copy">
+            {(formattedTitle?.paragraphs ?? ["The Back Half Blueprint"]).join(
+              " ",
+            )}
+          </h1>
         </div>
         <div className="bh-bp-subtitle">
           <p className="bh-bp-subtitle-line">

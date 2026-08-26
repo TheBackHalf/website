@@ -27,9 +27,9 @@ export function ExercisePage({
       <p className="bh-bp-exercise-label">
         {exercise?.heading ?? `Exercise ${exerciseIndex}`}
       </p>
-      {exercise?.title ? (
-        <h2 className="bh-bp-exercise-title">{exercise.title}</h2>
-      ) : null}
+      <h2 className="bh-bp-exercise-title">
+        {exercise?.title ?? exercise?.heading ?? `Exercise ${exerciseIndex}`}
+      </h2>
       {exercise?.instructions?.length ? (
         <div className="bh-bp-exercise-instructions">
           {exercise.instructions.map((line, index) => (

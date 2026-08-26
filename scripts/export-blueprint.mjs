@@ -79,17 +79,17 @@ from pathlib import Path
 import pymupdf
 path = Path(sys.argv[1])
 doc = pymupdf.open(path)
-keep = [i for i, p in enumerate(doc) if p.get_text('text').strip()]
-if len(keep) == len(doc):
+drop = [i for i, p in enumerate(doc) if not p.get_text('text').strip()]
+if not drop:
     doc.close()
     raise SystemExit(0)
-out = pymupdf.open()
-for i in keep:
-    out.insert_pdf(doc, from_page=i, to_page=i)
+# Delete in place so we do not rebuild the file with insert_pdf
+# (which drops the tagged structure tree Chrome just wrote).
+for i in reversed(drop):
+    doc.delete_page(i)
+doc.save(path, incremental=False, deflate=True, garbage=4)
 doc.close()
-out.save(path, deflate=True, garbage=4)
-out.close()
-print(f'Stripped blank pages -> {len(keep)} pages')
+print(f'Stripped blank pages -> {len(doc)} pages kept, tags preserved when supported')
 `;
   const result = spawnSync("python", ["-c", script, pdfPath], {
     encoding: "utf8",
@@ -210,6 +210,8 @@ async function main() {
         root.style.background = "transparent";
         root.style.margin = "0";
         root.style.padding = "0";
+        const title = root.getAttribute("data-document")?.trim();
+        if (title) document.title = title;
       }
       document.querySelectorAll(".bh-bp-page").forEach((el) => {
         if (el instanceof HTMLElement) {
@@ -217,6 +219,7 @@ async function main() {
           el.style.boxShadow = "none";
         }
       });
+      document.documentElement.lang = "en";
     });
 
     await page.pdf({

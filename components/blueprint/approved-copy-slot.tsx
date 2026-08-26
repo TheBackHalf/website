@@ -105,7 +105,7 @@ function ManuscriptParagraph({ text }: { text: string }) {
   if (/^thebackhalf\.org$/i.test(trimmed)) {
     return (
       <p className={className}>
-        <a href="https://thebackhalf.org">{text}</a>
+        <a href="https://thebackhalf.org">thebackhalf.org</a>
       </p>
     );
   }
@@ -147,7 +147,11 @@ export function ApprovedCopySlot({
 
   if (filled.length > 0 && (variant === "lines" || variant === "form" || variant === "prose")) {
     return (
-      <div className={cn("bh-bp-prose bh-bp-response-fill", className)} aria-label={label}>
+      <div
+        className={cn("bh-bp-prose bh-bp-response-fill", className)}
+        role="region"
+        aria-label={label ?? "Participant response"}
+      >
         {filled.map((line, index) => (
           <p key={index}>{line}</p>
         ))}
@@ -157,8 +161,15 @@ export function ApprovedCopySlot({
 
   if (variant === "form") {
     return (
-      <div className={cn("bh-bp-form-slot", className)} aria-label={label}>
-        {label ? <p className="bh-bp-form-label">{label}</p> : null}
+      <div
+        className={cn("bh-bp-form-slot", className)}
+        role="region"
+        aria-label={label ?? "Writing space"}
+      >
+        <p className="bh-bp-form-label">{label ?? "Writing space"}</p>
+        <p className="bh-bp-sr-only">
+          Blank lines are provided for a handwritten or typed response.
+        </p>
         <div className="bh-bp-form-lines" aria-hidden="true">
           {Array.from({ length: placeholderLines }).map((_, index) => (
             <span key={index} className="bh-bp-form-line" />
@@ -170,7 +181,16 @@ export function ApprovedCopySlot({
 
   if (variant === "lines") {
     return (
-      <div className={cn("bh-bp-lines-slot", className)} aria-label={label}>
+      <div
+        className={cn("bh-bp-lines-slot", className)}
+        role="region"
+        aria-label={label ?? "Writing space"}
+      >
+        <p className="bh-bp-sr-only">
+          {label
+            ? `${label}. Blank lines are provided for a handwritten or typed response.`
+            : "Blank lines are provided for a handwritten or typed response."}
+        </p>
         <div className="bh-bp-writing-lines" aria-hidden="true">
           {Array.from({ length: placeholderLines }).map((_, index) => (
             <span key={index} className="bh-bp-writing-line" />

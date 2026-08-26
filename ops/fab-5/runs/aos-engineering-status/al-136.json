@@ -1,0 +1,257 @@
+{
+  "generatedAt": "2026-08-26T15:40:00.578Z",
+  "aosWorkId": "al-136",
+  "source": "command_center",
+  "sourceReference": "August Launch row 136",
+  "deliverable": "Validate Downloadable Document Accessibility",
+  "ownerAgent": "imani",
+  "status": "ACCEPTANCE_READY",
+  "founderAcceptance": {
+    "required": true,
+    "markedComplete": false,
+    "authority": "Kimberly Walker (human)",
+    "note": "Do not fabricate Founder approval. Workbook/command-center acceptance stays with the Founder."
+  },
+  "validation": {
+    "gatesRequired": [
+      "npx tsc --noEmit",
+      "npm run test:download-a11y",
+      "npm run build"
+    ],
+    "auditPassed": true,
+    "executed": {
+      "npx tsc --noEmit": "pass",
+      "npm run test:download-a11y": "pass",
+      "npm run build": "pass"
+    },
+    "githubCi": {
+      "commit": "47eb18d041b77d0af40b86a4f07e4d8f9fe8ef09",
+      "branch": "cursor/aos-imani-al-136-71dd",
+      "conclusion": "success",
+      "checks": 2,
+      "detail": "Vercel pass; Vercel Preview Comments pass"
+    },
+    "merged": false,
+    "htmlPrintSmoke": {
+      "guidebook": {
+        "status": 200,
+        "firstH1": "The Back Half Blueprint",
+        "langEn": true
+      },
+      "aliveness": {
+        "status": 200,
+        "firstH1": "Aliveness Index",
+        "langEn": true,
+        "ratingAndWritingAlternatives": true
+      },
+      "certificate": {
+        "status": 200,
+        "firstH1": "The Back Half Blueprint",
+        "langEn": true
+      }
+    }
+  },
+  "passed": true,
+  "assets": [
+    {
+      "id": "guidebook",
+      "filename": "the-back-half-blueprint.pdf",
+      "href": "/api/architect/blueprint/guidebook",
+      "label": "The Back Half Blueprint"
+    },
+    {
+      "id": "aliveness-index",
+      "filename": "back-half-aliveness-index.pdf",
+      "href": "/api/architect/blueprint/aliveness-index",
+      "label": "Aliveness Index"
+    },
+    {
+      "id": "architects-commitment",
+      "filename": "back-half-architects-commitment.pdf",
+      "href": "/api/architect/blueprint/architects-commitment",
+      "label": "Architect's Commitment"
+    },
+    {
+      "id": "decision-statement",
+      "filename": "back-half-decision-statement.pdf",
+      "href": "/api/architect/blueprint/decision-statement",
+      "label": "Decision Statement"
+    },
+    {
+      "id": "back-half-standards",
+      "filename": "back-half-standards.pdf",
+      "href": "/api/architect/blueprint/back-half-standards",
+      "label": "Back Half Standards"
+    },
+    {
+      "id": "architect-identity",
+      "filename": "back-half-architect-identity-statement.pdf",
+      "href": "/api/architect/blueprint/architect-identity",
+      "label": "Architect Identity Statement"
+    },
+    {
+      "id": "expansion-plan",
+      "filename": "back-half-expansion-plan.pdf",
+      "href": "/api/architect/blueprint/expansion-plan",
+      "label": "Expansion Plan"
+    },
+    {
+      "id": "declaration",
+      "filename": "back-half-declaration.pdf",
+      "href": "/api/architect/blueprint/declaration",
+      "label": "Back Half Declaration"
+    },
+    {
+      "id": "certificate",
+      "filename": "back-half-architect-completion-certificate.pdf",
+      "href": "/api/architect/blueprint/certificate",
+      "label": "Architect Completion Certificate"
+    }
+  ],
+  "alternateAccessibleFormat": {
+    "approvedByFounder": false,
+    "engineeringRecommendation": "The authenticated HTML print views under /blueprint/print/* are the accessible equivalent source (native headings, selectable text, language, and reading order). Tagged PDFs generated from those views are the Architect-facing download. A separate public HTML/EPUB download is not Founder-approved."
+  },
+  "checks": [
+    {
+      "id": "tagged-pdf-options",
+      "name": "Runtime PDF export is tagged with outline",
+      "result": "PASS",
+      "detail": "tagged=true outline=true"
+    },
+    {
+      "id": "all-download-routes-tagged",
+      "name": "Every Architect PDF download path requests tagged output",
+      "result": "PASS",
+      "detail": "Checked 12 generators"
+    },
+    {
+      "id": "title-heading",
+      "name": "Guidebook title page exposes a document heading",
+      "result": "PASS",
+      "detail": "Cover title renders as h1 from approved manuscript text"
+    },
+    {
+      "id": "document-lang",
+      "name": "Print documents declare English language",
+      "result": "PASS",
+      "detail": "PrintDocumentShell sets lang=en for Blueprint English manuscript"
+    },
+    {
+      "id": "reading-order-artifacts",
+      "name": "Running headers and footers are artifacts",
+      "result": "PASS",
+      "detail": "Repeated page chrome is hidden from the tagged reading order"
+    },
+    {
+      "id": "exercise-heading",
+      "name": "Exercise pages always expose a heading",
+      "result": "PASS",
+      "detail": "Exercise title or fallback label is an h2"
+    },
+    {
+      "id": "writing-space-labels",
+      "name": "Blank form and writing areas have accessible names",
+      "result": "PASS",
+      "detail": "Response lines and Aliveness ratings include text alternatives"
+    },
+    {
+      "id": "understandable-site-link",
+      "name": "Copyright site link uses destination text",
+      "result": "PASS",
+      "detail": "thebackhalf.org is a real URL with matching link text"
+    },
+    {
+      "id": "decorative-images",
+      "name": "Cover and atmosphere images are decorative",
+      "result": "PASS",
+      "detail": "Cover photo/veil are hidden; butterfly mark has empty alt beside the heading"
+    },
+    {
+      "id": "selectable-text-pipeline",
+      "name": "PDFs are generated from HTML text, not flattened images",
+      "result": "PASS",
+      "detail": "Chrome prints live HTML so body copy remains selectable"
+    },
+    {
+      "id": "contrast-body-ink-on-cream",
+      "name": "Contrast body-ink-on-cream",
+      "result": "PASS",
+      "detail": "oklch(0.2 0.03 300) on oklch(0.975 0.014 85) = 16.93:1 (min 4.5:1)"
+    },
+    {
+      "id": "contrast-secondary-on-cream",
+      "name": "Contrast secondary-on-cream",
+      "result": "PASS",
+      "detail": "oklch(0.32 0.06 305) on oklch(0.975 0.014 85) = 12.07:1 (min 4.5:1)"
+    },
+    {
+      "id": "contrast-purple-on-cream",
+      "name": "Contrast purple-on-cream",
+      "result": "PASS",
+      "detail": "oklch(0.42 0.14 305) on oklch(0.975 0.014 85) = 8.43:1 (min 4.5:1)"
+    },
+    {
+      "id": "contrast-heading-night-on-cream",
+      "name": "Contrast heading-night-on-cream",
+      "result": "PASS",
+      "detail": "oklch(0.14 0.035 300) on oklch(0.975 0.014 85) = 18.59:1 (min 3:1, large text)"
+    },
+    {
+      "id": "contrast-cover-gold-on-dark",
+      "name": "Contrast cover-gold-on-dark",
+      "result": "PASS",
+      "detail": "#c4a35a on #2a1f3d = 6.41:1 (min 4.5:1)"
+    },
+    {
+      "id": "contrast-cover-white-on-dark",
+      "name": "Contrast cover-white-on-dark",
+      "result": "PASS",
+      "detail": "#ffffff on #2a1f3d = 15.42:1 (min 4.5:1)"
+    }
+  ],
+  "contrast": [
+    {
+      "id": "body-ink-on-cream",
+      "ratio": 16.93,
+      "minimum": 4.5,
+      "largeText": false,
+      "pass": true
+    },
+    {
+      "id": "secondary-on-cream",
+      "ratio": 12.07,
+      "minimum": 4.5,
+      "largeText": false,
+      "pass": true
+    },
+    {
+      "id": "purple-on-cream",
+      "ratio": 8.43,
+      "minimum": 4.5,
+      "largeText": false,
+      "pass": true
+    },
+    {
+      "id": "heading-night-on-cream",
+      "ratio": 18.59,
+      "minimum": 3,
+      "largeText": true,
+      "pass": true
+    },
+    {
+      "id": "cover-gold-on-dark",
+      "ratio": 6.41,
+      "minimum": 4.5,
+      "largeText": false,
+      "pass": true
+    },
+    {
+      "id": "cover-white-on-dark",
+      "ratio": 15.42,
+      "minimum": 4.5,
+      "largeText": false,
+      "pass": true
+    }
+  ]
+}

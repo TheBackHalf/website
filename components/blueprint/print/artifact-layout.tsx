@@ -80,6 +80,7 @@ export function ArtifactLayout({
             variant="form"
             placeholderLines={writingLines}
             responseLines={filled}
+            label={fillLabel}
           />
         )}
       </div>
