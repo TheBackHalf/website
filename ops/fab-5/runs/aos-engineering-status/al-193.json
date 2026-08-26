@@ -14,7 +14,7 @@
   "workbookPrimaryOwnerNote": "Command Center 8.25 snapshot assigns August Launch order 193 / excel row 194 to Michelle Northstar. The older launch-rows adapter lists TECHNOLOGY primary owner Imani Heartbeat with Nia and Michelle supporting. AOS assigned this engineering run to Nia Prism as experience owner. Nia did not take Michelle orchestration ownership or Imani infrastructure/auth/payment ownership. Kimberly Walker (AI) is not an operating agent and was not treated as execution capacity.",
   "generatedAt": "2026-08-26T17:20:00.000Z",
   "branch": "cursor/aos-nia-al-193-0ee9",
-  "pullRequest": null,
+  "pullRequest": "https://github.com/TheBackHalf/website/pull/38",
   "softwareChangeApplied": false,
   "productMarketingLegalFilesChanged": false,
   "stripeConfigModified": false,
