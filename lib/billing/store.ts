@@ -1,4 +1,5 @@
 import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
+import path from "node:path";
 import type {
   AccountAccessRecord,
   BillingDatabase,
@@ -11,29 +12,6 @@ import type {
 
 const DATA_DIR = ".data/billing";
 const DB_FILE = ".data/billing/database.json";
-
-let testDbFile: string | undefined;
-let testDataDir: string | undefined;
-
-function resolveDbFile(): string {
-  return testDbFile ?? DB_FILE;
-}
-
-function resolveDataDir(): string {
-  return testDataDir ?? DATA_DIR;
-}
-
-/** Test-only — point the file ledger at an isolated temp path. */
-export function setBillingDbFileForTests(file: string | null): void {
-  if (!file) {
-    testDbFile = undefined;
-    testDataDir = undefined;
-    return;
-  }
-  const separator = file.lastIndexOf("/");
-  testDbFile = file;
-  testDataDir = separator === -1 ? "." : file.slice(0, separator);
-}
 
 const emptyDatabase = (): BillingDatabase => ({
   entitlements: [],
@@ -66,7 +44,7 @@ function enqueueWrite<T>(operation: () => Promise<T>): Promise<T> {
 
 async function readDatabase(): Promise<BillingDatabase> {
   try {
-    const raw = await readFile(resolveDbFile(), "utf8");
+    const raw = await readFile(DB_FILE, "utf8");
     return normalizeDatabase(JSON.parse(raw) as BillingDatabase);
   } catch (error) {
     const nodeError = error as NodeJS.ErrnoException;
@@ -78,11 +56,10 @@ async function readDatabase(): Promise<BillingDatabase> {
 }
 
 async function writeDatabase(database: BillingDatabase): Promise<void> {
-  const dbFile = resolveDbFile();
-  await mkdir(resolveDataDir(), { recursive: true });
-  const tempFile = `${dbFile}.${process.pid}.${Date.now()}.tmp`;
+  await mkdir(DATA_DIR, { recursive: true });
+  const tempFile = `${DB_FILE}.${process.pid}.${Date.now()}.tmp`;
   await writeFile(tempFile, JSON.stringify(database, null, 2), "utf8");
-  await rename(tempFile, dbFile);
+  await rename(tempFile, DB_FILE);
 }
 
 function queueKpiMirror(record: PurchaseRecord): void {

@@ -27,7 +27,6 @@ import { INSTALLMENTS_OFFERED_AT_LAUNCH } from "@/lib/billing/installments";
 import { processStripeWebhookEvent } from "@/lib/billing/process-webhook";
 import {
   createFileBillingStore,
-  setBillingDbFileForTests,
   setBillingStoreForTests,
 } from "@/lib/billing/store";
 import { getBillingSummaryForUser } from "@/lib/billing/summary";
@@ -81,9 +80,9 @@ async function main(): Promise<void> {
   process.env.MARKETING_KPI_DB_FILE =
     process.env.MARKETING_KPI_DB_FILE ?? "__row171_skip_kpi_mirror__";
 
+  const repoRoot = process.cwd();
   const tmp = await mkdtemp(path.join(os.tmpdir(), "row171-"));
-  const billingFile = path.join(tmp, "billing.json");
-  setBillingDbFileForTests(billingFile);
+  process.chdir(tmp);
   setBillingStoreForTests(createFileBillingStore());
   const authStore = createFileAuthStore({ dataDir: path.join(tmp, "auth") });
   setAuthStoreForTests(authStore);
@@ -552,10 +551,10 @@ async function main(): Promise<void> {
     "portal-does-not-trust-client-customer",
     "Billing portal action ignores client-supplied customer IDs",
     /Ignored — never trust client customer IDs|never trusted/i.test(
-      await readFile("lib/billing/portal.ts", "utf8"),
+      await readFile(path.join(repoRoot, "lib/billing/portal.ts"), "utf8"),
     ) &&
       /Rejected — never trusted/.test(
-        await readFile("lib/billing/actions.ts", "utf8"),
+        await readFile(path.join(repoRoot, "lib/billing/actions.ts"), "utf8"),
       ),
     "portal.ts + actions.ts",
   );
@@ -577,7 +576,7 @@ async function main(): Promise<void> {
     `cancel=${classifyCategory(undefined, "Cancel my membership", "I want to cancel Community")} pay=${classifyCategory(undefined, "Card declined", "My payment failed")}`,
   );
   const notificationSource = await readFile(
-    "lib/billing/notifications.ts",
+    path.join(repoRoot, "lib/billing/notifications.ts"),
     "utf8",
   );
   push(
@@ -593,7 +592,10 @@ async function main(): Promise<void> {
     "support-lookup-safe-flags",
     "Support lookup exposes access flags without Stripe secrets",
     /Safe access flags only — no Stripe secrets/.test(
-      await readFile("lib/auth/operations/support.ts", "utf8"),
+      await readFile(
+        path.join(repoRoot, "lib/auth/operations/support.ts"),
+        "utf8",
+      ),
     ),
     "support.ts",
   );
@@ -805,14 +807,14 @@ async function main(): Promise<void> {
     tests,
   };
 
-  const outDir = path.join("ops/fab-5/runs/aos-engineering-status");
+  const outDir = path.join(repoRoot, "ops/fab-5/runs/aos-engineering-status");
   await mkdir(outDir, { recursive: true });
   const outFile = path.join(outDir, "al-171.json");
   await writeFile(outFile, `${JSON.stringify(report, null, 2)}\n`, "utf8");
 
   setBillingStoreForTests(null);
-  setBillingDbFileForTests(null);
   setAuthStoreForTests(null);
+  process.chdir(repoRoot);
 
   console.log(
     JSON.stringify(
