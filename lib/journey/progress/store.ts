@@ -117,6 +117,14 @@ export function createFileJourneyProgressStore(options?: {
         } catch {
           // Analytics must not block Journey progress.
         }
+        try {
+          const { emitLifecycleFromJourneyProgress } = await import(
+            "@/lib/lifecycle/hooks"
+          );
+          await emitLifecycleFromJourneyProgress(previous, next);
+        } catch {
+          // Lifecycle email must not block Journey progress.
+        }
         return next;
       }).catch(async (error) => {
         try {

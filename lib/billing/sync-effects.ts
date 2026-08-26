@@ -309,6 +309,49 @@ export async function runWebhookSyncEffects(input: {
       });
     }
 
+    if (event.type === "invoice.paid" && effects.offerId === "community") {
+      const invoice = event.data.object as Stripe.Invoice;
+      if (invoice.billing_reason === "subscription_cycle") {
+        await dispatchLifecycleQuiet({
+          automationId: "membership.renewed",
+          userId,
+          idempotencyKey: `lifecycle:membership.renewed:${invoice.id}`,
+          payload: {
+            offerId: "community",
+            stripeInvoiceId: invoice.id,
+            source: "invoice.paid",
+          },
+        });
+      }
+    }
+
+    if (effects.entitlementPastDue && !effects.paymentFailed) {
+      await dispatchLifecycleQuiet({
+        automationId: "billing.past_due",
+        userId,
+        idempotencyKey: `lifecycle:billing.past_due:${effects.stripeSubscriptionId ?? event.id}`,
+        payload: {
+          offerId: effects.offerId ?? "community",
+          stripeSubscriptionId: effects.stripeSubscriptionId,
+          source: event.type,
+        },
+      });
+    }
+
     await syncAccountAccessStatus(userId, `webhook:${event.type}`);
+  }
+}
+
+async function dispatchLifecycleQuiet(input: {
+  automationId: "membership.renewed" | "billing.past_due";
+  userId: string;
+  idempotencyKey: string;
+  payload: Record<string, unknown>;
+}): Promise<void> {
+  try {
+    const { dispatchLifecycleAutomation } = await import("@/lib/lifecycle/dispatch");
+    await dispatchLifecycleAutomation(input);
+  } catch {
+    // Lifecycle email must not block webhook processing.
   }
 }
