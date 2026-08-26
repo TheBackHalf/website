@@ -1,0 +1,379 @@
+{
+  "aosWorkId": "al-148",
+  "row": 148,
+  "excelRow": 149,
+  "tab": "August Launch",
+  "source": "command_center",
+  "sourceReference": "August Launch row 148",
+  "deliverable": "Test Email Deliverability",
+  "description": "Test major inbox providers, mobile rendering, links, personalization, language, legal footer, and spam placement. | AI tech stack approved.",
+  "operatingAgent": "imani",
+  "operatingAgentFull": "Imani Heartbeat — Chief Technology & Risk Officer",
+  "supportingOwners": ["nia"],
+  "generatedAt": "2026-08-26T16:12:00.000Z",
+  "branch": "cursor/aos-imani-al-148-ae7a",
+  "softwareChangeApplied": false,
+  "productMarketingLegalFilesChanged": false,
+  "stripeConfigModified": false,
+  "dnsModified": false,
+  "cloudflareDnsModified": false,
+  "vercelCustomDomainModified": false,
+  "nameserversModified": false,
+  "authModified": false,
+  "secretsPrinted": false,
+  "kimberlyWalkerAiTreatedAsOperatingAgent": false,
+  "commandCenterStatusNotUpdated": true,
+  "markedComplete": false,
+  "rowMarkedComplete": false,
+  "percentCompleteClaim": "Do not treat this file as Row 148 Complete. Do not update launch-rows.json percentComplete from this work.",
+  "founderAcceptance": null,
+  "founderAcceptanceRecorded": false,
+  "founderAccepted": false,
+  "founderAcceptanceFabricated": false,
+  "readyForFounderAcceptanceReview": false,
+  "scopeNote": "AOS instructed: if this deliverable is not a repository software change, write status only to this file and do not change product, marketing, or legal files. This is a test/evidence row. Imani did not implement bilingual HTML templates (Row 145), did not merge Row 146, did not publish SPF/DKIM/DMARC, and did not send live seed-inbox mail from this agent.",
+  "method": [
+    "Inventoried every outbound email builder on this branch (auth verification, password reset, billing notifications, support acknowledgment, AOS Founder notify) plus the Founder-approved but unsent Row 199 launch email.",
+    "Read-only DNS: MX, apex TXT, DMARC, common DKIM selectors, BIMI, MTA-STS via dig and Cloudflare DNS-over-HTTPS. DNS was not changed.",
+    "HTTP-checked canonical and technical-host destinations used in email copy (register, reset-password, support, legal, unsubscribe). Canonical thebackhalf.org does not resolve (Row 75).",
+    "Static review of personalization, EN/ES language paths, legal footer content, HTML vs plain-text, and spam-risk signals.",
+    "Did not send live mail from this agent: SMTP_* is absent in this environment; prior AOS policy holds Founder-inbox spam. Did not create seed Gmail/Outlook/Yahoo/iCloud mailboxes. Did not modify Stripe, Cloudflare DNS, Vercel custom domains, or nameservers.",
+    "Cross-read unmerged Row 146 PR #17 (transactional send/suppression/unsubscribe) and Row 155 live support-ack receipt as adjacent evidence. Those PRs were not merged by this agent."
+  ],
+  "testedAgainst": {
+    "gitRef": "9cba34e (this branch = origin/main at test time)",
+    "productionTechnicalHost": "https://website-two-psi-49.vercel.app",
+    "productionHealth": {
+      "url": "https://website-two-psi-49.vercel.app/api/ops/health",
+      "http": 200,
+      "body": {
+        "ok": true,
+        "environment": "production",
+        "service": "the-back-half",
+        "checks": { "application": "ok", "database": "ok" }
+      }
+    },
+    "canonicalHost": "https://thebackhalf.org",
+    "smtpInThisAgentEnvironment": {
+      "SMTP_HOST": "ABSENT",
+      "SMTP_PORT": "ABSENT",
+      "SMTP_USER": "ABSENT",
+      "SMTP_PASSWORD": "ABSENT",
+      "SMTP_FROM": "ABSENT",
+      "envLocalFile": false
+    },
+    "liveSendFromThisAgent": false
+  },
+  "dependenciesObserved": {
+    "builtEmails": {
+      "namedDependency": "Built Emails",
+      "mappedRows": {
+        "row144WriteEssentialLaunchEmails": "Workbook Complete with empty evidence. No email-library artifact exists under content/ or lib/email/ on this branch.",
+        "row145BuildBilingualEmailTemplates": "Not Started. No responsive branded HTML templates, no multipart/alternative, no accessibility email markup.",
+        "row146ConfigureTransactionalEmail": "Not on this branch. Unmerged PR https://github.com/TheBackHalf/website/pull/17 implements Google Workspace SMTP send layer, suppression, bounce ingest, List-Unsubscribe, and monitoring. Still text-only. SPF/DKIM/DMARC not published.",
+        "row147BuildLifecycleAutomations": "Not Started. No Journey progress, inactivity, completion, or membership lifecycle senders exist in code."
+      },
+      "status": "BLOCKING — branded Built Emails are not present on production/main. Row 148 was executed against the current plain-text transactional set plus the unsent launch email."
+    },
+    "row75CanonicalDns": "OPEN. Apex and www have no A/AAAA/CNAME. Email links that use https://thebackhalf.org/* do not resolve.",
+    "row153SupportSmtp": "Prior evidence: production SMTP accepted a support acknowledgment (ops/fab-5/runs/row-153-smtp-delivery-verification.json; al-155 live receipt). This agent did not re-send.",
+    "row161ValidateBusinessEmailDeliverability": "Separate later row for all production senders, From/Reply-To, bounce, and mailbox identity. SPF/DKIM/DMARC findings here are shared facts, not Row 161 closure."
+  },
+  "inventory": {
+    "transport": {
+      "module": "lib/auth/email/smtp.ts",
+      "provider": "nodemailer Google Workspace SMTP (when SMTP_* is set)",
+      "htmlPart": false,
+      "listUnsubscribeOnThisBranch": false,
+      "multipartAlternative": false,
+      "note": "sendMail() sets text only. No html field. Row 146 PR adds headers (List-Unsubscribe) but still no HTML body."
+    },
+    "sendersOnThisBranch": [
+      {
+        "id": "auth_verify",
+        "file": "lib/auth/email/send-verification.ts",
+        "fromName": "unset (falls through to SMTP_FROM)",
+        "locales": ["en", "es"],
+        "personalization": ["firstName"],
+        "links": ["{site}/api/auth/verify-email?token=…&locale=…"],
+        "html": false,
+        "legalFooter": false,
+        "unsubscribe": false
+      },
+      {
+        "id": "auth_password_reset",
+        "file": "lib/auth/email/send-password-reset.ts",
+        "fromName": "unset (falls through to SMTP_FROM)",
+        "locales": ["en", "es"],
+        "personalization": ["firstName"],
+        "links": ["{site}/reset-password?token=…"],
+        "html": false,
+        "legalFooter": false,
+        "unsubscribe": false
+      },
+      {
+        "id": "billing_notifications",
+        "file": "lib/billing/notifications.ts",
+        "templates": [
+          "payment_success",
+          "payment_failed",
+          "subscription_activated",
+          "subscription_canceled",
+          "refund_notice"
+        ],
+        "locales": ["en", "es"],
+        "personalization": ["firstName", "offerLabel"],
+        "links": [],
+        "html": false,
+        "legalFooter": false,
+        "unsubscribe": false
+      },
+      {
+        "id": "support_acknowledgment",
+        "file": "lib/support/acknowledge.ts",
+        "fromName": "The Back Half Support",
+        "fromAddress": "support@thebackhalf.org when SMTP_FROM/SMTP_USER match",
+        "replyTo": "support@thebackhalf.org",
+        "locales": ["en"],
+        "personalization": ["requesterName", "ticketId", "priorityTiming"],
+        "links": [],
+        "html": false,
+        "legalFooter": false,
+        "unsubscribe": false
+      },
+      {
+        "id": "aos_founder_decision",
+        "file": "lib/fab-5/aos/notify.ts",
+        "fromName": "The Back Half Operations",
+        "to": "FOUNDER_NOTIFY_EMAIL or kimberly@thebackhalf.org",
+        "locales": ["en"],
+        "personalization": ["workId", "decisionRequired"],
+        "links": ["Respond in Agent Operations: /ops/admin/agent-operations (path only, not absolute URL)"],
+        "html": false,
+        "legalFooter": false,
+        "unsubscribe": false,
+        "note": "Internal Founder operations mail. Controlled tests are held (no Founder inbox spam)."
+      },
+      {
+        "id": "row199_launch_email",
+        "file": "content/launch/row199-communications.ts",
+        "status": "APPROVED copy. Not sent. Not scheduled. Not loaded into an ESP.",
+        "fromName": "The Back Half",
+        "fromEmail": "kimberly@thebackhalf.org",
+        "locales": ["en"],
+        "personalization": [],
+        "links": ["https://thebackhalf.org/register"],
+        "html": false,
+        "legalFooter": false,
+        "unsubscribe": false,
+        "subject": "THE BACK HALF IS HERE."
+      }
+    ],
+    "missingVsEssentialLibrary": [
+      "Journey progress",
+      "Inactivity",
+      "Completion / certificate",
+      "Onboarding / welcome beyond verification",
+      "Spanish launch email",
+      "HTML branded templates with plain-text fallback"
+    ]
+  },
+  "dns": {
+    "mutated": false,
+    "nameservers": ["anirban.ns.cloudflare.com", "ulla.ns.cloudflare.com"],
+    "mx": {
+      "result": "PASS",
+      "records": [
+        "1 aspmx.l.google.com.",
+        "5 alt1.aspmx.l.google.com.",
+        "5 alt2.aspmx.l.google.com.",
+        "10 alt3.aspmx.l.google.com.",
+        "10 alt4.aspmx.l.google.com."
+      ],
+      "interpretation": "Google Workspace inbound MX is live."
+    },
+    "spf": {
+      "result": "FAIL",
+      "apexTxt": ["google-site-verification=-8AEQpygIWRqteAiOE8a36AwBx6HLAkvd1gLo-6f6Uk"],
+      "vSpf1Present": false,
+      "interpretation": "No v=spf1 record. Gmail, Yahoo, and Outlook bulk/promotional paths will treat unauthenticated mail as high risk."
+    },
+    "dkim": {
+      "result": "FAIL",
+      "selectorsLookedUp": [
+        "google",
+        "default",
+        "k1",
+        "s1",
+        "s2",
+        "selector1",
+        "selector2",
+        "googlemail",
+        "20230601",
+        "krs",
+        "smtp",
+        "api",
+        "mail"
+      ],
+      "recordsFound": [],
+      "interpretation": "No public DKIM TXT/CNAME for common Google Workspace or ESP selectors. NXDOMAIN for google._domainkey.thebackhalf.org."
+    },
+    "dmarc": {
+      "result": "FAIL",
+      "lookup": "_dmarc.thebackhalf.org TXT",
+      "dnsStatus": "NXDOMAIN",
+      "interpretation": "No v=DMARC1 policy. Yahoo/Gmail sender requirements for bulk mail are not met."
+    },
+    "bimi": "ABSENT",
+    "mtaSts": "ABSENT",
+    "canonicalARecords": {
+      "thebackhalf.org": "FAIL — no A/AAAA",
+      "www.thebackhalf.org": "FAIL — no A/AAAA/CNAME"
+    }
+  },
+  "checks": {
+    "majorInboxProviders": {
+      "result": "FAIL",
+      "gmail": {
+        "seedInboxThisRun": "NOT_TESTED",
+        "adjacentEvidence": "al-155 received a live support acknowledgment from The Back Half Support <support@thebackhalf.org> at an unnamed disposable mailbox. Provider and folder (inbox vs spam) were not recorded. This agent did not re-send."
+      },
+      "outlookHotmail": { "seedInboxThisRun": "NOT_TESTED" },
+      "yahoo": { "seedInboxThisRun": "NOT_TESTED" },
+      "appleIcloud": { "seedInboxThisRun": "NOT_TESTED" },
+      "proton": { "seedInboxThisRun": "NOT_TESTED" },
+      "blocker": "This agent environment has no SMTP credentials and no seed inboxes. Sending to the Founder mailbox is held. Cross-provider placement cannot be claimed."
+    },
+    "mobileRendering": {
+      "result": "FAIL",
+      "htmlTemplatesPresent": false,
+      "viewportMetaInEmail": false,
+      "mediaQueries": false,
+      "plainTextFallback": "Current senders are text-only, so there is no HTML layout to break on small screens. That is not the Row 145 branded responsive template. Apple Mail, Gmail app, Outlook mobile, and Yahoo mobile HTML rendering were not exercised.",
+      "plainTextReadability": "PASS for the existing short transactional bodies (no tables, no images, no hidden preheader)."
+    },
+    "links": {
+      "result": "FAIL",
+      "canonicalDestinations": {
+        "https://thebackhalf.org/": { "http": 0, "error": "Could not resolve host" },
+        "https://thebackhalf.org/register": { "http": 0, "error": "Could not resolve host" },
+        "https://thebackhalf.org/legal/privacy-policy": { "http": 0, "error": "Could not resolve host" },
+        "https://thebackhalf.org/unsubscribe": { "http": 0, "error": "Could not resolve host" }
+      },
+      "technicalHost": {
+        "origin": "https://website-two-psi-49.vercel.app",
+        "homepage": 200,
+        "register": 200,
+        "resetPassword": 200,
+        "support": 200,
+        "legalPrivacyPolicy": 200,
+        "legalTermsOfUse": 200,
+        "legalParticipantAgreement": 200,
+        "legalMembershipAgreement": 200,
+        "legalAiDisclosure": 200,
+        "esRegister": 200,
+        "esSupport": 200,
+        "esLegalPrivacyPolicy": 200,
+        "unsubscribe": 404,
+        "esUnsubscribe": 404
+      },
+      "authLinkConstruction": {
+        "siteUrlSource": "lib/auth/config.ts getSiteUrl() — NEXT_PUBLIC_SITE_URL, else VERCEL_URL, else http://localhost:3000",
+        "productionCanonicalObserved": "https://website-gkgw7bxsg-back-half.vercel.app (homepage rel=canonical). Not thebackhalf.org.",
+        "risk": "If NEXT_PUBLIC_SITE_URL is https://thebackhalf.org, verification and reset links in live mail will not resolve until Row 75. If it is the Vercel URL, links work but are not the public brand domain."
+      },
+      "billingEmailsContainNoCtaLinks": true,
+      "supportAckContainsNoLinks": true,
+      "launchEmailCta": "https://thebackhalf.org/register — currently unresolvable"
+    },
+    "personalization": {
+      "result": "PARTIAL",
+      "firstNameAuthAndBilling": "PASS — Hello/Hola ${firstName}; billing falls back to Architect",
+      "supportRequesterName": "PASS — Hello ${requesterName} or Hello,",
+      "ticketId": "PASS — subject and body include [BH-S-…]",
+      "offerLabel": "PASS — Blueprint / Community / bundle strings",
+      "mergeTagsOrBrokenTokens": "PASS — no leftover {{name}} / *|FNAME|* tokens in current builders",
+      "journeyProgressPersonalization": "FAIL — no Journey/inactivity/completion mail exists",
+      "launchEmailPersonalization": "FAIL — approved launch email is not personalized"
+    },
+    "language": {
+      "result": "PARTIAL",
+      "supportedLocales": ["en", "es"],
+      "authVerification": "PASS — locale selects EN or ES subject and body",
+      "authPasswordReset": "PASS — locale selects EN or ES subject and body",
+      "billing": "PASS — locale selects EN or ES for all five templates",
+      "supportAcknowledgment": "FAIL — English only; no locale parameter",
+      "aosFounderNotify": "N/A — internal English operations mail",
+      "launchEmail": "FAIL — English only; Spanish launch email not built",
+      "htmlLangAttribute": "N/A — no HTML part"
+    },
+    "legalFooter": {
+      "result": "FAIL",
+      "websiteLegalFooter": "PASS on web pages — Privacy Policy, Terms of Use, Participant Agreement, Membership Agreement, AI Disclosure via components/site/footer-legal-nav.tsx",
+      "emailBodiesIncludeLegalNav": false,
+      "physicalPostalAddress": "FAIL — not present in any outbound email body; not present as a mailing address in email templates. KLW Group, LLC is named as Georgia entity in Command Center notes; no postal line is in the mail templates.",
+      "unsubscribeMechanismOnThisBranch": "FAIL — no /unsubscribe (404 on production), no List-Unsubscribe header in lib/auth/email/smtp.ts, no opt-out sentence in bodies",
+      "privacyPolicyLinkInEmail": false,
+      "canSpamCommercialRisk": "The unsent Row 199 launch email is commercial/promotional and currently lacks physical address and unsubscribe. Transactional auth/billing/support copies also lack a footer. Row 146 PR adds RFC 8058 List-Unsubscribe for billing/support/lifecycle after merge+deploy; that is not production today.",
+      "identification": "PARTIAL — bodies close with The Back Half or The Back Half Support plus support@thebackhalf.org on acknowledgments. Auth/billing do not set a branded fromName on this branch."
+    },
+    "spamPlacement": {
+      "result": "FAIL",
+      "empiricalFolderPlacement": "NOT_TESTED this run (no seed inboxes). al-155 proves one external mailbox received a support ack; folder unknown.",
+      "authentication": {
+        "spf": "missing",
+        "dkim": "missing",
+        "dmarc": "missing"
+      },
+      "contentSignals": [
+        "Launch subject is entire-phrase ALL CAPS: THE BACK HALF IS HERE.",
+        "Launch body contains MAGICAL IS POSSIBLE. (approved brand line; still a promotional-filter signal).",
+        "No unsubscribe / List-Unsubscribe on current production send path.",
+        "No HTML/text ratio issue because there is no HTML (neutral for spam, weak for brand).",
+        "Transactional subjects are factual and short (Verify / Reset / Payment confirmed / We received your request).",
+        "Billing refund_notice subject 'Refund processed' is transactional, not a refund offer."
+      ],
+      "bulkSenderRequirements": "Gmail and Yahoo 2024+ bulk-sender rules expect SPF + DKIM + DMARC. thebackhalf.org fails that bar today. Promotional launch send would be high spam/reject risk even after templates exist."
+    }
+  },
+  "scorecard": [
+    { "area": "Major inbox providers (Gmail, Outlook, Yahoo, Apple Mail)", "result": "FAIL", "detail": "No seed-inbox campaign this run. Authentication records missing." },
+    { "area": "Mobile rendering", "result": "FAIL", "detail": "No HTML templates. Plain-text current mail is readable but is not the required branded responsive test." },
+    { "area": "Links", "result": "FAIL", "detail": "Canonical thebackhalf.org destinations do not resolve. Production /unsubscribe is 404. Technical-host register/reset/support/legal return 200." },
+    { "area": "Personalization", "result": "PARTIAL", "detail": "firstName/ticket/offer work on current transactional mail. No lifecycle personalization. Launch email is generic." },
+    { "area": "Language", "result": "PARTIAL", "detail": "Auth and billing are EN/ES. Support ack and launch email are English only." },
+    { "area": "Legal footer", "result": "FAIL", "detail": "No postal address, no unsubscribe, no legal links in email bodies." },
+    { "area": "Spam placement", "result": "FAIL", "detail": "No SPF/DKIM/DMARC. No empirical multi-provider folder proof. Launch copy has promotional-filter signals." }
+  ],
+  "overallResult": "FAIL",
+  "finalStatus": "ROW 148 IS NOT COMPLETE — deliverability test executed against current production/main mail. Branded Built Emails are absent. Canonical links do not resolve. SPF/DKIM/DMARC are unpublished. Legal footer and unsubscribe are absent from email bodies. Multi-provider inbox and mobile HTML rendering were not empirically tested. Founder acceptance is not recorded.",
+  "notDone": [
+    "Did not mark Row 148 Complete",
+    "Did not record Founder acceptance",
+    "Did not send live seed-inbox mail to Gmail, Outlook, Yahoo, or iCloud",
+    "Did not implement HTML templates (Row 145 / Nia)",
+    "Did not merge or deploy Row 146",
+    "Did not publish or alter SPF, DKIM, DMARC, MX, nameservers, or Cloudflare DNS",
+    "Did not change Stripe, Vercel custom-domain settings, or authentication controls",
+    "Did not rewrite curriculum, brand voice, or Founder-facing marketing copy"
+  ],
+  "founderActionsRequired": [
+    "None fabricated as already done. Future closure of this row needs: Row 145 templates, Row 75 canonical DNS, Founder-owned SPF/DKIM/DMARC publication on Cloudflare, production deploy of transactional unsubscribe, then a seed-inbox pass (Gmail, Outlook, Yahoo, Apple Mail) that records inbox vs spam and mobile screenshots. Those are not claimed complete here."
+  ],
+  "relatedEvidence": {
+    "row75Dns": "ops/fab-5/runs/row-75-domain-dns-ssl-validation.json",
+    "row153Smtp": "ops/fab-5/runs/row-153-smtp-delivery-verification.json",
+    "row146Pr": "https://github.com/TheBackHalf/website/pull/17",
+    "row155SupportAck": "https://github.com/TheBackHalf/website/pull/15",
+    "launchEmailCopy": "content/launch/row199-communications.ts"
+  },
+  "validation": {
+    "typecheck": "PASS — npx tsc --noEmit (no npm run typecheck script)",
+    "test": "SKIP — no npm test script in package.json",
+    "build": "SKIP — ops status JSON only; production app not changed",
+    "nearestPackageTestScript": "none (no npm test). Email-adjacent scripts fab5:row153 exist but were not re-run; they would send SMTP if credentials were present.",
+    "merged": false,
+    "deployed": false
+  },
+  "aosIngestRecommendation": "Park as evidence, not Complete. Founder acceptance stays with Kimberly Walker (human). Do not merge as silent Row 148 closure."
+}
