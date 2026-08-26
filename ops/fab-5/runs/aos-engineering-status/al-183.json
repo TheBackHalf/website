@@ -269,7 +269,25 @@
     "packageJsonHasTestScript": false,
     "productionBuildRequired": false,
     "reasonProductionBuildNotRequired": "Status-only ops JSON; no product runtime change",
-    "commands": []
+    "commands": [
+      {
+        "command": "npx tsc --noEmit",
+        "exitCode": 0,
+        "result": "PASS"
+      },
+      {
+        "command": "npm test",
+        "exitCode": null,
+        "result": "SKIPPED",
+        "detail": "package.json has no test script"
+      },
+      {
+        "command": "npm run build",
+        "exitCode": null,
+        "result": "SKIPPED",
+        "detail": "Change cannot affect production"
+      }
+    ]
   },
   "nextAction": "Imani implements listed accessibility fixes. Nia re-reviews and accepts. Do not merge as Complete. Do not deploy this status file as product completion."
 }
