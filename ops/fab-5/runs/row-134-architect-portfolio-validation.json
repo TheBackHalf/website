@@ -106,8 +106,15 @@
     }
   ],
   "failures": [],
+  "browserVerification": {
+    "printPage": "PASS",
+    "resourcesPage": "PASS",
+    "unauthenticatedDownload": "401 Sign-in required",
+    "productionBuild": "PASS"
+  },
   "notes": [
     "Portfolio assembles Architect's Commitment, Aliveness Index highest/lowest, Decision Statement, Expansion Plan, and remaining completed artifacts.",
-    "Download is authenticated. Command Center row remains open for Founder acceptance."
+    "Download is authenticated. Command Center row remains open for Founder acceptance.",
+    "Browser-verified: print preview at /blueprint/print/portfolio and Architect Resources at /architect/resources."
   ]
 }
