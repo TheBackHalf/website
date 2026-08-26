@@ -112,5 +112,8 @@ export async function setupEvalHarness(): Promise<EvalHarness> {
 export async function withFreshConversation(
   userId: string,
 ): Promise<LuminaConversation> {
+  resetAiControlStoreForTests();
+  setAiEmergencyDisableForTests(null);
+  setLuminaProviderAdapterForTests(null);
   return getLuminaStore().getOrCreateConversationForUser(userId);
 }

@@ -2,7 +2,7 @@
   "row": 122,
   "aosWorkId": "al-122",
   "title": "Establish Production AI Usage, Cost and Failure Controls",
-  "at": "2026-08-26T15:23:51.265Z",
+  "at": "2026-08-26T15:25:34.284Z",
   "ownerAgent": "imani",
   "founderAcceptance": null,
   "founderAcceptanceRecorded": false,
@@ -12,8 +12,8 @@
       "model": null,
       "launchState": "first_party_stub",
       "usageLimits": {
-        "perActorPerMinute": 8,
-        "perActorPerTenMinutes": 40,
+        "perActorPerMinute": 20,
+        "perActorPerTenMinutes": 80,
         "perActorPerDay": 200,
         "globalPerDay": 4000
       },

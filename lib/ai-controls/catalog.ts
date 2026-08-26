@@ -38,8 +38,8 @@ export const LUMINA_POLICY: AiServicePolicy = {
   productionUse:
     "Authenticated Architect conversation. First-party stub replies. A future live provider must call this control plane before any model request.",
   usageLimits: {
-    perActorPerMinute: 8,
-    perActorPerTenMinutes: 40,
+    perActorPerMinute: 20,
+    perActorPerTenMinutes: 80,
     perActorPerDay: 200,
     globalPerDay: 4000,
   },
