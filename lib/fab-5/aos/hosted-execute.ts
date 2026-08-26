@@ -17,6 +17,7 @@ import {
   checkpointWork,
   completeWork,
   enqueueWork,
+  getEngineeringJobByWorkId,
   getWork,
   insertFounderDecision,
   listEngineeringJobs,
@@ -24,6 +25,8 @@ import {
   listOpenDecisions,
   listWork,
   recordCost,
+  releaseWork,
+  updateEngineeringJob,
 } from "@/lib/fab-5/aos/store";
 import type { OperatingAgentId, WorkItem } from "@/lib/fab-5/aos/types";
 
@@ -346,6 +349,28 @@ async function executeFor(item: WorkItem): Promise<Record<string, unknown>> {
   return niaInventory();
 }
 
+async function relaunchDashboardWelcomeAfterGithubSync(welcome: WorkItem): Promise<boolean> {
+  const active = ["READY", "RETRY", "CLAIMED", "RUNNING", "VALIDATING"];
+  if (active.includes(welcome.status)) return false;
+  const job = await getEngineeringJobByWorkId(welcome.workId);
+  if (job?.detail?.githubMainSyncRetry === true) return false;
+  if (job && job.status !== "succeeded" && job.status !== "failed") return false;
+  if (job) {
+    await updateEngineeringJob(job.jobId, {
+      status: "failed",
+      error: "blocked_missing_surface_retry_after_github_main_sync",
+      detail: { githubMainSyncRetry: true, previousStatus: job.status },
+    });
+  }
+  await releaseWork({
+    workId: welcome.workId,
+    status: "READY",
+    nextAction: "cursor_cloud_engineering",
+    blockedReason: null,
+  });
+  return true;
+}
+
 export async function executeHostedOperationalWork(
   item: WorkItem,
   leaseToken: string,
@@ -404,6 +429,8 @@ export async function ensureStandupWork(): Promise<string[]> {
       resourceKey: "aos-engineering:dashboard-welcome",
       evidenceRefs: ["components/app-shell/dashboard-shell.tsx"],
     });
+    seeded.push(DASHBOARD_WELCOME_ID);
+  } else if (await relaunchDashboardWelcomeAfterGithubSync(welcome)) {
     seeded.push(DASHBOARD_WELCOME_ID);
   }
   const stripeLive = await getWork("aos-open-row73-stripe-live");
