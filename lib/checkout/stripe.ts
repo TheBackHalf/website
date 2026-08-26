@@ -1,11 +1,24 @@
 import Stripe from "stripe";
 
 let stripeClient: Stripe | null = null;
+let stripeTestOverride: Stripe | null = null;
 
 /** Server-only Stripe secret. Never expose to the client. */
 export function getStripeSecretKey(): string | undefined {
   const key = process.env.STRIPE_SECRET_KEY?.trim();
   return key || undefined;
+}
+
+/**
+ * Test-only Stripe client override. Never call from production request paths.
+ * Used so payment/subscription tests can exercise invoice and receipt handlers
+ * without contacting Stripe or mutating Dashboard/Vercel configuration.
+ */
+export function setStripeForTests(client: Stripe | null): void {
+  stripeTestOverride = client;
+  if (client === null) {
+    stripeClient = null;
+  }
 }
 
 export function isStripeConfigured(): boolean {
@@ -23,6 +36,10 @@ export function isStripeSandboxKey(secretKey: string): boolean {
 }
 
 export function getStripe(): Stripe {
+  if (stripeTestOverride) {
+    return stripeTestOverride;
+  }
+
   const secretKey = getStripeSecretKey();
   if (!secretKey) {
     throw new Error("STRIPE_NOT_CONFIGURED");
