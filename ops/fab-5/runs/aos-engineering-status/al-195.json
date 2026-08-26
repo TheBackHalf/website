@@ -20,6 +20,8 @@
   "branch": "cursor/aos-imani-al-195-600f",
   "merged": false,
   "deployed": false,
+  "prUrl": "https://github.com/TheBackHalf/website/pull/48",
+  "headSha": "492600db5b35649c4c65d9f8ff5c3d2c395cc9a9",
   "founderAcceptance": null,
   "founderAccepted": false,
   "rowMarkedComplete": false,
@@ -336,8 +338,27 @@
   "validationGates": {
     "typecheck": "PASS",
     "nearestTests": "Row 150 PASS; Row 84 PASS; Row 151 40/42 with documented non-event residuals",
-    "build": "SKIPPED_NO_PRODUCTION_CODE_CHANGE",
+    "build": "SKIPPED_LOCAL_NO_PRODUCTION_CODE_CHANGE",
+    "githubCi": "PASS",
     "presentedAsSuccessful": true,
-    "caveat": "Successful for event/conversion instrumentation validation. Not a production persistence re-proof. Not Founder acceptance."
+    "caveat": "Successful for event/conversion instrumentation validation. Not a production persistence re-proof. Not Founder acceptance. Vercel preview SUCCESS is not a production deploy."
+  },
+  "githubCi": {
+    "commit": "492600db5b35649c4c65d9f8ff5c3d2c395cc9a9",
+    "branch": "cursor/aos-imani-al-195-600f",
+    "conclusion": "success",
+    "checkCount": 2,
+    "checks": [
+      {
+        "name": "Vercel",
+        "state": "SUCCESS",
+        "note": "Preview deployment check. Not production. Custom domain / nameservers untouched."
+      },
+      {
+        "name": "Vercel Preview Comments",
+        "conclusion": "SUCCESS"
+      }
+    ],
+    "recordedAt": "2026-08-26T18:13:00.000Z"
   }
 }
