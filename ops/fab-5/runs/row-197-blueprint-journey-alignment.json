@@ -9,6 +9,12 @@
   "failed": 0,
   "founderAcceptance": null,
   "founderAcceptanceAuthority": "Kimberly Walker (human)",
+  "prUrl": "https://github.com/TheBackHalf/website/pull/30",
+  "validation": {
+    "typecheck": "PASS — npx tsc --noEmit",
+    "test": "PASS — npm run fab5:row197 (64 checks; no npm test script present)",
+    "build": "PASS — npm run build"
+  },
   "checks": [
     {
       "id": "chapter-1-awakening-count",
