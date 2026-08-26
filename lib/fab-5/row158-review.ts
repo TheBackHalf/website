@@ -124,7 +124,7 @@ export function getRow158ReviewModel() {
   });
 
   return {
-    title: `Row ${ROW_158_TITLE.replace("Create ", "")}`,
+    title: "Row 158 — Voice-of-Architect Capture System",
     deliverable: ROW_158_TITLE,
     finalStatus: ROW_158_FINAL_STATUS,
     rowMarkedComplete: markedComplete,

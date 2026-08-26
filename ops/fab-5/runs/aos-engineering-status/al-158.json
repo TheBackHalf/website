@@ -24,9 +24,12 @@
   ],
   "validation": {
     "command": "npm run fab5:row158",
+    "result": "PASS 22/22",
     "evidence": "ops/fab-5/runs/row-158-voice-of-architect-validation.json",
-    "typecheck": "npx tsc --noEmit",
-    "build": "npm run build"
+    "typecheck": "npx tsc --noEmit PASS",
+    "build": "npm run build PASS — route /_internal/row158-voice-of-architect-review present",
+    "founderAcceptanceRecorded": false,
+    "rowMarkedComplete": false
   },
   "notes": [
     "Workbook primary owner remains Nia for experience interpretation. AOS assigned capture/routing/cadence to Michelle.",

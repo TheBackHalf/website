@@ -97,7 +97,10 @@ export function classifyVoiceOfArchitect(
     if (FRICTION_PATTERN.test(haystack) || analyticsFriction) secondary.push("FRICTION");
     if (SUPPORT_THEME_PATTERN.test(haystack)) secondary.push("SUPPORT_THEME");
     return finish({
-      category: FRICTION_PATTERN.test(haystack) || analyticsFriction ? "FRICTION" : "SUPPORT_THEME",
+      category:
+        FRICTION_PATTERN.test(haystack) || analyticsFriction || DEFECT_PATTERN.test(haystack)
+          ? "FRICTION"
+          : "SUPPORT_THEME",
       secondary,
       route: "DEFECT_TRIAGE",
       criticalDefect: true,

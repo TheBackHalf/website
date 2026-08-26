@@ -1,0 +1,149 @@
+{
+  "row": 158,
+  "aosWorkId": "al-158",
+  "title": "Create Voice-of-Architect Capture System",
+  "generatedAt": "2026-08-26T15:23:00.263Z",
+  "finalStatus": "IMPLEMENTED — FOUNDER ACCEPTANCE REVIEW. Not Complete. Founder acceptance not recorded.",
+  "founderAcceptanceRecorded": false,
+  "rowMarkedComplete": false,
+  "stripeConfigModified": false,
+  "dnsModified": false,
+  "authWeakened": false,
+  "tests": [
+    {
+      "id": "protocol-present",
+      "name": "Row 158 protocol exists",
+      "result": "PASS",
+      "detail": "ops/fab-5/ROW-158-VOICE-OF-ARCHITECT-CAPTURE.md"
+    },
+    {
+      "id": "not-complete",
+      "name": "Row 158 is not marked Complete",
+      "result": "PASS",
+      "detail": "IMPLEMENTED — FOUNDER ACCEPTANCE REVIEW. Not Complete. Founder acceptance not recorded."
+    },
+    {
+      "id": "founder-acceptance",
+      "name": "Founder acceptance is not fabricated",
+      "result": "PASS",
+      "detail": "NOT YET RECORDED"
+    },
+    {
+      "id": "seven-categories",
+      "name": "Seven Voice-of-Architect categories are encoded",
+      "result": "PASS",
+      "detail": "FEEDBACK, CONFUSION, COMPLIMENT, SUPPORT_THEME, FRICTION, TESTIMONIAL_PERMISSION, PRODUCT_OPPORTUNITY"
+    },
+    {
+      "id": "ledger-empty-live",
+      "name": "Committed ledger has no live Architect entries",
+      "result": "PASS",
+      "detail": "entries=0"
+    },
+    {
+      "id": "no-public-form",
+      "name": "No new public feedback form",
+      "result": "PASS",
+      "detail": "NONE — reuse Row 153 support and Row 83 social"
+    },
+    {
+      "id": "defect-triage-critical",
+      "name": "Critical checkout outage routes into defect triage immediately",
+      "result": "PASS",
+      "detail": "FRICTION/DEFECT_TRIAGE/imani/immediate=true"
+    },
+    {
+      "id": "confusion-experience",
+      "name": "Confusion routes to Nia experience theme, not defect triage",
+      "result": "PASS",
+      "detail": "CONFUSION/EXPERIENCE_THEME"
+    },
+    {
+      "id": "compliment-not-testimonial",
+      "name": "Compliment is not treated as a publishable testimonial",
+      "result": "PASS",
+      "detail": "COMPLIMENT/COMPLIMENT_LEARNING"
+    },
+    {
+      "id": "testimonial-hold",
+      "name": "Testimonial/permission requests hold for Row 33",
+      "result": "PASS",
+      "detail": "TESTIMONIAL_PERMISSION/TESTIMONIAL_PERMISSION_HOLD"
+    },
+    {
+      "id": "opportunity-deferred",
+      "name": "Product opportunities hold for deferred enhancement",
+      "result": "PASS",
+      "detail": "PRODUCT_OPPORTUNITY/DEFERRED_ENHANCEMENT"
+    },
+    {
+      "id": "privacy-defect-triage",
+      "name": "Privacy P1 routes into defect triage",
+      "result": "PASS",
+      "detail": "DEFECT_TRIAGE/immediate=true"
+    },
+    {
+      "id": "secrets-redacted",
+      "name": "Summaries redact credentials and payment-card patterns",
+      "result": "PASS",
+      "detail": "My [redacted-credential] and card [redacted-payment]"
+    },
+    {
+      "id": "capture-from-ticket",
+      "name": "Support tickets map into Voice-of-Architect records",
+      "result": "PASS",
+      "detail": "BH-VOA-20260831-W5HRE/DEFECT_TRIAGE"
+    },
+    {
+      "id": "capture-from-analytics",
+      "name": "Row 150 friction events map into defect triage",
+      "result": "PASS",
+      "detail": "checkout_failed/DEFECT_TRIAGE"
+    },
+    {
+      "id": "capture-from-social",
+      "name": "Row 83 social text maps into confusion/experience theme",
+      "result": "PASS",
+      "detail": "CONFUSION/EXPERIENCE_THEME"
+    },
+    {
+      "id": "non-friction-analytics-ignored",
+      "name": "Non-friction analytics events are not captured",
+      "result": "PASS",
+      "detail": "registration_failed, auth_failed, checkout_failed, checkout.payment_failed, journey_save_failed, lumina_error, download_failed, membership_payment_failed"
+    },
+    {
+      "id": "duplicate-fingerprint",
+      "name": "Duplicate fingerprints are not re-inserted for non-colliding test rows",
+      "result": "PASS",
+      "detail": "BH-VOA-20260831-W5HRE vs BH-VOA-20260831-W5HRE"
+    },
+    {
+      "id": "theme-rollup",
+      "name": "Theme rollup counts categories and critical items",
+      "result": "PASS",
+      "detail": "CONFUSION:1, FRICTION:2"
+    },
+    {
+      "id": "id-format",
+      "name": "Voice-of-Architect IDs use BH-VOA-YYYYMMDD-XXXXX",
+      "result": "PASS",
+      "detail": "BH-VOA-20260831-3Z3E8"
+    },
+    {
+      "id": "review-model",
+      "name": "Founder review model remains acceptance-open",
+      "result": "PASS",
+      "detail": "scenarios=5; acceptance=NOT YET RECORDED"
+    },
+    {
+      "id": "no-refund-promise",
+      "name": "Protocol does not promise refunds or 24/7 support",
+      "result": "PASS",
+      "detail": "no refund / 24-7 promise"
+    }
+  ],
+  "failed": [],
+  "passCount": 22,
+  "failCount": 0
+}
