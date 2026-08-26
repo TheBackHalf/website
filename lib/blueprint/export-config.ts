@@ -30,6 +30,11 @@ export function getBlueprintExportJobs(baseUrl: string): BlueprintExportJob[] {
       route: `${origin}${BLUEPRINT_PRINT_ROUTES.architectsCommitment}`,
       label: "Architect's Commitment",
     },
+    {
+      filename: BLUEPRINT_EXPORT_FILES.portfolio,
+      route: `${origin}${BLUEPRINT_PRINT_ROUTES.portfolio}`,
+      label: "Architect Portfolio",
+    },
   ];
 
   const artifactFileMap: Record<(typeof standaloneArtifactIds)[number], string> = {

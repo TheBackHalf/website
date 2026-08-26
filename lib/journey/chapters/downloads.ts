@@ -271,6 +271,17 @@ export function getChapter7DownloadAssets(
     });
   }
 
+  const portfolio = byId.get("portfolio");
+  if (portfolio) {
+    selected.push({
+      id: portfolio.id,
+      label: portfolio.label,
+      href: portfolio.href,
+      relation:
+        "Assembled Architect Portfolio of completed artifacts, Architect's Commitment, Aliveness Index priorities, Decision Statement, and Expansion Plan.",
+    });
+  }
+
   if (journeyComplete) {
     const certificate = byId.get("certificate");
     if (certificate) {

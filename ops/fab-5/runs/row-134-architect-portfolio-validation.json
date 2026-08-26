@@ -1,0 +1,120 @@
+{
+  "generatedAt": "2026-08-26T18:23:49.327Z",
+  "workId": "al-134",
+  "row": 134,
+  "deliverable": "Build Back Half Portfolio",
+  "owner": "imani",
+  "founderAcceptance": null,
+  "markedComplete": false,
+  "mechanicalPass": true,
+  "tests": [
+    {
+      "id": "roles",
+      "name": "Portfolio slots include manifesto, Blueprint priorities, decisions, plan, and artifacts",
+      "result": "PASS",
+      "detail": "manifesto:manifesto, blueprint-priorities:blueprint-priorities, aliveness-index:artifact, decision-statement:decisions, back-half-standards:artifact, architect-identity-statement:artifact, expansion-plan:plan, back-half-declaration:artifact"
+    },
+    {
+      "id": "empty-manifesto",
+      "name": "Architect's Commitment (manifesto) is always included",
+      "result": "PASS",
+      "detail": "completedCount=1"
+    },
+    {
+      "id": "empty-not-final",
+      "name": "Empty portfolio is not marked final",
+      "result": "PASS",
+      "detail": "isFinal=false completed=1/8"
+    },
+    {
+      "id": "empty-awaiting",
+      "name": "Priorities, decisions, plan, and remaining artifacts await work when empty",
+      "result": "PASS",
+      "detail": "manifesto:included, blueprint-priorities:awaiting_work, aliveness-index:awaiting_work, decision-statement:awaiting_work, back-half-standards:awaiting_work, architect-identity-statement:awaiting_work, expansion-plan:awaiting_work, back-half-declaration:awaiting_work"
+    },
+    {
+      "id": "populated-final",
+      "name": "Completed artifacts, priorities, decisions, and plan assemble into a final portfolio",
+      "result": "PASS",
+      "detail": "completed=8/8 name=Jordan"
+    },
+    {
+      "id": "priorities-fill",
+      "name": "Blueprint priorities include highest and lowest domain names from Aliveness results",
+      "result": "PASS",
+      "detail": "Highest: Purpose | Lowest: Health"
+    },
+    {
+      "id": "decisions-fill",
+      "name": "Decision Statement fill is assembled from Chapter III practice",
+      "result": "PASS",
+      "detail": "Beginning today, I choose intention."
+    },
+    {
+      "id": "plan-fill",
+      "name": "Expansion Plan fill is assembled from Chapter VI practice",
+      "result": "PASS",
+      "detail": "1. I Will Continue Growing By... Keep learning. | 2. I Will Intentionally Encourage Others By... Listen fully. | 3. I Will Contribute To My Community By... Contribute locally."
+    },
+    {
+      "id": "download-asset",
+      "name": "Architect Portfolio is the first Architect Resources download",
+      "result": "PASS",
+      "detail": "{\"id\":\"portfolio\",\"filename\":\"back-half-architect-portfolio.pdf\",\"href\":\"/api/architect/blueprint/portfolio\",\"label\":\"Architect Portfolio\"}"
+    },
+    {
+      "id": "auth-required",
+      "name": "Portfolio download requires authenticated Architect session",
+      "result": "PASS",
+      "detail": "route uses renderAuthenticatedBlueprintPdf + requireAuthenticatedUser"
+    },
+    {
+      "id": "print-access",
+      "name": "Print page uses the same Architect/print-secret access gate as other Blueprint PDFs",
+      "result": "PASS",
+      "detail": "resolveBlueprintPrintArchitectId present"
+    },
+    {
+      "id": "no-marketing-manifesto",
+      "name": "Portfolio document does not import homepage marketing manifesto copy",
+      "result": "PASS",
+      "detail": "Uses Architect's Commitment + approved artifacts only"
+    },
+    {
+      "id": "print-route",
+      "name": "Print and filename constants are registered",
+      "result": "PASS",
+      "detail": "/blueprint/print/portfolio / back-half-architect-portfolio.pdf"
+    },
+    {
+      "id": "resources-ui",
+      "name": "Architect Resources features the assembled portfolio download",
+      "result": "PASS",
+      "detail": "resources-shell features portfolio section"
+    },
+    {
+      "id": "chapter-7",
+      "name": "Chapter VII resources include the assembled Architect Portfolio",
+      "result": "PASS",
+      "detail": "getChapter7DownloadAssets includes portfolio"
+    },
+    {
+      "id": "no-founder-complete",
+      "name": "Validation does not mark Founder acceptance or Command Center Complete",
+      "result": "PASS",
+      "detail": "acceptanceState remains open; Founder acceptance stays with Kimberly Walker (human)"
+    }
+  ],
+  "failures": [],
+  "browserVerification": {
+    "printPage": "PASS",
+    "resourcesPage": "PASS",
+    "unauthenticatedDownload": "401 Sign-in required",
+    "productionBuild": "PASS"
+  },
+  "notes": [
+    "Portfolio assembles Architect's Commitment, Aliveness Index highest/lowest, Decision Statement, Expansion Plan, and remaining completed artifacts.",
+    "Download is authenticated. Command Center row remains open for Founder acceptance.",
+    "Browser-verified: print preview at /blueprint/print/portfolio and Architect Resources at /architect/resources."
+  ]
+}

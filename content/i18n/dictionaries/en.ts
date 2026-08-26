@@ -1069,7 +1069,18 @@ export const enDictionary: Dictionary = {
     resources: {
       title: "Architect Resources",
       description:
-        "Approved downloads, portfolio materials, and journal assets will appear here.",
+        "Download your Architect Portfolio and approved Blueprint resources for this account.",
+      portfolioHeading: "Architect Portfolio",
+      portfolioDescription:
+        "Completed artifacts, Architect's Commitment, Aliveness Index highest and lowest, Decision Statement, and Expansion Plan assembled into one downloadable portfolio.",
+      portfolioDownload: "Download Architect Portfolio PDF",
+      portfolioProgress: "{completed} of {total} sections populated",
+      includedLabel: "Included",
+      awaitingLabel: "Awaiting work",
+      individualHeading: "The Back Half Blueprint",
+      individualDescription:
+        "Your Blueprint guidebook and individual Architect Resources. Completed Journey responses appear in the personalized downloads.",
+      downloadPdf: "Download PDF",
     },
     billing: {
       title: "Billing",
@@ -1142,7 +1153,8 @@ export const enDictionary: Dictionary = {
       },
       resources: {
         title: "Architect Resources — The Back Half",
-        description: "Resources for Architects.",
+        description:
+          "Download your Architect Portfolio and approved Blueprint resources.",
       },
       settings: {
         title: "Profile & Preferences — Architect — The Back Half",

@@ -33,6 +33,8 @@ export const BLUEPRINT_EXPORT_FILES = {
   expansionPlan: "back-half-expansion-plan.pdf",
   backHalfDeclaration: "back-half-declaration.pdf",
   certificate: "back-half-architect-completion-certificate.pdf",
+  /** Personalized assembled Architect Portfolio (row 134). */
+  portfolio: "back-half-architect-portfolio.pdf",
 } as const;
 
 export const BLUEPRINT_PRINT_ROUTES = {
@@ -40,6 +42,7 @@ export const BLUEPRINT_PRINT_ROUTES = {
     `/blueprint/print/guidebook?variant=${variant}`,
   certificate: "/blueprint/print/certificate",
   architectsCommitment: "/blueprint/print/architects-commitment",
+  portfolio: "/blueprint/print/portfolio",
   artifact: (slug: string) => `/blueprint/print/artifacts/${slug}`,
 } as const;
 

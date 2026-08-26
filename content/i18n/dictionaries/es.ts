@@ -1092,7 +1092,18 @@ export const esDictionary: Dictionary = {
     resources: {
       title: "Recursos de Architect",
       description:
-        "Descargas aprobadas, materiales de portafolio y recursos de diario aparecerán aquí.",
+        "Descarga tu Architect Portfolio y los recursos aprobados del Blueprint para esta cuenta.",
+      portfolioHeading: "Architect Portfolio",
+      portfolioDescription:
+        "Artefactos completados, Architect's Commitment, lo más alto y lo más bajo del Aliveness Index, Decision Statement y Expansion Plan reunidos en un portafolio descargable.",
+      portfolioDownload: "Descargar Architect Portfolio en PDF",
+      portfolioProgress: "{completed} de {total} secciones completadas",
+      includedLabel: "Incluido",
+      awaitingLabel: "Pendiente",
+      individualHeading: "The Back Half Blueprint",
+      individualDescription:
+        "Tu guía Blueprint y los recursos individuales de Architect. Las respuestas completadas del Journey aparecen en las descargas personalizadas.",
+      downloadPdf: "Descargar PDF",
     },
     billing: {
       title: "Facturación",
@@ -1165,7 +1176,8 @@ export const esDictionary: Dictionary = {
       },
       resources: {
         title: "Recursos de Architect — The Back Half",
-        description: "Recursos para Architects.",
+        description:
+          "Descarga tu Architect Portfolio y los recursos aprobados del Blueprint.",
       },
       settings: {
         title: "Perfil y preferencias — Architect — The Back Half",
