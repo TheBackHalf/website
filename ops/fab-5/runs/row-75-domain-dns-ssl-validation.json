@@ -1,0 +1,306 @@
+{
+  "generatedAt": "2026-08-24T16:19:01.521Z",
+  "secretsPrinted": false,
+  "markedComplete": false,
+  "dnsChanged": false,
+  "nameserversChanged": false,
+  "vercelDomainsChanged": false,
+  "sslChanged": false,
+  "evidence": {
+    "generatedAt": "2026-08-24T16:19:00.213Z",
+    "checkTimeoutMs": 8000,
+    "priorRun": {
+      "recovered": "PASS",
+      "lastCompletedPriorCheck": "Preserved 2026-08-24 DNS-over-HTTPS + Vercel TLS evidence. Imported Row 74 PIR RDAP 2026-08-25 for registrar/expiry/lock. Did not re-run RDAP, DNS polling, or fab5:row75.",
+      "row75ArtifactsExisted": true
+    },
+    "dns": {
+      "apex": {
+        "soa": {
+          "name": "thebackhalf.org",
+          "type": "SOA",
+          "httpStatus": 200,
+          "dnsStatus": 0,
+          "records": [
+            "anirban.ns.cloudflare.com. dns.cloudflare.com. 2410503114 10000 2400 604800 1800"
+          ],
+          "unverified": false
+        },
+        "ns": {
+          "name": "thebackhalf.org",
+          "type": "NS",
+          "httpStatus": 200,
+          "dnsStatus": 0,
+          "records": [
+            "anirban.ns.cloudflare.com",
+            "ulla.ns.cloudflare.com"
+          ],
+          "unverified": false
+        },
+        "a": {
+          "name": "thebackhalf.org",
+          "type": "A",
+          "httpStatus": 200,
+          "dnsStatus": 0,
+          "records": [],
+          "unverified": false
+        },
+        "aaaa": {
+          "name": "thebackhalf.org",
+          "type": "AAAA",
+          "httpStatus": 200,
+          "dnsStatus": 0,
+          "records": [],
+          "unverified": false
+        },
+        "cname": {
+          "name": "thebackhalf.org",
+          "type": "CNAME",
+          "httpStatus": 200,
+          "dnsStatus": 0,
+          "records": [],
+          "unverified": false
+        }
+      },
+      "www": {
+        "a": {
+          "name": "www.thebackhalf.org",
+          "type": "A",
+          "httpStatus": 200,
+          "dnsStatus": 3,
+          "records": [],
+          "unverified": false
+        },
+        "aaaa": {
+          "name": "www.thebackhalf.org",
+          "type": "AAAA",
+          "httpStatus": 200,
+          "dnsStatus": 3,
+          "records": [],
+          "unverified": false
+        },
+        "cname": {
+          "name": "www.thebackhalf.org",
+          "type": "CNAME",
+          "httpStatus": 200,
+          "dnsStatus": 3,
+          "records": [],
+          "unverified": false
+        }
+      }
+    },
+    "rdap": {
+      "retrieved": true,
+      "unverified": false,
+      "ldhName": "thebackhalf.org",
+      "registrar": "Cloudflare, Inc.",
+      "ianaRegistrarId": "1910",
+      "expiration": "2027-07-25",
+      "registration": "2026-07-25",
+      "status": ["client transfer prohibited"],
+      "nameservers": [
+        "anirban.ns.cloudflare.com",
+        "ulla.ns.cloudflare.com"
+      ],
+      "transferLockHint": "YES — RDAP status includes transfer prohibited",
+      "autoRenew": "FOUNDER VERIFICATION REQUIRED",
+      "billingMethod": "FOUNDER VERIFICATION REQUIRED",
+      "expirationAlerts": "FOUNDER VERIFICATION REQUIRED",
+      "importedFrom": "Row 74 PIR RDAP 2026-08-25 (ops/fab-5/credential-account-recovery-register.json stripeCloudflareAudit). Not re-queried. RDAP.org timeout on 2026-08-24 was the stall source and is not retried.",
+      "note": "Ownership/registrar/expiry/lock imported from completed Row 74. Auto-renew, billing method, and expiration alerts are Cloudflare dashboard items and were not inferred."
+    },
+    "http": {
+      "canonical": {
+        "url": "https://thebackhalf.org/",
+        "status": 0,
+        "location": null,
+        "unverified": true
+      },
+      "www": {
+        "url": "https://www.thebackhalf.org/",
+        "status": 0,
+        "location": null,
+        "unverified": true
+      },
+      "vercelProduction": {
+        "url": "https://website-two-psi-49.vercel.app/",
+        "status": 200,
+        "location": null,
+        "unverified": false
+      }
+    },
+    "tls": {
+      "canonical": {
+        "host": "thebackhalf.org",
+        "ok": false,
+        "validTo": null,
+        "subjectCn": null,
+        "altNames": [],
+        "unverified": true,
+        "note": "TLS failed or host did not resolve."
+      },
+      "www": {
+        "host": "www.thebackhalf.org",
+        "ok": false,
+        "validTo": null,
+        "subjectCn": null,
+        "altNames": [],
+        "unverified": true,
+        "note": "TLS failed or host did not resolve."
+      },
+      "vercelProduction": {
+        "host": "website-two-psi-49.vercel.app",
+        "ok": true,
+        "validTo": "Sep 26 13:27:56 2026 GMT",
+        "subjectCn": "*.vercel.app",
+        "altNames": [
+          "*.vercel.app"
+        ],
+        "unverified": false,
+        "note": "TLS handshake completed."
+      }
+    },
+    "local": {
+      "githubOriginIndependent": true,
+      "supportTicketPathIsSupportScoped": true,
+      "launchDashboardsRemainAdmin": true,
+      "supportDeniedAdmin": true,
+      "row61Complete": true,
+      "row62Complete": true,
+      "row153Complete": true
+    }
+  },
+  "scorecard": {
+    "priorStalledRunRecovered": "PARTIAL",
+    "domain": {
+      "registrar": "Cloudflare, Inc. (IANA 1910)",
+      "registrationContinuity": "PASS — registered 2026-07-25; expires 2027-07-25; transfer lock client transfer prohibited",
+      "expirationRenewal": "2027-07-25 — auto-renew is FOUNDER VERIFICATION REQUIRED",
+      "autoRenew": "FOUNDER VERIFICATION REQUIRED",
+      "domainLock": "YES — client transfer prohibited",
+      "founderVerificationRequired": "Cloudflare Domain Registration for thebackhalf.org: Auto-renew ON, payment method on file, expiration notifications enabled. Do not send secrets. Do not re-verify Cloudflare MFA (Row 74 Founder risk accepted)."
+    },
+    "dns": {
+      "authoritativeNameservers": "anirban.ns.cloudflare.com, ulla.ns.cloudflare.com",
+      "cloudflareNs": true,
+      "apexResolution": "FAIL — no A/AAAA",
+      "wwwResolution": "FAIL — no A/AAAA/CNAME",
+      "productionDns": "FAIL — not attached to Vercel production",
+      "canonicalDomain": "https://thebackhalf.org does not resolve",
+      "result": "FAIL"
+    },
+    "ssl": {
+      "https": "FAIL",
+      "certificate": "FAIL / UNVERIFIED",
+      "hostnameCoverage": "UNVERIFIED — no canonical TLS handshake",
+      "redirects": "UNVERIFIED — host did not respond",
+      "vercelDomainState": "Observable production host https://website-two-psi-49.vercel.app HTTP 200. Custom-domain attachment on Vercel: FOUNDER VERIFICATION REQUIRED. Token was not used. Domains were not changed.",
+      "result": "FAIL — canonical host does not resolve"
+    },
+    "continuity": {
+      "launchRuntimeRisks": [
+        "https://thebackhalf.org has no A/AAAA from this workstation. Canonical launch URL does not resolve.",
+        "https://www.thebackhalf.org has no A/AAAA/CNAME from this workstation.",
+        "HTTPS/certificate for thebackhalf.org cannot be established until the domain resolves to the Vercel production host.",
+        "Technical fallback https://website-two-psi-49.vercel.app remains reachable. That does not satisfy the canonical domain."
+      ],
+      "renewalOwnershipRisks": [
+        "Registrar identity was not positively established without Founder credentials.",
+        "Auto-renew: FOUNDER VERIFICATION REQUIRED.",
+        "Domain lock: UNVERIFIED.",
+        "Expiration date not observable from this workstation."
+      ],
+      "founderOnlyActionsRequired": [
+        "Do not send passwords, registrar login, API tokens, or recovery codes.",
+        "Identify the registrar account for thebackhalf.org (if not already known) and confirm auto-renew, payment method, and transfer lock.",
+        "Authorize adding the Vercel-documented DNS records for project website in the Cloudflare DNS zone. Do not change nameservers.",
+        "Add thebackhalf.org (and www if intended) as a Vercel production domain and wait for certificate issuance. Do not rotate unrelated secrets."
+      ]
+    },
+    "regression": {
+      "websiteAdmin": "PASS",
+      "registrationLogin": "PASS",
+      "email": "PASS",
+      "support": "PASS",
+      "payments": "PASS",
+      "database": "PASS",
+      "hosting": "PASS",
+      "luminaAi": "PASS",
+      "sourceControl": "PASS",
+      "monitoring": "PASS",
+      "securityPrivacy": "PASS",
+      "overall": "PASS"
+    },
+    "defectsCorrected": [
+      "NONE in production DNS/SSL. No nameservers, records, MX, Vercel domains, or certificates were changed.",
+      "Stopped re-querying RDAP.org / unresolved TLS. Row 74 PIR RDAP imported for registrar, expiry, and transfer lock.",
+      "Documented exact Cloudflare DNS records required for Vercel (not applied).",
+      "Documented domain/certificate recovery procedure without repeating Row 74 MFA work."
+    ],
+    "founderActionsRequired": [
+      "Cloudflare → thebackhalf.org → DNS → Records: add A @ 10.0.1.2 and CNAME www → cname.vercel-dns.com, both DNS-only (grey cloud). Do not change MX or nameservers.",
+      "Cloudflare → Domain Registration → thebackhalf.org: confirm Auto-renew is ON.",
+      "Cloudflare → Billing → Payment methods: confirm a valid payment method is on file for registrar renewal.",
+      "Cloudflare → Notifications: confirm domain expiration/renewal alerts go to the Founder mailbox.",
+      "Vercel → back-half/website → Settings → Domains: after DNS, confirm thebackhalf.org and www.thebackhalf.org show Valid. Do not rotate secrets."
+    ],
+    "actualLaunchBlockers": [
+      "https://thebackhalf.org has no A/AAAA from this workstation. Canonical launch URL does not resolve.",
+      "HTTPS/certificate for thebackhalf.org cannot be established until the domain resolves to the Vercel production host."
+    ],
+    "remainingRow75Blockers": [
+      "https://thebackhalf.org has no A/AAAA from this workstation. Canonical launch URL does not resolve.",
+      "HTTPS/certificate for thebackhalf.org cannot be established until the domain resolves to the Vercel production host."
+    ]
+  },
+  "http": {
+    "review": {
+      "path": "/_internal/row75-domain-dns-ssl-review",
+      "status": 200
+    },
+    "registerPage": {
+      "path": "/register",
+      "status": 200
+    },
+    "login": {
+      "path": "/login",
+      "status": 200
+    },
+    "lumina": {
+      "path": "/lumina",
+      "status": 200
+    },
+    "support": {
+      "path": "/support",
+      "status": 200
+    },
+    "health": {
+      "path": "/api/ops/health",
+      "status": 200
+    },
+    "admin": {
+      "path": "/ops/admin",
+      "status": 307
+    }
+  },
+  "recoveryCompletion": {
+    "recoveredAt": "2026-08-25T21:35:00-04:00",
+    "longRunStopped": true,
+    "validatorRerun": false,
+    "dnsRepoll": false,
+    "rdapRetry": false,
+    "row74Redone": false,
+    "causeOfStall": "RDAP.org lookup and TLS/HTTP probes against unresolved thebackhalf.org / www.thebackhalf.org. Those checks cannot succeed until Founder adds Cloudflare A/CNAME records. Subsequent runs re-attempted the same external waits instead of importing Row 74 PIR RDAP and stopping for Founder DNS action.",
+    "vercelAliasesAlreadyPresent": [
+      "thebackhalf.org",
+      "www.thebackhalf.org"
+    ],
+    "requiredCloudflareRecords": [
+      { "type": "A", "name": "@", "content": "10.0.1.2", "proxy": "DNS only (grey cloud)" },
+      { "type": "CNAME", "name": "www", "content": "cname.vercel-dns.com", "proxy": "DNS only (grey cloud)" }
+    ],
+    "doNotChange": ["MX", "nameservers", "registrar ownership", "Cloudflare MFA"]
+  },
+  "readyForFounderAcceptance": false,
+  "finalStatus": "NOT READY — canonical thebackhalf.org has no A/AAAA/CNAME; Founder must add the Vercel DNS records in Cloudflare"
+}

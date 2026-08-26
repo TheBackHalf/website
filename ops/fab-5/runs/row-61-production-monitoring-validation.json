@@ -1,0 +1,60 @@
+{
+  "generatedAt": "2026-08-21T17:58:15.262Z",
+  "applicationOrigin": "https://website-two-psi-49.vercel.app",
+  "canonicalOrigin": "https://thebackhalf.org",
+  "canonicalDns": "not_found",
+  "snapshotStored": true,
+  "uptime": "PASS",
+  "errors": "PASS",
+  "database": "PASS",
+  "payments": "PASS",
+  "controlledTest": "verified_and_removed",
+  "missingPath": "missing",
+  "recovery": true,
+  "localHealth": {
+    "status": 200,
+    "ok": true
+  },
+  "review": {
+    "status": 200,
+    "visible": true
+  },
+  "regression": {
+    "/es": {
+      "status": 200,
+      "ok": true
+    },
+    "/es/register": {
+      "status": 200,
+      "ok": true
+    },
+    "/es/login": {
+      "status": 200,
+      "ok": true
+    },
+    "/es/checkout": {
+      "status": 200,
+      "ok": true
+    },
+    "/journey": {
+      "status": 200,
+      "ok": true
+    },
+    "/lumina": {
+      "status": 200,
+      "ok": true
+    },
+    "/support": {
+      "status": 200,
+      "ok": true
+    }
+  },
+  "secretLeak": false,
+  "founderAttention": true,
+  "webhookConfigured": false,
+  "openCritical": 1,
+  "openCriticalCategories": [
+    "registration/Error"
+  ],
+  "fingerprint": "ef8e9a638c4a5502"
+}

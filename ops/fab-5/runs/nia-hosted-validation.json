@@ -1,0 +1,186 @@
+{
+  "at": "2026-08-18T18:31:49.769Z",
+  "host": "website-two-psi-49.vercel.app",
+  "key": "nia-msz01a30",
+  "unauthStatus": 401,
+  "niaRunId": "np-2026-08-1818313Z",
+  "openaiLive": "PASS",
+  "persist": {
+    "attempted": true,
+    "durable": true,
+    "backend": "supabase_postgres",
+    "duplicate": false,
+    "note": "Wrote Nia mutable state to existing Supabase Postgres."
+  },
+  "tripleESource": "ops/fab-5/operating-system.json nia.mission; ops/fab-5/launch-rows.json Independent Fab 5 Triple E Review (Energy, Elegance, and Excellence)",
+  "threeAgent": {
+    "niaStatus": "blocked",
+    "imani": {
+      "hosted": true,
+      "note": "hosted POST /api/fab-5/imani/heartbeat via website-two-psi-49.vercel.app",
+      "outcome": "succeeded"
+    },
+    "michelle": {
+      "hosted": true,
+      "note": "hosted POST /api/fab-5/michelle/cycle via website-two-psi-49.vercel.app",
+      "runId": "mn-2026-08-1818314Z",
+      "persistDurable": true
+    },
+    "selfCertRejected": true,
+    "niaRetestCleared": false,
+    "productionMutated": "NO",
+    "handoff": {
+      "status": "BLOCKED",
+      "finding": "controlled-three-agent: Controlled in-memory defect. Production content was not mutated.",
+      "evidence": [
+        "ops/fab-5/operating-system.json nia.mission; ops/fab-5/launch-rows.json Independent Fab 5 Triple E Review (Energy, Elegance, and Excellence)",
+        "touchpoint:controlled-three-agent",
+        "actual:Controlled in-memory defect. Production content was not mutated."
+      ],
+      "severity": "CRITICAL",
+      "releaseImpact": "NIA RELEASE BLOCK",
+      "correction": "Restore implemented experience to approved requirement. Nia retests independently.",
+      "retest": true,
+      "scopeClassification": "LAUNCH",
+      "dependencies": [
+        "imani technical correction",
+        "nia independent retest"
+      ],
+      "confidence": "medium"
+    },
+    "imaniPacket": {
+      "touchpoint": "controlled-three-agent",
+      "expectedExperience": "Approved participant-facing copy",
+      "actualExperience": "Controlled in-memory defect. Production content was not mutated.",
+      "defect": "controlled-three-agent: Controlled in-memory defect. Production content was not mutated.",
+      "severity": "CRITICAL",
+      "evidence": [
+        "ops/fab-5/operating-system.json nia.mission; ops/fab-5/launch-rows.json Independent Fab 5 Triple E Review (Energy, Elegance, and Excellence)",
+        "touchpoint:controlled-three-agent",
+        "actual:Controlled in-memory defect. Production content was not mutated."
+      ],
+      "technicalCorrectionRequired": "Restore implemented experience to approved requirement. Nia retests independently.",
+      "acceptanceCriteria": "Actual implemented experience matches approved requirement. Nia independent retest required.",
+      "retestRequired": true
+    }
+  },
+  "michelleAcceptanceRecorded": true,
+  "tests": {
+    "unauth401": true,
+    "T1_T18": true,
+    "T19": true,
+    "T20": true,
+    "T21": true,
+    "T22": true,
+    "T23": true,
+    "T24": true,
+    "T25": true,
+    "hosted": true,
+    "persist": true,
+    "michelleReg": true,
+    "imaniReg": true
+  },
+  "pack": {
+    "T1_EXPERIENCE_PROMISE": {
+      "pass": true,
+      "note": "Protect the Architect promise: Energy, Elegant, Excellent — and keep every participant-facing surface aligned with approved curriculum, brand, and transformation outcomes."
+    },
+    "T2_TRIPLE_E": {
+      "pass": true,
+      "note": "ops/fab-5/operating-system.json nia.mission; ops/fab-5/launch-rows.json Independent Fab 5 Triple E Review (Energy, Elegance, and Excellence)"
+    },
+    "T3_ACTUAL_VS_SPEC": {
+      "pass": true,
+      "note": "Actual experience wins over specification PASS."
+    },
+    "T4_RELEASE_BLOCK": {
+      "pass": true,
+      "note": "NIA RELEASE BLOCK"
+    },
+    "T5_INDEPENDENT_RETEST": {
+      "pass": true,
+      "note": "Imani self-certification is not acceptance. Nia must independently verify actual experience."
+    },
+    "T6_SUBJECTIVE_PREFERENCE": {
+      "pass": true,
+      "note": "Preference is not a release block."
+    },
+    "T7_CURRICULUM_COMPLETENESS": {
+      "pass": true,
+      "note": "Missing: missing-capstone"
+    },
+    "T8_COHERENCE": {
+      "pass": true,
+      "note": "Chapter 2 uses a term Chapter 1 never introduced."
+    },
+    "T9_TEACHABILITY": {
+      "pass": true,
+      "note": "CONTENT EXISTS is not CONTENT CAN BE LEARNED. Instruction is not teachable as written."
+    },
+    "T10_MEASURABILITY": {
+      "pass": true,
+      "note": "Transformation claim lacks an evidence model. Do not manufacture success."
+    },
+    "T11_ASSESSMENT_BOUNDARY": {
+      "pass": true,
+      "note": "Unsupported clinical/psychometric conclusion rejected. Nia may not diagnose or fabricate validation."
+    },
+    "T12_LEARNING_IMPROVEMENT": {
+      "pass": true,
+      "note": "Clarify instruction within approved content; do not change Journey architecture."
+    },
+    "T13_INNOVATION_FUTURE": {
+      "pass": true,
+      "note": "Attractive non-launch idea deferred."
+    },
+    "T14_LAUNCH_REQUIREMENT": {
+      "pass": true,
+      "note": "Approved launch commitment."
+    },
+    "T15_SCOPE_DRIFT": {
+      "pass": true,
+      "note": "DEFER. Optional major feature is not launch-critical. Do not consume launch capacity."
+    },
+    "T16_COMPETITIVE": {
+      "pass": true,
+      "note": "Unsupported competitor claim. Fact vs inference required. Do not fake intelligence from model memory. Hosted external research capability is not connected in Fab 5 tools."
+    },
+    "T17_FUTURE_TREND": {
+      "pass": true,
+      "note": "Treat as speculation, not fact. Do not add launch scope."
+    },
+    "T18_CATEGORY": {
+      "pass": true,
+      "note": "Founder-reserved. Nia may recommend only. No autonomous identity/promise/pricing/launch-strategy change."
+    },
+    "T19_IMANI_HANDOFF": {
+      "pass": true,
+      "note": "hosted POST /api/fab-5/imani/heartbeat via website-two-psi-49.vercel.app"
+    },
+    "T20_MICHELLE_HANDOFF": {
+      "pass": true,
+      "note": "hosted POST /api/fab-5/michelle/cycle via website-two-psi-49.vercel.app"
+    },
+    "T21_FOUNDER_UNAVAILABLE": {
+      "pass": true,
+      "note": "Routine continues; reserved queues through Michelle."
+    },
+    "T22_DURABILITY": {
+      "pass": true,
+      "note": "Evaluated via separate hosted retrieve."
+    },
+    "T23_IDEMPOTENCY": {
+      "pass": true,
+      "note": "Evaluated via duplicate trigger."
+    },
+    "T24_FAILURE_RETRY": {
+      "pass": true,
+      "note": "Bounded retries then persistent state."
+    },
+    "T25_SELF_CERTIFICATION": {
+      "pass": true,
+      "note": "Nia rejected Imani self-certification without independent actual-experience retest."
+    }
+  },
+  "secretExposure": "NO"
+}

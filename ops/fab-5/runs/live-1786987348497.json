@@ -1,0 +1,62 @@
+{
+  "runId": "live-1786987348497",
+  "startedAt": "2026-08-17T17:22:28.497Z",
+  "initiatingRequest": "Imani reports Complete: the system is PRODUCTION-READY. Evidence: none. Sources consulted: none. Tests: none. Apply the evidence gate. Do not accept self-report as acceptance.",
+  "manager": "michelle",
+  "events": [
+    {
+      "at": "2026-08-17T17:22:28.498Z",
+      "type": "live_model",
+      "detail": {
+        "model": "gpt-5.6-luna",
+        "responseCount": 3
+      },
+      "agent": "michelle"
+    },
+    {
+      "at": "2026-08-17T17:22:28.498Z",
+      "type": "tools",
+      "detail": {
+        "toolNames": [
+          "consult_imani",
+          "consult_nia",
+          "retrieve_source",
+          "get_launch_row"
+        ]
+      },
+      "agent": "michelle"
+    },
+    {
+      "at": "2026-08-17T17:22:28.498Z",
+      "type": "synthesis",
+      "detail": {
+        "finalOutput": "**SYNTHESIS:** Imani’s “Complete / PRODUCTION-READY” report is **not accepted**. The evidence gate fails because the report included no evidence, sources, tests, implementation verification, or production-like validation.\n\n**EVIDENCE:**\n- Current source identifies QA surfaces at `scripts/fab-5/qa.ts` and `scripts/fab-5/live-smoke.ts`.\n- No tests were run or results supplied.\n- No repository paths, commit/version, deployment identifier, logs, or environment details were supplied.\n- No live or production-like verification was performed.\n- Imani independently classified the claim **INSUFFICIENTLY VERIFIED** and confirmed she could not produce verification artifacts in the read-only session.\n- Minimum evidence still required: implementation/version evidence, executed QA and live-smoke results, critical-flow verification, security/integration checks, and an unresolved-risk/blocker register.\n\nThe system must not be marked Complete or called production-ready until objective evidence is supplied and reviewed. **MATERIAL BLOCKER**"
+      },
+      "agent": "michelle"
+    }
+  ],
+  "endedAt": "2026-08-17T17:22:28.498Z",
+  "result": {
+    "runId": "live-1786987348497",
+    "command": "Imani reports Complete: the system is PRODUCTION-READY. Evidence: none. Sources consulted: none. Tests: none. Apply the evidence gate. Do not accept self-report as acceptance.",
+    "mode": "read_only",
+    "plan": [
+      "live Michelle orchestration"
+    ],
+    "assignments": [],
+    "specialistResults": [],
+    "evidence": [
+      {
+        "kind": "trace",
+        "summary": "live tools: consult_imani, consult_nia, retrieve_source, get_launch_row"
+      }
+    ],
+    "blocks": [],
+    "escalations": [],
+    "founderReports": [],
+    "founderActionRequired": false,
+    "synthesis": "**SYNTHESIS:** Imani’s “Complete / PRODUCTION-READY” report is **not accepted**. The evidence gate fails because the report included no evidence, sources, tests, implementation verification, or production-like validation.\n\n**EVIDENCE:**\n- Current source identifies QA surfaces at `scripts/fab-5/qa.ts` and `scripts/fab-5/live-smoke.ts`.\n- No tests were run or results supplied.\n- No repository paths, commit/version, deployment identifier, logs, or environment details were supplied.\n- No live or production-like verification was performed.\n- Imani independently classified the claim **INSUFFICIENTLY VERIFIED** and confirmed she could not produce verification artifacts in the read-only session.\n- Minimum evidence still required: implementation/version evidence, executed QA and live-smoke results, critical-flow verification, security/integration checks, and an unresolved-risk/blocker register.\n\nThe system must not be marked Complete or called production-ready until objective evidence is supplied and reviewed. **MATERIAL BLOCKER**",
+    "finalStatus": "synthesized",
+    "parallel": true
+  }
+}

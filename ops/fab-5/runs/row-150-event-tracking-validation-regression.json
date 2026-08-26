@@ -1,0 +1,192 @@
+{
+  "row": 150,
+  "runId": "r150-2026-08-19-event-tracking-validation",
+  "at": "2026-08-21T12:40:42.559Z",
+  "founderAcceptance": null,
+  "founderAccepted": false,
+  "rowMarkedComplete": false,
+  "sourceOfTruth": "ops/fab-5/ROW-150-EVENT-TRACKING-SPECIFICATION.md",
+  "destination": "isolated ANALYTICS_DB_FILE test ledger (production store is Supabase Postgres analytics_events)",
+  "row84Integration": "marketing-kpi ledger unchanged; dual-write on checkout/purchase",
+  "tests": [
+    {
+      "id": "T1",
+      "name": "Website page and CTA events",
+      "result": "PASS",
+      "expectedEvent": "page_viewed, cta_clicked",
+      "actualEvent": "page_viewed | cta_clicked",
+      "requiredProperties": "page, locale, cta, destination, identity=anonymous",
+      "actualProperties": "{\"page\":\"/\",\"locale\":\"en\",\"cta\":\"become_architect\",\"destination\":\"/register\",\"identity\":\"anonymous\"}",
+      "destinationConfirmed": "first-party analytics ledger",
+      "detail": "Public homepage + Become an Architect CTA"
+    },
+    {
+      "id": "T2",
+      "name": "Campaign attribution persists through conversion and Row 84",
+      "result": "PASS",
+      "expectedEvent": "registration_succeeded + checkout_started + purchase_completed + Row 84 landing/checkout/purchase",
+      "actualEvent": "registration_succeeded, purchase_completed, landing_page_session, checkout_start, purchase",
+      "requiredProperties": "source=instagram, campaign=the-question, assetId=R78-0828-IG",
+      "actualProperties": "{\"eventVersion\":1,\"productArea\":\"checkout\",\"identity\":\"authenticated\",\"source\":\"instagram\",\"medium\":\"social\",\"campaign\":\"the-question\",\"assetId\":\"R78-0828-IG\",\"postDate\":\"2026-08-28\",\"offerId\":\"blueprint\",\"stripeCheckoutSessionId\":\"cs_test_row150_purchase\"}",
+      "destinationConfirmed": "analytics ledger + marketing-kpi ledger",
+      "detail": "First-touch UTM retained; Row 84 names preserved"
+    },
+    {
+      "id": "T3",
+      "name": "Registration funnel",
+      "result": "PASS",
+      "expectedEvent": "registration_viewed, registration_started, registration_method_selected, registration_submitted, registration_succeeded, email_verification_required, email_verified",
+      "actualEvent": "registration_viewed:1, registration_started:1, registration_method_selected:1, registration_submitted:1, registration_succeeded:1, email_verification_required:1, email_verified:1",
+      "requiredProperties": "method=email, no password",
+      "actualProperties": "{\"eventVersion\":1,\"locale\":\"en\",\"productArea\":\"registration\",\"identity\":\"anonymous\",\"source\":\"instagram\",\"medium\":\"social\",\"campaign\":\"the-question\",\"assetId\":\"R78-0828-IG\",\"postDate\":\"2026-08-28\",\"method\":\"email\"}",
+      "destinationConfirmed": "first-party analytics ledger",
+      "detail": "Approved test account path (in-process, no live mailbox)"
+    },
+    {
+      "id": "T4",
+      "name": "Registration failure",
+      "result": "PASS",
+      "expectedEvent": "registration_failed",
+      "actualEvent": "registration_failed",
+      "requiredProperties": "errorCategory=validation, method=email",
+      "actualProperties": "{\"eventVersion\":1,\"locale\":\"en\",\"productArea\":\"registration\",\"identity\":\"anonymous\",\"source\":\"instagram\",\"medium\":\"social\",\"campaign\":\"the-question\",\"assetId\":\"R78-0828-IG\",\"postDate\":\"2026-08-28\",\"method\":\"email\",\"errorCategory\":\"validation\"}",
+      "destinationConfirmed": "first-party analytics ledger",
+      "detail": "Controlled validation failure — no credentials stored"
+    },
+    {
+      "id": "T5",
+      "name": "Checkout start",
+      "result": "PASS",
+      "expectedEvent": "checkout_viewed, checkout_started",
+      "actualEvent": "checkout_viewed, checkout_started",
+      "requiredProperties": "offerId, stripeCheckoutSessionId, amountCents, currency",
+      "actualProperties": "{\"eventVersion\":1,\"locale\":\"en\",\"productArea\":\"checkout\",\"identity\":\"authenticated\",\"source\":\"instagram\",\"medium\":\"social\",\"campaign\":\"the-question\",\"assetId\":\"R78-0828-IG\",\"postDate\":\"2026-08-28\",\"offerId\":\"blueprint\",\"stripeCheckoutSessionId\":\"cs_test_row150_purchase\",\"amountCents\":150000,\"currency\":\"usd\"}",
+      "destinationConfirmed": "analytics ledger + Row 84 checkout_start",
+      "detail": "No live Stripe session created in this test"
+    },
+    {
+      "id": "T6",
+      "name": "Purchase recorded once (no live charge)",
+      "result": "PASS",
+      "expectedEvent": "purchase_completed x1, Row 84 purchase x1",
+      "actualEvent": "purchase_completed x1, purchase x1",
+      "requiredProperties": "idempotent on Stripe session id",
+      "actualProperties": "{\"analyticsRetry\":\"duplicate\",\"marketingRetry\":\"duplicate\"}",
+      "destinationConfirmed": "analytics ledger + marketing-kpi ledger",
+      "detail": "Webhook/retry simulation — never billed"
+    },
+    {
+      "id": "T7",
+      "name": "Onboarding progression",
+      "result": "PASS",
+      "expectedEvent": "onboarding_started, onboarding_step_viewed, onboarding_step_completed, onboarding_completed",
+      "actualEvent": "onboarding_started, onboarding_step_viewed, onboarding_step_viewed, onboarding_step_completed, onboarding_step_viewed, onboarding_step_completed, onboarding_step_completed, onboarding_step_completed, onboarding_step_completed, onboarding_step_completed, onboarding_completed",
+      "requiredProperties": "step, sequence — no assessment free-text",
+      "actualProperties": "[{\"eventVersion\":1,\"productArea\":\"onboarding\",\"identity\":\"authenticated\",\"step\":\"welcome\",\"sequence\":1},{\"eventVersion\":1,\"productArea\":\"onboarding\",\"identity\":\"authenticated\",\"step\":\"welcome\",\"sequence\":1},{\"eventVersion\":1,\"productArea\":\"onboarding\",\"identity\":\"authenticated\",\"step\":\"preferences\",\"sequence\":2},{\"eventVersion\":1,\"productArea\":\"onboarding\",\"identity\":\"authenticated\",\"step\":\"welcome\",\"sequence\":1},{\"eventVersion\":1,\"productArea\":\"onboarding\",\"identity\":\"authenticated\",\"step\":\"completed\",\"sequence\":7},{\"eventVersion\":1,\"productArea\":\"onboarding\",\"identity\":\"authenticated\",\"step\":\"preferences\",\"sequence\":2},{\"eventVersion\":1,\"productArea\":\"onboarding\",\"identity\":\"authenticated\",\"step\":\"consent\",\"sequence\":3},{\"eventVersion\":1,\"productArea\":\"onboarding\",\"identity\":\"authenticated\",\"step\":\"lumina\",\"sequence\":4},{\"eventVersion\":1,\"productArea\":\"onboarding\",\"identity\":\"authenticated\",\"step\":\"assessment\",\"sequence\":5},{\"eventVersion\":1,\"productArea\":\"onboarding\",\"identity\":\"authenticated\",\"step\":\"awakening\",\"sequence\":6},{\"eventVersion\":1,\"productArea\":\"onboarding\",\"identity\":\"authenticated\",\"step\":\"completed\",\"sequence\":6}]",
+      "destinationConfirmed": "first-party analytics ledger",
+      "detail": "started count context 1"
+    },
+    {
+      "id": "T8",
+      "name": "Journey enter, save, resume, complete",
+      "result": "PASS",
+      "expectedEvent": "journey_entered, journey_chapter_started, journey_progress_saved, journey_resumed, journey_chapter_completed, journey_completed",
+      "actualEvent": "journey_entered, journey_chapter_started, journey_progress_saved, journey_resumed, journey_progress_saved, journey_chapter_completed, journey_progress_saved, journey_chapter_completed, journey_completed, completion_experience_viewed",
+      "requiredProperties": "chapterId, status — no written answers",
+      "actualProperties": "[{\"name\":\"journey_entered\",\"payload\":{\"eventVersion\":1,\"productArea\":\"journey\",\"identity\":\"authenticated\",\"chapterId\":\"chapter-1\",\"status\":\"in_progress\"}},{\"name\":\"journey_chapter_started\",\"payload\":{\"eventVersion\":1,\"productArea\":\"journey\",\"identity\":\"authenticated\",\"chapterId\":\"chapter-1\",\"status\":\"in_progress\"}},{\"name\":\"journey_progress_saved\",\"payload\":{\"eventVersion\":1,\"productArea\":\"journey\",\"identity\":\"authenticated\",\"chapterId\":\"chapter-1\",\"status\":\"in_progress\"}},{\"name\":\"journey_resumed\",\"payload\":{\"eventVersion\":1,\"productArea\":\"journey\",\"identity\":\"authenticated\",\"chapterId\":\"chapter-1\",\"status\":\"in_progress\"}},{\"name\":\"journey_progress_saved\",\"payload\":{\"eventVersion\":1,\"productArea\":\"journey\",\"identity\":\"authenticated\",\"chapterId\":\"chapter-1\",\"status\":\"chapter_completed\"}},{\"name\":\"journey_chapter_completed\",\"payload\":{\"eventVersion\":1,\"productArea\":\"journey\",\"identity\":\"authenticated\",\"chapterId\":\"chapter-1\",\"status\":\"chapter_completed\"}},{\"name\":\"journey_progress_saved\",\"payload\":{\"eventVersion\":1,\"productArea\":\"journey\",\"identity\":\"authenticated\",\"chapterId\":\"chapter-7\",\"status\":\"journey_completed\"}},{\"name\":\"journey_chapter_completed\",\"payload\":{\"eventVersion\":1,\"productArea\":\"journey\",\"identity\":\"authenticated\",\"chapterId\":\"chapter-7\",\"status\":\"journey_completed\"}},{\"name\":\"journey_completed\",\"payload\":{\"eventVersion\":1,\"productArea\":\"completion\",\"identity\":\"authenticated\",\"chapterId\":\"chapter-7\",\"status\":\"journey_completed\"}},{\"name\":\"completion_experience_viewed\",\"payload\":{\"eventVersion\":1,\"productArea\":\"completion\",\"identity\":\"authenticated\",\"chapterId\":\"chapter-7\"}}]",
+      "destinationConfirmed": "first-party analytics ledger",
+      "detail": "Product uses chapters, not separate activity IDs"
+    },
+    {
+      "id": "T9",
+      "name": "Lumina usage without conversation content",
+      "result": "PASS",
+      "expectedEvent": "lumina_opened, lumina_message_sent, lumina_response_received, lumina_error",
+      "actualEvent": "lumina_opened, lumina_message_sent, lumina_response_received, lumina_error",
+      "requiredProperties": "conversationId, responseStatus, errorCategory — never prompt/response text",
+      "actualProperties": "[{\"id\":\"8a9d8d33-a561-4887-92eb-b34f673fa069\",\"name\":\"lumina_opened\",\"userId\":\"architect-lumina-t9\",\"idempotencyKey\":\"lumina_opened:t9\",\"payload\":{\"eventVersion\":1,\"locale\":\"en\",\"productArea\":\"lumina\",\"identity\":\"authenticated\",\"conversationId\":\"conv-t9\"},\"createdAt\":\"2026-08-21T12:40:42.517Z\",\"test\":false},{\"id\":\"b25663d0-290b-4d26-ba21-01ffab2acb17\",\"name\":\"lumina_message_sent\",\"userId\":\"architect-lumina-t9\",\"idempotencyKey\":\"lumina_message_sent:t9\",\"payload\":{\"eventVersion\":1,\"locale\":\"en\",\"productArea\":\"lumina\",\"identity\":\"authenticated\",\"conversationId\":\"conv-t9\",\"chapterId\":\"chapter-2\"},\"createdAt\":\"2026-08-21T12:40:42.519Z\",\"test\":false},{\"id\":\"34c3c019-45cc-4ce8-946a-d9dcfc04d3a5\",\"name\":\"lumina_response_received\",\"userId\":\"architect-lumina-t9\",\"idempotencyKey\":\"lumina_response_received:t9\",\"payload\":{\"eventVersion\":1,\"locale\":\"en\",\"productArea\":\"lumina\",\"identity\":\"authenticated\",\"conversationId\":\"conv-t9\",\"responseStatus\":\"ok\",\"latencyMs\":42},\"createdAt\":\"2026-08-21T12:40:42.520Z\",\"test\":false},{\"id\":\"04f9647d-bd30-4b7e-9b05-f96be402abc9\",\"name\":\"lumina_error\",\"userId\":\"architect-lumina-t9\",\"idempotencyKey\":\"lumina_error:t9\",\"payload\":{\"eventVersion\":1,\"productArea\":\"lumina\",\"identity\":\"authenticated\",\"errorCategory\":\"send_failed\",\"responseStatus\":\"error\"},\"createdAt\":\"2026-08-21T12:40:42.521Z\",\"test\":false}]",
+      "destinationConfirmed": "first-party analytics ledger",
+      "detail": "Sanitizer stripped prompt/content/message keys"
+    },
+    {
+      "id": "T10",
+      "name": "Architect download",
+      "result": "PASS",
+      "expectedEvent": "download_started, download_completed (once each)",
+      "actualEvent": "download_started, download_completed",
+      "requiredProperties": "assetId, assetType",
+      "actualProperties": "[{\"eventVersion\":1,\"productArea\":\"downloads\",\"identity\":\"authenticated\",\"assetId\":\"guidebook\",\"assetType\":\"pdf\"},{\"eventVersion\":1,\"productArea\":\"downloads\",\"identity\":\"authenticated\",\"assetId\":\"guidebook\",\"assetType\":\"pdf\"}]",
+      "destinationConfirmed": "first-party analytics ledger",
+      "detail": "Second completed call is idempotent for the same ET day"
+    },
+    {
+      "id": "T11",
+      "name": "Completion and certificate",
+      "result": "PASS",
+      "expectedEvent": "journey_completed, completion_experience_viewed, certificate_generated, certificate_downloaded",
+      "actualEvent": "journey_completed, completion_experience_viewed, certificate_generated, certificate_downloaded",
+      "requiredProperties": "chapterId / assetId=certificate",
+      "actualProperties": "[{\"eventVersion\":1,\"productArea\":\"completion\",\"identity\":\"authenticated\",\"chapterId\":\"chapter-7\",\"status\":\"journey_completed\"},{\"eventVersion\":1,\"productArea\":\"completion\",\"identity\":\"authenticated\",\"chapterId\":\"chapter-7\"}]",
+      "destinationConfirmed": "first-party analytics ledger",
+      "detail": "No separate ceremony product exists; completion experience is Chapter 7 completion"
+    },
+    {
+      "id": "T12",
+      "name": "Membership lifecycle (implemented states)",
+      "result": "PASS",
+      "expectedEvent": "membership_started, activated, renewed, payment_failed, cancelled",
+      "actualEvent": "membership_started, membership_activated, membership_renewed, membership_payment_failed, membership_cancelled",
+      "requiredProperties": "offerId=community",
+      "actualProperties": "[{\"eventVersion\":1,\"productArea\":\"membership\",\"identity\":\"authenticated\",\"offerId\":\"community\"},{\"eventVersion\":1,\"productArea\":\"membership\",\"identity\":\"authenticated\",\"offerId\":\"community\"},{\"eventVersion\":1,\"productArea\":\"membership\",\"identity\":\"authenticated\",\"offerId\":\"community\",\"stripeInvoiceId\":\"in_t12\"},{\"eventVersion\":1,\"productArea\":\"membership\",\"identity\":\"authenticated\",\"offerId\":\"community\",\"errorCategory\":\"payment_failed\"},{\"eventVersion\":1,\"productArea\":\"membership\",\"identity\":\"authenticated\",\"offerId\":\"community\"}]",
+      "destinationConfirmed": "first-party analytics ledger",
+      "detail": "membership_expired is deferred — no expiry webhook path at launch"
+    },
+    {
+      "id": "T13",
+      "name": "Duplicate protection for critical conversions",
+      "result": "PASS",
+      "expectedEvent": "duplicate status for registration_succeeded, purchase_completed, journey_completed, membership_started",
+      "actualEvent": "duplicate, duplicate, duplicate, duplicate",
+      "requiredProperties": "idempotencyKey stable per conversion id",
+      "actualProperties": "{\"registration\":\"duplicate\",\"purchase\":\"duplicate\",\"journey\":\"duplicate\",\"membership\":\"duplicate\"}",
+      "destinationConfirmed": "first-party analytics ledger",
+      "detail": "Refresh / webhook retry / double-submit simulation"
+    },
+    {
+      "id": "T14",
+      "name": "Privacy blocklist — actual payloads inspected",
+      "result": "PASS",
+      "expectedEvent": "sanitized payloads only",
+      "actualEvent": "inspected 48 stored events",
+      "requiredProperties": "allowlisted keys only; no credentials, card data, Journey/Lumina text",
+      "actualProperties": "{\"sanitized\":{\"offerId\":\"blueprint\",\"locale\":\"en\"},\"privacyHits\":[]}",
+      "destinationConfirmed": "first-party analytics ledger",
+      "detail": "Mechanical inspection of every stored payload in this run"
+    },
+    {
+      "id": "T15",
+      "name": "English/Spanish same taxonomy + locale property",
+      "result": "PASS",
+      "expectedEvent": "page_viewed + registration_viewed (same names, locale=en|es)",
+      "actualEvent": "page_viewed:en, page_viewed:es, registration_viewed:es",
+      "requiredProperties": "locale property; no separate Spanish event names",
+      "actualProperties": "{\"en\":\"en\",\"esPage\":\"es\",\"esReg\":\"es\"}",
+      "destinationConfirmed": "first-party analytics ledger",
+      "detail": "Spanish /register path uses the same event names"
+    },
+    {
+      "id": "R1",
+      "name": "Regression — client ingest rejects unknown events; Row 84 retained",
+      "result": "PASS",
+      "expectedEvent": "unknown client events ignored; Row 84 landing_page_session remains",
+      "actualEvent": "ignored, ignored",
+      "requiredProperties": "CLIENT_EVENT_NAMES allowlist",
+      "actualProperties": "{\"ignoredUnknown\":{\"status\":\"ignored\"},\"ignoredNoAnon\":{\"status\":\"ignored\"}}",
+      "destinationConfirmed": "analytics ingest + marketing-kpi store",
+      "detail": "No GA4/Clarity introduced; /register destination unchanged"
+    }
+  ],
+  "failures": [],
+  "result": "PASS",
+  "readyForFounderAcceptanceReview": true
+}

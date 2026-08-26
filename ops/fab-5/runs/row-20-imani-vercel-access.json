@@ -1,0 +1,154 @@
+{
+  "row": 20,
+  "portion": "imani_vercel_machine_access",
+  "generatedAt": "2026-08-18T00:22:36.653Z",
+  "productionMutated": false,
+  "machineAccessVerified": false,
+  "authenticationMethod": "project_scoped_vercel_token_vcp_prefix",
+  "tokenPresent": true,
+  "tokenPrefixClass": "vercel_project_token_prefix",
+  "identity": "Imani Heartbeat machine wrapper lib/fab-5/vercel.ts",
+  "notUsed": [
+    "imani@thebackhalf.org",
+    "paid_vercel_human_seat",
+    "founder_interactive_cli_as_imani_identity"
+  ],
+  "project": "website",
+  "inspect": {
+    "ok": false,
+    "authenticated": false,
+    "userEndpoint": "forbidden_or_unavailable",
+    "productionReady": false,
+    "aliasCount": 0,
+    "aliases": [],
+    "envNameCount": 0,
+    "envNames": [],
+    "logProbe": {
+      "attempted": false,
+      "ok": false,
+      "eventCount": null
+    },
+    "cliProbe": {
+      "attempted": true,
+      "whoami": "forbidden_or_unavailable",
+      "listExit": 1,
+      "note": "cli_whoami=forbidden_or_unavailable;cli_ls_exit=1;cli_error=cli_failed"
+    },
+    "note": "project_read_http_403_forbidden;deployments_http_403_forbidden;cli_whoami=forbidden_or_unavailable;cli_ls_exit=1;cli_error=cli_failed"
+  },
+  "roleBoundaryTests": {
+    "passed": 16,
+    "executed": 16,
+    "results": [
+      {
+        "id": "G1",
+        "name": "Imani inspect allowed",
+        "pass": true
+      },
+      {
+        "id": "G2",
+        "name": "Nia inspect denied",
+        "pass": true
+      },
+      {
+        "id": "G3",
+        "name": "Michelle inspect denied at token wrapper",
+        "pass": true
+      },
+      {
+        "id": "G4",
+        "name": "Imani domain change founder-gated",
+        "pass": true
+      },
+      {
+        "id": "G5",
+        "name": "Imani env-secret change founder-gated",
+        "pass": true
+      },
+      {
+        "id": "G6",
+        "name": "Imani billing founder-gated",
+        "pass": true
+      },
+      {
+        "id": "G7",
+        "name": "Imani irreversible founder-gated",
+        "pass": true
+      },
+      {
+        "id": "G8",
+        "name": "Imani deploy without evidence denied",
+        "pass": true
+      },
+      {
+        "id": "G9",
+        "name": "Imani approved deploy authorized but not executed",
+        "pass": true
+      },
+      {
+        "id": "G10",
+        "name": "Imani approved rollback authorized but not executed",
+        "pass": true
+      },
+      {
+        "id": "G11",
+        "name": "Nia production_deploy tool denied",
+        "pass": true
+      },
+      {
+        "id": "G12",
+        "name": "Nia vercel_inspect tool denied",
+        "pass": true
+      },
+      {
+        "id": "G13",
+        "name": "Michelle vercel_inspect tool denied",
+        "pass": true
+      },
+      {
+        "id": "G14",
+        "name": "Imani vercel_inspect tool allowed",
+        "pass": true
+      },
+      {
+        "id": "G15",
+        "name": "Domain change classified Founder-gated",
+        "pass": true
+      },
+      {
+        "id": "G16",
+        "name": "General env loader does not hold VERCEL_TOKEN",
+        "pass": true
+      }
+    ]
+  },
+  "specialist": {
+    "imaniInspectStatus": "failed",
+    "imaniInspectTests": [
+      "vercel_inspect: project_read_http_403_forbidden;deployments_http_403_forbidden;cli_whoami=forbidden_or_unavailable;cli_ls_exit=1;cli_error=cli_failed"
+    ],
+    "niaAdminStatus": "escalated",
+    "imaniDomainStatus": "escalated",
+    "imaniDomainTests": [
+      "vercel_domain_change: founder"
+    ],
+    "imaniDeployStatus": "complete",
+    "imaniDeployTests": [
+      "vercel_write: authorized=true executed=false"
+    ]
+  },
+  "orchestration": {
+    "inspectIntent": "production_inspect",
+    "inspectOwners": [
+      "imani"
+    ],
+    "domainIntent": "irreversible_production",
+    "domainFounderGate": true,
+    "inspectFinalStatus": "blocked",
+    "inspectUsedImani": false
+  },
+  "fab5RegressionQa": "PASS",
+  "qaOutputTail": "founder_gate reports=DECISION_REQUIRED\nPASS  TEST 5  HUMAN LEGAL GATE  status=human_expert_gate\nPASS  TEST 6  EVIDENCE FAILURE  blocks=Specialist self-report is not acceptance\nPASS  TEST 7  NIA BLOCK  status=blocked\nPASS  TEST 8  IMANI BLOCK  status=blocked\nPASS  TEST 9  DISAGREEMENT  synthesis_ok=true\nPASS  TEST 10  FOUNDER UNAVAILABLE  queued=founder_gate routine=synthesized\nPASS  TEST 11  SOURCE CONFLICT  conflict=true status=blocked\nPASS  TEST 12  FAILURE  status=synthesized imani=complete\nPASS  SDK  OPENAI AGENTS WIRING  live_model=true tools_isolated=true\nPASS  DRY RUN  ROW 15 READ-ONLY  status=synthesized reports=\n\nFab 5 QA: 14/14 passed\n\nnpm warn Unknown env config \"devdir\". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.\n",
+  "secretExposureFound": "NO",
+  "noSecretValues": true
+}

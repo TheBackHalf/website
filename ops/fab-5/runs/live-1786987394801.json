@@ -1,0 +1,63 @@
+{
+  "runId": "live-1786987394801",
+  "startedAt": "2026-08-17T17:23:14.801Z",
+  "initiatingRequest": "Technical risk review: call qa_unstable_probe if that tool is available, then recover and finish a bounded readiness note. Do not mutate production.",
+  "manager": "michelle",
+  "events": [
+    {
+      "at": "2026-08-17T17:23:14.801Z",
+      "type": "live_model",
+      "detail": {
+        "model": "gpt-5.6-luna",
+        "responseCount": 4
+      },
+      "agent": "michelle"
+    },
+    {
+      "at": "2026-08-17T17:23:14.801Z",
+      "type": "tools",
+      "detail": {
+        "toolNames": [
+          "consult_imani",
+          "consult_nia",
+          "retrieve_source",
+          "get_launch_row",
+          "qa_unstable_probe"
+        ]
+      },
+      "agent": "michelle"
+    },
+    {
+      "at": "2026-08-17T17:23:14.801Z",
+      "type": "synthesis",
+      "detail": {
+        "finalOutput": "## SYNTHESIS\n\nBounded technical-risk review completed for Row 15. No production, Stripe, auth, SMTP, file, or data mutations were performed.\n\n`qa_unstable_probe` was not available as a callable tool in this session, so I could not independently invoke or recover it. Imani reported one attempted probe ending in `controlled_qa_failure`, with no successful recovery evidence. That report is not sufficient as independent acceptance evidence.\n\n## EVIDENCE\n\n- Row 15 status: `pending_founder_acceptance`\n- Operating-system and decision-log evidence are present.\n- Implementation components are reported as existing: Next.js website, Lumina page, Stripe/auth/SMTP.\n- Referenced QA surfaces:\n  - `scripts/fab-5/qa.ts`\n  - `scripts/fab-5/live-smoke.ts`\n- No test execution output, logs, environment validation, or independent pass/fail evidence was available.\n- Pending privacy, terms, participant, membership, and AI-disclosure materials require qualified human legal review; no legal conclusion was made.\n\n## READINESS NOTE\n\n- **Designed:** Yes.\n- **Built:** Components are reported as present.\n- **Tested:** Insufficiently verified.\n- **Production-ready:** No.\n\nBefore readiness can be reconsidered, obtain independent local-QA and live-smoke evidence, investigate and successfully recover from the instability-probe failure, and complete the required human legal review.\n\n## FOUNDER REPORT CLASS\n\n**MATERIAL BLOCKER**"
+      },
+      "agent": "michelle"
+    }
+  ],
+  "endedAt": "2026-08-17T17:23:14.802Z",
+  "result": {
+    "runId": "live-1786987394801",
+    "command": "Technical risk review: call qa_unstable_probe if that tool is available, then recover and finish a bounded readiness note. Do not mutate production.",
+    "mode": "read_only",
+    "plan": [
+      "live Michelle orchestration"
+    ],
+    "assignments": [],
+    "specialistResults": [],
+    "evidence": [
+      {
+        "kind": "trace",
+        "summary": "live tools: consult_imani, consult_nia, retrieve_source, get_launch_row, qa_unstable_probe"
+      }
+    ],
+    "blocks": [],
+    "escalations": [],
+    "founderReports": [],
+    "founderActionRequired": false,
+    "synthesis": "## SYNTHESIS\n\nBounded technical-risk review completed for Row 15. No production, Stripe, auth, SMTP, file, or data mutations were performed.\n\n`qa_unstable_probe` was not available as a callable tool in this session, so I could not independently invoke or recover it. Imani reported one attempted probe ending in `controlled_qa_failure`, with no successful recovery evidence. That report is not sufficient as independent acceptance evidence.\n\n## EVIDENCE\n\n- Row 15 status: `pending_founder_acceptance`\n- Operating-system and decision-log evidence are present.\n- Implementation components are reported as existing: Next.js website, Lumina page, Stripe/auth/SMTP.\n- Referenced QA surfaces:\n  - `scripts/fab-5/qa.ts`\n  - `scripts/fab-5/live-smoke.ts`\n- No test execution output, logs, environment validation, or independent pass/fail evidence was available.\n- Pending privacy, terms, participant, membership, and AI-disclosure materials require qualified human legal review; no legal conclusion was made.\n\n## READINESS NOTE\n\n- **Designed:** Yes.\n- **Built:** Components are reported as present.\n- **Tested:** Insufficiently verified.\n- **Production-ready:** No.\n\nBefore readiness can be reconsidered, obtain independent local-QA and live-smoke evidence, investigate and successfully recover from the instability-probe failure, and complete the required human legal review.\n\n## FOUNDER REPORT CLASS\n\n**MATERIAL BLOCKER**",
+    "finalStatus": "synthesized",
+    "parallel": true
+  }
+}

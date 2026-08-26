@@ -1,0 +1,25 @@
+export const paragraphs = [
+  "I choose to become the Architect of my life.",
+  "I accept full responsibility for the life I create from this moment forward.",
+  "I will no longer allow expectation, habit, fear, circumstance, or the passage of time to determine who I become.",
+  "I will live intentionally.",
+  "I will make decisions that honor the person I am becoming, protect what makes me feel alive, and move me toward a life of fullness, purpose, and possibility.",
+  "I will have the courage to release what no longer belongs in my life and the discipline to build what does.",
+  "I will treat my time, energy, health, relationships, environment, resources, gifts, and dreams as things worthy of intentional stewardship.",
+  "I will not wait for permission to change my life.",
+  "I will not confuse familiarity with fulfillment.",
+  "I will not settle for a life that looks acceptable but does not feel alive.",
+  "I understand that creating my Back Half will require decisions. It will require courage. It will require action. And it will require me to take 100% accountability for my life.",
+  "I accept that responsibility.",
+  "I choose intention over expectation.",
+  "I choose possibility over resignation.",
+  "I choose aliveness over autopilot.",
+  "I choose to live in my fullness.",
+  "Magical is possible.",
+  "And I commit to intentionally creating it.",
+  "I am the Architect.",
+  "Signature: ______________________________",
+  "Date: ______________________________",
+] as const;
+
+export const architectsCommitment = { paragraphs };

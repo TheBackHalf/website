@@ -1,0 +1,153 @@
+{
+  "row": 20,
+  "deliverable": "Provision Fab 5 Systems and Access",
+  "auditAt": "2026-08-18T18:40:00.000Z",
+  "niaFounderAcceptance": "RECORDED",
+  "niaEvidence": {
+    "path": "ops/fab-5/runs/nia-hosted-validation.json",
+    "run": "np-2026-08-1818313Z",
+    "deploy": "dpl_9RhPpiUitxYp5enrCZU9wJsqZHLa"
+  },
+  "threeAgentEvidence": {
+    "path": "ops/fab-5/runs/nia-hosted-validation.json",
+    "michelleRun": "mn-2026-08-1818314Z",
+    "imaniHosted": true,
+    "founderRelay": false
+  },
+  "imaniHostedEvidence": "ops/fab-5/runs/imani-heartbeat-hosted-validation.json",
+  "michelleDurableEvidence": "ops/fab-5/runs/michelle-durable-validation.json",
+  "classificationStandard": "REQUIRED NOW cannot PASS from configuration alone. Unbuilt product rows are UNDERLYING PRODUCT DEPENDENCY, not agent-access failure.",
+  "executives": {
+    "michelle": "COMPLETE",
+    "imani": "COMPLETE",
+    "nia": "COMPLETE"
+  },
+  "requiredNow": {
+    "website_admin": {
+      "classification": "REQUIRED NOW",
+      "result": "PASS",
+      "michelle": {
+        "class": "REQUIRED NOW",
+        "method": "Hosted cycle reads catalog + public production host; no Vercel Owner admin",
+        "permission": "READ operational/readiness evidence",
+        "leastPrivilege": true,
+        "test": "Hosted Michelle cycle + three-agent Michelle POST",
+        "result": "PASS",
+        "evidence": "ops/fab-5/runs/michelle-durable-validation.json; nia-hosted-validation.json michelle run mn-2026-08-1818314Z"
+      },
+      "imani": {
+        "class": "REQUIRED NOW",
+        "method": "Hosted Vercel Node heartbeat; Founder CLI remains deploy identity",
+        "permission": "EXECUTE hosted runtime; deploy/rollback Founder-reserved / Row 19 gated",
+        "leastPrivilege": true,
+        "test": "Hosted Imani heartbeat auth 200 hosted=true",
+        "result": "PASS",
+        "evidence": "ops/fab-5/runs/imani-heartbeat-hosted-validation.json hb-2026-08-18T170135680Z"
+      },
+      "nia": {
+        "class": "REQUIRED NOW",
+        "method": "Public production HTTPS inspection + hosted Nia cycle; no Vercel admin",
+        "permission": "READ actual participant-facing production experience",
+        "leastPrivilege": true,
+        "test": "Hosted Nia cycle + Triple E against production host; vercel_inspect denied by role",
+        "result": "PASS",
+        "evidence": "ops/fab-5/runs/nia-hosted-validation.json"
+      }
+    },
+    "supabase_backend": {
+      "classification": "REQUIRED NOW",
+      "result": "PASS",
+      "note": "Existing Vercel-integrated Supabase Postgres. Server-only POSTGRES_URL / SUPABASE_SERVICE_ROLE_KEY. No new project. No client secret use for Fab 5 writes.",
+      "michelle": "REQUIRED NOW WRITE durable ops state — PASS separate-invocation retrieval dur-msyz3o16",
+      "imani": "REQUIRED NOW READ/EXECUTE same backend when technical persistence needed — env present on Vercel; heartbeat does not require a second database",
+      "nia": "REQUIRED NOW WRITE nia_* tables — PASS nia-msz01a30 retrieve"
+    },
+    "openai": {
+      "classification": "REQUIRED NOW",
+      "result": "PASS",
+      "michelle": "hosted openaiLive PASS",
+      "imani": "hosted openaiLive PASS",
+      "nia": "hosted openaiLive PASS np-2026-08-1818313Z"
+    },
+    "fab5_hosted_automation": {
+      "classification": "REQUIRED NOW",
+      "result": "PASS",
+      "crons": [
+        "imani 0 14 * * * /api/fab-5/imani/heartbeat",
+        "michelle 30 14 * * * /api/fab-5/michelle/cycle",
+        "nia 0 15 * * * /api/fab-5/nia/cycle"
+      ]
+    },
+    "content_assets": {
+      "classification": "REQUIRED NOW",
+      "result": "PASS",
+      "method": "retrieve_source allowlists in lib/fab-5/source.ts against repo content/ops catalogs",
+      "nia": "approved-product-curriculum, approved-brand, approved-legal-risk",
+      "michelle": "operating-system, launch rows, decision-log, brand/curriculum",
+      "imani": "production-implementation, approved-legal-risk, operating-system"
+    },
+    "legal_documents": {
+      "classification": "REQUIRED NOW",
+      "result": "PASS",
+      "method": "legalDocuments index via retrieve_source; no agent issues legal conclusions",
+      "note": "Document implementation eligibility may still be DRAFT at product row; retrieval of required materials works"
+    },
+    "dashboards_work_queues": {
+      "classification": "REQUIRED NOW",
+      "result": "PASS",
+      "michelle": "durable decision log, readiness, Founder queue, blockers, critical path, execution history",
+      "imani": "specialist packet + hosted heartbeat evidence",
+      "nia": "experience evals, release blocks, findings, innovation register input to Row 6"
+    },
+    "payment_reporting": {
+      "imani": {
+        "class": "REQUIRED NOW",
+        "permission": "TEST-SANDBOX read",
+        "result": "PASS",
+        "evidence": "ops/fab-5/runs/row-20-imani-stripe-validation.json; imani-heartbeat-hosted-validation stripeSandboxRead PASS",
+        "gated": "no live charge, refund, payout, financial-admin"
+      },
+      "michelle": "NOT REQUIRED FOR ROLE — no direct Stripe",
+      "nia": "NOT REQUIRED FOR ROLE — no direct Stripe",
+      "liveFinancialOps": "UNDERLYING PRODUCT DEPENDENCY — live production financial reporting, refunds, and payouts are not current agent requirements. Imani REQUIRED NOW is TEST-SANDBOX read only. Founder retains live financial-admin. Later ops: chargebacks/disputes/fraud rows."
+    }
+  },
+  "notRequiredOrUnderlying": {
+    "analytics_third_party": "UNDERLYING PRODUCT DEPENDENCY — Row 150 Implement Event Tracking; Row 84 Launch Marketing KPI Dashboard; Row 151 daily launch dashboard",
+    "analytics_internal": "REQUIRED NOW / PASS — ops catalog and hosted run evidence (not GA4)",
+    "social_instagram_linkedin": "UNDERLYING PRODUCT DEPENDENCY — Row 76 Stand Up Official Social Media Channels",
+    "google_workspace_standing": "NOT REQUIRED NOW for 24/7 agent execution. Mailbox machine integration is Row 153.",
+    "support_at": "UNDERLYING PRODUCT DEPENDENCY — Row 153 Configure Support Channels. Mailbox existence ≠ Fab 5 Gmail API. No agent mailboxes created.",
+    "privacy_at": "UNDERLYING PRODUCT DEPENDENCY — Row 153 / legal implementation. Stricter: no legal conclusions. No Nia standing access.",
+    "competitive_intelligence_live_web": "FUTURE DEPENDENCY — not required for August launch execution NOW; Nia innovation mandate. Preserve as deferred capability (Row 6 register). Do not fail Row 20.",
+    "lifecycle_automation": "UNDERLYING PRODUCT DEPENDENCY — Row 147",
+    "vercel_rest_owner_token": "FOUNDER-RESERVED — Kimberly Owner/Billing. Hosted runtime does not require Imani REST ADMIN. Approved deploys remain Founder CLI / Row 19 gated."
+  },
+  "underlyingProductDependencies": [
+    "Row 76 — Stand Up Official Social Media Channels (Instagram/LinkedIn machine access)",
+    "Row 84 — Create Launch Marketing KPI Dashboard",
+    "Row 147 — Build Lifecycle Automations",
+    "Row 150 — Implement Event Tracking (GA4/Clarity and participant/marketing analytics)",
+    "Row 151 — Build Launch Dashboard (daily traffic/conversion/revenue view)",
+    "Row 153 — Configure Support Channels (support@ and privacy@ machine integration)",
+    "Live production Stripe financial reporting/refunds/payouts — Founder-reserved; not current agent requirement"
+  ],
+  "futureAccessDependencies": [
+    "Hosted live external competitive-intelligence research — preserve in Row 6 deferred-enhancement register; not required for August launch execution NOW"
+  ],
+  "leastPrivilege": "PASS",
+  "roleIsolation": "PASS",
+  "computerIndependence": {
+    "founderComputerRequired": false,
+    "cursorRequired": false,
+    "localTerminalRequired": false,
+    "humanLoginRequiredForRoutine": false
+  },
+  "secretExposure": "NO",
+  "currentRequiredAccessBlockers": [],
+  "founderActionRequired": "NONE",
+  "row20CommitmentSatisfied": true,
+  "row20FounderAccepted": false,
+  "row21Started": false,
+  "agentsRebuilt": false
+}

@@ -1,0 +1,19 @@
+{
+  "row": 32,
+  "event": "founder-acceptance-closure",
+  "founderAcceptance": "YES",
+  "founderAcceptedAt": "2026-08-21",
+  "finalStatus": "ROW 32 — COMPLETE",
+  "percentCompleteRecorded": 100,
+  "rowMarkedComplete": true,
+  "mechanicalSuite": "ops/fab-5/runs/row-32-legal-implementation-validation.json",
+  "mechanicalFailedCount": 0,
+  "version": "1.0",
+  "effectiveDate": "August 31, 2026",
+  "publicationStatus": "PUBLISHED / FINAL",
+  "spanishLegalManuscripts": "PENDING APPROVED TRANSLATION",
+  "communityGuidelines": "PRE-COMMUNITY-LAUNCH — DUE BEFORE OCTOBER 25, 2026",
+  "launchRoadmapUnchanged": true,
+  "founderNotesUnchanged": true,
+  "generatedAt": "2026-08-21T20:33:00.000Z"
+}

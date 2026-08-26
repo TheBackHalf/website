@@ -1,0 +1,132 @@
+{
+  "baselineDate": "2026-08-19",
+  "retrievedAt": "2026-08-19T10:51:39.615Z",
+  "timezone": "America/New_York",
+  "channels": {
+    "instagram": {
+      "followers": {
+        "value": 0,
+        "status": "Baseline = 0 — New Channel/Metric",
+        "source": "ops/fab-5/social-channels.json accountExists=false",
+        "baselineDate": "2026-08-19",
+        "retrievedAt": "2026-08-19T10:51:39.615Z"
+      },
+      "reach": {
+        "value": null,
+        "status": "Baseline unavailable — no reliable historical data",
+        "source": "Official social accounts are not live; native analytics do not exist",
+        "baselineDate": "2026-08-19",
+        "retrievedAt": "2026-08-19T10:51:39.615Z"
+      },
+      "impressions": {
+        "value": null,
+        "status": "Baseline unavailable — no reliable historical data",
+        "source": "Official social accounts are not live; native analytics do not exist",
+        "baselineDate": "2026-08-19",
+        "retrievedAt": "2026-08-19T10:51:39.615Z"
+      },
+      "engagements": {
+        "value": null,
+        "status": "Baseline unavailable — no reliable historical data",
+        "source": "Official social accounts are not live; native analytics do not exist",
+        "baselineDate": "2026-08-19",
+        "retrievedAt": "2026-08-19T10:51:39.615Z"
+      }
+    },
+    "linkedin": {
+      "followers": {
+        "value": 0,
+        "status": "Baseline = 0 — New Channel/Metric",
+        "source": "ops/fab-5/social-channels.json accountExists=false",
+        "baselineDate": "2026-08-19",
+        "retrievedAt": "2026-08-19T10:51:39.615Z"
+      },
+      "reach": {
+        "value": null,
+        "status": "Baseline unavailable — no reliable historical data",
+        "source": "Official social accounts are not live; native analytics do not exist",
+        "baselineDate": "2026-08-19",
+        "retrievedAt": "2026-08-19T10:51:39.615Z"
+      },
+      "impressions": {
+        "value": null,
+        "status": "Baseline unavailable — no reliable historical data",
+        "source": "Official social accounts are not live; native analytics do not exist",
+        "baselineDate": "2026-08-19",
+        "retrievedAt": "2026-08-19T10:51:39.615Z"
+      },
+      "engagements": {
+        "value": null,
+        "status": "Baseline unavailable — no reliable historical data",
+        "source": "Official social accounts are not live; native analytics do not exist",
+        "baselineDate": "2026-08-19",
+        "retrievedAt": "2026-08-19T10:51:39.615Z"
+      }
+    },
+    "tiktok": {
+      "followers": {
+        "value": 0,
+        "status": "Baseline = 0 — New Channel/Metric",
+        "source": "ops/fab-5/social-channels.json accountExists=false",
+        "baselineDate": "2026-08-19",
+        "retrievedAt": "2026-08-19T10:51:39.615Z"
+      },
+      "reach": {
+        "value": null,
+        "status": "Baseline unavailable — no reliable historical data",
+        "source": "Official social accounts are not live; native analytics do not exist",
+        "baselineDate": "2026-08-19",
+        "retrievedAt": "2026-08-19T10:51:39.615Z"
+      },
+      "impressions": {
+        "value": null,
+        "status": "Baseline unavailable — no reliable historical data",
+        "source": "Official social accounts are not live; native analytics do not exist",
+        "baselineDate": "2026-08-19",
+        "retrievedAt": "2026-08-19T10:51:39.615Z"
+      },
+      "engagements": {
+        "value": null,
+        "status": "Baseline unavailable — no reliable historical data",
+        "source": "Official social accounts are not live; native analytics do not exist",
+        "baselineDate": "2026-08-19",
+        "retrievedAt": "2026-08-19T10:51:39.615Z"
+      }
+    }
+  },
+  "websiteTraffic": {
+    "value": null,
+    "status": "Baseline unavailable — no reliable historical data",
+    "source": "No first-party or GA4 historical traffic ledger existed before Row 84",
+    "baselineDate": "2026-08-19",
+    "retrievedAt": "2026-08-19T10:51:39.615Z"
+  },
+  "registrationPageTraffic": {
+    "value": 0,
+    "status": "Baseline = 0 — New Channel/Metric",
+    "source": "First-party marketing KPI ledger starts with Row 84",
+    "baselineDate": "2026-08-19",
+    "retrievedAt": "2026-08-19T10:51:39.615Z"
+  },
+  "checkoutStarts": {
+    "value": 0,
+    "status": "Baseline = 0 — New Channel/Metric",
+    "source": "Marketing KPI checkout_start events start with Row 84",
+    "baselineDate": "2026-08-19",
+    "retrievedAt": "2026-08-19T10:51:39.615Z"
+  },
+  "purchases": {
+    "value": 19,
+    "status": "captured",
+    "source": "local billing ledger paid purchases captured 2026-08-19; PRE-LAUNCH / HISTORICAL — EXCLUDED FROM LAUNCH KPI",
+    "baselineDate": "2026-08-19",
+    "retrievedAt": "2026-08-19T10:51:39.615Z"
+  },
+  "notes": [
+    "Captured before August 28, 2026 campaign activity.",
+    "The 19 paid purchases in this baseline are PRE-LAUNCH / HISTORICAL — EXCLUDED FROM LAUNCH KPI. They are not August 28–31 campaign purchases, launch-day purchases, launch revenue, or launch conversion.",
+    "Launch measurement begins 2026-08-28 12:00 AM ET at 0 launch purchases / $0 launch revenue.",
+    "Do not replace with estimates. If a later export of native analytics becomes available for a date before 2026-08-28, append a new baseline version rather than silently overwriting.",
+    "Official channels live at capture: no."
+  ]
+}

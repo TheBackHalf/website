@@ -1,0 +1,7 @@
+{
+  "generatedAt": "2026-08-25T23:30:00.000Z",
+  "source": "Production GET /api/ops/stripe-live-connect on website-two-psi-49.vercel.app after dpl_FtuhBQ54o6kPBdaV7KDEGTjgGzak",
+  "vercelProductionStripeKeyClass": "test",
+  "note": "Runtime STRIPE_SECRET_KEY on Vercel Production is Stripe Test/Sandbox, not Live. Live products cannot be mapped through this key. Secret value was not printed.",
+  "secretPrinted": false
+}

@@ -1,0 +1,27 @@
+{
+  "at": "2026-08-18T16:15:00.000Z",
+  "productionEnvNames": {
+    "CRON_SECRET": "PRESENT",
+    "OPENAI_API_KEY": "PRESENT",
+    "STRIPE_SECRET_KEY": "PRESENT"
+  },
+  "localValidation": {
+    "outcome": "succeeded",
+    "openaiLive": "PASS",
+    "stripeSandbox": "PASS",
+    "authorityGates": "PASS",
+    "secretExposure": "NO"
+  },
+  "productionBuild": "PASS — route /api/fab-5/imani/heartbeat present in Vercel build output",
+  "productionAliasPromotion": "FAIL — Vercel unexpected error at Deploying outputs",
+  "inspectUrls": [
+    "https://vercel.com/back-half/website/G9o8V6gX6H1nt7sG5QtUFN57745z",
+    "https://vercel.com/back-half/website/8668NfDrMhiaan6xgtDW7g2mvauU"
+  ],
+  "hostedHeartbeat": "NOT PROVEN — current production alias still HTML catch-all; unique deployment URLs 302",
+  "cronLive": "NOT PROVEN",
+  "computerOff": "NOT PROVEN",
+  "secretExposure": "NO",
+  "stripeMutated": "NO",
+  "productionServingChanged": "NO"
+}

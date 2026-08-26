@@ -1,0 +1,148 @@
+/**
+ * The Back Half — Global Design Tokens
+ * Cinematic luxury palette; do not alter brand direction.
+ */
+:root {
+  /* ——— Brand colors (reference bh-* in :root of globals) ——— */
+  --bh-color-ink: var(--bh-ink);
+  --bh-color-muted: var(--bh-muted);
+  --bh-color-cream: var(--bh-cream);
+  --bh-color-pearl: var(--bh-pearl);
+  --bh-color-champagne: var(--bh-champagne);
+  --bh-color-night: var(--bh-night);
+  --bh-color-dusk: var(--bh-dusk);
+  --bh-color-purple: var(--bh-purple);
+  --bh-color-purple-deep: var(--bh-purple-deep);
+  --bh-color-purple-soft: var(--bh-purple-soft);
+  --bh-color-glow: var(--bh-glow);
+
+  /* ——— Semantic colors ——— */
+  --bh-color-error: oklch(0.52 0.2 25);
+  --bh-color-error-border: oklch(0.62 0.18 25 / 0.7);
+  --bh-color-error-surface: oklch(0.96 0.02 25);
+  --bh-color-success: oklch(0.45 0.12 155);
+  --bh-color-success-border: oklch(0.55 0.1 155 / 0.5);
+  --bh-color-success-surface: oklch(0.97 0.015 155);
+  --bh-color-focus: var(--bh-purple);
+  --bh-color-focus-ring: oklch(0.42 0.14 305 / 0.15);
+  --bh-color-focus-ring-dark: oklch(0.9 0.04 85 / 0.8);
+
+  /* ——— Typography families ——— */
+  --bh-font-display: var(--font-bh-display);
+  --bh-font-sans: var(--font-bh-sans);
+
+  /* ——— Typography scale ——— */
+  --bh-text-2xs: 0.58rem;
+  --bh-text-xs: 0.62rem;
+  --bh-text-sm: 0.68rem;
+  --bh-text-base: 1rem;
+  --bh-text-lg: 1.125rem;
+  --bh-text-xl: 1.25rem;
+  --bh-text-2xl: 1.5rem;
+  --bh-text-3xl: 1.875rem;
+  --bh-text-4xl: 2.25rem;
+  --bh-text-5xl: 3rem;
+  --bh-text-6xl: 3.75rem;
+  --bh-text-7xl: 4.5rem;
+
+  /* ——— Font weights ——— */
+  --bh-weight-light: 300;
+  --bh-weight-normal: 400;
+  --bh-weight-medium: 500;
+  --bh-weight-semibold: 600;
+
+  /* ——— Line heights ——— */
+  --bh-leading-none: 1.05;
+  --bh-leading-tight: 1.12;
+  --bh-leading-snug: 1.25;
+  --bh-leading-normal: 1.5;
+  --bh-leading-relaxed: 1.625;
+  --bh-leading-loose: 2;
+
+  /* ——— Letter spacing ——— */
+  --bh-tracking-tighter: -0.02em;
+  --bh-tracking-tight: -0.01em;
+  --bh-tracking-nav: 0.28em;
+  --bh-tracking-nav-md: 0.32em;
+  --bh-tracking-eyebrow: 0.42em;
+  --bh-tracking-label: 0.28em;
+  --bh-tracking-cta: 0.18em;
+  --bh-tracking-index: 0.35em;
+  --bh-tracking-pending: 0.32em;
+  --bh-tracking-link: 0.08em;
+  --bh-tracking-scroll: 0.4em;
+
+  /* ——— Spacing scale ——— */
+  --bh-space-1: 0.25rem;
+  --bh-space-2: 0.5rem;
+  --bh-space-3: 0.75rem;
+  --bh-space-4: 1rem;
+  --bh-space-5: 1.25rem;
+  --bh-space-6: 1.5rem;
+  --bh-space-8: 2rem;
+  --bh-space-10: 2.5rem;
+  --bh-space-12: 3rem;
+  --bh-space-16: 4rem;
+  --bh-space-20: 5rem;
+  --bh-space-24: 6rem;
+  --bh-space-28: 7rem;
+  --bh-space-32: 8rem;
+  --bh-space-40: 10rem;
+  --bh-space-48: 12rem;
+
+  /* ——— Layout / content widths ——— */
+  --bh-width-content: 72rem;
+  --bh-width-wide: 64rem;
+  --bh-width-medium: 56rem;
+  --bh-width-narrow: 48rem;
+  --bh-width-prose: 42rem;
+  --bh-width-compact: 36rem;
+
+  /* ——— Section spacing ——— */
+  --bh-section-px: 1.25rem;
+  --bh-section-px-md: 2.5rem;
+  --bh-section-py: 7rem;
+  --bh-section-py-md: 10rem;
+  --bh-section-py-lg: 12rem;
+  --bh-section-py-compact: 5rem;
+  --bh-section-py-compact-md: 7rem;
+
+  /* ——— Border radii ——— */
+  --bh-radius-sm: 0.125rem;
+  --bh-radius-md: 0.25rem;
+  --bh-radius-full: 9999px;
+
+  /* ——— Borders ——— */
+  --bh-border-subtle: oklch(0.42 0.14 305 / 0.1);
+  --bh-border-default: oklch(0.42 0.14 305 / 0.15);
+  --bh-border-strong: oklch(0.42 0.14 305 / 0.25);
+  --bh-border-on-dark: oklch(1 0 0 / 0.15);
+  --bh-border-on-dark-hover: oklch(0.9 0.04 85 / 0.4);
+
+  /* ——— Shadows ——— */
+  --bh-shadow-cta:
+    0 20px 50px -18px oklch(0.28 0.12 300 / 0.55),
+    0 0 40px -12px oklch(0.72 0.12 320 / 0.35);
+  --bh-shadow-cta-hover:
+    0 28px 60px -16px oklch(0.28 0.12 300 / 0.6),
+    0 0 50px -10px oklch(0.72 0.12 320 / 0.45);
+  --bh-shadow-hero-cta: 0 20px 60px -16px oklch(0.14 0.035 300 / 0.55);
+  --bh-shadow-panel:
+    0 20px 50px -24px oklch(0.28 0.12 300 / 0.2),
+    inset 0 1px 0 oklch(1 0 0 / 0.6);
+
+  /* ——— Motion ——— */
+  --bh-duration-fast: 300ms;
+  --bh-duration-base: 500ms;
+  --bh-duration-slow: 700ms;
+  --bh-duration-reveal: 1100ms;
+  --bh-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --bh-ease-in-out: ease-in-out;
+
+  /* ——— Z-index layers ——— */
+  --bh-z-base: 0;
+  --bh-z-content: 10;
+  --bh-z-nav: 20;
+  --bh-z-overlay: 40;
+  --bh-z-skip: 50;
+}

@@ -1,0 +1,594 @@
+{
+  "generatedAt": "2026-08-25T23:40:00.000Z",
+  "secretsPrinted": false,
+  "secretsExposed": false,
+  "markedComplete": false,
+  "scorecard": {
+    "overallVendorCapacity": "FAIL",
+    "overallBillingContinuity": "FAIL",
+    "knownLaunchStoppingVendorCondition": "YES",
+    "launchFunctions": {
+      "registration": "PASS",
+      "lumina": "PASS",
+      "email": "PASS",
+      "hosting": "PASS",
+      "database": "PASS",
+      "payments": "FAIL",
+      "founderMedia": "PASS"
+    }
+  },
+  "vendorResults": [
+    {
+      "vendor": "Vercel",
+      "vendorId": "vercel",
+      "productionPlan": "FOUNDER VERIFICATION REQUIRED — Vercel Billing",
+      "planSufficient": "FOUNDER VERIFICATION REQUIRED",
+      "billing": "FOUNDER VERIFICATION REQUIRED — no past-due evidence found",
+      "paymentMethod": "FOUNDER VERIFICATION REQUIRED",
+      "usageQuota": "FOUNDER VERIFICATION REQUIRED — bandwidth / function / build / cron limits in Vercel Billing",
+      "remainingCapacity": "Production host responding; quota headroom is Founder dashboard",
+      "rateLimits": "FOUNDER VERIFICATION REQUIRED",
+      "quotas": "FOUNDER VERIFICATION REQUIRED",
+      "creditsBalance": "NOT APPLICABLE OR FOUNDER DASHBOARD",
+      "serviceStatus": "OPERATIONAL",
+      "knownIncident": "NONE KNOWN",
+      "knownAccountRestriction": "NONE KNOWN",
+      "knownPaymentFailure": "NONE KNOWN",
+      "knownExpirationRisk": "NONE KNOWN FROM THIS WORKSTATION",
+      "launchFunction": "Hosting / registration / Lumina UI / Founder media delivery",
+      "productionAccountActive": "PASS",
+      "capacityRating": "YELLOW",
+      "launchInterruptionRisk": "LOW for current host. Plan/quota exhaustion cannot be ruled out without Billing.",
+      "knownLaunchRisk": "NONE KNOWN beyond unverified plan/quota headroom",
+      "founderVerificationRequired": "Open Vercel → Billing and confirm the production team shows an active payment method, no past-due balance, and plan headroom for August 31. Confirm required env names are assigned to Production (do not paste values)."
+    },
+    {
+      "vendor": "Supabase Postgres",
+      "vendorId": "supabase",
+      "productionPlan": "FOUNDER VERIFICATION REQUIRED — Supabase Billing",
+      "planSufficient": "FOUNDER VERIFICATION REQUIRED",
+      "billing": "FOUNDER VERIFICATION REQUIRED — no past-due evidence found",
+      "paymentMethod": "FOUNDER VERIFICATION REQUIRED",
+      "usageQuota": "FOUNDER VERIFICATION REQUIRED — database size, connections, storage",
+      "remainingCapacity": "Production /api/ops/health database=ok (2026-08-25). Plan/storage/connection headroom is Founder dashboard. Status page may show unrelated regional/JWT incidents.",
+      "rateLimits": "FOUNDER VERIFICATION REQUIRED",
+      "quotas": "FOUNDER VERIFICATION REQUIRED",
+      "creditsBalance": "NOT APPLICABLE OR FOUNDER DASHBOARD",
+      "serviceStatus": "DEGRADED",
+      "knownIncident": "DEGRADED: 401 errors due to JWT rejections",
+      "knownAccountRestriction": "NONE KNOWN",
+      "knownPaymentFailure": "NONE KNOWN",
+      "knownExpirationRisk": "NONE KNOWN FROM THIS WORKSTATION",
+      "launchFunction": "Database writes / analytics / support tickets / Fab 5 state",
+      "productionAccountActive": "PASS",
+      "capacityRating": "YELLOW",
+      "launchInterruptionRisk": "LOW if health remains ok. Pause/quota still Founder-confirmed.",
+      "knownLaunchRisk": "Current Supabase status: 401 errors due to JWT rejections. Production /api/ops/health database=ok; this is not treated as this project's query-down.",
+      "founderVerificationRequired": "Open Supabase → project Settings → Billing and confirm the production project is not paused, billing is current, and database/storage/connection usage is within plan limits. Do not paste connection strings."
+    },
+    {
+      "vendor": "Stripe",
+      "vendorId": "stripe",
+      "productionPlan": "Stripe processing — FOUNDER VERIFICATION REQUIRED for Stripe Billing products",
+      "planSufficient": "NO",
+      "billing": "FAIL — Production Stripe key is Test/Sandbox, not Live",
+      "paymentMethod": "FAIL",
+      "usageQuota": "FOUNDER VERIFICATION REQUIRED — processing volume / Radar / API rate limits",
+      "remainingCapacity": "Vercel Production STRIPE_SECRET_KEY is Stripe Test/Sandbox. Live product catalog cannot be read with this key. STRIPE_PRICE_* and STRIPE_WEBHOOK_SECRET remain absent. Tax-ID review was not opened or changed.",
+      "rateLimits": "FOUNDER VERIFICATION REQUIRED",
+      "quotas": "FOUNDER VERIFICATION REQUIRED",
+      "creditsBalance": "NOT APPLICABLE",
+      "serviceStatus": "UNABLE TO VERIFY",
+      "knownIncident": "UNABLE TO VERIFY: status.stripe.com reachable; v2 JSON 404 and /current is stale — not treated as launch-day proof",
+      "knownAccountRestriction": "NONE KNOWN — tax-ID review status is Founder Dashboard / not mutated",
+      "knownPaymentFailure": "NONE KNOWN",
+      "knownExpirationRisk": "NONE KNOWN FROM THIS WORKSTATION",
+      "launchFunction": "Payments / Checkout / webhooks",
+      "productionAccountActive": "PASS — key name present (value not printed)",
+      "capacityRating": "RED",
+      "launchInterruptionRisk": "HIGH — Production is wired to Stripe Test/Sandbox. Live Checkout cannot start until STRIPE_SECRET_KEY is replaced with the Live secret key, then live prices and webhook secret are added.",
+      "knownLaunchRisk": "Vercel Production STRIPE_SECRET_KEY is Stripe Test/Sandbox, not Live",
+      "founderVerificationRequired": "In Stripe Dashboard copy the Live (not Test) Secret key. In Vercel Production replace STRIPE_SECRET_KEY with that Live key (Sensitive). Do not paste the key into chat. Then re-run Row 73 so live price IDs and the live webhook secret can be connected. Confirm tax-ID review status without changing legal/tax identity. Do not create a charge, refund, or payout."
+    },
+    {
+      "vendor": "Google Workspace",
+      "vendorId": "google_workspace",
+      "productionPlan": "FOUNDER VERIFICATION REQUIRED — vendor dashboard",
+      "planSufficient": "FOUNDER VERIFICATION REQUIRED",
+      "billing": "FOUNDER VERIFICATION REQUIRED — no past-due evidence found",
+      "paymentMethod": "FOUNDER VERIFICATION REQUIRED",
+      "usageQuota": "FOUNDER VERIFICATION REQUIRED — mailbox / SMTP sending limits",
+      "remainingCapacity": "Row 153 delivery PASS 2026-08-21; SMTP send was not rerun",
+      "rateLimits": "FOUNDER VERIFICATION REQUIRED",
+      "quotas": "FOUNDER VERIFICATION REQUIRED",
+      "creditsBalance": "NOT APPLICABLE OR FOUNDER DASHBOARD",
+      "serviceStatus": "UNABLE TO VERIFY",
+      "knownIncident": "NONE KNOWN",
+      "knownAccountRestriction": "NONE KNOWN",
+      "knownPaymentFailure": "NONE KNOWN",
+      "knownExpirationRisk": "NONE KNOWN FROM THIS WORKSTATION",
+      "launchFunction": "Email / support acknowledgment / transactional SMTP",
+      "productionAccountActive": "PASS — Row 153 SMTP delivery",
+      "capacityRating": "YELLOW",
+      "launchInterruptionRisk": "LOW given Row 153 PASS. Billing/disablement still Founder-confirmed.",
+      "knownLaunchRisk": "NONE KNOWN beyond unverified Workspace billing",
+      "founderVerificationRequired": "Open Google Admin → Billing and confirm Workspace for thebackhalf.org is active with a current payment method. Confirm support@thebackhalf.org and kimberly@thebackhalf.org remain enabled. Do not paste app passwords. Do not send a test message unless SMTP has failed."
+    },
+    {
+      "vendor": "OpenAI",
+      "vendorId": "openai",
+      "productionPlan": "FOUNDER VERIFICATION REQUIRED — vendor dashboard",
+      "planSufficient": "FOUNDER VERIFICATION REQUIRED",
+      "billing": "FOUNDER VERIFICATION REQUIRED — no past-due evidence found",
+      "paymentMethod": "FOUNDER VERIFICATION REQUIRED",
+      "usageQuota": "FOUNDER VERIFICATION REQUIRED — TPM/RPM/credit balance",
+      "remainingCapacity": "Live models read not confirmed from this workstation",
+      "rateLimits": "FOUNDER VERIFICATION REQUIRED",
+      "quotas": "FOUNDER VERIFICATION REQUIRED",
+      "creditsBalance": "FOUNDER VERIFICATION REQUIRED — do not purchase credits from this row",
+      "serviceStatus": "OPERATIONAL",
+      "knownIncident": "NONE KNOWN",
+      "knownAccountRestriction": "NONE KNOWN",
+      "knownPaymentFailure": "NONE KNOWN",
+      "knownExpirationRisk": "NONE KNOWN FROM THIS WORKSTATION",
+      "launchFunction": "Fab 5 hosted agents (not Lumina)",
+      "productionAccountActive": "PASS — production key name or live models read (value not printed)",
+      "capacityRating": "YELLOW",
+      "launchInterruptionRisk": "LOW for Architect Lumina (first-party). MEDIUM for Fab 5 hosted cycles if billing/quota fails.",
+      "knownLaunchRisk": "NONE KNOWN for Lumina. Fab 5 live cycles depend on OpenAI billing/quota.",
+      "founderVerificationRequired": "Open OpenAI → Settings → Billing and confirm API billing is enabled, a payment method is current, and usage/quota headroom remains for Fab 5 hosted cycles. Confirm OPENAI_API_KEY is set on Vercel Production. Do not paste the key. Do not buy credits without Founder approval."
+    },
+    {
+      "vendor": "HeyGen",
+      "vendorId": "heygen",
+      "productionPlan": "FOUNDER VERIFICATION REQUIRED only if remaining pre-launch media still needs generation",
+      "planSufficient": "YES for launch-day playback of already-rendered files",
+      "billing": "NOT A LAUNCH-DAY RUNTIME BILLING DEPENDENCY",
+      "paymentMethod": "FOUNDER VERIFICATION REQUIRED",
+      "usageQuota": "NOT APPLICABLE to playback of existing mp4 files",
+      "remainingCapacity": "28 approved mp4 files present in public/videos",
+      "rateLimits": "NOT APPLICABLE AT RUNTIME",
+      "quotas": "NOT APPLICABLE AT RUNTIME",
+      "creditsBalance": "NOT APPLICABLE AT RUNTIME",
+      "serviceStatus": "OPERATIONAL",
+      "knownIncident": "NONE KNOWN",
+      "knownAccountRestriction": "NONE KNOWN",
+      "knownPaymentFailure": "NONE KNOWN",
+      "knownExpirationRisk": "NONE KNOWN FROM THIS WORKSTATION",
+      "launchFunction": "Founder media production only — not August 31 playback",
+      "productionAccountActive": "NOT REQUIRED FOR LAUNCH-DAY PLAYBACK",
+      "capacityRating": "GREEN",
+      "launchInterruptionRisk": "NONE for playback of existing approved media. MEDIUM for unfinished media production rows.",
+      "knownLaunchRisk": "NONE for August 31 runtime playback",
+      "founderVerificationRequired": "Open HeyGen billing only if remaining pre-launch media still needs generation. Do not regenerate approved Founder media. Launch-day playback does not require HeyGen to be online."
+    },
+    {
+      "vendor": "Cursor",
+      "vendorId": "cursor",
+      "productionPlan": "FOUNDER VERIFICATION REQUIRED — vendor dashboard",
+      "planSufficient": "YES for August 31 customer paths (not a runtime dependency)",
+      "billing": "FOUNDER VERIFICATION REQUIRED if on a paid plan",
+      "paymentMethod": "FOUNDER VERIFICATION REQUIRED",
+      "usageQuota": "CURSOR_API_KEY is absent from Vercel Production — hosted AOS engineering stays blocked_unconfigured",
+      "remainingCapacity": "Live site does not consume Cursor quota. AOS ticks still run orchestration without Cloud Agent launches.",
+      "rateLimits": "NOT APPLICABLE AT CUSTOMER RUNTIME",
+      "quotas": "FOUNDER VERIFICATION REQUIRED",
+      "creditsBalance": "NOT APPLICABLE OR FOUNDER DASHBOARD",
+      "serviceStatus": "OPERATIONAL",
+      "knownIncident": "NONE KNOWN",
+      "knownAccountRestriction": "NONE KNOWN",
+      "knownPaymentFailure": "NONE KNOWN",
+      "knownExpirationRisk": "NONE KNOWN FROM THIS WORKSTATION",
+      "launchFunction": "Founder engineering workstation + hosted AOS Cloud Agents (not website runtime)",
+      "productionAccountActive": "PASS — development tool present; Cloud Agent key is a separate Production env",
+      "capacityRating": "YELLOW",
+      "launchInterruptionRisk": "LOW for live customer paths. HIGH for unattended AOS engineering until CURSOR_API_KEY is set. MEDIUM for incident engineering if Cursor is down.",
+      "knownLaunchRisk": "AOS Cloud Agent engineering cannot launch until CURSOR_API_KEY is on Vercel Production. This does not stop registration, Lumina, email, hosting, database, payments, or Founder media.",
+      "founderVerificationRequired": "Open Cursor → Billing and confirm the Founder seat is current if on a paid plan. Add CURSOR_API_KEY to Vercel Production from Cursor Dashboard → API Keys if unattended Cloud Agent engineering is required before launch. Do not provision Cursor seats to AI executives."
+    },
+    {
+      "vendor": "GitHub",
+      "vendorId": "github",
+      "productionPlan": "FOUNDER VERIFICATION REQUIRED — vendor dashboard",
+      "planSufficient": "YES for already-deployed production until a new deploy is required",
+      "billing": "FOUNDER VERIFICATION REQUIRED if on a paid GitHub plan",
+      "paymentMethod": "FOUNDER VERIFICATION REQUIRED",
+      "usageQuota": "NOT A CUSTOMER-RUNTIME QUOTA",
+      "remainingCapacity": "github.com/TheBackHalf/website",
+      "rateLimits": "FOUNDER VERIFICATION REQUIRED",
+      "quotas": "FOUNDER VERIFICATION REQUIRED",
+      "creditsBalance": "NOT APPLICABLE OR FOUNDER DASHBOARD",
+      "serviceStatus": "OPERATIONAL",
+      "knownIncident": "NONE KNOWN",
+      "knownAccountRestriction": "NONE KNOWN",
+      "knownPaymentFailure": "NONE KNOWN",
+      "knownExpirationRisk": "NONE KNOWN FROM THIS WORKSTATION",
+      "launchFunction": "Source repository / Vercel deploy origin",
+      "productionAccountActive": "PASS",
+      "capacityRating": "GREEN",
+      "launchInterruptionRisk": "LOW for the already-deployed site. HIGH for new deploys if GitHub is down.",
+      "knownLaunchRisk": "NONE for current production traffic",
+      "founderVerificationRequired": "Open GitHub → Settings → Billing and confirm the org/account payment method is current if on a paid plan. Do not paste tokens."
+    },
+    {
+      "vendor": "Domain registrar / DNS for thebackhalf.org",
+      "vendorId": "domain_dns",
+      "productionPlan": "FOUNDER VERIFICATION REQUIRED — registrar identity is not in the repository",
+      "planSufficient": "NO for canonical URL until Row 75 DNS is complete",
+      "billing": "FOUNDER VERIFICATION REQUIRED at the actual registrar — Row 75",
+      "paymentMethod": "FOUNDER VERIFICATION REQUIRED",
+      "usageQuota": "NOT A USAGE-QUOTA SERVICE — expiration/auto-renew is the risk",
+      "remainingCapacity": "SOA present (NS hint: anirban.ns.cloudflare.com); no A/AAAA from this workstation. Vercel host remains the verified origin. Registrar brand is not assumed from nameservers.",
+      "rateLimits": "NOT APPLICABLE",
+      "quotas": "NOT APPLICABLE",
+      "creditsBalance": "NOT APPLICABLE",
+      "serviceStatus": "UNABLE TO VERIFY",
+      "knownIncident": "NONE KNOWN",
+      "knownAccountRestriction": "NONE KNOWN",
+      "knownPaymentFailure": "NONE KNOWN",
+      "knownExpirationRisk": "FOUNDER VERIFICATION REQUIRED — Row 75",
+      "launchFunction": "Canonical public URL (thebackhalf.org)",
+      "productionAccountActive": "PASS — domain exists (SOA)",
+      "capacityRating": "RED",
+      "launchInterruptionRisk": "CRITICAL for https://thebackhalf.org. Existing Vercel host remains a technical fallback.",
+      "knownLaunchRisk": "Canonical DNS A/AAAA missing — assigned to Row 75. Do not change DNS from Row 73.",
+      "founderVerificationRequired": "On Row 75, identify the registrar, confirm auto-renew/payment method, and attach DNS/SSL for thebackhalf.org. Do not change DNS from Row 73."
+    },
+    {
+      "vendor": "Instagram (@backhalfco)",
+      "vendorId": "instagram",
+      "productionPlan": "FOUNDER VERIFICATION REQUIRED — vendor dashboard",
+      "planSufficient": "YES for unpaid publishing; paid boosts are optional",
+      "billing": "FOUNDER VERIFICATION REQUIRED only if a paid Meta/Instagram product is attached",
+      "paymentMethod": "FOUNDER VERIFICATION REQUIRED",
+      "usageQuota": "NOT AN APPLICATION API QUOTA",
+      "remainingCapacity": "Account established per Row 76",
+      "rateLimits": "FOUNDER VERIFICATION REQUIRED",
+      "quotas": "FOUNDER VERIFICATION REQUIRED",
+      "creditsBalance": "NOT APPLICABLE OR FOUNDER DASHBOARD",
+      "serviceStatus": "UNABLE TO VERIFY",
+      "knownIncident": "NONE KNOWN",
+      "knownAccountRestriction": "NONE KNOWN",
+      "knownPaymentFailure": "NONE KNOWN",
+      "knownExpirationRisk": "NONE KNOWN FROM THIS WORKSTATION",
+      "launchFunction": "Launch communications (@backhalfco) — not website runtime",
+      "productionAccountActive": "PASS — Row 76 Founder-confirmed handle",
+      "capacityRating": "GREEN",
+      "launchInterruptionRisk": "HIGH for launch social publishing if the account is locked. LOW for website/payments.",
+      "knownLaunchRisk": "NONE KNOWN for website runtime. MFA/recovery remains Row 74.",
+      "founderVerificationRequired": "Confirm Instagram @backhalfco remains active. Open Meta billing only if a paid boost is in use. Do not change the handle."
+    },
+    {
+      "vendor": "TikTok (@backhalfco)",
+      "vendorId": "tiktok",
+      "productionPlan": "FOUNDER VERIFICATION REQUIRED — vendor dashboard",
+      "planSufficient": "YES for unpaid publishing; paid products are optional",
+      "billing": "FOUNDER VERIFICATION REQUIRED only if a paid TikTok product is attached",
+      "paymentMethod": "FOUNDER VERIFICATION REQUIRED",
+      "usageQuota": "NOT AN APPLICATION API QUOTA",
+      "remainingCapacity": "Account established per Row 76",
+      "rateLimits": "FOUNDER VERIFICATION REQUIRED",
+      "quotas": "FOUNDER VERIFICATION REQUIRED",
+      "creditsBalance": "NOT APPLICABLE OR FOUNDER DASHBOARD",
+      "serviceStatus": "UNABLE TO VERIFY",
+      "knownIncident": "NONE KNOWN",
+      "knownAccountRestriction": "NONE KNOWN",
+      "knownPaymentFailure": "NONE KNOWN",
+      "knownExpirationRisk": "NONE KNOWN FROM THIS WORKSTATION",
+      "launchFunction": "Launch communications (@backhalfco) — not website runtime",
+      "productionAccountActive": "PASS — Row 76 Founder-confirmed handle",
+      "capacityRating": "GREEN",
+      "launchInterruptionRisk": "HIGH for launch social publishing if the account is locked. LOW for website/payments.",
+      "knownLaunchRisk": "NONE KNOWN for website runtime. MFA/recovery remains Row 74.",
+      "founderVerificationRequired": "Confirm TikTok @backhalfco remains active. Billing only if a paid product is in use. Do not change the handle."
+    }
+  ],
+  "stripeLive": {
+    "liveAccountActivated": "FOUNDER VERIFICATION REQUIRED",
+    "livePaymentsEnabled": "FOUNDER VERIFICATION REQUIRED",
+    "payoutDestinationConfigured": "FOUNDER VERIFICATION REQUIRED",
+    "productionIntegration": "PASS",
+    "productionWebhooks": "FOUNDER VERIFICATION REQUIRED",
+    "knownRestrictions": "NONE"
+  },
+  "founderMedia": {
+    "heygenRuntimeRequiredAugust31": "NO",
+    "elevenLabsRuntimeRequiredAugust31": "NO",
+    "approvedRenderedMediaPreserved": "PASS",
+    "founderMediaLaunchRisk": "NONE — 28 static mp4s served by Vercel; HeyGen/ElevenLabs are not launch-day runtime.",
+    "mp4Count": 28
+  },
+  "capacity": {
+    "green": [
+      "HeyGen",
+      "GitHub",
+      "Instagram (@backhalfco)",
+      "TikTok (@backhalfco)"
+    ],
+    "yellow": [
+      "Vercel",
+      "Supabase Postgres",
+      "Google Workspace",
+      "OpenAI",
+      "Cursor"
+    ],
+    "red": [
+      "Stripe",
+      "Domain registrar / DNS for thebackhalf.org"
+    ]
+  },
+  "founderVerificationCount": 12,
+  "actualLaunchBlockers": [
+    "Canonical domain thebackhalf.org has no A/AAAA from this workstation. Production remains reachable on https://website-two-psi-49.vercel.app. Dedicated follow-up is Row 75. Do not change DNS from Row 73.",
+    "Vercel Production has STRIPE_SECRET_KEY but is missing STRIPE_PRICE_BLUEPRINT / STRIPE_PRICE_BUNDLE / STRIPE_PRICE_COMMUNITY and/or STRIPE_WEBHOOK_SECRET. Live Checkout cannot be configured. Tax-ID review was not modified.",
+    "Vercel Production STRIPE_SECRET_KEY is Stripe Test/Sandbox, not Live. Live products, live price IDs, and a live webhook cannot be connected through this key. Tax-ID review was not modified."
+  ],
+  "remainingRow73Blockers": [
+    "Stripe: Vercel Production STRIPE_SECRET_KEY is Stripe Test/Sandbox, not Live",
+    "Vercel Production STRIPE_SECRET_KEY is Stripe Test/Sandbox, not Live."
+  ],
+  "regression": {
+    "registration": "PASS",
+    "loginAuth": "PASS",
+    "lumina": "PASS",
+    "emailSupport": "PASS",
+    "hosting": "PASS",
+    "database": "PASS",
+    "payments": "PASS",
+    "founderMedia": "PASS",
+    "row84": "PASS",
+    "row150": "PASS",
+    "row151": "PASS",
+    "row153": "PASS",
+    "securityPrivacy": "PASS",
+    "runtimeConsole": "PASS",
+    "overall": "PASS"
+  },
+  "evidence": {
+    "productionHost": "https://website-two-psi-49.vercel.app",
+    "productionHealth": {
+      "httpStatus": 200,
+      "ok": true,
+      "environment": "production",
+      "application": "ok",
+      "database": "ok"
+    },
+    "productionPages": [
+      {
+        "path": "/",
+        "status": 200
+      },
+      {
+        "path": "/register",
+        "status": 200
+      },
+      {
+        "path": "/login",
+        "status": 200
+      },
+      {
+        "path": "/lumina",
+        "status": 200
+      },
+      {
+        "path": "/support",
+        "status": 200
+      },
+      {
+        "path": "/checkout",
+        "status": 200
+      }
+    ],
+    "postgresLocal": {
+      "configured": false,
+      "select1": "unconfigured"
+    },
+    "vercel": {
+      "inspectOk": false,
+      "authenticated": false,
+      "productionReady": false,
+      "productionReadyState": null,
+      "envNamePresence": {
+        "AUTH_SECRET": true,
+        "POSTGRES_URL": true,
+        "POSTGRES_URL_NON_POOLING": true,
+        "STRIPE_SECRET_KEY": true,
+        "STRIPE_WEBHOOK_SECRET": false,
+        "STRIPE_PRICE_BLUEPRINT": false,
+        "STRIPE_PRICE_BUNDLE": false,
+        "STRIPE_PRICE_COMMUNITY": false,
+        "SMTP_HOST": true,
+        "SMTP_PORT": true,
+        "SMTP_USER": true,
+        "SMTP_PASSWORD": true,
+        "SMTP_FROM": true,
+        "OPENAI_API_KEY": true,
+        "CRON_SECRET": true,
+        "CURSOR_API_KEY": false
+      },
+      "cliEnvNameCount": 25,
+      "cronJobCount": 7,
+      "note": "token_absent"
+    },
+    "stripe": {
+      "localKeyNamePresent": false,
+      "localKeyClass": "absent",
+      "balanceOk": false,
+      "livemode": null,
+      "sandboxKey": null,
+      "balanceNote": "key_absent",
+      "account": null,
+      "webhooks": null,
+      "vercelKeyNamePresent": true,
+      "vercelKeyClass": "test",
+      "vercelWebhookSecretNamePresent": false,
+      "vercelPriceNamesPresent": false,
+      "codeWebhookRoutePresent": true,
+      "codeCheckoutPresent": true
+    },
+    "openai": {
+      "localKeyNamePresent": false,
+      "vercelKeyNamePresent": true,
+      "modelsOk": false,
+      "note": "key_absent",
+      "luminaImportsOpenAi": false
+    },
+    "aos": {
+      "cursorApiKeyPresent": false,
+      "twilioPresent": false,
+      "imapPresent": false
+    },
+    "email": {
+      "row153Complete": true,
+      "smtpDeliveryPass": true,
+      "smtpAuthRerun": "not_rerun",
+      "localSmtpNamesPresent": true,
+      "vercelSmtpNamesPresent": true,
+      "mailbox": "support@thebackhalf.org"
+    },
+    "dns": {
+      "soaPresent": true,
+      "aCount": 0,
+      "aaaaCount": 0,
+      "nameserverHint": "anirban.ns.cloudflare.com",
+      "lookupMethod": "dns_over_https_cloudflare_dns_json"
+    },
+    "github": {
+      "originHost": "github.com",
+      "originRepo": "TheBackHalf/website",
+      "configured": true
+    },
+    "founderMedia": {
+      "mp4Count": 28,
+      "heygenRuntimeApiAbsent": true,
+      "elevenLabsAbsent": true
+    },
+    "statusPages": [
+      {
+        "vendorId": "vercel",
+        "url": "https://www.vercel-status.com",
+        "httpStatus": 200,
+        "serviceStatus": "OPERATIONAL",
+        "indicator": "none",
+        "incidentName": null
+      },
+      {
+        "vendorId": "supabase",
+        "url": "https://status.supabase.com",
+        "httpStatus": 200,
+        "serviceStatus": "DEGRADED",
+        "indicator": "minor",
+        "incidentName": "401 errors due to JWT rejections"
+      },
+      {
+        "vendorId": "stripe",
+        "url": "https://status.stripe.com",
+        "httpStatus": 200,
+        "serviceStatus": "UNABLE TO VERIFY",
+        "indicator": null,
+        "incidentName": "status.stripe.com reachable; v2 JSON 404 and /current is stale — not treated as launch-day proof"
+      },
+      {
+        "vendorId": "google_workspace",
+        "url": "https://www.google.com/appsstatus/dashboard/",
+        "httpStatus": 200,
+        "serviceStatus": "UNABLE TO VERIFY",
+        "indicator": null,
+        "incidentName": null
+      },
+      {
+        "vendorId": "openai",
+        "url": "https://status.openai.com",
+        "httpStatus": 200,
+        "serviceStatus": "OPERATIONAL",
+        "indicator": "none",
+        "incidentName": null
+      },
+      {
+        "vendorId": "heygen",
+        "url": "https://status.heygen.com",
+        "httpStatus": 200,
+        "serviceStatus": "OPERATIONAL",
+        "indicator": "none",
+        "incidentName": null
+      },
+      {
+        "vendorId": "cursor",
+        "url": "https://status.cursor.com",
+        "httpStatus": 200,
+        "serviceStatus": "OPERATIONAL",
+        "indicator": "none",
+        "incidentName": null
+      },
+      {
+        "vendorId": "github",
+        "url": "https://www.githubstatus.com",
+        "httpStatus": 200,
+        "serviceStatus": "OPERATIONAL",
+        "indicator": "none",
+        "incidentName": null
+      },
+      {
+        "vendorId": "instagram",
+        "url": "https://metastatus.com",
+        "httpStatus": 200,
+        "serviceStatus": "UNABLE TO VERIFY",
+        "indicator": null,
+        "incidentName": null
+      },
+      {
+        "vendorId": "tiktok",
+        "url": "https://status.tiktok.com",
+        "httpStatus": 0,
+        "serviceStatus": "UNABLE TO VERIFY",
+        "indicator": null,
+        "incidentName": null
+      }
+    ],
+    "localEnvNameCount": 6
+  },
+  "http": {
+    "review": {
+      "path": "/_internal/row73-vendor-capacity-billing-review",
+      "status": 200
+    },
+    "register": {
+      "path": "/register",
+      "status": 200
+    },
+    "login": {
+      "path": "/login",
+      "status": 200
+    },
+    "lumina": {
+      "path": "/lumina",
+      "status": 200
+    },
+    "support": {
+      "path": "/support",
+      "status": 200
+    },
+    "health": {
+      "path": "/api/ops/health",
+      "status": 200
+    },
+    "admin": {
+      "path": "/ops/admin",
+      "status": 307
+    },
+    "kpi": {
+      "path": "/ops/admin/launch-kpi",
+      "status": 307
+    },
+    "dashboard": {
+      "path": "/ops/admin/launch-dashboard",
+      "status": 307
+    },
+    "checkout": {
+      "path": "/checkout",
+      "status": 200
+    }
+  },
+  "readyForFounderAcceptance": false,
+  "finalStatus": "ROW 73 IS NOT READY — Stripe: Vercel Production STRIPE_SECRET_KEY is Stripe Test/Sandbox, not Live"
+}

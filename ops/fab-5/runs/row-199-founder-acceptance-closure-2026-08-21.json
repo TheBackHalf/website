@@ -1,0 +1,79 @@
+{
+  "row": 199,
+  "event": "founder-acceptance-closure",
+  "mode": "administrative-closure-only",
+  "auditRerun": false,
+  "communicationsRewritten": false,
+  "communicationsResent": false,
+  "communicationsScheduled": false,
+  "applicationCodeChanged": false,
+  "launchRoadmapChanged": false,
+  "founderNotesChanged": false,
+  "otherRowsChanged": false,
+  "founderAcceptance": "YES",
+  "founderAcceptedAt": "2026-08-21",
+  "accepted": {
+    "founderVideo": true,
+    "launchEmail": true,
+    "instagram": true,
+    "tiktok": true,
+    "partnerNote": true,
+    "faqs": true,
+    "supportResponseScripts": true
+  },
+  "linkedinLaunchRequirement": "NO — FUTURE ENHANCEMENT",
+  "launchEmail": {
+    "fromName": "The Back Half",
+    "fromEmail": "kimberly@thebackhalf.org",
+    "subject": "THE BACK HALF IS HERE.",
+    "preheader": "You spent years becoming who you were supposed to be.",
+    "cta": "Become an Architect",
+    "destination": "https://thebackhalf.org/register",
+    "signOff": "In Gratitude",
+    "eighteenPlusSentenceRemovedFromEmail": true,
+    "productEighteenPlusEnforcementUnchanged": true,
+    "sentDuringClosure": false
+  },
+  "partnerNote": {
+    "founderAcceptance": "YES",
+    "signOff": "In Gratitude",
+    "bodyRewrittenDuringClosure": false,
+    "sentDuringClosure": false
+  },
+  "preserved": {
+    "august31LaunchDate": "YES",
+    "globalLifeDesignCompany": "YES",
+    "instagramBackhalfco": "YES",
+    "tiktokBackhalfco": "YES",
+    "communityOctober25": "YES",
+    "firstSixMonthsCommunityBenefit": "YES",
+    "eligibility18Plus": "YES",
+    "noRefunds": "YES",
+    "row50FounderVideos": "YES",
+    "row81InstagramTikTok": "YES",
+    "row83Faqs": "YES",
+    "row153SupportScripts": "YES"
+  },
+  "row202DependencyReconciled": true,
+  "row202DependencyReconciliationThisPass": "NOT REQUIRED — Launch-Day Runbook already records Launch Email and Partner Note as APPROVED / COMPLETE; no pending Founder approval reference remains",
+  "backgroundJobResultsReviewed": true,
+  "backgroundJobResultsBlockingRow199": false,
+  "preExistingTypecheckErrorsChanged": false,
+  "finalClosureConfirmedAt": "2026-08-21T20:57:00.000Z",
+  "row202RunbookFieldsUpdated": [
+    "August 31 launch email status → APPROVED / COMPLETE",
+    "Launch email communications-table status → APPROVED / COMPLETE",
+    "Partner note communications-table status → APPROVED / COMPLETE"
+  ],
+  "verificationEvidencePreserved": [
+    "ops/fab-5/ROW-199-LAUNCH-COMMUNICATIONS-VERIFICATION.md",
+    "ops/fab-5/ROW-199-PROPOSED-LAUNCH-EMAIL.md",
+    "ops/fab-5/ROW-199-PROPOSED-PARTNER-NOTE.md",
+    "ops/fab-5/runs/row-199-launch-communications-verification-2026-08-21.json"
+  ],
+  "percentComplete": 100,
+  "status": "Complete",
+  "remainingBlockers": "NONE",
+  "unexpectedChanges": "NONE",
+  "generatedAt": "2026-08-21T20:52:00.000Z"
+}

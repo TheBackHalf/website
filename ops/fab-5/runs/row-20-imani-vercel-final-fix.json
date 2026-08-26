@@ -1,0 +1,122 @@
+{
+  "row": 20,
+  "portion": "imani_vercel_machine_access_final_fix",
+  "generatedAt": "2026-08-18T12:22:31.930Z",
+  "productionMutated": false,
+  "cli": {
+    "version": "59.1.4",
+    "linkedProject": "website",
+    "officialProjectTokenCommand": "vercel project token",
+    "officialProjectTokenKind": "short_lived_oidc_jwt",
+    "oidcRestProjectRead": "http_403_forbidden",
+    "tokensAddProjectScoped": "http_403_cannot_create_tokens_for_this_app"
+  },
+  "inspect": {
+    "ok": false,
+    "authenticated": false,
+    "project": "website",
+    "tokenPresent": true,
+    "tokenPrefixClass": "vercel_project_token_prefix",
+    "productionReady": false,
+    "aliasCount": 0,
+    "envNameCount": 0,
+    "rollbackTargetCount": 0,
+    "endpoints": [
+      {
+        "path": "/v2/user",
+        "usedTeamId": false,
+        "status": 403,
+        "code": "forbidden"
+      },
+      {
+        "path": "/v9/projects/prj_FCi9UmpaTJVGQwlHeREMqDEfJsOy",
+        "usedTeamId": false,
+        "status": 403,
+        "code": "forbidden"
+      },
+      {
+        "path": "/v9/projects/prj_FCi9UmpaTJVGQwlHeREMqDEfJsOy",
+        "usedTeamId": true,
+        "status": 403,
+        "code": "forbidden"
+      },
+      {
+        "path": "/v9/projects/prj_FCi9UmpaTJVGQwlHeREMqDEfJsOy",
+        "usedTeamId": false,
+        "status": 403,
+        "code": "forbidden"
+      },
+      {
+        "path": "/v9/projects/website",
+        "usedTeamId": false,
+        "status": 403,
+        "code": "forbidden"
+      },
+      {
+        "path": "/v9/projects/website",
+        "usedTeamId": true,
+        "status": 403,
+        "code": "forbidden"
+      },
+      {
+        "path": "/v9/projects/website",
+        "usedTeamId": false,
+        "status": 403,
+        "code": "forbidden"
+      },
+      {
+        "path": "/v6/deployments",
+        "usedTeamId": false,
+        "status": 403,
+        "code": "forbidden"
+      },
+      {
+        "path": "/v6/deployments",
+        "usedTeamId": true,
+        "status": 403,
+        "code": "forbidden"
+      },
+      {
+        "path": "/v6/deployments",
+        "usedTeamId": false,
+        "status": 403,
+        "code": "forbidden"
+      },
+      {
+        "path": "/v6/deployments",
+        "usedTeamId": false,
+        "status": 403,
+        "code": "forbidden"
+      },
+      {
+        "path": "/v6/deployments",
+        "usedTeamId": true,
+        "status": 403,
+        "code": "forbidden"
+      },
+      {
+        "path": "/v6/deployments",
+        "usedTeamId": false,
+        "status": 403,
+        "code": "forbidden"
+      }
+    ],
+    "note": "project_read_http_403_forbidden;deployments_http_403_forbidden;user_endpoint=forbidden_or_unavailable"
+  },
+  "gates": {
+    "deployWithoutEvidenceDenied": true,
+    "approvedDeployAuthorizedNotExecuted": true,
+    "approvedRollbackAuthorizedNotExecuted": true,
+    "founderDomainBlocked": true,
+    "founderEnvSecretBlocked": true,
+    "founderBillingBlocked": true,
+    "founderIrreversibleBlocked": true,
+    "niaInspectDenied": true,
+    "michelleInspectDenied": true,
+    "imaniInspectAllowed": true,
+    "domainClassFounder": true
+  },
+  "secretExposureFound": "NO",
+  "limitation": "Vercel CLI 59.1.4 `vercel project token` mints a short-lived project OIDC JWT for outbound identity federation (AWS/GCP/custom APIs). Bearer use of that JWT against api.vercel.com returns HTTP 403 forbidden for back-half/website project, deployments, aliases, env names, and domains. `vercel tokens add --project prj_...` using the current OAuth CLI login returns 403 Cannot create tokens for this app. A Vercel REST project-scoped access token (vcp_) can be created only from the Account Tokens dashboard with Scope = team back-half → project website, or by authenticating token minting with a classic full-account token. The existing VERCEL_TOKEN also returns 403 for this project. No human Vercel member, mailbox, or fake identity is a supported substitute.",
+  "noSecretValues": true
+}

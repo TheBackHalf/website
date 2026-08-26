@@ -1,0 +1,482 @@
+{
+  "row": 20,
+  "deliverable": "Provision Fab 5 Systems and Access",
+  "generatedAt": "2026-08-17T20:04:31.903Z",
+  "technicalStatus": "PARTIALLY PROVISIONED",
+  "row20Complete": false,
+  "founderAcceptance": "PENDING",
+  "row21Started": false,
+  "systemsIdentified": 22,
+  "accessRegistry": "ops/fab-5/access-registry.json",
+  "envNamesPresent": [
+    "STRIPE_SECRET_KEY",
+    "SMTP_HOST",
+    "SMTP_PORT",
+    "SMTP_USER",
+    "SMTP_PASSWORD",
+    "SMTP_FROM",
+    "GOOGLE_CLIENT_ID",
+    "GOOGLE_CLIENT_SECRET"
+  ],
+  "probes": {
+    "openai": {
+      "ok": true,
+      "echoedKey": false,
+      "note": "authenticated_models_read"
+    },
+    "stripe": {
+      "ok": true,
+      "livemode": false,
+      "sandboxKey": true,
+      "note": "authenticated_balance_read"
+    },
+    "smtp": {
+      "ok": true,
+      "mailboxKind": "support_mailbox",
+      "note": "smtp_auth_verified_no_send"
+    },
+    "vercel": {
+      "ok": false,
+      "note": "token_absent_cli_unauthenticated"
+    },
+    "supabase": {
+      "ok": false,
+      "note": "url_absent_no_client"
+    },
+    "git": {
+      "ok": true,
+      "note": "origin https://github.com/TheBackHalf/website.git"
+    },
+    "launchView": {
+      "ok": true,
+      "note": "123 launch deliverables remain (status is not Complete)."
+    },
+    "content": {
+      "michelle": [
+        "operating-system",
+        "august-launch-tab",
+        "approved-legal-risk"
+      ],
+      "imani": [
+        "approved-legal-risk",
+        "production-implementation"
+      ],
+      "nia": [
+        "approved-product-curriculum",
+        "approved-brand",
+        "approved-legal-risk"
+      ]
+    },
+    "legalIndex": [
+      {
+        "id": "privacy-policy",
+        "title": "Privacy Policy",
+        "reviewStatus": "DRAFT",
+        "contentPending": true,
+        "implementationEligible": false
+      },
+      {
+        "id": "terms-of-use",
+        "title": "Terms of Use",
+        "reviewStatus": "DRAFT",
+        "contentPending": true,
+        "implementationEligible": false
+      },
+      {
+        "id": "participant-agreement",
+        "title": "Participant Agreement",
+        "reviewStatus": "DRAFT",
+        "contentPending": true,
+        "implementationEligible": false
+      },
+      {
+        "id": "membership-agreement",
+        "title": "Membership Agreement",
+        "reviewStatus": "DRAFT",
+        "contentPending": true,
+        "implementationEligible": false
+      },
+      {
+        "id": "ai-disclosure",
+        "title": "AI Disclosure",
+        "reviewStatus": "DRAFT",
+        "contentPending": true,
+        "implementationEligible": false
+      }
+    ]
+  },
+  "executiveCounts": {
+    "michelle": {
+      "verified": 10,
+      "pending": 0,
+      "founder": 4,
+      "future": 6,
+      "notRequired": 2,
+      "blocked": 0
+    },
+    "imani": {
+      "verified": 11,
+      "pending": 1,
+      "founder": 2,
+      "future": 4,
+      "notRequired": 4,
+      "blocked": 0
+    },
+    "nia": {
+      "verified": 7,
+      "pending": 0,
+      "founder": 1,
+      "future": 4,
+      "notRequired": 10,
+      "blocked": 0
+    }
+  },
+  "leastPrivilege": "PASS",
+  "roleIsolation": {
+    "passed": 6,
+    "executed": 6,
+    "results": [
+      {
+        "id": "A",
+        "name": "Nia infrastructure ADMIN",
+        "pass": true,
+        "status": "blocked",
+        "synthesis": "DENIED. Nia does not receive infrastructure ADMIN. Unavailable."
+      },
+      {
+        "id": "B",
+        "name": "Michelle unrestricted production-data mutation",
+        "pass": true,
+        "status": "blocked",
+        "synthesis": "DENIED. Michelle does not have unrestricted production-data mutation. Unavailable."
+      },
+      {
+        "id": "C",
+        "name": "Imani Founder financial approval",
+        "pass": true,
+        "status": "founder_gate",
+        "synthesis": "Founder gate: Founder financial approval. Action not executed."
+      },
+      {
+        "id": "D",
+        "name": "Imani legal signature",
+        "pass": true,
+        "status": "founder_gate",
+        "synthesis": "Founder gate: Legal signature. Action not executed."
+      },
+      {
+        "id": "E",
+        "name": "Nia production secret retrieval",
+        "pass": true,
+        "status": "blocked",
+        "synthesis": "DENIED. Secret retrieval is unavailable to Fab 5 agents. I HAVE AUTHORITY does not grant secret values."
+      },
+      {
+        "id": "F",
+        "name": "Michelle retrieve a secret value",
+        "pass": true,
+        "status": "blocked",
+        "synthesis": "DENIED. Secret retrieval is unavailable to Fab 5 agents. I HAVE AUTHORITY does not grant secret values."
+      }
+    ]
+  },
+  "secretExposureFound": "NO",
+  "secretScanFiles": [],
+  "authorityVsAccessEnforcement": "PASS",
+  "unattended247": "NOT YET IMPLEMENTED",
+  "currentComputerOffExecution": false,
+  "founderAdminBoundaries": "PASS",
+  "founderActionsRequired": [
+    {
+      "system": "Vercel / Production",
+      "whyRequired": "Imani needs scoped READ of deployments/logs plus authorized DEPLOY/ROLLBACK. Michelle needs READ status. No token is present in the agent runtime.",
+      "exactPermission": "Project: Read deployments, Read logs, Create deployment, Rollback. Not team Owner/Billing.",
+      "whoReceivesIt": "Imani Heartbeat (EXECUTE); Michelle Northstar (READ status)",
+      "leastPrivilegeLevel": "Scoped project token or team member with deploy role. Founder remains Owner/Admin/Billing.",
+      "exactFounderSteps": [
+        "In Vercel, open the production project that serves thebackhalf.org.",
+        "Keep Kimberly as account Owner.",
+        "Create a scoped token or invite an Imani/CTRO identity with deploy+log read only — not billing.",
+        "Do not paste the token into chat. Place it only in local/server env as VERCEL_TOKEN if using a token.",
+        "Tell Cursor that Vercel authorization is complete so Row 20 can re-verify with a non-destructive whoami/project list."
+      ],
+      "howCursorWillVerify": "Authenticated Vercel user/project/deployment list read. No production mutation."
+    },
+    {
+      "system": "Google Workspace / support@",
+      "whyRequired": "Michelle is operational owner of support@ and cannot read/route/draft-send until mailbox access is authorized. Address existence is not access.",
+      "exactPermission": "Delegated mailbox: read, label, send-as support@ using approved templates. No Workspace super-admin. No kimberly@.",
+      "whoReceivesIt": "Michelle Northstar (READ+ROUTE; routine send after send-gate). Nia: draft only once connected.",
+      "leastPrivilegeLevel": "Mailbox delegation or Gmail API restricted to support@thebackhalf.org.",
+      "exactFounderSteps": [
+        "In Google Workspace Admin, open support@thebackhalf.org.",
+        "Grant delegated access or domain-wide delegation to a dedicated support operations identity — not Kimberly's password.",
+        "Do not send passwords, app passwords, or API keys in chat.",
+        "Tell Cursor that support@ authorization is complete for a metadata-only inbox check (no message bodies in evidence)."
+      ],
+      "howCursorWillVerify": "Authenticated mailbox identity check (INBOX exists / profile email = support@). No message contents logged."
+    },
+    {
+      "system": "Google Workspace / privacy@",
+      "whyRequired": "privacy@ is more restrictive than support@. Michelle must route/escalate; standing Imani/Nia access is not required.",
+      "exactPermission": "Michelle: read + label + escalate/forward. No autonomous legal answers. Imani only if a technical privacy incident requires it.",
+      "whoReceivesIt": "Michelle Northstar (READ+ESCALATE). Human legal expert for judgment. Founder for legal acceptance.",
+      "leastPrivilegeLevel": "Delegated privacy@ mailbox. No Nia standing access. No agent send-as Kimberly.",
+      "exactFounderSteps": [
+        "In Google Workspace Admin, open privacy@thebackhalf.org.",
+        "Grant Michelle/ops identity delegated read+forward. Do not grant Nia routine access.",
+        "Do not paste credentials in chat.",
+        "Tell Cursor that privacy@ authorization is complete for a metadata-only identity check."
+      ],
+      "howCursorWillVerify": "Authenticated profile/mailbox identity equals privacy@. No message contents logged."
+    }
+  ],
+  "futureSystemDependencies": [
+    "Supabase / hosted database — Row 68 outstanding database/storage/backups",
+    "Third-party analytics (GA4/Clarity) — Row 150",
+    "Launch marketing KPI dashboard — Row 84",
+    "Instagram and LinkedIn accounts — Row 76",
+    "Lifecycle automations — Row 147",
+    "Always-on 24/7 Fab 5 runtime — no current August Launch row"
+  ],
+  "localRouting": [
+    {
+      "pass": true,
+      "status": "synthesized",
+      "intent": "launch_view_query",
+      "synthesis": "123 launch deliverables remain (status is not Complete)."
+    },
+    {
+      "id": "R2",
+      "command": "Inspect a production deployment issue.",
+      "pass": true,
+      "status": "blocked",
+      "intent": "production_inspect",
+      "synthesis": "ACCESS DEPENDENCY. I HAVE AUTHORITY is not I HAVE SYSTEM ACCESS. AUTHORITY + NO VERIFIED ACCESS ≠ EXECUTABLE. Required: vercel_production. Gaps: vercel_production/michelle=FOUNDER ACTION REQUIRED; vercel_production/imani=FOUNDER ACTION REQUIRED; vercel_production/kimberly=FOUNDER"
+    },
+    {
+      "id": "R3",
+      "command": "Review the participant-facing Journey experience.",
+      "pass": true,
+      "status": "synthesized",
+      "intent": "experience_review",
+      "synthesis": "Michelle Northstar synthesis. Work was sequenced. No Founder interruption required."
+    },
+    {
+      "id": "R4",
+      "command": "Respond to a support request.",
+      "pass": true,
+      "status": "blocked",
+      "intent": "support_request",
+      "synthesis": "ACCESS DEPENDENCY. I HAVE AUTHORITY is not I HAVE SYSTEM ACCESS. AUTHORITY + NO VERIFIED ACCESS ≠ EXECUTABLE. Required: support_mailbox. Gaps: support_mailbox/michelle=FOUNDER ACTION REQUIRED; support_mailbox/nia=FOUNDER ACTION REQUIRED; support_mailbox/kimberly=FOUNDER ACTION RE"
+    },
+    {
+      "id": "R5",
+      "command": "Review payment reporting.",
+      "pass": true,
+      "status": "synthesized",
+      "intent": "payment_reporting",
+      "synthesis": "I HAVE AUTHORITY and I HAVE SYSTEM ACCESS for: stripe_payments. Executable. Nia has no Stripe access. Founder retains financial ADMIN/approval. No transactions created."
+    },
+    {
+      "id": "R6",
+      "command": "Publish an approved Instagram asset.",
+      "pass": true,
+      "status": "blocked",
+      "intent": "social_publish_execution",
+      "synthesis": "ACCESS DEPENDENCY. I HAVE AUTHORITY is not I HAVE SYSTEM ACCESS. AUTHORITY + NO VERIFIED ACCESS ≠ EXECUTABLE. Required: instagram. Gaps: instagram/michelle=DEPENDENCY — SYSTEM NOT YET IMPLEMENTED; instagram/nia=DEPENDENCY — SYSTEM NOT YET IMPLEMENTED; instagram/kimberly=DEPENDENC"
+    }
+  ],
+  "liveRouting": [
+    {
+      "id": "L1",
+      "command": "Review the current launch queue.",
+      "pass": true,
+      "tools": [
+        "retrieve_source",
+        "query_launch_view"
+      ],
+      "error": null,
+      "actual": "## SYNTHESIS\n\n- **123 deliverables remain**; 102 are recorded complete. **Unowned remaining work: 0.**\n- **117 deliverables remain after Row 18.**\n- The queue is fully assigned, but the launch is **BLOCKED** on critical-path prerequisites and Founder-reserved actions.\n- Current in-progress items include:\n  - **Row 20 — Systems and Access:** 70%, blocked pending scoped Vercel access and delegated `"
+    },
+    {
+      "id": "L2",
+      "command": "Inspect a production deployment issue.",
+      "pass": true,
+      "tools": [
+        "retrieve_source",
+        "query_launch_view",
+        "query_authority",
+        "query_access",
+        "get_launch_row",
+        "consult_imani"
+      ],
+      "error": null,
+      "actual": "## SYNTHESIS\n\nThe production deployment issue cannot currently be inspected directly. This is an **ACCESS DEPENDENCY**, not a confirmed deployment failure.\n\n- Vercel production access for Imani and Michelle is not verified.\n- Deployment status, build logs, runtime logs, and rollback state are therefore unavailable.\n- Imani classified this as an unconfirmed **SEV-2 launch risk**.\n- No evidence curr"
+    },
+    {
+      "id": "L3",
+      "command": "Review the participant-facing Journey experience.",
+      "pass": true,
+      "tools": [
+        "retrieve_source",
+        "query_launch_view",
+        "query_authority",
+        "get_launch_row",
+        "query_access",
+        "consult_nia"
+      ],
+      "error": null,
+      "actual": "## Participant-Facing Journey Review\n\n**Status: BLOCKED.** I could not independently review the live or release-candidate Journey because the required runtime surface and verified access were unavailable.\n\n### Findings\n\n- **Row 196 — Journey Instructional Integrity Audit:** Not started; blocked by **Chapters I–VII Built**.\n- **Row 197 — Blueprint-to-Journey Alignment:** Not started; blocked by **J"
+    },
+    {
+      "id": "L4",
+      "command": "Respond to a support request.",
+      "pass": true,
+      "tools": [
+        "retrieve_source",
+        "query_authority",
+        "query_access",
+        "query_launch_view"
+      ],
+      "error": null,
+      "actual": "I can draft the response, but I don’t have a support request or verified access to the support mailbox.\n\nPlease provide the customer’s message and any relevant account/order context. I’ll prepare a reply for review. The support mailbox itself is currently an **ACCESS DEPENDENCY** and cannot be accessed or used to send a response.\n\n**SYNTHESIS:** Unable to respond until the request content is provi"
+    },
+    {
+      "id": "L5",
+      "command": "Review payment reporting.",
+      "pass": true,
+      "tools": [
+        "retrieve_source",
+        "query_launch_view",
+        "query_access",
+        "query_authority",
+        "get_launch_row"
+      ],
+      "error": null,
+      "actual": "## Payment reporting review\n\n**August Launch Row 163 — Operationalize Daily Revenue Reconciliation**\n\n- **Owner:** Kimberly Walker  \n- **Supporting:** Imani Heartbeat, Michelle Northstar  \n- **Status:** Not Started  \n- **Completion:** 0%  \n- **Launch-critical:** Yes  \n- **Dependencies/blockers:** Stripe, Business Banking, and Accounting  \n- **Required evidence:** Accepted reconciliation/reporting "
+    },
+    {
+      "id": "L6",
+      "command": "Publish an approved Instagram asset.",
+      "pass": true,
+      "tools": [
+        "retrieve_source",
+        "query_launch_view",
+        "query_authority",
+        "query_access",
+        "get_launch_row",
+        "consult_nia"
+      ],
+      "error": null,
+      "actual": "Publishing cannot proceed.\n\n- **Launch row:** Row 76 — *Stand Up Official Social Media Channels*\n- **Owner:** Nia Prism\n- **Status:** Not Started\n- **Prerequisites:** Approved brand assets and website URL\n- **Blocker:** Instagram is not implemented; Nia has **no verified publishing permission**. Founder admin action is required to establish the system/access.\n- **Additional gap:** No specific asse"
+    }
+  ],
+  "liveUsage": {
+    "requests": 20,
+    "inputTokens": 246750,
+    "outputTokens": 6819,
+    "totalTokens": 253569
+  },
+  "toolBoundaries": {
+    "niaProductionDeploy": {
+      "ok": false,
+      "reason": "nia is not authorized for production_deploy.",
+      "live": "denied"
+    },
+    "emailSend": {
+      "ok": false,
+      "reason": "email_send boundary is implemented; live connection is downstream.",
+      "live": "interface_only"
+    },
+    "socialPublish": {
+      "ok": false,
+      "reason": "social_publish boundary is implemented; live connection is downstream.",
+      "live": "interface_only"
+    },
+    "productionDeploy": {
+      "ok": false,
+      "reason": "production_deploy boundary is implemented; live connection is downstream.",
+      "live": "interface_only"
+    },
+    "envLocalInspect": {
+      "ok": false,
+      "denied": true,
+      "path": ".env.local",
+      "note": "DENIED. Secret and credential files are not readable by Fab 5 agents."
+    },
+    "niaRepoInspect": {
+      "ok": false,
+      "denied": true,
+      "path": "lib/fab-5/env.ts",
+      "note": "DENIED. Nia is not authorized for repository/infrastructure inspection."
+    },
+    "allowedRegistryRead": {
+      "ok": true,
+      "denied": false,
+      "path": "ops/fab-5/access-registry.json",
+      "note": "file_bytes=57768"
+    }
+  },
+  "accessQueries": [
+    {
+      "id": "support",
+      "executable": false,
+      "classification": "FOUNDER_ACTION_REQUIRED",
+      "requiredSystems": [
+        "support_mailbox"
+      ],
+      "answer": "ACCESS DEPENDENCY. I HAVE AUTHORITY is not I HAVE SYSTEM ACCESS. AUTHORITY + NO VERIFIED ACCESS ≠ EXECUTABLE. Required: support_mailbox. Gaps: support_mailbox/michelle=FOUNDER ACTION REQUIRED; support_mailbox/nia=FOUNDER ACTION REQUIRED; support_mailbox/kimberly=FOUNDER ACTION REQUIRED. Do not claim the work is complete."
+    },
+    {
+      "id": "instagram",
+      "executable": false,
+      "classification": "FUTURE_SYSTEM_DEPENDENCY",
+      "requiredSystems": [
+        "instagram"
+      ],
+      "answer": "ACCESS DEPENDENCY. I HAVE AUTHORITY is not I HAVE SYSTEM ACCESS. AUTHORITY + NO VERIFIED ACCESS ≠ EXECUTABLE. Required: instagram. Gaps: instagram/michelle=DEPENDENCY — SYSTEM NOT YET IMPLEMENTED; instagram/nia=DEPENDENCY — SYSTEM NOT YET IMPLEMENTED; instagram/kimberly=DEPENDENCY — SYSTEM NOT YET IMPLEMENTED. Do not claim the work is complete."
+    },
+    {
+      "id": "payments",
+      "executable": true,
+      "classification": "I_HAVE_AUTHORITY_AND_VERIFIED_ACCESS",
+      "requiredSystems": [
+        "stripe_payments"
+      ],
+      "answer": "I HAVE AUTHORITY and I HAVE SYSTEM ACCESS for: stripe_payments. Executable."
+    },
+    {
+      "id": "deploy",
+      "executable": false,
+      "classification": "FOUNDER_ACTION_REQUIRED",
+      "requiredSystems": [
+        "vercel_production"
+      ],
+      "answer": "ACCESS DEPENDENCY. I HAVE AUTHORITY is not I HAVE SYSTEM ACCESS. AUTHORITY + NO VERIFIED ACCESS ≠ EXECUTABLE. Required: vercel_production. Gaps: vercel_production/michelle=FOUNDER ACTION REQUIRED; vercel_production/imani=FOUNDER ACTION REQUIRED; vercel_production/kimberly=FOUNDER ACTION REQUIRED. Do not claim the work is complete."
+    },
+    {
+      "id": "queue",
+      "executable": true,
+      "classification": "I_HAVE_AUTHORITY_AND_VERIFIED_ACCESS",
+      "requiredSystems": [
+        "launch_dashboard_work_queues"
+      ],
+      "answer": "I HAVE AUTHORITY and I HAVE SYSTEM ACCESS for: launch_dashboard_work_queues. Executable."
+    }
+  ],
+  "fab5RegressionQa": "PASS",
+  "qaOutputTail": "PASS  TEST 1  MICHELLE ROUTING  assignments=imani,nia\nPASS  TEST 2  PARALLEL EXECUTION  parallel=true imani=2026-08-17T20:07:04.247Z nia=2026-08-17T20:07:04.247Z\nPASS  TEST 3  ROLE BOUNDARY  nia_security=escalated imani_curriculum=escalated\nPASS  TEST 4  FOUNDER GATE  status=founder_gate reports=DECISION_REQUIRED\nPASS  TEST 5  HUMAN LEGAL GATE  status=human_expert_gate\nPASS  TEST 6  EVIDENCE FAILURE  blocks=Specialist self-report is not acceptance\nPASS  TEST 7  NIA BLOCK  status=blocked\nPASS  TEST 8  IMANI BLOCK  status=blocked\nPASS  TEST 9  DISAGREEMENT  synthesis_ok=true\nPASS  TEST 10  FOUNDER UNAVAILABLE  queued=founder_gate routine=synthesized\nPASS  TEST 11  SOURCE CONFLICT  conflict=true status=blocked\nPASS  TEST 12  FAILURE  status=synthesized imani=complete\nPASS  SDK  OPENAI AGENTS WIRING  live_model=true tools_isolated=true\nPASS  DRY RUN  ROW 15 READ-ONLY  status=synthesized reports=\n\nFab 5 QA: 14/14 passed\n\nnpm warn Unknown env config \"devdir\". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.\n",
+  "rows15to19AcceptancePreserved": true,
+  "defectsFoundAndCorrected": [
+    "Launch-view normalizeQuestion now maps 'current launch queue' to remaining_count so Michelle can query assigned work without an unknown-question miss.",
+    "SMTP auth verified without sending; registry updated from PROVISIONED — VERIFICATION PENDING to VERIFIED for transactional send. Inbound support@/privacy@ READ/ROUTE remain FOUNDER ACTION REQUIRED.",
+    "Nia source allowlist now includes approved-legal-risk index (DRAFT/contentPending) for participant-facing presentation without treating bodies as approved."
+  ],
+  "genuineRow20Blockers": [
+    "Vercel / Production",
+    "Google Workspace / support@",
+    "Google Workspace / privacy@"
+  ],
+  "noSecretValues": true
+}

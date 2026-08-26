@@ -1,0 +1,29 @@
+{
+  "at": "2026-08-25T15:25:00.000Z",
+  "configured": false,
+  "passed": 0,
+  "failed": 1,
+  "tests": [
+    {
+      "id": "BACKEND",
+      "name": "Postgres configured",
+      "pass": false,
+      "note": "Workstation has no decryptable POSTGRES_URL; Vercel Production already holds it"
+    }
+  ],
+  "defectsFound": 8,
+  "defectsCorrected": 8,
+  "ingest": {
+    "snapshotRows": 273,
+    "durableQueue": false,
+    "reason": "Postgres not reachable from this workstation"
+  },
+  "founderSmsDecision": {
+    "needed": true,
+    "persisted": false,
+    "reason": "Cannot write Founder Decision Queue until Postgres is reachable"
+  },
+  "smsClaim": "Twilio is optional. Unconfigured SMS is not reported as sent.",
+  "engineeringRuntime": "Hosted Vercel ticks do not mutate the git repository. Launch row implementation requires an engineering runtime.",
+  "workstationNote": "A–P require production Postgres. Vercel Production already has POSTGRES_URL. This workstation .env.local does not. Vercel CLI env pull writes non-decryptable placeholders for sensitive keys. Do not paste connection strings into chat."
+}

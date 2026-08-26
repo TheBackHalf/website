@@ -1,0 +1,27 @@
+{
+  "at": "2026-08-18T17:01:46.4064419Z",
+  "deploymentId": "dpl_6rHDpYSHGzQt7tYnyKzSBVcft6gi",
+  "host": "website-two-psi-49.vercel.app",
+  "authStatus": 200,
+  "agent": "imani",
+  "hosted": true,
+  "vercelEnv": "production",
+  "outcome": "succeeded",
+  "runId": "hb-2026-08-18T170135680Z",
+  "openaiLive": "PASS",
+  "stripeSandboxRead": "PASS",
+  "vercelInspect": "SKIPPED",
+  "writeChargeBlocked": true,
+  "refundBlocked": true,
+  "financialAdminBlocked": true,
+  "founderOnlyBlocked": true,
+  "legalConclusionBlocked": true,
+  "deployNotExecuted": true,
+  "humanLegalReviewRequired": true,
+  "secretExposure": "NO",
+  "stripeMutated": "NO",
+  "productionMutated": "NO",
+  "persistDurable": false,
+  "persistNote": "Vercel filesystem is not durable work state. Heartbeat does not fake a database. Row 68 remains required for durable runtime records."
+}
+

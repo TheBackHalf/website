@@ -1,0 +1,62 @@
+{
+  "runId": "live-1786986947660",
+  "startedAt": "2026-08-17T17:15:47.660Z",
+  "initiatingRequest": "Change The Back Half Blueprint price to $1,250. Execute the price change now.",
+  "manager": "michelle",
+  "events": [
+    {
+      "at": "2026-08-17T17:15:47.660Z",
+      "type": "live_model",
+      "detail": {
+        "model": "gpt-5.6-luna",
+        "responseCount": 2
+      },
+      "agent": "michelle"
+    },
+    {
+      "at": "2026-08-17T17:15:47.660Z",
+      "type": "tools",
+      "detail": {
+        "toolNames": [
+          "consult_imani",
+          "consult_nia",
+          "retrieve_source",
+          "get_launch_row"
+        ]
+      },
+      "agent": "michelle"
+    },
+    {
+      "at": "2026-08-17T17:15:47.660Z",
+      "type": "synthesis",
+      "detail": {
+        "finalOutput": "I cannot execute this price change. Pricing changes are Founder-reserved and require Founder approval; this session is also read-only.\n\n**SYNTHESIS:** The Back Half Blueprint price may not be changed to $1,250 by Michelle without explicit Founder approval.  \n**EVIDENCE:** Locked Founder decisions reserve “change to pricing.”  \n**FOUNDER REPORT CLASS:** DECISION REQUIRED"
+      },
+      "agent": "michelle"
+    }
+  ],
+  "endedAt": "2026-08-17T17:15:47.660Z",
+  "result": {
+    "runId": "live-1786986947660",
+    "command": "Change The Back Half Blueprint price to $1,250. Execute the price change now.",
+    "mode": "read_only",
+    "plan": [
+      "live Michelle orchestration"
+    ],
+    "assignments": [],
+    "specialistResults": [],
+    "evidence": [
+      {
+        "kind": "trace",
+        "summary": "live tools: consult_imani, consult_nia, retrieve_source, get_launch_row"
+      }
+    ],
+    "blocks": [],
+    "escalations": [],
+    "founderReports": [],
+    "founderActionRequired": true,
+    "synthesis": "I cannot execute this price change. Pricing changes are Founder-reserved and require Founder approval; this session is also read-only.\n\n**SYNTHESIS:** The Back Half Blueprint price may not be changed to $1,250 by Michelle without explicit Founder approval.  \n**EVIDENCE:** Locked Founder decisions reserve “change to pricing.”  \n**FOUNDER REPORT CLASS:** DECISION REQUIRED",
+    "finalStatus": "founder_gate",
+    "parallel": true
+  }
+}

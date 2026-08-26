@@ -1,0 +1,105 @@
+{
+  "generatedAt": "2026-08-25T18:50:00.000Z",
+  "secretsPrinted": false,
+  "founderAcceptanceRecorded": false,
+  "correction": "Remove manual Cursor IDE as the required engineering runtime. Replace with official Cursor Cloud Agents API polled from hosted AOS ticks.",
+  "productionDeployment": {
+    "status": "PASS",
+    "deploymentId": "dpl_DPFcwfc4F1w6kLZQbHwTqWypaSmu",
+    "url": "https://website-jd8bfcpu5-back-half.vercel.app",
+    "inspector": "https://vercel.com/back-half/website/DPFcwfc4F1w6kLZQbHwTqWypaSmu",
+    "stripeConfigModified": false,
+    "customDomainDnsModified": false
+  },
+  "cursorCloudAgents": {
+    "api": "https://api.cursor.com/v1/agents",
+    "auth": "Basic CURSOR_API_KEY: (official Cloud Agents API)",
+    "repo": "https://github.com/TheBackHalf/website",
+    "workOnCurrentBranch": false,
+    "autoCreatePR": true,
+    "skipReviewerRequest": true,
+    "cursorApiKeyInVercelProduction": false
+  },
+  "gate": {
+    "invokedAt": "2026-08-25T18:43:29.668Z",
+    "method": "vercel crons run /api/fab-5/aos/validate",
+    "hosted": true,
+    "corePass": true,
+    "cursorCloudConfigured": false,
+    "smtpReady": true,
+    "smsConfigured": false,
+    "passed": 30,
+    "failed": 1,
+    "failedId": "J-sms",
+    "engineeringTests": {
+      "ENG-A": { "pass": true, "note": "aos-test-mt90jnr2-ENG claimed" },
+      "ENG-B": { "pass": true, "note": "imani" },
+      "ENG-C": { "pass": true, "note": "blocked_unconfigured:no-agent-id" },
+      "ENG-D": { "pass": true, "note": "https://github.com/TheBackHalf/website" },
+      "ENG-E": { "pass": true, "note": "workOnCurrentBranch false, isolated true" },
+      "ENG-F": { "pass": true, "note": "blocked_unconfigured@2026-08-25T18:43:36.094Z" },
+      "ENG-G": { "pass": true, "note": "unconfigured-no-repo-mutation; proof file path only" },
+      "ENG-H": { "pass": true, "note": "3 validation commands in prompt" },
+      "ENG-I": { "pass": true, "note": "poll path ran; status blocked_unconfigured" },
+      "ENG-J": { "pass": true, "note": "work BLOCKED, not Complete" },
+      "ENG-K": { "pass": true, "note": "unrelated hosted work COMPLETE" },
+      "ENG-L": { "pass": true, "note": "job survived SQL client restart" },
+      "ENG-CURSOR": { "pass": true, "note": "BLOCKED — CURSOR_API_KEY not in host env (honest)" }
+    }
+  },
+  "hostedTicks": [
+    {
+      "at": "2026-08-25T18:43:40.911Z",
+      "source": "validate ingest tick",
+      "ok": true,
+      "claimed": [],
+      "engineeringJobsLaunched": 0,
+      "engineeringJobsPolled": 0
+    },
+    {
+      "at": "2026-08-25T18:45:09.818Z",
+      "source": "cron /api/fab-5/aos/tick",
+      "ok": true,
+      "claimed": []
+    },
+    {
+      "at": "2026-08-25T18:46:29.022Z",
+      "source": "vercel crons run /api/fab-5/aos/tick",
+      "ok": true,
+      "claimed": [],
+      "skippedEngineering": 0,
+      "note": "No READY non-test engineering rows at tick time (Command Center rows remain dependency/date gated or already parked). Synthetic ENG job was purged after the gate."
+    }
+  ],
+  "schema": {
+    "aos_engineering_jobs": "created via CREATE TABLE IF NOT EXISTS; observed in production logs"
+  },
+  "regression": {
+    "opsHealth": { "ok": true, "environment": "production", "checks": { "application": "ok", "database": "ok" } },
+    "registerHttp": 200,
+    "loginHttp": 200,
+    "aosCoreAtoP": "PASS except J-sms (pre-existing Twilio gap, not this correction)",
+    "stripeConfigModified": false,
+    "customDomainDns": "PRE-EXISTING — apex and www have no A/AAAA (Row 75). Not modified."
+  },
+  "sms": {
+    "primaryBlockerForThisCorrection": false,
+    "status": "not_configured",
+    "note": "SMS is optional/secondary. Email + dashboard remain operational."
+  },
+  "founderActionRequired": {
+    "one": "Add CURSOR_API_KEY to Vercel Production (and Preview if ticks run there) from Cursor Dashboard → API Keys (user or team service account). The same Cursor account must be authorized to launch Cloud Agents on https://github.com/TheBackHalf/website (GitHub App). After that, hosted AOS ticks launch/poll/ingest without Kimberly opening Cursor, pasting prompts, or assigning the next row."
+  },
+  "defectsFound": [
+    "Hosted AOS blocked engineering as engineering_runtime_required and waited for a human Cursor session.",
+    "CURSOR_API_KEY is not in Vercel Production, so live Cloud Agent launch cannot complete A–L.",
+    "Urgent SMS still unconfigured (pre-existing; not this correction's blocker)."
+  ],
+  "defectsCorrected": [
+    "executeClaimedWork now launches/polls official Cursor Cloud Agents instead of parking as engineering_runtime_required.",
+    "Durable aos_engineering_jobs records lifecycle, heartbeat, repo, isolation flags, validation requirements, and PR/branch when present.",
+    "Legacy engineering_runtime_required rows are unblocked to READY on each tick.",
+    "Command Center / Founder-acceptance rows are not auto-completed; synthetic engineering tests do not mutate Founder-facing content.",
+    "Documentation no longer claims unattended git mutation exists; it describes Cloud Agents + the missing key honestly."
+  ]
+}

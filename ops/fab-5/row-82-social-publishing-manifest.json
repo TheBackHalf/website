@@ -1,0 +1,278 @@
+{
+  "row": 82,
+  "livePublishEnabled": false,
+  "livePublishAttempted": false,
+  "timezone": "America/New_York",
+  "timezoneLabel": "Eastern Time (ET)",
+  "channels": [
+    "instagram @backhalfco",
+    "tiktok @backhalfco"
+  ],
+  "linkedinLaunchRequirement": "NO — FUTURE ENHANCEMENT",
+  "xLaunchRequirement": "NO — DO NOT ADD",
+  "operationalOwner": "Nia Prism — Chief Experience & Transformation Officer (operating role; not a human credential holder)",
+  "continuityModel": "OPTION_B",
+  "executionPath": "platform_native_scheduler",
+  "newVendorRequired": false,
+  "nativeScheduleVerified": {
+    "instagram": false,
+    "tiktok": false
+  },
+  "captionSourceOfTruth": "approved-assets/row-81-social-launch/ROW-81-FINAL-APPROVED-COPY.md",
+  "assetArchive": "approved-assets/row-81-social-launch",
+  "entries": [
+    {
+      "id": "R78-0828-IG",
+      "date": "2026-08-28",
+      "time": "8:00 AM ET",
+      "timezone": "America/New_York",
+      "timezoneLabel": "Eastern Time (ET)",
+      "platform": "instagram",
+      "account": "@backhalfco",
+      "campaign": "What if this isn't all there is?",
+      "asset": [
+        "approved-assets/row-81-social-launch/instagram/R78-0828-IG-S01.png",
+        "approved-assets/row-81-social-launch/instagram/R78-0828-IG-S02.png",
+        "approved-assets/row-81-social-launch/instagram/R78-0828-IG-S03.png",
+        "approved-assets/row-81-social-launch/instagram/R78-0828-IG-S04.png"
+      ],
+      "resolvedAsset": [
+        "approved-assets/row-81-social-launch/instagram/R78-0828-IG-S01.png",
+        "approved-assets/row-81-social-launch/instagram/R78-0828-IG-S02.png",
+        "approved-assets/row-81-social-launch/instagram/R78-0828-IG-S03.png",
+        "approved-assets/row-81-social-launch/instagram/R78-0828-IG-S04.png"
+      ],
+      "captionSource": "approved-assets/row-81-social-launch/ROW-81-FINAL-APPROVED-COPY.md#R78-0828-IG",
+      "caption": "A life can be full — career, family, home, accomplishment — and still grow quiet.\n\nNot because anything went wrong.\nBecause expectation can be completed, and aliveness can still be waiting.\n\nThe Back Half was created for that moment. A place to move from the life you were supposed to live to the life you intentionally design.\n\nAugust 31, 2026.",
+      "cta": "Stay with the question.",
+      "destination": "https://thebackhalf.org/",
+      "publishingMethod": "platform_native_scheduler",
+      "schedulingStatus": "PREPARED IN COMPANY QUEUE — NOT LOADED TO NATIVE SCHEDULER",
+      "previewStatus": "PASS",
+      "owner": "Nia Prism — Chief Experience & Transformation Officer (operating role; not a human credential holder)",
+      "fallback": "If the native scheduler fails or the post is not loaded, Founder authenticates to @backhalfco and publishes manually at the approved Eastern Time from this manifest. Nia owns the operating duty. Michelle logs/routes. Imani if technical/security. Do not invent a Nia login.",
+      "notes": "Do not call this scheduled on Instagram/TikTok until Founder confirms the native scheduler item. Live publish is forbidden during Row 82."
+    },
+    {
+      "id": "R78-0828-TT",
+      "date": "2026-08-28",
+      "time": "12:00 PM ET",
+      "timezone": "America/New_York",
+      "timezoneLabel": "Eastern Time (ET)",
+      "platform": "tiktok",
+      "account": "@backhalfco",
+      "campaign": "What if this isn't all there is?",
+      "asset": [
+        "approved-assets/row-81-social-launch/tiktok/R78-0828-TT.mp4",
+        "approved-assets/row-81-social-launch/tiktok/R78-0828-TT-cover.png"
+      ],
+      "resolvedAsset": [
+        "approved-assets/row-81-social-launch/tiktok/R78-0828-TT.mp4",
+        "approved-assets/row-81-social-launch/tiktok/R78-0828-TT-cover.png"
+      ],
+      "captionSource": "approved-assets/row-81-social-launch/ROW-81-FINAL-APPROVED-COPY.md#R78-0828-TT",
+      "caption": "You can do everything right\nand still feel the quiet.\n\nNot because the life failed.\nBecause a good life can still want more.\n\nAugust 31.",
+      "cta": "If that landed — August 31.",
+      "destination": "https://thebackhalf.org/",
+      "publishingMethod": "platform_native_scheduler",
+      "schedulingStatus": "PREPARED IN COMPANY QUEUE — NOT LOADED TO NATIVE SCHEDULER",
+      "previewStatus": "PASS",
+      "owner": "Nia Prism — Chief Experience & Transformation Officer (operating role; not a human credential holder)",
+      "fallback": "If the native scheduler fails or the post is not loaded, Founder authenticates to @backhalfco and publishes manually at the approved Eastern Time from this manifest. Nia owns the operating duty. Michelle logs/routes. Imani if technical/security. Do not invent a Nia login.",
+      "notes": "Do not call this scheduled on Instagram/TikTok until Founder confirms the native scheduler item. Live publish is forbidden during Row 82."
+    },
+    {
+      "id": "R78-0829-IG",
+      "date": "2026-08-29",
+      "time": "8:00 AM ET",
+      "timezone": "America/New_York",
+      "timezoneLabel": "Eastern Time (ET)",
+      "platform": "instagram",
+      "account": "@backhalfco",
+      "campaign": "When was the last time you felt completely alive?",
+      "asset": [
+        "approved-assets/row-81-social-launch/instagram/R78-0829-IG-S01.png",
+        "approved-assets/row-81-social-launch/instagram/R78-0829-IG-S02.png",
+        "approved-assets/row-81-social-launch/instagram/R78-0829-IG-S03.png",
+        "approved-assets/row-81-social-launch/instagram/R78-0829-IG-S04.png"
+      ],
+      "resolvedAsset": [
+        "approved-assets/row-81-social-launch/instagram/R78-0829-IG-S01.png",
+        "approved-assets/row-81-social-launch/instagram/R78-0829-IG-S02.png",
+        "approved-assets/row-81-social-launch/instagram/R78-0829-IG-S03.png",
+        "approved-assets/row-81-social-launch/instagram/R78-0829-IG-S04.png"
+      ],
+      "captionSource": "approved-assets/row-81-social-launch/ROW-81-FINAL-APPROVED-COPY.md#R78-0829-IG",
+      "caption": "Aliveness is not a vacation from your life.\nIt is the feeling of being present inside it — wonder, meaning, adventure, purpose.\n\nThe Back Half Journey is how that feeling becomes a design. Seven chapters. Intention instead of hope.\n\nYour next chapter does not have to look like your last one.",
+      "cta": "Explore the Journey.",
+      "destination": "https://thebackhalf.org/journey",
+      "publishingMethod": "platform_native_scheduler",
+      "schedulingStatus": "PREPARED IN COMPANY QUEUE — NOT LOADED TO NATIVE SCHEDULER",
+      "previewStatus": "PASS",
+      "owner": "Nia Prism — Chief Experience & Transformation Officer (operating role; not a human credential holder)",
+      "fallback": "If the native scheduler fails or the post is not loaded, Founder authenticates to @backhalfco and publishes manually at the approved Eastern Time from this manifest. Nia owns the operating duty. Michelle logs/routes. Imani if technical/security. Do not invent a Nia login.",
+      "notes": "Do not call this scheduled on Instagram/TikTok until Founder confirms the native scheduler item. Live publish is forbidden during Row 82."
+    },
+    {
+      "id": "R78-0829-TT",
+      "date": "2026-08-29",
+      "time": "12:00 PM ET",
+      "timezone": "America/New_York",
+      "timezoneLabel": "Eastern Time (ET)",
+      "platform": "tiktok",
+      "account": "@backhalfco",
+      "campaign": "When was the last time you felt completely alive?",
+      "asset": [
+        "approved-assets/row-81-social-launch/tiktok/R78-0829-TT.mp4",
+        "approved-assets/row-81-social-launch/tiktok/R78-0829-TT-cover.png"
+      ],
+      "resolvedAsset": [
+        "approved-assets/row-81-social-launch/tiktok/R78-0829-TT.mp4",
+        "approved-assets/row-81-social-launch/tiktok/R78-0829-TT-cover.png"
+      ],
+      "captionSource": "approved-assets/row-81-social-launch/ROW-81-FINAL-APPROVED-COPY.md#R78-0829-TT",
+      "caption": "Aliveness is not somewhere else.\n\nIt is what happens when you stop saving your life for later.\n\nThe Journey is the path.\nAugust 31.",
+      "cta": "Explore the Journey.",
+      "destination": "https://thebackhalf.org/journey",
+      "publishingMethod": "platform_native_scheduler",
+      "schedulingStatus": "PREPARED IN COMPANY QUEUE — NOT LOADED TO NATIVE SCHEDULER",
+      "previewStatus": "PASS",
+      "owner": "Nia Prism — Chief Experience & Transformation Officer (operating role; not a human credential holder)",
+      "fallback": "If the native scheduler fails or the post is not loaded, Founder authenticates to @backhalfco and publishes manually at the approved Eastern Time from this manifest. Nia owns the operating duty. Michelle logs/routes. Imani if technical/security. Do not invent a Nia login.",
+      "notes": "Do not call this scheduled on Instagram/TikTok until Founder confirms the native scheduler item. Live publish is forbidden during Row 82."
+    },
+    {
+      "id": "R78-0830-IG",
+      "date": "2026-08-30",
+      "time": "8:00 AM ET",
+      "timezone": "America/New_York",
+      "timezoneLabel": "Eastern Time (ET)",
+      "platform": "instagram",
+      "account": "@backhalfco",
+      "campaign": "What if someday is August 31?",
+      "asset": [
+        "approved-assets/row-81-social-launch/instagram/R78-0830-IG-S01.png",
+        "approved-assets/row-81-social-launch/instagram/R78-0830-IG-S02.png",
+        "approved-assets/row-81-social-launch/instagram/R78-0830-IG-S03.png"
+      ],
+      "resolvedAsset": [
+        "approved-assets/row-81-social-launch/instagram/R78-0830-IG-S01.png",
+        "approved-assets/row-81-social-launch/instagram/R78-0830-IG-S02.png",
+        "approved-assets/row-81-social-launch/instagram/R78-0830-IG-S03.png"
+      ],
+      "captionSource": "approved-assets/row-81-social-launch/ROW-81-FINAL-APPROVED-COPY.md#R78-0830-IG",
+      "caption": "The doors open tomorrow.\n\nInside The Back Half Journey is Lumina — your AI Guide. A place for better questions, deeper reflection, and the conversation that continues as you design what comes next.\n\nTomorrow, you can Become an Architect.",
+      "cta": "Return tomorrow. Become an Architect.",
+      "destination": "https://thebackhalf.org/lumina",
+      "publishingMethod": "platform_native_scheduler",
+      "schedulingStatus": "PREPARED IN COMPANY QUEUE — NOT LOADED TO NATIVE SCHEDULER",
+      "previewStatus": "PASS",
+      "owner": "Nia Prism — Chief Experience & Transformation Officer (operating role; not a human credential holder)",
+      "fallback": "If the native scheduler fails or the post is not loaded, Founder authenticates to @backhalfco and publishes manually at the approved Eastern Time from this manifest. Nia owns the operating duty. Michelle logs/routes. Imani if technical/security. Do not invent a Nia login.",
+      "notes": "Do not call this scheduled on Instagram/TikTok until Founder confirms the native scheduler item. Live publish is forbidden during Row 82."
+    },
+    {
+      "id": "R78-0830-TT",
+      "date": "2026-08-30",
+      "time": "12:00 PM ET",
+      "timezone": "America/New_York",
+      "timezoneLabel": "Eastern Time (ET)",
+      "platform": "tiktok",
+      "account": "@backhalfco",
+      "campaign": "What if someday is August 31?",
+      "asset": [
+        "approved-assets/row-81-social-launch/tiktok/R78-0830-TT.mp4",
+        "approved-assets/row-81-social-launch/tiktok/R78-0830-TT-cover.png"
+      ],
+      "resolvedAsset": [
+        "approved-assets/row-81-social-launch/tiktok/R78-0830-TT.mp4",
+        "approved-assets/row-81-social-launch/tiktok/R78-0830-TT-cover.png"
+      ],
+      "captionSource": "approved-assets/row-81-social-launch/ROW-81-FINAL-APPROVED-COPY.md#R78-0830-TT",
+      "caption": "Someday has a date.\n\nTomorrow, The Back Half opens.\nLumina will be there.\nYou can begin.",
+      "cta": "Tomorrow.",
+      "destination": "https://thebackhalf.org/register",
+      "publishingMethod": "platform_native_scheduler",
+      "schedulingStatus": "PREPARED IN COMPANY QUEUE — NOT LOADED TO NATIVE SCHEDULER",
+      "previewStatus": "PASS",
+      "owner": "Nia Prism — Chief Experience & Transformation Officer (operating role; not a human credential holder)",
+      "fallback": "If the native scheduler fails or the post is not loaded, Founder authenticates to @backhalfco and publishes manually at the approved Eastern Time from this manifest. Nia owns the operating duty. Michelle logs/routes. Imani if technical/security. Do not invent a Nia login.",
+      "notes": "Do not call this scheduled on Instagram/TikTok until Founder confirms the native scheduler item. Live publish is forbidden during Row 82."
+    },
+    {
+      "id": "R81-0831-IG",
+      "date": "2026-08-31",
+      "time": "8:00 AM ET",
+      "timezone": "America/New_York",
+      "timezoneLabel": "Eastern Time (ET)",
+      "platform": "instagram",
+      "account": "@backhalfco",
+      "campaign": "THE BACK HALF IS HERE.",
+      "asset": [
+        "approved-assets/row-81-social-launch/instagram/R81-0831-IG-S01.png",
+        "approved-assets/row-81-social-launch/instagram/R81-0831-IG-S02.png",
+        "approved-assets/row-81-social-launch/instagram/R81-0831-IG-S03.png",
+        "approved-assets/row-81-social-launch/instagram/R81-0831-IG-S04.png",
+        "approved-assets/row-81-social-launch/instagram/R81-0831-IG-S05.png",
+        "approved-assets/row-81-social-launch/instagram/R81-0831-IG-S06.png",
+        "approved-assets/row-81-social-launch/instagram/R81-0831-IG-S07.png",
+        "approved-assets/row-81-social-launch/instagram/R81-0831-IG-S08.png"
+      ],
+      "resolvedAsset": [
+        "approved-assets/row-81-social-launch/instagram/R81-0831-IG-S01.png",
+        "approved-assets/row-81-social-launch/instagram/R81-0831-IG-S02.png",
+        "approved-assets/row-81-social-launch/instagram/R81-0831-IG-S03.png",
+        "approved-assets/row-81-social-launch/instagram/R81-0831-IG-S04.png",
+        "approved-assets/row-81-social-launch/instagram/R81-0831-IG-S05.png",
+        "approved-assets/row-81-social-launch/instagram/R81-0831-IG-S06.png",
+        "approved-assets/row-81-social-launch/instagram/R81-0831-IG-S07.png",
+        "approved-assets/row-81-social-launch/instagram/R81-0831-IG-S08.png"
+      ],
+      "captionSource": "approved-assets/row-81-social-launch/ROW-81-FINAL-APPROVED-COPY.md#R81-0831-IG",
+      "caption": "The doors are open.\n\nToday, The Back Half begins — a world for people who have already become who they were supposed to be, and are ready to choose who they become next.\n\nYou don’t have to wait for someday.\nYour Back Half can begin today.\n\nBecome an Architect.\nthebackhalf.org/register",
+      "cta": "Become an Architect.",
+      "destination": "https://thebackhalf.org/register",
+      "publishingMethod": "platform_native_scheduler",
+      "schedulingStatus": "PREPARED IN COMPANY QUEUE — NOT LOADED TO NATIVE SCHEDULER",
+      "previewStatus": "PASS",
+      "owner": "Nia Prism — Chief Experience & Transformation Officer (operating role; not a human credential holder)",
+      "fallback": "If the native scheduler fails or the post is not loaded, Founder authenticates to @backhalfco and publishes manually at the approved Eastern Time from this manifest. Nia owns the operating duty. Michelle logs/routes. Imani if technical/security. Do not invent a Nia login.",
+      "notes": "Do not call this scheduled on Instagram/TikTok until Founder confirms the native scheduler item. Live publish is forbidden during Row 82."
+    },
+    {
+      "id": "R81-0831-TT",
+      "date": "2026-08-31",
+      "time": "12:00 PM ET",
+      "timezone": "America/New_York",
+      "timezoneLabel": "Eastern Time (ET)",
+      "platform": "tiktok",
+      "account": "@backhalfco",
+      "campaign": "THE BACK HALF IS HERE.",
+      "asset": [
+        "approved-assets/row-81-social-launch/tiktok/R81-0831-TT.mp4",
+        "approved-assets/row-81-social-launch/tiktok/R81-0831-TT-cover.png"
+      ],
+      "resolvedAsset": [
+        "approved-assets/row-81-social-launch/tiktok/R81-0831-TT.mp4",
+        "approved-assets/row-81-social-launch/tiktok/R81-0831-TT-cover.png"
+      ],
+      "captionSource": "approved-assets/row-81-social-launch/ROW-81-FINAL-APPROVED-COPY.md#R81-0831-TT",
+      "caption": "The doors are open.\n\nYou don’t have to wait for someday.\nYour Back Half can begin today.\n\nBecome an Architect.\nthebackhalf.org/register",
+      "cta": "Become an Architect.",
+      "destination": "https://thebackhalf.org/register",
+      "publishingMethod": "platform_native_scheduler",
+      "schedulingStatus": "PREPARED IN COMPANY QUEUE — NOT LOADED TO NATIVE SCHEDULER",
+      "previewStatus": "PASS",
+      "owner": "Nia Prism — Chief Experience & Transformation Officer (operating role; not a human credential holder)",
+      "fallback": "If the native scheduler fails or the post is not loaded, Founder authenticates to @backhalfco and publishes manually at the approved Eastern Time from this manifest. Nia owns the operating duty. Michelle logs/routes. Imani if technical/security. Do not invent a Nia login.",
+      "notes": "Do not call this scheduled on Instagram/TikTok until Founder confirms the native scheduler item. Live publish is forbidden during Row 82."
+    }
+  ],
+  "optionBEvidence": {
+    "instagramCanPublishWithoutFounderAtPostingTime": "FOUNDER ACTION REQUIRED",
+    "tiktokCanPublishWithoutFounderAtPostingTime": "FOUNDER ACTION REQUIRED",
+    "niaPublishingResponsibilityExecutable": "FAIL",
+    "row77OptionBContinuity": "FAIL",
+    "row77CompletionUnchanged": true
+  }
+}

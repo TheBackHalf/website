@@ -1,0 +1,41 @@
+{
+  "row": 33,
+  "date": "2026-08-21",
+  "mode": "community-timing-clarification-and-founder-acceptance-closure",
+  "auditRerun": false,
+  "campaignCreativeRewritten": false,
+  "instagramChanged": false,
+  "tiktokChanged": false,
+  "linkedinAssetsChanged": false,
+  "launchRoadmapChanged": false,
+  "founderNotesChanged": false,
+  "otherRowsChanged": false,
+  "companyLaunchDate": "August 31, 2026",
+  "communityLaunchDate": "October 25, 2026",
+  "communityComingMessaging": "PASS",
+  "communityNotRepresentedAsLiveAugust31": "PASS",
+  "conflictingActiveCustomerFacingCommunityDates": "NONE",
+  "customerFacingCopyUpdated": [
+    "lib/checkout/offers.ts",
+    "content/i18n/dictionaries/en.ts",
+    "content/i18n/dictionaries/es.ts"
+  ],
+  "foundingArchitectOfferPreserved": {
+    "name": "Founding Architect",
+    "price": "$1,750 one-time",
+    "inclusions": "Blueprint + first year of Architect Community",
+    "enrollment": "August 31–December 31, 2026"
+  },
+  "historicalRecordsLeftUnchanged": [
+    "ops/fab-5/ROW-34-HUMAN-LEGAL-LAUNCH-REVIEW.md",
+    "lib/legal/row34-audit.ts",
+    "ops/fab-5/ROW-83-SOCIAL-ENGAGEMENT-RESPONSE-PROTOCOL.md",
+    "content/legal/v1-candidates.ts",
+    "ops/fab-5/legal-v1/",
+    "ops/fab-5/ROW-199-LAUNCH-COMMUNICATIONS-VERIFICATION.md"
+  ],
+  "founderAcceptance": "YES",
+  "percentComplete": 100,
+  "status": "Complete",
+  "remainingBlockers": "NONE"
+}

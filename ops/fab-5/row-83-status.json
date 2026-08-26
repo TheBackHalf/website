@@ -1,0 +1,31 @@
+{
+  "row": 83,
+  "excelRow": 84,
+  "deliverable": "Implement Social Engagement and Response Protocol",
+  "technicalStatus": "ready_for_founder_acceptance",
+  "percentCompleteRecorded": 90,
+  "founderAcceptance": null,
+  "founderAccepted": false,
+  "rowMarkedComplete": false,
+  "row84Started": false,
+  "primaryOwner": "nia",
+  "primaryOwnerTitle": "Nia Prism — Chief Experience & Transformation Officer",
+  "supportingOwner": "michelle",
+  "supportingOwnerTitle": "Michelle Northstar — Chief of Staff & Operations Officer",
+  "technicalSecurityRoutedTo": "imani",
+  "technicalSecurityTitle": "Imani Heartbeat — Chief Technology & Risk Officer",
+  "sourceOfTruth": "ops/fab-5/ROW-83-SOCIAL-ENGAGEMENT-RESPONSE-PROTOCOL.md",
+  "validation": "ops/fab-5/runs/row-83-social-engagement-protocol-validation.json",
+  "log": "ops/fab-5/social-engagement-log.json",
+  "scenarioTests": "12/12 PASS",
+  "supportRouting": "row_153_ticket_tracker",
+  "privacyRouting": "row_153_privacy_category",
+  "permanentMailboxes": {
+    "support": "support@thebackhalf.org",
+    "privacy": "privacy@thebackhalf.org",
+    "architectFacingFunctional": false,
+    "dependency": "Row 20 mailbox activation (registry also records Row 153 machine integration)"
+  },
+  "newRolesCreated": false,
+  "nextAction": "Founder Acceptance Review. Row 83 may be marked 100% Complete only after explicit Founder approval."
+}

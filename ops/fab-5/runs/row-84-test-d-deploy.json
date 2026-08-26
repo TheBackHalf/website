@@ -1,0 +1,26 @@
+{
+  "at": "2026-08-19T12:58:49.679Z",
+  "command": "vercel deploy --prod --yes --scope back-half",
+  "exit": null,
+  "ok": false,
+  "deploymentUrlPresent": true,
+  "notes": [
+    "Inspect         https://vercel.com/back-half/website/6X8KnP3sZVqzNGvY2yGTyGD3x8ex",
+    "Production      https://website-5f11rb6cc-back-half.vercel.app",
+    "Building…",
+    "Building…",
+    "Running build in Washington, D.C., USA (East) – iad1",
+    "Build machine configuration: 4 cores, 8 GB",
+    "Restored build cache from previous deployment (3c9AgbNqzipgzY7qMqwy5EAXGjDp)",
+    "Running \"vercel build\"",
+    "npm warn allow-scripts   sharp@0.34.5 (install: node install/check.js || npm run build)",
+    "Running \"npm run build\"",
+    "> website@0.1.0 build",
+    "> next build",
+    "⚠ The \"middleware\" file convention is deprecated. Please use \"proxy\" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy",
+    "Creating an optimized production build ...",
+    "Turbopack build encountered 25 warnings:",
+    "Running onBuildComplete from Vercel",
+    "Build Completed in /vercel/output [47s]"
+  ]
+}

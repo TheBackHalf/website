@@ -1,0 +1,33 @@
+{
+  "generatedAt": "2026-08-21T19:12:33.544Z",
+  "secretsPrinted": false,
+  "smtpPresence": {
+    "SMTP_HOST": "PRESENT",
+    "SMTP_PORT": "PRESENT",
+    "SMTP_USER": "PRESENT",
+    "SMTP_PASSWORD": "PRESENT",
+    "SMTP_FROM": "PRESENT"
+  },
+  "allSmtpVariablesPresent": true,
+  "senderIsSupportMailbox": true,
+  "sender": "support@thebackhalf.org",
+  "smtpReady": true,
+  "smtpAuthentication": "PASS",
+  "smtpStatus": "sent",
+  "smtpError": null,
+  "googleWorkspaceAccepted": true,
+  "supportSubmission": "PASS",
+  "ticketId": "BH-S-20260821-2JY6B",
+  "ticketPersisted": true,
+  "durability": "Local development file fallback. Not the production system of record.",
+  "backend": "file_local_development",
+  "acknowledgmentStatus": "sent",
+  "actualEmailDelivery": "PASS",
+  "ticketTracking": true,
+  "adminVisibility": true,
+  "row151Visibility": true,
+  "resolutionWorkflow": "PASS",
+  "urgentLiveEmailCreated": false,
+  "note": "Urgent routing is covered by the existing Row 153 suite (T21). A second live urgent email was not created.",
+  "markedComplete": false
+}

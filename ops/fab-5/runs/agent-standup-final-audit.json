@@ -1,0 +1,53 @@
+{
+  "generatedAt": "2026-08-26T01:33:00.000Z",
+  "secretsPrinted": false,
+  "founderAcceptanceRecorded": false,
+  "agentStandupCalledComplete": false,
+  "productionDeployment": {
+    "id": "dpl_CUk1B4P7VpWe2wiXfCLqthA6Qts2",
+    "url": "https://website-lwxx28x8r-back-half.vercel.app",
+    "aliases": [
+      "https://www.thebackhalf.org",
+      "https://website-two-psi-49.vercel.app"
+    ]
+  },
+  "e2e": {
+    "at": "2026-08-26T01:27:12.281Z",
+    "ok": true,
+    "claimed": [
+      "aos-hosted-michelle-launch-audit",
+      "aos-hosted-imani-runtime-inspect",
+      "aos-hosted-nia-experience-inventory"
+    ],
+    "completed": [
+      "aos-hosted-michelle-launch-audit",
+      "aos-hosted-nia-experience-inventory",
+      "aos-hosted-imani-runtime-inspect"
+    ],
+    "failed": [],
+    "errors": [],
+    "parallel": true
+  },
+  "duplicateControl": {
+    "scheduledTickAt": "2026-08-26T01:30:27.465Z",
+    "manualTickAt": "2026-08-26T01:32:25.143Z",
+    "claimed": [],
+    "completed": []
+  },
+  "cursorApiKeyPresent": false,
+  "smsConfigured": false,
+  "remainingLaunchCriticalClassification": {
+    "total": 118,
+    "readyForAgentExecution": 0,
+    "blockedByDependency": 84,
+    "founderActionRequired": 31,
+    "humanAcceptanceRequired": 3
+  },
+  "regression": {
+    "health": { "ok": true, "environment": "production", "application": "ok", "database": "ok" },
+    "register": 200,
+    "login": 200,
+    "lumina": 200,
+    "support": 200
+  }
+}

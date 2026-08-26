@@ -1,0 +1,96 @@
+{
+  "row": 78,
+  "runId": "r78-accepted-2026-08-18T2025Z",
+  "at": "2026-08-18T20:25:00.000Z",
+  "revision": "founder-accepted-final-edits-2026-08-18",
+  "founderCreativeReview": "COPY REVIEWED — VISUAL LOCK PENDING",
+  "founderAcceptance": null,
+  "founderAccepted": false,
+  "authoritativeLaunchDate": "2026-08-31",
+  "campaignDates": ["2026-08-28", "2026-08-29", "2026-08-30"],
+  "published": false,
+  "scheduled": false,
+  "assetsProducedInThisStep": false,
+  "row79Started": false,
+  "row82Started": false,
+  "executedCommitment": "THREE-DAY countdown August 28–30, 2026; launch August 31, 2026; possibility-first excitement campaign; four exact Founder copy edits applied; no other creative changes",
+  "executions": 9,
+  "captionsPresent": 9,
+  "scriptsPresent": 3,
+  "assetsProduced": 0,
+  "assetsNeedProduction": [
+    "R78-0828-IG",
+    "R78-0828-LI",
+    "R78-0828-TT",
+    "R78-0829-IG",
+    "R78-0829-LI",
+    "R78-0829-TT",
+    "R78-0830-IG",
+    "R78-0830-LI",
+    "R78-0830-TT"
+  ],
+  "founderCopyEditsApplied": [
+    {
+      "id": "EDIT 1",
+      "assetId": "R78-0828-LI",
+      "approved": "There is a name for that quiet pull toward something more. It is awakening."
+    },
+    {
+      "id": "EDIT 2",
+      "assetId": "R78-0830-IG",
+      "approved": "August 31 is the beginning of something new."
+    },
+    {
+      "id": "EDIT 3",
+      "assetId": "R78-0830-LI",
+      "approved": "Founding Architect is your invitation to begin—with The Back Half Blueprint and your first year inside the Architect Community."
+    },
+    {
+      "id": "EDIT 4",
+      "assetId": "R78-0830-TT",
+      "approved": "Reflection. Questions. Insight. Encouragement as you move through your Journey."
+    }
+  ],
+  "claimsReview": {
+    "result": "PASS",
+    "removedInThisRevision": [
+      "Public pricing ($1,750 / $1,500 / $50/month)",
+      "Renewal and enrollment-window mechanics",
+      "Lumina disclaimer lists (not a person / not a therapist / not an adviser / not a replacement for professional expertise)",
+      "False scarcity and invented close dates"
+    ]
+  },
+  "aiDisclosureReview": {
+    "result": "PASS",
+    "standardApplied": "Lumina identified in-campaign as AI Guide. Disclaimer lists removed from consumer copy. If placement requires the existing AI Disclosure link, it is first-comment/end-link only and must not dominate."
+  },
+  "niaTripleE": {
+    "result": "PASS",
+    "energy": "PASS — quiet hunger named, then Magical is Possible. felt, then August 31 as an event",
+    "elegance": "PASS — possibility-first; no legal/pricing/product-spec clutter in consumer copy; platform-native",
+    "excellence": "PASS — actual captions/scripts present; production status remains honest 0/9",
+    "emotionalEscalation": "PASS — recognition → belief → launch-eve anticipation",
+    "brandDistinctiveness": "PASS — good-life awakening, Magical is Possible., Architect identity, Lumina as experience",
+    "launchExcitement": "PASS — Day 3 dominated by TOMORROW / August 31",
+    "block": false
+  },
+  "michelleReadiness": {
+    "result": "PASS",
+    "all9ExecutionsComplete": true,
+    "messageAssetCaptionOrScriptCtaUrlFormatTime": true,
+    "scheduleRealistic": true,
+    "assetStatusHonest": true,
+    "executableAfterRow76AndProduction": true,
+    "note": "Creative package copy-reviewed. Visual lock pending Row 81 Founder review. Publishing remains Row 76 + Row 82. Not started."
+  },
+  "imaniTechnical": {
+    "result": "PASS",
+    "liveUrls": "PASS — /, /#awakening, /journey, /lumina, /register exist as production routes",
+    "noLocalhostOrPreview": true,
+    "formatsSpecified": true,
+    "technicalLanguageInConsumerCopy": false,
+    "downstreamAutomationReadiness": "NOT THIS ROW — Row 76 OPEN; Row 82 not started"
+  },
+  "row78CommitmentSatisfied": false,
+  "row78Status": "UNDER CREATIVE REVIEW PENDING VISUAL ACCEPTANCE"
+}

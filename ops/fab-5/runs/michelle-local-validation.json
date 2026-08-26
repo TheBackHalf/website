@@ -1,0 +1,128 @@
+{
+  "at": "2026-08-18T17:44:14.323Z",
+  "localPack": {
+    "T1_SOURCE_OF_TRUTH": {
+      "pass": true,
+      "note": "123 launch deliverables remain (status is not Complete)."
+    },
+    "T2_DECISION_LOG": {
+      "pass": true,
+      "note": "Structured decision md-1787075040337 appended to overlay (durable only if storage is durable)."
+    },
+    "T3_CONTRADICTION": {
+      "pass": true,
+      "note": "Locked Founder decision wins over stale/specialist claims."
+    },
+    "T4_READINESS_REGISTER": {
+      "pass": true,
+      "note": "Readiness classified from remaining launch-critical items (123). Status cell is not evidence."
+    },
+    "T5_FOUNDER_ACTION_LIST": {
+      "pass": true,
+      "note": "Only Founder-reserved item enters Founder queue."
+    },
+    "T6_STRATEGIC_RECOMMENDATION": {
+      "pass": true,
+      "note": "Strategic recommendation schema satisfied."
+    },
+    "T6_EVIDENCE": {
+      "pass": true,
+      "note": "Cited evidence required."
+    },
+    "T6_ASSUMPTIONS": {
+      "pass": true,
+      "note": "Assumptions required."
+    },
+    "T6_DISSENT": {
+      "pass": true,
+      "note": "Dissent required."
+    },
+    "T6_CONFIDENCE": {
+      "pass": true,
+      "note": "Confidence required."
+    },
+    "T7_FINAL_SYNTHESIS": {
+      "pass": true,
+      "note": "Founder-ready synthesis fields present."
+    },
+    "T8_EXECUTION": {
+      "pass": true,
+      "note": "Authorized operational sequencing executed without Founder."
+    },
+    "T9_PROCESS_OPTIMIZATION": {
+      "pass": true,
+      "note": "Independent Imani and Nia work should run in parallel under Michelle. Do not serialize without a dependency."
+    },
+    "T10_ESTIMATE": {
+      "pass": true,
+      "note": "123 remaining items; critical-path spine 24 items"
+    },
+    "T11_DEPENDENCIES": {
+      "pass": true,
+      "note": "Prerequisite arrays read from adapter; downstream acceptance blocked when founder/human gates set."
+    },
+    "T12_PARALLELIZATION": {
+      "pass": true,
+      "note": "Independent Imani/Nia/Michelle slices taken from adapter parallelExecution."
+    },
+    "T13_CRITICAL_PATH": {
+      "pass": true,
+      "note": "Critical path derived from remaining launch-critical items, not a frozen copy of completed rows."
+    },
+    "T14_SCHEDULE_REALISM": {
+      "pass": true,
+      "note": "Target Founder-owned launch date unchanged. 24 remaining critical items cannot honestly complete on tomorrow."
+    },
+    "T15_READINESS_EVIDENCE": {
+      "pass": true,
+      "note": "STATUS CELL ≠ EVIDENCE. Specialist self-report is not completion."
+    },
+    "T20_SELF_CERTIFICATION": {
+      "pass": true,
+      "note": "STATUS CELL ≠ EVIDENCE. Specialist self-report is not completion."
+    },
+    "T17_FOUNDER_UNAVAILABLE": {
+      "pass": true,
+      "note": "Routine continues; reserved decision queues."
+    },
+    "T18_FAILURE_RETRY": {
+      "pass": true,
+      "note": "Bounded retries (2) then persistent failure/escalation. Authority does not expand."
+    },
+    "T19_SOURCE_SUPERSESSION": {
+      "pass": true,
+      "note": "Current source wins over stale."
+    },
+    "T21_FOUNDER_REPORT_DISCIPLINE": {
+      "pass": true,
+      "note": "Routine success uses report class NONE. Founder not interrupted."
+    },
+    "T22_LAUNCH_THREAT": {
+      "pass": true,
+      "note": "Requested deadline is incompatible with remaining critical-path volume."
+    },
+    "T23_LEGAL_BOUNDARY": {
+      "pass": true,
+      "note": "Human legal expert gate."
+    },
+    "T24_FOUNDER_DECISION": {
+      "pass": true,
+      "note": "Launch date is Founder-reserved."
+    },
+    "T16_IMANI_DELEGATION": {
+      "pass": true,
+      "note": "Evaluated in cycle via hosted/in-process Imani assignment."
+    }
+  },
+  "localCycleRunId": "mn-2026-08-1817440Z",
+  "localHosted": false,
+  "localOutcome": "succeeded",
+  "localOpenai": "PASS",
+  "localImani": {
+    "hosted": false,
+    "status": "escalated",
+    "note": "Imani in-process (local). Hosted HTTP used on Vercel."
+  },
+  "persistDurable": true,
+  "secretExposure": "NO"
+}

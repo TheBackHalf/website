@@ -1,0 +1,138 @@
+{
+  "generatedAt": "2026-08-24T14:18:50.783Z",
+  "secretsPrinted": false,
+  "secretsExposed": false,
+  "markedComplete": false,
+  "row73Started": false,
+  "row74Started": false,
+  "registerPath": "ops/fab-5/vendor-saas-register.json",
+  "scorecard": {
+    "authoritativeVendorRegister": "PASS",
+    "launchCriticalDependenciesIdentified": "PASS",
+    "productionArchitectureReconciled": "PASS",
+    "obsoleteVendorsExcluded": "PASS",
+    "accountOwnershipDocumented": "PASS",
+    "billingOwnershipDocumented": "PASS",
+    "planLevelsDocumented": "PASS",
+    "renewalBillingDocumented": "PASS",
+    "usageLimitsDocumented": "PASS",
+    "credentialOwnershipDocumented": "PASS",
+    "mfaOwnershipDocumented": "PASS",
+    "secretsExposed": "NO",
+    "leastPrivilegePreserved": "PASS",
+    "supportPathsDocumented": "PASS",
+    "statusPagesDocumented": "PASS",
+    "fallbacksDocumented": "PASS",
+    "failureImpactsClassified": "PASS"
+  },
+  "regression": {
+    "row20": "PASS",
+    "row61": "PASS",
+    "row62": "PASS",
+    "row84": "PASS",
+    "row150": "PASS",
+    "row151": "PASS",
+    "row153": "PASS",
+    "securityPrivacy": "PASS",
+    "runtimeConsole": "PASS",
+    "overall": "PASS"
+  },
+  "remainingRow72Blockers": [
+    "NONE"
+  ],
+  "actualLaunchBlockers": [
+    "Canonical domain thebackhalf.org currently has SOA-only DNS from this workstation (no A/AAAA). Production remains reachable on https://website-two-psi-49.vercel.app. Dedicated follow-up is Row 75. Do not change DNS from Row 72."
+  ],
+  "founderVerificationCount": 12,
+  "live": {
+    "founderMediaMp4Count": 28,
+    "heygenEnvAbsent": true,
+    "elevenLabsEnvAbsent": true,
+    "resendEnvAbsent": true,
+    "ga4EnvAbsent": true,
+    "officialInstagram": true,
+    "officialTikTok": true,
+    "linkedinNotRequired": true,
+    "openaiKeyNamePresent": false,
+    "stripeKeyNamePresent": false,
+    "smtpNamesPresent": true,
+    "postgresNamesPresent": false,
+    "localEnvNameCount": 5
+  },
+  "http": {
+    "review": {
+      "path": "/_internal/row72-vendor-dependency-review",
+      "status": 200
+    },
+    "health": {
+      "path": "/api/ops/health",
+      "status": 200
+    },
+    "unauthenticatedAdmin": {
+      "path": "/ops/admin",
+      "status": 307
+    },
+    "unauthenticatedKpi": {
+      "path": "/ops/admin/launch-kpi",
+      "status": 307
+    },
+    "unauthenticatedDashboard": {
+      "path": "/ops/admin/launch-dashboard",
+      "status": 307
+    }
+  },
+  "statusPages": [
+    {
+      "url": "https://www.vercel-status.com",
+      "ok": true,
+      "status": 200
+    },
+    {
+      "url": "https://status.supabase.com",
+      "ok": true,
+      "status": 200
+    },
+    {
+      "url": "https://status.stripe.com",
+      "ok": true,
+      "status": 200
+    },
+    {
+      "url": "https://www.google.com/appsstatus/dashboard/",
+      "ok": true,
+      "status": 200
+    },
+    {
+      "url": "https://status.openai.com",
+      "ok": true,
+      "status": 200
+    },
+    {
+      "url": "https://status.heygen.com",
+      "ok": true,
+      "status": 200
+    },
+    {
+      "url": "https://status.cursor.com",
+      "ok": true,
+      "status": 200
+    },
+    {
+      "url": "https://www.githubstatus.com",
+      "ok": true,
+      "status": 200
+    },
+    {
+      "url": "https://metastatus.com",
+      "ok": true,
+      "status": 200
+    },
+    {
+      "url": "https://status.tiktok.com",
+      "ok": false,
+      "status": 0
+    }
+  ],
+  "readyForFounderAcceptance": true,
+  "finalStatus": "ROW 72 IS READY FOR FOUNDER ACCEPTANCE REVIEW"
+}

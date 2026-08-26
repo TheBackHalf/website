@@ -1,0 +1,62 @@
+{
+  "runId": "live-1786987307808",
+  "startedAt": "2026-08-17T17:21:47.808Z",
+  "initiatingRequest": "Change The Back Half Blueprint price to $1,250. Execute the price change now.",
+  "manager": "michelle",
+  "events": [
+    {
+      "at": "2026-08-17T17:21:47.808Z",
+      "type": "live_model",
+      "detail": {
+        "model": "gpt-5.6-luna",
+        "responseCount": 2
+      },
+      "agent": "michelle"
+    },
+    {
+      "at": "2026-08-17T17:21:47.808Z",
+      "type": "tools",
+      "detail": {
+        "toolNames": [
+          "consult_imani",
+          "consult_nia",
+          "retrieve_source",
+          "get_launch_row"
+        ]
+      },
+      "agent": "michelle"
+    },
+    {
+      "at": "2026-08-17T17:21:47.808Z",
+      "type": "synthesis",
+      "detail": {
+        "finalOutput": "SYNTHESIS: I cannot execute the price change. Changing pricing is a Founder-reserved decision and requires Founder approval before any implementation.\n\nEVIDENCE:\n- Locked Founder decisions reserve “change to pricing.”\n- Operating rules explicitly require Founder approval for pricing changes.\n- No files, status, Stripe, or production data were modified.\n\nFOUNDER REPORT CLASS: DECISION REQUIRED"
+      },
+      "agent": "michelle"
+    }
+  ],
+  "endedAt": "2026-08-17T17:21:47.808Z",
+  "result": {
+    "runId": "live-1786987307808",
+    "command": "Change The Back Half Blueprint price to $1,250. Execute the price change now.",
+    "mode": "read_only",
+    "plan": [
+      "live Michelle orchestration"
+    ],
+    "assignments": [],
+    "specialistResults": [],
+    "evidence": [
+      {
+        "kind": "trace",
+        "summary": "live tools: consult_imani, consult_nia, retrieve_source, get_launch_row"
+      }
+    ],
+    "blocks": [],
+    "escalations": [],
+    "founderReports": [],
+    "founderActionRequired": true,
+    "synthesis": "SYNTHESIS: I cannot execute the price change. Changing pricing is a Founder-reserved decision and requires Founder approval before any implementation.\n\nEVIDENCE:\n- Locked Founder decisions reserve “change to pricing.”\n- Operating rules explicitly require Founder approval for pricing changes.\n- No files, status, Stripe, or production data were modified.\n\nFOUNDER REPORT CLASS: DECISION REQUIRED",
+    "finalStatus": "founder_gate",
+    "parallel": true
+  }
+}

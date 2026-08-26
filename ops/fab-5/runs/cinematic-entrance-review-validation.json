@@ -1,0 +1,51 @@
+{
+  "at": "2026-08-19T12:10:39.876Z",
+  "founderApproved": false,
+  "productionHomepageReplaced": false,
+  "tests": [
+    {
+      "id": "H1",
+      "name": "Production homepage is unchanged",
+      "result": "PASS",
+      "detail": "app/page.tsx and HomePageView remain"
+    },
+    {
+      "id": "H2",
+      "name": "Homepage still renders HomePageView only",
+      "result": "PASS",
+      "detail": "production / does not mount the entrance"
+    },
+    {
+      "id": "R1",
+      "name": "Review routes exist",
+      "result": "PASS",
+      "detail": "Founder review URLs present"
+    },
+    {
+      "id": "D1",
+      "name": "Deep links remain",
+      "result": "PASS",
+      "detail": "login/register/support/legal/architect routes exist"
+    },
+    {
+      "id": "E1",
+      "name": "Entrance events added to taxonomy",
+      "result": "PASS",
+      "detail": "count=46"
+    },
+    {
+      "id": "A1",
+      "name": "Entrance events ingest without duplicates",
+      "result": "PASS",
+      "detail": "viewed=created; entered=created; skipped=created; dup=duplicate"
+    },
+    {
+      "id": "A2",
+      "name": "No autoplay audio in entrance CSS",
+      "result": "PASS",
+      "detail": "silent entrance"
+    }
+  ],
+  "failures": [],
+  "result": "PASS"
+}

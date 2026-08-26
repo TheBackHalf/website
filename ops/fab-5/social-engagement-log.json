@@ -1,0 +1,24 @@
+{
+  "store": "ops/fab-5/social-engagement-log.json",
+  "protocol": "ops/fab-5/ROW-83-SOCIAL-ENGAGEMENT-RESPONSE-PROTOCOL.md",
+  "rule": "Log every social interaction that is not a like or emoji-only reaction. Do not paste passwords, full card data, Journey answers, Lumina transcripts, or another Architect's private record. Material Founder/Legal/Privacy items also go in decision-log.json.",
+  "requiredFields": [
+    "id",
+    "at",
+    "timezone",
+    "platform",
+    "surface",
+    "classification",
+    "owner",
+    "backupNotified",
+    "templateId",
+    "slaClass",
+    "publicReply",
+    "routedTo",
+    "escalation",
+    "doNotEngage",
+    "evidencePath",
+    "status"
+  ],
+  "entries": []
+}

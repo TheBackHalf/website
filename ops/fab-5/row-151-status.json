@@ -1,0 +1,16 @@
+{
+  "row": 151,
+  "excelRow": 151,
+  "deliverable": "Build Launch Dashboard",
+  "technicalStatus": "ready_for_founder_acceptance",
+  "percentCompleteRecorded": 90,
+  "founderAcceptance": null,
+  "founderAccepted": false,
+  "rowMarkedComplete": false,
+  "primaryOwner": "michelle",
+  "supportingOwner": "imani",
+  "dashboard": "/ops/admin/launch-dashboard",
+  "sourceOfTruth": "ops/fab-5/ROW-151-LAUNCH-DASHBOARD.md",
+  "validation": "ops/fab-5/runs/row-151-launch-dashboard-validation.json",
+  "nextAction": "Founder Acceptance Review. Isolated T1–T24 and D1–D18 must pass. Production Postgres from this workstation remains a verification blocker, not a rewrite trigger. Row 151 may be marked 100% Complete only after explicit Founder approval."
+}

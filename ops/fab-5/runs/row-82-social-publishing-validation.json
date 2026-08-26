@@ -1,0 +1,100 @@
+{
+  "generatedAt": "2026-08-24T20:15:20.591Z",
+  "secretsPrinted": false,
+  "markedComplete": false,
+  "founderAcceptanceRecorded": false,
+  "livePublishAttempted": false,
+  "instagramLoginAttempted": false,
+  "tiktokLoginAttempted": false,
+  "launchRoadmapUnchanged": true,
+  "founderNotesUnchanged": true,
+  "row77CompletionUnchanged": true,
+  "artifact": "ops/fab-5/ROW-82-SOCIAL-PUBLISHING-SCHEDULING-SYSTEM.md",
+  "manifest": "ops/fab-5/row-82-social-publishing-manifest.json",
+  "finalStatus": "IMPLEMENTED — FOUNDER ACTION REQUIRED",
+  "mechanicalImplementation": "PASS",
+  "checks": {
+    "generatedAt": "2026-08-24T20:15:16.272Z",
+    "artifactExists": true,
+    "copyExists": true,
+    "secretsInArtifact": false,
+    "markedComplete": false,
+    "founderAccepted": false,
+    "livePublishDisabled": true,
+    "livePublishAttempted": false,
+    "entryCount": 8,
+    "instagramCount": 4,
+    "tiktokCount": 4,
+    "linkedinCount": 0,
+    "noLinkedInLaunch": true,
+    "captionsMatchCopy": true,
+    "timesMatchCopy": true,
+    "datesMatch": true,
+    "easternTimeExplicit": true,
+    "noLocalhost": true,
+    "noVercel": true,
+    "enrollmentUrlsOk": true,
+    "everyPreviewed": true,
+    "mediaOk": true,
+    "queueAligned": true,
+    "optionBDocumented": true,
+    "niaOwner": true,
+    "newVendorRequired": false,
+    "nativeInstagramVerified": false,
+    "nativeTikTokVerified": false,
+    "missingAssets": []
+  },
+  "optionB": {
+    "instagramWithoutFounder": "FAIL",
+    "tiktokWithoutFounder": "FAIL",
+    "niaExecutable": "FAIL",
+    "continuity": "FAIL",
+    "row77CompletionUnchanged": true
+  },
+  "validation": {
+    "everyScheduledAssetPreviewed": "PASS",
+    "dates": "PASS",
+    "times": "PASS",
+    "easternTime": "PASS",
+    "captions": "PASS",
+    "media": "PASS",
+    "cta": "PASS",
+    "links": "EXTERNAL DEPENDENCY — ROW 75",
+    "noEarlyPublication": "PASS"
+  },
+  "remainingBlockers": [
+    "FOUNDER ACTION REQUIRED — PLATFORM AUTHORIZATION: load locked August 28–31 Instagram jobs into Instagram Professional / Meta Business Suite native scheduler at 8:00 AM ET.",
+    "FOUNDER ACTION REQUIRED — PLATFORM AUTHORIZATION: load locked August 28–31 TikTok jobs into TikTok native scheduling at 12:00 PM ET, or report that native TikTok scheduling is unavailable."
+  ],
+  "http": {
+    "review": {
+      "path": "/_internal/row82-social-publishing-review",
+      "status": 200
+    },
+    "media": {
+      "path": "/_internal/row82-social-publishing-review/media/R78-0828-IG-S01.png",
+      "status": 200
+    },
+    "register": {
+      "path": "/register",
+      "status": 200
+    },
+    "journey": {
+      "path": "/journey",
+      "status": 200
+    },
+    "lumina": {
+      "path": "/lumina",
+      "status": 200
+    },
+    "health": {
+      "path": "/api/ops/health",
+      "status": 200
+    },
+    "canonicalRegister": {
+      "url": "https://thebackhalf.org/register",
+      "status": 0,
+      "ok": false
+    }
+  }
+}

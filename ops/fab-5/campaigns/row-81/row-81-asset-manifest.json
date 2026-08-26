@@ -1,0 +1,390 @@
+{
+  "row": 81,
+  "title": "August 28\u201331 platform-native social launch package",
+  "authoritativeLaunchDate": "2026-08-31",
+  "campaignDates": [
+    "2026-08-28",
+    "2026-08-29",
+    "2026-08-30",
+    "2026-08-31"
+  ],
+  "youtube": "DEFERRED \u2014 OCTOBER 25, 2026 COMMUNITY ROLLOUT",
+  "founderAcceptance": null,
+  "row78FounderAcceptance": null,
+  "doNotPublish": true,
+  "doNotSchedule": true,
+  "assetDirectory": "ops/fab-5/campaigns/row-81/assets",
+  "executions": [
+    {
+      "assetId": "R78-0828-IG",
+      "date": "2026-08-28",
+      "platform": "instagram",
+      "format": "carousel",
+      "filePath": [
+        "ops/fab-5/campaigns/row-81/assets/R78-0828-IG-S01.png",
+        "ops/fab-5/campaigns/row-81/assets/R78-0828-IG-S02.png",
+        "ops/fab-5/campaigns/row-81/assets/R78-0828-IG-S03.png",
+        "ops/fab-5/campaigns/row-81/assets/R78-0828-IG-S04.png"
+      ],
+      "dimensions": "1080x1350",
+      "duration": null,
+      "sourceAssets": [
+        "public/images/hero-atmosphere.jpg"
+      ],
+      "caption": "A life can be full \u2014 career, family, home, accomplishment \u2014 and still grow quiet.\n\nNot because anything went wrong.\nBecause expectation can be completed, and aliveness can still be waiting.\n\nThe Back Half was created for that moment. A place to move from the life you were supposed to live to the life you intentionally design.\n\nAugust 31, 2026.",
+      "altText": "THE QUESTION carousel on approved dawn atmosphere. Slide 1: What if this isn't all there is? Slide 2 type-only: You did everything you were supposed to do. Slide 3: Now what? Slide 4 type-only: August 31.",
+      "primaryCta": "Stay with the question.",
+      "alternateCta": "August 31.",
+      "url": "https://thebackhalf.org/",
+      "timeEt": "8:00 AM ET",
+      "onScreenCopy": "THE QUESTION\nSlide 1: What if this isn't all there is?\nSlide 2 (type): You did everything you were supposed to do.\nSlide 3: Now what?\nSlide 4 (type): August 31.",
+      "hashtags": "None. No approved branded hashtag.",
+      "publishingInstructions": "Instagram feed carousel. Upload all four slides in order S01\u2013S04. Paste the caption exactly. Do not add hashtags. First comment not required. Keep the profile link as thebackhalf.org. Publish at 8:00 AM ET. Do not alter type or crop.",
+      "keywordsHashtags": "None as hashtags. No approved branded hashtag. Discovery through caption language only.",
+      "aiDisclosureRequirement": "NOT REQUIRED",
+      "productionStatus": "PRODUCED",
+      "niaReview": "PASS \u2014 visual review of rendered files; flags recorded in validation",
+      "founderReview": "PENDING",
+      "row82Ready": true
+    },
+    {
+      "assetId": "R78-0828-LI",
+      "date": "2026-08-28",
+      "platform": "linkedin",
+      "format": "static",
+      "filePath": [
+        "ops/fab-5/campaigns/row-81/assets/R78-0828-LI.png"
+      ],
+      "dimensions": "1200x627",
+      "duration": null,
+      "sourceAssets": [
+        "public/images/hero-atmosphere.jpg"
+      ],
+      "caption": "Most of us did what was asked of us.\n\nWe performed. We delivered. We led. We cared for other people. We built a life that looks complete from the outside.\n\nThen a quieter intelligence arrives. Not a crisis. A question about whether the next chapter will be chosen \u2014 or merely continued.\n\nI created The Back Half as a transformational life design company for that moment. From expectation to intention.\n\nAugust 31, 2026.\n\nIn Gratitude,\nKimberly M. Walker\nFounder",
+      "altText": "Approved dawn atmosphere. THE QUESTION: What if this isn't all there is?",
+      "primaryCta": "If you recognized yourself, begin at the beginning.",
+      "alternateCta": "thebackhalf.org",
+      "url": "https://thebackhalf.org/#awakening",
+      "timeEt": "9:30 AM ET",
+      "onScreenCopy": "THE QUESTION\nWhat if this isn't all there is?",
+      "hashtags": "None. LinkedIn discovery through caption language only.",
+      "publishingInstructions": "LinkedIn native image post. Attach R78-0828-LI.png. Paste the caption exactly, including the In Gratitude sign-off. Do not add hashtags. Publish at 9:30 AM ET.",
+      "keywordsHashtags": "None as hashtags. No approved branded hashtag. Discovery through caption language only.",
+      "aiDisclosureRequirement": "NOT REQUIRED",
+      "productionStatus": "PRODUCED",
+      "niaReview": "PASS \u2014 visual review of rendered files; flags recorded in validation",
+      "founderReview": "PENDING",
+      "row82Ready": true
+    },
+    {
+      "assetId": "R78-0828-TT",
+      "date": "2026-08-28",
+      "platform": "tiktok",
+      "format": "short-form-vertical-video",
+      "filePath": [
+        "ops/fab-5/campaigns/row-81/assets/R78-0828-TT.mp4",
+        "ops/fab-5/campaigns/row-81/assets/R78-0828-TT-cover.png"
+      ],
+      "dimensions": "1080x1920",
+      "duration": 17.9,
+      "sourceAssets": [
+        "public/images/hero-atmosphere.jpg"
+      ],
+      "caption": "You can do everything right\nand still feel the quiet.\n\nNot because the life failed.\nBecause a good life can still want more.\n\nAugust 31.",
+      "altText": "Cinematic still-motion. Visual pause, then THE QUESTION: What if this isn't all there is? Ends on August 31.",
+      "primaryCta": "If that landed \u2014 August 31.",
+      "alternateCta": "thebackhalf.org",
+      "url": "https://thebackhalf.org/",
+      "timeEt": "12:00 PM ET",
+      "onScreenCopy": "1. Visual pause \u2014 approved dawn atmosphere, no type.\n2. THE QUESTION / What if this isn't all there is?\n3. Type: You did everything you were supposed to do.\n4. Now what?\n5. Type: August 31.",
+      "hashtags": "None. No approved branded hashtag.",
+      "publishingInstructions": "TikTok native video. Upload R78-0828-TT.mp4. Cover is the first frame (R78-0828-TT-cover.png). Paste the caption exactly. No trending audio. No extra on-screen text. Add the website in bio. Publish at 12:00 PM ET.",
+      "keywordsHashtags": "None as hashtags. No approved branded hashtag. Discovery through caption language only.",
+      "aiDisclosureRequirement": "NOT REQUIRED",
+      "productionStatus": "PRODUCED",
+      "niaReview": "PASS \u2014 visual review of rendered files; flags recorded in validation",
+      "founderReview": "PENDING",
+      "row82Ready": true
+    },
+    {
+      "assetId": "R78-0829-IG",
+      "date": "2026-08-29",
+      "platform": "instagram",
+      "format": "carousel",
+      "filePath": [
+        "ops/fab-5/campaigns/row-81/assets/R78-0829-IG-S01.png",
+        "ops/fab-5/campaigns/row-81/assets/R78-0829-IG-S02.png",
+        "ops/fab-5/campaigns/row-81/assets/R78-0829-IG-S03.png",
+        "ops/fab-5/campaigns/row-81/assets/R78-0829-IG-S04.png"
+      ],
+      "dimensions": "1080x1350",
+      "duration": null,
+      "sourceAssets": [
+        "public/images/journey-light.jpg"
+      ],
+      "caption": "Aliveness is not a vacation from your life.\nIt is the feeling of being present inside it \u2014 wonder, meaning, adventure, purpose.\n\nThe Back Half Journey is how that feeling becomes a design. Seven chapters. Intention instead of hope.\n\nYour next chapter does not have to look like your last one.",
+      "altText": "THE QUESTION carousel on approved atmospheric light. When was the last time you felt completely alive? Magical is Possible. What are you saving for someday? There is a path.",
+      "primaryCta": "Explore the Journey.",
+      "alternateCta": "There is a path.",
+      "url": "https://thebackhalf.org/journey",
+      "timeEt": "8:00 AM ET",
+      "onScreenCopy": "THE QUESTION\nSlide 1: When was the last time you felt completely alive?\nSlide 2 (type): Magical is Possible.\nSlide 3: What are you saving for someday?\nSlide 4 (type): There is a path.",
+      "hashtags": "None. No approved branded hashtag.",
+      "publishingInstructions": "Instagram feed carousel. Upload S01\u2013S04 in order. Paste the caption exactly. Do not add hashtags. Publish at 8:00 AM ET.",
+      "keywordsHashtags": "None as hashtags. No approved branded hashtag. Discovery through caption language only.",
+      "aiDisclosureRequirement": "NOT REQUIRED",
+      "productionStatus": "PRODUCED",
+      "niaReview": "PASS \u2014 visual review of rendered files; flags recorded in validation",
+      "founderReview": "PENDING",
+      "row82Ready": true
+    },
+    {
+      "assetId": "R78-0829-LI",
+      "date": "2026-08-29",
+      "platform": "linkedin",
+      "format": "static",
+      "filePath": [
+        "ops/fab-5/campaigns/row-81/assets/R78-0829-LI.png"
+      ],
+      "dimensions": "1200x627",
+      "duration": null,
+      "sourceAssets": [
+        "public/images/journey-light.jpg"
+      ],
+      "caption": "Inspiration without a path is atmosphere.\n\nYesterday named the quiet. Today is the turn: aliveness can be designed.\n\nThe Back Half Journey is a seven-chapter path for people who have already built a life \u2014 and now want to live it with intention. Not a new identity performance. A decision about what comes next.\n\nIn Gratitude,\nKimberly M. Walker\nFounder",
+      "altText": "Approved atmospheric light. THE QUESTION: When was the last time you felt completely alive?",
+      "primaryCta": "See the path.",
+      "alternateCta": "Explore the Journey.",
+      "url": "https://thebackhalf.org/journey",
+      "timeEt": "9:30 AM ET",
+      "onScreenCopy": "THE QUESTION\nWhen was the last time you felt completely alive?",
+      "hashtags": "None. LinkedIn discovery through caption language only.",
+      "publishingInstructions": "LinkedIn native image post. Attach R78-0829-LI.png. Paste the caption exactly, including the In Gratitude sign-off. Publish at 9:30 AM ET.",
+      "keywordsHashtags": "None as hashtags. No approved branded hashtag. Discovery through caption language only.",
+      "aiDisclosureRequirement": "NOT REQUIRED",
+      "productionStatus": "PRODUCED",
+      "niaReview": "PASS \u2014 visual review of rendered files; flags recorded in validation",
+      "founderReview": "PENDING",
+      "row82Ready": true
+    },
+    {
+      "assetId": "R78-0829-TT",
+      "date": "2026-08-29",
+      "platform": "tiktok",
+      "format": "short-form-vertical-video",
+      "filePath": [
+        "ops/fab-5/campaigns/row-81/assets/R78-0829-TT.mp4",
+        "ops/fab-5/campaigns/row-81/assets/R78-0829-TT-cover.png"
+      ],
+      "dimensions": "1080x1920",
+      "duration": 18.1,
+      "sourceAssets": [
+        "public/images/journey-light.jpg"
+      ],
+      "caption": "Aliveness is not somewhere else.\n\nIt is what happens when you stop saving your life for later.\n\nThe Journey is the path.\nAugust 31.",
+      "altText": "Cinematic still-motion through approved light. Opens on a visual pause, then THE QUESTION about aliveness.",
+      "primaryCta": "Explore the Journey.",
+      "alternateCta": "thebackhalf.org/journey",
+      "url": "https://thebackhalf.org/journey",
+      "timeEt": "12:00 PM ET",
+      "onScreenCopy": "1. Visual pause \u2014 approved light, no type.\n2. THE QUESTION / When was the last time you felt completely alive?\n3. Type: Magical is Possible.\n4. THE QUESTION / What are you saving for someday?\n5. Type: There is a path.",
+      "hashtags": "None. No approved branded hashtag.",
+      "publishingInstructions": "TikTok native video. Upload R78-0829-TT.mp4. Use the produced cover. Paste the caption exactly. No trending audio. Publish at 12:00 PM ET.",
+      "keywordsHashtags": "None as hashtags. No approved branded hashtag. Discovery through caption language only.",
+      "aiDisclosureRequirement": "NOT REQUIRED",
+      "productionStatus": "PRODUCED",
+      "niaReview": "PASS \u2014 visual review of rendered files; flags recorded in validation",
+      "founderReview": "PENDING",
+      "row82Ready": true
+    },
+    {
+      "assetId": "R78-0830-IG",
+      "date": "2026-08-30",
+      "platform": "instagram",
+      "format": "carousel",
+      "filePath": [
+        "ops/fab-5/campaigns/row-81/assets/R78-0830-IG-S01.png",
+        "ops/fab-5/campaigns/row-81/assets/R78-0830-IG-S02.png",
+        "ops/fab-5/campaigns/row-81/assets/R78-0830-IG-S03.png"
+      ],
+      "dimensions": "1080x1350",
+      "duration": null,
+      "sourceAssets": [
+        "public/images/hero-atmosphere.jpg",
+        "public/images/Lumina Avatar.png"
+      ],
+      "caption": "The doors open tomorrow.\n\nInside The Back Half Journey is Lumina \u2014 your AI Guide. A place for better questions, deeper reflection, and the conversation that continues as you design what comes next.\n\nTomorrow, you can Become an Architect.",
+      "altText": "Three-slide sequence. Type-only question: What if someday is August 31? Then Lumina, presence only. Then Tomorrow.",
+      "primaryCta": "Return tomorrow. Become an Architect.",
+      "alternateCta": "The doors open tomorrow.",
+      "url": "https://thebackhalf.org/lumina",
+      "timeEt": "8:00 AM ET",
+      "onScreenCopy": "THE QUESTION\nSlide 1 (type): What if someday is August 31?\nSlide 2: Lumina \u2014 presence only, no type.\nSlide 3 (type): Tomorrow.",
+      "hashtags": "None. No approved branded hashtag.",
+      "publishingInstructions": "Instagram feed carousel. Upload S01\u2013S03 in order (the question, Lumina presence, Tomorrow). Paste the caption exactly. If AI disclosure is required at placement, add only a quiet first-comment link to https://thebackhalf.org/legal/ai-disclosure. Publish at 8:00 AM ET.",
+      "keywordsHashtags": "None as hashtags. No approved branded hashtag. Discovery through caption language only.",
+      "aiDisclosureRequirement": "QUIET FIRST-COMMENT IF REQUIRED \u2014 https://thebackhalf.org/legal/ai-disclosure",
+      "productionStatus": "PRODUCED",
+      "niaReview": "PASS \u2014 visual review of rendered files; flags recorded in validation",
+      "founderReview": "PENDING",
+      "row82Ready": true
+    },
+    {
+      "assetId": "R78-0830-LI",
+      "date": "2026-08-30",
+      "platform": "linkedin",
+      "format": "static",
+      "filePath": [
+        "ops/fab-5/campaigns/row-81/assets/R78-0830-LI.png"
+      ],
+      "dimensions": "1200x627",
+      "duration": null,
+      "sourceAssets": [
+        "public/images/hero-atmosphere.jpg"
+      ],
+      "caption": "Tomorrow is not another teaser.\n\nThe Back Half opens August 31, 2026 \u2014 a transformational life design company for people who have already done what was expected, and are ready to choose what they want next.\n\nLumina is your AI Guide inside the Journey.\nFounding Architect is the invitation to begin.\n\nI hope you walk through the door.\n\nIn Gratitude,\nKimberly M. Walker\nFounder",
+      "altText": "Approved dawn atmosphere. THE QUESTION: What if someday is August 31?",
+      "primaryCta": "Tomorrow, Become an Architect.",
+      "alternateCta": "August 31, 2026.",
+      "url": "https://thebackhalf.org/register",
+      "timeEt": "9:30 AM ET",
+      "onScreenCopy": "THE QUESTION\nWhat if someday is August 31?",
+      "hashtags": "None. LinkedIn discovery through caption language only.",
+      "publishingInstructions": "LinkedIn native image post. Attach R78-0830-LI.png. Paste the caption exactly, including the In Gratitude sign-off. If disclosure is required, quiet end-link only. Publish at 9:30 AM ET.",
+      "keywordsHashtags": "None as hashtags. No approved branded hashtag. Discovery through caption language only.",
+      "aiDisclosureRequirement": "QUIET FIRST-COMMENT IF REQUIRED \u2014 https://thebackhalf.org/legal/ai-disclosure",
+      "productionStatus": "PRODUCED",
+      "niaReview": "PASS \u2014 visual review of rendered files; flags recorded in validation",
+      "founderReview": "PENDING",
+      "row82Ready": true
+    },
+    {
+      "assetId": "R78-0830-TT",
+      "date": "2026-08-30",
+      "platform": "tiktok",
+      "format": "short-form-vertical-video",
+      "filePath": [
+        "ops/fab-5/campaigns/row-81/assets/R78-0830-TT.mp4",
+        "ops/fab-5/campaigns/row-81/assets/R78-0830-TT-cover.png"
+      ],
+      "dimensions": "1080x1920",
+      "duration": 17.55,
+      "sourceAssets": [
+        "public/images/Lumina Avatar.png",
+        "public/images/hero-atmosphere.jpg"
+      ],
+      "caption": "Someday has a date.\n\nTomorrow, The Back Half opens.\nLumina will be there.\nYou can begin.",
+      "altText": "Cinematic sequence: visual pause, THE QUESTION about someday, Lumina presence, Tomorrow.",
+      "primaryCta": "Tomorrow.",
+      "alternateCta": "Become an Architect.",
+      "url": "https://thebackhalf.org/register",
+      "timeEt": "12:00 PM ET",
+      "onScreenCopy": "1. Visual pause.\n2. THE QUESTION / What if someday is August 31?\n3. Lumina \u2014 presence only.\n4. Type: Tomorrow.",
+      "hashtags": "None. No approved branded hashtag.",
+      "publishingInstructions": "TikTok native video. Upload R78-0830-TT.mp4. Use the produced cover. Paste the caption exactly. No trending audio. If disclosure is required, quiet first-comment link only. Publish at 12:00 PM ET.",
+      "keywordsHashtags": "None as hashtags. No approved branded hashtag. Discovery through caption language only.",
+      "aiDisclosureRequirement": "QUIET FIRST-COMMENT IF REQUIRED \u2014 https://thebackhalf.org/legal/ai-disclosure",
+      "productionStatus": "PRODUCED",
+      "niaReview": "PASS \u2014 visual review of rendered files; flags recorded in validation",
+      "founderReview": "PENDING",
+      "row82Ready": true
+    },
+    {
+      "assetId": "R81-0831-IG",
+      "date": "2026-08-31",
+      "platform": "instagram",
+      "format": "carousel",
+      "filePath": [
+        "ops/fab-5/campaigns/row-81/assets/R81-0831-IG-S01.png",
+        "ops/fab-5/campaigns/row-81/assets/R81-0831-IG-S02.png",
+        "ops/fab-5/campaigns/row-81/assets/R81-0831-IG-S03.png",
+        "ops/fab-5/campaigns/row-81/assets/R81-0831-IG-S04.png",
+        "ops/fab-5/campaigns/row-81/assets/R81-0831-IG-S05.png",
+        "ops/fab-5/campaigns/row-81/assets/R81-0831-IG-S06.png",
+        "ops/fab-5/campaigns/row-81/assets/R81-0831-IG-S07.png",
+        "ops/fab-5/campaigns/row-81/assets/R81-0831-IG-S08.png"
+      ],
+      "dimensions": "1080x1350",
+      "duration": null,
+      "sourceAssets": [
+        "public/images/hero-atmosphere.jpg",
+        "public/images/journey-light.jpg"
+      ],
+      "caption": "The doors are open.\n\nToday, The Back Half begins \u2014 a world for people who have already become who they were supposed to be, and are ready to choose who they become next.\n\nYou don\u2019t have to wait for someday.\nYour Back Half can begin today.\n\nBecome an Architect.\nthebackhalf.org/register",
+      "altText": "Eight-slide launch manifesto on approved Back Half imagery and type-only frames. Opens: THE BACK HALF IS HERE. Closes: BECOME AN ARCHITECT. thebackhalf.org/register.",
+      "primaryCta": "Become an Architect.",
+      "alternateCta": "The doors are open.",
+      "url": "https://thebackhalf.org/register",
+      "timeEt": "8:00 AM ET",
+      "onScreenCopy": "Slide 1: THE BACK HALF IS HERE.\nSlide 2 (type): You spent years becoming who you were supposed to be.\nSlide 3: Now comes a different question.\nSlide 4 (type): Who do you choose to become next?\nSlide 5: FROM EXPECTATION TO INTENTION.\nSlide 6 (type): There is more life inside your life.\nSlide 7: MAGICAL IS POSSIBLE.\nSlide 8 (type): BECOME AN ARCHITECT. / thebackhalf.org/register",
+      "hashtags": "None. No approved branded hashtag. Do not invent one on launch morning.",
+      "publishingInstructions": "LAUNCH DAY. Instagram feed carousel \u2014 an eight-slide visual manifesto. Upload S01\u2013S08 in order. This post announces that The Back Half is open. Paste the caption exactly. Do not add hashtags. If Instagram allows a link sticker, use https://thebackhalf.org/register. Publish at 8:00 AM ET. Do not rewrite. Do not stop at slide 4.",
+      "keywordsHashtags": "None as hashtags. No approved branded hashtag. Discovery through caption language only.",
+      "aiDisclosureRequirement": "NOT REQUIRED",
+      "productionStatus": "PRODUCED",
+      "niaReview": "PASS \u2014 visual review of rendered files; flags recorded in validation",
+      "founderReview": "PENDING",
+      "row82Ready": true
+    },
+    {
+      "assetId": "R81-0831-LI",
+      "date": "2026-08-31",
+      "platform": "linkedin",
+      "format": "static",
+      "filePath": [
+        "ops/fab-5/campaigns/row-81/assets/R81-0831-LI.png"
+      ],
+      "dimensions": "1200x627",
+      "duration": null,
+      "sourceAssets": [
+        "public/images/journey-light.jpg"
+      ],
+      "caption": "Today, The Back Half begins.\n\nFor years, many of us became exceptionally good at the life that was expected. We led. We delivered. We took care of what was ours to take care of.\n\nThen a different kind of intelligence arrives. Not \u201cstart over.\u201d Not \u201cblow it up.\u201d A quieter, more serious question: what do I intentionally want now?\n\nThe Back Half is a transformational life design company created for that question. From expectation to intention. From someday to now.\n\nThe doors are open.\n\nhttps://thebackhalf.org/register\n\nIn Gratitude,\nKimberly M. Walker\nFounder",
+      "altText": "Launch-day landscape. THE BACK HALF IS HERE. The doors are open. August 31, 2026.",
+      "primaryCta": "Become an Architect.",
+      "alternateCta": "Enter now.",
+      "url": "https://thebackhalf.org/register",
+      "timeEt": "9:30 AM ET",
+      "onScreenCopy": "THE BACK HALF IS HERE.\nThe doors are open.  \u00b7  August 31, 2026",
+      "hashtags": "None. LinkedIn discovery through caption language only.",
+      "publishingInstructions": "LAUNCH DAY. LinkedIn native image post. Attach R81-0831-LI.png. Paste the caption exactly, including the In Gratitude sign-off and the register URL. Publish at 9:30 AM ET. Do not rewrite.",
+      "keywordsHashtags": "None as hashtags. No approved branded hashtag. Discovery through caption language only.",
+      "aiDisclosureRequirement": "NOT REQUIRED",
+      "productionStatus": "PRODUCED",
+      "niaReview": "PASS \u2014 visual review of rendered files; flags recorded in validation",
+      "founderReview": "PENDING",
+      "row82Ready": true
+    },
+    {
+      "assetId": "R81-0831-TT",
+      "date": "2026-08-31",
+      "platform": "tiktok",
+      "format": "short-form-vertical-video",
+      "filePath": [
+        "ops/fab-5/campaigns/row-81/assets/R81-0831-TT.mp4",
+        "ops/fab-5/campaigns/row-81/assets/R81-0831-TT-cover.png"
+      ],
+      "dimensions": "1080x1920",
+      "duration": 22.1,
+      "sourceAssets": [
+        "public/images/hero-atmosphere.jpg",
+        "public/images/journey-light.jpg"
+      ],
+      "caption": "The doors are open.\n\nYou don\u2019t have to wait for someday.\nYour Back Half can begin today.\n\nBecome an Architect.\nthebackhalf.org/register",
+      "altText": "Launch-day cinematic sequence. Opens on atmosphere, then THE BACK HALF IS HERE., and ends on BECOME AN ARCHITECT. thebackhalf.org/register.",
+      "primaryCta": "Become an Architect.",
+      "alternateCta": "thebackhalf.org/register",
+      "url": "https://thebackhalf.org/register",
+      "timeEt": "12:00 PM ET",
+      "onScreenCopy": "1. Visual pause.\n2. THE BACK HALF IS HERE.\n3. You spent years becoming who you were supposed to be.\n4. Who do you choose to become next?\n5. FROM EXPECTATION TO INTENTION.\n6. MAGICAL IS POSSIBLE.\n7. BECOME AN ARCHITECT. / thebackhalf.org/register",
+      "hashtags": "None. No approved branded hashtag. Do not invent one on launch morning.",
+      "publishingInstructions": "LAUNCH DAY. TikTok native video. Upload R81-0831-TT.mp4. Cover is the first frame. Paste the full caption exactly \u2014 the creative is short by design; the caption carries the launch story. No trending audio. No extra on-screen text. Add https://thebackhalf.org/register in bio / link sticker if available. Publish at 12:00 PM ET.",
+      "keywordsHashtags": "None as hashtags. No approved branded hashtag. Discovery through caption language only.",
+      "aiDisclosureRequirement": "NOT REQUIRED",
+      "productionStatus": "PRODUCED",
+      "niaReview": "PASS \u2014 visual review of rendered files; flags recorded in validation",
+      "founderReview": "PENDING",
+      "row82Ready": true
+    }
+  ]
+}

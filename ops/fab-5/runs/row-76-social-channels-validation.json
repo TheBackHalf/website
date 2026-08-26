@@ -1,0 +1,214 @@
+{
+  "row": 76,
+  "deliverable": "Stand Up Official Social Media Channels",
+  "runId": "r76-2026-08-1819374Z",
+  "at": "2026-08-18T19:37:48.644Z",
+  "founderAccepted": false,
+  "row77Started": false,
+  "secretExposure": "NO",
+  "identity": {
+    "publicBrandName": "The Back Half",
+    "website": "https://thebackhalf.org",
+    "preferredHandle": "thebackhalf",
+    "approvedBio": "The Back Half helps people transition from living by expectation to living with intention. Magical is Possible. Become an Architect.",
+    "instagramBioCharacters": 132
+  },
+  "platformScope": {
+    "instagram": "LAUNCH",
+    "linkedin": "LAUNCH",
+    "tiktok": "FOUNDER DECISION REQUIRED",
+    "youtube": "OUT OF SCOPE — October 25 2026 Architect Community / Post Launch",
+    "tiktokEvidence": [
+      "ops/fab-5/launch-rows.json Row 76 description still lists TikTok",
+      "Founder 2026-08-18: Instagram and LinkedIn are primary launch platforms",
+      "No authoritative lock that TikTok is August-launch-required or deferred"
+    ]
+  },
+  "probes": {
+    "website": {
+      "url": "https://thebackhalf.org",
+      "http": null,
+      "error": "TypeError",
+      "officialPresence": false
+    },
+    "websiteWww": {
+      "url": "https://www.thebackhalf.org",
+      "http": null,
+      "error": "TypeError",
+      "officialPresence": false
+    },
+    "instagramPreferred": {
+      "url": "https://www.instagram.com/thebackhalf/",
+      "http": 200,
+      "finalUrl": "https://www.instagram.com/thebackhalf/",
+      "contentType": "text/html",
+      "bytes": 604639,
+      "notFound": true,
+      "loginWall": false,
+      "brandHit": false,
+      "officialPresence": false
+    },
+    "linkedinPreferred": {
+      "url": "https://www.linkedin.com/company/thebackhalf",
+      "http": 404,
+      "finalUrl": "https://www.linkedin.com/company/thebackhalf",
+      "contentType": "text/html",
+      "bytes": 317547,
+      "notFound": true,
+      "loginWall": false,
+      "brandHit": false,
+      "officialPresence": false
+    },
+    "linkedinHyphen": {
+      "url": "https://www.linkedin.com/company/the-back-half",
+      "http": 404,
+      "finalUrl": "https://www.linkedin.com/company/the-back-half",
+      "contentType": "text/html",
+      "bytes": 317547,
+      "notFound": true,
+      "loginWall": false,
+      "brandHit": false,
+      "officialPresence": false
+    },
+    "tiktokPreferred": {
+      "url": "https://www.tiktok.com/@thebackhalf",
+      "http": 200,
+      "finalUrl": "https://www.tiktok.com/@thebackhalf",
+      "contentType": "text/html",
+      "bytes": 365356,
+      "notFound": true,
+      "loginWall": true,
+      "brandHit": false,
+      "officialPresence": false
+    }
+  },
+  "websiteDestination": "UNVERIFIED_OR_FAIL",
+  "niaTripleE": {
+    "instagram": {
+      "touchpoint": "row-76-instagram-public",
+      "expectedExperience": "Official public Instagram presence for The Back Half: handle thebackhalf, approved bio, https://thebackhalf.org, approved profile image, professional settings, no default/placeholder content.",
+      "actualExperience": "No official public Instagram profile found at the preferred handle. Account is not stood up in source of truth.",
+      "tripleE": {
+        "Energy": {
+          "result": "FAIL",
+          "evidence": "Actual experience (No official public Instagram profile found at the preferred handle. Account is not stood up in source of truth.) vs approved requirement (Official public Instagram presence for The Back Half: handle thebackhalf, approved bio, https://thebackhalf.org, approved profile image, professional settings, no default/placeholder content.). Spec PASS is not evidence."
+        },
+        "Elegance": {
+          "result": "FAIL",
+          "evidence": "Actual experience (No official public Instagram profile found at the preferred handle. Account is not stood up in source of truth.) vs approved requirement (Official public Instagram presence for The Back Half: handle thebackhalf, approved bio, https://thebackhalf.org, approved profile image, professional settings, no default/placeholder content.). Spec PASS is not evidence."
+        },
+        "Excellence": {
+          "result": "FAIL",
+          "evidence": "Actual experience (No official public Instagram profile found at the preferred handle. Account is not stood up in source of truth.) vs approved requirement (Official public Instagram presence for The Back Half: handle thebackhalf, approved bio, https://thebackhalf.org, approved profile image, professional settings, no default/placeholder content.). Spec PASS is not evidence."
+        }
+      },
+      "accessibilityResult": "No critical accessibility failure evidenced",
+      "clarityResult": "Actual experience is unclear vs approved promise",
+      "usabilityResult": "Critical path unusable or misleading",
+      "contentResult": "Participant-facing content does not match approved requirement",
+      "functionalResult": "FUNCTION WORKS LOCALLY / SPEC PASS is not EXPERIENCE TESTED",
+      "evidence": [
+        "ops/fab-5/operating-system.json nia.mission; ops/fab-5/launch-rows.json Independent Fab 5 Triple E Review (Energy, Elegance, and Excellence)",
+        "touchpoint:row-76-instagram-public",
+        "actual:No official public Instagram profile found at the preferred handle. Account is not stood up in source of truth."
+      ],
+      "defects": [
+        "row-76-instagram-public: No official public Instagram profile found at the preferred handle. Account is not stood up in source of truth."
+      ],
+      "severity": "CRITICAL",
+      "owner": "imani",
+      "correctionRequired": "Restore implemented experience to approved requirement. Nia retests independently.",
+      "retestRequired": true,
+      "releaseImpact": "NIA RELEASE BLOCK",
+      "status": "BLOCKED"
+    },
+    "linkedin": {
+      "touchpoint": "row-76-linkedin-public",
+      "expectedExperience": "Official public LinkedIn Company Page for The Back Half: handle thebackhalf, approved About/tagline, https://thebackhalf.org, approved logo/cover, no default/placeholder content.",
+      "actualExperience": "No official public LinkedIn Company Page found at preferred or hyphenated company URL. Page is not stood up in source of truth.",
+      "tripleE": {
+        "Energy": {
+          "result": "FAIL",
+          "evidence": "Actual experience (No official public LinkedIn Company Page found at preferred or hyphenated company URL. Page is not stood up in source of truth.) vs approved requirement (Official public LinkedIn Company Page for The Back Half: handle thebackhalf, approved About/tagline, https://thebackhalf.org, approved logo/cover, no default/placeholder content.). Spec PASS is not evidence."
+        },
+        "Elegance": {
+          "result": "FAIL",
+          "evidence": "Actual experience (No official public LinkedIn Company Page found at preferred or hyphenated company URL. Page is not stood up in source of truth.) vs approved requirement (Official public LinkedIn Company Page for The Back Half: handle thebackhalf, approved About/tagline, https://thebackhalf.org, approved logo/cover, no default/placeholder content.). Spec PASS is not evidence."
+        },
+        "Excellence": {
+          "result": "FAIL",
+          "evidence": "Actual experience (No official public LinkedIn Company Page found at preferred or hyphenated company URL. Page is not stood up in source of truth.) vs approved requirement (Official public LinkedIn Company Page for The Back Half: handle thebackhalf, approved About/tagline, https://thebackhalf.org, approved logo/cover, no default/placeholder content.). Spec PASS is not evidence."
+        }
+      },
+      "accessibilityResult": "No critical accessibility failure evidenced",
+      "clarityResult": "Actual experience is unclear vs approved promise",
+      "usabilityResult": "Critical path unusable or misleading",
+      "contentResult": "Participant-facing content does not match approved requirement",
+      "functionalResult": "FUNCTION WORKS LOCALLY / SPEC PASS is not EXPERIENCE TESTED",
+      "evidence": [
+        "ops/fab-5/operating-system.json nia.mission; ops/fab-5/launch-rows.json Independent Fab 5 Triple E Review (Energy, Elegance, and Excellence)",
+        "touchpoint:row-76-linkedin-public",
+        "actual:No official public LinkedIn Company Page found at preferred or hyphenated company URL. Page is not stood up in source of truth."
+      ],
+      "defects": [
+        "row-76-linkedin-public: No official public LinkedIn Company Page found at preferred or hyphenated company URL. Page is not stood up in source of truth."
+      ],
+      "severity": "CRITICAL",
+      "owner": "imani",
+      "correctionRequired": "Restore implemented experience to approved requirement. Nia retests independently.",
+      "retestRequired": true,
+      "releaseImpact": "NIA RELEASE BLOCK",
+      "status": "BLOCKED"
+    },
+    "materialBlock": true,
+    "result": "FAIL"
+  },
+  "imaniSecurity": {
+    "result": "FAIL",
+    "mfa": "UNVERIFIED — accounts not stood up",
+    "recovery": "UNVERIFIED — accounts not stood up",
+    "admin": "UNVERIFIED — accounts not stood up",
+    "leastPrivilegeWorkThisPass": "PASS — no fake identities or paid AI seats created",
+    "integrationReadiness": "FAIL — no business accounts exist for API connection"
+  },
+  "michelleReadiness": {
+    "result": "FAIL",
+    "commitmentSatisfied": false,
+    "status": "NOT READY"
+  },
+  "hosted": {
+    "secretPresent": true,
+    "nia": {
+      "http": 200,
+      "runId": "np-2026-08-1819374Z",
+      "ok": true,
+      "hosted": true,
+      "specialistStatus": "complete"
+    },
+    "imani": {
+      "http": 200,
+      "ok": true,
+      "hosted": true,
+      "outcome": "succeeded"
+    },
+    "michelle": {
+      "http": 200,
+      "runId": "mn-2026-08-1819380Z",
+      "ok": true,
+      "hosted": true,
+      "founderActionRequired": false,
+      "finalStatus": "succeeded"
+    }
+  },
+  "downstream": {
+    "row77": "Create Launch Social Channel Governance",
+    "row82": "Implement Social Publishing and Scheduling System",
+    "row83": "Implement Social Engagement and Response Protocol",
+    "row84": "Create Launch Marketing KPI Dashboard",
+    "row85": "Validate Full Marketing Attribution Path",
+    "row20": "Fab 5 Systems & Access — social machine integration still open",
+    "autonomousPublishing": "NOT CLAIMED",
+    "autonomousEngagement": "NOT CLAIMED",
+    "autonomousAnalytics": "NOT CLAIMED"
+  }
+}

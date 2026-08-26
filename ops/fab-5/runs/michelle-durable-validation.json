@@ -1,0 +1,64 @@
+{
+  "at": "2026-08-18T18:05:40.703Z",
+  "host": "website-two-psi-49.vercel.app",
+  "key": "dur-msyz3o16",
+  "write1": {
+    "status": 200,
+    "created": true,
+    "duplicate": false,
+    "durable": true,
+    "error": null
+  },
+  "write2": {
+    "status": 200,
+    "duplicate": true
+  },
+  "retrieveStatus": 200,
+  "retry": {
+    "retryCount": 2,
+    "status": "exhausted"
+  },
+  "retrieve2Retry": {
+    "retryCount": 2,
+    "status": "exhausted",
+    "lastError": "controlled transient failure"
+  },
+  "resolve": {
+    "status": 200,
+    "founderResolved": true
+  },
+  "regression": {
+    "status": 200,
+    "hosted": true,
+    "openaiLive": "PASS",
+    "persist": {
+      "attempted": true,
+      "durable": true,
+      "backend": "supabase_postgres",
+      "duplicate": false,
+      "row68Required": false,
+      "note": "Wrote Michelle mutable state to existing Supabase Postgres."
+    },
+    "imaniDelegation": {
+      "hosted": true,
+      "status": "succeeded",
+      "note": "Michelle assigned Imani via hosted heartbeat POST (website-two-psi-49.vercel.app). No Founder relay."
+    },
+    "nia": "PENDING NIA STAND-UP"
+  },
+  "tests": {
+    "T1_DECISION": true,
+    "T2_FOUNDER_ACTION": true,
+    "T3_READINESS": true,
+    "T4_EXECUTION_HISTORY": true,
+    "T5_BLOCKER": true,
+    "T6_RETRY": true,
+    "T7_IDEMPOTENCY": true,
+    "T8_COMPUTER_INDEPENDENT": true,
+    "HUMAN_EXPERT": true,
+    "DEPENDENCY": true,
+    "FOUNDER_RESOLVED_AFTER": true,
+    "REGRESSION": true
+  },
+  "secretExposure": "NO"
+}

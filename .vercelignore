@@ -1,0 +1,6 @@
+.tmp-*
+.tmp-*.py
+.git
+.cache
+**/.cache/puppeteer
+.data

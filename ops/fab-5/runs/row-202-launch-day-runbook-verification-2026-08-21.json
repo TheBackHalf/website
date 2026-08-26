@@ -1,0 +1,37 @@
+{
+  "row": 202,
+  "date": "2026-08-21",
+  "mode": "verify-existing-only",
+  "rebuilt": false,
+  "namedRunbookLocated": false,
+  "markedComplete": false,
+  "existingRunbookLocated": "FAIL",
+  "existingApprovedWorkPreserved": "PASS",
+  "timedRelease": "PASS",
+  "monitoring": "PASS",
+  "communications": "PASS",
+  "support": "PASS",
+  "rollbackPauseProcedure": "PASS",
+  "decisionAuthority": "PASS",
+  "statusUpdates": "PASS",
+  "alignment": {
+    "august31LaunchDate": "PASS",
+    "instagram": "PASS",
+    "tiktok": "PASS",
+    "linkedinRequired": "NO",
+    "communityComingOctober25": "PASS",
+    "eligibility18": "PASS",
+    "globalLifeDesignCompany": "PASS",
+    "currentSupportRouting": "PASS",
+    "currentMonitoringSystems": "PASS",
+    "founderEscalationLogic": "PASS"
+  },
+  "defectsFoundAndCorrected": [],
+  "founderJudgmentRequired": [
+    "If a named Launch-Day Runbook exists outside this repository, provide the path"
+  ],
+  "remainingBlockers": [
+    "Named Launch-Day Runbook artifact not located in this repository"
+  ],
+  "reviewUrl": "http://localhost:3000/_internal/row202-launch-day-runbook-review"
+}

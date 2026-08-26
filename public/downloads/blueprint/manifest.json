@@ -1,0 +1,71 @@
+{
+  "generatedAt": "2026-08-21T17:34:36.784Z",
+  "baseUrl": "http://localhost:3000",
+  "note": "Founder-approved manuscript inserted via Row 46 recovery.",
+  "manuscriptInserted": true,
+  "assets": [
+    {
+      "file": "the-back-half-blueprint.pdf",
+      "route": "/blueprint/print/guidebook?variant=print",
+      "url": "/downloads/blueprint/the-back-half-blueprint.pdf",
+      "pageCount": 60,
+      "bytes": 3925173
+    },
+    {
+      "file": "back-half-aliveness-index.pdf",
+      "route": "/blueprint/print/artifacts/aliveness-index",
+      "url": "/downloads/blueprint/back-half-aliveness-index.pdf",
+      "pageCount": 5,
+      "bytes": 211867
+    },
+    {
+      "file": "back-half-architects-commitment.pdf",
+      "route": "/blueprint/print/architects-commitment",
+      "url": "/downloads/blueprint/back-half-architects-commitment.pdf",
+      "pageCount": 2,
+      "bytes": 65140
+    },
+    {
+      "file": "back-half-decision-statement.pdf",
+      "route": "/blueprint/print/artifacts/decision-statement",
+      "url": "/downloads/blueprint/back-half-decision-statement.pdf",
+      "pageCount": 2,
+      "bytes": 83995
+    },
+    {
+      "file": "back-half-standards.pdf",
+      "route": "/blueprint/print/artifacts/back-half-standards",
+      "url": "/downloads/blueprint/back-half-standards.pdf",
+      "pageCount": 3,
+      "bytes": 98489
+    },
+    {
+      "file": "back-half-architect-identity-statement.pdf",
+      "route": "/blueprint/print/artifacts/architect-identity-statement",
+      "url": "/downloads/blueprint/back-half-architect-identity-statement.pdf",
+      "pageCount": 2,
+      "bytes": 90384
+    },
+    {
+      "file": "back-half-expansion-plan.pdf",
+      "route": "/blueprint/print/artifacts/expansion-plan",
+      "url": "/downloads/blueprint/back-half-expansion-plan.pdf",
+      "pageCount": 2,
+      "bytes": 89435
+    },
+    {
+      "file": "back-half-declaration.pdf",
+      "route": "/blueprint/print/artifacts/back-half-declaration",
+      "url": "/downloads/blueprint/back-half-declaration.pdf",
+      "pageCount": 2,
+      "bytes": 84933
+    },
+    {
+      "file": "back-half-architect-completion-certificate.pdf",
+      "route": "/blueprint/print/certificate",
+      "url": "/downloads/blueprint/back-half-architect-completion-certificate.pdf",
+      "pageCount": 1,
+      "bytes": 69126
+    }
+  ]
+}

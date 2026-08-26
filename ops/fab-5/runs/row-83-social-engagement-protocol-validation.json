@@ -1,0 +1,376 @@
+{
+  "row": 83,
+  "runId": "r83-2026-08-19-final-corrections",
+  "at": "2026-08-19T11:25:00.000Z",
+  "founderAcceptance": null,
+  "founderAccepted": false,
+  "rowMarkedComplete": false,
+  "row84Started": false,
+  "protocol": "ops/fab-5/ROW-83-SOCIAL-ENGAGEMENT-RESPONSE-PROTOCOL.md",
+  "log": "ops/fab-5/social-engagement-log.json",
+  "evidenceDir": "ops/fab-5/social-evidence/",
+  "documentChecks": {
+    "requiredHeadings": "18/18",
+    "requiredTemplates": "27/27",
+    "fab5OwnersOnly": true,
+    "currentApprovedTitles": true
+  },
+  "mailboxRoutingCheck": {
+    "mx": {
+      "domain": "thebackhalf.org",
+      "records": [
+        "aspmx.l.google.com (preference 1)",
+        "alt1.aspmx.l.google.com (preference 5)",
+        "alt2.aspmx.l.google.com (preference 5)",
+        "alt3.aspmx.l.google.com (preference 10)",
+        "alt4.aspmx.l.google.com (preference 10)"
+      ],
+      "result": "PASS \u2014 Google Workspace MX present; domain can receive mail at Google"
+    },
+    "inboundSmtpRcpt": {
+      "attempted": true,
+      "completed": false,
+      "result": "INCONCLUSIVE \u2014 SMTP connection to aspmx.l.google.com:25 did not finish from this environment (timed out). Not treated as proof of mailbox delivery."
+    },
+    "supportMailbox": {
+      "permanentDestination": "support@thebackhalf.org",
+      "michelleActualPermission": "NONE",
+      "michelleAccessState": "UNDERLYING PRODUCT DEPENDENCY",
+      "architectFacingFunctional": true,
+      "result": "PASS as Architect destination via Row 153 ticket tracker; Gmail IMAP/SMTP uses existing Workspace credentials when configured"
+    },
+    "privacyMailbox": {
+      "permanentDestination": "privacy@thebackhalf.org",
+      "michelleActualPermission": "NONE",
+      "michelleAccessState": "UNDERLYING PRODUCT DEPENDENCY",
+      "architectFacingFunctional": false,
+      "result": "Privacy social incidents use Row 153 Support tickets (category Privacy). Dedicated privacy@ READ/ROUTE remains Workspace authorization."
+    },
+    "publicSupportForm": {
+      "url": "https://thebackhalf.org/support",
+      "delivery": "Row 153 ticket created on submit",
+      "codeEvidence": "lib/support/submit-support-request.ts creates a tracked ticket",
+      "architectFacingFunctional": true
+    },
+    "temporaryLaunchSafePath": {
+      "route": "social-engagement-log.json \u2192 Michelle Northstar \u2014 Chief of Staff & Operations Officer",
+      "logParses": true,
+      "requiredFieldsPresent": true,
+      "architectFacingFunctional": true,
+      "result": "PASS \u2014 functioning operational route for social handoffs; Architect is already in the thread"
+    },
+    "legalMailbox": {
+      "addressInvented": false,
+      "protocolRule": "Do not invent legal@. Escalate Founder + Legal via established procedure.",
+      "result": "PASS"
+    }
+  },
+  "affectedScenarioRetests": [
+    "S4",
+    "S5",
+    "S6",
+    "S10",
+    "S11"
+  ],
+  "scenarioTests": {
+    "tested": 12,
+    "passed": 12,
+    "failed": 0,
+    "result": "PASS",
+    "regression": "12-scenario protocol revalidated; S1\u2013S3, S7\u2013S9, S12 logic unchanged"
+  },
+  "scenarios": [
+    {
+      "id": "S1",
+      "input": "This looks amazing! Congratulations!",
+      "owner": "Nia Prism",
+      "response": "T01 \u2014 thank; invite to register only if natural. No escalation.",
+      "templateId": "T01",
+      "slaClass": "General comments",
+      "target": "Launch week: 4 hours. Normal: 1 business day",
+      "maximum": "Launch week: 1 business day. Normal: 2 business days",
+      "routing": "None",
+      "escalation": "None",
+      "doNotEngage": false,
+      "protocolPath": "\u00a75, T01, decision tree \u2192 General engagement",
+      "result": "PASS",
+      "failures": [],
+      "unambiguous": {
+        "owner": true,
+        "response": true,
+        "timeStandard": true,
+        "routing": true,
+        "escalationDecision": true
+      }
+    },
+    {
+      "id": "S2",
+      "input": "What exactly is The Back Half?",
+      "owner": "Nia Prism",
+      "response": "T02 \u2014 approved definition only. Link thebackhalf.org.",
+      "templateId": "T02",
+      "slaClass": "Prospective Architect questions",
+      "target": "Launch week: 2 hours. Normal: 4 business hours",
+      "maximum": "Launch week: 8 hours. Normal: 1 business day",
+      "routing": "None \u2014 GREEN sales fact",
+      "escalation": "None",
+      "doNotEngage": false,
+      "protocolPath": "T02, \u00a77 GREEN",
+      "result": "PASS",
+      "failures": [],
+      "unambiguous": {
+        "owner": true,
+        "response": true,
+        "timeStandard": true,
+        "routing": true,
+        "escalationDecision": true
+      }
+    },
+    {
+      "id": "S3",
+      "input": "How much does it cost?",
+      "owner": "Nia Prism",
+      "response": "T06 \u2014 send to live registration page. Do not quote memory prices or August 19 windows. Amounts only if copied same day from live checkout.",
+      "templateId": "T06",
+      "slaClass": "Prospective Architect questions",
+      "target": "Launch week: 2 hours. Normal: 4 business hours",
+      "maximum": "Launch week: 8 hours. Normal: 1 business day",
+      "routing": "thebackhalf.org/register (YELLOW if they press for SKU math)",
+      "escalation": "None unless they ask for a discount/custom quote (RED \u2192 Support/Founder)",
+      "doNotEngage": false,
+      "protocolPath": "T06, \u00a77 GREEN/YELLOW",
+      "result": "PASS",
+      "failures": [],
+      "unambiguous": {
+        "owner": true,
+        "response": true,
+        "timeStandard": true,
+        "routing": true,
+        "escalationDecision": true
+      }
+    },
+    {
+      "id": "S4",
+      "input": "I registered but can't log in.",
+      "owner": "Nia Prism \u2014 Chief Experience & Transformation Officer (public) \u2192 Michelle Northstar \u2014 Chief of Staff & Operations Officer (Support routing)",
+      "response": "T12 \u2014 acknowledge; do not request password publicly; move to support@ / /support; Michelle creates a Row 153 ticket.",
+      "templateId": "T12",
+      "slaClass": "Existing Architect support",
+      "target": "Public acknowledgment: launch week 1 hour; normal 4 business hours. Then route immediately",
+      "maximum": "Public acknowledgment: launch week 4 hours; normal 1 business day",
+      "routing": "Social engagement \u2192 Row 153 ticket via support@ or /support. Handoff must include channel, surface, paraphrase, template ID.",
+      "escalation": "SUPPORT via log. Imani Heartbeat \u2014 Chief Technology & Risk Officer only if Michelle later classifies a technical incident.",
+      "doNotEngage": false,
+      "protocolPath": "T12, \u00a78, \u00a713",
+      "retested": true,
+      "result": "PASS",
+      "failures": [],
+      "unambiguous": {
+        "owner": true,
+        "response": true,
+        "timeStandard": true,
+        "routing": true,
+        "escalationDecision": true
+      }
+    },
+    {
+      "id": "S5",
+      "input": "My payment went through twice.",
+      "owner": "Nia Prism \u2014 Chief Experience & Transformation Officer (public) \u2192 Michelle Northstar \u2014 Chief of Staff & Operations Officer (Support)",
+      "response": "T14 \u2014 do not confirm amounts or card data publicly; do not promise a refund.",
+      "templateId": "T14",
+      "slaClass": "Existing Architect support",
+      "target": "Public acknowledgment: launch week 1 hour; normal 4 business hours. Then route immediately",
+      "maximum": "Public acknowledgment: launch week 4 hours; normal 1 business day",
+      "routing": "Row 153 ticket via support@ / /support with channel context. Refund exception is not autonomous.",
+      "escalation": "SUPPORT immediately via log. FOUNDER if they demand an exception/credit. Chargeback \u2192 Michelle \u2192 Founder.",
+      "doNotEngage": false,
+      "protocolPath": "T14, T18, \u00a78, \u00a711",
+      "retested": true,
+      "result": "PASS",
+      "failures": [],
+      "unambiguous": {
+        "owner": true,
+        "response": true,
+        "timeStandard": true,
+        "routing": true,
+        "escalationDecision": true
+      }
+    },
+    {
+      "id": "S6",
+      "input": "Someone posts private account information publicly.",
+      "owner": "Nia Prism \u2014 Chief Experience & Transformation Officer (contain) \u2192 Michelle Northstar \u2014 Chief of Staff & Operations Officer (Privacy log) \u2192 Imani Heartbeat \u2014 Chief Technology & Risk Officer if exposure",
+      "response": "T24 \u2014 do not quote or repeat the values; ask deletion; hide if the platform allows.",
+      "templateId": "T24",
+      "slaClass": "Privacy / security",
+      "target": "Acknowledge and contain at first sight. Target 15 minutes during watch hours",
+      "maximum": "1 hour during watch hours",
+      "routing": "Row 153 ticket category Privacy via /support or support@. Escalate technical/security exposure to Imani Heartbeat \u2014 Chief Technology & Risk Officer. Support only if they also need account help, after containment.",
+      "escalation": "PRIVACY always. Imani Heartbeat \u2014 Chief Technology & Risk Officer if suspected data exposure. Founder if alleged company breach or another Architect is named.",
+      "doNotEngage": false,
+      "protocolPath": "T24, \u00a79, decision tree \u2192 Sensitive information",
+      "retested": true,
+      "result": "PASS",
+      "failures": [],
+      "unambiguous": {
+        "owner": true,
+        "response": true,
+        "timeStandard": true,
+        "routing": true,
+        "escalationDecision": true
+      }
+    },
+    {
+      "id": "S7",
+      "input": "This company is a scam.",
+      "owner": "Nia Prism (optional T17 once) \u2192 Michelle Northstar (surface)",
+      "response": "Screenshot first. Do not delete merely because it is negative. Do not debate. Optional T17 once, then stop.",
+      "templateId": "T17",
+      "slaClass": "Legal / reputational",
+      "target": "Do not improvise a public defense. Preserve evidence at first sight. Michelle surfaces to Founder immediately",
+      "maximum": "Founder / Legal notified within 1 hour of first sight during watch hours",
+      "routing": "Not Support-as-resolution. Evidence to Michelle.",
+      "escalation": "FOUNDER + LEGAL. Serious accusation of fraud.",
+      "doNotEngage": false,
+      "protocolPath": "T17, \u00a710 Criticism, \u00a711, \u00a712, decision tree \u2192 Serious allegation",
+      "result": "PASS",
+      "failures": [],
+      "unambiguous": {
+        "owner": true,
+        "response": true,
+        "timeStandard": true,
+        "routing": true,
+        "escalationDecision": true
+      }
+    },
+    {
+      "id": "S8",
+      "input": "Obvious spam.",
+      "owner": "Nia Prism",
+      "response": "T22 \u2014 no public reply. Hide/remove/report.",
+      "templateId": "T22",
+      "slaClass": "Moderation (not a response SLA)",
+      "target": "At first sight during the current sweep",
+      "maximum": "End of the current sweep",
+      "routing": "None unless volume looks coordinated \u2192 Michelle \u2192 Imani",
+      "escalation": "None for a single spam post",
+      "doNotEngage": true,
+      "protocolPath": "T22, \u00a710 Spam, \u00a714, decision tree \u2192 Bot/spam",
+      "result": "PASS",
+      "failures": [],
+      "unambiguous": {
+        "owner": true,
+        "response": true,
+        "timeStandard": true,
+        "routing": true,
+        "escalationDecision": true
+      }
+    },
+    {
+      "id": "S9",
+      "input": "Repeated abusive comments.",
+      "owner": "Nia Prism (moderate) \u2192 Michelle Northstar (log)",
+      "response": "Do not debate. Evidence before hide. Second bad-faith post: hide. Third: restrict/block. T23.",
+      "templateId": "T23",
+      "slaClass": "Moderation \u2014 harassment / repeated trolling",
+      "target": "At first sight during the current sweep",
+      "maximum": "End of the current sweep after evidence capture",
+      "routing": "Document in social-engagement-log. Not a Support ticket unless a real participant is being targeted.",
+      "escalation": "FOUNDER if volume becomes brand-damaging. LEGAL if threats appear.",
+      "doNotEngage": true,
+      "protocolPath": "T23, \u00a710 Repeated trolling / harassment, \u00a714",
+      "result": "PASS",
+      "failures": [],
+      "unambiguous": {
+        "owner": true,
+        "response": true,
+        "timeStandard": true,
+        "routing": true,
+        "escalationDecision": true
+      }
+    },
+    {
+      "id": "S10",
+      "input": "I'm an attorney representing a participant. Contact me immediately.",
+      "owner": "Nia Prism \u2014 Chief Experience & Transformation Officer (preserve only) \u2192 Michelle Northstar \u2014 Chief of Staff & Operations Officer (ACTION REQUIRED)",
+      "response": "No substantive public reply. Do not confirm representation or participant status. T26 only if a direct @mention would otherwise sit unanswered, then stop.",
+      "templateId": "T26",
+      "slaClass": "Legal / reputational",
+      "target": "Preserve evidence at first sight. Michelle surfaces to Founder immediately",
+      "maximum": "Founder / Legal notified within 1 hour of first sight during watch hours",
+      "routing": "Not support@ as legal intake. No invented legal@ mailbox. Founder + Legal via established procedure. Founder decides how Legal is engaged.",
+      "escalation": "LEGAL + FOUNDER immediately",
+      "doNotEngage": true,
+      "protocolPath": "T26, \u00a712, \u00a714, decision tree \u2192 attorney",
+      "retested": true,
+      "result": "PASS",
+      "failures": [],
+      "unambiguous": {
+        "owner": true,
+        "response": true,
+        "timeStandard": true,
+        "routing": true,
+        "escalationDecision": true
+      }
+    },
+    {
+      "id": "S11",
+      "input": "A journalist requests an interview.",
+      "owner": "Nia Prism \u2014 Chief Experience & Transformation Officer (T20) \u2192 Michelle Northstar \u2014 Chief of Staff & Operations Officer (surface) \u2192 Founder (decision)",
+      "response": "T20 \u2014 thank; collect outlet/deadline/topic via official-account private message; do not grant or schedule the interview.",
+      "templateId": "T20",
+      "slaClass": "Media / speaking / partnership acknowledgements",
+      "target": "Launch week: 2 hours. Normal: 4 business hours",
+      "maximum": "Launch week: 8 hours. Normal: 1 business day",
+      "routing": "support@ / /support as intake envelope only. Michelle creates a Row 153 ticket and surfaces to Founder.",
+      "escalation": "FOUNDER. Nia does not commit.",
+      "doNotEngage": false,
+      "protocolPath": "T20, \u00a711, decision tree \u2192 Media",
+      "retested": true,
+      "result": "PASS",
+      "failures": [],
+      "unambiguous": {
+        "owner": true,
+        "response": true,
+        "timeStandard": true,
+        "routing": true,
+        "escalationDecision": true
+      }
+    },
+    {
+      "id": "S12",
+      "input": "A high-profile person publicly praises The Back Half.",
+      "owner": "Nia Prism (T27 immediately) \u2192 Michelle Northstar (notify Founder)",
+      "response": "T27 \u2014 warm thanks. Do not claim relationship, endorsement, or that they are an Architect.",
+      "templateId": "T27",
+      "slaClass": "General comments (reply does not wait for Founder)",
+      "target": "Launch week: 4 hours. Normal: 1 business day",
+      "maximum": "Launch week: 1 business day. Normal: 2 business days",
+      "routing": "Michelle notifies Founder in the same sweep. Reply is not blocked on Founder.",
+      "escalation": "FOUNDER notification (not a legal hold). Founder may choose a personal follow-up.",
+      "doNotEngage": false,
+      "protocolPath": "T27, \u00a711, decision tree \u2192 High-profile praise",
+      "result": "PASS",
+      "failures": [],
+      "unambiguous": {
+        "owner": true,
+        "response": true,
+        "timeStandard": true,
+        "routing": true,
+        "escalationDecision": true
+      }
+    }
+  ],
+  "failures": [],
+  "result": "PASS",
+  "readyForFounderAcceptanceReview": true,
+  "founderJudgmentItems": [
+    "Row 76 channels still accountExists false \u2014 live monitoring depends on stand-up.",
+    "TikTok still FOUNDER DECISION REQUIRED in social-channels.json while Row 81 produced TikTok assets. Protocol applies to TikTok only if the account is actually live.",
+    "Row 153 is the working Support operation (form, tickets, acknowledgment, escalation). Social handoffs must create Row 153 tickets. Dedicated privacy@ READ/ROUTE remains a Workspace authorization item; Privacy incidents use Support category Privacy.",
+    "Public EN copy still lists Founding Architect enrollment August 19\u2013December 31, 2026; social must not quote August 19. That copy defect stays in its authoritative source \u2014 not rewritten by Row 83.",
+    "Public recitation of dollar amounts is YELLOW (same-day copy from live checkout only).",
+    "Minimum participant age is not a Founder-locked number; social uses T08 only."
+  ]
+}

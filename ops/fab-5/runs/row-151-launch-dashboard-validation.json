@@ -1,0 +1,301 @@
+{
+  "row": 151,
+  "generatedAt": "2026-08-25T20:02:06.799Z",
+  "founderAccepted": false,
+  "rowMarkedComplete": false,
+  "durability": {
+    "launchDashboard": {
+      "backend": "file_test_override",
+      "productionSourceOfTruth": "Isolated test file override (LAUNCH_DASHBOARD_DB_FILE). Not production.",
+      "dataDirIsSourceOfTruth": false
+    },
+    "analytics": {
+      "backend": "file_test_override",
+      "productionSourceOfTruth": "Isolated test file override (ANALYTICS_DB_FILE). Not production.",
+      "dataDirIsSourceOfTruth": false
+    },
+    "marketing": {
+      "backend": "file_test_override",
+      "productionSourceOfTruth": "Isolated test file override (MARKETING_KPI_DB_FILE). Not production.",
+      "dataDirIsSourceOfTruth": false
+    },
+    "support": {
+      "backend": "file_test_override",
+      "productionSourceOfTruth": "Isolated test file override (SUPPORT_DB_FILE). Not production.",
+      "dataDirIsSourceOfTruth": false
+    },
+    "postgresConfigured": false
+  },
+  "productionVerification": {
+    "codeReady": true,
+    "mechanicallyTested": true,
+    "productionVerified": false,
+    "blocker": "This workstation cannot decrypt Vercel Production POSTGRES_URL. Isolated T20 durability is file_test_override. Live dashboard HTTP against protected production aliases is not claimed."
+  },
+  "tests": [
+    {
+      "id": "T1",
+      "name": "Traffic",
+      "result": "PASS",
+      "detail": "sessions=2 visitors=2 registration=1"
+    },
+    {
+      "id": "T2",
+      "name": "Attribution",
+      "result": "PASS",
+      "detail": "top=instagram campaign=2"
+    },
+    {
+      "id": "T3",
+      "name": "Registration",
+      "result": "PASS",
+      "detail": "started=1 completed=1"
+    },
+    {
+      "id": "T4",
+      "name": "Checkout",
+      "result": "PASS",
+      "detail": "checkoutStarted=1"
+    },
+    {
+      "id": "T5",
+      "name": "Purchase / revenue",
+      "result": "PASS",
+      "detail": "purchasesToday=1 gross=150000 source=Authoritative launch revenue from billing Stripe webhooks, reconciled to durable Row 84. Historical purchases are excluded. Not browser analytics."
+    },
+    {
+      "id": "T6",
+      "name": "Historical isolation",
+      "result": "PASS",
+      "detail": "launchPurchases=0 historical=19"
+    },
+    {
+      "id": "T7",
+      "name": "Activation",
+      "result": "PASS",
+      "detail": "purchased=1 activated=1"
+    },
+    {
+      "id": "T8",
+      "name": "Product error",
+      "result": "PASS",
+      "detail": "checkout_failed=1"
+    },
+    {
+      "id": "T9",
+      "name": "Application/server error",
+      "result": "PASS",
+      "detail": "stored=ad3a70f3-421a-4e92-8628-0bbbe2ddae07 open=1 source=Durable launch_ops_errors ledger (Next.js onRequestError + controlled recordLaunchOpsError)"
+    },
+    {
+      "id": "T10",
+      "name": "Error privacy",
+      "result": "PASS",
+      "detail": "fields=id,fingerprint,firstSeen,lastSeen,occurrenceCount,productArea,errorCategory,severity,route,service,safeCode,status,test"
+    },
+    {
+      "id": "T11",
+      "name": "Support",
+      "result": "PASS",
+      "detail": "ticket=BH-S-20260825-PFUBJ newToday=1 smtp=not_configured (email delivery is a Row 153 capability, not claimed working)"
+    },
+    {
+      "id": "T12",
+      "name": "Support SLA",
+      "result": "PASS",
+      "detail": "approaching=1 overdue=1"
+    },
+    {
+      "id": "T13",
+      "name": "Social support deduplication",
+      "result": "PASS",
+      "detail": "socialToday=1 newToday=1"
+    },
+    {
+      "id": "T14",
+      "name": "YELLOW risk",
+      "result": "PASS",
+      "detail": "health=YELLOW reasons=1 open YELLOW launch risk(s). | 1 support request(s) approaching or beyond the published 72h response expectation."
+    },
+    {
+      "id": "T15",
+      "name": "RED risk",
+      "result": "PASS",
+      "detail": "health=RED attention=true"
+    },
+    {
+      "id": "T16",
+      "name": "Critical surface failure",
+      "result": "PASS",
+      "detail": "health=RED availability=unavailable"
+    },
+    {
+      "id": "T17",
+      "name": "Data freshness",
+      "result": "PASS",
+      "detail": "analytics:CURRENT, marketing:STALE, billing:CURRENT, errors:CURRENT, support:CURRENT, risks:CURRENT, availability:CURRENT"
+    },
+    {
+      "id": "T18",
+      "name": "Data quality",
+      "result": "PASS",
+      "detail": "ERROR: landing-to-purchase rate exceeds 100%. | ERROR: checkout completion rate exceeds 100%. | WARN: billing paid count (2) ≠ Row 150 purchase_completed (1). Displayed revenue does not silently pick the larger number. | ERROR: billing paid count (2) ≠ Row 84 launch purchase (1). | ERROR: billing launch purchases (2) ≠ Row 84 launch campaign purchases (1)."
+    },
+    {
+      "id": "T19",
+      "name": "Daily snapshot",
+      "result": "PASS",
+      "detail": "frozen=true purchasesToday=1"
+    },
+    {
+      "id": "T20",
+      "name": "Durability",
+      "result": "PASS",
+      "detail": "backend=file_test_override postgresConfigured=false riskSurvived=true"
+    },
+    {
+      "id": "T21",
+      "name": "Founder brief",
+      "result": "PASS",
+      "detail": "# THE BACK HALF — DAILY LAUNCH BRIEF /  / **Date:** 2026-08-28 (Pre-launch Day 1) / **Launch Health:** RED / **Founder Attention Required:** YES / "
+    },
+    {
+      "id": "T22",
+      "name": "Test data exclusion",
+      "result": "PASS",
+      "detail": "purchases=0 activated=0 appErrors=0"
+    },
+    {
+      "id": "T23",
+      "name": "Privacy",
+      "result": "PASS",
+      "detail": "Dashboard aggregates and sanitized ops errors inspected."
+    },
+    {
+      "id": "T24",
+      "name": "English/Spanish ops routes",
+      "result": "PASS",
+      "detail": "en=true es=true"
+    },
+    {
+      "id": "D1",
+      "name": "Dashboard route loads successfully",
+      "result": "PASS",
+      "detail": "EN/ES pages exist, force-dynamic, noindex, includeTest false."
+    },
+    {
+      "id": "D2",
+      "name": "Unauthorized users cannot access protected operational data",
+      "result": "PASS",
+      "detail": "Architect/support denied admin:ops:access. Middleware + APIs require admin."
+    },
+    {
+      "id": "D3",
+      "name": "Traffic metrics map to authoritative data",
+      "result": "PASS",
+      "detail": "sessions=2 campaign=2 top=instagram"
+    },
+    {
+      "id": "D4",
+      "name": "Conversion calculations are mathematically correct",
+      "result": "PASS",
+      "detail": "cta=1 explore=1 regRate=1"
+    },
+    {
+      "id": "D5",
+      "name": "Revenue maps to authoritative billing/payment data",
+      "result": "PASS",
+      "detail": "gross=150000 aov=150000 source=Authoritative launch revenue from billing Stripe webhooks, reconciled to durable Row 84. Historical purchases are excluded. Not browser analytics."
+    },
+    {
+      "id": "D6",
+      "name": "Activation metrics map to actual product signals",
+      "result": "PASS",
+      "detail": "activated=1 lumina=1 downloads=1"
+    },
+    {
+      "id": "D7",
+      "name": "Error metrics do not manufacture zeros for unavailable telemetry",
+      "result": "FAIL",
+      "detail": "appToday=null appOpen=null onboardingToday=null"
+    },
+    {
+      "id": "D8",
+      "name": "Support metrics map to actual support data",
+      "result": "PASS",
+      "detail": "ticket=BH-S-20260825-PFUBJ newToday=1"
+    },
+    {
+      "id": "D9",
+      "name": "Launch-risk rules operate against real measurable conditions",
+      "result": "PASS",
+      "detail": "unavailableHealth=YELLOW reasons=Data-quality error on launch figures. | Application/server error ledger is not available; launch health cannot be confirmed GREEN."
+    },
+    {
+      "id": "D10",
+      "name": "Test events/data are excluded from launch reporting",
+      "result": "PASS",
+      "detail": "purchases=0 livePageIncludeTest=false"
+    },
+    {
+      "id": "D11",
+      "name": "Date boundaries/timezone behavior are correct",
+      "result": "PASS",
+      "detail": "midnightET=2026-08-28 before=2026-08-27"
+    },
+    {
+      "id": "D12",
+      "name": "Previous-day comparisons are correct",
+      "result": "PASS",
+      "detail": "today=2 vsPrior=1"
+    },
+    {
+      "id": "D13",
+      "name": "Empty/unavailable states are truthful",
+      "result": "FAIL",
+      "detail": "emptySessions=0 emptyRegRate=null emptyAov=null"
+    },
+    {
+      "id": "D14",
+      "name": "No prohibited sensitive information is exposed",
+      "result": "PASS",
+      "detail": "Founder view is aggregates; ticket emails are not on the dashboard model brief."
+    },
+    {
+      "id": "D15",
+      "name": "Row 84 regression passes",
+      "result": "PASS",
+      "detail": "status=0 { \"result\": \"PASS\", \"failures\": [], \"passed\": 11 } "
+    },
+    {
+      "id": "D16",
+      "name": "Row 150 regression passes",
+      "result": "PASS",
+      "detail": "status=0 { \"result\": \"PASS\", \"failures\": [], \"passed\": 16, \"total\": 16 } "
+    },
+    {
+      "id": "D17",
+      "name": "Customer-facing launch-critical regression passes",
+      "result": "PASS",
+      "detail": "EN/ES register/login/checkout/onboarding/journey/Lumina files present. Live browser QA not claimed."
+    },
+    {
+      "id": "D18",
+      "name": "Dashboard is usable at desktop, tablet, and mobile widths",
+      "result": "PASS",
+      "detail": "Responsive grid and overflow classes present. Live visual pass not claimed."
+    }
+  ],
+  "failures": [
+    "D7 Error metrics do not manufacture zeros for unavailable telemetry: appToday=null appOpen=null onboardingToday=null",
+    "D13 Empty/unavailable states are truthful: emptySessions=0 emptyRegRate=null emptyAov=null"
+  ],
+  "regression": {
+    "row81": true,
+    "row83": true,
+    "row84": true,
+    "row150": true,
+    "row153": true
+  },
+  "smtpConfigured": false
+}

@@ -1,0 +1,7 @@
+npm warn Unknown env config "devdir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+Vercel CLI 59.5.0 (Node.js 24.18.0) | crons is in beta ΓÇö https://vercel.com/feedback
+Retrieving projectΓÇª
+Fetching cron jobs for back-half/website
+Triggering cron job /api/fab-5/aos/validate
+> Cron job /api/fab-5/aos/validate triggered [882ms]
+>   Invocation time: 2026-08-25T17:39:27.459Z

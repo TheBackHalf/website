@@ -1,0 +1,20 @@
+{
+  "package": "LEGAL VERSION 1 ENGLISH",
+  "status": "PUBLISHED / FINAL",
+  "published": true,
+  "catalogReplaced": true,
+  "row32MarkedComplete": true,
+  "rows25to30RemarkedComplete": false,
+  "reviewUrl": "http://localhost:3000/_internal/legal-v1-founder-review",
+  "source": "content/legal/v1-candidates.ts",
+  "liveCatalog": "content/legal/documents.ts",
+  "files": "ops/fab-5/legal-v1/",
+  "version": "1.0",
+  "effectiveDate": "August 31, 2026",
+  "spanish": "PENDING APPROVED TRANSLATION",
+  "communityGuidelines": "PRE-COMMUNITY-LAUNCH REQUIREMENT",
+  "august31CommunityGuidelinesBlocker": false,
+  "consentLabelsActivated": true,
+  "billingAcknowledgmentActivated": true,
+  "generatedAt": "2026-08-21T20:30:00.000Z"
+}

@@ -1,0 +1,109 @@
+{
+  "row": 76,
+  "deliverable": "Stand Up Official Social Media Channels",
+  "kind": "existing-setup-verification",
+  "runId": "r76-verify-2026-08-21",
+  "at": "2026-08-21T19:50:00.000Z",
+  "founderAccepted": false,
+  "rowMarkedComplete": false,
+  "secretExposure": "NO",
+  "accountsCreatedThisPass": false,
+  "brandingRedesigned": false,
+  "row81Modified": false,
+  "row83Modified": false,
+  "launchRoadmapModified": false,
+  "founderNotesModified": false,
+  "linkedinLaunchRequirement": "NO — FUTURE ENHANCEMENT",
+  "identity": {
+    "publicBrandName": "The Back Half",
+    "website": "https://thebackhalf.org",
+    "preferredHandle": "thebackhalf",
+    "approvedInstagramBio": "The Back Half helps people transition from living by expectation to living with intention. Magical is Possible. Become an Architect."
+  },
+  "platformScope": {
+    "instagram": "LAUNCH",
+    "tiktok": "LAUNCH",
+    "linkedin": "FUTURE ENHANCEMENT — not a Row 76 launch completion item",
+    "youtube": "OUT OF SCOPE"
+  },
+  "instagramPublicQa": {
+    "url": "https://www.instagram.com/thebackhalf/",
+    "accountAtPreferredHandle": true,
+    "officialTheBackHalfPresence": false,
+    "handleSecuredAsOfficial": false,
+    "displayName": "Thebackhalf",
+    "bioObserved": "All man",
+    "websiteObserved": null,
+    "profileImage": "Personal photograph of a man; not approved company branding",
+    "visibility": "private",
+    "publicStats": {
+      "followers": 13,
+      "following": 34
+    },
+    "defaultOrIncompletePublicContent": true,
+    "personalAccountPresentation": true,
+    "variants": {
+      "the.back.half": "Profile isn't available",
+      "thebackhalfofficial": "Profile isn't available"
+    }
+  },
+  "tiktokPublicQa": {
+    "url": "https://www.tiktok.com/@thebackhalf",
+    "accountAtPreferredHandle": true,
+    "officialTheBackHalfPresence": false,
+    "handleSecuredAsOfficial": false,
+    "displayName": "Raul Salinas",
+    "bioObserved": "No bio yet.",
+    "websiteObserved": null,
+    "profileImage": "Unrelated graphic; not approved company branding",
+    "publicContent": "At least one unrelated personal video",
+    "personalAccountPresentation": true,
+    "oembedAuthorName": "Raul Salinas",
+    "variants": {
+      "thebackhalfofficial": "Couldn’t find this account"
+    }
+  },
+  "scorecard": {
+    "instagram": {
+      "officialAccount": "FAIL",
+      "approvedHandle": "FAIL",
+      "profileImage": "FAIL",
+      "bio": "FAIL",
+      "thebackhalfOrg": "FAIL",
+      "professionalBusinessSettings": "FAIL",
+      "recoveryInformation": "FOUNDER VERIFICATION REQUIRED",
+      "mfa": "FOUNDER VERIFICATION REQUIRED",
+      "ownershipAdminAccess": "FOUNDER VERIFICATION REQUIRED",
+      "defaultIncompleteContentRemoved": "FAIL",
+      "publicPresentationQa": "FAIL"
+    },
+    "tiktok": {
+      "officialAccount": "FAIL",
+      "approvedHandle": "FAIL",
+      "profileImage": "FAIL",
+      "bio": "FAIL",
+      "thebackhalfOrg": "FAIL",
+      "professionalBusinessSettings": "FAIL",
+      "recoveryInformation": "FOUNDER VERIFICATION REQUIRED",
+      "mfa": "FOUNDER VERIFICATION REQUIRED",
+      "ownershipAdminAccess": "FOUNDER VERIFICATION REQUIRED",
+      "defaultIncompleteContentRemoved": "FAIL",
+      "publicPresentationQa": "FAIL"
+    }
+  },
+  "defectsFoundAndCorrected": "NONE",
+  "founderVerificationRequired": [
+    "Confirm Instagram https://www.instagram.com/thebackhalf/ is not The Back Half official account (public presentation is a private personal profile named Thebackhalf with bio All man and no thebackhalf.org).",
+    "Confirm TikTok https://www.tiktok.com/@thebackhalf is not The Back Half official account (public presentation is Raul Salinas, no bio, no thebackhalf.org).",
+    "If official Instagram and TikTok accounts already exist under different handles, provide the exact public URLs for a follow-up QA. Do not have Cursor create new accounts in this verification.",
+    "If official accounts exist, confirm from inside the logged-in account: recovery information established; MFA enabled; Founder/company ownership and admin access; Professional/Business settings configured.",
+    "Do not paste passwords, MFA codes, backup codes, recovery phone numbers, private recovery emails, tokens, or credentials into the Command Center."
+  ],
+  "remainingBlockers": [
+    "No official public Instagram for The Back Half at the approved handle",
+    "Preferred Instagram handle thebackhalf occupied by an unrelated private personal account",
+    "No official public TikTok for The Back Half at the approved handle",
+    "Preferred TikTok handle thebackhalf occupied by an unrelated personal creator account"
+  ],
+  "finalStatus": "ROW 76 IS NOT READY — Official Instagram and TikTok presence for The Back Half is not publicly present; preferred handles @thebackhalf are occupied by unrelated third-party accounts"
+}

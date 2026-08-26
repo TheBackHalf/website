@@ -1,0 +1,492 @@
+{
+  "row": 81,
+  "runId": "r81-2026-08-18T2230Z",
+  "at": "2026-08-18T22:30:00.000Z",
+  "founderAccepted": false,
+  "row78FounderAccepted": false,
+  "published": false,
+  "scheduled": false,
+  "row79Started": false,
+  "row82Started": false,
+  "youtube": "DEFERRED \u2014 OCTOBER 25, 2026 COMMUNITY ROLLOUT",
+  "executionsRequired": 12,
+  "executionsProduced": 12,
+  "fileQa": {
+    "R78-0828-IG": [
+      {
+        "file": "R78-0828-IG-S01.png",
+        "exists": true,
+        "opens": true,
+        "width": 1080,
+        "height": 1350,
+        "correctDimensions": true,
+        "mode": "RGB",
+        "bytes": 864372,
+        "noPlaceholderFilename": true,
+        "pass": true
+      },
+      {
+        "file": "R78-0828-IG-S02.png",
+        "exists": true,
+        "opens": true,
+        "width": 1080,
+        "height": 1350,
+        "correctDimensions": true,
+        "mode": "RGB",
+        "bytes": 308210,
+        "noPlaceholderFilename": true,
+        "pass": true
+      },
+      {
+        "file": "R78-0828-IG-S03.png",
+        "exists": true,
+        "opens": true,
+        "width": 1080,
+        "height": 1350,
+        "correctDimensions": true,
+        "mode": "RGB",
+        "bytes": 721300,
+        "noPlaceholderFilename": true,
+        "pass": true
+      },
+      {
+        "file": "R78-0828-IG-S04.png",
+        "exists": true,
+        "opens": true,
+        "width": 1080,
+        "height": 1350,
+        "correctDimensions": true,
+        "mode": "RGB",
+        "bytes": 293857,
+        "noPlaceholderFilename": true,
+        "pass": true
+      }
+    ],
+    "R78-0828-LI": [
+      {
+        "file": "R78-0828-LI.png",
+        "exists": true,
+        "opens": true,
+        "width": 1200,
+        "height": 627,
+        "correctDimensions": true,
+        "mode": "RGB",
+        "bytes": 634443,
+        "noPlaceholderFilename": true,
+        "pass": true
+      }
+    ],
+    "R78-0828-TT": [
+      {
+        "file": "R78-0828-TT.mp4",
+        "exists": true,
+        "plays": true,
+        "width": 1080,
+        "height": 1920,
+        "durationSeconds": 17.9,
+        "audioStream": true,
+        "orientation": "vertical",
+        "h264": true,
+        "bytes": 1746507,
+        "correctResolution": true,
+        "durationInRange": true,
+        "pass": true
+      },
+      {
+        "file": "R78-0828-TT-cover.png",
+        "exists": true,
+        "opens": true,
+        "width": 1080,
+        "height": 1920,
+        "correctDimensions": true,
+        "mode": "RGB",
+        "bytes": 837200,
+        "noPlaceholderFilename": true,
+        "pass": true
+      }
+    ],
+    "R78-0829-IG": [
+      {
+        "file": "R78-0829-IG-S01.png",
+        "exists": true,
+        "opens": true,
+        "width": 1080,
+        "height": 1350,
+        "correctDimensions": true,
+        "mode": "RGB",
+        "bytes": 1311217,
+        "noPlaceholderFilename": true,
+        "pass": true
+      },
+      {
+        "file": "R78-0829-IG-S02.png",
+        "exists": true,
+        "opens": true,
+        "width": 1080,
+        "height": 1350,
+        "correctDimensions": true,
+        "mode": "RGB",
+        "bytes": 405133,
+        "noPlaceholderFilename": true,
+        "pass": true
+      },
+      {
+        "file": "R78-0829-IG-S03.png",
+        "exists": true,
+        "opens": true,
+        "width": 1080,
+        "height": 1350,
+        "correctDimensions": true,
+        "mode": "RGB",
+        "bytes": 1079671,
+        "noPlaceholderFilename": true,
+        "pass": true
+      },
+      {
+        "file": "R78-0829-IG-S04.png",
+        "exists": true,
+        "opens": true,
+        "width": 1080,
+        "height": 1350,
+        "correctDimensions": true,
+        "mode": "RGB",
+        "bytes": 403863,
+        "noPlaceholderFilename": true,
+        "pass": true
+      }
+    ],
+    "R78-0829-LI": [
+      {
+        "file": "R78-0829-LI.png",
+        "exists": true,
+        "opens": true,
+        "width": 1200,
+        "height": 627,
+        "correctDimensions": true,
+        "mode": "RGB",
+        "bytes": 726311,
+        "noPlaceholderFilename": true,
+        "pass": true
+      }
+    ],
+    "R78-0829-TT": [
+      {
+        "file": "R78-0829-TT.mp4",
+        "exists": true,
+        "plays": true,
+        "width": 1080,
+        "height": 1920,
+        "durationSeconds": 18.1,
+        "audioStream": true,
+        "orientation": "vertical",
+        "h264": true,
+        "bytes": 2112607,
+        "correctResolution": true,
+        "durationInRange": true,
+        "pass": true
+      },
+      {
+        "file": "R78-0829-TT-cover.png",
+        "exists": true,
+        "opens": true,
+        "width": 1080,
+        "height": 1920,
+        "correctDimensions": true,
+        "mode": "RGB",
+        "bytes": 1367448,
+        "noPlaceholderFilename": true,
+        "pass": true
+      }
+    ],
+    "R78-0830-IG": [
+      {
+        "file": "R78-0830-IG-S01.png",
+        "exists": true,
+        "opens": true,
+        "width": 1080,
+        "height": 1350,
+        "correctDimensions": true,
+        "mode": "RGB",
+        "bytes": 305329,
+        "noPlaceholderFilename": true,
+        "pass": true
+      },
+      {
+        "file": "R78-0830-IG-S02.png",
+        "exists": true,
+        "opens": true,
+        "width": 1080,
+        "height": 1350,
+        "correctDimensions": true,
+        "mode": "RGB",
+        "bytes": 1386829,
+        "noPlaceholderFilename": true,
+        "pass": true
+      },
+      {
+        "file": "R78-0830-IG-S03.png",
+        "exists": true,
+        "opens": true,
+        "width": 1080,
+        "height": 1350,
+        "correctDimensions": true,
+        "mode": "RGB",
+        "bytes": 285530,
+        "noPlaceholderFilename": true,
+        "pass": true
+      }
+    ],
+    "R78-0830-LI": [
+      {
+        "file": "R78-0830-LI.png",
+        "exists": true,
+        "opens": true,
+        "width": 1200,
+        "height": 627,
+        "correctDimensions": true,
+        "mode": "RGB",
+        "bytes": 644134,
+        "noPlaceholderFilename": true,
+        "pass": true
+      }
+    ],
+    "R78-0830-TT": [
+      {
+        "file": "R78-0830-TT.mp4",
+        "exists": true,
+        "plays": true,
+        "width": 1080,
+        "height": 1920,
+        "durationSeconds": 17.55,
+        "audioStream": true,
+        "orientation": "vertical",
+        "h264": true,
+        "bytes": 2266362,
+        "correctResolution": true,
+        "durationInRange": true,
+        "pass": true
+      },
+      {
+        "file": "R78-0830-TT-cover.png",
+        "exists": true,
+        "opens": true,
+        "width": 1080,
+        "height": 1920,
+        "correctDimensions": true,
+        "mode": "RGB",
+        "bytes": 304669,
+        "noPlaceholderFilename": true,
+        "pass": true
+      }
+    ],
+    "R81-0831-IG": [
+      {
+        "file": "R81-0831-IG-S01.png",
+        "exists": true,
+        "opens": true,
+        "width": 1080,
+        "height": 1350,
+        "correctDimensions": true,
+        "mode": "RGB",
+        "bytes": 1012986,
+        "noPlaceholderFilename": true,
+        "pass": true
+      },
+      {
+        "file": "R81-0831-IG-S02.png",
+        "exists": true,
+        "opens": true,
+        "width": 1080,
+        "height": 1350,
+        "correctDimensions": true,
+        "mode": "RGB",
+        "bytes": 310980,
+        "noPlaceholderFilename": true,
+        "pass": true
+      },
+      {
+        "file": "R81-0831-IG-S03.png",
+        "exists": true,
+        "opens": true,
+        "width": 1080,
+        "height": 1350,
+        "correctDimensions": true,
+        "mode": "RGB",
+        "bytes": 875714,
+        "noPlaceholderFilename": true,
+        "pass": true
+      },
+      {
+        "file": "R81-0831-IG-S04.png",
+        "exists": true,
+        "opens": true,
+        "width": 1080,
+        "height": 1350,
+        "correctDimensions": true,
+        "mode": "RGB",
+        "bytes": 416456,
+        "noPlaceholderFilename": true,
+        "pass": true
+      },
+      {
+        "file": "R81-0831-IG-S05.png",
+        "exists": true,
+        "opens": true,
+        "width": 1080,
+        "height": 1350,
+        "correctDimensions": true,
+        "mode": "RGB",
+        "bytes": 1220625,
+        "noPlaceholderFilename": true,
+        "pass": true
+      },
+      {
+        "file": "R81-0831-IG-S06.png",
+        "exists": true,
+        "opens": true,
+        "width": 1080,
+        "height": 1350,
+        "correctDimensions": true,
+        "mode": "RGB",
+        "bytes": 414982,
+        "noPlaceholderFilename": true,
+        "pass": true
+      },
+      {
+        "file": "R81-0831-IG-S07.png",
+        "exists": true,
+        "opens": true,
+        "width": 1080,
+        "height": 1350,
+        "correctDimensions": true,
+        "mode": "RGB",
+        "bytes": 1089511,
+        "noPlaceholderFilename": true,
+        "pass": true
+      },
+      {
+        "file": "R81-0831-IG-S08.png",
+        "exists": true,
+        "opens": true,
+        "width": 1080,
+        "height": 1350,
+        "correctDimensions": true,
+        "mode": "RGB",
+        "bytes": 410003,
+        "noPlaceholderFilename": true,
+        "pass": true
+      }
+    ],
+    "R81-0831-LI": [
+      {
+        "file": "R81-0831-LI.png",
+        "exists": true,
+        "opens": true,
+        "width": 1200,
+        "height": 627,
+        "correctDimensions": true,
+        "mode": "RGB",
+        "bytes": 708560,
+        "noPlaceholderFilename": true,
+        "pass": true
+      }
+    ],
+    "R81-0831-TT": [
+      {
+        "file": "R81-0831-TT.mp4",
+        "exists": true,
+        "plays": true,
+        "width": 1080,
+        "height": 1920,
+        "durationSeconds": 22.1,
+        "audioStream": true,
+        "orientation": "vertical",
+        "h264": true,
+        "bytes": 3171382,
+        "correctResolution": true,
+        "durationInRange": true,
+        "pass": true
+      },
+      {
+        "file": "R81-0831-TT-cover.png",
+        "exists": true,
+        "opens": true,
+        "width": 1080,
+        "height": 1920,
+        "correctDimensions": true,
+        "mode": "RGB",
+        "bytes": 1049365,
+        "noPlaceholderFilename": true,
+        "pass": true
+      }
+    ]
+  },
+  "graphics": "PASS",
+  "shortFormVideos": "PASS",
+  "videoCovers": "PASS",
+  "captions": "PASS",
+  "altText": "PASS",
+  "ctaVariants": "PASS",
+  "keywordsHashtags": "PASS",
+  "platformNativeAdaptation": "PASS",
+  "actualFileQa": "PASS",
+  "niaVisualTripleE": {
+    "result": "PASS",
+    "energy": "PASS",
+    "elegance": "PASS",
+    "excellence": "PASS",
+    "brandCoherence": "PASS",
+    "approvedVisualSystemFidelity": "PASS",
+    "emotionalImpact": "PASS",
+    "launchExcitement": "PASS",
+    "platformFit": "PASS",
+    "premiumQuality": "PASS",
+    "unapprovedVisualConceptIntroduced": "NO",
+    "flagsPreservedForFounder": [
+      "TEMPORARY WORDMARK: Row 35 social logo/icon files are not in accessible project materials. Typeset THE BACK HALF is a temporary review treatment only \u2014 not a permanent logo replacement.",
+      "CLEAN LUMINA PORTRAIT RECOMMENDED: Approved Lumina Avatar.png still contains butterflies, sparkle trails, and baked-in branding. Cropped to presence; no new Lumina identity was created.",
+      "journey-light.jpg particle/light-mote texture is inherent to the approved source. No additional sparkle overlays were added.",
+      "Open-room / open-office environment removed from all August 28 executions. founder-atmosphere.jpg is not used."
+    ]
+  },
+  "imaniTechnicalQa": {
+    "result": "PASS",
+    "fileIntegrity": "PASS",
+    "dimensions": "PASS",
+    "videoFormat": "PASS \u2014 H.264 yuv420p + silent AAC",
+    "videoPlayback": "PASS",
+    "safeZones": "PASS \u2014 type kept off TikTok UI edges",
+    "retrievability": "PASS \u2014 ops/fab-5/campaigns/row-81/assets",
+    "row82TechnicalReadiness": "READY",
+    "secretExposure": "PASS"
+  },
+  "michelleCompletionQa": {
+    "result": "PASS",
+    "allRequiredAugustLaunchAssetsExist": true,
+    "platformVariantsExist": true,
+    "captionsExist": true,
+    "altTextExists": true,
+    "ctaVariantsExist": true,
+    "thumbnailsCoversExist": true,
+    "keywordsHashtagsAddressed": true,
+    "niaReviewComplete": true,
+    "imaniQaComplete": true,
+    "founderVisualReviewPackComplete": true,
+    "row82HandoffReady": true
+  },
+  "row78CreativeIssuesDiscoveredDuringProduction": [
+    "TEMPORARY WORDMARK: Row 35 social logo/icon files are not present in accessible project materials.",
+    "CLEAN LUMINA PORTRAIT RECOMMENDED: Lumina Avatar source includes butterflies, sparkle trails, and baked-in branding.",
+    "journey-light source includes particle/light-mote texture. No additional sparkle treatment was added.",
+    "Founder rejected open-room environment. August 28 regenerated on approved hero-atmosphere.jpg."
+  ],
+  "row82Handoff": "READY",
+  "currentBlockers": [
+    "Founder visual review of the 12-execution countdown + launch-day campaign"
+  ],
+  "founderActionRequired": "VISUAL REVIEW OF ACTUAL 12-EXECUTION CAMPAIGN",
+  "row81CommitmentSatisfied": true,
+  "row81Status": "READY FOR FOUNDER VISUAL ACCEPTANCE",
+  "launchDateLock": "AUGUST 31, 2026",
+  "imageryStatus": "APPROVED PHOTOGRAPHY RETAINED \u2014 FINAL CREATIVE ELEVATION: THE QUESTION + LAUNCH PAYOFF"
+}

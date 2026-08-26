@@ -1,0 +1,97 @@
+{
+  "row": 76,
+  "purpose": "Source of truth for official company social channels. Named before any autonomous publish.",
+  "updatedAt": "2026-08-21T20:25:00.000Z",
+  "publicBrandName": "The Back Half",
+  "website": "https://thebackhalf.org",
+  "trademarkSymbolApproved": false,
+  "preferredHandle": "backhalfco",
+  "preferredHandleAuthority": "Founder lock 2026-08-21. Official launch handle for Instagram and TikTok is @backhalfco. Unrelated third-party @thebackhalf accounts are not The Back Half and are not official handles.",
+  "postingBegins": "2026-08-28",
+  "youtube": {
+    "row76Scope": "OUT OF SCOPE",
+    "authority": "Founder instruction 2026-08-18: YouTube intentionally moved to Architect Community rollout / Post Launch.",
+    "doNotCreateUnderRow76": true
+  },
+  "approvedCopy": {
+    "displayName": "The Back Half",
+    "instagramBio": "The Back Half helps people transition from living by expectation to living with intention. Magical is Possible. Become an Architect.",
+    "copyAuthority": "content/seo/pages.ts siteSeoDefaults + approved Become an Architect CTA. No unapproved transformation, financial, health, therapeutic, or guaranteed-outcome claims. Do not mention Lumina or Fab 5 in public bios under Row 76."
+  },
+  "visualAssets": {
+    "workbookLogoSuiteRow": 35,
+    "workbookStatus": "Complete",
+    "doNotSubstituteGenericBranding": true,
+    "doNotRedesignApprovedSocialBranding": true
+  },
+  "recovery": {
+    "founderRecoveryAuthority": "Kimberly",
+    "approvedMailboxesNamedInOs": [
+      "kimberly@thebackhalf.org",
+      "support@thebackhalf.org",
+      "privacy@thebackhalf.org"
+    ],
+    "socialRecoveryMailbox": "kimberly@thebackhalf.org",
+    "doNotInventMailboxes": true,
+    "doNotStoreRawCredentials": true
+  },
+  "unrelatedHandlesIgnored": [
+    {
+      "handle": "thebackhalf",
+      "platforms": ["instagram", "tiktok"],
+      "note": "Unrelated third-party accounts. Not The Back Half. Do not interact. Do not treat as official or preferred."
+    }
+  ],
+  "channels": {
+    "instagram": {
+      "scope": "LAUNCH",
+      "scopeAuthority": "Founder-approved August 28–31 launch channel.",
+      "preferredHandle": "backhalfco",
+      "publicUrl": "https://www.instagram.com/backhalfco/",
+      "secured": true,
+      "accountExists": true,
+      "officialTheBackHalfPresence": true,
+      "createdBy": "Founder",
+      "founderConfirmedConfigured": true,
+      "postingBegins": "2026-08-28",
+      "doNotRecreate": true,
+      "doNotChangeHandle": true,
+      "lastOfficialRecord": {
+        "at": "2026-08-21T20:25:00.000Z",
+        "authority": "Founder confirmation. Official Instagram is @backhalfco. Account exists and is configured. No additional public search performed."
+      }
+    },
+    "tiktok": {
+      "scope": "LAUNCH",
+      "scopeAuthority": "Founder-approved August 28–31 launch channel. LinkedIn is not the substitute.",
+      "preferredHandle": "backhalfco",
+      "publicUrl": "https://www.tiktok.com/@backhalfco",
+      "secured": true,
+      "accountExists": true,
+      "officialTheBackHalfPresence": true,
+      "createdBy": "Founder",
+      "founderConfirmedConfigured": true,
+      "postingBegins": "2026-08-28",
+      "doNotRecreate": true,
+      "doNotChangeHandle": true,
+      "lastOfficialRecord": {
+        "at": "2026-08-21T20:25:00.000Z",
+        "authority": "Founder confirmation. Official TikTok is @backhalfco. Account exists and is configured. No additional public search performed."
+      }
+    },
+    "linkedin": {
+      "scope": "FUTURE ENHANCEMENT",
+      "scopeAuthority": "Founder instruction: LinkedIn is not part of Row 76 launch completion.",
+      "doNotTreatAsRow76LaunchRequirement": true,
+      "doNotCreateUnderRow76": true
+    }
+  },
+  "youtubeOutOfScope": true,
+  "evidence": "ops/fab-5/runs/row-76-founder-acceptance-closure-2026-08-21.json",
+  "historicalEvidence": [
+    "ops/fab-5/runs/row-76-social-channels-validation.json",
+    "ops/fab-5/runs/row-76-social-channels-verification-2026-08-21.json"
+  ],
+  "verificationRecord": "ops/fab-5/ROW-76-OFFICIAL-SOCIAL-CHANNELS.md",
+  "runId": "r76-founder-acceptance-2026-08-21"
+}

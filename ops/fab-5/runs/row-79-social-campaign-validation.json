@@ -1,0 +1,144 @@
+{
+  "generatedAt": "2026-08-24T20:19:54.560Z",
+  "campaignRebuilt": false,
+  "markedComplete": true,
+  "founderAcceptanceRecorded": "YES",
+  "launchRoadmapUnchanged": true,
+  "founderNotesUnchanged": true,
+  "row75Unchanged": true,
+  "checks": {
+    "generatedAt": "2026-08-24T20:19:53.101Z",
+    "archiveExists": true,
+    "copyExists": true,
+    "founderApprovalExists": true,
+    "missingFiles": [],
+    "launchIgDimsOk": true,
+    "familyIgDimsOk": true,
+    "launchTtCoverOk": true,
+    "videosPlayable": true,
+    "launchAnnouncementIg": true,
+    "launchAnnouncementTt": true,
+    "enrollmentCtaIg": true,
+    "enrollmentCtaTt": true,
+    "enrollmentDestinationIg": true,
+    "enrollmentDestinationTt": true,
+    "becomeAnArchitectPresent": true,
+    "journeyIntro": true,
+    "luminaIntro": true,
+    "foundingArchitectNamedInLaunchIgTt": false,
+    "localhostInCopy": false,
+    "vercelInCopy": false,
+    "august19InCopy": false,
+    "october19InCopy": false,
+    "firstYearInCopy": false,
+    "xInCopy": false,
+    "refundInCopy": false,
+    "campaignRebuilt": false
+  },
+  "scorecard": {
+    "existingCampaign": {
+      "located": "PASS",
+      "reused": "PASS",
+      "rebuilt": "NO"
+    },
+    "platforms": {
+      "instagram": "PASS",
+      "tiktok": "PASS",
+      "linkedinRequired": "NO"
+    },
+    "requirements": {
+      "launchAnnouncement": "PASS",
+      "founderMessage": "PASS",
+      "enrollmentCta": "PASS",
+      "foundingArchitectOffer": "PASS",
+      "productExplanation": "PASS",
+      "luminaJourney": "PASS",
+      "followUpPosts": "PASS"
+    },
+    "cta": {
+      "approvedCta": "Become an Architect",
+      "approvedDestination": "https://thebackhalf.org/register",
+      "everyEnrollmentCtaCorrect": "PASS",
+      "liveCanonicalReachability": "EXTERNAL DEPENDENCY — ROW 75",
+      "incorrectDead": "NONE",
+      "localRegister": 200
+    },
+    "platformSpecific": {
+      "instagram": "PASS",
+      "tiktok": "PASS"
+    },
+    "assets": {
+      "images": "PASS",
+      "videos": "PASS",
+      "copyRecords": "PASS",
+      "brokenReferences": "NONE"
+    },
+    "reconciliation": {
+      "august31": "PASS",
+      "communityOctober25": "PASS",
+      "firstSixMonths": "PASS",
+      "globalLifeDesign": "PASS",
+      "linkedinLaunchRequirement": "NO",
+      "obsoleteActive": "NONE"
+    },
+    "regression": {
+      "socialChannelSetup": "PASS",
+      "socialLaunchCampaign": "PASS",
+      "row77": "NOT YET COMPLETE — NOT A ROW 79 CONTENT BLOCKER",
+      "engagementProtocol": "PASS",
+      "kpiDashboard": "PASS",
+      "launchCommunications": "PASS",
+      "launchDayRunbook": "PASS",
+      "brand": "PASS",
+      "registrationCta": "PASS",
+      "overall": "PASS"
+    },
+    "closure": {
+      "completion": "100%",
+      "status": "Complete",
+      "founderAcceptance": "YES",
+      "campaignChangedDuringClosure": "NO",
+      "assetsChangedDuringClosure": "NO",
+      "copyChangedDuringClosure": "NO",
+      "launchRoadmapChanged": "NO",
+      "founderNotesChanged": "NO",
+      "row75Changed": "NO",
+      "otherRowsChanged": "NO",
+      "unexpectedChanges": "NONE",
+      "approvedCtaPreserved": "YES",
+      "approvedEnrollmentDestinationPreserved": "YES",
+      "row75DependencyPreservedSeparately": "YES",
+      "existingApprovedCampaignPreserved": "YES"
+    }
+  },
+  "http": {
+    "review": {
+      "path": "/_internal/row79-launch-day-social-campaign-review",
+      "status": 200
+    },
+    "register": {
+      "path": "/register",
+      "status": 200
+    },
+    "journey": {
+      "path": "/journey",
+      "status": 200
+    },
+    "lumina": {
+      "path": "/lumina",
+      "status": 200
+    },
+    "home": {
+      "path": "/",
+      "status": 200
+    },
+    "canonicalRegister": {
+      "url": "https://thebackhalf.org/register",
+      "status": 0,
+      "ok": false
+    }
+  },
+  "readyForFounderAcceptance": false,
+  "exactCommitmentSatisfied": "YES",
+  "finalStatus": "ROW 79 — COMPLETE"
+}

@@ -1,0 +1,211 @@
+{
+  "row": 153,
+  "runId": "r153-2026-08-25T20:02:18.142Z",
+  "founderAcceptance": null,
+  "founderAccepted": false,
+  "rowMarkedComplete": false,
+  "protocol": "ops/fab-5/ROW-153-SUPPORT-CHANNELS-OPERATING-PROTOCOL.md",
+  "tracker": "/ops/admin/support",
+  "form": "/support",
+  "mailbox": "support@thebackhalf.org",
+  "categories": [
+    {
+      "id": "ACCOUNT_LOGIN",
+      "label": "Account / Login"
+    },
+    {
+      "id": "REGISTRATION",
+      "label": "Registration"
+    },
+    {
+      "id": "PAYMENT_BILLING",
+      "label": "Payment"
+    },
+    {
+      "id": "ONBOARDING",
+      "label": "Onboarding"
+    },
+    {
+      "id": "JOURNEY",
+      "label": "Journey"
+    },
+    {
+      "id": "LUMINA",
+      "label": "Lumina"
+    },
+    {
+      "id": "DOWNLOADS_MATERIALS",
+      "label": "Downloads"
+    },
+    {
+      "id": "MEMBERSHIP",
+      "label": "Membership"
+    },
+    {
+      "id": "PRIVACY",
+      "label": "Privacy"
+    },
+    {
+      "id": "TECHNICAL",
+      "label": "Technical"
+    },
+    {
+      "id": "GENERAL",
+      "label": "General"
+    },
+    {
+      "id": "OTHER",
+      "label": "Other"
+    }
+  ],
+  "acknowledgmentSample": "Hello Kimberly,\n\nThank you for writing to The Back Half Support.\n\nWe received your request and created ticket BH-S-20260819-TEST1.\n\nWe typically respond within 3 days, with a goal of 72 hours or less. Urgent security and privacy concerns are prioritized.\n\nPlease do not send passwords, payment-card information, or other sensitive account information in reply.\n\nThis is an automated acknowledgment. A member of The Back Half Support will follow up.\n\nThe Back Half Support\nsupport@thebackhalf.org",
+  "smtp": "sent",
+  "tests": {
+    "tested": 23,
+    "passed": 23,
+    "failed": 0,
+    "result": "PASS"
+  },
+  "results": [
+    {
+      "id": "T1",
+      "name": "SUPPORT EMAIL",
+      "result": "PASS",
+      "detail": "ticket=BH-S-20260825-WGJ9A category=ACCOUNT_LOGIN smtp=sent"
+    },
+    {
+      "id": "T2",
+      "name": "SUPPORT FORM",
+      "result": "PASS",
+      "detail": "ticket=BH-S-20260825-R65V6 ack=sent"
+    },
+    {
+      "id": "T3",
+      "name": "TICKET ID",
+      "result": "PASS",
+      "detail": "form=BH-S-20260825-R65V6 email=BH-S-20260825-WGJ9A"
+    },
+    {
+      "id": "T4",
+      "name": "EMAIL REPLY",
+      "result": "PASS",
+      "detail": "replyTicket=BH-S-20260825-R65V6 duplicateFlag=true"
+    },
+    {
+      "id": "T5",
+      "name": "CATEGORY ROUTING",
+      "result": "PASS",
+      "detail": "ACCOUNT_LOGIN:P2, PAYMENT_BILLING:P2, JOURNEY:P2, LUMINA:P2, PRIVACY:P1"
+    },
+    {
+      "id": "T6",
+      "name": "SLA",
+      "result": "PASS",
+      "detail": "due=2026-08-25T19:02:15.474Z sla=overdue priority=P4"
+    },
+    {
+      "id": "T7",
+      "name": "P1 ESCALATION",
+      "result": "PASS",
+      "detail": "priority=P1 targets=imani status=ESCALATED"
+    },
+    {
+      "id": "T8",
+      "name": "ARCHITECT EXPERIENCE ESCALATION",
+      "result": "PASS",
+      "detail": "owner=nia priority=P2 targets=nia"
+    },
+    {
+      "id": "T9",
+      "name": "FOUNDER ESCALATION",
+      "result": "PASS",
+      "detail": "targets=founder owner=nia"
+    },
+    {
+      "id": "T10",
+      "name": "SOCIAL HANDOFF",
+      "result": "PASS",
+      "detail": "ticket=BH-S-20260825-KB3JN source=social_row83"
+    },
+    {
+      "id": "T11",
+      "name": "AUTOMATED ACKNOWLEDGMENT",
+      "result": "PASS",
+      "detail": "We received your request [BH-S-20260819-TEST1]"
+    },
+    {
+      "id": "T12",
+      "name": "PRIVACY",
+      "result": "PASS",
+      "detail": "[redacted-credential] and card [redacted-payment] [redacted-cvv]"
+    },
+    {
+      "id": "T13",
+      "name": "REPEAT ISSUE",
+      "result": "PASS",
+      "detail": "LUMINA:10, ACCOUNT_LOGIN:5, JOURNEY:5, ACCOUNT_LOGIN:5, PAYMENT_BILLING:5, JOURNEY:5, LUMINA:5, PRIVACY:5, GENERAL:5, TECHNICAL:5, JOURNEY:5, GENERAL:5, ACCOUNT_LOGIN:5, PRIVACY:5"
+    },
+    {
+      "id": "T14",
+      "name": "ROW 151 DATA",
+      "result": "PASS",
+      "detail": "new=16 open=67 p1=12 overdue=52"
+    },
+    {
+      "id": "T15",
+      "name": "CLOSED LOOP",
+      "result": "PASS",
+      "detail": "history=created>acknowledged>reply>status>status>status"
+    },
+    {
+      "id": "T16",
+      "name": "OTHER CATEGORY",
+      "result": "PASS",
+      "detail": "category=OTHER owner=nia"
+    },
+    {
+      "id": "T17",
+      "name": "NO REFUND CATEGORY",
+      "result": "PASS",
+      "detail": "Account / Login, Registration, Payment, Onboarding, Journey, Lumina, Downloads, Membership, Privacy, Technical, General, Other"
+    },
+    {
+      "id": "T18",
+      "name": "DISPLAY CAPITALIZATION",
+      "result": "PASS",
+      "detail": "Payment=Payment Open=Open"
+    },
+    {
+      "id": "T19",
+      "name": "DUPLICATE PREVENTION",
+      "result": "PASS",
+      "detail": "first=BH-S-20260825-YSH33 second=BH-S-20260825-YSH33"
+    },
+    {
+      "id": "T20",
+      "name": "STANDARD NOT URGENT",
+      "result": "PASS",
+      "detail": "priority=P4 escalation=none"
+    },
+    {
+      "id": "T21",
+      "name": "ACCOUNT SECURITY ESCALATION",
+      "result": "PASS",
+      "detail": "priority=P1 owner=michelle targets=imani"
+    },
+    {
+      "id": "T22",
+      "name": "OWNERSHIP ROUTING",
+      "result": "PASS",
+      "detail": "loginOwner=michelle cxOwner=nia p1=imani"
+    },
+    {
+      "id": "T23",
+      "name": "ACKNOWLEDGMENT DELIVERY",
+      "result": "PASS",
+      "detail": "smtpReady=true smtpTest=sent formAck=sent"
+    }
+  ],
+  "result": "PASS",
+  "readyForFounderAcceptanceReview": true
+}

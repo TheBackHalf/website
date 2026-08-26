@@ -1,0 +1,11 @@
+{
+  "at": "2026-08-18T15:58:16.649Z",
+  "command": "vercel deploy --prod --yes --scope back-half",
+  "exit": 1,
+  "ok": false,
+  "deploymentUrlPresent": false,
+  "spawnError": null,
+  "notes": [
+    "Error: Not able to load user because of unexpected error: User not found. (404)"
+  ]
+}

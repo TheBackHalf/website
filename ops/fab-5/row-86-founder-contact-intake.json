@@ -1,0 +1,5 @@
+{
+  "instructions": "Founder provides ONE dump. Missing fields are allowed. Do not invent emails, phones, organizations, relationships, or consent. The system classifies after intake. Do not send outreach.",
+  "acceptedFields": ["name", "email", "phone", "organization", "relationshipContext", "notes"],
+  "rows": []
+}

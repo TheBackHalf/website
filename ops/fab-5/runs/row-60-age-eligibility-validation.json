@@ -1,0 +1,292 @@
+{
+  "generatedAt": "2026-08-25T20:02:18.230Z",
+  "origin": "http://localhost:3000",
+  "minimumParticipantAge": 18,
+  "launchEligibilityDecision": "18+ ONLY",
+  "founderAgeDecision": "APPROVED",
+  "tests": [
+    {
+      "id": "policy",
+      "name": "Explicit 18+ policy",
+      "result": "PASS",
+      "detail": "age=18 decision=18+ ONLY"
+    },
+    {
+      "id": "age-18",
+      "name": "Age 18 eligible",
+      "result": "PASS",
+      "detail": "18 >= 18"
+    },
+    {
+      "id": "age-over-18",
+      "name": "Age over 18 eligible",
+      "result": "PASS",
+      "detail": "19 and 42 eligible"
+    },
+    {
+      "id": "age-17",
+      "name": "Age 17 blocked",
+      "result": "PASS",
+      "detail": "17 < 18"
+    },
+    {
+      "id": "age-under-18",
+      "name": "Under 18 blocked",
+      "result": "PASS",
+      "detail": "16/12/0 ineligible"
+    },
+    {
+      "id": "boundary",
+      "name": "Boundary enforcement",
+      "result": "PASS",
+      "detail": "18 yes / 17 no"
+    },
+    {
+      "id": "attestation",
+      "name": "Privacy-preserving attestation",
+      "result": "PASS",
+      "detail": "no date of birth required"
+    },
+    {
+      "id": "cookie-sign",
+      "name": "Signed eligibility cookie",
+      "result": "PASS",
+      "detail": "HMAC cookie verified; forged token unconfirmed"
+    },
+    {
+      "id": "cookie-tamper",
+      "name": "Tampered cookie rejected",
+      "result": "PASS",
+      "detail": "wrong secret is unconfirmed"
+    },
+    {
+      "id": "paths-block",
+      "name": "Protected path map",
+      "result": "PASS",
+      "detail": "participant paths blocked; marketing public pages open"
+    },
+    {
+      "id": "redirect-map",
+      "name": "Redirect map",
+      "result": "PASS",
+      "detail": "ineligible=/not-eligible unconfirmed=/eligibility?next=%2Farchitect%2Flumina"
+    },
+    {
+      "id": "legal-en",
+      "name": "English legal eligibility language",
+      "result": "PASS",
+      "detail": "all five legal documents include 18+"
+    },
+    {
+      "id": "legal-es",
+      "name": "Spanish legal eligibility language",
+      "result": "PASS",
+      "detail": "all five Spanish legal documents include 18+"
+    },
+    {
+      "id": "brand",
+      "name": "Brand is not rewritten as adults-only",
+      "result": "PASS",
+      "detail": "eligibility language present; adults-only brand claim absent"
+    },
+    {
+      "id": "analytics-pre",
+      "name": "Pre-eligibility anonymous analytics preserved",
+      "result": "PASS",
+      "detail": "page_viewed stored; DOB/password blocked by privacy sanitizer"
+    },
+    {
+      "id": "home",
+      "name": "Homepage reachable",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "register-gate",
+      "name": "Registration shows age gate before PII",
+      "result": "PASS",
+      "detail": "HTTP 200; gate markers present"
+    },
+    {
+      "id": "http-17",
+      "name": "HTTP age 17 blocked",
+      "result": "PASS",
+      "detail": "{\"status\":\"ineligible\",\"redirect\":\"/not-eligible\"}"
+    },
+    {
+      "id": "register-bypass",
+      "name": "Registration bypass blocked",
+      "result": "PASS",
+      "detail": "status=307 location=/not-eligible"
+    },
+    {
+      "id": "checkout-bypass",
+      "name": "Checkout bypass blocked",
+      "result": "PASS",
+      "detail": "status=307 location=/not-eligible"
+    },
+    {
+      "id": "lumina-bypass",
+      "name": "Lumina bypass blocked",
+      "result": "PASS",
+      "detail": "status=307 location=/not-eligible"
+    },
+    {
+      "id": "ai-bypass",
+      "name": "AI Kimberly bypass blocked",
+      "result": "PASS",
+      "detail": "status=307 location=/not-eligible"
+    },
+    {
+      "id": "membership-bypass",
+      "name": "Membership checkout bypass blocked",
+      "result": "PASS",
+      "detail": "status=307 location=/not-eligible"
+    },
+    {
+      "id": "support-block",
+      "name": "Support PII blocked for ineligible",
+      "result": "PASS",
+      "detail": "HTTP 403 {\"status\":\"age_ineligible\",\"error\":\"age_ineligible\"}"
+    },
+    {
+      "id": "http-18",
+      "name": "HTTP age 18 eligible",
+      "result": "PASS",
+      "detail": "{\"status\":\"eligible\"}"
+    },
+    {
+      "id": "http-over-18",
+      "name": "HTTP over 18 eligible",
+      "result": "PASS",
+      "detail": "{\"status\":\"eligible\"}"
+    },
+    {
+      "id": "register-eligible",
+      "name": "Eligible registration reachable",
+      "result": "PASS",
+      "detail": "HTTP 200 location=null"
+    },
+    {
+      "id": "spanish-register",
+      "name": "Spanish registration gate",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "spanish-not-eligible",
+      "name": "Spanish not-eligible page",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "legal-pages",
+      "name": "Legal pages render eligibility",
+      "result": "PASS",
+      "detail": "privacy/terms/participant/membership/AI include 18+"
+    },
+    {
+      "id": "legal-es-page",
+      "name": "Spanish privacy eligibility",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "support-page",
+      "name": "Support page includes eligibility disclosure",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "desktop",
+      "name": "Desktop homepage",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "mobile",
+      "name": "Mobile homepage",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "analytics-live",
+      "name": "Anonymous analytics endpoint still accepts page_viewed",
+      "result": "PASS",
+      "detail": "HTTP 200 {\"status\":\"created\"}"
+    },
+    {
+      "id": "forged-cookie",
+      "name": "Forged eligible cookie does not unlock Lumina",
+      "result": "PASS",
+      "detail": "status=307 location=/eligibility?next=%2Farchitect%2Flumina"
+    },
+    {
+      "id": "checkout-eligible",
+      "name": "Eligible checkout catalog reachable",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "support-eligible",
+      "name": "Eligible adult can still submit support",
+      "result": "PASS",
+      "detail": "HTTP 200 {\"status\":\"received\",\"ticketId\":\"BH-S-20260825-4UNZZ\",\"acknowledgment\":\"sent\"}"
+    },
+    {
+      "id": "row150",
+      "name": "Row 150 regression",
+      "result": "PASS",
+      "detail": "exit 0. {\n  \"result\": \"PASS\",\n  \"failures\": [],\n  \"passed\": 16,\n  \"total\": 16\n}\n\nnpm warn Unknown env config \"devdir\". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.\n"
+    },
+    {
+      "id": "row151",
+      "name": "Row 151 regression",
+      "result": "PASS",
+      "detail": "Dashboard suite ran. Known pre-existing empty-telemetry FAILs only: D7,D13. Row 60 did not add dashboard failures."
+    },
+    {
+      "id": "row153",
+      "name": "Row 153 regression",
+      "result": "PASS",
+      "detail": "Support suite 23 tests. Remaining FAIL is T23 SMTP acknowledgment (known local SMTP gap, not Row 60)."
+    }
+  ],
+  "summary": {
+    "pass": 41,
+    "fail": 0,
+    "total": 41
+  },
+  "categories": {
+    "explicitPolicyDecision": "PASS",
+    "marketingConsistency": "PASS",
+    "checkoutEnforcement": "PASS",
+    "registrationEnforcement": "PASS",
+    "ageGate": "PASS",
+    "ageGateBypassProtection": "PASS",
+    "privacyPolicy": "PASS",
+    "terms": "PASS",
+    "participantAgreement": "PASS",
+    "luminaEnforcement": "PASS",
+    "aiKimberlyEnforcement": "PASS",
+    "supportHandling": "PASS",
+    "dataCollection": "PASS",
+    "analyticsCompatibility": "PASS",
+    "englishExperience": "PASS",
+    "spanishExperience": "PASS",
+    "desktop": "PASS",
+    "mobile": "PASS",
+    "row150": "PASS",
+    "row151": "PASS",
+    "row153": "PASS",
+    "eligibleParticipant": "PASS",
+    "ineligibleParticipant": "PASS",
+    "boundaryAge": "PASS",
+    "directUrlBypass": "PASS",
+    "registrationBypass": "PASS",
+    "checkoutBypass": "PASS",
+    "aiExperienceBypass": "PASS"
+  },
+  "failures": [],
+  "overall": "PASS"
+}

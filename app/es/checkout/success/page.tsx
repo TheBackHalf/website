@@ -1,0 +1,64 @@
+import type { Metadata } from "next";
+import { redirect } from "next/navigation";
+import { CheckoutSuccessView } from "@/components/checkout/checkout-success-view";
+import { PageHero, SkipLink } from "@/components/design-system";
+import { LocalizedSiteFooter } from "@/components/pages/localized-site-footer";
+import { SectionHeading, SectionShell } from "@/components/home/section-shell";
+import { getDictionary, translate } from "@/content/i18n/get-dictionary";
+import { getLoginPath } from "@/lib/auth/routing";
+import { verifyCheckoutSuccess } from "@/lib/checkout/verify-success";
+import { createLocalizedPageMetadata } from "@/lib/seo/metadata";
+
+type PageProps = {
+  searchParams: Promise<{ session_id?: string; offer?: string }>;
+};
+
+export const metadata: Metadata = createLocalizedPageMetadata({
+  title: translate("es", getDictionary("es").metadata.checkoutSuccess.title),
+  description: translate(
+    "es",
+    getDictionary("es").metadata.checkoutSuccess.description,
+  ),
+  path: "/checkout/success",
+  locale: "es",
+});
+
+export default async function EsCheckoutSuccessPage({
+  searchParams,
+}: PageProps) {
+  const params = await searchParams;
+  const result = await verifyCheckoutSuccess(params.session_id);
+
+  if (result.status === "unauthenticated") {
+    redirect(
+      `${getLoginPath("es")}?next=${encodeURIComponent("/es/checkout/success")}`,
+    );
+  }
+
+  const dictionary = getDictionary("es");
+
+  return (
+    <>
+      <SkipLink href="#checkout-main">{dictionary.common.skipToMain}</SkipLink>
+      <main id="checkout-main" className="min-h-screen bg-bh-cream text-bh-ink">
+        <PageHero locale="es">
+          <p className="bh-eyebrow">{dictionary.common.siteName}</p>
+          <SectionHeading as="h1" className="mt-6 text-4xl md:text-6xl lg:text-7xl">
+            {translate("es", dictionary.checkout.successTitle)}
+          </SectionHeading>
+        </PageHero>
+
+        <SectionShell
+          id="checkout-success"
+          variant="light"
+          density="compact"
+          containerClassName="max-w-3xl"
+        >
+          <CheckoutSuccessView locale="es" result={result} />
+        </SectionShell>
+
+        <LocalizedSiteFooter locale="es" />
+      </main>
+    </>
+  );
+}

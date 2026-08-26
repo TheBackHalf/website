@@ -1,0 +1,40 @@
+{
+  "row": 76,
+  "excelRow": 77,
+  "deliverable": "Stand Up Official Social Media Channels",
+  "status": "Complete",
+  "percentCompleteRecorded": 100,
+  "founderAcceptance": "YES",
+  "founderDecision": "APPROVED",
+  "founderAccepted": true,
+  "founderAcceptedAt": "2026-08-21",
+  "rowMarkedComplete": true,
+  "linkedinLaunchRequirement": "NO — FUTURE ENHANCEMENT",
+  "activeLaunchChannels": ["instagram", "tiktok"],
+  "officialHandle": "backhalfco",
+  "postingBegins": "2026-08-28",
+  "sourceOfTruth": "ops/fab-5/social-channels.json",
+  "verification": "ops/fab-5/ROW-76-OFFICIAL-SOCIAL-CHANNELS.md",
+  "closureEvidence": "ops/fab-5/runs/row-76-founder-acceptance-closure-2026-08-21.json",
+  "historicalObsoleteHandleSearch": [
+    "ops/fab-5/runs/row-76-social-channels-validation.json",
+    "ops/fab-5/runs/row-76-social-channels-verification-2026-08-21.json"
+  ],
+  "instagram": {
+    "officialHandle": "@backhalfco",
+    "accountEstablished": "YES",
+    "publicUrl": "https://www.instagram.com/backhalfco/"
+  },
+  "tiktok": {
+    "officialHandle": "@backhalfco",
+    "accountEstablished": "YES",
+    "publicUrl": "https://www.tiktok.com/@backhalfco"
+  },
+  "unrelatedThebackhalfAccountsIgnored": true,
+  "launchRoadmapUnchanged": true,
+  "founderNotesUnchanged": true,
+  "otherRowsUnchanged": true,
+  "remainingBlockers": "NONE",
+  "nextAction": "NONE — Row 76 Complete. Founder accepted 2026-08-21. Official handle @backhalfco. Posting begins August 28, 2026. Launch Roadmap and Founder Notes were not changed.",
+  "generatedAt": "2026-08-21T20:25:00.000Z"
+}

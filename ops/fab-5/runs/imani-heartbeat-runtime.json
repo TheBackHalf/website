@@ -1,0 +1,47 @@
+{
+  "at": "2026-08-18T15:56:13.652Z",
+  "architecture": "Existing Vercel production project + Next.js route + daily Cron GET",
+  "files": [
+    "lib/fab-5/heartbeat.ts",
+    "app/api/fab-5/imani/heartbeat/route.ts",
+    "vercel.json",
+    "lib/fab-5/vercel.ts",
+    "lib/fab-5/index.ts",
+    ".env.example"
+  ],
+  "localOutcome": "succeeded",
+  "hosted": false,
+  "vercelEnv": null,
+  "authority": {
+    "writeChargeBlocked": true,
+    "refundBlocked": true,
+    "financialAdminBlocked": true,
+    "founderOnlyBlocked": true,
+    "deployNotExecuted": true,
+    "legalConclusionBlocked": true
+  },
+  "systems": {
+    "vercelInspect": "PASS",
+    "stripeSandboxRead": "PASS",
+    "openaiLive": "PASS",
+    "backendDatabase": "NOT IMPLEMENTED"
+  },
+  "persistDurable": false,
+  "secretExposure": "NO",
+  "stripeMutated": "NO",
+  "productionMutated": "NO",
+  "authLayerRejectsWithoutSecret": true,
+  "productionHeartbeatPath": "/api/fab-5/imani/heartbeat",
+  "productionHeartbeatHttp": 200,
+  "productionHeartbeatLooksLikeHtmlCatchall": true,
+  "productionHostKind": "vercel_app",
+  "vercelEnvNames": {
+    "OPENAI_API_KEY": true,
+    "STRIPE_SECRET_KEY": true,
+    "VERCEL_TOKEN": false,
+    "CRON_SECRET": true,
+    "IMANI_HEARTBEAT_SECRET": false
+  },
+  "computerOff": "NOT PROVEN",
+  "note": "Hosted cron cannot authenticate until CRON_SECRET exists in Vercel Production env. Env changes are Founder-gated."
+}

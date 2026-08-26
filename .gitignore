@@ -32,6 +32,18 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
+
+# local ingest copies of Founder Command Center workbooks
+.tmp-launch-ingest/
+
+# Row 63 auth persistence (local file store until database wired)
+.data/
+
+# local QA / ingest scratch (never deploy)
+.tmp-*/
+.tmp-*.py
+tmp/
 
 # vercel
 .vercel

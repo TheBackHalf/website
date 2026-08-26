@@ -1,0 +1,126 @@
+{
+  "row": 77,
+  "continuityModel": "OPTION_B",
+  "livePublishEnabled": false,
+  "doNotPublishDuringRow77Validation": true,
+  "newVendorRequired": false,
+  "operationalOwner": "Nia Prism — Chief Experience & Transformation Officer",
+  "operationalOwnerIsHumanCredentialHolder": false,
+  "executionPath": "platform_native_scheduler",
+  "executionPathNote": "No Instagram Graph API and no TikTok Content Posting API exist in this application (Row 72 vendor register). Row 82 implements the Option B workflow using native Instagram Professional / Meta Business Suite scheduling and native TikTok scheduling on the existing @backhalfco accounts. That is not a new paid SaaS. Do not sign up for Buffer, Later, Hootsuite, or Sprout from this row. Row 82 is not Complete until Founder review.",
+  "founderRequiredAtPostingTimeOnceScheduled": false,
+  "nativeScheduleVerified": {
+    "instagram": false,
+    "tiktok": false
+  },
+  "pauseAuthority": ["nia", "michelle", "imani_if_security"],
+  "jobs": [
+    {
+      "id": "R78-0828-IG",
+      "platform": "instagram",
+      "publishAtEt": "2026-08-28T08:00:00-04:00",
+      "assetPaths": [
+        "approved-assets/row-81-social-launch/instagram/R78-0828-IG-S01.png",
+        "approved-assets/row-81-social-launch/instagram/R78-0828-IG-S02.png",
+        "approved-assets/row-81-social-launch/instagram/R78-0828-IG-S03.png",
+        "approved-assets/row-81-social-launch/instagram/R78-0828-IG-S04.png"
+      ],
+      "copyRecord": "approved-assets/row-81-social-launch/ROW-81-FINAL-APPROVED-COPY.md#R78-0828-IG",
+      "status": "prepared",
+      "paused": false
+    },
+    {
+      "id": "R78-0828-TT",
+      "platform": "tiktok",
+      "publishAtEt": "2026-08-28T12:00:00-04:00",
+      "assetPaths": [
+        "approved-assets/row-81-social-launch/tiktok/R78-0828-TT.mp4",
+        "approved-assets/row-81-social-launch/tiktok/R78-0828-TT-cover.png"
+      ],
+      "copyRecord": "approved-assets/row-81-social-launch/ROW-81-FINAL-APPROVED-COPY.md#R78-0828-TT",
+      "status": "prepared",
+      "paused": false
+    },
+    {
+      "id": "R78-0829-IG",
+      "platform": "instagram",
+      "publishAtEt": "2026-08-29T08:00:00-04:00",
+      "assetPaths": [
+        "approved-assets/row-81-social-launch/instagram/R78-0829-IG-S01.png",
+        "approved-assets/row-81-social-launch/instagram/R78-0829-IG-S02.png",
+        "approved-assets/row-81-social-launch/instagram/R78-0829-IG-S03.png",
+        "approved-assets/row-81-social-launch/instagram/R78-0829-IG-S04.png"
+      ],
+      "copyRecord": "approved-assets/row-81-social-launch/ROW-81-FINAL-APPROVED-COPY.md#R78-0829-IG",
+      "status": "prepared",
+      "paused": false
+    },
+    {
+      "id": "R78-0829-TT",
+      "platform": "tiktok",
+      "publishAtEt": "2026-08-29T12:00:00-04:00",
+      "assetPaths": [
+        "approved-assets/row-81-social-launch/tiktok/R78-0829-TT.mp4",
+        "approved-assets/row-81-social-launch/tiktok/R78-0829-TT-cover.png"
+      ],
+      "copyRecord": "approved-assets/row-81-social-launch/ROW-81-FINAL-APPROVED-COPY.md#R78-0829-TT",
+      "status": "prepared",
+      "paused": false
+    },
+    {
+      "id": "R78-0830-IG",
+      "platform": "instagram",
+      "publishAtEt": "2026-08-30T08:00:00-04:00",
+      "assetPaths": [
+        "approved-assets/row-81-social-launch/instagram/R78-0830-IG-S01.png",
+        "approved-assets/row-81-social-launch/instagram/R78-0830-IG-S02.png",
+        "approved-assets/row-81-social-launch/instagram/R78-0830-IG-S03.png"
+      ],
+      "copyRecord": "approved-assets/row-81-social-launch/ROW-81-FINAL-APPROVED-COPY.md#R78-0830-IG",
+      "status": "prepared",
+      "paused": false
+    },
+    {
+      "id": "R78-0830-TT",
+      "platform": "tiktok",
+      "publishAtEt": "2026-08-30T12:00:00-04:00",
+      "assetPaths": [
+        "approved-assets/row-81-social-launch/tiktok/R78-0830-TT.mp4",
+        "approved-assets/row-81-social-launch/tiktok/R78-0830-TT-cover.png"
+      ],
+      "copyRecord": "approved-assets/row-81-social-launch/ROW-81-FINAL-APPROVED-COPY.md#R78-0830-TT",
+      "status": "prepared",
+      "paused": false
+    },
+    {
+      "id": "R81-0831-IG",
+      "platform": "instagram",
+      "publishAtEt": "2026-08-31T08:00:00-04:00",
+      "assetPaths": [
+        "approved-assets/row-81-social-launch/instagram/R81-0831-IG-S01.png",
+        "approved-assets/row-81-social-launch/instagram/R81-0831-IG-S02.png",
+        "approved-assets/row-81-social-launch/instagram/R81-0831-IG-S03.png",
+        "approved-assets/row-81-social-launch/instagram/R81-0831-IG-S04.png",
+        "approved-assets/row-81-social-launch/instagram/R81-0831-IG-S05.png",
+        "approved-assets/row-81-social-launch/instagram/R81-0831-IG-S06.png",
+        "approved-assets/row-81-social-launch/instagram/R81-0831-IG-S07.png",
+        "approved-assets/row-81-social-launch/instagram/R81-0831-IG-S08.png"
+      ],
+      "copyRecord": "approved-assets/row-81-social-launch/ROW-81-FINAL-APPROVED-COPY.md#R81-0831-IG",
+      "status": "prepared",
+      "paused": false
+    },
+    {
+      "id": "R81-0831-TT",
+      "platform": "tiktok",
+      "publishAtEt": "2026-08-31T12:00:00-04:00",
+      "assetPaths": [
+        "approved-assets/row-81-social-launch/tiktok/R81-0831-TT.mp4",
+        "approved-assets/row-81-social-launch/tiktok/R81-0831-TT-cover.png"
+      ],
+      "copyRecord": "approved-assets/row-81-social-launch/ROW-81-FINAL-APPROVED-COPY.md#R81-0831-TT",
+      "status": "prepared",
+      "paused": false
+    }
+  ]
+}

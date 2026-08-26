@@ -1,0 +1,89 @@
+{
+  "row": 84,
+  "runId": "r84-2026-08-19-persistence-historical-isolation",
+  "at": "2026-08-19T11:55:13.848Z",
+  "founderAcceptance": null,
+  "founderAccepted": false,
+  "rowMarkedComplete": false,
+  "dashboard": "/ops/admin/launch-kpi",
+  "protocol": "ops/fab-5/ROW-84-LAUNCH-MARKETING-KPI-DASHBOARD.md",
+  "originalEvidence": "ops/fab-5/runs/row-84-launch-marketing-kpi-validation.json",
+  "regressionEvidence": "ops/fab-5/runs/row-84-launch-marketing-kpi-validation-regression.json",
+  "tests": [
+    {
+      "id": "A",
+      "name": "Historical isolation",
+      "expected": "Historical Purchases = 19; Launch Purchases = 0; Launch Revenue = $0 before qualifying August 28 activity",
+      "actual": "historical=19; launchPurchases=0; launchRevenueCents=0; excluded=true",
+      "result": "PASS"
+    },
+    {
+      "id": "B",
+      "name": "August 28 boundary",
+      "expected": "Pre-boundary → pre_launch_historical; post-boundary 2026-08-28 12:00 AM ET → launch_campaign; timezone America/New_York",
+      "actual": "pre=pre_launch_historical/historical; post=launch_campaign/launch_eligible; startUtc=2026-08-28T04:00:00.000Z; dashboardLaunch=1; dashboardHistorical=1",
+      "result": "PASS"
+    },
+    {
+      "id": "C",
+      "name": "Test data exclusion",
+      "expected": "Sandbox/test transactions do not appear as launch purchases, launch revenue, or conversion",
+      "actual": "founderPurchases=0; founderRevenue=0; testViewPurchases=1",
+      "result": "PASS"
+    },
+    {
+      "id": "D",
+      "name": "Durable storage",
+      "expected": "KPI data remains available after a new store instance on Supabase Postgres; .data/ is not production source of truth",
+      "actual": "hosted=hosted_route_not_deployed; envSource=vercel_api_match=POSTGRES_PRISMA_URL,POSTGRES_URL,POSTGRES_URL_NON_POOLING;value=false;count=19;vercel_pull_exit_1;npm warn Unknown env config \"devdir\". This will stop working in the next major version of npm. See `npm help npmrc` for ; dataDirIsSourceOfTruth=false",
+      "result": "FAIL"
+    },
+    {
+      "id": "E",
+      "name": "Purchase idempotency",
+      "expected": "Same checkout/webhook identifier processed twice → one purchase and one revenue contribution",
+      "actual": "first=created; second=duplicate; purchases=1; revenueCents=150000",
+      "result": "PASS"
+    },
+    {
+      "id": "F",
+      "name": "Payment reconciliation",
+      "expected": "Sandbox authoritative payment amount ↔ durable KPI purchase ↔ dashboard purchase/revenue (no live charge)",
+      "actual": "eventAmount=150000; ledgerAmount=150000; dashboardPurchases=1; dashboardRevenue=150000; liveCharge=not created",
+      "result": "PASS"
+    },
+    {
+      "id": "G",
+      "name": "Attribution persistence",
+      "expected": "Tracked social link → /register → checkout → purchase retains utm_source=linkedin, campaign=the-question, content=R78-0828-LI",
+      "actual": "source=linkedin; campaign=the-question; content=R78-0828-LI; liPurchases=1; assetPurchases=1",
+      "result": "PASS"
+    },
+    {
+      "id": "H",
+      "name": "Daily report",
+      "expected": "August 28 daily launch purchases/revenue/conversion do not include historical purchases",
+      "actual": "dailyPurchases=0; historical=1; launch=0; markdownExcludes=true",
+      "result": "PASS"
+    },
+    {
+      "id": "I",
+      "name": "Dashboard executive view",
+      "expected": "/ops/admin/launch-kpi distinguishes PRE-LAUNCH BASELINE / HISTORICAL from LAUNCH CAMPAIGN without inspecting underlying data",
+      "actual": "labels.historical=PRE-LAUNCH BASELINE / HISTORICAL; labels.launch=LAUNCH CAMPAIGN — AUGUST 28–31, 2026; viewHasHistorical=true; viewHasLaunch=true",
+      "result": "PASS"
+    },
+    {
+      "id": "J",
+      "name": "Regression",
+      "expected": "Original Row 84 mechanical tests still pass; Row 81 archive and /register unchanged; original evidence preserved",
+      "actual": "originalExit=0; spawnError=none; originalEvidence=true; archive=true; register=true; stderr=npm warn Unknown env config \"devdir\". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.\n",
+      "result": "PASS"
+    }
+  ],
+  "failures": [
+    "D Durable storage: hosted=hosted_route_not_deployed; envSource=vercel_api_match=POSTGRES_PRISMA_URL,POSTGRES_URL,POSTGRES_URL_NON_POOLING;value=false;count=19;vercel_pull_exit_1;npm warn Unknown env config \"devdir\". This will stop working in the next major version of npm. See `npm help npmrc` for ; dataDirIsSourceOfTruth=false"
+  ],
+  "result": "FAIL",
+  "readyForFounderAcceptanceReview": false
+}

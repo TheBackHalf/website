@@ -1,0 +1,86 @@
+{
+  "row": 86,
+  "mode": "founder-input-required",
+  "founderStrategy": "APPROVED",
+  "contactIntake": "READY",
+  "contactsLoaded": 0,
+  "contactsRequiringFounderInput": 0,
+  "messageACopy": "STRATEGY APPROVED — COPY NOT YET APPROVED",
+  "messageGCopy": "STRATEGY APPROVED — COPY NOT YET APPROVED",
+  "row199LaunchEmail": "APPROVED FOR REUSE",
+  "row199PartnerNote": "APPROVED FOR REUSE",
+  "remainingBlockers": "FOUNDER CONTACT INPUT + FOUNDER APPROVAL OF MESSAGE A AND G COPY",
+  "rowMarkedComplete": false,
+  "outreachSent": false,
+  "scheduled": false,
+  "inventedContacts": 0,
+  "existingListsFound": false,
+  "contactsReused": 0,
+  "cta": "Become an Architect",
+  "destination": "https://thebackhalf.org/register",
+  "canonicalReachability": "EXTERNAL DEPENDENCY — ROW 75",
+  "suppression": [],
+  "privacyRules": [
+    "Do not infer marketing consent from knowing someone.",
+    "If consent is unknown, record CONSENT STATUS UNKNOWN.",
+    "Do not convert an existing personal or professional relationship into blanket marketing consent.",
+    "Do not treat Architect account emails, Stripe purchasers, or support tickets as a promotional list.",
+    "Respect opt-outs and suppressions. Never re-add a suppressed recipient.",
+    "Do not scrape Instagram, TikTok, or any platform for contacts.",
+    "Do not purchase lists, CRMs, enrichment, or mailing-list vendors for this row.",
+    "Do not store sensitive personal information merely for outreach.",
+    "Do not expose emails, phone numbers, or private notes in the Founder review UI unless the Founder later provides a private list.",
+    "LinkedIn is not a required launch outreach channel. Do not add X.",
+    "Kit is not wired. There is no separate launch email-signup mechanism."
+  ],
+  "segments": [
+    {
+      "id": "warm-network",
+      "name": "Warm Network",
+      "priority": 1,
+      "messageId": "A",
+      "contacts": [],
+      "founderDecision": "FOUNDER INPUT REQUIRED — CONTACTS NOT YET PROVIDED"
+    },
+    {
+      "id": "professional-network",
+      "name": "Professional Network",
+      "priority": 2,
+      "messageId": "B",
+      "contacts": [],
+      "founderDecision": "FOUNDER INPUT REQUIRED — CONTACTS NOT YET PROVIDED"
+    },
+    {
+      "id": "partners",
+      "name": "Partners",
+      "priority": 3,
+      "messageId": "D",
+      "contacts": [],
+      "founderDecision": "FOUNDER INPUT REQUIRED — CONTACTS NOT YET PROVIDED"
+    },
+    {
+      "id": "supporters",
+      "name": "Supporters",
+      "priority": 2,
+      "messageId": "C",
+      "contacts": [],
+      "founderDecision": "FOUNDER INPUT REQUIRED — CONTACTS NOT YET PROVIDED"
+    },
+    {
+      "id": "early-adopters",
+      "name": "Early Adopters",
+      "priority": 2,
+      "messageId": "C",
+      "contacts": [],
+      "founderDecision": "FOUNDER INPUT REQUIRED — CONTACTS NOT YET PROVIDED"
+    },
+    {
+      "id": "relevant-organizations",
+      "name": "Relevant Organizations",
+      "priority": 3,
+      "messageId": "E",
+      "contacts": [],
+      "founderDecision": "FOUNDER INPUT REQUIRED — CONTACTS NOT YET PROVIDED"
+    }
+  ]
+}

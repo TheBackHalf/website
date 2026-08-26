@@ -1,0 +1,39 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "crons": [
+    {
+      "path": "/api/fab-5/imani/heartbeat",
+      "schedule": "0 14 * * *"
+    },
+    {
+      "path": "/api/fab-5/michelle/cycle",
+      "schedule": "30 14 * * *"
+    },
+    {
+      "path": "/api/fab-5/nia/cycle",
+      "schedule": "0 15 * * *"
+    },
+    {
+      "path": "/api/support/inbound",
+      "schedule": "*/15 * * * *"
+    },
+    {
+      "path": "/api/ops/monitoring/run",
+      "schedule": "*/15 * * * *"
+    },
+    {
+      "path": "/api/fab-5/aos/tick",
+      "schedule": "*/15 * * * *"
+    },
+    {
+      "path": "/api/fab-5/aos/validate",
+      "schedule": "0 0 1 1 *"
+    }
+  ],
+  "build": {
+    "env": {
+      "PUPPETEER_SKIP_DOWNLOAD": "1",
+      "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD": "1"
+    }
+  }
+}

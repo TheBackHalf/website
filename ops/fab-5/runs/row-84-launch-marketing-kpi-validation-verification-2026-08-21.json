@@ -1,0 +1,83 @@
+{
+  "row": 84,
+  "runId": "r84-2026-08-19-kpi-dashboard-validation",
+  "at": "2026-08-21T19:54:17.770Z",
+  "founderAcceptance": null,
+  "founderAccepted": false,
+  "rowMarkedComplete": false,
+  "row85Started": false,
+  "dashboard": "/ops/admin/launch-kpi",
+  "protocol": "ops/fab-5/ROW-84-LAUNCH-MARKETING-KPI-DASHBOARD.md",
+  "baseline": "ops/fab-5/marketing-kpi/baseline.json",
+  "tests": [
+    {
+      "id": "T1",
+      "name": "Social attribution",
+      "result": "PASS",
+      "detail": "https://thebackhalf.org/register?utm_source=instagram&utm_medium=social&utm_campaign=the-question&utm_content=R78-0828-IG&utm_id=2026-08-28"
+    },
+    {
+      "id": "T2",
+      "name": "Landing-page session",
+      "result": "PASS",
+      "detail": "sessions=1"
+    },
+    {
+      "id": "T3",
+      "name": "Checkout start",
+      "result": "PASS",
+      "detail": "starts=1"
+    },
+    {
+      "id": "T4",
+      "name": "Purchase (sandbox ledger, no live charge)",
+      "result": "PASS",
+      "detail": "purchases=1; live charge=not created"
+    },
+    {
+      "id": "T5",
+      "name": "Channel differentiation",
+      "result": "PASS",
+      "detail": "ig=1 li=1 tt=1"
+    },
+    {
+      "id": "T6",
+      "name": "Asset differentiation",
+      "result": "PASS",
+      "detail": "R78-0828-IG sessions=1; R81-0831-TT sessions=1"
+    },
+    {
+      "id": "T7",
+      "name": "Baseline remains after daily data",
+      "result": "PASS",
+      "detail": "baselineDate=2026-08-19; purchases=19"
+    },
+    {
+      "id": "T8",
+      "name": "Daily reporting",
+      "result": "PASS",
+      "detail": "purchases line present; action=None."
+    },
+    {
+      "id": "T9",
+      "name": "Funnel math",
+      "result": "PASS",
+      "detail": "instagram purchase conversion=1"
+    },
+    {
+      "id": "T10",
+      "name": "Data-quality controls",
+      "result": "PASS",
+      "detail": "negative reach flagged; dashboard did not silently accept it"
+    },
+    {
+      "id": "R1",
+      "name": "Regression — Row 81 archive and /register destination",
+      "result": "PASS",
+      "detail": "Archive files present; public destination remains /register"
+    }
+  ],
+  "failures": [],
+  "result": "PASS",
+  "readyForFounderAcceptanceReview": true
+}

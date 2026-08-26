@@ -1,0 +1,119 @@
+{
+  "generatedAt": "2026-08-25T17:57:30.000Z",
+  "secretsPrinted": false,
+  "founderAcceptanceRecorded": false,
+  "productionDeployment": {
+    "status": "PASS",
+    "deploymentId": "dpl_3rkj88FzbciQ2PCgPBw8kFtrDWyD",
+    "url": "https://website-mze89uokz-back-half.vercel.app",
+    "inspector": "https://vercel.com/back-half/website/3rkj88FzbciQ2PCgPBw8kFtrDWyD",
+    "aliased": "https://www.thebackhalf.org",
+    "priorFailedDeploys": [
+      "typecheck then NFT whole-project trace stalled Deploying outputs"
+    ]
+  },
+  "postgresConnectivity": {
+    "status": "PASS",
+    "health": {
+      "ok": true,
+      "environment": "production",
+      "service": "the-back-half",
+      "checks": { "application": "ok", "database": "ok" }
+    }
+  },
+  "schema": {
+    "status": "PASS",
+    "mechanism": "CREATE TABLE IF NOT EXISTS via ensureMichelleSchema",
+    "tablesObservedExisting": [
+      "aos_work_items",
+      "aos_resource_locks",
+      "aos_heartbeats",
+      "aos_founder_decisions",
+      "aos_notifications",
+      "aos_audit",
+      "aos_cost_events"
+    ],
+    "destructiveReset": false
+  },
+  "gate": {
+    "invokedAt": "2026-08-25T17:55:12.880Z",
+    "method": "vercel crons run /api/fab-5/aos/validate",
+    "corePass": true,
+    "hosted": true,
+    "smtpReady": true,
+    "smsConfigured": false,
+    "passed": 17,
+    "failed": 1,
+    "tests": [
+      { "id": "A", "pass": true, "note": "READY", "mapsTo": "Durable queue" },
+      { "id": "B", "pass": true, "note": "resume", "mapsTo": "Persistent state / resume" },
+      { "id": "C", "pass": true, "note": "COMPLETE/COMPLETE", "mapsTo": "Automatic next work" },
+      { "id": "D", "pass": true, "note": "parallel independent claims", "mapsTo": "Parallel execution" },
+      { "id": "E", "pass": true, "note": "lock held", "mapsTo": "Locking / claiming" },
+      { "id": "F", "pass": true, "note": "READY/COMPLETE", "mapsTo": "Dependency + cross-agent handoff" },
+      { "id": "G", "pass": true, "note": "FOUNDER_GATED/COMPLETE/notify:dashboard,email", "mapsTo": "Founder Decision Queue" },
+      { "id": "H", "pass": true, "note": "sms record written; Twilio not configured — delivery not faked as sent", "mapsTo": "Urgent path records exist" },
+      { "id": "J-sms", "pass": false, "note": "BLOCKED — Twilio/FOUNDER_NOTIFY_SMS not in production env", "mapsTo": "Urgent Founder text delivery" },
+      { "id": "I-email", "pass": true, "note": "smtp_ready", "mapsTo": "Founder email path configured" },
+      { "id": "I", "pass": true, "note": "READY", "mapsTo": "Founder decision resume" },
+      { "id": "J", "pass": true, "note": "RETRY→COMPLETE", "mapsTo": "Retry" },
+      { "id": "K", "pass": true, "note": "FAILED/COMPLETE", "mapsTo": "Failure isolation" },
+      { "id": "L", "pass": true, "note": "DATE_GATED→READY", "mapsTo": "Date gate" },
+      { "id": "M", "pass": true, "note": "RETRY", "mapsTo": "Watchdog / stale recovery" },
+      { "id": "N", "pass": true, "note": "5 events", "mapsTo": "Audit trail" },
+      { "id": "O", "pass": true, "note": "held", "mapsTo": "Authority boundaries; Kimberly Walker (AI) excluded" },
+      { "id": "P", "pass": true, "note": "present", "mapsTo": "Restart survival of durable state" }
+    ]
+  },
+  "ingest": {
+    "ingested": 133,
+    "skippedKim": 7,
+    "skippedComplete": 133,
+    "skippedInvalid": 0,
+    "kimberlyWalkerAiAssigned": 0
+  },
+  "activationTickDuringIngest": {
+    "ok": true,
+    "at": "2026-08-25T17:55:23.030Z",
+    "claimed": [],
+    "completed": [],
+    "failed": [],
+    "errors": [],
+    "parallel": true,
+    "note": "First ingest tick used engineeringRuntime=false so Command Center engineering rows were not claimed."
+  },
+  "activationTickInspect": {
+    "ok": true,
+    "http": 200,
+    "at": "2026-08-25T18:02:32.478Z",
+    "deployment": "dpl_3rkj88FzbciQ2PCgPBw8kFtrDWyD",
+    "engineeringRuntime": true,
+    "note": "Hosted tick now claims READY engineering work, inspects/checkpoints, then BLOCKS it as engineering_runtime_required. It does not mark Command Center rows complete. Cron */15 continues without a Cursor session."
+  },
+  "notifications": {
+    "emailPath": "PASS — SMTP ready; controlled tests held (no Founder inbox spam)",
+    "smsPath": "BLOCKED — Twilio and FOUNDER_NOTIFY_SMS are not in Vercel production env"
+  },
+  "regression": {
+    "opsHealth": "PASS",
+    "registerHttp": 200,
+    "loginHttp": 200,
+    "stripeConfigModified": false,
+    "customDomainDns": "PRE-EXISTING — apex and www have no A/AAAA records (Row 75). Vercel deployment URLs are healthy."
+  },
+  "crons": [
+    "/api/fab-5/aos/tick */15",
+    "/api/fab-5/aos/validate 0 0 1 1 *",
+    "/api/fab-5/imani/heartbeat",
+    "/api/fab-5/michelle/cycle",
+    "/api/fab-5/nia/cycle"
+  ],
+  "defectsFound": 4,
+  "defectsCorrected": 4,
+  "defectLog": [
+    "Production typecheck failed on duplicate cell() keys, row73 never type, row74 literal false, catalog filter",
+    "Turbopack NFT traced the whole repo and stalled Deploying outputs — scoped file-store paths",
+    "vercel env run cannot decrypt Sensitive CRON_SECRET on this workstation — switched to vercel crons run",
+    "Manual cron GET did not send x-vercel-cron; GET validate now runs the gate unless ?flags=1"
+  ]
+}

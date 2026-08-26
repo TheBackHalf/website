@@ -1,0 +1,40 @@
+{
+  "row": 199,
+  "date": "2026-08-21",
+  "mode": "verify-existing-only",
+  "markedComplete": false,
+  "founderVideo": "PASS",
+  "launchEmail": "APPROVED — NOT SENT",
+  "partnerNotes": "READY FOR FOUNDER REVIEW",
+  "instagram": "PASS",
+  "tiktok": "PASS",
+  "linkedinRequired": "NO",
+  "faqs": "PASS",
+  "supportResponseScripts": "PASS",
+  "currentDecisions": {
+    "globalLifeDesignCompany": "PASS",
+    "august31LaunchDate": "PASS",
+    "eligibility18Plus": "PASS",
+    "communityTimingAccurate": "PASS",
+    "noRefundPolicyAccurate": "PASS",
+    "aiDisclosureAccurate": "PASS",
+    "correctDomain": "PASS"
+  },
+  "defectsFoundAndCorrected": [
+    "Row 83 T08 aligned to Founder-accepted 18+ (Row 60)",
+    "Row 83 T28 added for Community opens October 19, 2026 / not live August 31"
+  ],
+  "existingApprovedAssetsReused": [
+    "Row 50 Founder videos + captions",
+    "approved-assets/row-81-social-launch/",
+    "ROW-81-FINAL-APPROVED-COPY.md",
+    "ROW-83-SOCIAL-ENGAGEMENT-RESPONSE-PROTOCOL.md FAQ/scripts library",
+    "ROW-153-SUPPORT-CHANNELS-OPERATING-PROTOCOL.md"
+  ],
+  "newMaterialCreated": [
+    "ops/fab-5/ROW-199-PROPOSED-PARTNER-NOTE.md"
+  ],
+  "remainingBlockers": [
+    "Founder acceptance of Partner Note only."
+  ]
+}

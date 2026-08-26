@@ -1,0 +1,120 @@
+{
+  "at": "2026-08-18T18:56:53.574Z",
+  "host": "website-two-psi-49.vercel.app",
+  "architecture": "OpenAI Agents SDK webSearchTool (hosted) + existing Supabase Postgres nia_research_* tables",
+  "newThirdPartyVendor": false,
+  "researchId": "nr-nia-research-pack-t1-2026-08-18t18",
+  "packStatus": 200,
+  "packHosted": true,
+  "tests": {
+    "T1_CURRENT_COMPETITOR_FACT": {
+      "pass": true,
+      "note": "live=true sources=1 currentAsOf=2026-08-18T18:56:31.972Z"
+    },
+    "T16_CURRENTNESS": {
+      "pass": true,
+      "note": "Question required current information; live web_search invoked instead of model memory."
+    },
+    "T18_COMPUTER_INDEPENDENCE": {
+      "pass": true,
+      "note": "Hosted Vercel execution."
+    },
+    "T2_STALE_INFORMATION": {
+      "pass": true,
+      "note": "Authoritative/higher-tier source wins over low-quality or secondary copy."
+    },
+    "T3_FACT_VS_INFERENCE": {
+      "pass": true,
+      "note": "VERIFIED_FACT vs SUPPORTED_INFERENCE"
+    },
+    "T4_MULTI_SOURCE_CROSS_CHECK": {
+      "pass": true,
+      "note": "Seek more than one credible source when material. Do not fabricate consensus."
+    },
+    "T5_SOURCE_QUALITY": {
+      "pass": true,
+      "note": "Authoritative/higher-tier source wins over low-quality or secondary copy."
+    },
+    "T6_COMPETITIVE_INTELLIGENCE": {
+      "pass": true,
+      "note": "Durable competitive-intelligence record on existing Postgres."
+    },
+    "T_CATEGORY_INTELLIGENCE": {
+      "pass": true,
+      "note": "Category intelligence allowed. Autonomous repositioning is Founder-reserved."
+    },
+    "T7_FUTURE_TREND": {
+      "pass": true,
+      "note": "Weak signal not exaggerated."
+    },
+    "T8_OPPORTUNITY": {
+      "pass": true,
+      "note": "POST_LAUNCH_ENHANCEMENT"
+    },
+    "T9_SCOPE_DRIFT": {
+      "pass": true,
+      "note": "DEFER / FUTURE. Research insight is not a launch requirement. Competitor feature ≠ Back Half requirement."
+    },
+    "T10_TRUE_REQUIREMENT": {
+      "pass": true,
+      "note": "Material to an approved requirement. Escalate through Michelle."
+    },
+    "T12_TECHNICAL_HANDOFF": {
+      "pass": true,
+      "note": "Nia does not auto-assign Imani. Michelle controls technical expansion."
+    },
+    "T14_DEDUPLICATION": {
+      "pass": true,
+      "note": "duplicate=true reusedFresh=true"
+    },
+    "T13_DURABILITY": {
+      "pass": true,
+      "note": "Research retrievable from existing Supabase Postgres."
+    },
+    "T11_MICHELLE_HANDOFF": {
+      "pass": true,
+      "note": "hosted POST /api/fab-5/michelle/cycle via website-two-psi-49.vercel.app"
+    },
+    "T17_LEGAL_BOUNDARY": {
+      "pass": true,
+      "note": "Research may identify regulatory developments. Final legal conclusion requires HUMAN LEGAL REVIEW."
+    },
+    "T15_RUNAWAY_CONTROL": {
+      "pass": true,
+      "note": "maxSearches=3 executed=2 maxMs=40000"
+    },
+    "T_FRESHNESS_FIELD": {
+      "pass": true,
+      "note": "CURRENT AS OF 2026-08-18T18:56:31.970Z"
+    }
+  },
+  "packPass": true,
+  "retrieveOk": true,
+  "retrieveHosted": true,
+  "michelleAssign": {
+    "status": 200,
+    "niaResearch": {
+      "hosted": true,
+      "status": "succeeded",
+      "note": "Michelle assigned Nia live research via hosted POST (website-two-psi-49.vercel.app). No Founder relay.",
+      "researchId": "nr-request-nia-live-intelligence-on-the-current-u-s-federal"
+    },
+    "hosted": true
+  },
+  "niaCore": {
+    "status": 200,
+    "hosted": true,
+    "openaiLive": "SKIPPED"
+  },
+  "michelleReg": {
+    "status": 200,
+    "hosted": true
+  },
+  "imaniReg": {
+    "status": 200,
+    "hosted": true,
+    "outcome": "succeeded"
+  },
+  "secretExposure": "NO",
+  "productionMutated": "NO"
+}

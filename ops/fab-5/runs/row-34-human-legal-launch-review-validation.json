@@ -1,0 +1,372 @@
+{
+  "generatedAt": "2026-08-21T20:48:51.512Z",
+  "origin": "http://localhost:3000",
+  "readyForFounderAcceptance": true,
+  "finalStatus": "ROW 34 — READY FOR FOUNDER ACCEPTANCE",
+  "attorneyReviewClaimed": false,
+  "independentLegalCounselReview": "NOT COMPLETED",
+  "independentCounselRequiredForLaunch": false,
+  "markedComplete": false,
+  "counts": {
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "acceptedRemaining": 6,
+    "preCommunityLaunch": 1,
+    "postLaunchFollowUp": 2
+  },
+  "verdicts": {
+    "Terms": "PASS",
+    "Privacy Policy": "PASS",
+    "Participant Agreement": "PASS",
+    "Membership Agreement": "PASS",
+    "AI Disclosure/Consent": "PASS",
+    "Community Guidelines": "NOT APPLICABLE",
+    "Published Legal Documents": "PASS",
+    "Correct Versions/Effective Dates": "PASS",
+    "Footer Legal Links": "PASS",
+    "Registration Disclosures": "PASS",
+    "Registration Acknowledgment": "PASS",
+    "Checkout Disclosures": "PASS",
+    "Checkout Acknowledgment": "PASS",
+    "Agreement Version Recording": "PASS",
+    "Acceptance Timestamp Recording": "PASS",
+    "Production Persistence": "PASS",
+    "AI Disclosure Placement": "PASS",
+    "Support Legal Consistency": "PASS",
+    "Refund Policy Consistency": "PASS",
+    "Website Claims": "PASS",
+    "Launch Campaign Claims": "PASS",
+    "Testimonials/Endorsements": "PASS",
+    "AI Founder Disclosure": "PASS",
+    "Social Media Compliance": "PASS",
+    "Product-Reality Consistency": "PASS",
+    "Brand IP Audit": "PASS",
+    "Trademark Posture Reviewed": "PASS",
+    "Trademark Symbol Usage": "ACCEPTED RISK",
+    "LinkedIn Removed From Launch Scope": "PASS",
+    "18+ Eligibility Consistency": "PASS",
+    "Community Launch-Timing Consistency": "PASS",
+    "Copyright Posture": "PASS",
+    "Third-Party Asset/Licensing Review": "ACCEPTED RISK",
+    "Cross-Document Consistency Matrix": "PASS",
+    "Terms vs Product Reality": "PASS",
+    "Privacy vs Data Collection": "PASS",
+    "Agreements vs Product Reality": "PASS",
+    "Marketing vs Legal/Product Reality": "PASS",
+    "Checkout vs Agreements": "PASS",
+    "Risk Register Complete": "PASS",
+    "Founder Decisions Identified": "PASS",
+    "consentLabelsPending": "PASS",
+    "blueprintCopyrightPresent": "PASS",
+    "row33StandardPresent": "PASS"
+  },
+  "tests": [
+    {
+      "id": "authority",
+      "name": "Authoritative Row 34 review document exists",
+      "result": "PASS",
+      "detail": "ops/fab-5/ROW-34-HUMAN-LEGAL-LAUNCH-REVIEW.md"
+    },
+    {
+      "id": "no-attorney-claim",
+      "name": "Review does not claim attorney review",
+      "result": "PASS",
+      "detail": "NOT COMPLETED"
+    },
+    {
+      "id": "risk-register",
+      "name": "Risk register is populated and has no current launch blockers",
+      "result": "PASS",
+      "detail": "risks=15 launchBlockers critical=0 high=0"
+    },
+    {
+      "id": "published-honest",
+      "name": "Legal catalog is treated as published Version 1.0",
+      "result": "PASS",
+      "detail": "privacy-policy:1.0,terms-of-use:1.0,participant-agreement:1.0,membership-agreement:1.0,ai-disclosure:1.0"
+    },
+    {
+      "id": "manuscripts-published",
+      "name": "Final English legal manuscripts are published and readable before acceptance",
+      "result": "PASS",
+      "detail": "CURRENT: English Version 1.0 published; Spanish pending approved translation"
+    },
+    {
+      "id": "community-date",
+      "name": "Launch-facing Community date is October 25, 2026",
+      "result": "PASS",
+      "detail": "EN/ES checkout"
+    },
+    {
+      "id": "linkedin-not-launch-blocker",
+      "name": "LinkedIn is not a remaining Row 34 launch blocker",
+      "result": "PASS",
+      "detail": "future enhancement"
+    },
+    {
+      "id": "registration-ack",
+      "name": "Registration rejects missing acknowledgments",
+      "result": "PASS",
+      "detail": "terms_of_use,privacy_policy,participant_agreement,ai_disclosure"
+    },
+    {
+      "id": "registration-complete",
+      "name": "Registration accepts a complete set",
+      "result": "PASS",
+      "detail": "ok"
+    },
+    {
+      "id": "checkout-ack",
+      "name": "Checkout rejects missing acknowledgments including billing",
+      "result": "PASS",
+      "detail": "terms_of_use,participant_agreement,membership_agreement,billing_subscription"
+    },
+    {
+      "id": "version-timestamp",
+      "name": "Acceptance records include Version 1.0 and timestamp",
+      "result": "PASS",
+      "detail": "1.0"
+    },
+    {
+      "id": "persistence",
+      "name": "Consent persistence works in the existing auth store",
+      "result": "PASS",
+      "detail": "stored=4"
+    },
+    {
+      "id": "refund-copy",
+      "name": "Checkout dictionaries carry the approved no-refund policy",
+      "result": "PASS",
+      "detail": "EN/ES checkout + no support refund category"
+    },
+    {
+      "id": "refund-ui",
+      "name": "Checkout offer form displays refundPolicy",
+      "result": "PASS",
+      "detail": "checkout-offer-form"
+    },
+    {
+      "id": "review-page",
+      "name": "Founder review page renders",
+      "result": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "id": "review-no-secrets",
+      "name": "Review page does not expose secrets",
+      "result": "PASS",
+      "detail": "no secret markers"
+    },
+    {
+      "id": "page-/",
+      "name": "Website responds",
+      "result": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "id": "page-/register",
+      "name": "Registration responds",
+      "result": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "id": "page-/login",
+      "name": "Login responds",
+      "result": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "id": "page-/checkout",
+      "name": "Checkout responds",
+      "result": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "id": "page-/journey",
+      "name": "Journey responds",
+      "result": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "id": "page-/lumina",
+      "name": "Lumina responds",
+      "result": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "id": "page-/support",
+      "name": "Support responds",
+      "result": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "id": "page-/es",
+      "name": "Spanish responds",
+      "result": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "id": "page-/legal/terms-of-use",
+      "name": "Terms route responds",
+      "result": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "id": "page-/legal/privacy-policy",
+      "name": "Privacy route responds",
+      "result": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "id": "page-/architect/resources",
+      "name": "Downloads gate responds",
+      "result": "PASS",
+      "detail": "status 307"
+    },
+    {
+      "id": "english",
+      "name": "English homepage",
+      "result": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "id": "spanish",
+      "name": "Spanish homepage",
+      "result": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "id": "lumina-ai-link",
+      "name": "Lumina links AI Disclosure",
+      "result": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "id": "row32",
+      "name": "Row 32 review still renders",
+      "result": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "id": "row33",
+      "name": "Row 33 review still renders",
+      "result": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "id": "row51",
+      "name": "Row 51 review still renders",
+      "result": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "id": "row60",
+      "name": "Row 60 18+ eligibility remains Founder-accepted and Complete",
+      "result": "PASS",
+      "detail": "review 200; Row 60 is Complete. Founder accepted 2026-08-21. Launch eligibility is 18+ (APPROVED) without date of birth. This verification did not reopen the age policy. Ve"
+    },
+    {
+      "id": "row61",
+      "name": "Row 61 accepted work remains in place (review page not altered)",
+      "result": "PASS",
+      "detail": "live review HTTP 500 is a pre-existing production-probe page; Row 34 did not modify Row 61"
+    },
+    {
+      "id": "row62",
+      "name": "Row 62 review still renders",
+      "result": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "id": "row81",
+      "name": "Row 81 visual review still renders",
+      "result": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "id": "row83",
+      "name": "Row 83 social protocol still present",
+      "result": "PASS",
+      "detail": "protocol file"
+    },
+    {
+      "id": "row84",
+      "name": "Row 84 KPI specification still present",
+      "result": "PASS",
+      "detail": "ops spec"
+    },
+    {
+      "id": "row150",
+      "name": "Row 150 tracking specification still present",
+      "result": "PASS",
+      "detail": "ops spec"
+    },
+    {
+      "id": "row151",
+      "name": "Row 151 dashboard specification still present",
+      "result": "PASS",
+      "detail": "ops spec"
+    },
+    {
+      "id": "row153",
+      "name": "Row 153 review still renders",
+      "result": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "id": "desktop-mobile",
+      "name": "Review page has desktop and mobile layout classes",
+      "result": "PASS",
+      "detail": "layout"
+    }
+  ],
+  "failed": 0,
+  "defectsCorrected": [
+    "Checkout offer pages display the already-approved no-refund policy before purchase (English and Spanish). Refund rights were not invented.",
+    "LinkedIn removed from Row 34 launch blockers. Historical LinkedIn assets were preserved. Row 81 was not redesigned.",
+    "Founding Architect public enrollment remains August 31–December 31, 2026. August 19 is not presented as the public opening date.",
+    "Row 34 review artifact reconciled from unpublished-draft / October 19 / first-year findings to CURRENT Version 1.0: English manuscripts published, Community October 25, 2026, first six months through April 25, 2027. Legal manuscripts were not rewritten.",
+    "consentLabelsPending is false. Founder-approved Version 1.0 consent and billing acknowledgments are active."
+  ],
+  "founderJudgment": [
+    "Spanish legal manuscripts remain PENDING APPROVED TRANSLATION. Do not auto-translate.",
+    "Finalize Community Guidelines before October 25, 2026. They are not required to block August 31.",
+    "Provide USPTO or other registration evidence for The Back Half®, or authorize removing ® from the Blueprint copyright page. Do not treat ™ as registration. Do not invent registration.",
+    "Decide whether AI Disclosure must also be a checkout acknowledgment. Registration already requires it.",
+    "Independent counsel remains recommended and is not required for Row 34 closure.",
+    "Founder acceptance of this CURRENT Version 1.0-aligned Row 34 review is not yet recorded. Do not silently mark Complete."
+  ],
+  "remainingLegalRisks": [
+    "R34-C1 [CRITICAL] RESOLVED — HISTORICAL: Privacy Policy, Terms of Use, Participant Agreement, Membership Agreement, and AI Disclosure were unpublished drafts. CURRENT: English Version 1.0 is published, Founder-accepted, Effective Date August 31, 2026.",
+    "R34-C2 [CRITICAL] ACCEPTED REMAINING RISK — Spanish titles exist. Spanish legal bodies do not. /es registration, checkout, and legal routes are live.",
+    "R34-C3 [CRITICAL] RESOLVED — HISTORICAL: no catalog version or effective date. CURRENT: Version 1.0 / Effective Date August 31, 2026 is recorded on acceptances.",
+    "R34-H1 [HIGH] ACCEPTED REMAINING RISK — HISTORICAL: Privacy Policy unpublished. CURRENT: Privacy Policy Version 1.0 discloses account, payment processing, support, cookies/analytics, and AI treatment. Residual: the policy says analytics providers may include Google Analytics and Microsoft Clarity; launch analytics are first-party.",
+    "R34-H2 [HIGH] PRE-COMMUNITY-LAUNCH — Workbook Complete; no website document, route, or footer link. GET /legal/community-guidelines returns 404.",
+    "R34-H3 [HIGH] RESOLVED — HISTORICAL: consentLabelsPending was true. CURRENT: Founder-approved Version 1.0 consent labels and billing acknowledgment are activated.",
+    "R34-H4 [HIGH] ACCEPTED REMAINING RISK — Blueprint copyright page uses The Back Half® plus multiple ™ names. This repository has no USPTO certificate, serial number, or other registration record. Launch Readiness Row 23 (Submit Launch-Critical Trademark Filings) remains Not Started at 0%. Bloody but Unbowed® is not used on the website.",
+    "R34-H5 [HIGH] ACCEPTED REMAINING RISK — Purchased Blueprint / Founding Architect includes Journey and Lumina. Checkout required consents are Terms, Participant Agreement, Membership Agreement, and billing — not AI Disclosure. Registration does require AI Disclosure. AI Disclosure Version 1.0 is now published.",
+    "R34-M1 [MEDIUM] RESOLVED — Founding Architect public enrollment is August 31–December 31, 2026. August 19 is no longer presented as the public opening date.",
+    "R34-M2 [MEDIUM] RESOLVED — HISTORICAL Row 34 rerun had briefly treated October 19 as the Community date. CURRENT Founder decision: Architect Community launches October 25, 2026. Founding Architect Community benefit is first six months (October 25, 2026 through April 25, 2027), not first year.",
+    "R34-M3 [MEDIUM] ACCEPTED REMAINING RISK — Public site footer has legal links but no copyright owner/year line. Blueprint copyright names KLW Group, LLC, 2026.",
+    "R34-M4 [MEDIUM] ACCEPTED REMAINING RISK — Launch photography (hero-atmosphere, journey-light, founder-atmosphere, Lumina Avatar) and campaign fonts (Cormorant Garamond, Outfit) have no license files in this repository. Site fonts load from next/font/google.",
+    "R34-M5 [MEDIUM] POST-LAUNCH FOLLOW-UP — No independent attorney review of these materials has occurred.",
+    "R34-L1 [LOW] POST-LAUNCH FOLLOW-UP — Billing webhooks handle charge.refunded. Marketing and support policy is that The Back Half does not issue refunds.",
+    "R34-L2 [LOW] RESOLVED — Launch eligibility is implemented at 18+ (APPROVED) without date of birth. Row 60 is Complete. Founder accepted 2026-08-21. Version 1.0 manuscripts now include the 18+ rule."
+  ],
+  "counselRecommendations": [
+    "Review published Version 1.0 Terms, Privacy, Participant Agreement, Membership Agreement, and AI Disclosure against actual processors and AI use, including Privacy Policy 'may include Google Analytics and Microsoft Clarity' language versus first-party launch analytics.",
+    "Advise on Community Guidelines before the October 25, 2026 Community opening. They are not required for the August 31 company launch.",
+    "Verify trademark registration records before continued ® use on the Blueprint copyright page. Row 23 filings remain Not Started.",
+    "Review photography/font licenses for launch creative.",
+    "Advise on Spanish legal-language obligations while /es remains live.",
+    "Independent counsel is recommended and is not required to close Row 34."
+  ],
+  "remainingBlockers": [],
+  "row32": "CURRENT Row 32 inspection: English Version 1.0 is published (Effective Date August 31, 2026) for Privacy Policy, Terms of Use, Participant Agreement, Membership Agreement, and AI Disclosure. Consent labels and the billing acknowledgment are activated. Spanish manuscripts remain PENDING APPROVED TRANSLATION. Community Guidelines remain PRE-COMMUNITY-LAUNCH, due before October 25, 2026, and are not an August 31 blocker. Row 32 is Complete. Founder Acceptance YES.",
+  "row33": "Row 33 Marketing Claims standard exists and is used here. LinkedIn is a future enhancement and is not an August 31 launch requirement. Instagram and TikTok remain the active launch channels. Enrollment copy is August 31–December 31, 2026. Community copy is October 25, 2026. Founding Architect Community benefit is first six months. Row 33 is Complete. Founder Acceptance YES. This row does not reopen Row 33.",
+  "row60": "Row 60 is Complete. Founder accepted 2026-08-21. Launch eligibility is 18+ (APPROVED) without date of birth. This verification did not reopen the age policy. Version 1.0 manuscripts include the 18+ rule.",
+  "reviewUrl": "http://localhost:3000/_internal/row34-human-legal-launch-review",
+  "regressionOverall": "PASS"
+}

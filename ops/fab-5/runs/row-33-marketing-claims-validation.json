@@ -1,0 +1,327 @@
+{
+  "generatedAt": "2026-08-21T19:27:18.646Z",
+  "origin": "http://localhost:3000",
+  "readyForFounderAcceptance": true,
+  "finalStatus": "ROW 33 IS READY FOR FOUNDER ACCEPTANCE REVIEW",
+  "verdicts": {
+    "Authoritative Standard Created": "PASS",
+    "Permissible Claims Defined": "PASS",
+    "Conditional Claims Defined": "PASS",
+    "Prohibited Claims Defined": "PASS",
+    "Transformation Claim Rules": "PASS",
+    "Health/Wellness Claim Rules": "PASS",
+    "Financial/Career Claim Rules": "PASS",
+    "Testimonial Authenticity Standard": "PASS",
+    "Permission Requirements": "PASS",
+    "Exceptional Result Handling": "PASS",
+    "Endorsement Requirements": "PASS",
+    "Material Connection Disclosure": "PASS",
+    "AI/Fabricated Testimonial Prohibition": "PASS",
+    "Recordkeeping Requirements": "PASS",
+    "AI Founder Disclosure Standard": "PASS",
+    "Kimberly M. Walker (AI) Identification": "PASS",
+    "AI Founder Marketing Audit": "PASS",
+    "Synthetic Media Rules": "PASS",
+    "Instagram Standard": "PASS",
+    "LinkedIn Standard": "PASS",
+    "TikTok Standard": "PASS",
+    "LinkedIn Removed From Launch Requirement": "PASS",
+    "LinkedIn Assets Preserved": "PASS",
+    "Social Reply/Engagement Rules": "PASS",
+    "Refund Claim Compliance": "PASS",
+    "Support Claim Compliance": "PASS",
+    "Community Claim Compliance": "PASS",
+    "August 28 Campaign": "PASS",
+    "August 29 Campaign": "PASS",
+    "August 30 Campaign": "PASS",
+    "August 31 Campaign": "PASS",
+    "Instagram Assets/Copy": "PASS",
+    "LinkedIn Assets/Copy": "PASS",
+    "TikTok Assets/Copy/Videos": "PASS",
+    "Launch Manifesto": "PASS",
+    "CTA Accuracy": "PASS",
+    "Campaign Compliance Matrix Complete": "PASS",
+    "Website Claims": "PASS",
+    "Blueprint Claims": "PASS",
+    "Journey Claims": "PASS",
+    "Lumina Claims": "PASS",
+    "AI Kimberly Claims": "PASS",
+    "Support Claims": "PASS",
+    "Community Claims": "PASS",
+    "Membership Claims": "PASS",
+    "Download Claims": "PASS",
+    "Spanish Experience Claims": "PASS",
+    "Claims Match Actual Product Reality": "PASS"
+  },
+  "regression": {
+    "English": "PASS",
+    "Spanish": "PASS",
+    "Desktop": "PASS",
+    "Mobile": "PASS",
+    "Runtime/Console": "PASS",
+    "Row 32 Regression": "PASS",
+    "Row 51 Regression": "PASS",
+    "Row 81 Regression": "PASS",
+    "Row 83 Regression": "PASS",
+    "Row 84 Regression": "PASS",
+    "Row 150 Regression": "PASS",
+    "Row 151 Regression": "PASS",
+    "Row 153 Regression": "PASS",
+    "Overall Regression": "PASS"
+  },
+  "tests": [
+    {
+      "id": "standard-exists",
+      "name": "Authoritative standard document exists",
+      "result": "PASS",
+      "detail": "ops/fab-5/ROW-33-MARKETING-CLAIMS-TESTIMONIAL-SOCIAL-STANDARD.md"
+    },
+    {
+      "id": "standard-title",
+      "name": "Standard title is exact",
+      "result": "PASS",
+      "detail": "THE BACK HALF MARKETING CLAIMS, TESTIMONIAL & SOCIAL MEDIA STANDARD"
+    },
+    {
+      "id": "matrix-count",
+      "name": "Campaign matrix has 12 execution records",
+      "result": "PASS",
+      "detail": "12"
+    },
+    {
+      "id": "assets-present",
+      "name": "All archived production files exist",
+      "result": "PASS",
+      "detail": "31 files present"
+    },
+    {
+      "id": "no-prohibited-copy",
+      "name": "Approved campaign copy has no prohibited guarantee/refund/24-7 language",
+      "result": "PASS",
+      "detail": "none"
+    },
+    {
+      "id": "magical-preserved",
+      "name": "Magical is Possible preserved in launch manifesto",
+      "result": "PASS",
+      "detail": "manifesto + Aug 29 copy"
+    },
+    {
+      "id": "no-x-channel",
+      "name": "Standard does not add X",
+      "result": "PASS",
+      "detail": "Instagram, TikTok"
+    },
+    {
+      "id": "active-launch-channels",
+      "name": "Active launch channels are Instagram and TikTok",
+      "result": "PASS",
+      "detail": "Instagram, TikTok"
+    },
+    {
+      "id": "linkedin-future-enhancement",
+      "name": "LinkedIn is recorded as a future enhancement",
+      "result": "PASS",
+      "detail": "LinkedIn"
+    },
+    {
+      "id": "linkedin-assets-preserved",
+      "name": "LinkedIn archive files still exist",
+      "result": "PASS",
+      "detail": "4 LinkedIn executions archived, not deleted"
+    },
+    {
+      "id": "enrollment-date",
+      "name": "Public enrollment does not use August 19 as the opening date",
+      "result": "PASS",
+      "detail": "EN/ES checkout + offer definition"
+    },
+    {
+      "id": "community-timing",
+      "name": "Founding Architect copy states Community opens October 25, 2026",
+      "result": "PASS",
+      "detail": "EN/ES Founding Architect descriptions"
+    },
+    {
+      "id": "nav-no-dead-hash",
+      "name": "Launch nav has no dead # destinations",
+      "result": "PASS",
+      "detail": "manifesto:/#manifesto, contact:/contact"
+    },
+    {
+      "id": "seven-chapters",
+      "name": "Journey seven-chapter factual claim matches implementation",
+      "result": "PASS",
+      "detail": "7"
+    },
+    {
+      "id": "no-live-community-in-final-copy",
+      "name": "Row 81 final captions do not claim first-year live Community on Aug 30/31",
+      "result": "PASS",
+      "detail": "older Row 78 drafts are not the launch source of truth"
+    },
+    {
+      "id": "no-testimonials-invented",
+      "name": "Launch campaign contains no testimonials",
+      "result": "PASS",
+      "detail": "none"
+    },
+    {
+      "id": "review-page",
+      "name": "Founder review page renders on localhost",
+      "result": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "id": "review-media",
+      "name": "Review page can load a launch-day Instagram asset",
+      "result": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "id": "page-/",
+      "name": "English homepage renders without prohibited support/refund claims",
+      "result": "PASS",
+      "detail": "status 200; refundPitch=false; 24/7=false"
+    },
+    {
+      "id": "page-/es",
+      "name": "Spanish homepage renders without prohibited support/refund claims",
+      "result": "PASS",
+      "detail": "status 200; refundPitch=false; 24/7=false"
+    },
+    {
+      "id": "page-/journey",
+      "name": "Journey renders without prohibited support/refund claims",
+      "result": "PASS",
+      "detail": "status 200; refundPitch=false; 24/7=false"
+    },
+    {
+      "id": "page-/lumina",
+      "name": "Lumina renders without prohibited support/refund claims",
+      "result": "PASS",
+      "detail": "status 200; refundPitch=false; 24/7=false"
+    },
+    {
+      "id": "page-/support",
+      "name": "Support renders without prohibited support/refund claims",
+      "result": "PASS",
+      "detail": "status 200; refundPitch=false; 24/7=false"
+    },
+    {
+      "id": "page-/register",
+      "name": "Registration renders without prohibited support/refund claims",
+      "result": "PASS",
+      "detail": "status 200; refundPitch=false; 24/7=false"
+    },
+    {
+      "id": "page-/checkout",
+      "name": "Checkout renders without prohibited support/refund claims",
+      "result": "PASS",
+      "detail": "status 200; refundPitch=false; 24/7=false"
+    },
+    {
+      "id": "page-/es/checkout",
+      "name": "Spanish checkout renders without prohibited support/refund claims",
+      "result": "PASS",
+      "detail": "status 200; refundPitch=false; 24/7=false"
+    },
+    {
+      "id": "homepage-nav-live",
+      "name": "English and Spanish homepages still render after nav cleanup",
+      "result": "PASS",
+      "detail": "homepage EN/ES"
+    },
+    {
+      "id": "checkout-copy-pages",
+      "name": "English and Spanish checkout pages still render",
+      "result": "PASS",
+      "detail": "checkout EN/ES"
+    },
+    {
+      "id": "lumina-disclosure-preserved",
+      "name": "August 30 Lumina caption and quiet AI Disclosure treatment preserved",
+      "result": "PASS",
+      "detail": "R78-0830-IG + Row 81 posting instructions"
+    },
+    {
+      "id": "row32-regression",
+      "name": "Row 32 review page still renders",
+      "result": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "id": "row51-regression",
+      "name": "Row 51 review page still renders",
+      "result": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "id": "row81-regression",
+      "name": "Row 81 visual review still renders",
+      "result": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "id": "row83-regression",
+      "name": "Row 83 social protocol file unchanged by this row",
+      "result": "PASS",
+      "detail": "protocol file present; not rewritten"
+    },
+    {
+      "id": "row84-regression",
+      "name": "Row 84 KPI specification still present",
+      "result": "PASS",
+      "detail": "ops spec present"
+    },
+    {
+      "id": "row150-regression",
+      "name": "Row 150 tracking specification still present",
+      "result": "PASS",
+      "detail": "ops spec present"
+    },
+    {
+      "id": "row151-regression",
+      "name": "Row 151 dashboard specification still present",
+      "result": "PASS",
+      "detail": "ops spec present"
+    },
+    {
+      "id": "row153-regression",
+      "name": "Row 153 support protocol still present",
+      "result": "PASS",
+      "detail": "ops spec present"
+    },
+    {
+      "id": "desktop-layout",
+      "name": "Review page has desktop layout classes",
+      "result": "PASS",
+      "detail": "max-w-5xl / md breakpoints"
+    },
+    {
+      "id": "mobile-layout",
+      "name": "Review page is readable without a separate desktop-only shell",
+      "result": "PASS",
+      "detail": "px-4 base padding"
+    },
+    {
+      "id": "english-spanish-pages",
+      "name": "English and Spanish public homepages render",
+      "result": "PASS",
+      "detail": "homepage EN/ES"
+    }
+  ],
+  "failed": 0,
+  "defectsCorrected": [
+    "Operational placement overlay: August 30 Lumina posts now require a quiet first-comment or end-link to /legal/ai-disclosure at publish time. Approved captions were not rewritten; they already identify Lumina as AI Guide.",
+    "LinkedIn removed from August 28–31 launch execution. Instagram and TikTok remain the active launch channels. LinkedIn assets and copy are preserved in approved-assets/row-81-social-launch/linkedin/ and were not rewritten.",
+    "Going-forward company descriptor is Global Life Design Company. Archived LinkedIn creative that uses older descriptor language was not reopened.",
+    "Founding Architect public enrollment copy now uses August 31–December 31, 2026. August 19 is no longer presented as the public enrollment opening date.",
+    "Founding Architect and Community checkout copy now states Community opens October 25, 2026, so launch-day copy does not imply a live Community on August 31.",
+    "Homepage, header, and footer Book and Community navigation items were removed because no launch-ready destination exists. Dead # links are gone."
+  ],
+  "founderJudgment": [],
+  "remainingBlockers": [],
+  "reviewUrl": "http://localhost:3000/_internal/row33-marketing-claims-review",
+  "markedComplete": false
+}

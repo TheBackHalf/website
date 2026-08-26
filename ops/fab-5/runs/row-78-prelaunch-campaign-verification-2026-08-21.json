@@ -1,0 +1,156 @@
+{
+  "row": 78,
+  "runId": "r78-verify-existing-2026-08-21",
+  "at": "2026-08-21T19:50:00.000Z",
+  "mode": "verification-pass-only",
+  "rebuilt": false,
+  "newGraphics": false,
+  "newVideos": false,
+  "rewroteApprovedCopy": false,
+  "sevenDayExtension": false,
+  "linkedinRequiredForLaunch": false,
+  "activeLaunchChannels": ["instagram", "tiktok"],
+  "authoritativeArchive": "approved-assets/row-81-social-launch/",
+  "authoritativeCopy": "approved-assets/row-81-social-launch/ROW-81-FINAL-APPROVED-COPY.md",
+  "founderAcceptance": "PENDING",
+  "markedComplete": false,
+  "campaignScope": {
+    "august28to30Located": "PASS",
+    "instagramIncluded": "PASS",
+    "tiktokIncluded": "PASS",
+    "linkedinRequiredForLaunch": "NO",
+    "existingApprovedCampaignPreserved": "PASS"
+  },
+  "august28": {
+    "dailyMessage": "PASS",
+    "instagramAsset": "PASS",
+    "instagramCaptionScript": "PASS",
+    "instagramCta": "PASS",
+    "instagramDestination": "PASS",
+    "instagramPublishingTime": "PASS",
+    "tiktokAssetVideo": "PASS",
+    "tiktokCaptionScript": "PASS",
+    "tiktokCta": "PASS",
+    "tiktokDestination": "PASS",
+    "tiktokPublishingTime": "PASS",
+    "message": "What if this isn't all there is?",
+    "instagramFiles": [
+      "approved-assets/row-81-social-launch/instagram/R78-0828-IG-S01.png",
+      "approved-assets/row-81-social-launch/instagram/R78-0828-IG-S02.png",
+      "approved-assets/row-81-social-launch/instagram/R78-0828-IG-S03.png",
+      "approved-assets/row-81-social-launch/instagram/R78-0828-IG-S04.png"
+    ],
+    "instagramCtaText": "Stay with the question.",
+    "instagramDestinationUrl": "https://thebackhalf.org/",
+    "instagramTimeEt": "8:00 AM ET",
+    "tiktokFiles": [
+      "approved-assets/row-81-social-launch/tiktok/R78-0828-TT.mp4",
+      "approved-assets/row-81-social-launch/tiktok/R78-0828-TT-cover.png"
+    ],
+    "tiktokDurationSeconds": 17.9,
+    "tiktokDimensions": "1080x1920",
+    "tiktokCtaText": "If that landed — August 31.",
+    "tiktokDestinationUrl": "https://thebackhalf.org/",
+    "tiktokTimeEt": "12:00 PM ET"
+  },
+  "august29": {
+    "dailyMessage": "PASS",
+    "instagramAsset": "PASS",
+    "instagramCaptionScript": "PASS",
+    "instagramCta": "PASS",
+    "instagramDestination": "PASS",
+    "instagramPublishingTime": "PASS",
+    "tiktokAssetVideo": "PASS",
+    "tiktokCaptionScript": "PASS",
+    "tiktokCta": "PASS",
+    "tiktokDestination": "PASS",
+    "tiktokPublishingTime": "PASS",
+    "message": "When was the last time you felt completely alive?",
+    "instagramFiles": [
+      "approved-assets/row-81-social-launch/instagram/R78-0829-IG-S01.png",
+      "approved-assets/row-81-social-launch/instagram/R78-0829-IG-S02.png",
+      "approved-assets/row-81-social-launch/instagram/R78-0829-IG-S03.png",
+      "approved-assets/row-81-social-launch/instagram/R78-0829-IG-S04.png"
+    ],
+    "instagramCtaText": "Explore the Journey.",
+    "instagramDestinationUrl": "https://thebackhalf.org/journey",
+    "instagramTimeEt": "8:00 AM ET",
+    "tiktokFiles": [
+      "approved-assets/row-81-social-launch/tiktok/R78-0829-TT.mp4",
+      "approved-assets/row-81-social-launch/tiktok/R78-0829-TT-cover.png"
+    ],
+    "tiktokDurationSeconds": 18.1,
+    "tiktokDimensions": "1080x1920",
+    "tiktokCtaText": "Explore the Journey.",
+    "tiktokDestinationUrl": "https://thebackhalf.org/journey",
+    "tiktokTimeEt": "12:00 PM ET"
+  },
+  "august30": {
+    "dailyMessage": "PASS",
+    "instagramAsset": "PASS",
+    "instagramCaptionScript": "PASS",
+    "instagramCta": "PASS",
+    "instagramDestination": "PASS",
+    "instagramPublishingTime": "PASS",
+    "tiktokAssetVideo": "PASS",
+    "tiktokCaptionScript": "PASS",
+    "tiktokCta": "PASS",
+    "tiktokDestination": "PASS",
+    "tiktokPublishingTime": "PASS",
+    "luminaDisclosureTreatment": "PASS",
+    "message": "What if someday is August 31?",
+    "instagramFiles": [
+      "approved-assets/row-81-social-launch/instagram/R78-0830-IG-S01.png",
+      "approved-assets/row-81-social-launch/instagram/R78-0830-IG-S02.png",
+      "approved-assets/row-81-social-launch/instagram/R78-0830-IG-S03.png"
+    ],
+    "instagramCtaText": "Return tomorrow. Become an Architect.",
+    "instagramDestinationUrl": "https://thebackhalf.org/lumina",
+    "instagramTimeEt": "8:00 AM ET",
+    "tiktokFiles": [
+      "approved-assets/row-81-social-launch/tiktok/R78-0830-TT.mp4",
+      "approved-assets/row-81-social-launch/tiktok/R78-0830-TT-cover.png"
+    ],
+    "tiktokDurationSeconds": 17.55,
+    "tiktokDimensions": "1080x1920",
+    "tiktokCtaText": "Tomorrow.",
+    "tiktokDestinationUrl": "https://thebackhalf.org/register",
+    "tiktokTimeEt": "12:00 PM ET",
+    "aiDisclosureDestination": "https://thebackhalf.org/legal/ai-disclosure",
+    "aiDisclosurePlacement": "quiet first-comment / end-link only; approved captions not rewritten"
+  },
+  "contentCoverage": {
+    "founderStory": "PASS",
+    "problemAwakening": "PASS",
+    "backHalfPhilosophy": "PASS",
+    "magicalIsPossible": "PASS",
+    "journeyProductIntroduction": "PASS",
+    "lumina": "PASS",
+    "foundingArchitectInvitation": "PASS",
+    "launchCountdown": "PASS"
+  },
+  "qa": {
+    "correctDomain": "PASS",
+    "brokenPlaceholderLinks": "PASS",
+    "assetFileIntegrity": "PASS",
+    "tiktokPlayback": "PASS",
+    "mobilePresentation": "PASS",
+    "row33ClaimsCompliance": "PASS",
+    "row81CampaignContinuity": "PASS",
+    "localDestinationHttp200": [
+      "http://localhost:3000/",
+      "http://localhost:3000/journey",
+      "http://localhost:3000/lumina",
+      "http://localhost:3000/register",
+      "http://localhost:3000/legal/ai-disclosure"
+    ],
+    "publicDnsFromThisWorkstation": "thebackhalf.org did not resolve here; not treated as a campaign defect"
+  },
+  "defectsFoundAndCorrected": [
+    "LinkedIn incorrectly listed as required in Row 78 operating docs — corrected to future enhancement",
+    "Row 78 operating docs pointed at superseded draft captions / visual-lock-pending — pointed to locked Row 81 archive"
+  ],
+  "founderJudgmentRequired": [],
+  "remainingBlockers": [],
+  "finalStatus": "ROW 78 IS READY FOR FOUNDER ACCEPTANCE REVIEW"
+}

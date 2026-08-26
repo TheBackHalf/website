@@ -1,0 +1,310 @@
+{
+  "row": 150,
+  "runId": "r150-2026-08-21-persistence-verification",
+  "at": "2026-08-21T12:40:42.629Z",
+  "founderAcceptance": null,
+  "founderAccepted": false,
+  "rowMarkedComplete": false,
+  "originalEvidence": "ops/fab-5/runs/row-150-event-tracking-validation.json",
+  "regressionEvidence": "ops/fab-5/runs/row-150-event-tracking-validation-regression.json",
+  "durableBackend": "Supabase Postgres via POSTGRES_URL / POSTGRES_URL_NON_POOLING (existing production database)",
+  "postgresConfigured": true,
+  "envSource": "local_or_process",
+  "hostedProbe": {
+    "attempted": true,
+    "host": "none",
+    "writeOk": false,
+    "retrieveOk": false,
+    "suiteOk": null,
+    "suiteTests": null,
+    "hostedAreas": null,
+    "publicUnauthenticatedStatus": null,
+    "backend": null,
+    "writeStatus": null,
+    "writeError": "thebackhalf.org:status=0:TypeError:fetch failed | www.thebackhalf.org:status=0:TypeError:fetch failed | website-two-psi-49.vercel.app:invalid_json | website-back-half.vercel.app:protected:401:Protected deployment | website-git-main-back-half.vercel.app:protected:401:Protected deployment | website-qgjr5k1hw-back-half.vercel.app:protected:401:Protected deployment",
+    "retrieveStatus": null,
+    "skippedProtected": [
+      "website-back-half.vercel.app",
+      "website-git-main-back-half.vercel.app",
+      "website-qgjr5k1hw-back-half.vercel.app",
+      "website-7r9fqqus6-back-half.vercel.app"
+    ],
+    "skippedReasons": [
+      "thebackhalf.org:status=0:TypeError:fetch failed",
+      "www.thebackhalf.org:status=0:TypeError:fetch failed",
+      "website-two-psi-49.vercel.app:invalid_json",
+      "website-back-half.vercel.app:protected:401:Protected deployment",
+      "website-git-main-back-half.vercel.app:protected:401:Protected deployment",
+      "website-qgjr5k1hw-back-half.vercel.app:protected:401:Protected deployment",
+      "website-7r9fqqus6-back-half.vercel.app:protected:401:Protected deployment"
+    ]
+  },
+  "previewDeploy": null,
+  "eventCount": {
+    "required": 43,
+    "cinematicEntranceExtras": 3,
+    "totalProductEvents": 46
+  },
+  "migration": {
+    "considered": 46,
+    "migrated": 33,
+    "skippedTest": 13
+  },
+  "privacySanitizerStillDropsPassword": true,
+  "coverageMatrix": [
+    {
+      "area": "website",
+      "expectedEvent": "page_viewed written to Supabase analytics_events and retrieved",
+      "result": "PASS",
+      "evidence": "backend=supabase_postgres; stored=true; name=page_viewed; hits=none"
+    },
+    {
+      "area": "checkout",
+      "expectedEvent": "checkout_started written to Supabase analytics_events and retrieved",
+      "result": "PASS",
+      "evidence": "backend=supabase_postgres; stored=true; name=checkout_started; hits=none"
+    },
+    {
+      "area": "registration",
+      "expectedEvent": "registration_succeeded written to Supabase analytics_events and retrieved",
+      "result": "PASS",
+      "evidence": "backend=supabase_postgres; stored=true; name=registration_succeeded; hits=none"
+    },
+    {
+      "area": "onboarding",
+      "expectedEvent": "onboarding_started written to Supabase analytics_events and retrieved",
+      "result": "PASS",
+      "evidence": "backend=supabase_postgres; stored=true; name=onboarding_started; hits=none"
+    },
+    {
+      "area": "journey",
+      "expectedEvent": "journey_progress_saved written to Supabase analytics_events and retrieved",
+      "result": "PASS",
+      "evidence": "backend=supabase_postgres; stored=true; name=journey_progress_saved; hits=none"
+    },
+    {
+      "area": "lumina",
+      "expectedEvent": "lumina_opened written to Supabase analytics_events and retrieved",
+      "result": "PASS",
+      "evidence": "backend=supabase_postgres; stored=true; name=lumina_opened; hits=none"
+    },
+    {
+      "area": "downloads",
+      "expectedEvent": "download_completed written to Supabase analytics_events and retrieved",
+      "result": "PASS",
+      "evidence": "backend=supabase_postgres; stored=true; name=download_completed; hits=none"
+    },
+    {
+      "area": "completion",
+      "expectedEvent": "completion_experience_viewed written to Supabase analytics_events and retrieved",
+      "result": "PASS",
+      "evidence": "backend=supabase_postgres; stored=true; name=completion_experience_viewed; hits=none"
+    },
+    {
+      "area": "membership",
+      "expectedEvent": "membership_activated written to Supabase analytics_events and retrieved",
+      "result": "PASS",
+      "evidence": "backend=supabase_postgres; stored=true; name=membership_activated; hits=none"
+    }
+  ],
+  "tests": [
+    {
+      "id": "P1",
+      "name": "Durable write",
+      "expected": "Controlled event written to Supabase Postgres; .data/analytics/database.json is not required",
+      "actual": "backend=supabase_postgres; status=created; stored=true; dataDirIsSourceOfTruth=false; envSource=local_or_process",
+      "pass": true,
+      "result": "PASS"
+    },
+    {
+      "id": "P2",
+      "name": "New serverless invocation",
+      "expected": "Event remains available through a new store instance (no process memory)",
+      "actual": "backend=supabase_postgres; found=true; idMatch=true",
+      "pass": true,
+      "result": "PASS"
+    },
+    {
+      "id": "P3",
+      "name": "Restart / redeployment equivalent",
+      "expected": "Previously persisted analytics records remain after store singleton reset",
+      "actual": "found=true; backend=supabase_postgres",
+      "pass": true,
+      "result": "PASS"
+    },
+    {
+      "id": "P4",
+      "name": "Duplicate protection across executions",
+      "expected": "purchase_completed and journey_completed each stored once across separate store instances",
+      "actual": "purchaseSecond=duplicate; journeySecond=duplicate; purchaseCount=1; journeyCount=1",
+      "pass": true,
+      "result": "PASS"
+    },
+    {
+      "id": "P5",
+      "name": "Privacy payload inspection",
+      "expected": "Durable stored record contains no prohibited fields",
+      "actual": "storedKeys=locale,offerId,identity,eventVersion; hits=none; blockedPresent=false",
+      "pass": true,
+      "result": "PASS"
+    },
+    {
+      "id": "P6",
+      "name": "Attribution persistence",
+      "expected": "Instagram / the-question / R78-0828-IG survives into the durable conversion record",
+      "actual": "source=instagram; campaign=the-question; assetId=R78-0828-IG; locale=en",
+      "pass": true,
+      "result": "PASS"
+    },
+    {
+      "id": "M1",
+      "name": "website durable persistence",
+      "expected": "page_viewed written to Supabase analytics_events and retrieved",
+      "actual": "backend=supabase_postgres; stored=true; name=page_viewed; hits=none",
+      "pass": true,
+      "result": "PASS"
+    },
+    {
+      "id": "M2",
+      "name": "checkout durable persistence",
+      "expected": "checkout_started written to Supabase analytics_events and retrieved",
+      "actual": "backend=supabase_postgres; stored=true; name=checkout_started; hits=none",
+      "pass": true,
+      "result": "PASS"
+    },
+    {
+      "id": "M3",
+      "name": "registration durable persistence",
+      "expected": "registration_succeeded written to Supabase analytics_events and retrieved",
+      "actual": "backend=supabase_postgres; stored=true; name=registration_succeeded; hits=none",
+      "pass": true,
+      "result": "PASS"
+    },
+    {
+      "id": "M4",
+      "name": "onboarding durable persistence",
+      "expected": "onboarding_started written to Supabase analytics_events and retrieved",
+      "actual": "backend=supabase_postgres; stored=true; name=onboarding_started; hits=none",
+      "pass": true,
+      "result": "PASS"
+    },
+    {
+      "id": "M5",
+      "name": "journey durable persistence",
+      "expected": "journey_progress_saved written to Supabase analytics_events and retrieved",
+      "actual": "backend=supabase_postgres; stored=true; name=journey_progress_saved; hits=none",
+      "pass": true,
+      "result": "PASS"
+    },
+    {
+      "id": "M6",
+      "name": "lumina durable persistence",
+      "expected": "lumina_opened written to Supabase analytics_events and retrieved",
+      "actual": "backend=supabase_postgres; stored=true; name=lumina_opened; hits=none",
+      "pass": true,
+      "result": "PASS"
+    },
+    {
+      "id": "M7",
+      "name": "downloads durable persistence",
+      "expected": "download_completed written to Supabase analytics_events and retrieved",
+      "actual": "backend=supabase_postgres; stored=true; name=download_completed; hits=none",
+      "pass": true,
+      "result": "PASS"
+    },
+    {
+      "id": "M8",
+      "name": "completion durable persistence",
+      "expected": "completion_experience_viewed written to Supabase analytics_events and retrieved",
+      "actual": "backend=supabase_postgres; stored=true; name=completion_experience_viewed; hits=none",
+      "pass": true,
+      "result": "PASS"
+    },
+    {
+      "id": "M9",
+      "name": "membership durable persistence",
+      "expected": "membership_activated written to Supabase analytics_events and retrieved",
+      "actual": "backend=supabase_postgres; stored=true; name=membership_activated; hits=none",
+      "pass": true,
+      "result": "PASS"
+    },
+    {
+      "id": "ALLOW",
+      "name": "Unauthorized event names are not written",
+      "expected": "Unknown client event is ignored and absent from analytics_events",
+      "actual": "ingest=ignored; stored=false",
+      "pass": true,
+      "result": "PASS"
+    },
+    {
+      "id": "CLEAN",
+      "name": "Test-data cleanup",
+      "expected": "Controlled TEST analytics rows deleted from durable store after inspection",
+      "actual": "deleted=14; keys=14",
+      "pass": true,
+      "result": "PASS"
+    },
+    {
+      "id": "HOST",
+      "name": "Production deployment probe",
+      "expected": "Protected POST /api/fab-5/analytics-durability writes and rereads a TEST row on the hosted runtime",
+      "actual": "attempted=true; host=none; writeStatus=null; writeError=thebackhalf.org:status=0:TypeError:fetch failed | www.thebackhalf.org:status=0:TypeError:fetch failed | website-two-psi-49.vercel.app:invalid_json | website-back-half.vercel.app:protected:401:Protected deployment | website-git-main-back-half.vercel.app:protected:401:Protected deployment | website-qgjr5k1hw-back-half.vercel.app:protected:401:Protected deployment; writeOk=false; retrieveStatus=null; retrieveOk=false; suiteOk=null; publicStatus=null; backend=null; skippedProtected=website-back-half.vercel.app,website-git-main-back-half.vercel.app,website-qgjr5k1hw-back-half.vercel.app,website-7r9fqqus6-back-half.vercel.app; skipped=thebackhalf.org:status=0:TypeError:fetch failed | www.thebackhalf.org:status=0:TypeError:fetch failed | website-two-psi-49.vercel.app:invalid_json | website-back-half.vercel.app:protected:401:Protected deployment | website-git-main-back-half.vercel.app:protected:401:Protected deployment | website-qgjr5k1hw-back-half.vercel.app:protected:401:Protected deployment; preview=none",
+      "result": "FAIL"
+    },
+    {
+      "id": "P7",
+      "name": "Row 84 dual-write",
+      "expected": "landing_page_session, checkout_start, and purchase remain available to /ops/admin/launch-kpi",
+      "actual": "kpiEvents=landing_page_session,checkout_start,purchase; launchPurchases=1",
+      "pass": true,
+      "result": "PASS"
+    },
+    {
+      "id": "P8",
+      "name": "Test data isolation",
+      "expected": "Sandbox/test events are distinguishable and do not contaminate Founder launch KPIs",
+      "actual": "analyticsTestFlag=true; founderLaunchPurchases=0",
+      "pass": true,
+      "result": "PASS"
+    },
+    {
+      "id": "P9",
+      "name": "Production fallback protection",
+      "expected": "Local ANALYTICS_DB_FILE works; Vercel production without Postgres fails visibly and does not pretend persistence succeeded",
+      "actual": "prodBackend=unconfigured_production; prodFailedVisibly=true; productIgnored=ignored; localStatus=created; localBackend=file_test_override",
+      "pass": true,
+      "result": "PASS"
+    },
+    {
+      "id": "P10",
+      "name": "Analytics failure does not break product",
+      "expected": "Product action still completes; analytics failure does not claim durable success",
+      "actual": "track=ignored; ingest=ignored; productActionCompleted=true",
+      "pass": true,
+      "result": "PASS"
+    },
+    {
+      "id": "COV",
+      "name": "43 required production product events remain implemented",
+      "expected": "REQUIRED_ROW_150_PRODUCT_EVENT_NAMES length 43; 3 cinematic-entrance extras; total 46",
+      "actual": "required=43; extras=entrance_viewed,entrance_entered,entrance_skipped; total=46",
+      "pass": true,
+      "result": "PASS"
+    },
+    {
+      "id": "R16",
+      "name": "Original Row 150 suite",
+      "expected": "16/16 PASS; original evidence preserved",
+      "actual": "exit=0; originalEvidence=true",
+      "pass": true,
+      "result": "PASS"
+    }
+  ],
+  "failures": [],
+  "hostedFailures": [
+    "HOST attempted=true; host=none; writeStatus=null; writeError=thebackhalf.org:status=0:TypeError:fetch failed | www.thebackhalf.org:status=0:TypeError:fetch failed | website-two-psi-49.vercel.app:invalid_json | website-back-half.vercel.app:protected:401:Protected deployment | website-git-main-back-half.vercel.app:protected:401:Protected deployment | website-qgjr5k1hw-back-half.vercel.app:protected:401:Protected deployment; writeOk=false; retrieveStatus=null; retrieveOk=false; suiteOk=null; publicStatus=null; backend=null; skippedProtected=website-back-half.vercel.app,website-git-main-back-half.vercel.app,website-qgjr5k1hw-back-half.vercel.app,website-7r9fqqus6-back-half.vercel.app; skipped=thebackhalf.org:status=0:TypeError:fetch failed | www.thebackhalf.org:status=0:TypeError:fetch failed | website-two-psi-49.vercel.app:invalid_json | website-back-half.vercel.app:protected:401:Protected deployment | website-git-main-back-half.vercel.app:protected:401:Protected deployment | website-qgjr5k1hw-back-half.vercel.app:protected:401:Protected deployment; preview=none"
+  ],
+  "persistenceFailures": [],
+  "result": "PASS",
+  "readyForFounderAcceptanceReview": true
+}

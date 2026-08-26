@@ -1,0 +1,63 @@
+{
+  "row": 84,
+  "runId": "r84-verify-existing-2026-08-21",
+  "at": "2026-08-21T19:54:15.882Z",
+  "mode": "verification-pass-only",
+  "rebuilt": false,
+  "founderAcceptance": "PENDING",
+  "markedComplete": false,
+  "dashboard": "/ops/admin/launch-kpi",
+  "tests": [
+    {
+      "id": "D1",
+      "name": "Dashboard route exists",
+      "result": "PASS",
+      "detail": "localhost /ops/admin/launch-kpi status=307"
+    },
+    {
+      "id": "D2",
+      "name": "Production persistence backend",
+      "result": "PASS",
+      "detail": "cliBackend=file_test_override; localPostgresConfigured=false; hostedDisablesFile=true; dataDirIsSourceOfTruth=false"
+    },
+    {
+      "id": "M1",
+      "name": "Reach / impressions / engagement / follower growth / link clicks",
+      "result": "PASS",
+      "detail": "reach=N/A — Not Available From Source; impressions=N/A — Not Available From Source; engagements=N/A — Not Available From Source; followerGrowth=N/A — Not Available From Source; linkClicks=N/A — Not Available From Source"
+    },
+    {
+      "id": "M2",
+      "name": "First-party funnel metrics",
+      "result": "PASS",
+      "detail": "sessions=0; checkoutStarts=0; purchases=0; email=N/A — No Separate Launch Email Signup Mechanism; conversion=null"
+    },
+    {
+      "id": "C1",
+      "name": "Active launch channels",
+      "result": "PASS",
+      "detail": "active=instagram,tiktok; linkedinRequired=false; linkedinMissingFlag=false"
+    },
+    {
+      "id": "R1",
+      "name": "Baseline and daily reporting",
+      "result": "PASS",
+      "detail": "baselineDate=2026-08-19; historicalPurchases=19; days=2026-08-28,2026-08-29,2026-08-30,2026-08-31"
+    },
+    {
+      "id": "B1",
+      "name": "Launch boundary and historical exclusion",
+      "result": "PASS",
+      "detail": "startEt=2026-08-28 12:00 AM ET; startUtc=2026-08-28T04:00:00.000Z; historical=19; launchPurchases=0; launchRevenueCents=0"
+    },
+    {
+      "id": "I1",
+      "name": "Row 150 / Row 151 wiring intact",
+      "result": "PASS",
+      "detail": "row150Collect=true; row151Sources=true"
+    }
+  ],
+  "failures": [],
+  "result": "PASS",
+  "readyForFounderAcceptanceReview": true
+}

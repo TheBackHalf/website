@@ -1,0 +1,1014 @@
+{
+  "row": 18,
+  "deliverable": "Create Fab 5 Launch Workstreams",
+  "technicalStatus": "complete",
+  "founderAcceptance": "pending",
+  "row19Started": false,
+  "sourceReviewed": [
+    "ops/fab-5/launch-rows.json",
+    "ops/fab-5/acceptance-record.json",
+    "ops/fab-5/operating-system.json",
+    "ops/fab-5/row-16-status.json",
+    "content/legal/documents.ts"
+  ],
+  "numberedRowsReviewed": [
+    15,
+    16,
+    17,
+    18
+  ],
+  "remainingAssigned": [
+    {
+      "id": "D-LEGAL-APPROVED-COPY",
+      "primaryWorkstream": "LEGAL",
+      "primaryOwner": "imani"
+    },
+    {
+      "id": "D-PRODUCTION-DEPLOY",
+      "primaryWorkstream": "TECHNOLOGY",
+      "primaryOwner": "imani"
+    },
+    {
+      "id": "D-SUPPORT-MAILBOX",
+      "primaryWorkstream": "OPERATIONS",
+      "primaryOwner": "michelle"
+    },
+    {
+      "id": "D-PRIVACY-MAILBOX",
+      "primaryWorkstream": "LEGAL",
+      "primaryOwner": "imani"
+    },
+    {
+      "id": "D-SOCIAL-PUBLISH",
+      "primaryWorkstream": "MARKETING",
+      "primaryOwner": "nia"
+    },
+    {
+      "id": "D-COMMUNITY-PLATFORM",
+      "primaryWorkstream": "COMMUNITY",
+      "primaryOwner": "nia"
+    }
+  ],
+  "ownershipChanges": "Current numbered rows 15–18 received Fab 5 workstream owners. Remaining register items received singular primary owners. Status/acceptance for Rows 15–17 unchanged.",
+  "formerRoleReplacements": 0,
+  "dependenciesIdentified": [
+    {
+      "id": "D-LEGAL-APPROVED-COPY",
+      "dependencies": [
+        "qualified human legal approved text"
+      ]
+    },
+    {
+      "id": "D-PRODUCTION-DEPLOY",
+      "dependencies": [
+        "Founder ADMIN / credential authorization"
+      ]
+    },
+    {
+      "id": "D-SUPPORT-MAILBOX",
+      "dependencies": [
+        "mailbox connection authorization",
+        "approved reply templates"
+      ]
+    },
+    {
+      "id": "D-PRIVACY-MAILBOX",
+      "dependencies": [
+        "mailbox connection authorization",
+        "D-LEGAL-APPROVED-COPY for approved privacy language"
+      ]
+    },
+    {
+      "id": "D-SOCIAL-PUBLISH",
+      "dependencies": [
+        "social accounts named in source of truth"
+      ]
+    },
+    {
+      "id": "D-COMMUNITY-PLATFORM",
+      "dependencies": [
+        "community platform named in source of truth"
+      ]
+    }
+  ],
+  "criticalPath": [
+    "D-LEGAL-APPROVED-COPY",
+    "D-PRODUCTION-DEPLOY",
+    "D-SUPPORT-MAILBOX",
+    "D-PRIVACY-MAILBOX"
+  ],
+  "parallelization": {
+    "imani": [
+      "D-PRODUCTION-DEPLOY technical connection",
+      "D-PRIVACY-MAILBOX technical implementation",
+      "D-LEGAL-APPROVED-COPY implementation after approved text exists"
+    ],
+    "nia": [
+      "D-SOCIAL-PUBLISH draft-only until named",
+      "D-COMMUNITY-PLATFORM experience prep until named",
+      "participant-facing verification of legal presentation"
+    ],
+    "michelle": [
+      "D-SUPPORT-MAILBOX operations",
+      "dependency/readiness tracking across remaining items"
+    ],
+    "kimberly": [
+      "Founder-reserved legal signature when approved text is presented",
+      "production-deploy ADMIN remains Founder"
+    ]
+  },
+  "founderQueue": [
+    {
+      "id": "FA-LEGAL-SIGNATURE",
+      "row": "D-LEGAL-APPROVED-COPY",
+      "decision": "Accept/sign approved legal documents after qualified human legal text is presented",
+      "whyFounderRequired": "Legal signature / Founder-reserved acceptance",
+      "deadlineDependency": "Blocked on human legal approved text, then Imani implementation and Nia presentation check",
+      "recommendation": "Do not draft legal language. Wait for qualified human legal text, then accept/sign.",
+      "impactIfDelayed": "Participant-facing legal surfaces remain APPROVED LEGAL COPY PENDING; SCHEDULE / LAUNCH THREAT if delayed"
+    },
+    {
+      "id": "FA-DEPLOY-ADMIN",
+      "row": "D-PRODUCTION-DEPLOY",
+      "decision": "Authorize production-deploy ADMIN credentials (Founder retains ADMIN)",
+      "whyFounderRequired": "Production host admin remains Founder. Agents must not hold ADMIN.",
+      "deadlineDependency": "Unlocks Imani EXECUTE for approved deploys",
+      "recommendation": "Authorize credentials out-of-band. Do not place secrets in prompts.",
+      "impactIfDelayed": "Approved production deploys cannot be executed; SCHEDULE / LAUNCH THREAT if delayed"
+    }
+  ],
+  "humanExpertQueue": [
+    {
+      "id": "HE-LEGAL-APPROVED-TEXT",
+      "row": "D-LEGAL-APPROVED-COPY",
+      "action": "Qualified human legal expert review and approved text for Privacy Policy, Terms of Use, Participant Agreement, Membership Agreement, and AI Disclosure",
+      "whyHumanExpert": "Legal conclusions and approved legal language. Imani must not issue legal conclusions. Founder is not the lawyer.",
+      "note": "This is human-expert action, not a Founder drafting task."
+    }
+  ],
+  "unownedWorkScan": 0,
+  "localChecks": [
+    {
+      "id": "L01",
+      "name": "Nine workstreams established",
+      "pass": true,
+      "result": "PASS"
+    },
+    {
+      "id": "L02",
+      "name": "Unowned remaining = 0",
+      "pass": true,
+      "result": "PASS"
+    },
+    {
+      "id": "L03",
+      "name": "Former Perfect 10 current ownership = 0",
+      "pass": true,
+      "result": "PASS"
+    },
+    {
+      "id": "L04",
+      "name": "Rows 15–17 acceptance preserved",
+      "pass": true,
+      "result": "PASS"
+    },
+    {
+      "id": "L05",
+      "name": "Row 19 not started",
+      "pass": true,
+      "result": "PASS"
+    },
+    {
+      "id": "L06",
+      "name": "No duplicate tracker / no invented spreadsheet numbers",
+      "pass": true,
+      "result": "PASS"
+    }
+  ],
+  "liveValidation": {
+    "modelUsed": "gpt-5.6-luna",
+    "testsPassed": 9,
+    "testsTotal": 9,
+    "results": [
+      {
+        "id": "T1",
+        "purpose": "Technology row routes to Imani",
+        "result": "PASS",
+        "actual": "Primary owner: **Imani Heartbeat (Technology)**.\n\nThe remaining item is **D-PRODUCTION-DEPLOY — Connect production deploy credentials**. Michelle is the orchestrator/verifier; Kimberly supports as listed. The item requires Founder authorization for ADMIN credentials before Imani connects EXECUTE access. No spreadsheet row number is available in the source, so none is being invented.\n\n**SYNTHESIS:*",
+        "toolNames": [
+          "retrieve_source",
+          "query_launch_view"
+        ],
+        "usage": {
+          "requests": 2,
+          "inputTokens": 3602,
+          "outputTokens": 374,
+          "totalTokens": 3976
+        }
+      },
+      {
+        "id": "T2",
+        "purpose": "Learning/Experience row routes to Nia",
+        "result": "PASS",
+        "actual": "- **Workstream row:** Row 18, *Create Fab 5 Launch Workstreams*\n- **Michelle’s role:** Primary owner for the **OPERATIONS** workstream and overall orchestration.\n- **Learning/Experience primary owner:** **Nia Prism**. Michelle should not be made the domain owner; she coordinates Nia’s work and accepts evidence.\n- **Remaining launch-critical Learning/Experience work:** **None.** The consolidated la",
+        "toolNames": [
+          "retrieve_source",
+          "query_launch_view",
+          "get_launch_row"
+        ],
+        "usage": {
+          "requests": 4,
+          "inputTokens": 9150,
+          "outputTokens": 789,
+          "totalTokens": 9939
+        }
+      },
+      {
+        "id": "T3",
+        "purpose": "Operations row owned/coordinated by Michelle",
+        "result": "PASS",
+        "actual": "The primary owner is **Michelle Northstar (Operations)** for **D-SUPPORT-MAILBOX — Connect support@ live mailbox**.\n\nSupporting owners: **Imani Heartbeat** (technical connection) and **Nia Prism** (approved routine-reply path). The spreadsheet row number is not available in the adapter, so I’m not inventing one.\n\n**SYNTHESIS:** Assigned to Michelle as primary Operations owner.  \n**EVIDENCE:** Cons",
+        "toolNames": [
+          "retrieve_source",
+          "query_launch_view"
+        ],
+        "usage": {
+          "requests": 2,
+          "inputTokens": 3820,
+          "outputTokens": 351,
+          "totalTokens": 4171
+        }
+      },
+      {
+        "id": "T4",
+        "purpose": "Finance/Founder-reserved routes to Kimberly gate where required",
+        "result": "PASS",
+        "actual": "Finance remaining launch work is owned by **Kimberly Walker (AI)**. The launch view shows **no remaining launch-critical Finance work**, so there is no Finance row to assign to Michelle.\n\nMichelle may retain orchestration oversight, but **Kimberly remains the Finance workstream owner**. Pricing is unchanged and remains Founder-reserved.\n\n**SYNTHESIS:** No Finance work remains; no reassignment made",
+        "toolNames": [
+          "retrieve_source",
+          "query_launch_view"
+        ],
+        "usage": {
+          "requests": 2,
+          "inputTokens": 3538,
+          "outputTokens": 416,
+          "totalTokens": 3954
+        }
+      },
+      {
+        "id": "T5",
+        "purpose": "Legal implementation: Imani owns risk/impl; human expert for judgment only",
+        "result": "PASS",
+        "actual": "Michelle should coordinate the Legal implementation row, but **Imani owns execution**:\n\n**Launch item:** `D-LEGAL-APPROVED-COPY`  \n**Deliverable:** Insert the Founder-approved Privacy Policy, Terms of Use, Participant Agreement, Membership Agreement, and AI Disclosure text verbatim.  \n**Primary owner:** **Imani Heartbeat** — implements the approved text and flags technical/risk issues.  \n**Michell",
+        "toolNames": [
+          "retrieve_source",
+          "query_launch_view"
+        ],
+        "usage": {
+          "requests": 2,
+          "inputTokens": 4232,
+          "outputTokens": 850,
+          "totalTokens": 5082
+        }
+      },
+      {
+        "id": "T6",
+        "purpose": "Cross-functional: one primary owner plus supporting specialists",
+        "result": "PASS",
+        "actual": "Assigned cross-functional launch item **D-SUPPORT-MAILBOX** to:\n\n- **Primary owner:** Michelle Northstar — Operations; mailbox routing and final orchestration\n- **Supporting executives:**\n  - **Imani Heartbeat** — technical mailbox connection and technical incidents\n  - **Nia Prism** — approved participant-facing routine reply templates and draft-path verification\n\n**Scope:** Connect `support@theb",
+        "toolNames": [
+          "retrieve_source",
+          "query_launch_view",
+          "consult_imani",
+          "consult_nia"
+        ],
+        "usage": {
+          "requests": 3,
+          "inputTokens": 8036,
+          "outputTokens": 1358,
+          "totalTokens": 9394
+        }
+      },
+      {
+        "id": "T7",
+        "purpose": "Unowned launch-critical work = 0",
+        "result": "PASS",
+        "actual": "SYNTHESIS: No remaining launch-critical work is unowned.\n\nEVIDENCE: The consolidated launch view reports **UNOWNED LAUNCH-CRITICAL DELIVERABLES = 0** and lists no unowned items.\n\nFOUNDER REPORT CLASS: NONE",
+        "toolNames": [
+          "query_launch_view"
+        ],
+        "usage": {
+          "requests": 2,
+          "inputTokens": 2878,
+          "outputTokens": 140,
+          "totalTokens": 3018
+        }
+      },
+      {
+        "id": "T8",
+        "purpose": "Critical path derived from consolidated view",
+        "result": "PASS",
+        "actual": "## Current critical path\n\n1. **D-LEGAL-APPROVED-COPY — Legal approved text**\n   - **Owner:** Imani; Michelle/Nia/Kimberly support\n   - **Blocked by:** Qualified human legal approval and Founder acceptance/signature\n   - **Required evidence:** Approved text inserted verbatim, `contentPending=false`, participant-facing verification by Nia, and Founder acceptance.\n   - This is the first prerequisite.",
+        "toolNames": [
+          "query_launch_view"
+        ],
+        "usage": {
+          "requests": 2,
+          "inputTokens": 3967,
+          "outputTokens": 629,
+          "totalTokens": 4596
+        }
+      },
+      {
+        "id": "T9",
+        "purpose": "Founder-required work is only genuinely reserved items",
+        "result": "PASS",
+        "actual": "## Founder action required\n\n1. **Legal acceptance/signature — `D-LEGAL-APPROVED-COPY`**\n   - Wait for qualified human legal review and approved legal text.\n   - Founder must then accept/sign the documents.\n   - Delay keeps participant-facing legal surfaces pending and may threaten the schedule.\n\n2. **Production deployment authorization — `D-PRODUCTION-DEPLOY`**\n   - Founder must authorize producti",
+        "toolNames": [
+          "query_launch_view"
+        ],
+        "usage": {
+          "requests": 2,
+          "inputTokens": 3139,
+          "outputTokens": 367,
+          "totalTokens": 3506
+        }
+      }
+    ],
+    "usage": {
+      "requests": 21,
+      "inputTokens": 42362,
+      "outputTokens": 5274,
+      "totalTokens": 47636
+    }
+  },
+  "agentQueryability": {
+    "pass": true,
+    "answers": [
+      {
+        "question": "imani_next",
+        "primaryOwner": "imani",
+        "answer": "Imani next: D-LEGAL-APPROVED-COPY — Insert Founder-approved legal document text. Human legal expert supplies/approves text → Imani implements → Nia verifies presentation → Kimberly signs/accepts",
+        "items": [
+          {
+            "id": "D-LEGAL-APPROVED-COPY",
+            "spreadsheetRow": null,
+            "spreadsheetNote": "Existing product requirement. Spreadsheet row number is not in the local adapter; do not invent one.",
+            "phase": "Legal",
+            "deliverable": "Insert Founder-approved legal document text",
+            "description": "Privacy Policy, Terms of Use, Participant Agreement, Membership Agreement, and AI Disclosure exist as pages with contentPending=true. Insert verbatim approved legal text without rewriting legal meaning.",
+            "percentComplete": 0,
+            "status": "pending",
+            "primaryWorkstream": "LEGAL",
+            "secondaryWorkstreams": [
+              "EXPERIENCE"
+            ],
+            "primaryOwner": "imani",
+            "supportingOwners": [
+              "michelle",
+              "nia",
+              "kimberly"
+            ],
+            "dependencies": [
+              "qualified human legal approved text"
+            ],
+            "blockers": [
+              "Approved legal copy has not been inserted; contentPending remains true"
+            ],
+            "founderActionRequired": true,
+            "humanExpertRequired": true,
+            "evidenceRequiredForCompletion": "content/legal/documents.ts sections populated verbatim; contentPending=false; Nia participant-facing verification; Founder signature/acceptance",
+            "cost": null,
+            "nextAction": "Human legal expert supplies/approves text → Imani implements → Nia verifies presentation → Kimberly signs/accepts",
+            "evidenceAcceptanceState": "not_started",
+            "priority": 1,
+            "criticalPath": true,
+            "source": [
+              "content/legal/documents.ts",
+              "ops/fab-5/operating-system.json access Legal document files"
+            ]
+          },
+          {
+            "id": "D-PRODUCTION-DEPLOY",
+            "spreadsheetRow": null,
+            "spreadsheetNote": "Founder-accepted downstream register. Spreadsheet row number is not in the local adapter; do not invent one.",
+            "phase": "Technology",
+            "deliverable": "Connect production deploy credentials",
+            "description": "Production-host deploy credentials remain INTERFACE READY — DOWNSTREAM CONNECTION REQUIRED. Imani EXECUTE for approved deploys; Founder retains ADMIN. Do not invent a host vendor.",
+            "percentComplete": 0,
+            "status": "interface_ready_downstream",
+            "primaryWorkstream": "TECHNOLOGY",
+            "secondaryWorkstreams": [
+              "OPERATIONS"
+            ],
+            "primaryOwner": "imani",
+            "supportingOwners": [
+              "michelle",
+              "kimberly"
+            ],
+            "dependencies": [
+              "Founder ADMIN / credential authorization"
+            ],
+            "blockers": [
+              "Production deploy credentials not connected"
+            ],
+            "founderActionRequired": true,
+            "humanExpertRequired": false,
+            "evidenceRequiredForCompletion": "Imani EXECUTE connected for approved deploys; Founder ADMIN retained; no secrets in prompts",
+            "cost": null,
+            "nextAction": "Founder authorizes ADMIN credentials → Imani connects EXECUTE for approved deploys → Michelle verifies evidence",
+            "evidenceAcceptanceState": "interface_ready",
+            "priority": 2,
+            "criticalPath": true,
+            "source": [
+              "ops/fab-5/acceptance-record.json",
+              "ops/fab-5/row-16-status.json"
+            ]
+          },
+          {
+            "id": "D-PRIVACY-MAILBOX",
+            "spreadsheetRow": null,
+            "spreadsheetNote": "Founder-accepted downstream register. Spreadsheet row number is not in the local adapter; do not invent one.",
+            "phase": "Legal",
+            "deliverable": "Connect privacy@ live mailbox",
+            "description": "privacy@thebackhalf.org is REQUIRED_AT_LAUNCH. Michelle escalates; Imani implements; no autonomous legal answers.",
+            "percentComplete": 0,
+            "status": "interface_ready_downstream",
+            "primaryWorkstream": "LEGAL",
+            "secondaryWorkstreams": [
+              "OPERATIONS",
+              "TECHNOLOGY"
+            ],
+            "primaryOwner": "imani",
+            "supportingOwners": [
+              "michelle"
+            ],
+            "dependencies": [
+              "mailbox connection authorization",
+              "D-LEGAL-APPROVED-COPY for approved privacy language"
+            ],
+            "blockers": [
+              "privacy@ live mailbox not connected"
+            ],
+            "founderActionRequired": false,
+            "humanExpertRequired": false,
+            "evidenceRequiredForCompletion": "Mailbox connected; escalation path live; no autonomous legal conclusions",
+            "cost": null,
+            "nextAction": "Imani implements technical connection → Michelle owns escalation operations → human legal expert only if a legal judgment trigger fires",
+            "evidenceAcceptanceState": "interface_ready",
+            "priority": 4,
+            "criticalPath": true,
+            "source": [
+              "ops/fab-5/acceptance-record.json",
+              "ops/fab-5/operating-system.json"
+            ]
+          }
+        ]
+      },
+      {
+        "question": "nia_waiting",
+        "primaryOwner": "nia",
+        "answer": "Nia is waiting on SoT naming before live publish/community connection: D-SOCIAL-PUBLISH, D-COMMUNITY-PLATFORM. Supporting: legal presentation after approved text.",
+        "items": [
+          {
+            "id": "D-LEGAL-APPROVED-COPY",
+            "spreadsheetRow": null,
+            "spreadsheetNote": "Existing product requirement. Spreadsheet row number is not in the local adapter; do not invent one.",
+            "phase": "Legal",
+            "deliverable": "Insert Founder-approved legal document text",
+            "description": "Privacy Policy, Terms of Use, Participant Agreement, Membership Agreement, and AI Disclosure exist as pages with contentPending=true. Insert verbatim approved legal text without rewriting legal meaning.",
+            "percentComplete": 0,
+            "status": "pending",
+            "primaryWorkstream": "LEGAL",
+            "secondaryWorkstreams": [
+              "EXPERIENCE"
+            ],
+            "primaryOwner": "imani",
+            "supportingOwners": [
+              "michelle",
+              "nia",
+              "kimberly"
+            ],
+            "dependencies": [
+              "qualified human legal approved text"
+            ],
+            "blockers": [
+              "Approved legal copy has not been inserted; contentPending remains true"
+            ],
+            "founderActionRequired": true,
+            "humanExpertRequired": true,
+            "evidenceRequiredForCompletion": "content/legal/documents.ts sections populated verbatim; contentPending=false; Nia participant-facing verification; Founder signature/acceptance",
+            "cost": null,
+            "nextAction": "Human legal expert supplies/approves text → Imani implements → Nia verifies presentation → Kimberly signs/accepts",
+            "evidenceAcceptanceState": "not_started",
+            "priority": 1,
+            "criticalPath": true,
+            "source": [
+              "content/legal/documents.ts",
+              "ops/fab-5/operating-system.json access Legal document files"
+            ]
+          },
+          {
+            "id": "D-SUPPORT-MAILBOX",
+            "spreadsheetRow": null,
+            "spreadsheetNote": "Founder-accepted downstream register. Spreadsheet row number is not in the local adapter; do not invent one.",
+            "phase": "Operations",
+            "deliverable": "Connect support@ live mailbox",
+            "description": "support@thebackhalf.org is REQUIRED_AT_LAUNCH. Michelle triages/routes; Nia drafts routine replies; Imani only for technical incidents. Live connection is downstream, not a new product.",
+            "percentComplete": 0,
+            "status": "interface_ready_downstream",
+            "primaryWorkstream": "OPERATIONS",
+            "secondaryWorkstreams": [
+              "TECHNOLOGY",
+              "EXPERIENCE"
+            ],
+            "primaryOwner": "michelle",
+            "supportingOwners": [
+              "imani",
+              "nia"
+            ],
+            "dependencies": [
+              "mailbox connection authorization",
+              "approved reply templates"
+            ],
+            "blockers": [
+              "support@ live mailbox not connected"
+            ],
+            "founderActionRequired": false,
+            "humanExpertRequired": false,
+            "evidenceRequiredForCompletion": "Mailbox connected; Michelle routing live; Nia draft path verified; no kimberly@ autonomy",
+            "cost": null,
+            "nextAction": "Imani implements technical connection → Michelle owns routing operations → Nia prepares approved routine replies",
+            "evidenceAcceptanceState": "interface_ready",
+            "priority": 3,
+            "criticalPath": true,
+            "source": [
+              "ops/fab-5/acceptance-record.json",
+              "ops/fab-5/operating-system.json"
+            ]
+          },
+          {
+            "id": "D-SOCIAL-PUBLISH",
+            "spreadsheetRow": null,
+            "spreadsheetNote": "Founder-accepted downstream register. OPTIONAL until named in SoT. Do not invent channels.",
+            "phase": "Marketing",
+            "deliverable": "Connect social publishing when accounts are named in SoT",
+            "description": "Social publishing remains INTERFACE READY — DOWNSTREAM CONNECTION REQUIRED. Operating system class is OPTIONAL until accounts are named. Draft-only until then. Do not add new social channels.",
+            "percentComplete": 0,
+            "status": "optional_until_named",
+            "primaryWorkstream": "MARKETING",
+            "secondaryWorkstreams": [
+              "TECHNOLOGY"
+            ],
+            "primaryOwner": "nia",
+            "supportingOwners": [
+              "michelle",
+              "imani"
+            ],
+            "dependencies": [
+              "social accounts named in source of truth"
+            ],
+            "blockers": [
+              "Social accounts not named in SoT; live publish not connected"
+            ],
+            "founderActionRequired": false,
+            "humanExpertRequired": false,
+            "evidenceRequiredForCompletion": "Named accounts in SoT; Nia draft/send only from approved templates; Imani technical publish path if required",
+            "cost": null,
+            "nextAction": "Keep draft-only. Do not invent accounts. Nia prepares approved-template drafts; Michelle coordinates if/when named.",
+            "evidenceAcceptanceState": "interface_ready",
+            "priority": 6,
+            "criticalPath": false,
+            "source": [
+              "ops/fab-5/acceptance-record.json",
+              "ops/fab-5/operating-system.json Social accounts OPTIONAL"
+            ]
+          },
+          {
+            "id": "D-COMMUNITY-PLATFORM",
+            "spreadsheetRow": null,
+            "spreadsheetNote": "Founder-accepted downstream register. OPTIONAL until named in SoT. Do not invent a community program.",
+            "phase": "Community",
+            "deliverable": "Connect community platform when named in SoT",
+            "description": "Community platform remains INTERFACE READY — DOWNSTREAM CONNECTION REQUIRED. Operating system class is OPTIONAL until the platform is named. Nia owns experience/moderation within guidelines; Imani platform/security; Michelle operations. Do not recreate Imani's former Community executive role.",
+            "percentComplete": 0,
+            "status": "optional_until_named",
+            "primaryWorkstream": "COMMUNITY",
+            "secondaryWorkstreams": [
+              "TECHNOLOGY",
+              "OPERATIONS"
+            ],
+            "primaryOwner": "nia",
+            "supportingOwners": [
+              "michelle",
+              "imani"
+            ],
+            "dependencies": [
+              "community platform named in source of truth"
+            ],
+            "blockers": [
+              "Community platform not named in SoT; live connection not made"
+            ],
+            "founderActionRequired": false,
+            "humanExpertRequired": false,
+            "evidenceRequiredForCompletion": "Named platform in SoT; Nia in-guidelines experience; Imani security implementation; Michelle ops cadence",
+            "cost": null,
+            "nextAction": "Do not invent the platform. Nia prepares experience/moderation guidelines against current approved community rules; Imani implements only when named.",
+            "evidenceAcceptanceState": "interface_ready",
+            "priority": 7,
+            "criticalPath": false,
+            "source": [
+              "ops/fab-5/acceptance-record.json",
+              "ops/fab-5/operating-system.json Community platform OPTIONAL"
+            ]
+          }
+        ]
+      },
+      {
+        "question": "michelle_blocked",
+        "primaryOwner": "michelle",
+        "answer": "Michelle is coordinating through remaining critical-path blockers: D-LEGAL-APPROVED-COPY (Approved legal copy has not been inserted; contentPending remains true); D-PRODUCTION-DEPLOY (Production deploy credentials not connected); D-SUPPORT-MAILBOX (support@ live mailbox not connected); D-PRIVACY-MAILBOX (privacy@ live mailbox not connected)",
+        "items": [
+          {
+            "id": "D-LEGAL-APPROVED-COPY",
+            "spreadsheetRow": null,
+            "spreadsheetNote": "Existing product requirement. Spreadsheet row number is not in the local adapter; do not invent one.",
+            "phase": "Legal",
+            "deliverable": "Insert Founder-approved legal document text",
+            "description": "Privacy Policy, Terms of Use, Participant Agreement, Membership Agreement, and AI Disclosure exist as pages with contentPending=true. Insert verbatim approved legal text without rewriting legal meaning.",
+            "percentComplete": 0,
+            "status": "pending",
+            "primaryWorkstream": "LEGAL",
+            "secondaryWorkstreams": [
+              "EXPERIENCE"
+            ],
+            "primaryOwner": "imani",
+            "supportingOwners": [
+              "michelle",
+              "nia",
+              "kimberly"
+            ],
+            "dependencies": [
+              "qualified human legal approved text"
+            ],
+            "blockers": [
+              "Approved legal copy has not been inserted; contentPending remains true"
+            ],
+            "founderActionRequired": true,
+            "humanExpertRequired": true,
+            "evidenceRequiredForCompletion": "content/legal/documents.ts sections populated verbatim; contentPending=false; Nia participant-facing verification; Founder signature/acceptance",
+            "cost": null,
+            "nextAction": "Human legal expert supplies/approves text → Imani implements → Nia verifies presentation → Kimberly signs/accepts",
+            "evidenceAcceptanceState": "not_started",
+            "priority": 1,
+            "criticalPath": true,
+            "source": [
+              "content/legal/documents.ts",
+              "ops/fab-5/operating-system.json access Legal document files"
+            ]
+          },
+          {
+            "id": "D-PRODUCTION-DEPLOY",
+            "spreadsheetRow": null,
+            "spreadsheetNote": "Founder-accepted downstream register. Spreadsheet row number is not in the local adapter; do not invent one.",
+            "phase": "Technology",
+            "deliverable": "Connect production deploy credentials",
+            "description": "Production-host deploy credentials remain INTERFACE READY — DOWNSTREAM CONNECTION REQUIRED. Imani EXECUTE for approved deploys; Founder retains ADMIN. Do not invent a host vendor.",
+            "percentComplete": 0,
+            "status": "interface_ready_downstream",
+            "primaryWorkstream": "TECHNOLOGY",
+            "secondaryWorkstreams": [
+              "OPERATIONS"
+            ],
+            "primaryOwner": "imani",
+            "supportingOwners": [
+              "michelle",
+              "kimberly"
+            ],
+            "dependencies": [
+              "Founder ADMIN / credential authorization"
+            ],
+            "blockers": [
+              "Production deploy credentials not connected"
+            ],
+            "founderActionRequired": true,
+            "humanExpertRequired": false,
+            "evidenceRequiredForCompletion": "Imani EXECUTE connected for approved deploys; Founder ADMIN retained; no secrets in prompts",
+            "cost": null,
+            "nextAction": "Founder authorizes ADMIN credentials → Imani connects EXECUTE for approved deploys → Michelle verifies evidence",
+            "evidenceAcceptanceState": "interface_ready",
+            "priority": 2,
+            "criticalPath": true,
+            "source": [
+              "ops/fab-5/acceptance-record.json",
+              "ops/fab-5/row-16-status.json"
+            ]
+          },
+          {
+            "id": "D-SUPPORT-MAILBOX",
+            "spreadsheetRow": null,
+            "spreadsheetNote": "Founder-accepted downstream register. Spreadsheet row number is not in the local adapter; do not invent one.",
+            "phase": "Operations",
+            "deliverable": "Connect support@ live mailbox",
+            "description": "support@thebackhalf.org is REQUIRED_AT_LAUNCH. Michelle triages/routes; Nia drafts routine replies; Imani only for technical incidents. Live connection is downstream, not a new product.",
+            "percentComplete": 0,
+            "status": "interface_ready_downstream",
+            "primaryWorkstream": "OPERATIONS",
+            "secondaryWorkstreams": [
+              "TECHNOLOGY",
+              "EXPERIENCE"
+            ],
+            "primaryOwner": "michelle",
+            "supportingOwners": [
+              "imani",
+              "nia"
+            ],
+            "dependencies": [
+              "mailbox connection authorization",
+              "approved reply templates"
+            ],
+            "blockers": [
+              "support@ live mailbox not connected"
+            ],
+            "founderActionRequired": false,
+            "humanExpertRequired": false,
+            "evidenceRequiredForCompletion": "Mailbox connected; Michelle routing live; Nia draft path verified; no kimberly@ autonomy",
+            "cost": null,
+            "nextAction": "Imani implements technical connection → Michelle owns routing operations → Nia prepares approved routine replies",
+            "evidenceAcceptanceState": "interface_ready",
+            "priority": 3,
+            "criticalPath": true,
+            "source": [
+              "ops/fab-5/acceptance-record.json",
+              "ops/fab-5/operating-system.json"
+            ]
+          },
+          {
+            "id": "D-PRIVACY-MAILBOX",
+            "spreadsheetRow": null,
+            "spreadsheetNote": "Founder-accepted downstream register. Spreadsheet row number is not in the local adapter; do not invent one.",
+            "phase": "Legal",
+            "deliverable": "Connect privacy@ live mailbox",
+            "description": "privacy@thebackhalf.org is REQUIRED_AT_LAUNCH. Michelle escalates; Imani implements; no autonomous legal answers.",
+            "percentComplete": 0,
+            "status": "interface_ready_downstream",
+            "primaryWorkstream": "LEGAL",
+            "secondaryWorkstreams": [
+              "OPERATIONS",
+              "TECHNOLOGY"
+            ],
+            "primaryOwner": "imani",
+            "supportingOwners": [
+              "michelle"
+            ],
+            "dependencies": [
+              "mailbox connection authorization",
+              "D-LEGAL-APPROVED-COPY for approved privacy language"
+            ],
+            "blockers": [
+              "privacy@ live mailbox not connected"
+            ],
+            "founderActionRequired": false,
+            "humanExpertRequired": false,
+            "evidenceRequiredForCompletion": "Mailbox connected; escalation path live; no autonomous legal conclusions",
+            "cost": null,
+            "nextAction": "Imani implements technical connection → Michelle owns escalation operations → human legal expert only if a legal judgment trigger fires",
+            "evidenceAcceptanceState": "interface_ready",
+            "priority": 4,
+            "criticalPath": true,
+            "source": [
+              "ops/fab-5/acceptance-record.json",
+              "ops/fab-5/operating-system.json"
+            ]
+          }
+        ]
+      },
+      {
+        "question": "founder_action",
+        "answer": "D-LEGAL-APPROVED-COPY: Accept/sign approved legal documents after qualified human legal text is presented | D-PRODUCTION-DEPLOY: Authorize production-deploy ADMIN credentials (Founder retains ADMIN)",
+        "items": [
+          {
+            "id": "FA-LEGAL-SIGNATURE",
+            "row": "D-LEGAL-APPROVED-COPY",
+            "decision": "Accept/sign approved legal documents after qualified human legal text is presented",
+            "whyFounderRequired": "Legal signature / Founder-reserved acceptance",
+            "deadlineDependency": "Blocked on human legal approved text, then Imani implementation and Nia presentation check",
+            "recommendation": "Do not draft legal language. Wait for qualified human legal text, then accept/sign.",
+            "impactIfDelayed": "Participant-facing legal surfaces remain APPROVED LEGAL COPY PENDING; SCHEDULE / LAUNCH THREAT if delayed"
+          },
+          {
+            "id": "FA-DEPLOY-ADMIN",
+            "row": "D-PRODUCTION-DEPLOY",
+            "decision": "Authorize production-deploy ADMIN credentials (Founder retains ADMIN)",
+            "whyFounderRequired": "Production host admin remains Founder. Agents must not hold ADMIN.",
+            "deadlineDependency": "Unlocks Imani EXECUTE for approved deploys",
+            "recommendation": "Authorize credentials out-of-band. Do not place secrets in prompts.",
+            "impactIfDelayed": "Approved production deploys cannot be executed; SCHEDULE / LAUNCH THREAT if delayed"
+          }
+        ]
+      },
+      {
+        "question": "parallel",
+        "answer": "Imani: D-PRODUCTION-DEPLOY technical connection; D-PRIVACY-MAILBOX technical implementation; D-LEGAL-APPROVED-COPY implementation after approved text exists | Nia: D-SOCIAL-PUBLISH draft-only until named; D-COMMUNITY-PLATFORM experience prep until named; participant-facing verification of legal presentation | Michelle: D-SUPPORT-MAILBOX operations; dependency/readiness tracking across remaining items | Kimberly: Founder-reserved legal signature when approved text is presented; production-deploy ADMIN remains Founder",
+        "items": [
+          {
+            "imani": [
+              "D-PRODUCTION-DEPLOY technical connection",
+              "D-PRIVACY-MAILBOX technical implementation",
+              "D-LEGAL-APPROVED-COPY implementation after approved text exists"
+            ],
+            "nia": [
+              "D-SOCIAL-PUBLISH draft-only until named",
+              "D-COMMUNITY-PLATFORM experience prep until named",
+              "participant-facing verification of legal presentation"
+            ],
+            "michelle": [
+              "D-SUPPORT-MAILBOX operations",
+              "dependency/readiness tracking across remaining items"
+            ],
+            "kimberly": [
+              "Founder-reserved legal signature when approved text is presented",
+              "production-deploy ADMIN remains Founder"
+            ]
+          }
+        ]
+      },
+      {
+        "question": "critical_path",
+        "answer": "D-LEGAL-APPROVED-COPY → D-PRODUCTION-DEPLOY → D-SUPPORT-MAILBOX → D-PRIVACY-MAILBOX",
+        "items": [
+          {
+            "id": "D-LEGAL-APPROVED-COPY",
+            "spreadsheetRow": null,
+            "spreadsheetNote": "Existing product requirement. Spreadsheet row number is not in the local adapter; do not invent one.",
+            "phase": "Legal",
+            "deliverable": "Insert Founder-approved legal document text",
+            "description": "Privacy Policy, Terms of Use, Participant Agreement, Membership Agreement, and AI Disclosure exist as pages with contentPending=true. Insert verbatim approved legal text without rewriting legal meaning.",
+            "percentComplete": 0,
+            "status": "pending",
+            "primaryWorkstream": "LEGAL",
+            "secondaryWorkstreams": [
+              "EXPERIENCE"
+            ],
+            "primaryOwner": "imani",
+            "supportingOwners": [
+              "michelle",
+              "nia",
+              "kimberly"
+            ],
+            "dependencies": [
+              "qualified human legal approved text"
+            ],
+            "blockers": [
+              "Approved legal copy has not been inserted; contentPending remains true"
+            ],
+            "founderActionRequired": true,
+            "humanExpertRequired": true,
+            "evidenceRequiredForCompletion": "content/legal/documents.ts sections populated verbatim; contentPending=false; Nia participant-facing verification; Founder signature/acceptance",
+            "cost": null,
+            "nextAction": "Human legal expert supplies/approves text → Imani implements → Nia verifies presentation → Kimberly signs/accepts",
+            "evidenceAcceptanceState": "not_started",
+            "priority": 1,
+            "criticalPath": true,
+            "source": [
+              "content/legal/documents.ts",
+              "ops/fab-5/operating-system.json access Legal document files"
+            ]
+          },
+          {
+            "id": "D-PRODUCTION-DEPLOY",
+            "spreadsheetRow": null,
+            "spreadsheetNote": "Founder-accepted downstream register. Spreadsheet row number is not in the local adapter; do not invent one.",
+            "phase": "Technology",
+            "deliverable": "Connect production deploy credentials",
+            "description": "Production-host deploy credentials remain INTERFACE READY — DOWNSTREAM CONNECTION REQUIRED. Imani EXECUTE for approved deploys; Founder retains ADMIN. Do not invent a host vendor.",
+            "percentComplete": 0,
+            "status": "interface_ready_downstream",
+            "primaryWorkstream": "TECHNOLOGY",
+            "secondaryWorkstreams": [
+              "OPERATIONS"
+            ],
+            "primaryOwner": "imani",
+            "supportingOwners": [
+              "michelle",
+              "kimberly"
+            ],
+            "dependencies": [
+              "Founder ADMIN / credential authorization"
+            ],
+            "blockers": [
+              "Production deploy credentials not connected"
+            ],
+            "founderActionRequired": true,
+            "humanExpertRequired": false,
+            "evidenceRequiredForCompletion": "Imani EXECUTE connected for approved deploys; Founder ADMIN retained; no secrets in prompts",
+            "cost": null,
+            "nextAction": "Founder authorizes ADMIN credentials → Imani connects EXECUTE for approved deploys → Michelle verifies evidence",
+            "evidenceAcceptanceState": "interface_ready",
+            "priority": 2,
+            "criticalPath": true,
+            "source": [
+              "ops/fab-5/acceptance-record.json",
+              "ops/fab-5/row-16-status.json"
+            ]
+          },
+          {
+            "id": "D-SUPPORT-MAILBOX",
+            "spreadsheetRow": null,
+            "spreadsheetNote": "Founder-accepted downstream register. Spreadsheet row number is not in the local adapter; do not invent one.",
+            "phase": "Operations",
+            "deliverable": "Connect support@ live mailbox",
+            "description": "support@thebackhalf.org is REQUIRED_AT_LAUNCH. Michelle triages/routes; Nia drafts routine replies; Imani only for technical incidents. Live connection is downstream, not a new product.",
+            "percentComplete": 0,
+            "status": "interface_ready_downstream",
+            "primaryWorkstream": "OPERATIONS",
+            "secondaryWorkstreams": [
+              "TECHNOLOGY",
+              "EXPERIENCE"
+            ],
+            "primaryOwner": "michelle",
+            "supportingOwners": [
+              "imani",
+              "nia"
+            ],
+            "dependencies": [
+              "mailbox connection authorization",
+              "approved reply templates"
+            ],
+            "blockers": [
+              "support@ live mailbox not connected"
+            ],
+            "founderActionRequired": false,
+            "humanExpertRequired": false,
+            "evidenceRequiredForCompletion": "Mailbox connected; Michelle routing live; Nia draft path verified; no kimberly@ autonomy",
+            "cost": null,
+            "nextAction": "Imani implements technical connection → Michelle owns routing operations → Nia prepares approved routine replies",
+            "evidenceAcceptanceState": "interface_ready",
+            "priority": 3,
+            "criticalPath": true,
+            "source": [
+              "ops/fab-5/acceptance-record.json",
+              "ops/fab-5/operating-system.json"
+            ]
+          },
+          {
+            "id": "D-PRIVACY-MAILBOX",
+            "spreadsheetRow": null,
+            "spreadsheetNote": "Founder-accepted downstream register. Spreadsheet row number is not in the local adapter; do not invent one.",
+            "phase": "Legal",
+            "deliverable": "Connect privacy@ live mailbox",
+            "description": "privacy@thebackhalf.org is REQUIRED_AT_LAUNCH. Michelle escalates; Imani implements; no autonomous legal answers.",
+            "percentComplete": 0,
+            "status": "interface_ready_downstream",
+            "primaryWorkstream": "LEGAL",
+            "secondaryWorkstreams": [
+              "OPERATIONS",
+              "TECHNOLOGY"
+            ],
+            "primaryOwner": "imani",
+            "supportingOwners": [
+              "michelle"
+            ],
+            "dependencies": [
+              "mailbox connection authorization",
+              "D-LEGAL-APPROVED-COPY for approved privacy language"
+            ],
+            "blockers": [
+              "privacy@ live mailbox not connected"
+            ],
+            "founderActionRequired": false,
+            "humanExpertRequired": false,
+            "evidenceRequiredForCompletion": "Mailbox connected; escalation path live; no autonomous legal conclusions",
+            "cost": null,
+            "nextAction": "Imani implements technical connection → Michelle owns escalation operations → human legal expert only if a legal judgment trigger fires",
+            "evidenceAcceptanceState": "interface_ready",
+            "priority": 4,
+            "criticalPath": true,
+            "source": [
+              "ops/fab-5/acceptance-record.json",
+              "ops/fab-5/operating-system.json"
+            ]
+          }
+        ]
+      },
+      {
+        "question": "unowned",
+        "answer": "UNOWNED LAUNCH-CRITICAL DELIVERABLES = 0",
+        "items": []
+      }
+    ]
+  },
+  "executiveQueues": {
+    "michelle": 1,
+    "imani": 3,
+    "nia": 2,
+    "kimberly": 0
+  },
+  "statusIntegrity": {
+    "row15FounderAcceptance": "accepted",
+    "row16FounderAcceptance": "accepted",
+    "row17FounderAcceptance": "accepted",
+    "percentCompleteUnchangedExceptRow18": true
+  },
+  "mutatedProduction": false
+}

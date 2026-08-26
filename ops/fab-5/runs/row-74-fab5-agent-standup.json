@@ -1,0 +1,103 @@
+{
+  "generatedAt": "2026-08-26T09:52:00.000Z",
+  "row": "74-fab5-agent-standup",
+  "title": "FINAL FAB 5 AGENT STANDUP + AUTONOMOUS EXECUTION VALIDATION",
+  "secretsPrinted": false,
+  "founderAcceptanceRecorded": false,
+  "row74CredentialRegisterUnchanged": true,
+  "row74MarkedComplete": false,
+  "row75Started": false,
+  "productionDeployment": {
+    "id": "dpl_E8UJ5frdc3k4HNRGhLA9xBKW1C4E",
+    "url": "https://website-lnnyla7rc-back-half.vercel.app",
+    "inspector": "https://vercel.com/back-half/website/E8UJ5frdc3k4HNRGhLA9xBKW1C4E",
+    "aliased": "https://www.thebackhalf.org"
+  },
+  "cursorApiKeyPresent": true,
+  "cursorApiKeyValuePrinted": false,
+  "ticks": [
+    {
+      "at": "2026-08-26T09:45:13.785Z",
+      "source": "vercel cron */15",
+      "ok": true,
+      "parallel": true,
+      "claimed": [
+        "aos-row74-michelle-reclassify",
+        "aos-row74-imani-cursor-inspect",
+        "aos-row74-nia-experience-inspect",
+        "aos-open-google-signin-hide",
+        "aos-row74-nia-dashboard-welcome"
+      ],
+      "completed": [
+        "aos-row74-michelle-reclassify",
+        "aos-row74-imani-cursor-inspect",
+        "aos-row74-nia-experience-inspect",
+        "aos-open-google-signin-hide"
+      ],
+      "engineeringJobsLaunched": 1,
+      "errors": []
+    },
+    {
+      "at": "2026-08-26T09:46:24.181Z",
+      "source": "vercel crons run /api/fab-5/aos/tick",
+      "ok": true,
+      "claimed": ["aos-open-checkout-pricing"],
+      "completed": ["aos-open-checkout-pricing"],
+      "engineeringJobsPolled": 1,
+      "duplicateCompletedItemsReclaimed": false
+    },
+    {
+      "at": "2026-08-26T09:50:33.512Z",
+      "source": "vercel crons run /api/fab-5/aos/tick",
+      "ok": true,
+      "claimed": [],
+      "completed": [],
+      "engineeringJobsPolled": 1,
+      "engineeringJobsIngested": 1
+    }
+  ],
+  "cloudAgent": {
+    "workId": "aos-row74-nia-dashboard-welcome",
+    "owner": "nia",
+    "branch": "cursor/aos-nia-aos-row74-nia-dashboard-welcome-4c1c",
+    "pullRequest": "https://github.com/TheBackHalf/website/pull/1",
+    "softwareChangeApplied": false,
+    "reason": "GitHub origin/main is homepage-only (fc74072). Production app lives in the Vercel working tree, not on GitHub main.",
+    "statusFile": "ops/fab-5/runs/aos-engineering-status/aos-row74-nia-dashboard-welcome.json"
+  },
+  "classification": {
+    "previousUnacceptable": {
+      "blockedByDependency": 84,
+      "founderActionRequired": 31,
+      "humanAcceptanceRequired": 3,
+      "readyForAgentExecution": 0
+    },
+    "recursive": {
+      "remainingLaunchCritical": 102,
+      "readyForAgentExecution": 64,
+      "dependencyBlocked": 10,
+      "founderActionRequired": 22,
+      "humanAcceptanceRequired": 6,
+      "michelleReady": 18,
+      "imaniReady": 22,
+      "niaReady": 24
+    }
+  },
+  "openCursorWork": {
+    "googleSignInHide": "PRESERVED — Production /register has no Google button and no GOOGLE_CLIENT_* notice",
+    "architectDashboardWelcome": "ASSIGNED — Nia Cloud Agent ingested; product fix blocked by GitHub main gap",
+    "checkoutPricingInspect": "INSPECTED — Nia hosted; no Stripe charges",
+    "row73StripeLive": "PRESERVED — FOUNDER_GATED founder_live_stripe_key"
+  },
+  "regression": {
+    "health": 200,
+    "register": 200,
+    "login": 200,
+    "lumina": 200,
+    "support": 200,
+    "checkout": 200
+  },
+  "stripeConfigModified": false,
+  "dnsModified": false,
+  "finalStatus": "NOT READY — GitHub origin/main does not contain the Production application, so Cursor Cloud Agents cannot execute real website engineering."
+}

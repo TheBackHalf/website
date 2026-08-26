@@ -1,0 +1,563 @@
+{
+  "generatedAt": "2026-08-21T20:32:58.585Z",
+  "origin": "http://localhost:3000",
+  "readyForFounderAcceptance": true,
+  "finalStatus": "ROW 32 — COMPLETE",
+  "rowMarkedComplete": true,
+  "founderAcceptance": "YES",
+  "documents": [
+    {
+      "id": "privacy-policy",
+      "name": "Privacy Policy",
+      "version": "1.0",
+      "effectiveDate": "August 31, 2026",
+      "publishedRouteEn": "/legal/privacy-policy",
+      "publishedRouteEs": "/es/legal/privacy-policy",
+      "reviewStatus": "FOUNDER-ACCEPTED",
+      "contentPending": false,
+      "published": true,
+      "publicationStatus": "PUBLISHED",
+      "spanishTitle": "Política de privacidad",
+      "spanishBodyApproved": false
+    },
+    {
+      "id": "terms-of-use",
+      "name": "Terms of Use",
+      "version": "1.0",
+      "effectiveDate": "August 31, 2026",
+      "publishedRouteEn": "/legal/terms-of-use",
+      "publishedRouteEs": "/es/legal/terms-of-use",
+      "reviewStatus": "FOUNDER-ACCEPTED",
+      "contentPending": false,
+      "published": true,
+      "publicationStatus": "PUBLISHED",
+      "spanishTitle": "Términos de uso",
+      "spanishBodyApproved": false
+    },
+    {
+      "id": "participant-agreement",
+      "name": "Participant Agreement",
+      "version": "1.0",
+      "effectiveDate": "August 31, 2026",
+      "publishedRouteEn": "/legal/participant-agreement",
+      "publishedRouteEs": "/es/legal/participant-agreement",
+      "reviewStatus": "FOUNDER-ACCEPTED",
+      "contentPending": false,
+      "published": true,
+      "publicationStatus": "PUBLISHED",
+      "spanishTitle": "Acuerdo de participante",
+      "spanishBodyApproved": false
+    },
+    {
+      "id": "membership-agreement",
+      "name": "Membership Agreement",
+      "version": "1.0",
+      "effectiveDate": "August 31, 2026",
+      "publishedRouteEn": "/legal/membership-agreement",
+      "publishedRouteEs": "/es/legal/membership-agreement",
+      "reviewStatus": "FOUNDER-ACCEPTED",
+      "contentPending": false,
+      "published": true,
+      "publicationStatus": "PUBLISHED",
+      "spanishTitle": "Acuerdo de membresía",
+      "spanishBodyApproved": false
+    },
+    {
+      "id": "ai-disclosure",
+      "name": "AI Disclosure",
+      "version": "1.0",
+      "effectiveDate": "August 31, 2026",
+      "publishedRouteEn": "/legal/ai-disclosure",
+      "publishedRouteEs": "/es/legal/ai-disclosure",
+      "reviewStatus": "FOUNDER-ACCEPTED",
+      "contentPending": false,
+      "published": true,
+      "publicationStatus": "PUBLISHED",
+      "spanishTitle": "Divulgación de IA",
+      "spanishBodyApproved": false
+    }
+  ],
+  "claims": {
+    "hits": [],
+    "refundOffered": false,
+    "refundCategory": false
+  },
+  "obsolete": {
+    "august19": "NONE",
+    "october19": "NONE",
+    "firstYearCommunity": "NONE",
+    "legalAt": "NONE",
+    "billingAt": "NONE",
+    "deadRefundPolicy": "NONE"
+  },
+  "verdicts": {
+    "privacyPolicy": "PASS",
+    "terms": "PASS",
+    "participantAgreement": "PASS",
+    "membershipAgreement": "PASS",
+    "aiDisclosure": "PASS",
+    "finalApprovedContentPublished": "PASS",
+    "draftPlaceholderRemoved": "PASS",
+    "version10Recorded": "PASS",
+    "effectiveDateRecorded": "PASS",
+    "legalRoutes": "PASS",
+    "footerLegalLinks": "PASS",
+    "registrationLegalLinks": "PASS",
+    "checkoutLegalLinks": "PASS",
+    "accountOnboardingLegalLinks": "PASS",
+    "aiLegalLinks": "PASS",
+    "supportLegalLinks": "PASS",
+    "brokenObsoleteLinks": "PASS",
+    "requiredConsentMomentsIdentified": "PASS",
+    "registrationAcknowledgment": "PASS",
+    "checkoutAcknowledgment": "PASS",
+    "membershipAcknowledgment": "PASS",
+    "billingAcknowledgment": "PASS",
+    "requiredConsentEnforcement": "PASS",
+    "consentBypassProtection": "PASS",
+    "documentVersionRecorded": "PASS",
+    "acceptanceTimestampRecorded": "PASS",
+    "productionPersistence": "PASS",
+    "luminaDisclosure": "PASS",
+    "aiKimberlyDisclosure": "PASS",
+    "disclosurePlacement": "PASS",
+    "aiProductReality": "PASS",
+    "websiteClaims": "PASS",
+    "supportClaims": "PASS",
+    "refundClaims": "PASS",
+    "socialMarketingClaims": "PASS",
+    "claimsDoNotExceedProductReality": "PASS",
+    "privacyDataCollectionConsistency": "PASS",
+    "analyticsConsistency": "PASS",
+    "sensitiveDataProtection": "PASS",
+    "age18Consistency": "PASS",
+    "communityOctober25Consistency": "PASS",
+    "foundingArchitectSixMonths": "PASS",
+    "noRefundConsistency": "PASS",
+    "english": "PASS",
+    "spanish": "PASS",
+    "desktop": "PASS",
+    "mobile": "PASS",
+    "runtimeConsole": "PASS"
+  },
+  "regression": {
+    "website": "PASS",
+    "registration": "PASS",
+    "login": "PASS",
+    "checkout": "PASS",
+    "onboarding": "PASS",
+    "journey": "PASS",
+    "lumina": "PASS",
+    "aiKimberly": "PASS",
+    "downloads": "PASS",
+    "membership": "PASS",
+    "support": "PASS",
+    "row51": "PASS",
+    "row84": "PASS",
+    "row150": "PASS",
+    "row151": "PASS",
+    "row153": "PASS",
+    "overall": "PASS"
+  },
+  "tests": [
+    {
+      "id": "catalog-five",
+      "name": "Required legal catalog contains five launch documents",
+      "result": "PASS",
+      "detail": "privacy-policy,terms-of-use,participant-agreement,membership-agreement,ai-disclosure"
+    },
+    {
+      "id": "published-privacy-policy",
+      "name": "Privacy Policy is published Version 1.0",
+      "result": "PASS",
+      "detail": "PUBLISHED FOUNDER-ACCEPTED 1.0 August 31, 2026"
+    },
+    {
+      "id": "published-terms-of-use",
+      "name": "Terms of Use is published Version 1.0",
+      "result": "PASS",
+      "detail": "PUBLISHED FOUNDER-ACCEPTED 1.0 August 31, 2026"
+    },
+    {
+      "id": "published-participant-agreement",
+      "name": "Participant Agreement is published Version 1.0",
+      "result": "PASS",
+      "detail": "PUBLISHED FOUNDER-ACCEPTED 1.0 August 31, 2026"
+    },
+    {
+      "id": "published-membership-agreement",
+      "name": "Membership Agreement is published Version 1.0",
+      "result": "PASS",
+      "detail": "PUBLISHED FOUNDER-ACCEPTED 1.0 August 31, 2026"
+    },
+    {
+      "id": "published-ai-disclosure",
+      "name": "AI Disclosure is published Version 1.0",
+      "result": "PASS",
+      "detail": "PUBLISHED FOUNDER-ACCEPTED 1.0 August 31, 2026"
+    },
+    {
+      "id": "registration-enforcement",
+      "name": "Registration rejects missing acknowledgments",
+      "result": "PASS",
+      "detail": "terms_of_use,privacy_policy,participant_agreement,ai_disclosure"
+    },
+    {
+      "id": "registration-accept-all",
+      "name": "Registration accepts a complete acknowledgment set",
+      "result": "PASS",
+      "detail": "{}"
+    },
+    {
+      "id": "checkout-enforcement",
+      "name": "Checkout rejects missing acknowledgments including billing",
+      "result": "PASS",
+      "detail": "terms_of_use,participant_agreement,membership_agreement,billing_subscription"
+    },
+    {
+      "id": "version-recorded",
+      "name": "Acceptance records identify Version 1.0 and published status",
+      "result": "PASS",
+      "detail": "1.0/published,1.0/published,1.0/published,1.0/published"
+    },
+    {
+      "id": "timestamp-recorded",
+      "name": "Acceptance records include timestamps",
+      "result": "PASS",
+      "detail": "2026-08-21T20:32:53.670Z"
+    },
+    {
+      "id": "locale-recorded",
+      "name": "Acceptance records include locale",
+      "result": "PASS",
+      "detail": "es"
+    },
+    {
+      "id": "persistence",
+      "name": "Existing auth store durably records Version 1.0 acknowledgments",
+      "result": "PASS",
+      "detail": "count=4 versions=1.0,1.0,1.0,1.0"
+    },
+    {
+      "id": "claims-scan",
+      "name": "Launch-facing copy does not exceed product reality",
+      "result": "PASS",
+      "detail": "no excessive claims"
+    },
+    {
+      "id": "refund-category-absent",
+      "name": "Support has no refund ticket category",
+      "result": "PASS",
+      "detail": "refund category"
+    },
+    {
+      "id": "ai-kimberly-gated",
+      "name": "AI Kimberly participant URLs remain age-gated",
+      "result": "PASS",
+      "detail": "path gating present"
+    },
+    {
+      "id": "no-invented-spanish-bodies",
+      "name": "Spanish legal bodies were not invented",
+      "result": "PASS",
+      "detail": "titles only"
+    },
+    {
+      "id": "version-1-0-displayed",
+      "name": "Version 1.0 is recorded on all five documents",
+      "result": "PASS",
+      "detail": "1.0,1.0,1.0,1.0,1.0"
+    },
+    {
+      "id": "effective-date-displayed",
+      "name": "Effective Date August 31, 2026 is recorded on all five documents",
+      "result": "PASS",
+      "detail": "August 31, 2026,August 31, 2026,August 31, 2026,August 31, 2026,August 31, 2026"
+    },
+    {
+      "id": "consent-labels-activated",
+      "name": "Founder-approved consent labels are activated",
+      "result": "PASS",
+      "detail": "I acknowledge that I have read the Privacy Policy."
+    },
+    {
+      "id": "billing-acknowledgment-activated",
+      "name": "Founder-approved billing acknowledgment is activated",
+      "result": "PASS",
+      "detail": "I understand the purchase terms shown above, including the applicable price, Architect Community access and timing, and The Back Half’s no-refund policy."
+    },
+    {
+      "id": "age-18-consistency",
+      "name": "18+ only is consistent in published legal text",
+      "result": "PASS",
+      "detail": "18 years of age or older"
+    },
+    {
+      "id": "community-oct-25-consistency",
+      "name": "Architect Community October 25, 2026 is consistent",
+      "result": "PASS",
+      "detail": "October 25, 2026"
+    },
+    {
+      "id": "first-six-months-consistency",
+      "name": "Founding Architect first six months is consistent",
+      "result": "PASS",
+      "detail": "first six months / April 25, 2027"
+    },
+    {
+      "id": "no-refund-consistency",
+      "name": "No-refund operative language is consistent",
+      "result": "PASS",
+      "detail": "no refunds"
+    },
+    {
+      "id": "obsolete-august-19",
+      "name": "No obsolete August 19 active legal/checkout references",
+      "result": "PASS",
+      "detail": "NONE"
+    },
+    {
+      "id": "obsolete-october-19",
+      "name": "No obsolete October 19 active legal/checkout references",
+      "result": "PASS",
+      "detail": "NONE"
+    },
+    {
+      "id": "obsolete-first-year",
+      "name": "No active first-year Community references in legal/checkout",
+      "result": "PASS",
+      "detail": "NONE"
+    },
+    {
+      "id": "obsolete-legal-at",
+      "name": "No active legal@ references in legal/checkout",
+      "result": "PASS",
+      "detail": "NONE"
+    },
+    {
+      "id": "obsolete-billing-at",
+      "name": "No active billing@ references in legal/checkout",
+      "result": "PASS",
+      "detail": "NONE"
+    },
+    {
+      "id": "obsolete-refund-policy",
+      "name": "No dead Refund Policy references in legal/checkout",
+      "result": "PASS",
+      "detail": "NONE"
+    },
+    {
+      "id": "home-en",
+      "name": "English homepage loads",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "footer-home",
+      "name": "Homepage footer includes legal routes",
+      "result": "PASS",
+      "detail": "footer hrefs"
+    },
+    {
+      "id": "route-en-privacy-policy",
+      "name": "English /legal/privacy-policy publishes Version 1.0",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "route-es-privacy-policy",
+      "name": "Spanish /es/legal/privacy-policy does not present English as a Spanish instrument",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "no-lorem-privacy-policy",
+      "name": "privacy-policy has no lorem/coming-soon placeholder",
+      "result": "PASS",
+      "detail": "placeholder scan"
+    },
+    {
+      "id": "route-en-terms-of-use",
+      "name": "English /legal/terms-of-use publishes Version 1.0",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "route-es-terms-of-use",
+      "name": "Spanish /es/legal/terms-of-use does not present English as a Spanish instrument",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "no-lorem-terms-of-use",
+      "name": "terms-of-use has no lorem/coming-soon placeholder",
+      "result": "PASS",
+      "detail": "placeholder scan"
+    },
+    {
+      "id": "route-en-participant-agreement",
+      "name": "English /legal/participant-agreement publishes Version 1.0",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "route-es-participant-agreement",
+      "name": "Spanish /es/legal/participant-agreement does not present English as a Spanish instrument",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "no-lorem-participant-agreement",
+      "name": "participant-agreement has no lorem/coming-soon placeholder",
+      "result": "PASS",
+      "detail": "placeholder scan"
+    },
+    {
+      "id": "route-en-membership-agreement",
+      "name": "English /legal/membership-agreement publishes Version 1.0",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "route-es-membership-agreement",
+      "name": "Spanish /es/legal/membership-agreement does not present English as a Spanish instrument",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "no-lorem-membership-agreement",
+      "name": "membership-agreement has no lorem/coming-soon placeholder",
+      "result": "PASS",
+      "detail": "placeholder scan"
+    },
+    {
+      "id": "route-en-ai-disclosure",
+      "name": "English /legal/ai-disclosure publishes Version 1.0",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "route-es-ai-disclosure",
+      "name": "Spanish /es/legal/ai-disclosure does not present English as a Spanish instrument",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "no-lorem-ai-disclosure",
+      "name": "ai-disclosure has no lorem/coming-soon placeholder",
+      "result": "PASS",
+      "detail": "placeholder scan"
+    },
+    {
+      "id": "register-en",
+      "name": "Registration shows required legal acknowledgments",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "register-es",
+      "name": "Spanish registration uses Spanish legal routes and does not invent Spanish legal acknowledgments",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "checkout-catalog",
+      "name": "Checkout catalog loads with footer legal links",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "checkout-offer",
+      "name": "Checkout offer requires account then legal acknowledgments",
+      "result": "PASS",
+      "detail": "HTTP 307 location=/login?next=%2Fcheckout%2Fblueprint"
+    },
+    {
+      "id": "login",
+      "name": "Login loads",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "lumina-public",
+      "name": "Public Lumina page links AI Disclosure",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "lumina-es",
+      "name": "Spanish Lumina page links Spanish AI Disclosure",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "support",
+      "name": "Support loads with legal footer and no refund offer",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "journey",
+      "name": "Journey marketing page loads",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "mobile-home",
+      "name": "Homepage responds to a mobile user-agent",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "review-page",
+      "name": "Founder review page loads on localhost",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "row51",
+      "name": "Row 51 review surface still loads",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "row150",
+      "name": "Row 150 event tracking regression",
+      "result": "PASS",
+      "detail": "exit 0. {\n  \"result\": \"PASS\",\n  \"failures\": [],\n  \"passed\": 16,\n  \"total\": 16\n}\n\nnpm warn Unknown env config \"devdir\". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.\n"
+    },
+    {
+      "id": "row84",
+      "name": "Row 84 dashboard files remain present",
+      "result": "PASS",
+      "detail": "files"
+    },
+    {
+      "id": "row151",
+      "name": "Row 151 launch dashboard view remains present",
+      "result": "PASS",
+      "detail": "files"
+    },
+    {
+      "id": "row153-refund-guard",
+      "name": "Row 153 still has no refund category",
+      "result": "PASS",
+      "detail": "catalog"
+    }
+  ],
+  "defectsCorrected": [
+    "Published Founder-approved English Version 1.0 bodies for Privacy Policy, Terms of Use, Participant Agreement, Membership Agreement, and AI Disclosure with Effective Date August 31, 2026.",
+    "Removed DRAFT / contentPending / APPROVED LEGAL COPY PENDING treatment from the five English legal documents.",
+    "Activated Founder-approved registration and checkout consent sentences, including Privacy Policy and AI Disclosure acknowledgment wording.",
+    "Activated the Founder-approved billing/purchase acknowledgment and kept material purchase terms visible on the checkout offer before the checkbox.",
+    "Acceptance records now store documentId, Version 1.0, publicationStatus published, locale, and consentedAt in the existing auth consent store.",
+    "Spanish /es/legal routes continue to show pending approved translation and do not present English Version 1.0 as a Spanish legal instrument."
+  ],
+  "founderJudgment": [
+    "Spanish legal manuscripts remain PENDING APPROVED TRANSLATION. Do not auto-translate. Do not represent English Version 1.0 as an approved Spanish legal instrument.",
+    "Community Guidelines remain PRE-COMMUNITY-LAUNCH, due BEFORE OCTOBER 25, 2026. August 31 launch blocker: NO. Not created or published in this task."
+  ],
+  "remainingBlockers": [],
+  "row60": "Row 60 is Complete. Founder accepted 2026-08-21. Launch eligibility remains 18+ (18+ ONLY) without date of birth and without a COPPA program. Row 32 publication preserved that decision and did not collect date of birth.",
+  "failedTestIds": []
+}
