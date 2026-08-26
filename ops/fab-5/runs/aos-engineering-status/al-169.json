@@ -685,7 +685,14 @@
       "reason": "Ops status JSON cannot affect production runtime. Build skipped per AOS rule.",
       "result": "SKIPPED_NON_PRODUCTION_CHANGE"
     },
-    "jsonParse": "PASS"
+    "jsonParse": "PASS",
+    "githubCi": {
+      "pr": "https://github.com/TheBackHalf/website/pull/10",
+      "head": "9c2ae06431c4d070eed288a74779ed059e7f9971",
+      "result": "PASS",
+      "checks": 2,
+      "note": "Vercel preview comments + Vercel deploy. No GitHub Actions workflows in this repository."
+    }
   },
   "acceptanceGatesRemaining": [
     "Kimberly Walker (human) Founder review of this procedure and tabletop",
