@@ -1,4 +1,5 @@
-import { sendSmtpEmail } from "@/lib/auth/email/smtp";
+import { sendClassifiedEmail } from "@/lib/email/send";
+import type { EmailTemplateId } from "@/lib/email/types";
 import { getAuthStore } from "@/lib/auth/store";
 import { getBillingStore } from "@/lib/billing/store";
 import type { BillingNotificationTemplate } from "@/lib/billing/types";
@@ -204,10 +205,13 @@ export async function sendBillingNotification(input: {
     offerId: input.offerId,
   });
 
-  const result = await sendSmtpEmail({
+  const templateId = `billing.${input.template}` as EmailTemplateId;
+  const result = await sendClassifiedEmail({
+    templateId,
     to: user.email,
     subject: message.subject,
     text: message.text,
+    locale,
   });
 
   if (result.status === "sent") {

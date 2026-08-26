@@ -1,5 +1,5 @@
 import { getSiteUrl, isEmailDeliveryConfigured } from "@/lib/auth/config";
-import { sendSmtpEmail } from "@/lib/auth/email/smtp";
+import { sendClassifiedEmail } from "@/lib/email/send";
 import type { Locale } from "@/lib/i18n/config";
 
 type SendPasswordResetEmailInput = {
@@ -59,10 +59,12 @@ export async function sendPasswordResetEmail(
           "The Back Half",
         ].join("\n");
 
-  const result = await sendSmtpEmail({
+  const result = await sendClassifiedEmail({
+    templateId: "auth.password_reset",
     to: input.email,
     subject,
     text,
+    locale: input.locale,
   });
 
   if (result.status === "sent") {
@@ -70,8 +72,9 @@ export async function sendPasswordResetEmail(
   }
 
   if (process.env.NODE_ENV !== "production") {
+    const detail = "error" in result ? result.error : result.status;
     console.info(
-      `[Row 64] Password reset email delivery failed (${result.error}). Fallback link for ${input.email}: ${resetUrl}`,
+      `[Row 64] Password reset email delivery failed (${detail}). Fallback link for ${input.email}: ${resetUrl}`,
     );
     return { status: "logged" };
   }

@@ -36,6 +36,8 @@ export function isAgeEligibilityExemptPath(pathname: string): boolean {
     startsWithPath(path, "/forgot-password") ||
     startsWithPath(path, "/reset-password") ||
     startsWithPath(path, "/verify-email") ||
+    startsWithPath(path, "/unsubscribe") ||
+    startsWithPath(path, "/api/email/unsubscribe") ||
     startsWithPath(path, "/legal")
   );
 }

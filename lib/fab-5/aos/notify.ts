@@ -1,6 +1,7 @@
 import { randomUUID } from "node:crypto";
 
-import { isSmtpReady, sendSmtpEmail } from "@/lib/auth/email/smtp";
+import { isSmtpReady } from "@/lib/auth/email/smtp";
+import { sendClassifiedEmail } from "@/lib/email/send";
 import { loadServerEnvAllowlist } from "@/lib/fab-5/access";
 import type { FounderDecision, NotificationRecord } from "@/lib/fab-5/aos/types";
 import { recordNotification } from "@/lib/fab-5/aos/store";
@@ -109,7 +110,8 @@ export async function notifyFounderDecision(input: {
     emailStatus = "not_configured";
     emailError = "smtp_not_configured";
   } else {
-    const sent = await sendSmtpEmail({
+    const sent = await sendClassifiedEmail({
+      templateId: "aos.founder_decision",
       to: founderEmailDestination(),
       subject: `Founder decision required — ${input.decision.decisionRequired.slice(0, 80)}`,
       text: decisionEmailBody(input.decision),
@@ -123,7 +125,7 @@ export async function notifyFounderDecision(input: {
       emailError = sent.error;
     } else {
       emailStatus = "failed";
-      emailError = sent.error;
+      emailError = "error" in sent ? sent.error : sent.status;
     }
   }
   const email: NotificationRecord = {
