@@ -1,0 +1,55 @@
+{
+  "row": 210,
+  "excelRow": 211,
+  "event": "founder-acceptance-closure",
+  "mode": "founder-acceptance-closure",
+  "date": "2026-08-26",
+  "generatedAt": "2026-08-26T19:41:46Z",
+  "founder": "Kimberly Walker (human)",
+  "founderDecision": "ACCEPTED",
+  "founderAcceptance": "YES",
+  "percentComplete": 100,
+  "status": "Complete",
+  "deliverable": "Create Launch-Day Communications Command Plan",
+  "commitment": "Define who publishes each channel, who verifies live links, who monitors replies, who sends email, who handles partner outreach, who can pause messaging during an incident, and who confirms successful release across every channel.",
+  "acceptedArtifact": "ops/fab-5/runs/aos-engineering-status/al-210.json",
+  "pr": "https://github.com/TheBackHalf/website/pull/41",
+  "branch": "cursor/aos-michelle-al-210-b6a4",
+  "applicationCodeChanged": false,
+  "productFilesChanged": false,
+  "marketingFilesChanged": false,
+  "legalFilesChanged": false,
+  "stripeChanged": false,
+  "dnsChanged": false,
+  "launchRoadmapChanged": false,
+  "founderNotesChanged": false,
+  "otherRowsChanged": false,
+  "row75Changed": false,
+  "row82Changed": false,
+  "row86Changed": false,
+  "scope": {
+    "acceptedRow": 210,
+    "doesNotAccept": [
+      {
+        "row": 75,
+        "deliverable": "Validate Domain, DNS, SSL and Renewal Continuity"
+      },
+      {
+        "row": 82,
+        "deliverable": "Implement Social Publishing and Scheduling System"
+      },
+      {
+        "row": 86,
+        "deliverable": "Create Launch Audience and Partner Outreach List"
+      }
+    ]
+  },
+  "preservedConstraints": [
+    "Native Instagram/TikTok schedule load remains unverified (Row 82 / Option B).",
+    "thebackhalf.org DNS remains independently tracked under Row 75.",
+    "Partner outreach remains deferred post-launch under Row 86.",
+    "Launch email remains Founder-approved and not authorized to send."
+  ],
+  "remainingBlockers": "NONE for Row 210. Rows 75, 82, and 86 remain independently open.",
+  "unexpectedChanges": "NONE"
+}

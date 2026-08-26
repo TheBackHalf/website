@@ -343,6 +343,32 @@
         "ops/fab-5/decision-log.json"
       ],
       "blockers": []
+    },
+    {
+      "number": 210,
+      "deliverable": "Create Launch-Day Communications Command Plan",
+      "status": "complete",
+      "founderAcceptance": "accepted",
+      "founderDecision": "ACCEPTED",
+      "percentComplete": 100,
+      "founderAcceptedAt": "2026-08-26",
+      "founderAcceptanceAuthority": "Kimberly Walker (human)",
+      "scope": "DEFINE-who launch-day communications command plan only",
+      "doesNotAccept": [75, 82, 86],
+      "remainingBlockers": [],
+      "preservedOpenRows": [
+        "Row 75 Validate Domain, DNS, SSL and Renewal Continuity",
+        "Row 82 Implement Social Publishing and Scheduling System",
+        "Row 86 Create Launch Audience and Partner Outreach List"
+      ],
+      "evidence": [
+        "ops/fab-5/runs/aos-engineering-status/al-210.json",
+        "ops/fab-5/row-210-status.json",
+        "ops/fab-5/runs/row-210-founder-acceptance-closure-2026-08-26.json",
+        "ops/fab-5/decision-log.json",
+        "https://github.com/TheBackHalf/website/pull/41"
+      ],
+      "blockers": []
     }
   ]
 }

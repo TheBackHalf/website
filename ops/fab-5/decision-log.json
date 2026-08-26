@@ -1178,6 +1178,18 @@
       "summary": "Founder visually retested the production registration form and accepted the First Name / Last Name alignment correction as complete. Layout uses the existing two-column name grid with [&>.bh-form-field]:mt-0. This acceptance is limited to that registration layout defect. It does not accept Google Sign-In UX, age-gate, Stripe, DNS, or other Launch Readiness rows.",
       "owner": "nia",
       "requiresFounderAcceptance": false
+    },
+    {
+      "id": "row-210-founder-acceptance",
+      "at": "2026-08-26",
+      "type": "founder_acceptance",
+      "status": "founder_accepted",
+      "founderAcceptance": "accepted",
+      "founderAcceptedAt": "2026-08-26",
+      "summary": "Kimberly Walker (human) accepted Row 210 Create Launch-Day Communications Command Plan as Complete / 100%. This acceptance covers the DEFINE-who command plan only (who publishes, verifies live links, monitors replies, sends email, handles partner outreach, can pause messaging, and confirms successful release). It does not accept or complete Row 75 DNS, Row 82 social publishing/scheduling, Row 86 partner outreach, or any other dependency.",
+      "owner": "founder",
+      "requiresFounderAcceptance": false,
+      "row": 210
     }
   ]
 }
