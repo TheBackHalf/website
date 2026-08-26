@@ -1,0 +1,267 @@
+{
+  "aosWorkId": "al-159",
+  "row": 159,
+  "excelRow": 160,
+  "source": "command_center",
+  "sourceReference": "August Launch row 159",
+  "deliverable": "Create Founding Architect Community Runway",
+  "title": "Founding Architect Community Runway",
+  "assignedOperatingAgent": "michelle",
+  "primaryWorkbookOwner": "nia",
+  "supportingOwners": ["michelle", "imani"],
+  "michelleScope": "operations, orchestration, Launch Readiness coordination. Did not take Imani security/infra ownership or Nia curriculum/brand ownership.",
+  "generatedAt": "2026-08-26T16:50:00.000Z",
+  "mode": "ops-status-only",
+  "softwareChangeApplied": false,
+  "productFilesChanged": false,
+  "marketingFilesChanged": false,
+  "legalFilesChanged": false,
+  "stripeChanged": false,
+  "dnsChanged": false,
+  "secretsExposed": false,
+  "newCommunityProgramInvented": false,
+  "founderAcceptance": "PENDING",
+  "founderAccepted": false,
+  "founderAcceptedAt": null,
+  "rowMarkedComplete": false,
+  "markedComplete": false,
+  "percentCompleteRecorded": 90,
+  "status": "READY FOR FOUNDER ACCEPTANCE",
+  "technicalStatus": "ready_for_founder_acceptance",
+  "acceptanceState": "open",
+  "kimberlyWalkerAiTreatedAsCapacity": false,
+  "branch": "cursor/aos-michelle-al-159-471e",
+  "merged": false,
+  "deployed": false,
+
+  "purpose": "Finalize what Founding Architects are told at purchase and onboarding about Community timing, inclusion, first-year access, renewal, communication cadence, and the interval between Blueprint completion and Community opening. Compile locked pricing/community/onboarding decisions. Do not invent a new Community program.",
+
+  "lockedDecisions": {
+    "companyLaunchDate": "August 31, 2026",
+    "communityLaunchDate": "October 25, 2026",
+    "communityComingCopy": "Architect Community — Coming October 25, 2026",
+    "communityLiveOnAugust31": false,
+    "doNotUseCommunityDate": "October 19, 2026",
+    "foundingArchitectOfferName": "Founding Architect",
+    "foundingArchitectPrice": "$1,750 one-time",
+    "blueprintPrice": "$1,500 one-time",
+    "standaloneCommunityPrice": "$50/month",
+    "enrollmentWindow": "August 31–December 31, 2026",
+    "foundingArchitectInclusions": "The Back Half Blueprint + first six months of Architect Community",
+    "foundingArchitectCommunityBenefit": "first six months",
+    "foundingArchitectCommunityPeriod": {
+      "starts": "October 25, 2026",
+      "ends": "April 25, 2027",
+      "label": "Founding Architect Community period runs October 25, 2026 through April 25, 2027"
+    },
+    "renewal": "Founding Architect renews at $50/month after the first six months of Architect Community access",
+    "standaloneCommunityAvailability": "$50/month after Blueprint completion. Architect Community — Coming October 25, 2026.",
+    "refunds": "NO REFUNDS. Cancellation is not a refund.",
+    "foundingArchitectCommunityPortion": [
+      "Cannot be canceled separately",
+      "Cannot be exchanged",
+      "Cannot be transferred",
+      "Is not eligible for refund"
+    ],
+    "eligibility": "18+",
+    "firstYearAccessSuperseded": true,
+    "firstYearAccessNote": "Original Command Center pricing language said first year of Community and Year 2 renewal. Founder-accepted checkout, purchase terms, Membership Agreement Version 1.0, and Row 33/34 records supersede that. Participant-facing language is first six months, not first year or twelve months."
+  },
+
+  "runwayWhatFoundingArchitectsAreTold": {
+    "communityTiming": {
+      "tell": [
+        "Architect Community launches October 25, 2026.",
+        "Architect Community — Coming October 25, 2026.",
+        "Architect Community is not live on August 31, 2026. Company launch and Community launch are two dates."
+      ],
+      "doNotTell": [
+        "Community is open or live on August 31, 2026.",
+        "Community opens October 19, 2026.",
+        "Any other Community opening date."
+      ],
+      "purchaseSurfaces": "Told at checkout offer copy, checkout purchase terms before billing acknowledgment, Membership Agreement §7, billing acknowledgment material terms, EN/ES dictionaries.",
+      "onboardingSurfaces": "Not restated in the Founder Welcome letter or onboarding step copy. Journey onboarding begins the Blueprint, not Community."
+    },
+    "inclusion": {
+      "tell": [
+        "Founding Architect — $1,750 one-time payment.",
+        "Founding Architect includes Blueprint + first six months of Architect Community.",
+        "Enrollment August 31–December 31, 2026."
+      ],
+      "doNotTell": [
+        "Founding Architect includes first year or twelve months of Architect Community.",
+        "Community is a live experience included on purchase day."
+      ],
+      "purchaseSurfaces": "Told at checkout and legal. Spanish checkout matches: primeros seis meses; período del 25 de octubre de 2026 al 25 de abril de 2027."
+    },
+    "firstYearAccess": {
+      "tell": "Do not describe first-year Community access. The locked commercial inclusion is the first six months of Architect Community, commencing October 25, 2026 and concluding April 25, 2027.",
+      "commandCenterRowDescriptionStillSays": "first-year access",
+      "lockedReplacement": "first six months of Architect Community access (October 25, 2026 through April 25, 2027)",
+      "historicalStaleSourcesNotToQuoteToParticipants": [
+        "ops/fab-5/aos-command-center-snapshot.json pricing row still says first year / Year 2",
+        "ops/fab-5/launch-rows.json Build Pricing and Enrollment Pages description still says first year / August 19 enrollment",
+        "ops/fab-5/runs/row-33-community-timing-closure-2026-08-21.json foundingArchitectOfferPreserved.inclusions still says first year",
+        "Archived Row 78 campaign drafts that named first year inside the Architect Community — not used for launch"
+      ]
+    },
+    "renewal": {
+      "tell": [
+        "Founding Architect renews at $50/month after the first six months of Architect Community access.",
+        "Standalone Architect Community is $50/month after Blueprint completion, and still launches October 25, 2026.",
+        "Recurring memberships automatically renew until canceled.",
+        "Members on a recurring monthly Community membership may cancel future renewals through their account or by contacting The Back Half. Cancellation prevents future billing only. Benefits continue through the end of the current billing period.",
+        "The Community portion of the Founding Architect Bundle cannot be canceled separately, exchanged, transferred, or refunded.",
+        "NO REFUNDS. Cancellation is not a refund."
+      ],
+      "doNotTell": [
+        "Community renews at $50/month beginning Year 2.",
+        "A refund, exception, or credit is available.",
+        "The included Founding Architect Community period can be canceled a la carte."
+      ]
+    },
+    "communicationCadence": {
+      "lockedCustomerFacingCadence": null,
+      "tell": [
+        "Do not promise a weekly, monthly, or dated Founding Architect Community communication calendar at purchase or onboarding.",
+        "Do not promise Community events, calls, or a member newsletter schedule before Community opens.",
+        "If asked when Community opens: Architect Community is not live on August 31, 2026. Architect Community — Coming October 25, 2026. (Row 83 T28)",
+        "If asked about support response time, use the locked support expectation: typically within 3 days, with a goal of 72 hours or less. That is support, not a Community cadence.",
+        "Time zone is collected for scheduling, communications, community, and Journey timing. Collecting a time zone is not a promise of a Community schedule."
+      ],
+      "doNotTell": [
+        "You will receive weekly Community emails / calls / events starting at purchase.",
+        "A Founding Architect member cadence that has not been Founder-accepted."
+      ],
+      "downstreamOwner": "August Launch row 160 — Create Founding Architect Welcome and Retention Plan (Nia primary; Michelle supporting). Row 160 defines actual email, Founder, Lumina, and Community touchpoints. This runway does not invent that plan."
+    },
+    "betweenBlueprintCompletionAndCommunityOpening": {
+      "tell": [
+        "The Blueprint Journey and Lumina are available after purchase and onboarding. Community is not required to begin.",
+        "Architect Community launches October 25, 2026. Completing the Blueprint does not open Community early.",
+        "If the Blueprint is completed before October 25, 2026, continue the Journey, Lumina, and Architect Resources. Community remains Coming October 25, 2026.",
+        "Standalone Community at $50/month is available after Blueprint completion and still is not a live experience until October 25, 2026.",
+        "Founding Architect included Community access is the first six months commencing October 25, 2026 through April 25, 2027. After that period, renewal is $50/month.",
+        "Community Guidelines remain pre-Community-launch and must be finalized before October 25, 2026. They do not block August 31."
+      ],
+      "doNotTell": [
+        "Finishing the Blueprint unlocks a live Community before October 25, 2026.",
+        "There is a substitute Community program between Blueprint completion and October 25.",
+        "Community-only purchase includes Journey onboarding. Production copy: Community access alone does not include Journey onboarding."
+      ]
+    }
+  },
+
+  "approvedParticipantFacingStatements": {
+    "english": {
+      "checkoutFoundingArchitect": "Blueprint + first six months of Architect Community included — $1,750 one-time. Architect Community launches October 25, 2026. Founding Architect Community period runs October 25, 2026 through April 25, 2027. Enrollment August 31–December 31, 2026.",
+      "checkoutPurchaseTerms": [
+        "Founding Architect — $1,750 one-time payment",
+        "Founding Architect includes Blueprint + first six months of Architect Community",
+        "Architect Community launches October 25, 2026",
+        "Founding Architect Community period runs October 25, 2026 through April 25, 2027",
+        "NO REFUNDS"
+      ],
+      "checkoutCommunityOffer": "$50/month after Blueprint completion. Architect Community — Coming October 25, 2026. Founding Architect renews at $50/month after the first six months of Architect Community access.",
+      "supportSocialT28": "Architect Community is not live on August 31, 2026. Architect Community — Coming October 25, 2026.",
+      "membershipAgreementSection7Lead": "The Founding Architect Bundle includes the first six (6) months of Architect Community access as part of a single bundled purchase. The Architect Community launches on October 25, 2026, and is not live on The Back Half company launch date of August 31, 2026. The six-month Founding Architect Community benefit commences on October 25, 2026, and concludes on April 25, 2027."
+    },
+    "spanishCheckoutAlreadyAligned": {
+      "foundingArchitect": "Blueprint + primeros seis meses de Architect Community incluidos — $1,750 compra única. Architect Community comienza el 25 de octubre de 2026. El período Founding Architect Community es del 25 de octubre de 2026 al 25 de abril de 2027. Inscripción del 31 de agosto al 31 de diciembre de 2026.",
+      "community": "$50/mes después de completar el Blueprint. Architect Community — Próximamente el 25 de octubre de 2026. Founding Architect se renueva a $50/mes después de los primeros seis meses de acceso a Architect Community."
+    },
+    "niaBrandNote": "These statements are compiled from locked checkout, legal, and Row 33/83 copy. This file does not rewrite Nia curriculum, Founder Welcome, or marketing captions."
+  },
+
+  "currentSurfacesAudit": {
+    "purchase": {
+      "checkoutOfferCopyEnEs": "PASS — first six months, October 25, 2026, April 25, 2027, $50/month renewal after first six months",
+      "checkoutPurchaseTermsBeforeAcknowledgment": "PASS — timing, inclusion, period, no refunds",
+      "membershipAgreementV1Section7": "PASS — first six months, October 25, 2026 through April 25, 2027; Community portion cannot be canceled separately",
+      "billingAcknowledgmentMaterialTerms": "PASS — first six months named before acknowledgment",
+      "checkoutSuccessPage": "GAP — generic payment-complete copy. Does not restate Community timing, inclusion, or renewal. Next step is Journey onboarding for entitled purchasers.",
+      "postPurchaseEmail": "GAP — no Founding Architect post-purchase email sequence exists in this repository"
+    },
+    "onboarding": {
+      "founderWelcomeLetter": "GAP FOR THIS RUNWAY — approved Journey invitation only. Does not mention Community timing, inclusion, six-month benefit, renewal, or cadence. Not rewritten here.",
+      "onboardingUiCopy": "GAP FOR THIS RUNWAY — preferences, consent, Lumina, Aliveness Index, Chapter One. Community mentioned only as: Community access alone does not include Journey onboarding.",
+      "foundingArchitectWelcomeVideo": "Present as onboarding media. Captions/transcript in this pass do not restate Community commercial terms. Not rewritten here."
+    },
+    "supportAndPublic": {
+      "row83T28": "PASS for timing only. Does not restate six-month benefit or $50/month renewal. Use checkout/legal language if a purchaser asks about inclusion or renewal.",
+      "launchDayRunbook": "PASS — first six months; Coming October 25, 2026",
+      "row80SeptemberPublicContent": "PASS — Community not live in September; first six months when Community opens October 25"
+    }
+  },
+
+  "systemsInconsistencyFlaggedNotChanged": {
+    "owner": "imani",
+    "issue": "Billing entitlement grant for the Founding Architect bundle still derives community_access endsAt with addOneYear(grantedAt) and comments still say included Community year. Locked participant-facing and legal term is first six months commencing October 25, 2026 and concluding April 25, 2027.",
+    "paths": [
+      "lib/billing/entitlements.ts",
+      "lib/billing/store.ts",
+      "lib/billing/reconcile.ts"
+    ],
+    "michelleAction": "Flagged only. Billing/entitlement code was not changed in this deliverable.",
+    "participantFacingInstruction": "Tell purchasers the locked six-month October 25, 2026–April 25, 2027 term. Do not tell them they receive one year because of the current entitlement helper."
+  },
+
+  "whatHappensOnTheRunway": {
+    "atPurchase": "Founding Architect pays $1,750 one-time. Material terms shown before billing acknowledgment. Journey access is granted. Community is a future commercial inclusion, not a live experience on purchase day.",
+    "atOnboarding": "Founder Welcome, preferences, required consents, Lumina introduction, Aliveness Index, then Chapter One. Blueprint Journey begins immediately. Community is not opened by onboarding.",
+    "afterPurchaseUntilOctober25": "Architect continues Journey, Lumina, and resources. Community is not live. Completing the Blueprint does not open Community early. No substitute Community program.",
+    "onOctober25": "Architect Community launches. Founding Architect included access begins October 25, 2026.",
+    "throughApril25_2027": "Included Founding Architect Community benefit continues through April 25, 2027.",
+    "afterApril25_2027": "Renewal is $50/month until canceled. Recurring memberships automatically renew until canceled. Cancellation is not a refund."
+  },
+
+  "dependencies": {
+    "named": ["Pricing", "Community Decision", "Onboarding"],
+    "pricing": "Locked in live checkout and legal as $1,500 / $1,750 / $50/month with first six months Community inclusion. Historical Command Center first-year wording is superseded for participant-facing use.",
+    "communityDecision": "Founder-accepted: Architect Community launches October 25, 2026; not live August 31; Founding Architect benefit is first six months through April 25, 2027.",
+    "onboarding": "Journey onboarding exists and is the post-purchase path. It does not currently restate this runway. Restating it in onboarding copy is Nia brand/experience work, not performed here.",
+    "unlocks": "August Launch row 160 Founding Architect Welcome and Retention Plan"
+  },
+
+  "outOfScopeThisDeliverable": [
+    "Rewriting checkout, legal, onboarding, Founder Welcome, or marketing copy",
+    "Inventing a Community program, events calendar, or member email cadence",
+    "Changing Stripe, Cloudflare, Vercel domain, or thebackhalf.org nameservers",
+    "Changing billing entitlement math (Imani)",
+    "Creating the Row 160 welcome/retention plan (Nia primary)",
+    "Marking Command Center Complete or recording Founder acceptance",
+    "Merging or deploying"
+  ],
+
+  "evidence": {
+    "checkoutOffers": "lib/checkout/offers.ts",
+    "checkoutPurchaseTerms": "lib/checkout/purchase-terms.ts",
+    "enDictionary": "content/i18n/dictionaries/en.ts",
+    "esDictionary": "content/i18n/dictionaries/es.ts",
+    "membershipAgreement": "content/legal/v1-candidates.ts §7 Founding Architect Bundle",
+    "row33Standard": "ops/fab-5/ROW-33-MARKETING-CLAIMS-TESTIMONIAL-SOCIAL-STANDARD.md",
+    "row33Status": "ops/fab-5/row-33-status.json",
+    "row34": "ops/fab-5/ROW-34-HUMAN-LEGAL-LAUNCH-REVIEW.md",
+    "row83T28": "ops/fab-5/ROW-83-SOCIAL-ENGAGEMENT-RESPONSE-PROTOCOL.md",
+    "launchDayRunbook": "ops/launch/LAUNCH-DAY-RUNBOOK-AUGUST-31-2026.md",
+    "onboardingWelcome": "lib/journey/onboarding/welcome.ts",
+    "billingEntitlementHelper": "lib/billing/entitlements.ts addOneYear"
+  },
+
+  "validation": {
+    "required": [
+      "npm run typecheck or npx tsc --noEmit if present",
+      "npm test or the nearest package test script if present",
+      "npm run build if the change can affect production"
+    ],
+    "typecheck": "PASS — ./node_modules/.bin/tsc --noEmit",
+    "test": "SKIP — no npm test script in package.json; production code unchanged",
+    "build": "SKIP — ops status JSON only; production behavior unchanged"
+  },
+  "pullRequest": "https://github.com/TheBackHalf/website/pull/31",
+
+  "remainingBlockers": "Founder acceptance by Kimberly Walker (human). Do not treat this file as Command Center Complete.",
+  "nextAction": "Await Founder acceptance of this Community runway as the participant-facing source of truth. Nia may use it for Row 160 without inventing a Community program. Imani should reconcile bundle community_access term length to October 25, 2026–April 25, 2027. Do not quote first-year Community access to purchasers.",
+  "notes": "Michelle compiled locked purchase/onboarding Community runway messaging from Founder-accepted checkout, legal, and Row 33/34/83 decisions. No product, marketing, or legal files were changed. No new Community program was invented. Founder acceptance is not recorded."
+}
