@@ -1,5 +1,4 @@
 import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
-import path from "node:path";
 import type {
   AccountAccessRecord,
   BillingDatabase,
@@ -10,8 +9,8 @@ import type {
   StripeEventLogRecord,
 } from "@/lib/billing/types";
 
-const DATA_DIR = ".data/billing";
-const DB_FILE = ".data/billing/database.json";
+const DEFAULT_DATA_DIR = ".data/billing";
+const DEFAULT_DB_FILE = ".data/billing/database.json";
 
 const emptyDatabase = (): BillingDatabase => ({
   entitlements: [],
@@ -42,9 +41,9 @@ function enqueueWrite<T>(operation: () => Promise<T>): Promise<T> {
   return run;
 }
 
-async function readDatabase(): Promise<BillingDatabase> {
+async function readDatabase(dbFile: string): Promise<BillingDatabase> {
   try {
-    const raw = await readFile(DB_FILE, "utf8");
+    const raw = await readFile(dbFile, "utf8");
     return normalizeDatabase(JSON.parse(raw) as BillingDatabase);
   } catch (error) {
     const nodeError = error as NodeJS.ErrnoException;
@@ -55,15 +54,19 @@ async function readDatabase(): Promise<BillingDatabase> {
   }
 }
 
-async function writeDatabase(database: BillingDatabase): Promise<void> {
-  await mkdir(DATA_DIR, { recursive: true });
-  const tempFile = `${DB_FILE}.${process.pid}.${Date.now()}.tmp`;
+async function writeDatabase(
+  dataDir: string,
+  dbFile: string,
+  database: BillingDatabase,
+): Promise<void> {
+  await mkdir(dataDir, { recursive: true });
+  const tempFile = `${dbFile}.${process.pid}.${Date.now()}.tmp`;
   await writeFile(tempFile, JSON.stringify(database, null, 2), "utf8");
-  await rename(tempFile, DB_FILE);
+  await rename(tempFile, dbFile);
 }
 
-function queueKpiMirror(record: PurchaseRecord): void {
-  if (process.env.MARKETING_KPI_DB_FILE) return;
+function queueKpiMirror(record: PurchaseRecord, skip = false): void {
+  if (skip || process.env.MARKETING_KPI_DB_FILE) return;
   void import("@/lib/marketing-kpi/migrate")
     .then((mod) => mod.mirrorBillingPurchase(record))
     .catch(() => undefined);
@@ -119,18 +122,27 @@ export type BillingStore = {
   listNotificationsByUserId(userId: string): Promise<BillingNotificationRecord[]>;
 };
 
-export function createFileBillingStore(): BillingStore {
+export function createFileBillingStore(options?: {
+  dataDir?: string;
+  skipKpiMirror?: boolean;
+}): BillingStore {
+  const dataDir = options?.dataDir ?? DEFAULT_DATA_DIR;
+  const dbFile = options?.dataDir
+    ? `${options.dataDir.replace(/\\/g, "/")}/database.json`
+    : DEFAULT_DB_FILE;
+  const skipKpiMirror = options?.skipKpiMirror === true || Boolean(options?.dataDir);
+
   return {
     findStripeEvent(eventId) {
       return enqueueWrite(async () => {
-        const database = await readDatabase();
+        const database = await readDatabase(dbFile);
         return database.stripeEvents.find((entry) => entry.id === eventId);
       });
     },
 
     deleteStripeEvent(eventId) {
       return enqueueWrite(async () => {
-        const database = await readDatabase();
+        const database = await readDatabase(dbFile);
         const before = database.stripeEvents.length;
         database.stripeEvents = database.stripeEvents.filter(
           (entry) => entry.id !== eventId,
@@ -138,26 +150,26 @@ export function createFileBillingStore(): BillingStore {
         if (database.stripeEvents.length === before) {
           return false;
         }
-        await writeDatabase(database);
+        await writeDatabase(dataDir, dbFile, database);
         return true;
       });
     },
 
     recordStripeEvent(record) {
       return enqueueWrite(async () => {
-        const database = await readDatabase();
+        const database = await readDatabase(dbFile);
         if (database.stripeEvents.some((entry) => entry.id === record.id)) {
           return "duplicate";
         }
         database.stripeEvents.push(record);
-        await writeDatabase(database);
+        await writeDatabase(dataDir, dbFile, database);
         return "created";
       });
     },
 
     upsertEntitlement(input) {
       return enqueueWrite(async () => {
-        const database = await readDatabase();
+        const database = await readDatabase(dbFile);
         const now = new Date().toISOString();
         const existingIndex = database.entitlements.findIndex((entry) => {
           if (input.id && entry.id === input.id) return true;
@@ -195,7 +207,7 @@ export function createFileBillingStore(): BillingStore {
             updatedAt: now,
           };
           database.entitlements[existingIndex] = updated;
-          await writeDatabase(database);
+          await writeDatabase(dataDir, dbFile, database);
           return updated;
         }
 
@@ -205,21 +217,21 @@ export function createFileBillingStore(): BillingStore {
           updatedAt: now,
         };
         database.entitlements.push(created);
-        await writeDatabase(database);
+        await writeDatabase(dataDir, dbFile, database);
         return created;
       });
     },
 
     findEntitlementsByUserId(userId) {
       return enqueueWrite(async () => {
-        const database = await readDatabase();
+        const database = await readDatabase(dbFile);
         return database.entitlements.filter((entry) => entry.userId === userId);
       });
     },
 
     findEntitlementByUserAndKind(userId, kind) {
       return enqueueWrite(async () => {
-        const database = await readDatabase();
+        const database = await readDatabase(dbFile);
         return database.entitlements.find(
           (entry) => entry.userId === userId && entry.kind === kind,
         );
@@ -228,7 +240,7 @@ export function createFileBillingStore(): BillingStore {
 
     findEntitlementsBySubscriptionId(subscriptionId) {
       return enqueueWrite(async () => {
-        const database = await readDatabase();
+        const database = await readDatabase(dbFile);
         return database.entitlements.filter(
           (entry) => entry.stripeSubscriptionId === subscriptionId,
         );
@@ -237,7 +249,7 @@ export function createFileBillingStore(): BillingStore {
 
     findEntitlementsByCheckoutSessionId(sessionId) {
       return enqueueWrite(async () => {
-        const database = await readDatabase();
+        const database = await readDatabase(dbFile);
         return database.entitlements.filter(
           (entry) => entry.stripeCheckoutSessionId === sessionId,
         );
@@ -246,7 +258,7 @@ export function createFileBillingStore(): BillingStore {
 
     findEntitlementsByPaymentIntentId(paymentIntentId) {
       return enqueueWrite(async () => {
-        const database = await readDatabase();
+        const database = await readDatabase(dbFile);
         return database.entitlements.filter(
           (entry) => entry.stripePaymentIntentId === paymentIntentId,
         );
@@ -255,7 +267,7 @@ export function createFileBillingStore(): BillingStore {
 
     upsertPurchase(input) {
       return enqueueWrite(async () => {
-        const database = await readDatabase();
+        const database = await readDatabase(dbFile);
         const now = new Date().toISOString();
         const existingIndex = database.purchases.findIndex((entry) => {
           if (input.id && entry.id === input.id) return true;
@@ -290,8 +302,8 @@ export function createFileBillingStore(): BillingStore {
             updatedAt: now,
           };
           database.purchases[existingIndex] = updated;
-          await writeDatabase(database);
-          queueKpiMirror(updated);
+          await writeDatabase(dataDir, dbFile, database);
+          queueKpiMirror(updated, skipKpiMirror);
           return updated;
         }
 
@@ -301,22 +313,22 @@ export function createFileBillingStore(): BillingStore {
           updatedAt: now,
         };
         database.purchases.push(created);
-        await writeDatabase(database);
-        queueKpiMirror(created);
+        await writeDatabase(dataDir, dbFile, database);
+        queueKpiMirror(created, skipKpiMirror);
         return created;
       });
     },
 
     findPurchasesByUserId(userId) {
       return enqueueWrite(async () => {
-        const database = await readDatabase();
+        const database = await readDatabase(dbFile);
         return database.purchases.filter((entry) => entry.userId === userId);
       });
     },
 
     findPurchaseByCheckoutSessionId(sessionId) {
       return enqueueWrite(async () => {
-        const database = await readDatabase();
+        const database = await readDatabase(dbFile);
         return database.purchases.find(
           (entry) => entry.stripeCheckoutSessionId === sessionId,
         );
@@ -325,7 +337,7 @@ export function createFileBillingStore(): BillingStore {
 
     findPurchaseByPaymentIntentId(paymentIntentId) {
       return enqueueWrite(async () => {
-        const database = await readDatabase();
+        const database = await readDatabase(dbFile);
         return database.purchases.find(
           (entry) => entry.stripePaymentIntentId === paymentIntentId,
         );
@@ -334,7 +346,7 @@ export function createFileBillingStore(): BillingStore {
 
     findPurchaseByChargeId(chargeId) {
       return enqueueWrite(async () => {
-        const database = await readDatabase();
+        const database = await readDatabase(dbFile);
         return database.purchases.find(
           (entry) => entry.stripeChargeId === chargeId,
         );
@@ -343,21 +355,21 @@ export function createFileBillingStore(): BillingStore {
 
     listPurchases() {
       return enqueueWrite(async () => {
-        const database = await readDatabase();
+        const database = await readDatabase(dbFile);
         return database.purchases;
       });
     },
 
     listStripeEvents() {
       return enqueueWrite(async () => {
-        const database = await readDatabase();
+        const database = await readDatabase(dbFile);
         return database.stripeEvents;
       });
     },
 
     upsertAccountAccess(record) {
       return enqueueWrite(async () => {
-        const database = await readDatabase();
+        const database = await readDatabase(dbFile);
         const index = database.accountAccess.findIndex(
           (entry) => entry.userId === record.userId,
         );
@@ -366,21 +378,21 @@ export function createFileBillingStore(): BillingStore {
         } else {
           database.accountAccess.push(record);
         }
-        await writeDatabase(database);
+        await writeDatabase(dataDir, dbFile, database);
         return record;
       });
     },
 
     findAccountAccessByUserId(userId) {
       return enqueueWrite(async () => {
-        const database = await readDatabase();
+        const database = await readDatabase(dbFile);
         return database.accountAccess.find((entry) => entry.userId === userId);
       });
     },
 
     findNotificationByIdempotencyKey(key) {
       return enqueueWrite(async () => {
-        const database = await readDatabase();
+        const database = await readDatabase(dbFile);
         return database.notifications.find(
           (entry) => entry.idempotencyKey === key,
         );
@@ -389,7 +401,7 @@ export function createFileBillingStore(): BillingStore {
 
     recordNotification(input) {
       return enqueueWrite(async () => {
-        const database = await readDatabase();
+        const database = await readDatabase(dbFile);
         const existing = database.notifications.find(
           (entry) => entry.idempotencyKey === input.idempotencyKey,
         );
@@ -408,14 +420,14 @@ export function createFileBillingStore(): BillingStore {
           createdAt: input.createdAt ?? new Date().toISOString(),
         };
         database.notifications.push(record);
-        await writeDatabase(database);
+        await writeDatabase(dataDir, dbFile, database);
         return { status: "created" as const, record };
       });
     },
 
     listNotificationsByUserId(userId) {
       return enqueueWrite(async () => {
-        const database = await readDatabase();
+        const database = await readDatabase(dbFile);
         return database.notifications.filter((entry) => entry.userId === userId);
       });
     },
