@@ -1,0 +1,214 @@
+{
+  "aosWorkId": "aos-sprint-lr-219",
+  "row": 219,
+  "spreadsheetRow": 219,
+  "commandCenterExcelRowNote": "AOS Command Center snapshot (ingested 2026-08-25) lists this deliverable at excelRow 220 / order 219. launch-rows.json and this work item use spreadsheetRow 219. Deliverable title matches: Publish Website and Open Enrollment. Snapshot excelRow 219 is Freeze Production Release (Row 218).",
+  "source": "company_objective",
+  "sourceReference": "launch-readiness-row-219",
+  "queuedBy": "Michelle Northstar after recursive dependency analysis",
+  "heldUntil": "aos-row74-launch-sprint-kickoff",
+  "deliverable": "Publish Website and Open Enrollment",
+  "descriptionCommandCenter": "Release the final website and activate purchase on August 31, 2026.",
+  "descriptionLaunchRowsStale": "Release the final website and activate purchase on August 19, 2026.",
+  "launchDateLocked": "2026-08-31",
+  "reviewDate": "2026-08-26",
+  "daysUntilLockedLaunchDate": 5,
+  "phase": "Launch Day",
+  "primaryWorkstream": "TECHNOLOGY",
+  "ownerAgent": "imani",
+  "ownerAgentTitle": "Imani Heartbeat — Chief Technology & Risk Officer",
+  "supportingOwners": ["michelle", "nia"],
+  "founderAcceptanceAuthority": "Kimberly Walker (human)",
+  "kimberlyWalkerAiTreatedAsCapacity": false,
+  "generatedAt": "2026-08-26T19:48:00.000Z",
+  "execution": "cursor_cloud_agent",
+  "branch": "cursor/aos-imani-aos-sprint-lr-219-65c5",
+  "softwareChangeApplied": false,
+  "repositorySoftwareChange": false,
+  "reasonNotASoftwareChange": "This deliverable is a launch-day operational action (public canonical publish + live enrollment/purchase activation), not a code change. The Production application already exists on Vercel. Opening enrollment and activating purchase require Founder Go/No-Go, production freeze, Stripe Live, and canonical DNS — none of which are repository edits from this work item.",
+  "productMarketingLegalFilesChanged": false,
+  "launchRowsAdapterNotModified": true,
+  "commandCenterSnapshotNotModified": true,
+  "workbookNotModified": true,
+  "row75Started": false,
+  "row75DnsNotChanged": true,
+  "stripeConfigModified": false,
+  "cloudflareDnsModified": false,
+  "vercelCustomDomainModified": false,
+  "thebackhalfOrgNameserversModified": false,
+  "authenticationWeakened": false,
+  "secretsPrinted": false,
+  "credentialsExposed": false,
+  "founderAcceptanceRecorded": false,
+  "founderAccepted": false,
+  "rowMarkedComplete": false,
+  "launchRowStatusUnchanged": true,
+  "merged": false,
+  "deployed": false,
+  "enrollmentOpened": false,
+  "purchaseActivated": false,
+  "websitePublishedToCanonicalDomain": false,
+  "goForLaunchDeclared": false,
+  "productionFrozen": false,
+  "technicalStatus": "held_not_a_repository_software_change",
+  "aosRecommendedWorkStatus": "ACCEPTANCE_READY",
+  "blockedReason": "launch_day_operational_gates_not_met",
+  "finalStatus": "NOT EXECUTED — not a repository software change. Do not mark Complete. Do not start Row 75. Do not merge. Do not deploy.",
+  "nextAction": [
+    "Do not mark Command Center / launch-rows Row 219 Complete. Founder acceptance stays with Kimberly Walker (human).",
+    "Do not start Row 75 from this work. Canonical DNS remains a Founder Cloudflare action already recorded on Row 75.",
+    "Do not freeze production from this work. Row 218 remains blocked by Final Go/No-Go (Row 217).",
+    "Do not declare GO FOR LAUNCH. Row 217 is Founder-reserved. Michelle al-213 functional reviews certified NO-GO and explicitly did not execute Row 217.",
+    "Do not activate live purchase. Row 73 remains FOUNDER_GATED: Vercel Production STRIPE_SECRET_KEY is Stripe Test/Sandbox.",
+    "Do not publish or schedule social, send launch email, or change legal/marketing copy.",
+    "Re-claim this operational action only after (a) Founder Go on Row 217, (b) Imani freeze on Row 218, (c) August 31, 2026 Eastern, and (d) live Stripe + canonical DNS if those Founder actions have landed."
+  ],
+  "dependencies": {
+    "named": [
+      "Final Go/No-Go Decision",
+      "Production Freeze",
+      "Launch-Day Runbook"
+    ],
+    "finalGoNoGo": {
+      "row": 217,
+      "owner": "kimberly",
+      "founderReserved": true,
+      "launchRowsStatus": "Not Started",
+      "percentComplete": 0,
+      "executedFromThisWork": false,
+      "relatedEvidence": "ops/fab-5/runs/aos-engineering-status/al-213.json (open PR; Michelle functional reviews only)",
+      "relatedVerdict": "NO-GO for functional domains; not Row 217 Complete Go/No-Go; not GO FOR LAUNCH"
+    },
+    "productionFreeze": {
+      "row": 218,
+      "owner": "imani",
+      "launchRowsStatus": "Not Started",
+      "percentComplete": 0,
+      "blockedBy": "Final Go/No-Go Decision",
+      "executedFromThisWork": false,
+      "founderActionRequired": true
+    },
+    "launchDayRunbook": {
+      "row": 202,
+      "statusFile": "ops/fab-5/row-202-status.json",
+      "founderAccepted": true,
+      "founderAcceptedAt": "2026-08-21",
+      "namedRunbookPath": "ops/launch/LAUNCH-DAY-RUNBOOK-AUGUST-31-2026.md",
+      "authorizesEarlyPublish": false,
+      "authorizesEnrollmentBeforeAugust31": false,
+      "note": "Runbook is Founder-accepted operational coverage for August 31. It does not authorize Imani to publish the canonical site or open enrollment on 2026-08-26."
+    },
+    "dateGate": {
+      "todayUtc": "2026-08-26",
+      "lockedPublicLaunchDate": "2026-08-31",
+      "timezone": "America/New_York",
+      "met": false
+    }
+  },
+  "relatedFounderGatesNotOpenedHere": {
+    "row73StripeLive": {
+      "status": "FOUNDER_GATED",
+      "blockedReason": "founder_live_stripe_key",
+      "vercelProductionStripeKeyClass": "test",
+      "evidence": [
+        "ops/fab-5/row-73-status.json",
+        "ops/fab-5/runs/row-73-stripe-key-class.json"
+      ],
+      "touchedFromThisWork": false
+    },
+    "row75CanonicalDns": {
+      "status": "not_ready_founder_dns_required",
+      "founderAccepted": false,
+      "evidence": "ops/fab-5/row-75-status.json",
+      "startedFromThisWork": false,
+      "dnsChangedFromThisWork": false
+    },
+    "row74": {
+      "founderAccepted": true,
+      "rowMarkedComplete": true,
+      "row75StartedFromRow74Closure": false,
+      "redoneFromThisWork": false
+    }
+  },
+  "productionInspect": {
+    "mode": "read_only",
+    "inspectedAt": "2026-08-26T19:47:29.984Z",
+    "writes": false,
+    "charges": false,
+    "host": "https://website-two-psi-49.vercel.app",
+    "deploymentIdObserved": "dpl_EhwiyGTSVR8TAVxjbVcEhw3pwMGc",
+    "health": {
+      "url": "https://website-two-psi-49.vercel.app/api/ops/health",
+      "http": 200,
+      "ok": true,
+      "environment": "production",
+      "application": "ok",
+      "database": "ok"
+    },
+    "surfacesOnVercelHost": {
+      "/": { "http": 200, "title": "The Back Half — Magical is Possible" },
+      "/register": { "http": 200, "title": "Become an Architect — The Back Half" },
+      "/login": { "http": 200, "title": null },
+      "/checkout": { "http": 200, "title": "Checkout — The Back Half" },
+      "/support": { "http": 200 }
+    },
+    "canonicalDomain": {
+      "thebackhalf.org": {
+        "resolves": false,
+        "error": "gaierror: [Errno -5] No address associated with hostname"
+      },
+      "www.thebackhalf.org": {
+        "resolves": false,
+        "error": "gaierror: [Errno -2] Name or service not known"
+      },
+      "note": "Canonical publish to thebackhalf.org is blocked by missing DNS. That work is Row 75. Imani did not start Row 75, did not change Cloudflare DNS, did not change Vercel custom-domain settings, and did not change nameservers."
+    },
+    "enrollmentCopyObserved": {
+      "registerCtaBecomeAnArchitect": true,
+      "googleSignInNoticeExposed": false,
+      "googleSignInButtonVisible": false,
+      "checkoutMentionsAugust31": true,
+      "checkoutMentionsAugust19": false,
+      "checkoutMentionsFoundingArchitect": true
+    },
+    "stripeWebhookGet": {
+      "url": "https://website-two-psi-49.vercel.app/api/stripe/webhook",
+      "http": 405,
+      "note": "GET not allowed. No charge attempted. Live purchase was not activated."
+    }
+  },
+  "whatThisWorkDoesNotDo": [
+    "Does not publish the canonical website at thebackhalf.org.",
+    "Does not open public enrollment or activate live purchase.",
+    "Does not execute Row 218 production freeze.",
+    "Does not execute or self-certify Row 217 Go/No-Go.",
+    "Does not start Row 75.",
+    "Does not modify Stripe, Cloudflare DNS, Vercel custom domains, or nameservers.",
+    "Does not change product, marketing, or legal files.",
+    "Does not merge or deploy.",
+    "Does not record Founder acceptance."
+  ],
+  "scope": {
+    "in": "Status-only evidence for AOS work aos-sprint-lr-219 on an isolated branch.",
+    "out": "Product code, enrollment gating flags, Stripe Live connection, DNS, freeze, Go/No-Go, social publish, launch email."
+  },
+  "validation": {
+    "typecheck": "pending_npx_tsc_noEmit",
+    "npmTestScript": "absent_in_package.json",
+    "build": "skipped_ops_json_only_no_production_runtime_change",
+    "gatesRequired": [
+      "npm run typecheck or npx tsc --noEmit if present",
+      "npm test or the nearest package test script if present",
+      "npm run build if the change can affect production"
+    ]
+  },
+  "aosIngestHint": {
+    "parkStatus": "ACCEPTANCE_READY",
+    "nextAction": "await_founder_acceptance",
+    "blockedReason": "founder_acceptance_required",
+    "doNotComplete": true,
+    "doNotMerge": true,
+    "doNotDeploy": true,
+    "founderRequired": true
+  }
+}
