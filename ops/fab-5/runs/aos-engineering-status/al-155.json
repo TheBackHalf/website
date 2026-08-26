@@ -14,6 +14,7 @@
   "generatedAt": "2026-08-26T15:50:30.000Z",
   "timezoneNote": "America/New_York for published 72-hour expectation; timestamps in this file are UTC unless labeled ET.",
   "branch": "cursor/aos-nia-al-155-a058",
+  "pullRequest": "https://github.com/TheBackHalf/website/pull/15",
   "softwareChangeApplied": false,
   "productMarketingLegalFilesChanged": false,
   "stripeConfigModified": false,
