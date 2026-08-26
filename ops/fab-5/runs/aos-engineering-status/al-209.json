@@ -1,0 +1,12 @@
+{
+  "aosWorkId": "al-209",
+  "softwareChange": true,
+  "deliverable": "Create Launch-Day Executive Dashboard",
+  "ownerAgent": "nia",
+  "dashboard": "/ops/admin/executive-dashboard",
+  "review": "/_internal/row209-executive-dashboard-review",
+  "validation": "ops/fab-5/runs/row-209-executive-dashboard-validation.json",
+  "founderAccepted": false,
+  "rowMarkedComplete": false,
+  "note": "Repository software change: one executive view composing Row 151, Row 84, Row 61, Row 153, and AOS Founder decisions. Founder acceptance stays with Kimberly Walker (human)."
+}

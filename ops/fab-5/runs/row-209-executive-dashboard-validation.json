@@ -1,0 +1,134 @@
+{
+  "row": 209,
+  "aosWorkId": "al-209",
+  "generatedAt": "2026-08-26T18:24:43.692Z",
+  "founderAccepted": false,
+  "rowMarkedComplete": false,
+  "dashboard": "/ops/admin/executive-dashboard",
+  "review": "/_internal/row209-executive-dashboard-review",
+  "tests": [
+    {
+      "id": "T1",
+      "name": "Empty environment exposes all 10 required panels without false RED",
+      "result": "PASS",
+      "detail": "panels=enrollment-revenue:GREEN,traffic-conversion:GREEN,production-health:N/A,payments:GREEN,account-access:GREEN,lumina-health:N/A,support-volume:GREEN,marketing-performance:GREEN,critical-incidents:GREEN,founder-decisions:N/A"
+    },
+    {
+      "id": "T2",
+      "name": "Enrollment/revenue shows paid launch purchase and excludes historical label field",
+      "result": "PASS",
+      "detail": "purchasesToday=1 gross=9700 status=YELLOW"
+    },
+    {
+      "id": "T3",
+      "name": "Traffic/conversion counts first-party sessions",
+      "result": "PASS",
+      "detail": "sessions=1"
+    },
+    {
+      "id": "T4",
+      "name": "Production health RED on Row 61 uptime FAIL raises Founder attention",
+      "result": "PASS",
+      "detail": "production=RED attention=true"
+    },
+    {
+      "id": "T5",
+      "name": "Payments panel YELLOW when failed payments exist today",
+      "result": "PASS",
+      "detail": "failedToday=1 status=YELLOW"
+    },
+    {
+      "id": "T6",
+      "name": "Account/access YELLOW on auth_failed today",
+      "result": "PASS",
+      "detail": "auth_failed=1"
+    },
+    {
+      "id": "T7",
+      "name": "Lumina unreported is N/A; lumina_error today is YELLOW; no conversation text",
+      "result": "PASS",
+      "detail": "empty=N/A withError=YELLOW opened=1"
+    },
+    {
+      "id": "T8",
+      "name": "Support volume YELLOW on overdue / P1 tickets (counts only)",
+      "result": "PASS",
+      "detail": "overdue=1 p1=1"
+    },
+    {
+      "id": "T9",
+      "name": "Marketing panel reads Row 84 funnel and does not require LinkedIn",
+      "result": "PASS",
+      "detail": "landing=1 linkedinRequired=false"
+    },
+    {
+      "id": "T10",
+      "name": "Critical incidents RED on open RED launch risk",
+      "result": "PASS",
+      "detail": "health=RED incidents=RED"
+    },
+    {
+      "id": "T11",
+      "name": "Founder decisions panel lists OPEN urgent AOS decisions",
+      "result": "PASS",
+      "detail": "decisions=1 status=RED"
+    },
+    {
+      "id": "T12",
+      "name": "Live pages are force-dynamic, noindex, includeTest false",
+      "result": "PASS",
+      "detail": "EN/ES/review pages set force-dynamic, noindex, includeTest: false"
+    },
+    {
+      "id": "T13",
+      "name": "EN, ES, and localhost review routes exist",
+      "result": "PASS",
+      "detail": "/ops/admin/executive-dashboard · /es/ops/admin/executive-dashboard · /_internal/row209-executive-dashboard-review"
+    },
+    {
+      "id": "T14",
+      "name": "Admin middleware covers the executive dashboard; architect/support denied",
+      "result": "PASS",
+      "detail": "Existing isAdminOpsPath prefix; no auth catalog change required"
+    },
+    {
+      "id": "T15",
+      "name": "Serialized model has no secrets, emails, or payment credentials",
+      "result": "PASS",
+      "detail": "Aggregates and operational titles only"
+    },
+    {
+      "id": "T16",
+      "name": "Composer is read-only: loads monitoring snapshot, does not run probes or Stripe",
+      "result": "PASS",
+      "detail": "Read-only composition over Row 151 / 84 / 61 / AOS"
+    },
+    {
+      "id": "T17",
+      "name": "View is responsive and renders every required panel id",
+      "result": "PASS",
+      "detail": "Desktop two-column grid, mobile stacked, readable padding"
+    },
+    {
+      "id": "T18",
+      "name": "Missing Row 61 snapshot is N/A and does not fabricate GREEN/RED production health",
+      "result": "PASS",
+      "detail": "Unconfigured monitoring cannot produce false GREEN or false RED"
+    },
+    {
+      "id": "T19",
+      "name": "Approve/Reject stays on Agent Operations; executive view does not execute decisions",
+      "result": "PASS",
+      "detail": "Nia experience view only; AOS decision actions unchanged"
+    },
+    {
+      "id": "T20",
+      "name": "Auth, Stripe webhook, and middleware files were not modified for this row",
+      "result": "PASS",
+      "detail": "New route is covered by existing /ops/admin prefix. No auth/payment system edits."
+    }
+  ],
+  "failures": [],
+  "passCount": 20,
+  "failCount": 0
+}

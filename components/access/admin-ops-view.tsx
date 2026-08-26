@@ -20,6 +20,10 @@ export async function AdminOpsView({ locale }: AdminOpsViewProps) {
         {copy.adminDescription}
       </p>
       <p className="mt-4 font-sans text-sm">
+        <a href={locale === "es" ? "/es/ops/admin/executive-dashboard" : "/ops/admin/executive-dashboard"}>
+          Launch-Day Executive Dashboard
+        </a>
+        {" · "}
         <a href={locale === "es" ? "/es/ops/admin/launch-dashboard" : "/ops/admin/launch-dashboard"}>
           Daily Launch Dashboard
         </a>
