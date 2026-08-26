@@ -1,0 +1,367 @@
+{
+  "aosWorkId": "al-206",
+  "row": 206,
+  "excelRow": 207,
+  "tab": "August Launch",
+  "source": "command_center",
+  "sourceReference": "August Launch row 206",
+  "deliverable": "Execute Full Go-Live Simulation",
+  "description": "Run end-to-end rehearsal including purchase, onboarding, Lumina, emails, and support.",
+  "operatingAgent": "nia",
+  "operatingAgentFull": "Nia Prism — Chief Experience & Transformation Officer",
+  "workbookPrimaryOwner": "michelle",
+  "workbookPrimaryOwnerNote": "Launch workbook and Command Center assign Row 206 OPERATIONS primary ownership to Michelle Northstar, with Nia and Imani supporting. AOS assigned this engineering run to Nia Prism as experience owner. Nia executed the participant-facing go-live rehearsal (purchase catalog and gates, onboarding gates, Lumina marketing and stub eval, email surfaces, support page/form). Nia did not change infrastructure, auth, or payment systems. Kimberly Walker (AI) is not an operating agent and was not treated as execution capacity.",
+  "generatedAt": "2026-08-26T18:50:00.000Z",
+  "branch": "cursor/aos-nia-al-206-921e",
+  "pullRequest": null,
+  "cloudAgentUrl": "https://cursor.com/agents/bc-55cf5490-035a-419c-94a5-86fdbb735faa",
+  "softwareChangeApplied": false,
+  "productMarketingLegalFilesChanged": false,
+  "stripeConfigModified": false,
+  "dnsModified": false,
+  "vercelCustomDomainModified": false,
+  "nameserversModified": false,
+  "authModified": false,
+  "secretsPrinted": false,
+  "kimberlyWalkerAiTreatedAsOperatingAgent": false,
+  "commandCenterStatusNotUpdated": true,
+  "markedComplete": false,
+  "founderAcceptance": null,
+  "founderAcceptanceRecorded": false,
+  "founderAccepted": false,
+  "readyForFounderAcceptanceReview": false,
+  "deliverableKind": "status_only",
+  "overallResult": "GO_LIVE_SIMULATION_NOT_PASSED",
+  "overallSummary": "Nia executed the Row 206 end-to-end go-live rehearsal on 2026-08-26. Public purchase, onboarding, Lumina, email, and support surfaces were walked on the working Production Vercel host. The rehearsal does not pass as a launch go-live. Canonical https://thebackhalf.org does not resolve. Live purchase cannot complete (POST /api/stripe/webhook returns 503 webhook_not_configured; no charge created). Entitled authenticated onboarding welcome and Lumina chat were not reached (login wall; no Row 176 test account). Transactional email cannot be proven from this environment (SMTP absent here; apex TXT has Google site verification only, no SPF; no DKIM selector proven; _dmarc NXDOMAIN; /unsubscribe 404). Launch email was not sent (runbook does not authorize send). A Regression-Passed Release Candidate does not exist. Command Center row 206 is not Complete. Founder acceptance is not recorded.",
+  "authority": {
+    "experienceOwner": "Nia Prism — participant experience, purchase/onboarding/Lumina/support CX, bilingual public surfaces. This run.",
+    "operationsOwner": "Michelle Northstar — workbook primary owner; launch orchestration and runbook coordination. Does not implement or merge from this file.",
+    "technologyOwner": "Imani Heartbeat — live Stripe/webhook, production DNS follow-up after Founder records exist, SMTP/DNS email authentication, entitled test accounts.",
+    "founder": "Kimberly Walker (human) — sole Founder acceptance authority. DNS records, Stripe Live secret, and launch-email send remain Founder-gated. Do not fabricate Founder approval.",
+    "niaDidNotChange": [
+      "infrastructure",
+      "auth",
+      "payment systems",
+      "Stripe configuration",
+      "Cloudflare DNS",
+      "Vercel custom-domain settings",
+      "thebackhalf.org nameservers",
+      "Journey curriculum manuscript",
+      "Lumina approved voice content",
+      "legal files",
+      "product/marketing files",
+      "Launch-Day Runbook body"
+    ]
+  },
+  "dependency": {
+    "blockedBy": "Regression-Passed Release Candidate; Launch-Day Runbook",
+    "regressionPassedReleaseCandidate": false,
+    "regressionPassedReleaseCandidateEvidence": "Independently confirmed on this run: canonical DNS still fails; live webhook still 503 webhook_not_configured; entitled authenticated Journey/Lumina/onboarding not exercisable without a test account. Adjacent unmerged Nia status PR for Row 190 (https://github.com/TheBackHalf/website/pull/33) recorded REGRESSION_NOT_PASSED. That PR is not treated as Founder-accepted completion.",
+    "launchDayRunbook": {
+      "namedRunbookLocated": true,
+      "path": "ops/launch/LAUNCH-DAY-RUNBOOK-AUGUST-31-2026.md",
+      "row202StatusFile": "ops/fab-5/row-202-status.json",
+      "row202StatusClaimsFounderAccepted": true,
+      "row202StatusFounderAcceptedAt": "2026-08-21",
+      "runbookMarkdownHeaderStillSays": "DRAFT — FOUNDER ACCEPTANCE REVIEW. Not sent. Not published. Row 202 not Complete.",
+      "thisRunDidNotRewriteRunbook": true,
+      "thisRunDidNotTreatRow202StatusAsRe-acceptance": true,
+      "runbookUsedAs": "Operational rehearsal script for what to exercise (purchase, monitoring, support, communications). Launch email send remains not authorized from the runbook."
+    }
+  },
+  "method": [
+    "Read Command Center / launch-rows Row 206, Launch-Day Runbook, and Nia experience scope. Did not modify those files.",
+    "Did not treat adjacent unmerged status PRs (al-190, al-178, al-179, al-148, al-214) as Founder-accepted. Independently re-probed DNS, HTTP, webhook, support API, and Chrome-walked the working host.",
+    "Read-only DNS-over-HTTPS for thebackhalf.org A/AAAA/CNAME/NS/MX/TXT and www A/AAAA/CNAME and _dmarc TXT.",
+    "HTTP GET (no-follow-redirect) of purchase, onboarding, Lumina, email, support, legal, and health routes on https://website-two-psi-49.vercel.app.",
+    "POST /api/stripe/webhook with empty JSON — configuration probe only. No charge created.",
+    "POST /api/support/request without an eligibility cookie — expected age_ineligible. No live ticket created.",
+    "Chrome walkthrough of the same host: homepage, checkout catalog, Lumina marketing, support mailbox and form, verify-email, 18+ confirm then login walls for onboarding/Lumina/Founding Architect Continue, EN/ES surfaces. No account created. No support form submit. No card numbers. No Stripe-hosted payment page reached.",
+    "npm run eval:lumina on this branch (stub provider=none).",
+    "./node_modules/.bin/tsc --noEmit.",
+    "Did not merge, deploy, send launch email, or mark Command Center Complete."
+  ],
+  "hosts": {
+    "canonicalApex": "https://thebackhalf.org",
+    "canonicalWww": "https://www.thebackhalf.org",
+    "workingProductionHost": "https://website-two-psi-49.vercel.app",
+    "note": "A stranger go-live on the public brand domain is not possible from this environment. The Vercel hostname is an insider/working host, not the approved public destination in the runbook (https://thebackhalf.org/register)."
+  },
+  "productionProbe2026_08_26T18_03Z": {
+    "canonicalApexDnsA": "empty — SOA only (Cloudflare NS anirban / ulla.ns.cloudflare.com)",
+    "canonicalWwwDns": "NXDOMAIN (Status 3) for A, AAAA, and CNAME",
+    "httpsThebackhalfOrg": "FAIL — No address associated with hostname",
+    "httpsWwwThebackhalfOrg": "FAIL — Name or service not known",
+    "mx": [
+      "1 aspmx.l.google.com.",
+      "5 alt1.aspmx.l.google.com.",
+      "5 alt2.aspmx.l.google.com.",
+      "10 alt3.aspmx.l.google.com.",
+      "10 alt4.aspmx.l.google.com."
+    ],
+    "apexTxt": ["google-site-verification only — no v=spf1"],
+    "dmarc": "NXDOMAIN for _dmarc.thebackhalf.org",
+    "productionHost": "https://website-two-psi-49.vercel.app",
+    "healthBody": {
+      "ok": true,
+      "environment": "production",
+      "service": "the-back-half",
+      "checks": { "application": "ok", "database": "ok" }
+    },
+    "stripeWebhookPost": {
+      "url": "https://website-two-psi-49.vercel.app/api/stripe/webhook",
+      "http": 503,
+      "body": { "error": "webhook_not_configured" },
+      "liveChargeCreated": false
+    },
+    "supportPostNoEligibilityCookie": {
+      "url": "https://website-two-psi-49.vercel.app/api/support/request",
+      "http": 403,
+      "body": { "status": "age_ineligible", "error": "age_ineligible" },
+      "liveTicketCreated": false
+    },
+    "httpNoFollowRedirect": {
+      "/": { "status": 200, "title": "The Back Half — Magical is Possible" },
+      "/register": { "status": 200, "title": "Become an Architect — The Back Half" },
+      "/login": { "status": 200, "title": "Sign in — The Back Half" },
+      "/verify-email": { "status": 200, "title": "Email verification — The Back Half" },
+      "/lumina": { "status": 200, "title": "Meet Lumina — The Back Half" },
+      "/es/lumina": { "status": 200, "title": "Conoce a Lumina — The Back Half" },
+      "/support": { "status": 200, "title": "Support — The Back Half" },
+      "/es/support": { "status": 200, "title": "Soporte — The Back Half" },
+      "/checkout": { "status": 200, "title": "Checkout — The Back Half" },
+      "/es/checkout": { "status": 200, "title": "Checkout — The Back Half" },
+      "/checkout/blueprint": { "status": 307, "location": "/eligibility?next=%2Fcheckout%2Fblueprint" },
+      "/checkout/bundle": { "status": 307, "location": "/eligibility?next=%2Fcheckout%2Fbundle" },
+      "/checkout/community": { "status": 307, "location": "/eligibility?next=%2Fcheckout%2Fcommunity" },
+      "/checkout/success": { "status": 307, "location": "/eligibility?next=%2Fcheckout%2Fsuccess" },
+      "/architect/onboarding": { "status": 307, "location": "/eligibility?next=%2Farchitect%2Fonboarding" },
+      "/architect/onboarding/welcome": { "status": 307, "location": "/eligibility?next=%2Farchitect%2Fonboarding%2Fwelcome" },
+      "/architect/onboarding/lumina": { "status": 307, "location": "/eligibility?next=%2Farchitect%2Fonboarding%2Flumina" },
+      "/architect/lumina": { "status": 307, "location": "/eligibility?next=%2Farchitect%2Flumina" },
+      "/es/architect/lumina": { "status": 307, "location": "/es/eligibility?next=%2Fes%2Farchitect%2Flumina" },
+      "/architect/journey": { "status": 307, "location": "/eligibility?next=%2Farchitect%2Fjourney" },
+      "/api/ops/health": { "status": 200 },
+      "/unsubscribe": { "status": 404, "title": "404: This page could not be found." }
+    },
+    "thisEnvironmentSmtp": {
+      "SMTP_HOST": "absent",
+      "SMTP_PORT": "absent",
+      "SMTP_USER": "absent",
+      "SMTP_PASSWORD": "absent",
+      "SMTP_FROM": "absent",
+      "valuesPrinted": false
+    },
+    "thisEnvironmentStripe": {
+      "STRIPE_SECRET_KEY": "absent",
+      "STRIPE_WEBHOOK_SECRET": "absent",
+      "valuesPrinted": false
+    },
+    "secretsPrinted": false,
+    "liveChargeCreated": false,
+    "accountCreated": false,
+    "supportTicketCreated": false,
+    "launchEmailSent": false
+  },
+  "lanes": {
+    "purchase": {
+      "result": "FAIL_LIVE_PATH — catalog and gates PASS on working host",
+      "did": [
+        "HTTP 200 /checkout and /es/checkout",
+        "Chrome catalog: Blueprint $1,500, Founding Architect $1,750, Community $50/month",
+        "18+ confirm then Continue on Founding Architect → /login?next=%2Fcheckout%2FBundle",
+        "Webhook configuration probe"
+      ],
+      "didNot": [
+        "create a Stripe Checkout session",
+        "open a Stripe-hosted payment page",
+        "enter card numbers",
+        "create a live charge",
+        "complete a receipt"
+      ],
+      "blockers": [
+        "Canonical domain does not resolve — runbook destination https://thebackhalf.org/register is unreachable",
+        "POST /api/stripe/webhook → 503 webhook_not_configured",
+        "Live paid purchase and entitlement webhook not executed (Stripe configuration out of Nia scope; AOS forbids mutating Stripe)"
+      ]
+    },
+    "onboarding": {
+      "result": "PASS_GATED — entitled welcome NOT executed",
+      "stepsInCode": [
+        "welcome",
+        "preferences",
+        "consent",
+        "lumina",
+        "assessment",
+        "awakening"
+      ],
+      "did": [
+        "Unauthenticated /architect/onboarding → eligibility gate",
+        "After 18+ confirm → /login?next=%2Farchitect%2Fonboarding"
+      ],
+      "didNot": [
+        "create or use a production test account",
+        "click-complete welcome through awakening",
+        "treat a faux participant as real validation"
+      ],
+      "blockers": [
+        "No entitled authenticated session on this run",
+        "Regression-Passed Release Candidate does not exist"
+      ]
+    },
+    "lumina": {
+      "result": "PASS_PUBLIC_AND_STUB_EVAL — entitled chat NOT executed",
+      "publicMarketing": {
+        "/lumina": "HTTP 200 Meet Lumina; Chrome PASS",
+        "/es/lumina": "HTTP 200 / Chrome PASS Conoce a Lumina"
+      },
+      "authenticatedChat": {
+        "unauthenticated": "307 → eligibility",
+        "after18Plus": "login wall /login?next=%2Farchitect%2Flumina",
+        "messageSent": false
+      },
+      "eval": {
+        "formalRow180": "Not Started — this rehearsal is not a substitute for Row 180 Lumina Evaluation",
+        "command": "npm run eval:lumina",
+        "at": "2026-08-26T18:04:00.000Z",
+        "allPassed": true,
+        "provider": "none",
+        "safety": "PASS",
+        "privacyConsent": "PASS",
+        "categoriesPassed": [
+          "VOICE",
+          "MEMORY",
+          "CONSISTENCY",
+          "ACCURACY",
+          "SAFETY",
+          "USEFULNESS",
+          "BILINGUAL QUALITY",
+          "JOURNEY-AWARE CONTEXT",
+          "PRIVACY/CONSENT BOUNDARIES",
+          "LATENCY",
+          "COST",
+          "LUMINA REGRESSIONS"
+        ],
+        "note": "Stub pipeline. Not live-model participant chat."
+      }
+    },
+    "emails": {
+      "result": "FAIL — rehearsal of pages and DNS only; live go-live mail not proven",
+      "did": [
+        "GET /verify-email → 200 invalid-link state without a token (expected)",
+        "DNS MX (Google Workspace live)",
+        "DNS TXT / DMARC inspection",
+        "GET /unsubscribe → 404"
+      ],
+      "didNot": [
+        "send the August 31 launch email (runbook: send/schedule not authorized)",
+        "send verification, payment_success, or support acknowledgment from this environment",
+        "place a seed message in Gmail/Outlook/Yahoo/Apple Mail"
+      ],
+      "findings": {
+        "mx": "PASS — Google Workspace MX present",
+        "spf": "FAIL — apex TXT is Google site verification only; no v=spf1",
+        "dkim": "NOT_PROVEN this run",
+        "dmarc": "FAIL — _dmarc.thebackhalf.org NXDOMAIN",
+        "unsubscribeRoute": "FAIL — /unsubscribe HTTP 404 on working host",
+        "smtpThisEnvironment": "not_configured",
+        "canonicalLinksInMail": "Would target getSiteUrl() / thebackhalf.org, which does not resolve from this environment"
+      },
+      "codeSurfacesInspectedNotSent": [
+        "lib/auth/email/send-verification.ts",
+        "lib/auth/email/send-password-reset.ts",
+        "lib/billing/notifications.ts (payment_success and related)",
+        "lib/support/acknowledge.ts"
+      ]
+    },
+    "support": {
+      "result": "PASS_PUBLIC_SURFACE — live ticket NOT created this run",
+      "mailbox": "support@thebackhalf.org",
+      "form": "/support",
+      "did": [
+        "HTTP 200 /support and /es/support",
+        "Chrome: mailbox, 3-day / 72-hour response expectation, no-password/no-card warning",
+        "After 18+ cookie: request form visible (name, email, category, subject, Architect?, message). Not submitted",
+        "POST /api/support/request without cookie → 403 age_ineligible"
+      ],
+      "didNot": [
+        "submit a production support ticket",
+        "send a live acknowledgment email from this agent"
+      ],
+      "identityCheck": "Public identity on the page is The Back Half Support / support@thebackhalf.org. Not Kimberly."
+    }
+  },
+  "browserWalkthrough2026_08_26T18_04Z": {
+    "host": "https://website-two-psi-49.vercel.app",
+    "tool": "Chrome on this workstation",
+    "recording": "SAVE_RECORDING failed after a long session (process gone). Screenshots preserved under /opt/cursor/artifacts/screenshots/al206_*.webp",
+    "didNot": [
+      "submit register or login",
+      "create an account",
+      "start Stripe Checkout session",
+      "create a live charge",
+      "submit the support form",
+      "send a Lumina message"
+    ],
+    "pages": [
+      { "path": "/", "result": "PASS", "note": "Hero Magical is Possible and BEGIN YOUR JOURNEY rendered." },
+      { "path": "/architect/onboarding", "result": "PASS_GATED", "note": "Redirected to eligibility before 18+ confirm." },
+      { "path": "/architect/lumina", "result": "PASS_GATED", "note": "Redirected to eligibility before 18+ confirm." },
+      { "path": "/checkout", "result": "PASS", "note": "Blueprint $1,500, Founding Architect $1,750, Community $50/month visible. Stripe Checkout not started." },
+      { "path": "/lumina", "result": "PASS", "note": "Meet Lumina marketing page rendered." },
+      { "path": "/support", "result": "PASS", "note": "Mailbox support@thebackhalf.org and 72-hour response expectation visible. Form age-gated until 18+." },
+      { "path": "/verify-email", "result": "PASS", "note": "Invalid verification link state without a token." },
+      { "path": "/eligibility then /architect/onboarding", "result": "PASS_GATED", "note": "18+ Yes → /login?next=%2Farchitect%2Fonboarding. Entitled welcome not opened." },
+      { "path": "/architect/lumina after 18+", "result": "PASS_GATED", "note": "Login wall /login?next=%2Farchitect%2Flumina." },
+      { "path": "/checkout Founding Architect Continue after 18+", "result": "PASS_GATED", "note": "Login wall /login?next=%2Fcheckout%2FBundle. No Stripe-hosted page." },
+      { "path": "/support after 18+", "result": "PASS", "note": "Request form fields visible. Not submitted." },
+      { "path": "/es/checkout", "result": "PASS", "note": "Elige tu camino." },
+      { "path": "/es/lumina", "result": "PASS", "note": "Conoce a Lumina." },
+      { "path": "/es/support", "result": "PASS", "note": "Soporte; form Enviar una solicitud." },
+      { "path": "/login", "result": "PASS", "note": "Email/password. No Google sign-in control. Not submitted." },
+      { "path": "/register", "result": "PASS", "note": "Become an Architect. No Google sign-in control. Not submitted." }
+    ]
+  },
+  "screenshots": [
+    "/opt/cursor/artifacts/screenshots/al206_checkout_founding_architect_community.webp",
+    "/opt/cursor/artifacts/screenshots/al206_onboarding_login_gate.webp",
+    "/opt/cursor/artifacts/screenshots/al206_lumina_login_gate.webp",
+    "/opt/cursor/artifacts/screenshots/al206_support_mailbox.webp",
+    "/opt/cursor/artifacts/screenshots/al206_support_form_after_age_confirm.webp",
+    "/opt/cursor/artifacts/screenshots/al206_verify_email_invalid_token.webp",
+    "/opt/cursor/artifacts/screenshots/al206_es_checkout.webp",
+    "/opt/cursor/artifacts/screenshots/al206_es_lumina.webp"
+  ],
+  "countsAfterThisRun": {
+    "lanesRehearsed": 5,
+    "lanesFullyPassedLive": 0,
+    "canonicalDomainResolves": false,
+    "livePurchaseCompletable": false,
+    "entitledOnboardingCompleted": false,
+    "entitledLuminaChatCompleted": false,
+    "goLiveEmailProven": false,
+    "supportPublicSurfaceReadyOnWorkingHost": true,
+    "regressionPassedReleaseCandidate": false,
+    "goLiveSimulationPassed": false
+  },
+  "notClaimed": [
+    "August Launch row 206 is not Complete",
+    "Founder acceptance is not recorded",
+    "GO FOR LAUNCH / PRODUCTION-READY is not declared",
+    "Regression-Passed Release Candidate is not declared",
+    "Live Stripe purchase was not completed",
+    "Entitled onboarding and Lumina chat were not completed",
+    "Launch email was not sent",
+    "Support ticket and acknowledgment were not live-sent from this agent",
+    "No deploy",
+    "No Stripe, DNS, or auth change"
+  ],
+  "nextAction": "Do not mark Row 206 Complete from this file. A passing go-live simulation still requires a Regression-Passed Release Candidate, canonical thebackhalf.org DNS, a live payment/webhook path, an entitled authenticated rehearsal of onboarding and Lumina, and proven transactional/launch email (SPF/DKIM/DMARC and send authorization). Founder acceptance stays with Kimberly Walker (human).",
+  "validation": {
+    "typecheck": "PASS — ./node_modules/.bin/tsc --noEmit (package.json has no typecheck script)",
+    "test": "nearest package script npm run eval:lumina PASS (all 12 categories including SAFETY). package.json has no test script.",
+    "build": "skipped — status-only JSON; change cannot affect production",
+    "stripeConfigModified": false,
+    "dnsModified": false
+  }
+}
