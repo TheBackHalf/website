@@ -352,7 +352,6 @@ export const enDictionary: Dictionary = {
       title: "Architect Dashboard",
       description:
         "Your Architect home — current Journey chapter, progress, resources, and the next step forward.",
-      welcomeSlot: "Welcome",
       welcome: "Welcome, {name}.",
       currentChapter: "Current Journey chapter",
       progress: "Journey progress",

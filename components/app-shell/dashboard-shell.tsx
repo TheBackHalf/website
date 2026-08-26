@@ -121,11 +121,10 @@ export function DashboardShell({
         >
           <h2
             id="architect-dashboard-welcome"
-            className="bh-app-dashboard-card-title"
+            className="bh-app-dashboard-welcome-text"
           >
-            {resolveAppShellLabel(locale, dashboard.welcomeSlot)}
+            {welcome}
           </h2>
-          <p className="bh-app-dashboard-welcome-text">{welcome}</p>
         </section>
 
         <section
