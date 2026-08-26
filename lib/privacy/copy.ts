@@ -33,7 +33,18 @@ export function privacyRequestPageCopy(locale: Locale) {
     fulfillmentNote: english
       ? `After identity verification, fulfillment is tracked against an internal operating target of ${PRIVACY_FULFILLMENT_DAYS} days. That target is operational tracking, not a legal conclusion.`
       : `Después de verificar la identidad, el cumplimiento se rastrea con un objetivo operativo interno de ${PRIVACY_FULFILLMENT_DAYS} días. Ese objetivo es seguimiento operativo, no una conclusión legal.`,
+    nameLabel: english ? "Name" : "Nombre",
+    emailLabel: english ? "Email" : "Correo",
+    typeLabel: english ? "Request type" : "Tipo de solicitud",
+    typePlaceholder: english ? "Select a request type" : "Selecciona un tipo de solicitud",
+    firstNameLabel: english ? "Corrected first name" : "Nombre corregido",
+    lastNameLabel: english ? "Corrected last name" : "Apellido corregido",
+    subjectLabel: english ? "Subject" : "Asunto",
+    messageLabel: english ? "Message" : "Mensaje",
     submit: english ? "Submit privacy request" : "Enviar solicitud de privacidad",
+    submitError: english
+      ? `We could not send your request. Write to ${PRIVACY_MAILBOX_ADDRESS}.`
+      : `No pudimos enviar tu solicitud. Escribe a ${PRIVACY_MAILBOX_ADDRESS}.`,
     received: english ? "We received your privacy request." : "Recibimos tu solicitud de privacidad.",
     receivedDetail: english
       ? "Your request ID is {requestId}. Check your email if identity confirmation is still required."

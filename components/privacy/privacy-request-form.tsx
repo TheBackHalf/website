@@ -13,10 +13,7 @@ import {
   StatusNotice,
 } from "@/components/design-system";
 import { privacyRequestPageCopy, privacyTypeLabel } from "@/lib/privacy/copy";
-import {
-  PRIVACY_MAILBOX_ADDRESS,
-  PRIVACY_REQUEST_TYPES,
-} from "@/lib/privacy/catalog";
+import { PRIVACY_REQUEST_TYPES } from "@/lib/privacy/catalog";
 import type { PrivacyRequestFormData } from "@/lib/privacy/types";
 import type { Locale } from "@/lib/i18n/config";
 
@@ -108,7 +105,7 @@ export function PrivacyRequestForm({
         <p className="font-sans text-sm font-light text-bh-muted">{copy.sensitive}</p>
         <p className="font-sans text-sm font-light text-bh-muted">{copy.identityNote}</p>
         <FormField>
-          <FormLabel htmlFor={nameId}>Name</FormLabel>
+          <FormLabel htmlFor={nameId}>{copy.nameLabel}</FormLabel>
           <FormInput
             id={nameId}
             value={form.name}
@@ -118,7 +115,7 @@ export function PrivacyRequestForm({
           {errors.name ? <FormError>{errors.name}</FormError> : null}
         </FormField>
         <FormField>
-          <FormLabel htmlFor={emailId}>Email</FormLabel>
+          <FormLabel htmlFor={emailId}>{copy.emailLabel}</FormLabel>
           <FormInput
             id={emailId}
             type="email"
@@ -129,13 +126,13 @@ export function PrivacyRequestForm({
           {errors.email ? <FormError>{errors.email}</FormError> : null}
         </FormField>
         <FormField>
-          <FormLabel htmlFor={typeId}>Request type</FormLabel>
+          <FormLabel htmlFor={typeId}>{copy.typeLabel}</FormLabel>
           <FormSelect
             id={typeId}
             value={form.type}
             onChange={(event) => setForm({ ...form, type: event.target.value })}
           >
-            <option value="">Select a request type</option>
+            <option value="">{copy.typePlaceholder}</option>
             {PRIVACY_REQUEST_TYPES.map((type) => (
               <option key={type} value={type}>
                 {privacyTypeLabel(type, locale)}
@@ -147,7 +144,7 @@ export function PrivacyRequestForm({
         {form.type === "CORRECTION" ? (
           <>
             <FormField>
-              <FormLabel htmlFor={`${formId}-first`}>Corrected first name</FormLabel>
+              <FormLabel htmlFor={`${formId}-first`}>{copy.firstNameLabel}</FormLabel>
               <FormInput
                 id={`${formId}-first`}
                 value={form.firstName ?? ""}
@@ -157,7 +154,7 @@ export function PrivacyRequestForm({
               />
             </FormField>
             <FormField>
-              <FormLabel htmlFor={`${formId}-last`}>Corrected last name</FormLabel>
+              <FormLabel htmlFor={`${formId}-last`}>{copy.lastNameLabel}</FormLabel>
               <FormInput
                 id={`${formId}-last`}
                 value={form.lastName ?? ""}
@@ -169,7 +166,7 @@ export function PrivacyRequestForm({
           </>
         ) : null}
         <FormField>
-          <FormLabel htmlFor={subjectId}>Subject</FormLabel>
+          <FormLabel htmlFor={subjectId}>{copy.subjectLabel}</FormLabel>
           <FormInput
             id={subjectId}
             value={form.subject}
@@ -178,7 +175,7 @@ export function PrivacyRequestForm({
           {errors.subject ? <FormError>{errors.subject}</FormError> : null}
         </FormField>
         <FormField>
-          <FormLabel htmlFor={messageId}>Message</FormLabel>
+          <FormLabel htmlFor={messageId}>{copy.messageLabel}</FormLabel>
           <FormTextarea
             id={messageId}
             value={form.message}
@@ -221,7 +218,7 @@ export function PrivacyRequestForm({
         {submitState === "error" ? (
           <StatusNotice variant="error">
             <p>
-              We could not send your request. Write to {PRIVACY_MAILBOX_ADDRESS}.
+              {copy.submitError}
             </p>
           </StatusNotice>
         ) : null}
