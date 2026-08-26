@@ -24,7 +24,9 @@ type LanguageSwitcherProps = {
 };
 
 function persistLocale(locale: Locale) {
-  document.cookie = `${LOCALE_COOKIE}=${locale};path=/;max-age=31536000;SameSite=Lax`;
+  document.documentElement.lang = localeLabels[locale].htmlLang;
+  const secure = window.location.protocol === "https:" ? ";Secure" : "";
+  document.cookie = `${LOCALE_COOKIE}=${locale};path=/;max-age=31536000;SameSite=Lax${secure}`;
 }
 
 function getSwitchHref(pathname: string, locale: Locale): string {
