@@ -1,0 +1,362 @@
+{
+  "aosWorkId": "al-87",
+  "source": "command_center",
+  "sourceReference": "August Launch row 87",
+  "excelRow": 88,
+  "order": 87,
+  "title": "Execute & Verify Pre-Launch Social Campaign",
+  "operatingAgent": "nia",
+  "operatingAgentTitle": "Nia Prism — Chief Experience & Transformation Officer",
+  "generatedAt": "2026-08-26T15:16:29.621Z",
+  "generatedAtEt": "2026-08-26T11:16:29-04:00",
+  "timezone": "America/New_York",
+  "softwareChange": false,
+  "productMarketingLegalFilesChanged": false,
+  "campaignCopyChanged": false,
+  "campaignCreativeChanged": false,
+  "offersChanged": false,
+  "brandStrategyChanged": false,
+  "stripeCloudflareVercelDnsTouched": false,
+  "secretsPrinted": false,
+  "instagramLoginAttempted": false,
+  "tiktokLoginAttempted": false,
+  "livePublishAttempted": false,
+  "livePublishEnabled": false,
+  "earlyPublicationAttempted": false,
+  "newCampaignDeveloped": false,
+  "newVendorRequired": false,
+  "founderAcceptanceRecorded": false,
+  "founderApprovalFabricated": false,
+  "rowMarkedComplete": false,
+  "commandCenterStatusUnchanged": "Not Started",
+  "percentCompleteRecorded": 0,
+  "executionComplete": false,
+  "verificationComplete": false,
+  "recommendedAosStatus": "DATE_GATED",
+  "blockedReason": "publish_window_not_open; native_schedules_not_loaded; canonical_destination_dns_unresolved",
+  "nextAction": "await_publish_window_2026-08-28T08:00:00-04:00 then verify native publication; do not mark complete",
+  "aosIngestHint": "This Cursor run is a pre-window execution check, not campaign completion. Do not park ACCEPTANCE_READY as if August 28–30 posts published. Do not mark the Command Center row Complete. Founder acceptance stays with Kimberly Walker (human) after live publication and verification.",
+  "scope": {
+    "channels": ["instagram @backhalfco", "tiktok @backhalfco"],
+    "linkedin": "FUTURE ENHANCEMENT — not a launch execution channel",
+    "youtube": "OUT OF SCOPE",
+    "campaignDates": ["2026-08-28", "2026-08-29", "2026-08-30"],
+    "launchDayExcluded": "August 31 is Row 81 / Row 79 continuity, not this row",
+    "jobIds": [
+      "R78-0828-IG",
+      "R78-0828-TT",
+      "R78-0829-IG",
+      "R78-0829-TT",
+      "R78-0830-IG",
+      "R78-0830-TT"
+    ]
+  },
+  "publishWindow": {
+    "opensAtEt": "2026-08-28T08:00:00-04:00",
+    "closesAfterLastPrelaunchEt": "2026-08-30T12:00:00-04:00",
+    "hoursUntilFirstPost": 44.7,
+    "windowOpenNow": false,
+    "postingBeginsAuthority": "ops/fab-5/social-channels.json postingBegins 2026-08-28; Row 77/82 forbid early publication"
+  },
+  "dependencies": {
+    "row78PrelaunchCampaign": {
+      "status": "Complete",
+      "founderAcceptance": "YES",
+      "founderAcceptedAt": "2026-08-21",
+      "evidence": "ops/fab-5/runs/row-78-founder-acceptance-closure-2026-08-21.json"
+    },
+    "row82SocialPublishingSystem": {
+      "status": "IMPLEMENTED — FOUNDER ACTION REQUIRED. Not Complete.",
+      "founderAcceptance": "PENDING",
+      "nativeScheduleVerified": {
+        "instagram": false,
+        "tiktok": false
+      },
+      "evidence": "ops/fab-5/row-82-status.json"
+    },
+    "row77Governance": {
+      "status": "Complete",
+      "continuityModel": "OPTION_B",
+      "niaIsHumanCredentialHolder": false,
+      "nativeScheduleLoadIsRow82Dependency": true
+    }
+  },
+  "preWindowChecks": {
+    "lockedCopyPresent": true,
+    "authoritativeCopy": "approved-assets/row-81-social-launch/ROW-81-FINAL-APPROVED-COPY.md",
+    "authoritativeArchive": "approved-assets/row-81-social-launch/",
+    "companyQueuePrepared": true,
+    "companyQueueLivePublishDisabled": true,
+    "nativeSchedulerLoaded": false,
+    "messagingUnchanged": true,
+    "minorExecutionAdjustmentsMade": false
+  },
+  "jobs": [
+    {
+      "id": "R78-0828-IG",
+      "platform": "instagram",
+      "publishAtEt": "2026-08-28T08:00:00-04:00",
+      "theme": "What if this isn't all there is?",
+      "destination": "https://thebackhalf.org/",
+      "cta": "Stay with the question.",
+      "assetCount": 4,
+      "assetsExist": true,
+      "assetDimensions": "1080x1350",
+      "queueStatus": "prepared",
+      "nativeScheduleStatus": "NOT LOADED",
+      "published": false,
+      "livePostVerified": false,
+      "liveLinkVerified": false,
+      "engagementObserved": false
+    },
+    {
+      "id": "R78-0828-TT",
+      "platform": "tiktok",
+      "publishAtEt": "2026-08-28T12:00:00-04:00",
+      "theme": "What if this isn't all there is?",
+      "destination": "https://thebackhalf.org/",
+      "cta": "If that landed — August 31.",
+      "assetCount": 2,
+      "assetsExist": true,
+      "coverDimensions": "1080x1920",
+      "videoContainer": "ftyp isom / avc1; moov+mdat present",
+      "queueStatus": "prepared",
+      "nativeScheduleStatus": "NOT LOADED",
+      "published": false,
+      "livePostVerified": false,
+      "liveLinkVerified": false,
+      "engagementObserved": false
+    },
+    {
+      "id": "R78-0829-IG",
+      "platform": "instagram",
+      "publishAtEt": "2026-08-29T08:00:00-04:00",
+      "theme": "When was the last time you felt completely alive?",
+      "destination": "https://thebackhalf.org/journey",
+      "cta": "Explore the Journey.",
+      "assetCount": 4,
+      "assetsExist": true,
+      "assetDimensions": "1080x1350",
+      "queueStatus": "prepared",
+      "nativeScheduleStatus": "NOT LOADED",
+      "published": false,
+      "livePostVerified": false,
+      "liveLinkVerified": false,
+      "engagementObserved": false
+    },
+    {
+      "id": "R78-0829-TT",
+      "platform": "tiktok",
+      "publishAtEt": "2026-08-29T12:00:00-04:00",
+      "theme": "When was the last time you felt completely alive?",
+      "destination": "https://thebackhalf.org/journey",
+      "cta": "Explore the Journey.",
+      "assetCount": 2,
+      "assetsExist": true,
+      "coverDimensions": "1080x1920",
+      "videoContainer": "ftyp isom / avc1; moov+mdat present",
+      "queueStatus": "prepared",
+      "nativeScheduleStatus": "NOT LOADED",
+      "published": false,
+      "livePostVerified": false,
+      "liveLinkVerified": false,
+      "engagementObserved": false
+    },
+    {
+      "id": "R78-0830-IG",
+      "platform": "instagram",
+      "publishAtEt": "2026-08-30T08:00:00-04:00",
+      "theme": "What if someday is August 31?",
+      "destination": "https://thebackhalf.org/lumina",
+      "cta": "Return tomorrow. Become an Architect.",
+      "assetCount": 3,
+      "assetsExist": true,
+      "assetDimensions": "1080x1350",
+      "queueStatus": "prepared",
+      "nativeScheduleStatus": "NOT LOADED",
+      "published": false,
+      "livePostVerified": false,
+      "liveLinkVerified": false,
+      "engagementObserved": false
+    },
+    {
+      "id": "R78-0830-TT",
+      "platform": "tiktok",
+      "publishAtEt": "2026-08-30T12:00:00-04:00",
+      "theme": "What if someday is August 31?",
+      "destination": "https://thebackhalf.org/register",
+      "cta": "Tomorrow.",
+      "assetCount": 2,
+      "assetsExist": true,
+      "coverDimensions": "1080x1920",
+      "videoContainer": "ftyp isom / avc1; moov+mdat present",
+      "queueStatus": "prepared",
+      "nativeScheduleStatus": "NOT LOADED",
+      "published": false,
+      "livePostVerified": false,
+      "liveLinkVerified": false,
+      "engagementObserved": false
+    }
+  ],
+  "channelProbes": {
+    "instagram": {
+      "officialHandle": "backhalfco",
+      "publicUrl": "https://www.instagram.com/backhalfco/",
+      "row76FounderConfirmedAccountExists": true,
+      "unauthenticatedFetch": {
+        "httpStatus": 200,
+        "redirectedToLogin": true,
+        "liveFeedReadable": false,
+        "note": "Unauthenticated request redirected to Instagram login. Live posts and media were not observed. Nia is not a credential holder and did not log in."
+      },
+      "livePostsObserved": false,
+      "earlyPublicationEvidence": "NONE OBSERVABLE"
+    },
+    "tiktok": {
+      "officialHandle": "backhalfco",
+      "publicUrl": "https://www.tiktok.com/@backhalfco",
+      "row76FounderConfirmedAccountExists": true,
+      "publicProfile": {
+        "httpStatus": 200,
+        "uniqueId": "backhalfco",
+        "nickname": "The Back Half",
+        "signatureMatchesBrand": true,
+        "privateAccount": false,
+        "verified": false,
+        "followerCount": 0,
+        "videoCount": 0,
+        "itemListLength": 0
+      },
+      "livePostsObserved": false,
+      "earlyPublicationEvidence": "NONE — videoCount 0"
+    }
+  },
+  "destinationLinks": {
+    "canonicalHostsResolve": false,
+    "dnsObservedAt": "2026-08-26T15:16:00Z",
+    "method": "Cloudflare and Google DNS-over-HTTPS plus local getent/nslookup",
+    "apex": {
+      "name": "thebackhalf.org",
+      "a": "NO ANSWER — SOA only",
+      "aaaa": "NO ANSWER — SOA only",
+      "http": "curl (6) Could not resolve host"
+    },
+    "www": {
+      "name": "www.thebackhalf.org",
+      "a": "NXDOMAIN (Status 3)",
+      "cname": "NXDOMAIN (Status 3)",
+      "http": "curl (6) Could not resolve host"
+    },
+    "campaignDestinations": [
+      {
+        "url": "https://thebackhalf.org/",
+        "jobs": ["R78-0828-IG", "R78-0828-TT"],
+        "canonicalHttp": "UNRESOLVED"
+      },
+      {
+        "url": "https://thebackhalf.org/journey",
+        "jobs": ["R78-0829-IG", "R78-0829-TT"],
+        "canonicalHttp": "UNRESOLVED"
+      },
+      {
+        "url": "https://thebackhalf.org/lumina",
+        "jobs": ["R78-0830-IG"],
+        "canonicalHttp": "UNRESOLVED"
+      },
+      {
+        "url": "https://thebackhalf.org/register",
+        "jobs": ["R78-0830-TT"],
+        "canonicalHttp": "UNRESOLVED"
+      },
+      {
+        "url": "https://thebackhalf.org/legal/ai-disclosure",
+        "jobs": ["R78-0830-IG first-comment if required"],
+        "canonicalHttp": "UNRESOLVED"
+      }
+    ],
+    "technicalFallbackNotACampaignDestination": {
+      "host": "https://website-two-psi-49.vercel.app",
+      "note": "Row 75 technical fallback. Not a Founder-approved social destination. Used only to confirm application routes exist. Do not substitute into captions.",
+      "routes": [
+        { "path": "/", "httpStatus": 200, "title": "The Back Half — Magical is Possible" },
+        { "path": "/journey", "httpStatus": 200, "title": "The Journey — The Back Half" },
+        { "path": "/lumina", "httpStatus": 200, "title": "Meet Lumina — The Back Half" },
+        { "path": "/register", "httpStatus": 200, "title": "Become an Architect — The Back Half" },
+        { "path": "/legal/ai-disclosure", "httpStatus": 200, "title": "AI Disclosure — The Back Half" }
+      ]
+    },
+    "niaDidNotChangeDns": true,
+    "row75Ownership": "Imani Heartbeat / Founder Cloudflare authorization. Nia documents impact only."
+  },
+  "engagementMonitoring": {
+    "started": false,
+    "reason": "No August 28–30 posts are live. TikTok videoCount is 0. Instagram feed is not readable without login.",
+    "protocol": "ops/fab-5/ROW-83-SOCIAL-ENGAGEMENT-RESPONSE-PROTOCOL.md",
+    "logEntriesThisRun": 0,
+    "escalationThresholdReached": false,
+    "newFounderContactOpened": false
+  },
+  "publishingFailuresOrMaterialIssues": [
+    {
+      "id": "ISSUE-AL87-01",
+      "severity": "BLOCKER",
+      "class": "DATE_GATED",
+      "summary": "Pre-launch publish window has not opened. First Instagram job is 2026-08-28 8:00 AM ET.",
+      "action": "Wait. Do not publish early."
+    },
+    {
+      "id": "ISSUE-AL87-02",
+      "severity": "BLOCKER",
+      "class": "ESTABLISHED_ROW_82_FOUNDER_ACTION",
+      "summary": "Locked August 28–30 Instagram and TikTok jobs are prepared in the company queue and are not loaded to native platform schedulers. Option B continuity (publish without Founder login at posting time) is therefore not in force.",
+      "alreadyEscalatedOn": "Row 82",
+      "newFounderEscalation": false,
+      "action": "Founder platform authorization remains the established next step. Nia did not invent a Nia login, did not purchase a scheduler, and did not live-publish."
+    },
+    {
+      "id": "ISSUE-AL87-03",
+      "severity": "MATERIAL",
+      "class": "ESTABLISHED_ROW_75_CANONICAL_DNS",
+      "summary": "Campaign destination URLs use https://thebackhalf.org and do not resolve (no apex A/AAAA; www NXDOMAIN). Live-link verification on the Founder-approved destinations cannot pass from this runtime. Application routes exist on the Row 75 Vercel technical fallback only.",
+      "alreadyEscalatedOn": "Row 75",
+      "newFounderEscalation": false,
+      "owner": "imani",
+      "action": "Do not change Cloudflare DNS, nameservers, or Vercel custom-domain settings from this Nia row. Do not rewrite approved destination URLs to vercel.app."
+    }
+  ],
+  "escalation": {
+    "thresholdReachedForNewFounderInvolvement": false,
+    "row83SocialEscalationTriggers": "NONE — no live comments, legal items, or coverage gap",
+    "establishedOpenItemsReferencedNotReopened": [
+      "Row 82 FOUNDER ACTION REQUIRED — PLATFORM AUTHORIZATION (native Instagram Professional / Meta Business Suite and native TikTok scheduling)",
+      "Row 75 NOT READY — canonical DNS missing"
+    ]
+  },
+  "validation": {
+    "typecheckScriptPresent": false,
+    "tscNoEmit": "PASS",
+    "tscCommand": "npx tsc --noEmit",
+    "tscExitCode": 0,
+    "npmTestScriptPresent": false,
+    "nearestPackageTestScript": null,
+    "npmTestSkippedReason": "package.json has no test script; this is a status-only ops JSON file",
+    "buildRequired": false,
+    "buildSkippedReason": "Status-only ops file. Change cannot affect production."
+  },
+  "evidence": [
+    "approved-assets/row-81-social-launch/ROW-81-FINAL-APPROVED-COPY.md",
+    "ops/fab-5/social-publishing-queue.json",
+    "ops/fab-5/row-82-social-publishing-manifest.json",
+    "ops/fab-5/runs/row-82-social-publishing-validation.json",
+    "ops/fab-5/runs/row-78-founder-acceptance-closure-2026-08-21.json",
+    "ops/fab-5/runs/row-75-domain-dns-ssl-validation.json",
+    "ops/fab-5/social-channels.json",
+    "ops/fab-5/runs/social-publishing-log.json"
+  ],
+  "cursorCloudAgent": {
+    "bcId": "bc-d557d32d-8989-4fbe-81b3-57498b958316",
+    "branch": "cursor/aos-nia-al-87-5792",
+    "url": "https://cursor.com/agents/bc-d557d32d-8989-4fbe-81b3-57498b958316"
+  },
+  "finalStatus": "DATE_GATED — PRE-WINDOW VERIFICATION ONLY. Execution and live publish verification cannot start until 2026-08-28 8:00 AM ET, and remain blocked on Row 82 native schedule load plus Row 75 canonical DNS. Not Complete. Founder acceptance not recorded."
+}
