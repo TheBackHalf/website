@@ -4,6 +4,13 @@
 
 import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import path from "node:path";
+import {
+  createPostgresKeyedStore,
+  createUnconfiguredParticipantStore,
+  getParticipantPersistenceBackend,
+  JOURNEY_COLLECTIONS,
+  journeyFileOverrideDir,
+} from "@/lib/journey/durable-records";
 
 import {
   isChapter4SectionId,
@@ -285,9 +292,38 @@ export function createFileChapter4Store(options?: {
 
 let storeInstance: Chapter4Store | null = null;
 
+function createPostgresChapter4Store(): Chapter4Store {
+  const keyed = createPostgresKeyedStore<Chapter4Record>(JOURNEY_COLLECTIONS.chapter4);
+  return {
+    findChapter4ForUser(userId) {
+      return keyed.findForUser(userId.trim());
+    },
+    async saveChapter4(record) {
+      const normalized = normalizeRecord(record);
+      if (!normalized) {
+        throw new Error("Invalid Chapter IV payload.");
+      }
+      return keyed.save(normalized);
+    },
+    deleteForUser(userId) {
+      return keyed.deleteForUser(userId);
+    },
+  };
+}
+
 export function getChapter4Store(): Chapter4Store {
   if (!storeInstance) {
-    storeInstance = createFileChapter4Store();
+    const override = journeyFileOverrideDir();
+    const backend = getParticipantPersistenceBackend(Boolean(override));
+    if (backend === "file_test_override") {
+      storeInstance = createFileChapter4Store({ dataDir: override });
+    } else if (backend === "supabase_postgres") {
+      storeInstance = createPostgresChapter4Store();
+    } else if (backend === "unconfigured_production") {
+      storeInstance = createUnconfiguredParticipantStore<Chapter4Store>("journey_chapter_4");
+    } else {
+      storeInstance = createFileChapter4Store();
+    }
   }
   return storeInstance;
 }

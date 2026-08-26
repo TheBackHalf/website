@@ -36,6 +36,9 @@ export default async function EsPrivacyVerifyPage({
           Solicitud {result.request.id}: {result.request.status}.
         </p>
       ) : null}
+      {result.status === "verified" && result.request?.type === "DELETION" ? (
+        <p className="mt-4 font-sans text-sm text-bh-muted">{copy.verifyRetention}</p>
+      ) : null}
     </main>
   );
 }

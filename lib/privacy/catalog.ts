@@ -57,6 +57,10 @@ export const PRIVACY_SOURCES = [
 ] as const;
 export type PrivacySource = (typeof PRIVACY_SOURCES)[number];
 
+export const PRIVACY_INTAKE_ROUTES = [
+  "/privacy/request",
+  "/es/privacy/request",
+] as const;
 export const PRIVACY_MAILBOX_ADDRESS = PRIVACY_MAILBOX;
 export const PRIVACY_FROM_NAME = "The Back Half Privacy";
 export const PRIVACY_REPLY_TO = SUPPORT_MAILBOX;

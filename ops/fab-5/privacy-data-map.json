@@ -75,7 +75,7 @@
     {
       "id": "journey_progress",
       "name": "Journey progress pointers",
-      "stores": [".data/journey/progress.json"],
+      "stores": ["journey_participant_records", ".data/journey/progress.json"],
       "dataCategories": ["userId", "chapterId", "status"],
       "owner": "imani",
       "supportingOwner": "nia",
@@ -89,7 +89,7 @@
     {
       "id": "journey_onboarding",
       "name": "Onboarding records",
-      "stores": [".data/journey/onboarding.json"],
+      "stores": ["journey_participant_records", ".data/journey/onboarding.json"],
       "dataCategories": ["userId", "onboardingAnswers", "status"],
       "owner": "imani",
       "supportingOwner": "nia",
@@ -104,6 +104,7 @@
       "id": "journey_chapters",
       "name": "Journey chapter work (I–VII)",
       "stores": [
+        "journey_participant_records",
         ".data/journey/chapter-1.json",
         ".data/journey/chapter-2.json",
         ".data/journey/chapter-3.json",
@@ -125,7 +126,7 @@
     {
       "id": "lumina_conversations",
       "name": "Lumina conversations",
-      "stores": [".data/lumina"],
+      "stores": ["lumina_conversations", ".data/lumina"],
       "dataCategories": ["messages", "conversationMetadata"],
       "owner": "imani",
       "supportingOwner": "nia",
@@ -139,7 +140,7 @@
     {
       "id": "lumina_memory",
       "name": "Lumina memory",
-      "stores": [".data/lumina"],
+      "stores": ["lumina_memories", ".data/lumina"],
       "dataCategories": ["memoryPayload", "enabledFlag"],
       "owner": "imani",
       "supportingOwner": "nia",

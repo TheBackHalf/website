@@ -156,5 +156,51 @@ export async function createPrivacyRequest(
     });
   }
 
-  return { request: await store.upsert(request), verifyToken: rawToken };
+  request = await store.upsert(request);
+
+  if (!input.supportTicketId && input.source !== "support_ticket") {
+    try {
+      const { createSupportTicket } = await import("@/lib/support/create-ticket");
+      const ticket = await createSupportTicket({
+        requesterName: request.requesterName,
+        requesterEmail: request.requesterEmail,
+        category: "PRIVACY",
+        subject: `${request.id}: ${request.subject}`,
+        message: request.message,
+        source: input.source === "email" ? "email" : "form",
+        test: input.test,
+        acknowledge: false,
+        skipPrivacyBridge: true,
+      });
+      request = await store.upsert({
+        ...request,
+        supportTicketId: ticket.id,
+        history: [
+          ...request.history,
+          {
+            at: new Date().toISOString(),
+            actor: "system",
+            type: "support_ticket",
+            note: `Linked Support ticket ${ticket.id}.`,
+          },
+        ],
+      });
+    } catch {
+      // Support ticket bridge must not block privacy intake.
+    }
+  }
+
+  if (request.identity.status === "verified") {
+    try {
+      const { fulfillPrivacyRequest } = await import("@/lib/privacy/fulfill");
+      const fulfilled = await fulfillPrivacyRequest(request.id, {
+        confirmDeletion: request.fulfillment.deletionConfirmed === true,
+      });
+      return { request: fulfilled.request, verifyToken: rawToken };
+    } catch {
+      // Fulfillment can continue from the admin console.
+    }
+  }
+
+  return { request, verifyToken: rawToken };
 }

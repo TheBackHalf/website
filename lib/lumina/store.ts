@@ -1,11 +1,16 @@
 import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
-import path from "node:path";
 import {
   appendMessage,
   createConversation,
   createMessage,
   sortMessagesChronologically,
 } from "@/lib/lumina/conversation";
+import {
+  createUnconfiguredParticipantStore,
+  getParticipantPersistenceBackend,
+  luminaFileOverrideDir,
+} from "@/lib/journey/durable-records";
+import { createPostgresLuminaStore } from "@/lib/lumina/postgres-store";
 import {
   clearLuminaMemoryPayload,
   emptyLuminaMemoryRecord,
@@ -327,7 +332,17 @@ let luminaStore: LuminaStore | undefined;
 
 export function getLuminaStore(): LuminaStore {
   if (!luminaStore) {
-    luminaStore = createFileLuminaStore();
+    const override = luminaFileOverrideDir();
+    const backend = getParticipantPersistenceBackend(Boolean(override));
+    if (backend === "file_test_override") {
+      luminaStore = createFileLuminaStore({ dataDir: override });
+    } else if (backend === "supabase_postgres") {
+      luminaStore = createPostgresLuminaStore();
+    } else if (backend === "unconfigured_production") {
+      luminaStore = createUnconfiguredParticipantStore<LuminaStore>("lumina");
+    } else {
+      luminaStore = createFileLuminaStore();
+    }
   }
   return luminaStore;
 }

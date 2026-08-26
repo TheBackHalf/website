@@ -86,6 +86,28 @@ CREATE TABLE IF NOT EXISTS privacy_rights_requests (
 );
 CREATE INDEX IF NOT EXISTS privacy_rights_requests_email_idx
   ON privacy_rights_requests (requester_email);
+CREATE TABLE IF NOT EXISTS journey_participant_records (
+  collection TEXT NOT NULL,
+  user_id TEXT NOT NULL,
+  payload JSONB NOT NULL,
+  updated_at TIMESTAMPTZ NOT NULL,
+  PRIMARY KEY (collection, user_id)
+);
+CREATE INDEX IF NOT EXISTS journey_participant_records_user_idx
+  ON journey_participant_records (user_id);
+CREATE TABLE IF NOT EXISTS lumina_conversations (
+  id TEXT PRIMARY KEY,
+  user_id TEXT NOT NULL,
+  payload JSONB NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL,
+  updated_at TIMESTAMPTZ NOT NULL
+);
+CREATE INDEX IF NOT EXISTS lumina_conversations_user_idx ON lumina_conversations (user_id);
+CREATE TABLE IF NOT EXISTS lumina_memories (
+  user_id TEXT PRIMARY KEY,
+  payload JSONB NOT NULL,
+  updated_at TIMESTAMPTZ NOT NULL
+);
 CREATE TABLE IF NOT EXISTS launch_dashboard_meta (
   key TEXT PRIMARY KEY,
   value JSONB NOT NULL,

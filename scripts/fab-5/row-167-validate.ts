@@ -1,7 +1,7 @@
 import { mkdtemp, writeFile, rm } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync, existsSync, readFileSync } from "node:fs";
 
 import { hashPassword } from "@/lib/auth/password";
 import {
@@ -32,9 +32,26 @@ import { getPrivacyStore, resetPrivacyStoreForTests } from "@/lib/privacy/store"
 import { submitPrivacyRequest } from "@/lib/privacy/submit-request";
 import { verifyPrivacyRequestIdentity } from "@/lib/privacy/verify";
 import { createSupportTicket } from "@/lib/support/create-ticket";
-import { resetSupportStoreForTests } from "@/lib/support/store";
+import { getSupportStore, resetSupportStoreForTests } from "@/lib/support/store";
 import { resetAnalyticsStoreForTests } from "@/lib/analytics/store";
-import { PRIVACY_MAILBOX_ADDRESS, PRIVACY_OWNER_TITLES } from "@/lib/privacy/catalog";
+import {
+  PRIVACY_INTAKE_ROUTES,
+  PRIVACY_MAILBOX_ADDRESS,
+  PRIVACY_OWNER_TITLES,
+} from "@/lib/privacy/catalog";
+import { privacyRequestPageCopy } from "@/lib/privacy/copy";
+import {
+  JOURNEY_PARTICIPANT_TABLE,
+  LUMINA_CONVERSATIONS_TABLE,
+  LUMINA_MEMORIES_TABLE,
+  PARTICIPANT_TABLE_SQL,
+  createPostgresKeyedStore,
+  getParticipantPersistenceBackend,
+  JOURNEY_COLLECTIONS,
+} from "@/lib/journey/durable-records";
+import { createPostgresLuminaStore } from "@/lib/lumina/postgres-store";
+import { launchDashboardPostgresConfigured } from "@/lib/launch-dashboard/db";
+import { emptyLuminaMemoryRecord } from "@/lib/lumina/memory/normalize";
 
 type TestResult = {
   id: string;
@@ -237,11 +254,69 @@ async function main() {
     message: "I have a privacy question about retention.",
     locale: "en",
   });
+  const inquiryRequest =
+    form.status === "received" ? await getPrivacyStore().get(form.requestId) : undefined;
+  const supportTickets = await getSupportStore().list({ includeTest: true });
+  const formBridge = supportTickets.some(
+    (ticket) =>
+      ticket.category === "PRIVACY" && ticket.id === inquiryRequest?.supportTicketId,
+  );
   tests.push({
     id: "T8",
-    name: "Public form creates tracked inquiry",
-    result: mark(form.status === "received" && Boolean(form.status === "received" && form.requestId.startsWith("BH-PR-"))),
-    detail: form.status === "received" ? form.requestId : form.status,
+    name: "Public form creates tracked inquiry and Support ticket bridge",
+    result: mark(
+      form.status === "received" &&
+        Boolean(form.status === "received" && form.requestId.startsWith("BH-PR-")) &&
+        Boolean(inquiryRequest?.supportTicketId) &&
+        formBridge,
+    ),
+    detail:
+      form.status === "received"
+        ? `${form.requestId} ticket=${inquiryRequest?.supportTicketId ?? "none"}`
+        : form.status,
+  });
+
+  const lumina = (await import("@/lib/lumina/store")).getLuminaStore();
+  const conversation = await lumina.getOrCreateConversationForUser(user.id);
+  await lumina.appendMessageForUser({
+    conversationId: conversation.id,
+    userId: user.id,
+    message: { role: "user", content: "Remember this journey note for privacy deletion." },
+  });
+  const seededMemory = emptyLuminaMemoryRecord(user.id);
+  seededMemory.enabled = true;
+  seededMemory.summaries = [
+    {
+      id: `sum-${stamp}`,
+      text: "Architect noted a Journey milestone.",
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      source: "explicit",
+    },
+  ];
+  await lumina.saveMemory(seededMemory);
+  const consentWithdrawal = await createPrivacyRequest({
+    requesterName: "Row Privacy",
+    requesterEmail: user.email,
+    type: "CONSENT_WITHDRAWAL",
+    subject: "Withdraw Lumina memory",
+    message: "Please withdraw optional Lumina memory consent.",
+    source: "privacy_form",
+    test: true,
+    acknowledge: false,
+  });
+  await verifyPrivacyRequestIdentity({
+    requestId: consentWithdrawal.request.id,
+    token: consentWithdrawal.verifyToken ?? "",
+  });
+  const memoryAfter = await lumina.findMemoryForUser(user.id);
+  tests.push({
+    id: "T8b",
+    name: "Consent withdrawal clears Lumina memory payload",
+    result: mark(
+      (memoryAfter?.summaries.length ?? 1) === 0 && memoryAfter?.enabled === false,
+    ),
+    detail: `enabled=${memoryAfter?.enabled} summaries=${memoryAfter?.summaries.length}`,
   });
 
   writeFileSync(
@@ -290,7 +365,12 @@ async function main() {
   )
     .getJourneyProgressStore()
     .findProgressForUser(user.id);
+  const luminaAfterDelete = await lumina.listConversationsForUser(user.id);
+  const memoryAfterDelete = await lumina.findMemoryForUser(user.id);
   const consents = await getAuthStore().findConsentRecordsByUserId(user.id);
+  const retained = (deletionResult.request.fulfillment.systems ?? []).filter(
+    (entry) => entry.retainOnDeletionRequest,
+  );
   const login = await loginWithEmailAction({
     email: user.email,
     password,
@@ -298,42 +378,156 @@ async function main() {
   });
   tests.push({
     id: "T10",
-    name: "Verified deletion anonymizes account and keeps consent audit",
+    name: "Verified deletion anonymizes account, deletes Journey/Lumina, keeps retained classes",
     result: mark(
       Boolean(deletedUser?.deletedAt) &&
         !byEmail &&
         !progress &&
+        luminaAfterDelete.length === 0 &&
+        !memoryAfterDelete &&
         consents.length > 0 &&
         login.status === "invalid_credentials" &&
         !deletedUser?.passwordHash &&
+        retained.some((entry) => entry.systemId === "auth_consents") &&
+        retained.some((entry) => entry.systemId === "billing_purchases") &&
         (deletionResult.request.status === "PARTIALLY_FULFILLED" ||
           deletionResult.request.status === "FULFILLED"),
     ),
-    detail: `deletedAt=${deletedUser?.deletedAt} consents=${consents.length} login=${login.status} status=${deletionResult.request.status}`,
+    detail: `deletedAt=${deletedUser?.deletedAt} consents=${consents.length} login=${login.status} status=${deletionResult.request.status} retained=${retained.map((entry) => entry.systemId).join(",")}`,
   });
 
   tests.push({
     id: "T11",
-    name: "Mailbox and owners are established",
+    name: "Mailbox listed; live inbox is Founder slice only",
     result: mark(
       PRIVACY_MAILBOX_ADDRESS === "privacy@thebackhalf.org" &&
         PRIVACY_OWNER_TITLES.imani.includes("Imani") &&
         PRIVACY_OWNER_TITLES.michelle.includes("Michelle") &&
         PRIVACY_OWNER_TITLES.founder === "Founder",
     ),
-    detail: PRIVACY_MAILBOX_ADDRESS,
+    detail: `${PRIVACY_MAILBOX_ADDRESS}; FOUNDER_ACTION_REQUIRED live mailbox only`,
+  });
+
+  const enIntake = existsSync("app/privacy/request/page.tsx")
+    ? readFileSync("app/privacy/request/page.tsx", "utf8")
+    : "";
+  const esIntake = existsSync("app/es/privacy/request/page.tsx")
+    ? readFileSync("app/es/privacy/request/page.tsx", "utf8")
+    : "";
+  const apiIntake = existsSync("app/api/privacy/request/route.ts");
+  const intakeOperational =
+    PRIVACY_INTAKE_ROUTES.includes("/privacy/request") &&
+    PRIVACY_INTAKE_ROUTES.includes("/es/privacy/request") &&
+    enIntake.includes("PrivacyRequestPageView") &&
+    esIntake.includes("PrivacyRequestPageView") &&
+    esIntake.includes('locale="es"') &&
+    apiIntake;
+  tests.push({
+    id: "T12",
+    name: "Deployable app includes EN and ES privacy intake routes",
+    result: mark(intakeOperational),
+    detail: intakeOperational
+      ? "app/privacy/request and app/es/privacy/request present"
+      : "INTAKE MISSING FROM DEPLOYABLE APP",
+  });
+
+  const enDict = readFileSync("content/i18n/dictionaries/en.ts", "utf8");
+  const esDict = readFileSync("content/i18n/dictionaries/es.ts", "utf8");
+  tests.push({
+    id: "T13",
+    name: "No contradictory account-deletion-unavailable copy EN/ES",
+    result: mark(
+      !enDict.includes("account deletion, which is not available yet") &&
+        !esDict.includes("eliminación de cuenta, que aún no está disponible") &&
+        enDict.includes("privacy rights request process") &&
+        esDict.includes("proceso de derechos de privacidad"),
+    ),
+    detail: "Lumina memory and settings copy point at the privacy-rights process",
+  });
+
+  const schemaFile = readFileSync("lib/launch-dashboard/db.ts", "utf8");
+  const durableSchema =
+    PARTICIPANT_TABLE_SQL.includes(JOURNEY_PARTICIPANT_TABLE) &&
+    PARTICIPANT_TABLE_SQL.includes(LUMINA_CONVERSATIONS_TABLE) &&
+    PARTICIPANT_TABLE_SQL.includes(LUMINA_MEMORIES_TABLE) &&
+    schemaFile.includes("journey_participant_records") &&
+    schemaFile.includes("lumina_conversations") &&
+    schemaFile.includes("lumina_memories");
+  let durableDeletion = durableSchema;
+  let durableDetail = `schema=${durableSchema} backend=${getParticipantPersistenceBackend(false)}`;
+  if (launchDashboardPostgresConfigured()) {
+    const durableId = `row167-durable-${stamp}`;
+    const progressStore = createPostgresKeyedStore<{
+      userId: string;
+      chapterId: string;
+      status: string;
+      updatedAt: string;
+    }>(JOURNEY_COLLECTIONS.progress);
+    await progressStore.save({
+      userId: durableId,
+      chapterId: "chapter-1",
+      status: "in_progress",
+      updatedAt: new Date().toISOString(),
+    });
+    const pgLumina = createPostgresLuminaStore();
+    const pgConversation = await pgLumina.getOrCreateConversationForUser(durableId);
+    await pgLumina.appendMessageForUser({
+      conversationId: pgConversation.id,
+      userId: durableId,
+      message: { role: "user", content: "Durable Lumina row for privacy deletion." },
+    });
+    await progressStore.deleteForUser(durableId);
+    await pgLumina.eraseParticipantDataForUser(durableId);
+    const remainingProgress = await progressStore.findForUser(durableId);
+    const remainingConversations = await pgLumina.listConversationsForUser(durableId);
+    durableDeletion =
+      durableSchema && !remainingProgress && remainingConversations.length === 0;
+    durableDetail = `postgres deletion remainingProgress=${Boolean(remainingProgress)} conversations=${remainingConversations.length}`;
+  }
+  tests.push({
+    id: "T14",
+    name: "Journey/Lumina deletion uses launch-dashboard Postgres pattern",
+    result: mark(durableDeletion),
+    detail: durableDetail,
+  });
+
+  const enCopy = privacyRequestPageCopy("en");
+  const esCopy = privacyRequestPageCopy("es");
+  tests.push({
+    id: "T15",
+    name: "EN/ES retention disclosure is not complete erasure",
+    result: mark(
+      enCopy.retentionNote.toLowerCase().includes("not complete erasure") &&
+        esCopy.retentionNote.toLowerCase().includes("no es un borrado total") &&
+        enCopy.deletionConfirm.toLowerCase().includes("legal-hold") &&
+        esCopy.deletionConfirm.toLowerCase().includes("retención legal") &&
+        enCopy.mailboxNote.includes("Support") &&
+        esCopy.mailboxNote.includes("Support"),
+    ),
+    detail: "Retention and Support routing disclosed in both locales",
   });
 
   const failed = tests.filter((test) => test.result === "FAIL");
+  const intakeMissing = tests.some((test) => test.id === "T12" && test.result === "FAIL");
+  const acceptanceReady = failed.length === 0 && !intakeMissing;
   const summary = {
     row: 167,
     aosWorkId: "al-167",
     deliverable: "Operationalize Privacy Rights and Data Governance",
     generatedAt: new Date().toISOString(),
     result: failed.length === 0 ? "PASS" : "FAIL",
-    tests,
+    acceptanceReady,
     founderAcceptance: null,
-    note: "Operational process implemented. Founder acceptance remains with Kimberly Walker (human).",
+    founderActionRequired: {
+      slice: "live_privacy_mailbox",
+      mailbox: PRIVACY_MAILBOX_ADDRESS,
+      reason:
+        "In-product form and Support ticket bridge are operational. Live privacy@ mailbox connection remains a Founder Workspace action if unconnected.",
+    },
+    tests,
+    note: intakeMissing
+      ? "Harness must not be ACCEPTANCE_READY while deployable intake routes are missing."
+      : "Operational process implemented against durable Postgres pattern. Founder acceptance remains with Kimberly Walker (human). Do not merge. Do not mark the August Launch row complete.",
   };
   mkdirSync("ops/fab-5/runs", { recursive: true });
   await writeFile(

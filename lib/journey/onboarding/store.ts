@@ -1,5 +1,12 @@
 import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import {
+  createPostgresKeyedStore,
+  createUnconfiguredParticipantStore,
+  getParticipantPersistenceBackend,
+  JOURNEY_COLLECTIONS,
+  journeyFileOverrideDir,
+} from "@/lib/journey/durable-records";
+import {
   createEmptyOnboardingRecord,
   emptyAssessmentState,
   isOnboardingStepId,
@@ -297,11 +304,64 @@ export function createFileJourneyOnboardingStore(options?: {
   };
 }
 
+function createPostgresJourneyOnboardingStore(): JourneyOnboardingStore {
+  const keyed = createPostgresKeyedStore<OnboardingRecord>(
+    JOURNEY_COLLECTIONS.onboarding,
+  );
+  return {
+    findOnboardingForUser(userId) {
+      return keyed.findForUser(userId.trim());
+    },
+    async getOrCreateOnboardingForUser(userId) {
+      const trimmed = userId.trim();
+      if (!trimmed) {
+        throw new Error("Invalid onboarding user.");
+      }
+      const existing = await keyed.findForUser(trimmed);
+      if (existing) return existing;
+      const created = createEmptyOnboardingRecord(trimmed);
+      await keyed.save(created);
+      return created;
+    },
+    async saveOnboarding(record) {
+      const previous = await keyed.findForUser(record.userId);
+      const saved = await keyed.save(record);
+      try {
+        const { emitOnboardingAnalytics } = await import(
+          "@/lib/analytics/product-hooks"
+        );
+        await emitOnboardingAnalytics(previous, saved);
+      } catch {
+        // Analytics must not block onboarding.
+      }
+      return saved;
+    },
+    listOnboarding() {
+      return keyed.list();
+    },
+    deleteForUser(userId) {
+      return keyed.deleteForUser(userId);
+    },
+  };
+}
+
 let storeInstance: JourneyOnboardingStore | null = null;
 
 export function getJourneyOnboardingStore(): JourneyOnboardingStore {
   if (!storeInstance) {
-    storeInstance = createFileJourneyOnboardingStore();
+    const override = journeyFileOverrideDir();
+    const backend = getParticipantPersistenceBackend(Boolean(override));
+    if (backend === "file_test_override") {
+      storeInstance = createFileJourneyOnboardingStore({ dataDir: override });
+    } else if (backend === "supabase_postgres") {
+      storeInstance = createPostgresJourneyOnboardingStore();
+    } else if (backend === "unconfigured_production") {
+      storeInstance = createUnconfiguredParticipantStore<JourneyOnboardingStore>(
+        "journey_onboarding",
+      );
+    } else {
+      storeInstance = createFileJourneyOnboardingStore();
+    }
   }
   return storeInstance;
 }

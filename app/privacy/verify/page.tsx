@@ -36,6 +36,9 @@ export default async function PrivacyVerifyPage({
           Request {result.request.id} is {result.request.status}.
         </p>
       ) : null}
+      {result.status === "verified" && result.request?.type === "DELETION" ? (
+        <p className="mt-4 font-sans text-sm text-bh-muted">{copy.verifyRetention}</p>
+      ) : null}
     </main>
   );
 }

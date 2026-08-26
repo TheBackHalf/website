@@ -12,6 +12,11 @@ import { getChapter6Store } from "@/lib/journey/chapters/chapter-6-store";
 import { getChapter7Store } from "@/lib/journey/chapters/chapter-7-store";
 import { getLuminaStore } from "@/lib/lumina/store";
 import { setLuminaMemoryEnabledForUser } from "@/lib/lumina/memory/service";
+import {
+  deleteAllJourneyParticipantRecordsForUser,
+  getParticipantPersistenceBackend,
+  journeyFileOverrideDir,
+} from "@/lib/journey/durable-records";
 import { listPrivacySystems } from "@/lib/privacy/data-map";
 import { activeLegalHoldFor } from "@/lib/privacy/legal-hold";
 import type { PrivacySystemAction } from "@/lib/privacy/types";
@@ -48,6 +53,13 @@ export async function eraseParticipantContent(userId: string): Promise<PrivacySy
   await getLuminaStore().eraseParticipantDataForUser(userId);
   actions.push({ systemId: "lumina_conversations", action: "deleted" });
   actions.push({ systemId: "lumina_memory", action: "deleted" });
+
+  if (
+    getParticipantPersistenceBackend(Boolean(journeyFileOverrideDir())) ===
+    "supabase_postgres"
+  ) {
+    await deleteAllJourneyParticipantRecordsForUser(userId);
+  }
 
   const billing = getBillingStore();
   const entitlements = await billing.findEntitlementsByUserId(userId);

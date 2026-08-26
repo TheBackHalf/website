@@ -8,7 +8,7 @@
 **Founder:** Kimberly M. Walker — acceptance authority and Founder-reserved escalation only. Not the routine operator.  
 **Authoritative system map:** `ops/fab-5/privacy-data-map.json`  
 **Holds register:** `ops/fab-5/privacy-legal-holds.json`  
-**Tracker:** `.data/privacy/requests.json` locally; `privacy_rights_requests` in Postgres when configured.
+**Tracker:** Postgres `privacy_rights_requests` via the launch-dashboard SQL connection when configured; `.data/privacy/requests.json` only for local/test file override. Journey and Lumina participant deletion uses the same Postgres (`journey_participant_records`, `lumina_conversations`, `lumina_memories`), not ephemeral Vercel `.data/`.
 
 This is an operating process. It does not rewrite the Privacy Policy. It does not issue legal conclusions, statutory deadlines, or Founder acceptance.
 
@@ -21,7 +21,7 @@ This is an operating process. It does not rewrite the Privacy Policy. It does no
 | Public form | `/privacy/request` and `/es/privacy/request` |
 | Architect settings | Link to the privacy request form |
 | Support form / mailbox | Category **Privacy** opens a linked `BH-PR-` request when it is a rights request, not an incident |
-| Mailbox | `privacy@thebackhalf.org` (Row 153 inbound still creates a support ticket) |
+| Mailbox | `privacy@thebackhalf.org` listed. In-product form + Support ticket bridge are the operational path. Live mailbox connection is Founder Workspace action if unconnected. |
 
 Do not ask for passwords, payment-card data, one-time codes, or government identification numbers.
 
@@ -62,7 +62,7 @@ Console: `/ops/admin/privacy-rights` (admin ops).
 | Access / Export | Assemble a JSON package from mapped systems. Omit password hashes, Google ids, tokens, and payment-card data. |
 | Correction | Update verified profile fields (name, locale, time zone). |
 | Consent withdrawal | Disable Lumina memory and clear the memory payload. Required service consents are not withdrawn while the account remains active. |
-| Deletion | Delete participant content; anonymize the account; revoke entitlements; unlink analytics user ids; retain consent audit, billing transactions, correspondence, request logs, backups, and vendor records. |
+| Deletion | Delete participant Journey/Lumina content from durable Postgres when configured; anonymize the account; revoke entitlements; unlink analytics user ids; retain consent audit, billing transactions, correspondence, request logs, backups, vendor records, and legal-hold records. Do not imply complete erasure. |
 | Inquiry | Route. No autonomous legal answer. |
 
 Active rows in `privacy-legal-holds.json` pause deletion. Qualified human legal review is required for hold scope. Agents must not conclude the law.

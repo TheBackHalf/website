@@ -38,6 +38,8 @@ export function mapTicketCategoryToDashboard(
       return "lumina";
     case "DOWNLOADS_MATERIALS":
       return "downloads";
+    case "PRIVACY":
+      return "other";
     case "GENERAL":
       return "general";
     case "OTHER":
@@ -101,6 +103,7 @@ export type CreateSupportTicketInput = {
   emailThreadKey?: string;
   test?: boolean;
   acknowledge?: boolean;
+  skipPrivacyBridge?: boolean;
 };
 
 export async function createSupportTicket(
@@ -200,6 +203,9 @@ export async function createSupportTicket(
 
   const saved = await store.upsert(ticket);
   await projectToDashboard(saved);
+  if (input.skipPrivacyBridge === true) {
+    return saved;
+  }
   try {
     const { openPrivacyRequestFromSupportTicket } = await import(
       "@/lib/privacy/from-support"
