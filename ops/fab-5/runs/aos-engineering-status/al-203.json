@@ -143,9 +143,13 @@
     "ops/fab-5/ROW-62-BACKUP-DISASTER-RECOVERY.md"
   ],
   "validation": {
-    "typecheck": "pending_this_run",
+    "typecheckCommand": "npx tsc --noEmit",
+    "typecheck": "PASS",
+    "typecheckExitCode": 0,
     "npmTestScriptPresent": false,
+    "npmTest": "SKIPPED_NO_SCRIPT",
     "buildRequired": false,
+    "build": "SKIPPED_OPS_ONLY",
     "buildSkippedReason": "Ops protocol and status JSON only; production application not changed."
   }
 }
