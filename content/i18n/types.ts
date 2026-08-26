@@ -271,7 +271,6 @@ export type Dictionary = {
     dashboard: {
       title: TranslatedString;
       description: TranslatedString;
-      welcomeSlot: TranslatedString;
       welcome: TranslatedString;
       currentChapter: TranslatedString;
       progress: TranslatedString;

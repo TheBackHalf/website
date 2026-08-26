@@ -369,7 +369,6 @@ export const esDictionary: Dictionary = {
       title: "Panel de Architect",
       description:
         "Tu espacio Architect — capítulo actual del Journey, progreso, recursos y el siguiente paso.",
-      welcomeSlot: "Bienvenida",
       welcome: "Te damos la bienvenida, {name}.",
       currentChapter: "Capítulo actual del Journey",
       progress: "Progreso del Journey",
