@@ -1,0 +1,477 @@
+{
+  "aosWorkId": "al-182",
+  "source": "command_center",
+  "sourceReference": "August Launch row 182",
+  "spreadsheetRow": 182,
+  "deliverable": "Run Security Review",
+  "description": "Check permissions, secrets, authentication, input validation, rate limits, logs, dependency issues, and admin access.",
+  "ownerAgent": "imani",
+  "ownerAgentTitle": "Imani Heartbeat — technology, security, risk, repository/engineering",
+  "supportingOwners": ["michelle"],
+  "reviewedAt": "2026-08-26T17:45:00.000Z",
+  "reviewMethod": "static_code_review",
+  "runtimeProductionProbe": false,
+  "softwareChangeApplied": false,
+  "productFilesChanged": false,
+  "marketingFilesChanged": false,
+  "legalFilesChanged": false,
+  "stripeConfigChanged": false,
+  "cloudflareDnsChanged": false,
+  "vercelCustomDomainChanged": false,
+  "nameserversChanged": false,
+  "secretsPrinted": false,
+  "secretsRotated": false,
+  "authenticationWeakened": false,
+  "founderAcceptanceRecorded": false,
+  "founderAcceptanceAuthority": "Kimberly Walker (human)",
+  "kimberlyWalkerAiTreatedAsCapacity": false,
+  "launchRowMarkedComplete": false,
+  "percentCompleteRecorded": 0,
+  "technicalStatus": "REVIEW_COMPLETE_WITH_FINDINGS",
+  "aosIngestStatus": "ACCEPTANCE_READY",
+  "nextAction": "await_founder_acceptance",
+  "blockedReason": "founder_acceptance_required",
+  "baseline": {
+    "row": 69,
+    "deliverable": "Establish Security Baseline",
+    "workbookStatus": "Complete",
+    "percentComplete": 100,
+    "criteria": [
+      "MFA",
+      "least privilege",
+      "secret management",
+      "encryption",
+      "backup recovery",
+      "logging",
+      "dependency updates"
+    ],
+    "dedicatedBaselineDocPresent": false,
+    "notes": "Row 69 is marked Complete in launch-rows.json and the Command Center snapshot. There is no dedicated ROW-69 security-baseline markdown in ops/fab-5. This review compares current repository controls against those seven baseline items plus the Row 182 checklist."
+  },
+  "scope": {
+    "permissions": true,
+    "secrets": true,
+    "authentication": true,
+    "inputValidation": true,
+    "rateLimits": true,
+    "logs": true,
+    "dependencyIssues": true,
+    "adminAccess": true
+  },
+  "overallVerdict": {
+    "criticalInRepoIssues": 0,
+    "committedLiveSecretsFound": false,
+    "unauthenticatedAdminBypassFound": false,
+    "launchBlockingAuthBypass": false,
+    "residualRisk": "HIGH",
+    "summary": "No committed live secrets and no unauthenticated admin bypass were found. Least-privilege RBAC, bcrypt-12 passwords, httpOnly JWT sessions, Google OAuth state, Stripe webhook signature verification, CRON bearer timing-safe compare, and log redaction are present. Residual HIGH gaps versus the Row 69 baseline remain: no Architect application MFA, no brute-force/IP rate limits on public auth and support APIs, no Content-Security-Policy or other security headers in next.config.ts/vercel.json, JWT role claims can stay stale for up to 30 days on middleware-gated pages, password reset does not revoke existing sessions, and npm audit reports 11 high / 1 moderate transitive vulnerabilities."
+  },
+  "controlsPresent": [
+    {
+      "id": "C-01",
+      "area": "authentication",
+      "control": "Session JWTs signed with jose HS256; cookie bh-session is httpOnly, sameSite=lax, secure in production, path=/, TTL 30 days.",
+      "evidence": ["lib/auth/session/index.ts", "lib/auth/config.ts"]
+    },
+    {
+      "id": "C-02",
+      "area": "authentication",
+      "control": "Passwords hashed with bcryptjs cost 12. Strength requires min 8 characters plus at least one letter and one number.",
+      "evidence": ["lib/auth/password.ts"]
+    },
+    {
+      "id": "C-03",
+      "area": "authentication",
+      "control": "Email/password login requires a verified email. Failed login returns generic invalid_credentials.",
+      "evidence": ["lib/auth/actions/login-email.ts"]
+    },
+    {
+      "id": "C-04",
+      "area": "authentication",
+      "control": "Google OAuth uses a signed 10-minute state JWT plus httpOnly nonce cookie.",
+      "evidence": ["lib/auth/google/oauth-state.ts", "lib/auth/google/oauth.ts"]
+    },
+    {
+      "id": "C-05",
+      "area": "authentication",
+      "control": "Password-reset tokens are UUID, 24h TTL, single-use, and cleaned per user. Forgot-password always returns a neutral accepted status after validation.",
+      "evidence": ["lib/auth/actions/forgot-password.ts", "lib/auth/actions/reset-password.ts"]
+    },
+    {
+      "id": "C-06",
+      "area": "authentication",
+      "control": "Login next= open-redirect mitigation via getSafeRedirectPath (must be same-origin path, locale-consistent, not protocol-relative).",
+      "evidence": ["lib/auth/routing.ts"]
+    },
+    {
+      "id": "C-07",
+      "area": "permissions",
+      "control": "Least-privilege catalog: architect / support / admin / system. system is not assignable via BH_*_EMAILS or admin UI. Support cannot assign roles or mutate Architect profile/consent.",
+      "evidence": ["lib/auth/permissions.ts", "lib/auth/roles.ts", "lib/auth/access.ts", "lib/auth/operations/admin.ts"]
+    },
+    {
+      "id": "C-08",
+      "area": "adminAccess",
+      "control": "Middleware gates /ops/admin and /api/admin/* with admin:ops:access, except support ticket console which is support:ops:access. API handlers also call requirePermission() which loads the live DB role.",
+      "evidence": ["middleware.ts", "lib/auth/ops-paths.ts", "lib/auth/access.ts"]
+    },
+    {
+      "id": "C-09",
+      "area": "adminAccess",
+      "control": "Admin account listing excludes password hashes. Support lookup returns safe billing flags only.",
+      "evidence": ["lib/auth/operations/admin.ts", "lib/auth/operations/support.ts", "app/api/admin/accounts/route.ts"]
+    },
+    {
+      "id": "C-10",
+      "area": "secrets",
+      "control": ".gitignore ignores .env* except .env.example and ignores .data/. .env.example documents secret names without values. No committed sk_live_/whsec_/connection-string values found.",
+      "evidence": [".gitignore", ".env.example"]
+    },
+    {
+      "id": "C-11",
+      "area": "secrets",
+      "control": "Trace, analytics, support, and Fab 5 live-runner paths redact secret-like strings. Admin responses explicitly omit secrets.",
+      "evidence": ["lib/fab-5/audit.ts", "lib/fab-5/live-runner.ts", "lib/analytics/privacy.ts", "lib/support/sanitize.ts"]
+    },
+    {
+      "id": "C-12",
+      "area": "secrets",
+      "control": "Cron/ops agent routes use timing-safe Bearer compare against CRON_SECRET / IMANI_HEARTBEAT_SECRET.",
+      "evidence": ["lib/fab-5/heartbeat.ts", "vercel.json"]
+    },
+    {
+      "id": "C-13",
+      "area": "inputValidation",
+      "control": "Stripe webhooks require stripe-signature and constructEvent against STRIPE_WEBHOOK_SECRET. Invalid signatures return 400 without secret leakage.",
+      "evidence": ["app/api/stripe/webhook/route.ts", "lib/billing/webhook-verify.ts"]
+    },
+    {
+      "id": "C-14",
+      "area": "inputValidation",
+      "control": "Auth, login, registration, support, and eligibility forms use server-side validation. Postgres access uses tagged-template parameterization. Analytics ingest allowlists event names and truncates strings.",
+      "evidence": ["lib/auth/validation.ts", "lib/support/validation.ts", "lib/auth/store/postgres-store.ts", "lib/analytics/client-ingest.ts"]
+    },
+    {
+      "id": "C-15",
+      "area": "logs",
+      "control": "Launch ops errors record sanitized codes. Consent history is append-only from the support path. Verification/reset URLs are console-logged only when SMTP is missing and NODE_ENV is not production.",
+      "evidence": ["lib/launch-ops-errors/record.ts", "lib/auth/email/send-verification.ts"]
+    },
+    {
+      "id": "C-16",
+      "area": "adminAccess",
+      "control": "Row 20 Founder-accepted least privilege remains: support:ops:access for tickets; dashboards, billing reconcile, and role assign stay admin-only. AI executives are not human credential holders.",
+      "evidence": ["ops/fab-5/systems-access-matrix.json", "ops/fab-5/row-20-status.json"]
+    }
+  ],
+  "findings": [
+    {
+      "id": "F-01",
+      "severity": "HIGH",
+      "area": "rateLimits",
+      "title": "No brute-force or IP rate limits on login, register, support, or analytics APIs",
+      "detail": "Login and registration have no attempt lockout. Forgot-password and resend-verification only apply a 60-second per-email cooldown. POST /api/support/request, POST /api/analytics/event, and POST /api/marketing/session have no rate limits. express-rate-limit is a transitive dependency and is not used in app routes.",
+      "evidence": [
+        "lib/auth/actions/login-email.ts",
+        "lib/auth/actions/register-email.ts",
+        "lib/auth/actions/forgot-password.ts",
+        "app/api/support/request/route.ts",
+        "app/api/analytics/event/route.ts"
+      ],
+      "baselineGap": "Row 69 logging/ops hardening implied abuse controls; Row 182 explicitly requires rate-limit review.",
+      "recommendedRemediation": "Add IP- and account-keyed rate limits on auth, support, and public ingest endpoints. Add login lockout after repeated failures."
+    },
+    {
+      "id": "F-02",
+      "severity": "HIGH",
+      "area": "authentication",
+      "title": "Architect application MFA is not implemented",
+      "detail": "Email/password plus optional Google Sign-In are the only Architect auth factors. Row 69 baseline text includes MFA. Vendor MFA is mixed: Google Workspace and Stripe PASS (Row 74/77); Cloudflare 2FA INACTIVE with Founder-accepted residual risk; Vercel and Supabase dashboard MFA remain Founder verification required. This finding is the application-login gap, not a request to change Cloudflare/Vercel/Stripe settings from this row.",
+      "evidence": [
+        "lib/auth/actions/login-email.ts",
+        "lib/auth/config.ts",
+        "ops/fab-5/credential-account-recovery-register.json"
+      ],
+      "baselineGap": "MFA",
+      "recommendedRemediation": "Document whether Architect MFA is in-scope for launch or a post-launch control. If in-scope, add TOTP/WebAuthn. Do not treat vendor MFA as covering Architect accounts."
+    },
+    {
+      "id": "F-03",
+      "severity": "HIGH",
+      "area": "headers",
+      "title": "No Content-Security-Policy or other security headers in app config",
+      "detail": "next.config.ts and vercel.json do not set CSP, frame-ancestors/X-Frame-Options, X-Content-Type-Options, Referrer-Policy, or Permissions-Policy. HSTS may be provided by the Vercel platform but is not codified in the repository. Clickjacking and XSS defense currently rely on React defaults and platform defaults.",
+      "evidence": ["next.config.ts", "vercel.json"],
+      "baselineGap": "Row 69 hardening / logging-adjacent browser controls",
+      "recommendedRemediation": "Add headers() in next.config.ts (CSP, HSTS, nosniff, frame-ancestors 'self', Referrer-Policy, Permissions-Policy). Confirm Vercel production HSTS separately without changing DNS."
+    },
+    {
+      "id": "F-04",
+      "severity": "HIGH",
+      "area": "permissions",
+      "title": "Middleware authorizes pages from JWT role claims that can be stale for 30 days",
+      "detail": "middleware.ts uses session.role from the signed cookie. requirePermission() on API/server actions reloads the user from the store, so API role changes take effect immediately. Page routes under /ops/admin and /architect remain reachable until the JWT expires or the user re-logins after a demotion. Password reset also does not clear existing bh-session cookies (see F-07).",
+      "evidence": ["middleware.ts", "lib/auth/session/index.ts", "lib/auth/access.ts", "lib/auth/config.ts"],
+      "baselineGap": "least privilege enforcement at request time",
+      "recommendedRemediation": "Include a session version or roleIssuedAt in the JWT and compare against the store in middleware, or shorten TTL and re-issue on role change. Revoke sessions on password reset and role demotion."
+    },
+    {
+      "id": "F-05",
+      "severity": "HIGH",
+      "area": "dependencyIssues",
+      "title": "npm audit reports 11 high and 1 moderate vulnerabilities",
+      "detail": "Direct packages flagged via transitive chains: next (postcss, sharp/libvips) and puppeteer (@puppeteer/browsers → extract-zip symlink traversal). Other high issues: brace-expansion, fast-uri, js-yaml, nanoid. Moderate: hono (transitive). No criticals. Fixes are reported as available; upgrading puppeteer/next in production is a follow-up engineering change, not part of this review-only deliverable.",
+      "evidence": ["package.json", "npm audit 2026-08-26"],
+      "baselineGap": "dependency updates",
+      "recommendedRemediation": "Run a dedicated dependency-upgrade branch with npm audit fix, puppeteer upgrade, and regression of Blueprint PDF generation. Do not mix that change into this review PR."
+    },
+    {
+      "id": "F-06",
+      "severity": "HIGH",
+      "area": "adminAccess",
+      "title": "Any admin:ops:access principal can resolve Founder decisions and trigger an AOS tick",
+      "detail": "POST /api/admin/aos/founder-decision requires admin:ops:access then calls resolveFounderDecision and, on APPROVED, runAosTick. Kimberly Walker (human) is the sole Founder acceptance authority. If BH_ADMIN_EMAILS includes any non-Founder mailbox, that admin can record an APPROVED founder decision in software. This is a governance/control finding, not evidence that Founder approval was fabricated in this review.",
+      "evidence": ["app/api/admin/aos/founder-decision/route.ts", "lib/auth/roles.ts"],
+      "baselineGap": "least privilege / Founder authority boundary",
+      "recommendedRemediation": "Bind founder-decision approval to a Founder-only allowlist (not generic admin). Keep Kimberly Walker (AI) excluded."
+    },
+    {
+      "id": "F-07",
+      "severity": "MEDIUM",
+      "area": "authentication",
+      "title": "Password reset does not revoke existing sessions",
+      "detail": "resetPasswordAction updates the password hash and consumes reset tokens but does not expire or rotate bh-session cookies. A stolen session remains valid for the remaining JWT TTL (up to 30 days).",
+      "evidence": ["lib/auth/actions/reset-password.ts", "lib/auth/session/index.ts"],
+      "recommendedRemediation": "Store a passwordChangedAt / sessionVersion on the user and reject JWTs issued before that timestamp."
+    },
+    {
+      "id": "F-08",
+      "severity": "MEDIUM",
+      "area": "authentication",
+      "title": "Development AUTH_SECRET fallback exists",
+      "detail": "getAuthSecret() returns the literal development-only-auth-secret when AUTH_SECRET is unset and NODE_ENV==='development'. Vercel production sets NODE_ENV=production so this should not apply there. Risk is a mis-set NODE_ENV on a reachable host.",
+      "evidence": ["lib/auth/config.ts"],
+      "recommendedRemediation": "Fail closed whenever VERCEL_ENV is production or preview, regardless of NODE_ENV."
+    },
+    {
+      "id": "F-09",
+      "severity": "MEDIUM",
+      "area": "authentication",
+      "title": "Resend-verification enumerates accounts",
+      "detail": "resendVerificationEmailAction returns not_found for unknown emails and already_verified for verified/Google accounts, unlike forgot-password which always returns accepted.",
+      "evidence": ["lib/auth/actions/resend-verification.ts", "lib/auth/actions/forgot-password.ts"],
+      "recommendedRemediation": "Return a generic sent/accepted status for unknown and already-verified addresses."
+    },
+    {
+      "id": "F-10",
+      "severity": "MEDIUM",
+      "area": "adminAccess",
+      "title": "A single CRON_SECRET authorizes a wide ops/agent surface",
+      "detail": "authorizeHeartbeatRequest gates Imani heartbeat, Michelle/Nia cycles, KPI and analytics durability, AOS tick, AOS validate, monitoring run, and support inbound inject/poll. Compromise of that one bearer token is high blast radius. Compare is timing-safe. Routes are not middleware-gated.",
+      "evidence": [
+        "lib/fab-5/heartbeat.ts",
+        "app/api/fab-5/aos/tick/route.ts",
+        "app/api/fab-5/imani/heartbeat/route.ts",
+        "app/api/support/inbound/route.ts",
+        "app/api/ops/monitoring/run/route.ts"
+      ],
+      "recommendedRemediation": "Split secrets per agent/route family. Keep values in Vercel env only; do not print them."
+    },
+    {
+      "id": "F-11",
+      "severity": "MEDIUM",
+      "area": "secrets",
+      "title": "Row 73 Stripe live-connect POST can return a webhook signing secret",
+      "detail": "POST /api/ops/stripe-live-connect is production-only and authorized by x-row73-connect vs ROW73_STRIPE_CONNECT_TOKEN, then calls runRow73StripeLiveConnect({ includeWebhookSecret: true, createWebhook: true, createCheckoutSessions: true }). Intended as a bootstrap tool; still a high-privilege secret-exfiltration path if the token leaks.",
+      "evidence": ["app/api/ops/stripe-live-connect/route.ts"],
+      "recommendedRemediation": "Disable or Founder-gate this route after bootstrap. Never log the webhook secret. This review did not call the endpoint and did not print secrets."
+    },
+    {
+      "id": "F-12",
+      "severity": "MEDIUM",
+      "area": "dependencyIssues",
+      "title": "Production Blueprint PDF generation launches Puppeteer with --no-sandbox",
+      "detail": "Authenticated Architect PDF routes import puppeteer and launch with --no-sandbox --disable-setuid-sandbox, maxDuration 300s. Combined with F-05 this is a DoS and (if RCE exists) container-escape concern. BLUEPRINT_QA_OPEN=1 would also allow print pages to load an arbitrary architectId; .env.example says never enable in production.",
+      "evidence": [
+        "app/api/architect/blueprint/guidebook/route.ts",
+        "app/blueprint/print/guidebook/page.tsx",
+        ".env.example"
+      ],
+      "recommendedRemediation": "Confirm BLUEPRINT_QA_OPEN is unset in Production. Isolate PDF rendering. Upgrade puppeteer."
+    },
+    {
+      "id": "F-13",
+      "severity": "MEDIUM",
+      "area": "logs",
+      "title": "AOS tick logs the full JSON result to the server console",
+      "detail": "app/api/fab-5/aos/tick/route.ts console.logs { aosTick: true, ...result }. Result objects can include work titles, owner agents, and operational state. Secret redaction is not applied at this log site.",
+      "evidence": ["app/api/fab-5/aos/tick/route.ts"],
+      "recommendedRemediation": "Log counts and IDs only, or pass through redactSecrets() before console.log."
+    },
+    {
+      "id": "F-14",
+      "severity": "MEDIUM",
+      "area": "inputValidation",
+      "title": "Public support form has no max length or IP throttle",
+      "detail": "validateSupportRequest requires name/email/category/subject and message min length 10, but does not cap message size. Combined with F-01 this is an abuse/storage vector. Support sanitizer redacts card/CVV/password-like substrings before storage.",
+      "evidence": ["lib/support/validation.ts", "lib/support/sanitize.ts", "app/api/support/request/route.ts"],
+      "recommendedRemediation": "Cap field lengths and add IP rate limits on /api/support/request."
+    },
+    {
+      "id": "F-15",
+      "severity": "LOW",
+      "area": "adminAccess",
+      "title": "/_internal review pages are Host-header localhost checks only",
+      "detail": "app/%5Finternal/* pages call assertLocalhostOnly on the Host header and are not session-authenticated. Production hostnames should 404. Risk is Host-header confusion on a misconfigured proxy.",
+      "evidence": ["app/%5Finternal/"],
+      "recommendedRemediation": "Prefer socket/connection address checks or disable the /_internal tree in production builds."
+    },
+    {
+      "id": "F-16",
+      "severity": "LOW",
+      "area": "secrets",
+      "title": "BLUEPRINT_PRINT_SECRET compared with non-timing-safe equality",
+      "detail": "Print pages compare x-blueprint-print-secret using ===. Low practical risk for a high-entropy header secret.",
+      "evidence": ["app/blueprint/print/guidebook/page.tsx"],
+      "recommendedRemediation": "Use crypto.timingSafeEqual after buffering equal-length values, matching heartbeat auth."
+    },
+    {
+      "id": "F-17",
+      "severity": "LOW",
+      "area": "inputValidation",
+      "title": "Auth and support validation is hand-rolled rather than schema-based",
+      "detail": "zod is a direct dependency but is used primarily in Fab 5 live-agent tool schemas, not auth/support/admin JSON bodies.",
+      "evidence": ["lib/auth/validation.ts", "lib/support/validation.ts", "package.json"],
+      "recommendedRemediation": "Adopt zod (or equivalent) for public and admin JSON/API bodies."
+    },
+    {
+      "id": "F-18",
+      "severity": "INFO",
+      "area": "adminAccess",
+      "title": "GET /api/ops/health is public by design",
+      "detail": "Returns environment label, service name, and database ok/error/unconfigured. Used by Row 61 monitoring. Low information disclosure; no secrets.",
+      "evidence": ["app/api/ops/health/route.ts", "ops/fab-5/ROW-61-PRODUCTION-MONITORING.md"]
+    }
+  ],
+  "checklist": {
+    "permissions": {
+      "status": "PASS_WITH_FINDINGS",
+      "pass": ["Role catalog and support vs admin split (Row 20)", "requirePermission DB reload on admin APIs", "system role not assignable"],
+      "fail": ["F-04 JWT role staleness on middleware pages", "F-06 generic admin can approve Founder decisions"]
+    },
+    "secrets": {
+      "status": "PASS_WITH_FINDINGS",
+      "pass": ["No committed live secrets", ".env gitignored", "redaction helpers", "timing-safe cron bearer"],
+      "fail": ["F-11 stripe-live-connect can return webhook secret", "F-16 print secret compare"]
+    },
+    "authentication": {
+      "status": "PASS_WITH_FINDINGS",
+      "pass": ["bcrypt 12", "httpOnly JWT", "email verification", "OAuth state", "neutral forgot-password"],
+      "fail": ["F-02 no application MFA", "F-07 sessions survive password reset", "F-08 dev AUTH_SECRET fallback", "F-09 resend enumeration"]
+    },
+    "inputValidation": {
+      "status": "PASS_WITH_FINDINGS",
+      "pass": ["Stripe signature verify", "parameterized SQL", "analytics allowlist", "safe login redirect"],
+      "fail": ["F-14 support max-length missing", "F-17 no schema validation on auth/support"]
+    },
+    "rateLimits": {
+      "status": "FAIL",
+      "pass": ["60s per-email cooldown on forgot-password and resend-verification"],
+      "fail": ["F-01 no IP/account rate limits or login lockout on high-risk public endpoints"]
+    },
+    "logs": {
+      "status": "PASS_WITH_FINDINGS",
+      "pass": ["Secret-pattern redaction in traces/analytics/support", "sanitized launch-ops error codes"],
+      "fail": ["F-13 AOS tick console.logs full result JSON"]
+    },
+    "dependencyIssues": {
+      "status": "FAIL",
+      "pass": ["Direct stack is current-generation Next 16 / jose 6 / stripe 18 / bcryptjs 3"],
+      "fail": ["F-05 npm audit 11 high / 1 moderate", "F-12 puppeteer --no-sandbox in production PDF routes"]
+    },
+    "adminAccess": {
+      "status": "PASS_WITH_FINDINGS",
+      "pass": ["Middleware + requirePermission defense in depth", "support cannot reach dashboards or role assign", "admin listings omit hashes"],
+      "fail": ["F-06 founder-decision API", "F-10 single cron secret blast radius", "F-15 /_internal Host check"]
+    }
+  },
+  "dependencyAudit": {
+    "ranAt": "2026-08-26T17:45:00.000Z",
+    "command": "npm audit --json",
+    "totals": {
+      "info": 0,
+      "low": 0,
+      "moderate": 1,
+      "high": 11,
+      "critical": 0,
+      "total": 12
+    },
+    "directPackagesAffected": ["next", "puppeteer"],
+    "notes": "Counts only. Advisory titles recorded in F-05. No package payloads, tokens, or lockfile secrets printed."
+  },
+  "validation": {
+    "typecheckScriptPresent": false,
+    "testScriptPresent": false,
+    "nearestTestScripts": [
+      "fab5:qa",
+      "fab5:row20-audit",
+      "fab5:aos"
+    ],
+    "productionBuildRequired": false,
+    "reason": "This deliverable is a review-only status file. No product, marketing, or legal source was changed, so npm run build was not executed. package.json has no typecheck or test script.",
+    "npmAuditRan": true,
+    "result": "PASS_FOR_REVIEW_ONLY"
+  },
+  "outOfScopeNotChanged": [
+    "Stripe configuration",
+    "Cloudflare DNS",
+    "Vercel custom-domain settings",
+    "thebackhalf.org nameservers",
+    "Founder-facing marketing copy",
+    "Curriculum / brand voice",
+    "Legal documents"
+  ],
+  "recommendedFollowUpWork": [
+    {
+      "priority": 1,
+      "title": "Add rate limits and login lockout",
+      "mapsToFindings": ["F-01", "F-14"]
+    },
+    {
+      "priority": 2,
+      "title": "Revoke sessions on password reset and role change; check live role in middleware",
+      "mapsToFindings": ["F-04", "F-07"]
+    },
+    {
+      "priority": 3,
+      "title": "Add security headers (CSP, HSTS, frame-ancestors, nosniff)",
+      "mapsToFindings": ["F-03"]
+    },
+    {
+      "priority": 4,
+      "title": "Founder-only gate for AOS founder-decision approval",
+      "mapsToFindings": ["F-06"]
+    },
+    {
+      "priority": 5,
+      "title": "Dependency upgrade branch for npm audit / puppeteer",
+      "mapsToFindings": ["F-05", "F-12"]
+    },
+    {
+      "priority": 6,
+      "title": "Decide Architect MFA launch scope vs Row 69 baseline language",
+      "mapsToFindings": ["F-02"]
+    }
+  ],
+  "evidenceRefs": [
+    "ops/fab-5/runs/aos-engineering-status/al-182.json",
+    "ops/fab-5/launch-rows.json#182",
+    "ops/fab-5/launch-rows.json#69",
+    "ops/fab-5/systems-access-matrix.json",
+    "ops/fab-5/credential-account-recovery-register.json",
+    "middleware.ts",
+    "lib/auth/permissions.ts",
+    "npm audit 2026-08-26"
+  ],
+  "notes": "Imani Heartbeat executed Row 182 as a repository security review, not a software change. Status is written only to this file. Founder acceptance is not recorded. Launch row 182 is not marked Complete. Kimberly Walker (AI) was not treated as execution capacity. Secrets were not printed, committed, or rotated. Authentication controls were not weakened."
+}
