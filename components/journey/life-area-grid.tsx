@@ -1,7 +1,5 @@
 import type { Locale } from "@/lib/i18n/config";
 
-import { getDictionary } from "@/content/i18n/get-dictionary";
-
 import { cn } from "@/lib/utils";
 
 
@@ -27,10 +25,6 @@ export function LifeAreaGrid({
   locale = "en",
 
 }: LifeAreaGridProps) {
-
-  const dictionary = getDictionary(locale);
-
-
 
   return (
 
@@ -67,22 +61,6 @@ export function LifeAreaGrid({
             </span>
 
             <p className="bh-life-area-label">{area}</p>
-
-            <p
-
-              className={cn(
-
-                "bh-copy-pending mt-4 text-[0.58rem] tracking-[0.28em]",
-
-                onDark && "bh-copy-pending-on-dark",
-
-              )}
-
-            >
-
-              {dictionary.common.copyPending}
-
-            </p>
 
           </div>
 

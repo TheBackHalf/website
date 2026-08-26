@@ -69,7 +69,7 @@ export const esDictionary: Dictionary = {
   registration: {
     title: "Conviértete en Architect",
     description:
-      "Crea tu cuenta de The Back Half para comenzar tu Journey como Architect.",
+      "Crea tu cuenta de The Back Half y luego elige tu camino de Architect — The Back Half Blueprint, Founding Architect o Architect Community.",
     firstName: "Nombre",
     lastName: "Apellido",
     password: "Contraseña",
@@ -97,7 +97,8 @@ export const esDictionary: Dictionary = {
       "Acepta todos los reconocimientos obligatorios antes de continuar con Google.",
     confirmationTitle: "Verifica tu correo electrónico",
     confirmationDescription:
-      "Tu cuenta se creó. Revisa tu correo para el enlace de verificación y accede a tu espacio de Architect.",
+      "Tu cuenta se creó. Revisa tu correo para el enlace de verificación y luego elige tu camino de Architect para continuar.",
+    choosePathCta: "Elige tu camino",
     confirmationResend: "Reenviar correo de verificación",
     confirmationResent: "Correo de verificación enviado.",
     verifyTitle: "Verificación de correo electrónico",
@@ -233,8 +234,8 @@ export const esDictionary: Dictionary = {
         "Elige tu oferta de The Back Half y continúa al checkout seguro.",
     },
     checkoutSuccess: {
-      title: "Pago exitoso — The Back Half",
-      description: "Tu pago de The Back Half se completó.",
+      title: "Confirmación de checkout — The Back Half",
+      description: "Confirma tu checkout de The Back Half después de verificar el pago.",
     },
     checkoutCancel: {
       title: "Checkout cancelado — The Back Half",
@@ -295,7 +296,7 @@ export const esDictionary: Dictionary = {
   checkout: {
     catalogTitle: "Elige tu camino",
     catalogDescription:
-      "Selecciona una oferta aprobada de The Back Half. El pago seguro se procesa con Stripe Checkout.",
+      "Elige cómo comenzar como Architect. El pago seguro se procesa con Stripe Checkout.",
     offerCta: "Continuar",
     oneTime: "Pago único",
     monthly: "Mensual",
@@ -310,6 +311,7 @@ export const esDictionary: Dictionary = {
     genericError: "No pudimos iniciar el checkout. Inténtalo de nuevo.",
     submitting: "Iniciando checkout seguro…",
     successTitle: "Pago completado",
+    unverifiedTitle: "Confirmación de checkout",
     successDescription:
       "Gracias. Tu pago de The Back Half se completó correctamente.",
     successOfferLabel: "Oferta comprada",
@@ -330,10 +332,10 @@ export const esDictionary: Dictionary = {
     returnDashboard: "Ir al Dashboard de Architect",
     offerBlueprintName: "The Back Half Blueprint",
     offerBlueprintDescription:
-      "La experiencia Blueprint de siete capítulos — $1,500 compra única.",
+      "La experiencia Blueprint de siete capítulos — $500 compra única.",
     offerBundleName: "Founding Architect",
     offerBundleDescription:
-      "Blueprint + primeros seis meses de Architect Community incluidos — $1,750 compra única. Architect Community comienza el 25 de octubre de 2026. El período Founding Architect Community es del 25 de octubre de 2026 al 25 de abril de 2027. Inscripción del 31 de agosto al 31 de diciembre de 2026.",
+      "Blueprint + primeros seis meses de Architect Community incluidos — $750 compra única. Architect Community — Próximamente el 25 de octubre de 2026. El período Founding Architect Community es del 25 de octubre de 2026 al 25 de abril de 2027. Inscripción del 31 de agosto al 31 de diciembre de 2026.",
     offerCommunityName: "The Back Half Community",
     offerCommunityDescription:
       "$50/mes después de completar el Blueprint. Architect Community — Próximamente el 25 de octubre de 2026. Founding Architect se renueva a $50/mes después de los primeros seis meses de acceso a Architect Community.",

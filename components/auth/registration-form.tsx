@@ -21,6 +21,11 @@ import {
 } from "@/content/i18n/get-dictionary";
 import { getLoginPath } from "@/lib/auth/routing";
 import { useArchitectRegistration } from "@/lib/auth/registration";
+import { useSearchParams } from "next/navigation";
+import {
+  localizedCheckoutPath,
+  safeCheckoutNextPath,
+} from "@/lib/checkout/safe-next";
 import { documentToConsentType } from "@/lib/consent/validation";
 import type { Locale } from "@/lib/i18n/config";
 
@@ -50,6 +55,14 @@ export function RegistrationForm({
     registration,
     passwordRequirements,
   } = useArchitectRegistration(locale, { googleAuthEnabled });
+
+  const searchParams = useSearchParams();
+  const checkoutNext = safeCheckoutNextPath(searchParams.get("next"), locale);
+  const loginHref = checkoutNext
+    ? `${getLoginPath(locale)}?next=${encodeURIComponent(
+        localizedCheckoutPath(checkoutNext, locale),
+      )}`
+    : getLoginPath(locale);
 
   const formId = "architect-registration-form";
   const firstNameId = `${formId}-first-name`;
@@ -248,7 +261,7 @@ export function RegistrationForm({
 
             <p className="font-sans text-sm font-light text-bh-muted">
               <Link
-                href={getLoginPath(locale)}
+                href={loginHref}
                 className="underline underline-offset-4 transition hover:text-bh-ink"
               >
                 {translate(locale, registration.alreadyHaveAccount)}

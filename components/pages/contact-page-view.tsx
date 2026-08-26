@@ -1,5 +1,4 @@
 import { CtaButton, PageHero, SkipLink, TextLink } from "@/components/design-system";
-import { CopyPending } from "@/components/journey/copy-pending";
 import { LocalizedBrandCopy } from "@/components/pages/localized-brand-copy";
 import { LocalizedSiteFooter } from "@/components/pages/localized-site-footer";
 import {
@@ -32,9 +31,6 @@ export function ContactPageView({ locale }: ContactPageViewProps) {
               {contactPage.title}
             </LocalizedBrandCopy>
           </SectionHeading>
-          {contactPage.introPending ? (
-            <CopyPending className="mt-10 md:mt-12" locale={locale} />
-          ) : null}
         </PageHero>
 
         <SectionShell

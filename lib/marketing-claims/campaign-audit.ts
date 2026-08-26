@@ -458,7 +458,7 @@ export const PRODUCT_REALITY = [
   {
     area: "Blueprint",
     status: "PASS" as Row33Status,
-    note: "Checkout offer exists at $1,500. Described as seven-chapter Blueprint experience.",
+    note: "Checkout offer exists at $500. Described as seven-chapter Blueprint experience.",
   },
   {
     area: "Journey",

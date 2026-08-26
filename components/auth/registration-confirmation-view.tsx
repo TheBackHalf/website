@@ -2,12 +2,17 @@
 
 import { Suspense, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { LocaleLink } from "@/components/i18n/locale-link";
 import { StatusNotice } from "@/components/design-system";
 import { resendVerificationEmailAction } from "@/lib/auth/actions/resend-verification";
 import {
   getDictionary,
   translate,
 } from "@/content/i18n/get-dictionary";
+import {
+  checkoutCatalogPath,
+  safeCheckoutNextPath,
+} from "@/lib/checkout/safe-next";
 import type { Locale } from "@/lib/i18n/config";
 
 type RegistrationConfirmationViewProps = {
@@ -21,6 +26,9 @@ function RegistrationConfirmationContent({
   const registration = dictionary.registration;
   const searchParams = useSearchParams();
   const email = searchParams.get("email") ?? "";
+  const choosePathHref =
+    safeCheckoutNextPath(searchParams.get("next"), locale) ??
+    checkoutCatalogPath();
   const [resendState, setResendState] = useState<
     "idle" | "sending" | "sent" | "error"
   >("idle");
@@ -78,6 +86,15 @@ function RegistrationConfirmationContent({
           ) : null}
         </div>
       ) : null}
+
+      <LocaleLink
+        href={choosePathHref}
+        locale={locale}
+        className="bh-cta mt-10 inline-flex"
+        data-bh-cta="become_architect"
+      >
+        {translate(locale, registration.choosePathCta)}
+      </LocaleLink>
     </div>
   );
 }

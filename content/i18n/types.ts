@@ -102,6 +102,7 @@ export type Dictionary = {
     confirmationDescription: TranslatedString;
     confirmationResend: string;
     confirmationResent: string;
+    choosePathCta: TranslatedString;
     verifyTitle: TranslatedString;
     verifySuccess: string;
     verifyExpired: string;
@@ -203,6 +204,7 @@ export type Dictionary = {
     genericError: string;
     submitting: string;
     successTitle: TranslatedString;
+    unverifiedTitle: string;
     successDescription: string;
     successOfferLabel: string;
     successNextStep: string;

@@ -13,8 +13,8 @@ function offerLabel(offerId: CheckoutOfferId | undefined, locale: Locale): strin
         : "The Back Half Blueprint";
     case "bundle":
       return locale === "es"
-        ? "The Back Half Journey + Community Bundle"
-        : "The Back Half Journey + Community Bundle";
+        ? "Founding Architect"
+        : "Founding Architect";
     case "community":
       return locale === "es"
         ? "The Back Half Community"

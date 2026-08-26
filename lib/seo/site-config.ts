@@ -1,27 +1,33 @@
 /**
- * Centralized site URL for canonical URLs, sitemap, robots, and Open Graph.
+ * Canonical public origin for sitemap, robots, Open Graph, and JSON-LD.
  *
- * SUBSTITUTION POINT — set `NEXT_PUBLIC_SITE_URL` to the final production domain
- * (e.g. https://www.thebackhalf.com) before launch. No trailing slash.
- *
- * On Vercel preview deployments, `VERCEL_URL` is used when the env var is unset
- * so production builds do not emit localhost URLs.
+ * Always emit https://www.thebackhalf.org (or a non-ephemeral NEXT_PUBLIC_SITE_URL).
+ * Never emit *.vercel.app or localhost in customer-facing SEO URLs.
+ * Runtime OAuth/Stripe redirects use lib/auth/config getSiteUrl() so they can
+ * still reach the current deploy host while Row 75 canonical DNS is pending.
  */
 
-const PLACEHOLDER_SITE_URL = "https://example.com";
+const CANONICAL_PUBLIC_ORIGIN = "https://www.thebackhalf.org";
 
-export function getSiteUrl(): string {
+function isEphemeralDeployHost(url: string): boolean {
+  try {
+    const host = new URL(url).hostname;
+    return host.endsWith(".vercel.app") || host === "localhost" || host === "127.0.0.1";
+  } catch {
+    return true;
+  }
+}
+
+export function getCanonicalPublicOrigin(): string {
   const configured = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/$/, "");
-  if (configured) {
+  if (configured && !isEphemeralDeployHost(configured)) {
     return configured;
   }
+  return CANONICAL_PUBLIC_ORIGIN;
+}
 
-  const vercelUrl = process.env.VERCEL_URL?.trim();
-  if (vercelUrl) {
-    return `https://${vercelUrl.replace(/\/$/, "")}`;
-  }
-
-  return PLACEHOLDER_SITE_URL;
+export function getSiteUrl(): string {
+  return getCanonicalPublicOrigin();
 }
 
 /** SUBSTITUTION POINT — replace with approved production social preview artwork. */

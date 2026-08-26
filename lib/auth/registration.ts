@@ -14,6 +14,10 @@ import {
   setRegistrationConsentCookie,
 } from "@/lib/auth/actions/register-email";
 import { getRegistrationConfirmationPath } from "@/lib/auth/routing";
+import {
+  localizedCheckoutPath,
+  safeCheckoutNextPath,
+} from "@/lib/checkout/safe-next";
 import type { RegistrationFormData, RegistrationValidationErrors } from "@/lib/auth/types";
 import { getPasswordRequirements } from "@/lib/auth/validation";
 import {
@@ -189,10 +193,18 @@ export function useArchitectRegistration(
     }
 
     setSubmitState("success");
-    router.push(
-      `${getRegistrationConfirmationPath(locale)}?email=${encodeURIComponent(form.email)}`,
+    const confirmation = new URLSearchParams({ email: form.email });
+    const checkoutNext = safeCheckoutNextPath(
+      searchParams.get("next"),
+      locale,
     );
-  }, [consents, form, locale, registration, router]);
+    if (checkoutNext) {
+      confirmation.set("next", localizedCheckoutPath(checkoutNext, locale));
+    }
+    router.push(
+      `${getRegistrationConfirmationPath(locale)}?${confirmation.toString()}`,
+    );
+  }, [consents, form, locale, registration, router, searchParams]);
 
   const startGoogleRegistration = useCallback(async () => {
     const consentValues = consentValuesFromState(accountCreationConsents, consents);
