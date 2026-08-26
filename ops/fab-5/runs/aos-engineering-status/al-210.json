@@ -1,0 +1,525 @@
+{
+  "aosWorkId": "al-210",
+  "source": "command_center",
+  "sourceReference": "August Launch row 210",
+  "launchRow": 210,
+  "excelRow": 211,
+  "deliverable": "Create Launch-Day Communications Command Plan",
+  "description": "Define who publishes each channel, who verifies live links, who monitors replies, who sends email, who handles partner outreach, who can pause messaging during an incident, and who confirms successful release across every channel.",
+  "operatingAgent": "michelle",
+  "operatingAgentName": "Michelle Northstar",
+  "operatingAgentTitle": "Chief of Staff & Operations Officer",
+  "workbookPrimaryOwner": "nia",
+  "supportingOwner": "michelle",
+  "agentScope": "Michelle owns launch-day communications command, orchestration, logging, routing, pause of affected operations, and Founder surfacing. Nia remains publisher, public voice, and CX/Support owner. Imani remains technical/security owner. Kimberly Walker (AI) is not an operating agent. Lumina is not an operating executive.",
+  "generatedAt": "2026-08-26T17:45:00.000Z",
+  "timezone": "America/New_York",
+  "launchDate": "2026-08-31",
+  "watchWindow": "2026-08-31 07:00–22:00 ET",
+  "mode": "ops-status-only",
+  "softwareChange": false,
+  "productMarketingLegalFilesChanged": false,
+  "filesWritten": [
+    "ops/fab-5/runs/aos-engineering-status/al-210.json"
+  ],
+  "markedComplete": false,
+  "workbookStatusUnchanged": true,
+  "founderAcceptance": "PENDING",
+  "founderAcceptanceAuthority": "Kimberly Walker (human)",
+  "doNotFabricateFounderApproval": true,
+  "planStatus": "DEFINED — READY FOR FOUNDER ACCEPTANCE REVIEW",
+  "nextAction": "await_founder_acceptance",
+  "purpose": "Single launch-day communications command: who publishes, who verifies live links, who monitors replies, who sends email, who handles partner outreach, who can pause messaging during an incident, and who confirms successful release across every in-scope channel. This file does not rewrite copy, send anything, publish anything, or mark Row 210 Complete.",
+  "authorityRule": "Do not invent procedures. Use already-approved systems. If two sources conflict, Michelle surfaces the contradiction and does not resolve it by preference.",
+  "sourcesUsed": [
+    "ops/launch/LAUNCH-DAY-RUNBOOK-AUGUST-31-2026.md",
+    "ops/fab-5/operating-system.json",
+    "ops/fab-5/social-channels.json",
+    "ops/fab-5/social-publishing-queue.json",
+    "ops/fab-5/ROW-77-LAUNCH-SOCIAL-CHANNEL-GOVERNANCE.md",
+    "ops/fab-5/ROW-83-SOCIAL-ENGAGEMENT-RESPONSE-PROTOCOL.md",
+    "ops/fab-5/ROW-82-SOCIAL-PUBLISHING-SCHEDULING-SYSTEM.md",
+    "ops/fab-5/ROW-153-SUPPORT-CHANNELS-OPERATING-PROTOCOL.md",
+    "ops/fab-5/ROW-86-LAUNCH-AUDIENCE-PARTNER-OUTREACH.md",
+    "ops/fab-5/ROW-199-PROPOSED-LAUNCH-EMAIL.md",
+    "ops/fab-5/row-199-status.json",
+    "ops/fab-5/runs/row-199-founder-acceptance-closure-2026-08-21.json",
+    "ops/fab-5/runs/row-79-founder-acceptance-closure-2026-08-24.json",
+    "ops/fab-5/runs/row-202-founder-acceptance-closure-2026-08-21.json",
+    "content/launch/row199-communications.ts"
+  ],
+  "roles": {
+    "founder": {
+      "id": "founder",
+      "name": "Kimberly M. Walker",
+      "title": "Founder",
+      "launchDayDuty": "Final authority for material launch-stop, launch-resume, irreversible production action, legal/reputational public statements, Go/No-Go, and Founder-identity email/partner sends. Not the continuous monitor. Not the routine publisher. Not required at posting time once already-approved posts are scheduled.",
+      "mayNot": [
+        "Be treated as continuous launch-day communications operator",
+        "Be asked to log in at posting time for already-approved scheduled posts"
+      ]
+    },
+    "michelle": {
+      "id": "michelle",
+      "name": "Michelle Northstar",
+      "title": "Chief of Staff & Operations Officer",
+      "launchDayDuty": "Communications command, incident coordination, logging/routing, pause of affected operations, backup social monitor, unresolved-item check every 2 hours, Founder surfacing, and confirmation that every in-scope channel has a recorded release result.",
+      "mayNot": [
+        "Send Founder-identity email",
+        "Sign legal documents",
+        "Invent brand voice or new public claims",
+        "Take Nia curriculum/brand ownership",
+        "Take Imani security/infra ownership"
+      ]
+    },
+    "nia": {
+      "id": "nia",
+      "name": "Nia Prism",
+      "title": "Chief Experience & Transformation Officer",
+      "launchDayDuty": "Publish locked Instagram and TikTok launch posts. Primary public voice. Verify live social posts and social links. Monitor and reply on social using the Row 83 library. Primary Support ownership. Pause participant-facing content within experience/safety authority.",
+      "mayNot": [
+        "Post LinkedIn or invent extra launch channels",
+        "Improvise replacement posts during a pause",
+        "Send as Kimberly",
+        "Hold invented Instagram/TikTok credentials — Nia is an operating role, executed through Option B, not a human login"
+      ]
+    },
+    "imani": {
+      "id": "imani",
+      "name": "Imani Heartbeat",
+      "title": "Chief Technology & Risk Officer",
+      "launchDayDuty": "Production monitoring of live destination URLs and critical surfaces. Technical/security containment. Security-related pause of publishing. Transactional email templates only. Not a social publisher or public voice.",
+      "mayNot": [
+        "Become the social voice if Nia and Michelle are unavailable",
+        "Independently change approved brand messaging",
+        "Send as Kimberly",
+        "Provide legal conclusions"
+      ]
+    },
+    "notOperators": [
+      "Lumina — participant-facing AI Guide only. Never monitors or replies on social or email.",
+      "Kimberly Walker (AI) — not an operating agent and not execution capacity. Public replies are The Back Half, never impersonating Kimberly."
+    ]
+  },
+  "inScopeLaunchDayChannels": [
+    {
+      "channelId": "instagram",
+      "channel": "Instagram @backhalfco",
+      "url": "https://www.instagram.com/backhalfco/",
+      "launchRequirement": "YES",
+      "asset": "R81-0831-IG (S01–S08)",
+      "publishAtEt": "2026-08-31T08:00:00-04:00"
+    },
+    {
+      "channelId": "tiktok",
+      "channel": "TikTok @backhalfco",
+      "url": "https://www.tiktok.com/@backhalfco",
+      "launchRequirement": "YES",
+      "asset": "R81-0831-TT",
+      "publishAtEt": "2026-08-31T12:00:00-04:00"
+    },
+    {
+      "channelId": "website_destination",
+      "channel": "Live site destination https://thebackhalf.org/register",
+      "url": "https://thebackhalf.org/register",
+      "launchRequirement": "YES — verify, do not republish the website as a launch post",
+      "asset": "Existing production registration path. Founder videos already placed (Row 50). Not a launch-day publish action."
+    },
+    {
+      "channelId": "launch_email",
+      "channel": "August 31 launch email",
+      "fromName": "The Back Half",
+      "fromEmail": "kimberly@thebackhalf.org",
+      "launchRequirement": "APPROVED COPY — SEND NOT AUTHORIZED from the runbook. Not sent. Not scheduled. Not loaded into a platform.",
+      "asset": "ops/fab-5/ROW-199-PROPOSED-LAUNCH-EMAIL.md"
+    },
+    {
+      "channelId": "partner_outreach",
+      "channel": "Partner / audience outreach",
+      "fromEmail": "kimberly@thebackhalf.org",
+      "launchRequirement": "NO scheduled launch-day send. Row 86 Founder decision: DEFERRED — POST-LAUNCH. Partner note approved, not sent.",
+      "asset": "ops/fab-5/ROW-199-PROPOSED-PARTNER-NOTE.md"
+    },
+    {
+      "channelId": "support",
+      "channel": "Support (support@thebackhalf.org and https://thebackhalf.org/support)",
+      "launchRequirement": "YES — monitor and respond. Not a launch announcement channel.",
+      "asset": "ops/fab-5/ROW-153-SUPPORT-CHANNELS-OPERATING-PROTOCOL.md"
+    }
+  ],
+  "outOfScopeChannels": [
+    {
+      "channel": "LinkedIn",
+      "rule": "Future enhancement. Not a launch requirement. Do not post. Archived R81-0831-LI is not a launch-day action."
+    },
+    {
+      "channel": "X / Twitter",
+      "rule": "Not used. Do not add."
+    },
+    {
+      "channel": "YouTube",
+      "rule": "Out of scope until Architect Community rollout. Coming October 25, 2026."
+    },
+    {
+      "channel": "Architect Community",
+      "rule": "Not live August 31. Architect Community — Coming October 25, 2026. Founding Architect includes the first six months of Architect Community access."
+    },
+    {
+      "channel": "Personal Founder accounts",
+      "rule": "Out of scope unless the Founder explicitly asks for help."
+    },
+    {
+      "channel": "Unofficial @thebackhalf accounts",
+      "rule": "Not The Back Half. Do not interact. Do not treat as official."
+    },
+    {
+      "channel": "kimberly@thebackhalf.org as an agent-monitored mailbox",
+      "rule": "Founder mailbox. Michelle, Imani, and Nia do not monitor or send as Kimberly unless separately and explicitly authorized."
+    }
+  ],
+  "commandAnswers": {
+    "whoPublishesEachChannel": {
+      "instagram": "Nia Prism publishes the locked August 31 carousel at 8:00 AM ET via Option B (platform-native scheduler / runbook execution). Founder is not required at posting time once scheduled. Do not invent a Nia login.",
+      "tiktok": "Nia Prism publishes the locked August 31 video at 12:00 PM ET via Option B. Founder is not required at posting time once scheduled.",
+      "linkedin": "Nobody. Do not post.",
+      "website": "Not a launch-day publish. Imani owns production. Existing Founder videos stay in approved placements. Do not regenerate.",
+      "launchEmail": "Nobody from this plan. Copy is Founder-approved and not sent. Send/schedule is not authorized from the runbook. If later authorized, send is Founder-only because the approved from-address is kimberly@thebackhalf.org and agents must not send as Kimberly.",
+      "partnerOutreach": "Nobody on August 31 under current Founder deferral. If the Founder later names a warm contact and explicitly authorizes a send, the Founder sends from kimberly@thebackhalf.org using the approved partner note. Agents do not send partner outreach.",
+      "support": "Not a publish channel. Nia owns Support replies as The Back Half Support.",
+      "transactionalProductEmail": "Imani executes already-approved transactional templates only (account/verify/reset/billing). Not the launch announcement."
+    },
+    "whoVerifiesLiveLinks": {
+      "socialPostMatch": "Nia Prism verifies the live Instagram post matches locked copy and all eight slides, and the live TikTok matches locked copy with working playback. No hashtags. No trending audio.",
+      "socialCtaLink": "Nia Prism verifies the live Instagram and TikTok CTA destination is https://thebackhalf.org/register and the link works.",
+      "destinationProductionHealth": "Imani Heartbeat verifies the live destination and critical surfaces via Row 61 probes (/, /register, /login, /checkout, /api/ops/health) and Launch Health at /ops/admin/launch-dashboard.",
+      "emailOrPartnerLinksIfSent": "If Founder later sends the approved email or partner note, Founder confirms the send occurred; Nia verifies any public-facing CTA presentation; Imani verifies the destination URL is healthy. Do not treat an unsent email as a live-link failure.",
+      "supportSurfaces": "Nia Prism verifies https://thebackhalf.org/support remains the public support path. Michelle confirms routing into /ops/admin/support.",
+      "backupIfNiaUnavailable": "Michelle covers social live-link verification using the locked assets. Imani does not become the social verifier.",
+      "ctaLock": "Become an Architect → https://thebackhalf.org/register. Do not invent a second destination."
+    },
+    "whoMonitorsReplies": {
+      "instagramCommentsDmsMentions": "Nia Prism primary. Michelle Northstar backup.",
+      "tiktokCommentsDmsMentions": "Nia Prism primary. Michelle Northstar backup.",
+      "linkedin": "Do not monitor as a launch channel. LinkedIn is not live for launch.",
+      "cadence": "Launch day 7:00 AM–10:00 PM ET. Posting window 8:00 AM–2:00 PM ET: 30-minute sweeps. Other watch hours: hourly. Michelle unresolved check every 2 hours. No standing overnight monitor. First September 1 sweep: 7:00 AM ET.",
+      "supportEmailAndForm": "Nia Prism primary monitoring and routine replies. Michelle Northstar backup monitoring, logging, and routing. Imani Heartbeat only after routing for technical/security.",
+      "launchEmailReplies": "If the launch email is later sent from kimberly@thebackhalf.org, replies land in the Founder mailbox. Agents do not monitor kimberly@. Founder is escalation, not a coverage plan. Do not invent agent access to kimberly@.",
+      "partnerReplies": "Same Founder-mailbox rule if outreach is later sent from kimberly@. Inbound partnership inquiries on social use Row 83 T19 acknowledgement only — Nia acknowledges, Michelle routes, Founder decides. No implied partners.",
+      "publicVoice": "Replies are from The Back Half, not Kimberly, not Nia-by-name, not Lumina. Support email signature: The Back Half Support.",
+      "coverageGap": "If Nia is unavailable, Michelle covers using the Row 83 library. If Michelle is also unavailable, Imani does not become the social voice. Log FOUNDER ACTION REQUIRED — social coverage gap."
+    },
+    "whoSendsEmail": {
+      "august31LaunchAnnouncement": "NOT AUTHORIZED TO SEND from this plan or the runbook. Founder-approved copy exists. sent=false, scheduled=false, loadedIntoPlatform=false.",
+      "ifLaterAuthorized": "Kimberly M. Walker (human) sends from kimberly@thebackhalf.org. Agents must not send as Kimberly. Michelle must not send Founder-identity email. Nia's OS marketing-email send right applies only to approved campaign/template mail that is not Founder-identity; the approved launch email is from kimberly@ with Founder sign-off, so Nia does not send it.",
+      "supportReplies": "Nia Prism sends routine approved-template Support replies from support@thebackhalf.org as The Back Half Support. Michelle routes exceptions. Do not reply as Kimberly.",
+      "privacy": "No autonomous privacy legal answers. Michelle escalates. Imani implements approved controls. Founder / human expert as required.",
+      "transactional": "Imani Heartbeat executes approved transactional templates only.",
+      "incidentPublicEmail": "Founder for public/legal/reputational. Imani may send internal containment notes to Michelle. Michelle coordinates. Nia drafts participant tone. Do not publish incident statements as agents."
+    },
+    "whoHandlesPartnerOutreach": {
+      "launchDayDefault": "NO partner outreach send on August 31. Row 86 Founder decision 2026-08-24: DEFERRED — POST-LAUNCH. Contacts in repository: 0. Do not invent relationships. Do not scrape. Do not send. Do not schedule.",
+      "approvedArtifact": "Row 199 partner note is APPROVED / COMPLETE and not sent. Sender is Kimberly M. Walker, Founder.",
+      "ifFounderLaterAuthorizesANamedWarmContact": "Founder sends the approved partner note from kimberly@thebackhalf.org. Michelle logs. Nia does not run a partner campaign. Do not imply any organization has agreed to partner.",
+      "inboundPartnershipOnSocial": "Nia acknowledges with Row 83 T19 only. Michelle routes. Founder decides. No commitment.",
+      "postLaunchRevisit": "September 2026, before the October 25, 2026 Architect Community launch, per Row 86. Not this command plan."
+    },
+    "whoCanPauseMessagingDuringAnIncident": {
+      "operationalPause": "Michelle Northstar may pause affected operations, including social publishing queue jobs (paused: true) and native scheduled-post cancel where loaded.",
+      "experiencePause": "Nia Prism may pause participant-facing release/content within experience/safety authority, including queue pause and native scheduled-post cancel.",
+      "securityPause": "Imani Heartbeat may pause publishing when security-related (compromise, takeover, coordinated attack). Imani does not become the public voice.",
+      "founderPause": "Kimberly M. Walker is final authority for material launch-stop, launch-scope change, irreversible production action, and resume after a material stop.",
+      "duringPauseDoNot": [
+        "Post LinkedIn",
+        "Improvise replacement posts",
+        "Issue new public claims",
+        "Issue unsupported admissions",
+        "Send the launch email or partner note",
+        "Send as Kimberly from an agent account"
+      ],
+      "resume": "Imani confirms technical recovery. Michelle confirms operational coordination. Founder authorizes material launch-resume. Nia does not resume paused launch posts without that confirmation path."
+    },
+    "whoConfirmsSuccessfulReleaseAcrossEveryChannel": {
+      "instagram": "Nia Prism confirms the live 8:00 AM ET post is up, matches locked copy/slides, and the register link works. Logs to the social-publishing log / engagement log.",
+      "tiktok": "Nia Prism confirms the live 12:00 PM ET post is up, matches locked copy, playback works, and the register link works.",
+      "websiteDestination": "Imani Heartbeat confirms Launch Health and Row 61 probes for /register and other critical surfaces. Founder Attention YES is the only Founder page.",
+      "launchEmail": "Michelle records the channel result. Current required result: NOT SENT — NOT AUTHORIZED. Do not confirm a send that did not happen. If Founder later sends, Founder confirms the send; Michelle logs it.",
+      "partnerOutreach": "Michelle records the channel result. Current required result: NOT SENT — DEFERRED POST-LAUNCH. If Founder later sends a named note, Founder confirms; Michelle logs it.",
+      "support": "Nia confirms Support form/mailbox are receiving; Michelle confirms tickets are routing. This is readiness, not a launch announcement.",
+      "crossChannelReleaseConfirmation": "Michelle Northstar confirms successful release across every in-scope channel by recording each channel's result (PUBLISHED+VERIFIED, NOT SENT, OUT OF SCOPE, or PAUSED) in this command's launch-day close. Michelle does not self-certify a channel Nia or Imani owns without their verification. Founder does not continuously confirm routine release. Declaring THE COMPANY IS LAUNCH READY or GO FOR LAUNCH remains Founder-reserved and is not this row.",
+      "endOfDayClose": "Watch window ends 10:00 PM ET. Michelle owns the unresolved list and next-day follow-up. Imani/Michelle record final Launch Health. Nia/Michelle record Support backlog. No invented performance targets."
+    }
+  },
+  "launchDayRaci": [
+    {
+      "action": "Open-channel sweep of live Instagram and TikTok at 6:30 AM ET. Confirm login. Do not improvise accounts.",
+      "responsible": "nia",
+      "accountable": "michelle",
+      "consulted": "imani-if-access-failure",
+      "informed": "founder-only-if-cannot-monitor"
+    },
+    {
+      "action": "Publish locked Instagram R81-0831-IG at 8:00 AM ET",
+      "responsible": "nia",
+      "accountable": "nia",
+      "consulted": "michelle",
+      "informed": "founder-not-required-at-posting-time"
+    },
+    {
+      "action": "Verify live Instagram copy, eight slides, and register link",
+      "responsible": "nia",
+      "accountable": "michelle",
+      "consulted": "imani-for-destination-health",
+      "informed": "founder-only-if-Attention-YES"
+    },
+    {
+      "action": "Publish locked TikTok R81-0831-TT at 12:00 PM ET",
+      "responsible": "nia",
+      "accountable": "nia",
+      "consulted": "michelle",
+      "informed": "founder-not-required-at-posting-time"
+    },
+    {
+      "action": "Verify live TikTok copy, playback, and register link",
+      "responsible": "nia",
+      "accountable": "michelle",
+      "consulted": "imani-for-destination-health",
+      "informed": "founder-only-if-Attention-YES"
+    },
+    {
+      "action": "Monitor social replies (comments, DMs, mentions) 7:00 AM–10:00 PM ET",
+      "responsible": "nia",
+      "accountable": "michelle",
+      "consulted": "imani-after-route-if-tech-or-security",
+      "informed": "founder-on-Row-83-escalation-only"
+    },
+    {
+      "action": "Unresolved social/support list every 2 hours",
+      "responsible": "michelle",
+      "accountable": "michelle",
+      "consulted": "nia",
+      "informed": "founder-only-if-ACTION-REQUIRED"
+    },
+    {
+      "action": "Production /register and critical-surface health",
+      "responsible": "imani",
+      "accountable": "imani",
+      "consulted": "michelle",
+      "informed": "founder-if-Launch-Health-RED-or-Attention-YES"
+    },
+    {
+      "action": "Send August 31 launch email",
+      "responsible": "founder-only-if-later-authorized",
+      "accountable": "founder",
+      "consulted": "michelle",
+      "informed": "nia-imani",
+      "currentState": "NOT AUTHORIZED — NOT SENT — NOT SCHEDULED"
+    },
+    {
+      "action": "Partner / audience outreach send",
+      "responsible": "founder-only-if-later-authorized-named-contact",
+      "accountable": "founder",
+      "consulted": "michelle",
+      "informed": "nia",
+      "currentState": "DEFERRED POST-LAUNCH — NO CONTACTS — NOT SENT"
+    },
+    {
+      "action": "Inbound partnership acknowledgement on social",
+      "responsible": "nia",
+      "accountable": "michelle",
+      "consulted": "founder-for-any-commitment",
+      "informed": "imani-none"
+    },
+    {
+      "action": "Support replies (support@ /support)",
+      "responsible": "nia",
+      "accountable": "michelle",
+      "consulted": "imani-if-technical-or-security",
+      "informed": "founder-escalation-only"
+    },
+    {
+      "action": "Pause messaging during an incident",
+      "responsible": "michelle-operational; nia-participant-facing; imani-if-security",
+      "accountable": "michelle-coordinates; founder-for-material-launch-stop",
+      "consulted": "imani-nia",
+      "informed": "founder-at-SEV-1-RED-legal-reputational-privacy-security"
+    },
+    {
+      "action": "Confirm successful release across every in-scope channel",
+      "responsible": "michelle-consolidates; nia-social; imani-destination-health; founder-only-for-any-kimberly@-send",
+      "accountable": "michelle",
+      "consulted": "nia-imani",
+      "informed": "founder-via-Daily-Founder-Brief-or-Attention-YES"
+    }
+  ],
+  "timedRelease": [
+    {
+      "timeEt": "06:30",
+      "action": "Open-channel sweep. Confirm Instagram and TikTok login. Do not improvise accounts.",
+      "owner": "nia",
+      "backup": "michelle",
+      "success": "Access logged, or cannot-monitor logged."
+    },
+    {
+      "timeEt": "08:00",
+      "action": "Publish locked Instagram launch carousel R81-0831-IG.",
+      "owner": "nia",
+      "backup": "michelle-pause-or-coverage-log-only",
+      "success": "Live post matches locked copy and all eight slides; https://thebackhalf.org/register works; no hashtags."
+    },
+    {
+      "timeEt": "08:00-14:00",
+      "action": "Social watch every 30 minutes.",
+      "owner": "nia",
+      "backup": "michelle",
+      "success": "Every non-like interaction classified, acted or routed, and logged."
+    },
+    {
+      "timeEt": "12:00",
+      "action": "Publish locked TikTok launch video R81-0831-TT.",
+      "owner": "nia",
+      "backup": "michelle-pause-or-coverage-log-only",
+      "success": "Live post matches locked copy; playback and register link work; no trending audio."
+    },
+    {
+      "timeEt": "07:00-22:00",
+      "action": "Hourly social sweeps outside the 8:00 AM–2:00 PM posting window. Support watch. Production probes continuous.",
+      "owner": "nia-social-support; imani-production; michelle-routing",
+      "success": "No unlogged non-like social item. Tickets routed. Launch Health known."
+    },
+    {
+      "timeEt": "every-2-hours-during-watch",
+      "action": "Unresolved social/support list.",
+      "owner": "michelle",
+      "success": "Open items have owner and next action."
+    },
+    {
+      "timeEt": "22:00",
+      "action": "End-of-day communications close. Record each channel result. No overnight standing monitor.",
+      "owner": "michelle",
+      "consulted": "nia-imani",
+      "success": "Channel results recorded: Instagram, TikTok, website destination, launch email, partner outreach, Support."
+    }
+  ],
+  "pauseProtocol": {
+    "whoCanPause": [
+      "Nia Prism — participant-facing content and social queue/native scheduled-post cancel",
+      "Michelle Northstar — affected operations, social queue pause, native scheduled-post cancel, coordination",
+      "Imani Heartbeat — security-related pause only",
+      "Kimberly M. Walker — material launch-stop / resume"
+    ],
+    "how": [
+      "Set paused: true on the relevant job in ops/fab-5/social-publishing-queue.json before publication",
+      "Cancel/pause the item in Meta Business Suite / TikTok native scheduled-post controls if already loaded",
+      "Stop any unsent email or partner send. Do not start a send during an incident",
+      "No new public claims. Use Row 83 library only if a public line is required",
+      "Michelle coordinates. Imani contains technically. Nia leads communication response using approved lines only"
+    ],
+    "triggers": [
+      "SEV-1",
+      "Launch Health RED / critical surface unavailable",
+      "Account compromise, takeover, or unauthorized post",
+      "Material legal/reputational/privacy/security incident",
+      "Founder-directed launch-stop"
+    ],
+    "resumeRequires": [
+      "Imani confirms technical recovery where the pause was technical/security",
+      "Michelle confirms operational coordination",
+      "Founder authorizes material launch-resume",
+      "Nia may then publish remaining locked assets only — no improvised replacements"
+    ]
+  },
+  "releaseConfirmationRecord": {
+    "owner": "michelle",
+    "when": "After each timed publish, and again at 10:00 PM ET close",
+    "requiredFields": [
+      "channel",
+      "result",
+      "verifiedBy",
+      "liveLinkOk",
+      "notes",
+      "timeEt"
+    ],
+    "allowedResults": [
+      "PUBLISHED_AND_VERIFIED",
+      "SCHEDULED_PENDING",
+      "NOT_SENT_NOT_AUTHORIZED",
+      "DEFERRED",
+      "OUT_OF_SCOPE",
+      "PAUSED",
+      "FAILED_CANNOT_MONITOR",
+      "FAILED_LINK_OR_MISMATCH"
+    ],
+    "preLaunchDayExpectedResults": {
+      "instagram": "SCHEDULED_PENDING until 8:00 AM ET August 31, then PUBLISHED_AND_VERIFIED or PAUSED/FAILED",
+      "tiktok": "SCHEDULED_PENDING until 12:00 PM ET August 31, then PUBLISHED_AND_VERIFIED or PAUSED/FAILED",
+      "website_destination": "Imani health confirmation; not a publish result",
+      "launch_email": "NOT_SENT_NOT_AUTHORIZED unless Founder later authorizes and sends",
+      "partner_outreach": "DEFERRED unless Founder later authorizes a named send",
+      "linkedin": "OUT_OF_SCOPE",
+      "support": "Readiness confirmation by Nia/Michelle, not a launch post"
+    }
+  },
+  "knownConstraintsAndGaps": [
+    {
+      "id": "native-schedule-load",
+      "severity": "OPERATIONAL DEPENDENCY",
+      "fact": "Row 77 Option B native Instagram/TikTok schedule load remains FOUNDER ACTION REQUIRED and is not mechanically verified from this repository (nativeScheduleVerified.instagram=false, tiktok=false). Live publish remains disabled on the company queue.",
+      "commandImplication": "Nia remains the publisher. Founder is not the routine operator. Do not invent a Nia login or a new vendor. If native schedules are not loaded by posting time, Michelle logs the gap; Nia still owns execution of the locked assets through the authorized Option B path. This plan does not silently complete Row 82."
+    },
+    {
+      "id": "launch-email-send-not-authorized",
+      "severity": "LOCKED CONSTRAINT",
+      "fact": "Launch email is Founder-approved, not sent, not scheduled, not loaded into a platform. Runbook: send/schedule not authorized from the runbook.",
+      "commandImplication": "Successful release for this channel on August 31 is NOT SENT unless Founder later authorizes and personally sends from kimberly@thebackhalf.org."
+    },
+    {
+      "id": "founder-identity-vs-nia-marketing-email",
+      "severity": "SURFACED CONTRADICTION — NOT RESOLVED HERE",
+      "fact": "operating-system.json marketing email send = Nia from approved campaign/template. The approved launch email from-address is kimberly@thebackhalf.org with Founder sign-off, and agents must not send as Kimberly. Michelle is prohibited from sending Founder-identity email.",
+      "commandImplication": "This plan does not choose a new sender. Until Founder explicitly authorizes a non-kimberly@ send path, the launch email is Founder-send-only or not sent."
+    },
+    {
+      "id": "partner-outreach-deferred",
+      "severity": "LOCKED CONSTRAINT",
+      "fact": "Row 86 Founder decision 2026-08-24: DEFERRED — POST-LAUNCH. Zero contacts in repository. Message A and G copy not approved to send.",
+      "commandImplication": "No launch-day partner campaign. Inbound T19 only."
+    },
+    {
+      "id": "row-202-workbook-vs-closure",
+      "severity": "SURFACED — NOT RESOLVED HERE",
+      "fact": "ops/fab-5/runs/row-202-founder-acceptance-closure-2026-08-21.json records Founder acceptance YES and Complete. The runbook file header still says DRAFT — FOUNDER ACCEPTANCE REVIEW. launch-rows.json still shows Row 202 In Progress / 75%.",
+      "commandImplication": "This plan uses the existing runbook procedures and does not rewrite Row 202 or mark it Complete."
+    },
+    {
+      "id": "row-210-not-complete",
+      "severity": "PROCESS",
+      "fact": "August Launch row 210 remains Not Started in the workbook snapshot. This status file defines the command plan for Founder acceptance review.",
+      "commandImplication": "Do not mark Row 210 Complete. Founder acceptance stays with Kimberly Walker (human)."
+    }
+  ],
+  "prohibitions": [
+    "Do not push to main, merge, force-push, or deploy from this work.",
+    "Do not modify Stripe, Cloudflare DNS, Vercel custom-domain settings, or thebackhalf.org nameservers.",
+    "Do not print, commit, or expose secrets, API keys, or credentials.",
+    "Do not weaken authentication or security controls.",
+    "Do not send or schedule the launch email or partner note from this work.",
+    "Do not publish social posts from this work.",
+    "Do not invent contacts, partners, channels, mailboxes, or Nia/Michelle/Imani human logins.",
+    "Do not treat Kimberly Walker (AI) as execution capacity.",
+    "Do not fabricate Founder approval or mark Founder-acceptance deliverables complete.",
+    "Do not change product, marketing, legal, Journey, Blueprint, or Lumina files for this deliverable."
+  ],
+  "validation": {
+    "softwareChange": false,
+    "productionImpact": false,
+    "typecheck": "not required — ops status JSON only; no application TypeScript changed",
+    "test": "not required — no package test covers this ops status file; no npm test script in package.json",
+    "build": "not required — change cannot affect production"
+  },
+  "evidence": {
+    "commandPlan": "ops/fab-5/runs/aos-engineering-status/al-210.json",
+    "doesNotMarkRowComplete": true,
+    "doesNotSend": true,
+    "doesNotPublish": true
+  }
+}
