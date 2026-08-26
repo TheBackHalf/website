@@ -557,8 +557,8 @@
     "doNotDeploy": true
   },
   "validation": {
-    "typecheck": "pending_this_pr",
-    "npmTestScript": "absent",
+    "typecheck": "PASS — ./node_modules/.bin/tsc --noEmit (2026-08-26)",
+    "npmTestScript": "absent — package.json has no test script",
     "productionBuild": "not_run — ops JSON only; no production code change"
   }
 }
