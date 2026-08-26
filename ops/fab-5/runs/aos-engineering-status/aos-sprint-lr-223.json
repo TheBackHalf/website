@@ -56,7 +56,7 @@
   "cloudAgentUrl": "https://cursor.com/agents/bc-75db6515-1236-4e78-8727-a95eb8e0b625",
   "pullRequest": "https://github.com/TheBackHalf/website/pull/62",
   "prUrl": "https://github.com/TheBackHalf/website/pull/62",
-  "headSha": "5ef160604febcc768615654a88c9cd8e21f37018",
+  "headShaVerifiedCi": "996f20d5cf4fc869d27af646aaa0f2e996dcf2b3",
   "merged": false,
   "deployed": false,
   "overallResult": "LAUNCH_DAY_INCIDENT_RESOLUTION_NOT_EXECUTED",
@@ -365,7 +365,25 @@
       "reason": "Ops status JSON only. Change cannot affect production application behavior."
     },
     "githubCi": {
-      "result": "PENDING"
+      "commit": "996f20d5cf4fc869d27af646aaa0f2e996dcf2b3",
+      "branch": "cursor/aos-imani-aos-sprint-lr-223-06ee",
+      "pr": "https://github.com/TheBackHalf/website/pull/62",
+      "result": "PASS",
+      "conclusion": "success",
+      "checkCount": 2,
+      "checks": [
+        {
+          "name": "Vercel",
+          "state": "SUCCESS",
+          "note": "Preview deployment check. Not production. Custom domain / nameservers untouched."
+        },
+        {
+          "name": "Vercel Preview Comments",
+          "conclusion": "SUCCESS"
+        }
+      ],
+      "recordedAt": "2026-08-26T19:53:20.000Z",
+      "caveat": "Vercel preview SUCCESS is not a production deploy and is not Founder acceptance of Row 223."
     }
   },
   "cost": "Contingency reserve (workbook). No spend executed this run."
