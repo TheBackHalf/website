@@ -9,6 +9,7 @@ import {
   formatManuscriptForDisplay,
   personalizeChapter1Welcome,
 } from "@/content/journey/chapter-1-awakening";
+import { standardsReflectionQuestions } from "@/content/journey/chapter-4-standards";
 import {
   formatManuscriptBlock,
   personalizeArchitectCopy,
@@ -108,6 +109,40 @@ function openerFromParagraph(raw: string | undefined): ManuscriptBlock | null {
     i += 1;
   }
   return { paragraphs };
+}
+
+function chapter4ReflectionExercise(): ChapterPrintExercise {
+  return {
+    heading: "Reflection",
+    title: "Architect Reflection Questions",
+    instructions: standardsReflectionQuestions.map((question) => question.prompt),
+    examples: [],
+    writingLines: 16,
+  };
+}
+
+function withChapter4ParticipantExercises(
+  parsed: readonly ChapterPrintExercise[],
+): ChapterPrintExercise[] {
+  if (
+    parsed.some((exercise) =>
+      /Architect Reflection Questions/i.test(`${exercise.heading} ${exercise.title}`),
+    )
+  ) {
+    return [...parsed];
+  }
+  const practice = parsed.length
+    ? [...parsed]
+    : [
+        {
+          heading: "Practice",
+          title: "The Standards Exercise",
+          instructions: [],
+          examples: [],
+          writingLines: 16,
+        },
+      ];
+  return [chapter4ReflectionExercise(), ...practice];
 }
 
 function chapter1Exercises(): ChapterPrintExercise[] {
@@ -301,18 +336,26 @@ export function getChapterPrintParts(
     .map((paragraph) => paragraph?.trim())
     .filter((paragraph): paragraph is string => Boolean(paragraph));
 
+  const finish = (parts: ChapterPrintParts): ChapterPrintParts => {
+    if (chapterId !== "chapter-4-standards") return parts;
+    return {
+      ...parts,
+      exercises: withChapter4ParticipantExercises(parts.exercises),
+    };
+  };
+
   if (chapterId === "chapter-1-awakening") {
     const welcomeRaw = paragraphs[0] ?? "";
     const personalizedWelcome = personalizeChapter1Welcome(welcomeRaw, null);
-    return {
+    return finish({
       opener: openerFromParagraph(personalizedWelcome),
       body: bodyFromParagraph(paragraphs[1]),
       exercises: chapter1Exercises(),
-    };
+    });
   }
 
   if (!paragraphs.length) {
-    return { opener: null, body: null, exercises: [] };
+    return finish({ opener: null, body: null, exercises: [] });
   }
 
   // Well-structured manuscripts start with a standalone welcome line.
@@ -337,7 +380,7 @@ export function getChapterPrintParts(
     const bodyParagraphs = paragraphs.slice(openerEnd, bodyEnd);
     const exerciseParagraphs = paragraphs.slice(bodyEnd);
 
-    return {
+    return finish({
       opener: formatManuscriptBlock(
         { paragraphs: openerParagraphs },
         { personalize: true },
@@ -351,7 +394,7 @@ export function getChapterPrintParts(
       exercises: exerciseParagraphs.length
         ? splitExerciseSections(exerciseParagraphs.join(PARAGRAPH_SENTINEL))
         : [],
-    };
+    });
   }
 
   const exerciseSource = paragraphs
@@ -359,10 +402,10 @@ export function getChapterPrintParts(
     .filter((paragraph) => paragraph?.trim())
     .join(PARAGRAPH_SENTINEL);
 
-  return {
+  return finish({
     opener: openerFromParagraph(paragraphs[0]),
     body: bodyFromParagraph(paragraphs[1]),
     exercises: exerciseSource ? splitExerciseSections(exerciseSource) : [],
-  };
+  });
 }
 

@@ -15,8 +15,8 @@ export type BackHalfStandardsFill = {
   lines: string[];
 };
 
-/** Practice answers live at chapter-4-standards exercise index 0. */
-export const BACK_HALF_STANDARDS_EXERCISE_INDEX = 0;
+/** Practice answers live at chapter-4-standards exercise index 1 (reflection is 0). */
+export const BACK_HALF_STANDARDS_EXERCISE_INDEX = 1;
 
 /**
  * Derive Back Half Standards fill from assembled guidebook responses.

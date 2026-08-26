@@ -1,0 +1,560 @@
+{
+  "aosWorkId": "al-197",
+  "row": 197,
+  "deliverable": "Validate Blueprint-to-Journey Alignment",
+  "ownerAgent": "nia",
+  "generatedAt": "2026-08-26T16:37:12.824Z",
+  "result": "PASS",
+  "passed": 64,
+  "failed": 0,
+  "founderAcceptance": null,
+  "founderAcceptanceAuthority": "Kimberly Walker (human)",
+  "checks": [
+    {
+      "id": "chapter-1-awakening-count",
+      "name": "chapter-1-awakening print exercise count",
+      "result": "PASS",
+      "detail": "print=5 expected=5 reserved=5"
+    },
+    {
+      "id": "chapter-1-awakening-reserved",
+      "name": "chapter-1-awakening reserved page count matches print",
+      "result": "PASS",
+      "detail": "reserved=5 print=5"
+    },
+    {
+      "id": "chapter-1-awakening-name",
+      "name": "chapter-1-awakening chapter name matches Journey stage",
+      "result": "PASS",
+      "detail": "blueprint=The Awakening journeyStage=The Awakening shortTitle=The Awakening"
+    },
+    {
+      "id": "chapter-1-awakening-label",
+      "name": "chapter-1-awakening Blueprint label uses Roman chapter terminology",
+      "result": "PASS",
+      "detail": "Chapter I — The Awakening"
+    },
+    {
+      "id": "chapter-1-awakening-founder-only-excluded",
+      "name": "chapter-1-awakening excludes Founder-only exercises",
+      "result": "PASS",
+      "detail": "Question One\nWhat is ALIVENESS?\nNot a definition.\nA description.\nFinish this sentence.\nI know I am alive when...\nWrite fifty answers.\nNot five.\nFifty.\nKeep going until you surprise"
+    },
+    {
+      "id": "chapter-1-awakening:0-populated",
+      "name": "chapter-1-awakening:0 fixture answers populate",
+      "result": "PASS",
+      "detail": "creating with purpose"
+    },
+    {
+      "id": "chapter-1-awakening:1-populated",
+      "name": "chapter-1-awakening:1 fixture answers populate",
+      "result": "PASS",
+      "detail": "people-pleasing"
+    },
+    {
+      "id": "chapter-1-awakening:2-populated",
+      "name": "chapter-1-awakening:2 fixture answers populate",
+      "result": "PASS",
+      "detail": "silence"
+    },
+    {
+      "id": "chapter-1-awakening:3-populated",
+      "name": "chapter-1-awakening:3 fixture answers populate",
+      "result": "PASS",
+      "detail": "I decided to begin"
+    },
+    {
+      "id": "chapter-1-awakening:4-populated",
+      "name": "chapter-1-awakening:4 fixture answers populate",
+      "result": "PASS",
+      "detail": "peace"
+    },
+    {
+      "id": "chapter-2-mirror-count",
+      "name": "chapter-2-mirror print exercise count",
+      "result": "PASS",
+      "detail": "print=4 expected=4 reserved=4"
+    },
+    {
+      "id": "chapter-2-mirror-reserved",
+      "name": "chapter-2-mirror reserved page count matches print",
+      "result": "PASS",
+      "detail": "reserved=4 print=4"
+    },
+    {
+      "id": "chapter-2-mirror-name",
+      "name": "chapter-2-mirror chapter name matches Journey stage",
+      "result": "PASS",
+      "detail": "blueprint=The Mirror journeyStage=The Mirror shortTitle=The Mirror"
+    },
+    {
+      "id": "chapter-2-mirror-label",
+      "name": "chapter-2-mirror Blueprint label uses Roman chapter terminology",
+      "result": "PASS",
+      "detail": "Chapter II — The Mirror"
+    },
+    {
+      "id": "chapter-2-mirror-founder-only-excluded",
+      "name": "chapter-2-mirror excludes Founder-only exercises",
+      "result": "PASS",
+      "detail": "Step One\nFinish this sentence.\nSomeone is living by expectation when...\nI don't want 10 answers. I want 50.\nExamples (these are mine—not yours):\n... their calendar belongs to every"
+    },
+    {
+      "id": "chapter-2-mirror:0-populated",
+      "name": "chapter-2-mirror:0 fixture answers populate",
+      "result": "PASS",
+      "detail": "their calendar belongs to everyone else"
+    },
+    {
+      "id": "chapter-2-mirror:1-populated",
+      "name": "chapter-2-mirror:1 fixture answers populate",
+      "result": "PASS",
+      "detail": "their calendar reflects their values"
+    },
+    {
+      "id": "chapter-2-mirror:2-populated",
+      "name": "chapter-2-mirror:2 fixture answers populate",
+      "result": "PASS",
+      "detail": "I work for approval | I work from purpose | I define success | My calendar reflects priorities"
+    },
+    {
+      "id": "chapter-2-mirror:3-populated",
+      "name": "chapter-2-mirror:3 fixture answers populate",
+      "result": "PASS",
+      "detail": "Identity: becoming an Architect"
+    },
+    {
+      "id": "chapter-3-decision-count",
+      "name": "chapter-3-decision print exercise count",
+      "result": "PASS",
+      "detail": "print=2 expected=2 reserved=2"
+    },
+    {
+      "id": "chapter-3-decision-reserved",
+      "name": "chapter-3-decision reserved page count matches print",
+      "result": "PASS",
+      "detail": "reserved=2 print=2"
+    },
+    {
+      "id": "chapter-3-decision-name",
+      "name": "chapter-3-decision chapter name matches Journey stage",
+      "result": "PASS",
+      "detail": "blueprint=The Decision journeyStage=The Decision shortTitle=The Decision"
+    },
+    {
+      "id": "chapter-3-decision-label",
+      "name": "chapter-3-decision Blueprint label uses Roman chapter terminology",
+      "result": "PASS",
+      "detail": "Chapter III — The Decision"
+    },
+    {
+      "id": "chapter-3-decision-founder-only-excluded",
+      "name": "chapter-3-decision excludes Founder-only exercises",
+      "result": "PASS",
+      "detail": "Reflection\nArchitect Reflection Questions\nWhat decision have you been postponing?\nWhat fear has been quietly making decisions for you?\nWhere are you waiting instead of acting?\nWhat"
+    },
+    {
+      "id": "chapter-3-decision:0-populated",
+      "name": "chapter-3-decision:0 fixture answers populate",
+      "result": "PASS",
+      "detail": "What decision have you been postponing?\nthe conversation I keep postponing"
+    },
+    {
+      "id": "chapter-3-decision:1-populated",
+      "name": "chapter-3-decision:1 fixture answers populate",
+      "result": "PASS",
+      "detail": "protect my peace"
+    },
+    {
+      "id": "chapter-4-standards-count",
+      "name": "chapter-4-standards print exercise count",
+      "result": "PASS",
+      "detail": "print=2 expected=2 reserved=2"
+    },
+    {
+      "id": "chapter-4-standards-reserved",
+      "name": "chapter-4-standards reserved page count matches print",
+      "result": "PASS",
+      "detail": "reserved=2 print=2"
+    },
+    {
+      "id": "chapter-4-standards-name",
+      "name": "chapter-4-standards chapter name matches Journey stage",
+      "result": "PASS",
+      "detail": "blueprint=The Standards journeyStage=The Standards shortTitle=The Standards"
+    },
+    {
+      "id": "chapter-4-standards-label",
+      "name": "chapter-4-standards Blueprint label uses Roman chapter terminology",
+      "result": "PASS",
+      "detail": "Chapter IV — The Standards"
+    },
+    {
+      "id": "chapter-4-standards-founder-only-excluded",
+      "name": "chapter-4-standards excludes Founder-only exercises",
+      "result": "PASS",
+      "detail": "Reflection\nArchitect Reflection Questions\nWhat standards have been quietly shaping your life until now?\nWhich standards no longer serve the person you are becoming?\nWhat is one are"
+    },
+    {
+      "id": "chapter-4-standards:0-populated",
+      "name": "chapter-4-standards:0 fixture answers populate",
+      "result": "PASS",
+      "detail": "What standards have been quietly shaping your life until now?\nquiet standards of survival"
+    },
+    {
+      "id": "chapter-4-standards:1-populated",
+      "name": "chapter-4-standards:1 fixture answers populate",
+      "result": "PASS",
+      "detail": "Standard One: I protect my peace"
+    },
+    {
+      "id": "chapter-5-architect-count",
+      "name": "chapter-5-architect print exercise count",
+      "result": "PASS",
+      "detail": "print=2 expected=2 reserved=2"
+    },
+    {
+      "id": "chapter-5-architect-reserved",
+      "name": "chapter-5-architect reserved page count matches print",
+      "result": "PASS",
+      "detail": "reserved=2 print=2"
+    },
+    {
+      "id": "chapter-5-architect-name",
+      "name": "chapter-5-architect chapter name matches Journey stage",
+      "result": "PASS",
+      "detail": "blueprint=Becoming the Architect journeyStage=Becoming the Architect shortTitle=Becoming the Architect"
+    },
+    {
+      "id": "chapter-5-architect-label",
+      "name": "chapter-5-architect Blueprint label uses Roman chapter terminology",
+      "result": "PASS",
+      "detail": "Chapter V — Becoming the Architect"
+    },
+    {
+      "id": "chapter-5-architect-founder-only-excluded",
+      "name": "chapter-5-architect excludes Founder-only exercises",
+      "result": "PASS",
+      "detail": "Reflection\nArchitect Reflection Questions\nWhat identity have you been carrying that no longer serves you?\nWhat kind of Architect are you choosing to become?\nHow would an Architect "
+    },
+    {
+      "id": "chapter-5-architect:0-populated",
+      "name": "chapter-5-architect:0 fixture answers populate",
+      "result": "PASS",
+      "detail": "What identity have you been carrying that no longer serves you?\nthe helper who never rests"
+    },
+    {
+      "id": "chapter-5-architect:1-populated",
+      "name": "chapter-5-architect:1 fixture answers populate",
+      "result": "PASS",
+      "detail": "chooses intention every morning"
+    },
+    {
+      "id": "chapter-6-expansion-count",
+      "name": "chapter-6-expansion print exercise count",
+      "result": "PASS",
+      "detail": "print=2 expected=2 reserved=2"
+    },
+    {
+      "id": "chapter-6-expansion-reserved",
+      "name": "chapter-6-expansion reserved page count matches print",
+      "result": "PASS",
+      "detail": "reserved=2 print=2"
+    },
+    {
+      "id": "chapter-6-expansion-name",
+      "name": "chapter-6-expansion chapter name matches Journey stage",
+      "result": "PASS",
+      "detail": "blueprint=Expansion journeyStage=Expansion shortTitle=Expansion"
+    },
+    {
+      "id": "chapter-6-expansion-label",
+      "name": "chapter-6-expansion Blueprint label uses Roman chapter terminology",
+      "result": "PASS",
+      "detail": "Chapter VI — Expansion"
+    },
+    {
+      "id": "chapter-6-expansion-founder-only-excluded",
+      "name": "chapter-6-expansion excludes Founder-only exercises",
+      "result": "PASS",
+      "detail": "Reflection\nArchitect Reflection Questions\nHow has your transformation already influenced the people around you?\nWho in your life needs someone living as an example of what's possib"
+    },
+    {
+      "id": "chapter-6-expansion:0-populated",
+      "name": "chapter-6-expansion:0 fixture answers populate",
+      "result": "PASS",
+      "detail": "How has your transformation already influenced the people around you?\nmy family already feels the shift"
+    },
+    {
+      "id": "chapter-6-expansion:1-populated",
+      "name": "chapter-6-expansion:1 fixture answers populate",
+      "result": "PASS",
+      "detail": "For Yourself: daily walk"
+    },
+    {
+      "id": "chapter-7-beginning-count",
+      "name": "chapter-7-beginning print exercise count",
+      "result": "PASS",
+      "detail": "print=2 expected=2 reserved=2"
+    },
+    {
+      "id": "chapter-7-beginning-reserved",
+      "name": "chapter-7-beginning reserved page count matches print",
+      "result": "PASS",
+      "detail": "reserved=2 print=2"
+    },
+    {
+      "id": "chapter-7-beginning-name",
+      "name": "chapter-7-beginning chapter name matches Journey stage",
+      "result": "PASS",
+      "detail": "blueprint=The Beginning journeyStage=The Beginning shortTitle=The Beginning"
+    },
+    {
+      "id": "chapter-7-beginning-label",
+      "name": "chapter-7-beginning Blueprint label uses Roman chapter terminology",
+      "result": "PASS",
+      "detail": "Chapter VII — The Beginning"
+    },
+    {
+      "id": "chapter-7-beginning-founder-only-excluded",
+      "name": "chapter-7-beginning excludes Founder-only exercises",
+      "result": "PASS",
+      "detail": "Reflection\nArchitect Reflection Questions\nWhat has changed most within you during this Journey?\nWhich lesson do you want to carry into every future season of your life?\nWhat standa"
+    },
+    {
+      "id": "chapter-7-beginning:0-populated",
+      "name": "chapter-7-beginning:0 fixture answers populate",
+      "result": "PASS",
+      "detail": "What has changed most within you during this Journey?\nI tell myself the truth"
+    },
+    {
+      "id": "chapter-7-beginning:1-populated",
+      "name": "chapter-7-beginning:1 fixture answers populate",
+      "result": "PASS",
+      "detail": "Beginning today, I will intentionally create a life that... is honest, generous, and awake"
+    },
+    {
+      "id": "ch4-reflection-isolated",
+      "name": "Chapter IV reflection does not land on the Standards practice page",
+      "result": "PASS",
+      "detail": "reflection=1 practice=3"
+    },
+    {
+      "id": "ch4-practice-isolated",
+      "name": "Chapter IV practice standards do not land on the reflection page",
+      "result": "PASS",
+      "detail": "practice=Standard One: I protect my peace | Standard Two: I honor my body | CH4-COMMIT"
+    },
+    {
+      "id": "ch4-founder-three-lives-absent-from-keys",
+      "name": "No Three Lives key is emitted for Chapter V",
+      "result": "PASS",
+      "detail": "chapter-1-awakening:0, chapter-1-awakening:1, chapter-1-awakening:2, chapter-1-awakening:3, chapter-1-awakening:4, chapter-2-mirror:0, chapter-2-mirror:1, chapter-2-mirror:2, chapter-2-mirror:3, chapter-3-decision:0, chapter-3-decision:1, chapter-4-standards:0, chapter-4-standards:1, chapter-5-architect:0, chapter-5-architect:1, chapter-6-expansion:0, chapter-6-expansion:1, chapter-7-beginning:0, chapter-7-beginning:1"
+    },
+    {
+      "id": "ch1-foundry-reflection-excluded",
+      "name": "Chapter I Foundry reflection prompts are not Blueprint keys",
+      "result": "PASS",
+      "detail": "Journey-digital reflection stays off the Aliveness Project pages"
+    },
+    {
+      "id": "artifact-decision-statement",
+      "name": "Decision Statement artifact uses Chapter III practice",
+      "result": "PASS",
+      "detail": "[\"Beginning today, I choose to protect my peace\",\"CH3-COMMIT\"]"
+    },
+    {
+      "id": "artifact-back-half-standards",
+      "name": "Back Half Standards artifact uses Chapter IV practice (not reflection)",
+      "result": "PASS",
+      "detail": "[\"Standard One: I protect my peace\",\"Standard Two: I honor my body\",\"CH4-COMMIT\"]"
+    },
+    {
+      "id": "artifact-architect-identity",
+      "name": "Architect Identity artifact uses Chapter V practice",
+      "result": "PASS",
+      "detail": "[\"I am an Architect who chooses intention every morning\",\"CH5-COMMIT\"]"
+    },
+    {
+      "id": "artifact-expansion-plan",
+      "name": "Expansion Plan artifact uses Chapter VI practice",
+      "result": "PASS",
+      "detail": "[\"1. I Will Continue Growing By... daily walk\",\"2. I Will Intentionally Encourage Others By... encourage a friend\",\"3. I Will Contribute To My Community By... serve locally\",\"CH6-COMMIT\"]"
+    },
+    {
+      "id": "artifact-declaration",
+      "name": "Back Half Declaration artifact uses Chapter VII practice",
+      "result": "PASS",
+      "detail": "[\"Beginning today, I will intentionally create a life that... is honest, generous, and awake\",\"Jordan Architect\",\"2026-08-26\"]"
+    },
+    {
+      "id": "architect-isolation",
+      "name": "Saved answers are Architect-scoped (fixture isolation)",
+      "result": "PASS",
+      "detail": "alpha and beta fixtures do not share answers"
+    }
+  ],
+  "spec": {
+    "blueprintExercises": [
+      {
+        "chapterId": "chapter-1-awakening",
+        "exerciseIndex": 0,
+        "journeySource": "alivenessProject.answers.q1",
+        "belongsInBlueprint": true
+      },
+      {
+        "chapterId": "chapter-1-awakening",
+        "exerciseIndex": 1,
+        "journeySource": "alivenessProject.answers.q2",
+        "belongsInBlueprint": true
+      },
+      {
+        "chapterId": "chapter-1-awakening",
+        "exerciseIndex": 2,
+        "journeySource": "alivenessProject.answers.q3",
+        "belongsInBlueprint": true
+      },
+      {
+        "chapterId": "chapter-1-awakening",
+        "exerciseIndex": 3,
+        "journeySource": "alivenessProject.answers.q4",
+        "belongsInBlueprint": true
+      },
+      {
+        "chapterId": "chapter-1-awakening",
+        "exerciseIndex": 4,
+        "journeySource": "alivenessProject.answers.q5 + optional weekly commitment note",
+        "belongsInBlueprint": true
+      },
+      {
+        "chapterId": "chapter-2-mirror",
+        "exerciseIndex": 0,
+        "journeySource": "mirrorExercise.answers.step1",
+        "belongsInBlueprint": true
+      },
+      {
+        "chapterId": "chapter-2-mirror",
+        "exerciseIndex": 1,
+        "journeySource": "mirrorExercise.answers.step2",
+        "belongsInBlueprint": true
+      },
+      {
+        "chapterId": "chapter-2-mirror",
+        "exerciseIndex": 2,
+        "journeySource": "mirrorExercise.answers.step3",
+        "belongsInBlueprint": true
+      },
+      {
+        "chapterId": "chapter-2-mirror",
+        "exerciseIndex": 3,
+        "journeySource": "mirrorExercise.answers.step4 + optional weekly commitment note",
+        "belongsInBlueprint": true
+      },
+      {
+        "chapterId": "chapter-3-decision",
+        "exerciseIndex": 0,
+        "journeySource": "reflection.answers",
+        "belongsInBlueprint": true
+      },
+      {
+        "chapterId": "chapter-3-decision",
+        "exerciseIndex": 1,
+        "journeySource": "practice.statement + commitment.note",
+        "belongsInBlueprint": true
+      },
+      {
+        "chapterId": "chapter-4-standards",
+        "exerciseIndex": 0,
+        "journeySource": "reflection.answers",
+        "belongsInBlueprint": true
+      },
+      {
+        "chapterId": "chapter-4-standards",
+        "exerciseIndex": 1,
+        "journeySource": "practice.answers + commitment.note",
+        "belongsInBlueprint": true
+      },
+      {
+        "chapterId": "chapter-5-architect",
+        "exerciseIndex": 0,
+        "journeySource": "reflection.answers",
+        "belongsInBlueprint": true
+      },
+      {
+        "chapterId": "chapter-5-architect",
+        "exerciseIndex": 1,
+        "journeySource": "practice.statement + commitment.note",
+        "belongsInBlueprint": true
+      },
+      {
+        "chapterId": "chapter-6-expansion",
+        "exerciseIndex": 0,
+        "journeySource": "reflection.answers",
+        "belongsInBlueprint": true
+      },
+      {
+        "chapterId": "chapter-6-expansion",
+        "exerciseIndex": 1,
+        "journeySource": "practice.answers + commitment.note",
+        "belongsInBlueprint": true
+      },
+      {
+        "chapterId": "chapter-7-beginning",
+        "exerciseIndex": 0,
+        "journeySource": "reflection.answers",
+        "belongsInBlueprint": true
+      },
+      {
+        "chapterId": "chapter-7-beginning",
+        "exerciseIndex": 1,
+        "journeySource": "practice.statement/signature/date + commitment.note",
+        "belongsInBlueprint": true
+      }
+    ],
+    "journeyOnly": [
+      {
+        "chapterId": "chapter-1-awakening",
+        "section": "reflection",
+        "reason": "Foundry digital Architect Reflection Questions. Blueprint writing pages for Chapter I are the five Aliveness Project questions (exercisePageCount 5)."
+      },
+      {
+        "chapterId": "chapter-2-mirror",
+        "section": "reflection",
+        "reason": "Foundry digital Architect Reflection Questions. Blueprint writing pages for Chapter II are the four Mirror steps (exercisePageCount 4)."
+      },
+      {
+        "chapterId": "onboarding",
+        "section": "aliveness-index",
+        "reason": "Onboarding Aliveness Index scores live in Journey/Lumina. The Blueprint Aliveness Index artifact remains the approved fillable worksheet, matching the other standalone assessment layout."
+      }
+    ],
+    "founderOnly": [
+      {
+        "id": "three-lives",
+        "chapterId": "chapter-5-architect",
+        "labels": [
+          "The Three Lives Exercise",
+          "Person One",
+          "Person Two",
+          "Person Three"
+        ],
+        "reason": "Founder-only exercise — never emit participant writing pages."
+      },
+      {
+        "id": "founder-closing-reflections",
+        "chapterId": "all",
+        "labels": [
+          "Founder Closing Reflection"
+        ],
+        "reason": "Founder media / closing reflection is not a participant Blueprint writing exercise."
+      }
+    ]
+  },
+  "notes": [
+    "Chapter I–II Foundry reflection questions remain Journey-digital; Blueprint pages are Aliveness Project / Mirror steps.",
+    "Chapter IV now emits Architect Reflection + The Standards Exercise, matching reserved exercisePageCount 2.",
+    "Three Lives and Founder Closing Reflections are excluded from participant Blueprint writing pages.",
+    "Founder acceptance stays with Kimberly Walker (human). This run does not mark the Command Center row complete."
+  ]
+}

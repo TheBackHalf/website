@@ -1,0 +1,27 @@
+{
+  "aosWorkId": "al-197",
+  "source": "command_center",
+  "sourceReference": "August Launch row 197",
+  "ownerAgent": "nia",
+  "title": "Validate Blueprint-to-Journey Alignment",
+  "generatedAt": "2026-08-26T16:37:12.824Z",
+  "technicalStatus": "complete",
+  "founderAcceptance": null,
+  "nextAction": "await_founder_acceptance",
+  "result": "PASS",
+  "passed": 64,
+  "failed": 0,
+  "evidence": [
+    "ops/fab-5/runs/row-197-blueprint-journey-alignment.json",
+    "lib/blueprint/journey-alignment.ts",
+    "lib/blueprint/map-journey-to-blueprint.ts"
+  ],
+  "failedChecks": [],
+  "softwareChange": true,
+  "notes": [
+    "Chapter I–II Foundry reflection questions remain Journey-digital; Blueprint pages are Aliveness Project / Mirror steps.",
+    "Chapter IV now emits Architect Reflection + The Standards Exercise, matching reserved exercisePageCount 2.",
+    "Three Lives and Founder Closing Reflections are excluded from participant Blueprint writing pages.",
+    "Founder acceptance stays with Kimberly Walker (human). This run does not mark the Command Center row complete."
+  ]
+}
