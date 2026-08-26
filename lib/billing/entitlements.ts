@@ -7,10 +7,24 @@ import type {
   EntitlementStatus,
 } from "@/lib/billing/types";
 
-export function addOneYear(isoDate: string): string {
-  const date = new Date(isoDate);
-  date.setUTCFullYear(date.getUTCFullYear() + 1);
-  return date.toISOString();
+/**
+ * Founder-approved Architect Community launch and Founding Architect window.
+ * Not first year / twelve months. Access is exclusive of the end instant.
+ */
+export const ARCHITECT_COMMUNITY_LAUNCH_AT = "2026-10-25T00:00:00.000Z";
+export const FOUNDING_ARCHITECT_COMMUNITY_ENDS_AT =
+  "2027-04-26T00:00:00.000Z";
+
+export function laterIso(left: string, right: string): string {
+  return left > right ? left : right;
+}
+
+export function communityStartsAt(grantedAt: string): string {
+  return laterIso(grantedAt, ARCHITECT_COMMUNITY_LAUNCH_AT);
+}
+
+export function foundingArchitectCommunityEndsAt(): string {
+  return FOUNDING_ARCHITECT_COMMUNITY_ENDS_AT;
 }
 
 export function isEntitlementCurrentlyActive(
@@ -129,32 +143,15 @@ export async function grantOfferEntitlements(input: {
   const results: EntitlementRecord[] = [];
 
   for (const kind of kinds) {
-    const endsAt =
-      kind === "community_access"
-        ? input.communityEndsAt ??
-          (input.offerId === "bundle" ? addOneYear(grantedAt) : undefined)
-        : undefined;
-
-    // Idempotent: if bundle community already exists with endsAt, do not extend.
     const existing = await store.findEntitlementByUserAndKind(
       input.userId,
       kind,
     );
 
+    // Duplicate webhook for the same checkout must not extend or rewrite.
     if (
       existing &&
-      input.offerId === "bundle" &&
-      kind === "community_access" &&
-      existing.sourceOfferId === "bundle" &&
-      existing.endsAt &&
-      existing.stripeCheckoutSessionId === input.stripeCheckoutSessionId
-    ) {
-      results.push(existing);
-      continue;
-    }
-
-    if (
-      existing &&
+      input.stripeCheckoutSessionId &&
       existing.stripeCheckoutSessionId === input.stripeCheckoutSessionId &&
       existing.status === "active"
     ) {
@@ -162,24 +159,47 @@ export async function grantOfferEntitlements(input: {
       continue;
     }
 
+    const journeyLifetime = kind === "journey_access";
+    let endsAt: string | undefined;
+    if (!journeyLifetime) {
+      if (input.offerId === "bundle") {
+        // Duplicate bundle events keep the original included window.
+        endsAt =
+          existing?.sourceOfferId === "bundle" && existing.endsAt
+            ? existing.endsAt
+            : foundingArchitectCommunityEndsAt();
+      } else if (input.communityEndsAt) {
+        // Paid Community subscription may extend past the included window.
+        endsAt =
+          existing?.sourceOfferId === "bundle" && existing.endsAt
+            ? laterIso(existing.endsAt, input.communityEndsAt)
+            : input.communityEndsAt;
+      } else {
+        endsAt = existing?.endsAt;
+      }
+    }
+
     const record = await store.upsertEntitlement({
       userId: input.userId,
       kind,
       status: input.status ?? "active",
-      sourceOfferId: input.offerId,
-      stripeCustomerId: input.stripeCustomerId,
-      stripeCheckoutSessionId: input.stripeCheckoutSessionId,
-      stripePaymentIntentId: input.stripePaymentIntentId,
-      stripeSubscriptionId: input.stripeSubscriptionId,
-      stripePriceId: input.stripePriceId,
+      sourceOfferId:
+        input.offerId === "community" || !existing
+          ? input.offerId
+          : existing.sourceOfferId,
+      stripeCustomerId: input.stripeCustomerId ?? existing?.stripeCustomerId,
+      stripeCheckoutSessionId:
+        input.stripeCheckoutSessionId ?? existing?.stripeCheckoutSessionId,
+      stripePaymentIntentId:
+        input.stripePaymentIntentId ?? existing?.stripePaymentIntentId,
+      stripeSubscriptionId:
+        input.stripeSubscriptionId ?? existing?.stripeSubscriptionId,
+      stripePriceId: input.stripePriceId ?? existing?.stripePriceId,
       grantedAt: existing?.grantedAt ?? grantedAt,
-      startsAt: existing?.startsAt ?? grantedAt,
-      endsAt:
-        kind === "community_access"
-          ? existing?.sourceOfferId === "bundle" && existing.endsAt
-            ? existing.endsAt
-            : endsAt
-          : undefined,
+      startsAt:
+        existing?.startsAt ??
+        (journeyLifetime ? grantedAt : communityStartsAt(grantedAt)),
+      endsAt,
       sourceEventId: input.eventId,
       reason: `grant:${input.offerId}`,
     });
@@ -196,6 +216,7 @@ export async function revokeEntitlementsForPayment(input: {
   chargeId?: string;
   eventId: string;
   reason: string;
+  offerId?: CheckoutOfferId;
 }): Promise<number> {
   const store = getBillingStore();
   let entitlements: EntitlementRecord[] = [];
@@ -210,13 +231,26 @@ export async function revokeEntitlementsForPayment(input: {
     );
   }
 
-  if (entitlements.length === 0 && input.userId) {
-    entitlements = await store.findEntitlementsByUserId(input.userId);
+  // Never fall back to every entitlement on the account. That path can
+  // accidentally revoke lifetime Blueprint / Journey access after an
+  // unrelated Community refund or unmatched charge.
+  void input.userId;
+  void input.chargeId;
+
+  if (input.offerId) {
+    const allowed = new Set(offerGrants(input.offerId));
+    entitlements = entitlements.filter((entry) => allowed.has(entry.kind));
   }
 
   const now = new Date().toISOString();
   let count = 0;
   for (const entitlement of entitlements) {
+    if (
+      entitlement.kind === "journey_access" &&
+      input.offerId === "community"
+    ) {
+      continue;
+    }
     await store.upsertEntitlement({
       ...entitlement,
       status: "revoked",

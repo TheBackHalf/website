@@ -333,6 +333,7 @@ async function syncRefundedCharge(input: {
     chargeId: input.charge.id,
     eventId: input.source,
     reason: "reconcile:charge.refunded",
+    offerId: purchase.offerId,
   });
 
   return { updated: purchaseWasOpen || revoked > 0 };
