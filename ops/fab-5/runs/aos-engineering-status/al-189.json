@@ -1,0 +1,270 @@
+{
+  "aosWorkId": "al-189",
+  "row": 189,
+  "excelRow": 190,
+  "tab": "August Launch",
+  "source": "command_center",
+  "sourceReference": "August Launch row 189",
+  "deliverable": "Resolve Critical and High Defects",
+  "description": "Fix all blockers, payment/access failures, data loss, security, broken Journey, Lumina safety, and mobile failures.",
+  "operatingAgent": "nia",
+  "operatingAgentFull": "Nia Prism — Chief Experience & Transformation Officer",
+  "workbookPrimaryOwner": "imani",
+  "workbookPrimaryOwnerNote": "Launch workbook and Command Center assign Row 189 TECHNOLOGY primary ownership to Imani Heartbeat. AOS assigned this engineering run to Nia Prism as supporting experience owner. Nia retested participant-facing Journey, Lumina safety, and public mobile-viewport surfaces. Nia did not change infrastructure, auth, or payment systems. Nia did not apply Cloudflare DNS, Stripe Live keys, Vercel custom-domain settings, or nameserver changes. Kimberly Walker (AI) is not an operating agent and was not treated as execution capacity.",
+  "generatedAt": "2026-08-26T16:18:25.000Z",
+  "branch": "cursor/aos-nia-al-189-2c80",
+  "pullRequest": null,
+  "softwareChangeApplied": false,
+  "productMarketingLegalFilesChanged": false,
+  "stripeConfigModified": false,
+  "dnsModified": false,
+  "vercelCustomDomainModified": false,
+  "nameserversModified": false,
+  "authModified": false,
+  "secretsPrinted": false,
+  "kimberlyWalkerAiTreatedAsOperatingAgent": false,
+  "commandCenterStatusNotUpdated": true,
+  "markedComplete": false,
+  "founderAcceptance": null,
+  "founderAcceptanceRecorded": false,
+  "founderAccepted": false,
+  "readyForFounderAcceptanceReview": false,
+  "deliverableKind": "status_only",
+  "overallResult": "NOT_RESOLVED",
+  "overallSummary": "Critical and high launch defects are not resolved on main or on the canonical public URL. Nia independently reproduced D-188-C1, D-188-C2, and D-188-H1. Nia cannot close C1 (Founder DNS) or C2 (Founder Live Stripe + Imani webhook/prices) without violating AOS scope. H1 (Journey chapters open out of sequence) is still live on main; Imani’s unmerged PR #8 is the proposed software fix and Nia’s participant-facing retest of that design is PASS, but the defect remains open until that work is reviewed and merged by others. H2 is Founder native-social load, not Nia code. Formal Testing rows 176–187 remain Not Started, so additional Journey/Lumina/mobile packets are not yet available. Row 189 is not Complete. Founder acceptance is not recorded.",
+  "authority": {
+    "experienceOwner": "Nia Prism — Journey participant experience, Lumina safety/voice, brand, curriculum, transformation. Retest after Imani software.",
+    "technologyOwner": "Imani Heartbeat — Journey progression engine, payment/webhook, security, production DNS follow-up after Founder records exist",
+    "operationsOwner": "Michelle Northstar — triage (Row 188 / al-188), orchestration, do not implement or merge from this row",
+    "founder": "Kimberly Walker (human) — sole Founder acceptance authority. DNS records, Stripe Live secret, and native Instagram/TikTok schedule load remain Founder-gated.",
+    "niaDidNotChange": [
+      "infrastructure",
+      "auth",
+      "payment systems",
+      "Stripe configuration",
+      "Cloudflare DNS",
+      "Vercel custom-domain settings",
+      "thebackhalf.org nameservers",
+      "Journey curriculum manuscript",
+      "Lumina approved voice content",
+      "legal files"
+    ]
+  },
+  "dependency": {
+    "blockedBy": "Defect Triage (August Launch row 188 / AOS al-188)",
+    "triageSource": "https://github.com/TheBackHalf/website/pull/9",
+    "triageStatus": "open_unmerged_status_only — Nia treated Michelle’s recorded register as the current known-defect input, not as Founder-accepted completion of Row 188",
+    "coverageGap": "Formal Testing rows 176–187 are still Not Started. Absence of mobile/browser/a11y/security-review packets is a coverage gap, not proof those areas are clean."
+  },
+  "method": [
+    "Read Michelle’s al-188 triage (PR #9) and the Row 189 handoff: Imani owns C1 follow-up after Founder DNS, C2 after Founder Live Stripe, and H1 software; Nia retests H1 (and M1 if capacity).",
+    "Independently reproduced C1/C2 with read-only DNS-over-HTTPS and HTTP probes on 2026-08-26. No charges. No DNS edits. No secrets printed.",
+    "Independently reproduced H1 on current main by inspecting Journey hub links and Chapter II load (no chapter-prerequisite gate).",
+    "Retested Imani’s proposed H1 software on origin/cursor/aos-imani-al-133-442b (PR #8) by reading progression rules, hub lock UI, page gate, chapter-2 service, EN/ES lock copy, and the recorded 18/18 Row 133 validator.",
+    "Ran npm run eval:lumina on this branch (Row 81 stub suite including SAFETY). Did not treat stub conversational depth as a new safety defect.",
+    "Checked public viewport meta and authenticated Journey/Lumina HTTP redirects. Did not run a device lab (Row 186 still Not Started).",
+    "Did not merge, deploy, or mark Command Center Complete."
+  ],
+  "productionProbe2026_08_26T16_17Z": {
+    "canonicalApexDnsA": "empty — SOA only (Cloudflare NS anirban / dns.cloudflare.com)",
+    "canonicalWwwDns": "NXDOMAIN (Status 3) for A and CNAME",
+    "httpsThebackhalfOrg": "FAIL — Could not resolve host: thebackhalf.org",
+    "httpsWwwThebackhalfOrg": "FAIL — Could not resolve host: www.thebackhalf.org",
+    "productionHost": "https://website-two-psi-49.vercel.app",
+    "productionDeploymentIdObservedOnRegisterHtml": "dpl_FjiGHQha8RA5VBtjmqw3N39WkCXB",
+    "http": {
+      "/": 200,
+      "/register": 200,
+      "/login": 200,
+      "/checkout": 200,
+      "/lumina": 200,
+      "/es/lumina": 200,
+      "/architect/journey": 307,
+      "/architect/lumina": 307,
+      "/api/ops/health": 200
+    },
+    "healthBody": {
+      "ok": true,
+      "environment": "production",
+      "checks": { "application": "ok", "database": "ok" }
+    },
+    "stripeWebhookPost": {
+      "url": "https://website-two-psi-49.vercel.app/api/stripe/webhook",
+      "http": 503,
+      "body": { "error": "webhook_not_configured" }
+    },
+    "registerGoogleSignInVisible": false,
+    "checkoutFoundingArchitectVisible": true,
+    "checkoutPrice1750Visible": true,
+    "homepageViewport": "width=device-width, initial-scale=1",
+    "secretsPrinted": false,
+    "liveChargeCreated": false
+  },
+  "niaRetest": {
+    "instructionFromTriage": "Nia retests participant-facing fixes after Imani (D-188-H1, and D-188-M1 if capacity).",
+    "authenticatedBrowserJourney": "NOT EXECUTED — no live participant test account was created; /architect/journey returns 307 (auth gate). Retest is code inspection of main plus proposed PR #8 plus Imani’s recorded Row 133 validator.",
+    "d188H1": {
+      "id": "D-188-H1",
+      "title": "Journey chapters can be opened out of sequence",
+      "severity": "high",
+      "onMain": "STILL_OPEN",
+      "mainEvidence": [
+        "components/app-shell/journey-entry-shell.tsx entitled+onboarded path renders <Link> to Chapters I–VII with no lock. Chapter II–VII CTAs remain Open/Resume even when earlier chapters are not_started.",
+        "lib/journey/chapters/chapter-2-service.ts loadChapter2ForUser requires only entitled onboarding; if status is not_started it writes in_progress and upserts journey progress for Chapter II with no Chapter I completion check.",
+        "lib/journey/progress/gate.ts, rules.ts, and page-gate.ts do not exist on main."
+      ],
+      "proposedFix": {
+        "pr": "https://github.com/TheBackHalf/website/pull/8",
+        "branch": "cursor/aos-imani-al-133-442b",
+        "owner": "imani",
+        "merged": false,
+        "niaParticipantFacingReview": "PASS_ON_PROPOSED_BRANCH_NOT_ON_MAIN",
+        "reviewNotes": [
+          "decideChapterAccess locks a not_started later chapter until the previous chapter is completed; completed chapters stay revisitable; existing in-progress later-chapter records stay reachable so skip-ahead drafts are not lost.",
+          "Journey hub renders locked chapters as aria-disabled spans (not links) with EN 'Complete the previous chapter to unlock this one.' / ES 'Completa el capítulo anterior para desbloquear este.' Copy is instructional, not clinical, and matches both locales.",
+          "Chapter load uses gateChapterLoad; locked or future sections redirect via redirectIfChapterUnavailable rather than silently opening.",
+          "preserveCompletedChapterStatus keeps completed work completed when drafts are saved on revisit.",
+          "ops/fab-5/runs/row-133-progression-save-validation.json records 18/18 PASS including sequential Continue, pointer non-regression, and Chapter VII journey_completed."
+        ],
+        "remainingBeforeClose": [
+          "PR #8 is unmerged, so participants on main/Production still skip ahead.",
+          "No entitled Architect browser pass was run from this workstation.",
+          "Spanish Journey hub lock behavior was reviewed in copy/code, not clicked in a live /es/architect/journey session."
+        ]
+      }
+    },
+    "luminaSafety": {
+      "row189Class": "Lumina safety",
+      "formalRow180": "Not Started — this is not a substitute for Row 180 Lumina Evaluation",
+      "triageClassification": "L-188-K1 stub conversational depth is a known limitation, not a Row 189 safety defect",
+      "evalLuminaOnThisBranch": {
+        "command": "npx tsx scripts/lumina-eval/run.ts",
+        "at": "2026-08-26T16:18:00.000Z",
+        "allPassed": true,
+        "safety": "PASS",
+        "privacyConsent": "PASS",
+        "categoriesPassed": [
+          "VOICE",
+          "MEMORY",
+          "CONSISTENCY",
+          "ACCURACY",
+          "SAFETY",
+          "USEFULNESS",
+          "BILINGUAL QUALITY",
+          "JOURNEY-AWARE CONTEXT",
+          "PRIVACY/CONSENT BOUNDARIES",
+          "LATENCY",
+          "COST",
+          "LUMINA REGRESSIONS"
+        ],
+        "safetyCoverage": [
+          "force-error does not leak secrets",
+          "secret-like memory keys rejected",
+          "client payload omits journeyContext / relevantInsights / upcomingRequirements",
+          "cross-account conversation forbidden",
+          "injection-style dump does not leak system prompt or keys"
+        ]
+      },
+      "publicSurfaces": {
+        "/lumina": 200,
+        "/es/lumina": 200,
+        "/architect/lumina": "307 auth redirect"
+      },
+      "newHighSafetyDefectFound": false,
+      "note": "Stub replies still disclose that fuller intelligence arrives later. Support crisis boundaries remain on the Support page. Nia did not invent a live-provider crisis classifier in this row."
+    },
+    "mobileFailures": {
+      "row189Class": "mobile failures",
+      "formalRows": "Row 186 Test Priority Mobile Devices and Row 187 Fix Responsive and Touch Issues are Not Started",
+      "observed": [
+        "Public homepage includes viewport width=device-width, initial-scale=1",
+        "No overflow/clip/keyboard/tap-target packet exists from a device lab",
+        "Authenticated Journey/Lumina/checkout-on-phone were not exercised"
+      ],
+      "newConfirmedMobileFailure": false,
+      "note": "Nia will not invent a mobile high defect without reproduction. Coverage remains open until Rows 186–187 produce evidence."
+    },
+    "d188M1Capacity": {
+      "id": "D-188-M1",
+      "severity": "medium",
+      "row189": false,
+      "onMain": "STILL_OPEN",
+      "evidence": "dashboard-shell.tsx still renders welcomeSlot heading plus personalized welcome body; dictionaries still contain welcomeSlot.",
+      "proposedFixPr": "https://github.com/TheBackHalf/website/pull/2",
+      "niaActionThisRun": "Did not duplicate PR #2. Medium / post_launch_ok per triage. Not a Row 189 must-fix-before-launch item."
+    }
+  },
+  "disposition": [
+    {
+      "id": "D-188-C1",
+      "title": "Canonical public domain does not resolve",
+      "severity": "critical",
+      "row189": true,
+      "niaAction": "reproduced_not_fixed",
+      "whyNotFixedByNia": "Founder Cloudflare DNS. AOS forbids Nia from changing Cloudflare DNS, Vercel custom-domain, or nameservers.",
+      "status": "open",
+      "releaseRequirement": "must_fix_before_launch",
+      "owner": "founder",
+      "imaniFollowUp": "Confirm Vercel domain Valid / HTTPS after Founder adds DNS-only A @ 10.0.1.2 and CNAME www → cname.vercel-dns.com. Do not change nameservers or MX."
+    },
+    {
+      "id": "D-188-C2",
+      "title": "Live payment path is not production-ready",
+      "severity": "critical",
+      "row189": true,
+      "niaAction": "reproduced_not_fixed",
+      "whyNotFixedByNia": "Founder Stripe Live secret plus Imani live prices/webhook. AOS forbids Nia from changing payment systems or Stripe configuration. No live charge was created.",
+      "status": "open",
+      "releaseRequirement": "must_fix_before_launch",
+      "owner": "founder",
+      "reproductionThisRun": "POST /api/stripe/webhook → HTTP 503 {error: webhook_not_configured}"
+    },
+    {
+      "id": "D-188-H1",
+      "title": "Journey chapters can be opened out of sequence",
+      "severity": "high",
+      "row189": true,
+      "niaAction": "reproduced_on_main_retested_proposed_fix_not_merged",
+      "whyNotFixedByNia": "Imani already has the progression/save software on unmerged PR #8. Duplicating that engine on Nia’s branch would split ownership, risk merge conflict, and is Imani’s Row 133/189 software. Nia’s assigned action is retest.",
+      "status": "open",
+      "releaseRequirement": "must_fix_before_launch",
+      "owner": "imani",
+      "niaRetestOfProposedFix": "PASS_ON_PR_8_CODE_AND_VALIDATOR",
+      "stillBrokenOnMain": true
+    },
+    {
+      "id": "D-188-H2",
+      "title": "Native Instagram/TikTok schedules not loaded",
+      "severity": "high",
+      "row189": false,
+      "niaAction": "not_software_not_fixed",
+      "whyNotFixedByNia": "Founder native scheduler load. Not Journey/Lumina/mobile software. Do not add a second admin or purchase a scheduler.",
+      "status": "open",
+      "releaseRequirement": "must_complete_before_launch_communications",
+      "owner": "founder"
+    }
+  ],
+  "countsAfterThisRun": {
+    "openCriticalMustFixBeforeLaunch": 2,
+    "openHighMustFixBeforeLaunchSoftware": 1,
+    "openHighLaunchCommunicationsFounder": 1,
+    "criticalAndHighResolvedOnMain": 0,
+    "niaOwnedSoftwareFixesShipped": 0
+  },
+  "notClaimed": [
+    "August Launch row 189 is not Complete",
+    "Founder acceptance is not recorded",
+    "PRODUCTION-READY / GO FOR LAUNCH is not declared",
+    "Imani PR #8 is not merged by this run",
+    "Nia PR #2 is not merged by this run",
+    "No deploy",
+    "No Stripe, DNS, or auth change"
+  ],
+  "nextAction": "Imani executes remaining Row 189 software/config: H1 (merge-ready PR #8 after review) and C2 after Founder Live Stripe. Founder applies C1 DNS and H2 native schedules. After H1 lands on a reviewable production-equivalent surface, Nia retests entitled EN/ES Journey lock/resume in browser. Do not mark Row 189 Complete from this file.",
+  "validation": {
+    "typecheck": "PASS — ./node_modules/.bin/tsc --noEmit (package.json has no typecheck script)",
+    "test": "nearest package script npm run eval:lumina PASS (all 12 categories including SAFETY). package.json has no test script.",
+    "build": "skipped — status-only JSON; change cannot affect production",
+    "row133Validator": "not re-executed here; Imani PR #8 records 18/18 PASS in ops/fab-5/runs/row-133-progression-save-validation.json on that branch"
+  }
+}
