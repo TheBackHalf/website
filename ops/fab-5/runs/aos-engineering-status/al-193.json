@@ -1,0 +1,297 @@
+{
+  "aosWorkId": "al-193",
+  "row": 193,
+  "excelRow": 194,
+  "tab": "August Launch",
+  "source": "command_center",
+  "sourceReference": "August Launch row 193",
+  "phase": "Testing, Validation & Triple E",
+  "deliverable": "Resolve Validation Blockers",
+  "description": "Fix issues that prevent an excellent public experience; defer only documented noncritical enhancements.",
+  "operatingAgent": "nia",
+  "operatingAgentFull": "Nia Prism — Chief Experience & Transformation Officer",
+  "workbookPrimaryOwner": "michelle",
+  "workbookPrimaryOwnerNote": "Command Center 8.25 snapshot assigns August Launch order 193 / excel row 194 to Michelle Northstar. The older launch-rows adapter lists TECHNOLOGY primary owner Imani Heartbeat with Nia and Michelle supporting. AOS assigned this engineering run to Nia Prism as experience owner. Nia did not take Michelle orchestration ownership or Imani infrastructure/auth/payment ownership. Kimberly Walker (AI) is not an operating agent and was not treated as execution capacity.",
+  "generatedAt": "2026-08-26T17:20:00.000Z",
+  "branch": "cursor/aos-nia-al-193-0ee9",
+  "pullRequest": "https://github.com/TheBackHalf/website/pull/38",
+  "softwareChangeApplied": false,
+  "productMarketingLegalFilesChanged": false,
+  "stripeConfigModified": false,
+  "dnsModified": false,
+  "vercelCustomDomainModified": false,
+  "nameserversModified": false,
+  "authModified": false,
+  "secretsPrinted": false,
+  "kimberlyWalkerAiTreatedAsOperatingAgent": false,
+  "commandCenterStatusNotUpdated": true,
+  "markedComplete": false,
+  "founderAcceptance": null,
+  "founderAcceptanceRecorded": false,
+  "founderAccepted": false,
+  "readyForFounderAcceptanceReview": false,
+  "deliverableKind": "status_only",
+  "overallResult": "NOT_RESOLVED",
+  "overallSummary": "There are no structured validation results to resolve. Command Center rows 191 (Private Founding Experience) and 192 (Collect Structured Validation Results) are Removed From Launch Scope by Founder decision, with Launch Blocker: NO, and with an explicit ban on synthetic, AI-generated, simulated, or faux participant groups. Nia did not invent participant findings. Known issues that still prevent an excellent public experience are already in the al-188/al-189/al-190 defect pipeline (C1 canonical DNS, C2 live payment webhook, H1 Journey skip-ahead) and remain open on main and Production. Those items are Founder- or Imani-owned; Nia did not change infrastructure, auth, or payment systems and did not duplicate Imani PR #8 or Nia PR #2. Documented noncritical items (D-188-M1 dashboard welcome; D-188-L1 urgent Founder SMS) stay deferred as post_launch_ok. Row 193 is not Complete. Founder acceptance is not recorded.",
+  "authority": {
+    "experienceOwner": "Nia Prism — participant experience, curriculum, brand, transformation. May fix Nia-owned public-experience defects. May not invent private-experience findings.",
+    "technologyOwner": "Imani Heartbeat — Journey progression engine, payment/webhook, production DNS follow-up after Founder records exist",
+    "operationsOwner": "Michelle Northstar — Command Center owner of this row; triage (al-188); orchestration. Does not implement or merge from this run.",
+    "founder": "Kimberly Walker (human) — sole Founder acceptance authority. DNS records, Stripe Live secret, and native Instagram/TikTok schedule load remain Founder-gated. Kimberly Walker (AI) is not execution capacity.",
+    "niaDidNotChange": [
+      "infrastructure",
+      "auth",
+      "payment systems",
+      "Stripe configuration",
+      "Cloudflare DNS",
+      "Vercel custom-domain settings",
+      "thebackhalf.org nameservers",
+      "Journey curriculum manuscript",
+      "Lumina approved voice content",
+      "legal files",
+      "product/marketing files"
+    ]
+  },
+  "predecessor": {
+    "blockedBy": "Validation Results (August Launch row 192 / AOS al-192)",
+    "row191": {
+      "aosWorkId": "al-191",
+      "excelRow": 192,
+      "order": 191,
+      "deliverable": "Run Private Founding Experience",
+      "commandCenterStatus": "Removed From Launch Scope",
+      "percentComplete": 0,
+      "assignedAgent": "Nia Prism",
+      "githubPr": "none_as_of_2026-08-26",
+      "launchBlocker": false
+    },
+    "row192": {
+      "aosWorkId": "al-192",
+      "excelRow": 193,
+      "order": 192,
+      "deliverable": "Collect Structured Validation Results",
+      "commandCenterStatus": "Removed From Launch Scope",
+      "percentComplete": 0,
+      "assignedAgent": "Nia Prism",
+      "githubPr": "none_as_of_2026-08-26",
+      "launchBlocker": false
+    },
+    "founderDecisionOnPredecessor": {
+      "source": "ops/fab-5/aos-command-center-snapshot.json notes on excel rows 192 and 193",
+      "workbook": "The_Back_Half_Founder_Command_Center_8.25.2026 through Launch.xlsx",
+      "privateFoundingExperienceWillBeConductedBeforeLaunch": false,
+      "syntheticAiSimulatedOrFauxParticipantGroupAllowed": false,
+      "productValidationInsteadReliesOn": "functional, end-to-end, payment, Lumina, data-integrity, security, accessibility, browser, performance, mobile, regression, Journey-integrity, Blueprint-alignment, Triple E, and Go-Live testing required elsewhere in Launch Readiness",
+      "realParticipantFeedbackBegins": "actual Founding Architects following launch",
+      "launchBlocker": "NO",
+      "status": "REMOVED FROM PRE-LAUNCH SCOPE — FOUNDER DECISION"
+    },
+    "structuredValidationResultsExist": false,
+    "structuredValidationResultsFiles": [],
+    "syntheticValidationCreatedThisRun": false,
+    "privateFoundingExperienceConductedThisRun": false,
+    "note": "Absence of private-experience results is not a new launch blocker. The Founder already recorded Launch Blocker: NO for that path. Nia must not substitute a faux cohort."
+  },
+  "method": [
+    "Read Command Center snapshot for orders 191–193 and the Founder notes removing the private founding experience and structured validation capture from pre-launch scope.",
+    "Confirmed no al-191 / al-192 / al-193 GitHub PRs existed before this run, and no structured validation-results artifact exists under ops/fab-5.",
+    "Read Michelle al-188 triage (PR #9), Nia al-189 critical-fix status (PR #23), and Nia al-190 regression status (PR #33). Did not treat any of those as Founder-accepted completion.",
+    "Independently re-probed C1/C2 on 2026-08-26 with read-only DNS-over-HTTPS and HTTP. No charges. No DNS edits. No secrets printed.",
+    "Independently confirmed H1 still on main: Journey hub Links for Chapters I–VII have no lock; chapter-2-service still opens Chapter II without a Chapter I completion check; lib/journey/progress/gate.ts does not exist on this branch.",
+    "Confirmed M1 still on main: dashboard-shell still renders welcomeSlot heading plus personalized welcome body. Did not duplicate Nia PR #2.",
+    "HTTP GET of public EN/ES experience, legal, checkout, support, and gated architect routes on https://website-two-psi-49.vercel.app.",
+    "Did not merge, deploy, or mark Command Center Complete."
+  ],
+  "relatedEngineeringStatus": {
+    "al188Triage": "https://github.com/TheBackHalf/website/pull/9",
+    "al189CriticalFixes": "https://github.com/TheBackHalf/website/pull/23",
+    "al190Regression": "https://github.com/TheBackHalf/website/pull/33",
+    "imaniJourneyProgressionPr": "https://github.com/TheBackHalf/website/pull/8",
+    "niaDashboardWelcomePr": "https://github.com/TheBackHalf/website/pull/2",
+    "treatedAsFounderAccepted": false
+  },
+  "productionProbe2026_08_26T17_18Z": {
+    "canonicalApexDnsA": "empty — SOA only (Cloudflare NS anirban.ns.cloudflare.com / dns.cloudflare.com)",
+    "canonicalWwwDns": "NXDOMAIN (Status 3) for A and CNAME",
+    "httpsThebackhalfOrg": "FAIL — Could not resolve host: thebackhalf.org",
+    "httpsWwwThebackhalfOrg": "FAIL — Could not resolve host: www.thebackhalf.org",
+    "productionHost": "https://website-two-psi-49.vercel.app",
+    "healthBody": {
+      "ok": true,
+      "environment": "production",
+      "service": "the-back-half",
+      "checks": { "application": "ok", "database": "ok" }
+    },
+    "stripeWebhookPost": {
+      "url": "https://website-two-psi-49.vercel.app/api/stripe/webhook",
+      "http": 503,
+      "body": { "error": "webhook_not_configured" },
+      "liveChargeCreated": false
+    },
+    "httpNoFollowRedirect": {
+      "/": { "status": 200, "title": "The Back Half — Magical is Possible" },
+      "/es": { "status": 200, "title": "The Back Half — Magical is Possible" },
+      "/register": { "status": 200, "title": "Become an Architect — The Back Half" },
+      "/es/register": { "status": 200, "title": "Conviértete en Architect — The Back Half" },
+      "/login": { "status": 200, "title": "Sign in — The Back Half" },
+      "/es/login": { "status": 200, "title": "Iniciar sesión — The Back Half" },
+      "/forgot-password": { "status": 200, "title": "Forgot password — The Back Half" },
+      "/es/forgot-password": { "status": 200, "title": "Olvidé mi contraseña — The Back Half" },
+      "/verify-email": { "status": 200, "title": "Email verification — The Back Half" },
+      "/journey": { "status": 200, "title": "The Journey — The Back Half" },
+      "/es/journey": { "status": 200, "title": "El Journey — The Back Half" },
+      "/lumina": { "status": 200, "title": "Meet Lumina — The Back Half" },
+      "/es/lumina": { "status": 200, "title": "Conoce a Lumina — The Back Half" },
+      "/support": { "status": 200, "title": "Support — The Back Half" },
+      "/es/support": { "status": 200, "title": "Soporte — The Back Half" },
+      "/contact": { "status": 200, "title": "Contact — The Back Half" },
+      "/es/contact": { "status": 200, "title": "Contacto — The Back Half" },
+      "/eligibility": { "status": 200, "title": "Confirm your eligibility — The Back Half" },
+      "/checkout": { "status": 200, "title": "Checkout — The Back Half" },
+      "/es/checkout": { "status": 200, "title": "Checkout — The Back Half" },
+      "/legal/privacy-policy": { "status": 200, "title": "Privacy Policy — The Back Half" },
+      "/legal/terms-of-use": { "status": 200, "title": "Terms of Use — The Back Half" },
+      "/legal/participant-agreement": { "status": 200, "title": "Participant Agreement — The Back Half" },
+      "/legal/membership-agreement": { "status": 200, "title": "Membership Agreement — The Back Half" },
+      "/legal/ai-disclosure": { "status": 200, "title": "AI Disclosure — The Back Half" },
+      "/architect": { "status": 307, "location": "/eligibility?next=%2Farchitect" },
+      "/architect/dashboard": { "status": 307, "location": "/eligibility?next=%2Farchitect%2Fdashboard" },
+      "/architect/journey": { "status": 307, "location": "/eligibility?next=%2Farchitect%2Fjourney" },
+      "/architect/lumina": { "status": 307, "location": "/eligibility?next=%2Farchitect%2Flumina" },
+      "/architect/onboarding": { "status": 307, "location": "/eligibility?next=%2Farchitect%2Fonboarding" },
+      "/access-denied": { "status": 200, "title": "Access denied — The Back Half" },
+      "/es/access-denied": { "status": 200, "title": "Acceso denegado — The Back Half" },
+      "/api/ops/health": { "status": 200 }
+    },
+    "signals": {
+      "registerGoogleSignInVisible": false,
+      "registerGoogleClientNoticeVisible": false,
+      "checkoutFoundingArchitectVisible": true,
+      "checkoutPrice1750Visible": true,
+      "checkoutBlueprintPrice1500Visible": true
+    },
+    "secretsPrinted": false,
+    "liveChargeCreated": false,
+    "accountCreated": false
+  },
+  "knownPublicExperienceBlockers": {
+    "source": "al-188 defect register, independently retested this run. These are not private-founding-experience validation findings.",
+    "items": [
+      {
+        "id": "D-188-C1",
+        "title": "Canonical public domain does not resolve",
+        "severity": "critical",
+        "releaseRequirement": "must_fix_before_launch",
+        "owner": "founder",
+        "niaAction": "reproduced_not_fixed",
+        "whyNotFixedByNia": "Founder Cloudflare DNS. AOS forbids Nia from changing Cloudflare DNS, Vercel custom-domain settings, or thebackhalf.org nameservers.",
+        "onMainOrProduction": "STILL_OPEN",
+        "evidence": "thebackhalf.org A/AAAA/CNAME empty (SOA only). www.thebackhalf.org NXDOMAIN. HTTPS to both hostnames fails. Same as al-188/al-189/al-190."
+      },
+      {
+        "id": "D-188-C2",
+        "title": "Live payment path is not production-ready",
+        "severity": "critical",
+        "releaseRequirement": "must_fix_before_launch",
+        "owner": "founder",
+        "niaAction": "reproduced_not_fixed",
+        "whyNotFixedByNia": "Founder Stripe Live secret plus Imani live prices/webhook. AOS forbids Nia from changing payment systems or Stripe configuration. No live charge was created.",
+        "onMainOrProduction": "STILL_OPEN",
+        "evidence": "POST /api/stripe/webhook → HTTP 503 {error: webhook_not_configured}"
+      },
+      {
+        "id": "D-188-H1",
+        "title": "Journey chapters can be opened out of sequence",
+        "severity": "high",
+        "releaseRequirement": "must_fix_before_launch",
+        "owner": "imani",
+        "niaAction": "reproduced_on_main_did_not_duplicate_pr_8",
+        "whyNotFixedByNia": "Imani already has the progression/save software on unmerged PR #8 (Row 133 / al-133). Duplicating that engine on Nia’s branch would split ownership and risk merge conflict. Nia’s assigned scope is experience, not Journey progression infrastructure.",
+        "onMainOrProduction": "STILL_OPEN",
+        "proposedFixPr": "https://github.com/TheBackHalf/website/pull/8",
+        "proposedFixMerged": false,
+        "mainEvidence": [
+          "components/app-shell/journey-entry-shell.tsx entitled+onboarded path renders Links to Chapters I–VII with no lock.",
+          "lib/journey/chapters/chapter-2-service.ts loadChapter2ForUser requires only entitled onboarding; if status is not_started it writes in_progress with no Chapter I completion check.",
+          "lib/journey/progress/gate.ts does not exist on this branch."
+        ]
+      },
+      {
+        "id": "D-188-H2",
+        "title": "Native Instagram/TikTok schedules not loaded",
+        "severity": "high",
+        "releaseRequirement": "must_complete_before_launch_communications",
+        "owner": "founder",
+        "niaAction": "not_software_not_fixed",
+        "whyNotFixedByNia": "Founder native scheduler load. Not Journey/Lumina/website software. Do not add a second admin or purchase a scheduler from this row.",
+        "onMainOrProduction": "STILL_OPEN"
+      }
+    ]
+  },
+  "niaOwnedSoftwareDisposition": {
+    "newValidationDerivedExperienceDefectsToFix": [],
+    "whyNoProductChange": "No structured validation packet exists. The only Nia-owned participant-facing software defect already identified (D-188-M1 duplicate dashboard welcome) is documented noncritical / post_launch_ok with an existing unmerged fix (PR #2). Nia did not reopen that as a Row 193 must-fix item and did not duplicate the PR.",
+    "didNotInventFauxParticipantFindings": true
+  },
+  "deferredNoncriticalEnhancements": {
+    "instruction": "Defer only documented noncritical enhancements into row 6.",
+    "createdSecondDeferredEnhancementRegister": false,
+    "commandCenterRow6": {
+      "order": 6,
+      "excelRow": 7,
+      "deliverable": "Create Version 1 Deferred-Enhancement Register",
+      "commandCenterStatus": "Complete",
+      "percentComplete": 100,
+      "note": "Authoritative Command Center snapshot records Row 6 Complete. launch-rows.json still shows Not Started and is treated as stale relative to the 8.25 snapshot. Nia did not create a second register."
+    },
+    "itemsDocumentedAsPostLaunchOk": [
+      {
+        "id": "D-188-M1",
+        "title": "Duplicate Architect Dashboard welcome lines",
+        "severity": "medium",
+        "releaseRequirement": "post_launch_ok",
+        "owner": "nia",
+        "onMain": "STILL_OPEN",
+        "proposedFixPr": "https://github.com/TheBackHalf/website/pull/2",
+        "proposedFixMerged": false,
+        "evidence": "dashboard-shell.tsx still renders welcomeSlot heading plus personalized welcome body; dictionaries still contain welcomeSlot 'Welcome' and welcome 'Welcome, {name}.'",
+        "niaActionThisRun": "Deferred as already documented noncritical. Did not duplicate PR #2. Did not recategorize as a launch blocker."
+      },
+      {
+        "id": "D-188-L1",
+        "title": "Urgent Founder SMS unconfigured",
+        "severity": "low",
+        "releaseRequirement": "post_launch_ok",
+        "owner": "founder",
+        "niaActionThisRun": "Not Nia software. Left deferred per al-188. Email + dashboard remain the operational escalation channels."
+      }
+    ]
+  },
+  "coverageGap": {
+    "formalTestingRows176to187": "Not Started in Command Center (except as otherwise recorded by later AOS status PRs). Absence of functional/E2E/payment/a11y/browser/mobile/device-lab packets is a coverage gap, not proof those areas are clean.",
+    "row176TestAccounts": "AOS al-176 PR #36 is draft/unmerged as of this run. No entitled authenticated Journey/Lumina/dashboard session was exercised from this workstation.",
+    "rows189and190": "Critical fixes NOT_RESOLVED (PR #23). Regression REGRESSION_NOT_PASSED (PR #33). A Regression-Passed Release Candidate does not exist."
+  },
+  "whatWasNotDone": [
+    "Did not mark Row 193 Complete",
+    "Did not record Founder acceptance",
+    "Did not change product, marketing, or legal files",
+    "Did not change infrastructure, auth, payment systems, Stripe, DNS, or nameservers",
+    "Did not conduct a private founding experience or invent a faux participant group",
+    "Did not merge Imani PR #8 or Nia PR #2",
+    "Did not deploy"
+  ],
+  "validation": {
+    "typecheck": "PASS — ./node_modules/.bin/tsc --noEmit exit 0 (2026-08-26T17:21Z)",
+    "npmTestScript": "absent in package.json",
+    "nearestTestScript": "npm run eval:lumina — not run; this change is ops status JSON only and does not touch Lumina or production software",
+    "build": "skipped — ops status JSON only; change cannot affect production",
+    "gatesRequired": [
+      "npm run typecheck or npx tsc --noEmit if present",
+      "npm test or the nearest package test script if present",
+      "npm run build if the change can affect production"
+    ]
+  },
+  "nextAction": "Do not invent private-experience findings. Imani and Founder continue must-fix items C1/C2/H1 under Rows 189–190. Noncritical M1 remains on unmerged PR #2. Founder acceptance for Row 193 stays with Kimberly Walker (human). This PR must not be merged as silent completion.",
+  "row193LaunchBlockerFromMissingPrivateValidation": false
+}
