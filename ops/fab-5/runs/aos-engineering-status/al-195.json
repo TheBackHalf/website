@@ -1,0 +1,364 @@
+{
+  "aosWorkId": "al-195",
+  "source": "command_center",
+  "sourceReference": "August Launch row 195",
+  "excelRow": 196,
+  "commandCenterOrder": 195,
+  "ownerAgent": "imani",
+  "supportingOwners": [
+    "michelle"
+  ],
+  "title": "Validate Analytics Events",
+  "description": "Verify every funnel event, conversions, and dashboards before launch.",
+  "kind": "engineering_status_only",
+  "productFilesChanged": false,
+  "marketingFilesChanged": false,
+  "legalFilesChanged": false,
+  "stripeCloudflareVercelDnsTouched": false,
+  "secretsExposed": false,
+  "authControlsWeakened": false,
+  "branch": "cursor/aos-imani-al-195-600f",
+  "merged": false,
+  "deployed": false,
+  "prUrl": "https://github.com/TheBackHalf/website/pull/48",
+  "headSha": "492600db5b35649c4c65d9f8ff5c3d2c395cc9a9",
+  "founderAcceptance": null,
+  "founderAccepted": false,
+  "rowMarkedComplete": false,
+  "founderAcceptanceAuthority": "Kimberly Walker (human)",
+  "kimberlyWalkerAiTreatedAsCapacity": false,
+  "at": "2026-08-26T18:06:50.064Z",
+  "result": "PASS",
+  "blockingLaunchDefectsFound": false,
+  "readyForFounderAcceptanceReview": true,
+  "remainingLaunchCriticalUntilFounderAcceptance": true,
+  "nextAction": "await_founder_acceptance",
+  "summary": "Launch funnel events, conversion dual-writes, and dashboard consumers are instrumented and mechanically verified on this branch. Isolated Row 150 is 16/16 PASS. Isolated Row 84 is 11/11 PASS. Row 151 consumes those events and is 40/42 PASS; the two residual fails are pre-existing empty-state string-match checks (view renders N/A, test looks for lowercase n/a), not missing funnel events. Production Postgres write/read-back was not re-run here because POSTGRES_URL is not present on this workstation. Founder acceptance is not claimed.",
+  "analyticsArchitecture": {
+    "vendor": "first_party_only",
+    "notUsed": [
+      "GA4",
+      "Microsoft Clarity",
+      "Segment",
+      "Mixpanel"
+    ],
+    "productionStore": "Supabase Postgres table analytics_events",
+    "productionTablesMarketing": [
+      "marketing_kpi_events",
+      "marketing_kpi_social_daily",
+      "marketing_kpi_purchases",
+      "marketing_kpi_meta"
+    ],
+    "localFileFallback": ".data/analytics/database.json is local/test only; not production source of truth",
+    "clientIngest": "POST /api/analytics/event allowlisted CLIENT_EVENT_NAMES",
+    "serverEmit": "trackProductEvent / emitAnalyticsEvent",
+    "privacy": "sanitizeAnalyticsPayload before appendEvent; email is not an event property",
+    "idempotency": "analytics_events.idempotency_key UNIQUE; ON CONFLICT DO NOTHING"
+  },
+  "eventCoverage": {
+    "requiredRow150ProductEvents": 43,
+    "cinematicEntranceExtras": 3,
+    "totalProductEventNames": 46,
+    "requiredInstrumented": 43,
+    "extrasInstrumented": 3,
+    "billingDottedNamesPreserved": 10,
+    "marketingKpiNamesPreserved": 3,
+    "unexplainedGaps": 0,
+    "deferredNamedAndBounded": [
+      {
+        "name": "onboarding_abandoned",
+        "reason": "Cannot measure honestly without a false signal"
+      },
+      {
+        "name": "journey_activity_started / journey_activity_completed",
+        "reason": "Product uses chapters/sections, not activity IDs; covered by journey_progress_saved"
+      },
+      {
+        "name": "lumina_session_completed",
+        "reason": "No reliable Lumina completion state"
+      },
+      {
+        "name": "membership_expired",
+        "reason": "Entitlement past_due exists in billing; no dedicated expiry webhook instrumented for launch"
+      },
+      {
+        "name": "completion ceremony started/completed",
+        "reason": "No separate ceremony product; Chapter 7 journey_completed is the ceremony state"
+      }
+    ],
+    "staticEmitSiteCheck": "PASS \u2014 every PRODUCT_EVENT_NAMES, BILLING_EVENT_NAMES, and Row 84 marketing name has a production emit site outside taxonomy/tests"
+  },
+  "funnelEventsVerified": [
+    {
+      "name": "page_viewed",
+      "emit": "ProductAnalyticsBeacon",
+      "dashboard": "Row 151 traffic"
+    },
+    {
+      "name": "cta_clicked",
+      "emit": "ProductAnalyticsBeacon via [data-bh-cta]; CtaButton infers become_architect / journey_explore / checkout / lumina",
+      "dashboard": "Row 151 conversion CTAs"
+    },
+    {
+      "name": "registration_viewed",
+      "emit": "ProductAnalyticsBeacon on /register and /es/register",
+      "dashboard": "Row 151 funnel"
+    },
+    {
+      "name": "landing_page_session",
+      "emit": "MarketingSessionBeacon on registration page \u2192 POST /api/marketing/session",
+      "dashboard": "Row 84 landing-page sessions"
+    },
+    {
+      "name": "registration_started / method_selected / submitted / succeeded / failed / email_verification_required / email_verified",
+      "emit": "lib/auth registration + Google + verify-email",
+      "dashboard": "Row 151 registration conversion"
+    },
+    {
+      "name": "auth_failed",
+      "emit": "login-email + Google callback",
+      "dashboard": "Row 151 error table"
+    },
+    {
+      "name": "checkout_viewed",
+      "emit": "ProductAnalyticsBeacon on /checkout",
+      "dashboard": "not a KPI denominator; start/purchase are"
+    },
+    {
+      "name": "checkout_started + checkout_start",
+      "emit": "createCheckoutSession dual-write",
+      "dashboard": "Row 84 + Row 151 funnel"
+    },
+    {
+      "name": "checkout_completed / purchase_completed + purchase",
+      "emit": "runWebhookSyncEffects dual-write; no live charge in validation",
+      "dashboard": "Row 84 purchases + Row 151 revenue (billing authoritative)"
+    },
+    {
+      "name": "checkout_failed",
+      "emit": "create-session + webhook payment_failed",
+      "dashboard": "Row 151 error table"
+    },
+    {
+      "name": "onboarding_started / step_viewed / step_completed / completed",
+      "emit": "emitOnboardingAnalytics",
+      "dashboard": "Row 151 activation"
+    },
+    {
+      "name": "journey_entered / chapter_* / progress_saved / resumed / completed / save_failed",
+      "emit": "emitJourneyProgressAnalytics + progress store",
+      "dashboard": "Row 151 activation / errors"
+    },
+    {
+      "name": "lumina_opened / session_started / message_sent / response_received / error",
+      "emit": "load-conversation + send-message; no prompt/response text",
+      "dashboard": "Row 151 activation + errors"
+    },
+    {
+      "name": "download_started / completed / failed + certificate_generated / downloaded",
+      "emit": "architectDownloadTracker",
+      "dashboard": "Row 151 activation"
+    },
+    {
+      "name": "completion_experience_viewed",
+      "emit": "on journey_completed",
+      "dashboard": "completion via journey_completed / certificate_downloaded"
+    },
+    {
+      "name": "membership_started / activated / renewed / payment_failed / cancelled",
+      "emit": "sync-effects",
+      "dashboard": "Row 151 activation + errors"
+    },
+    {
+      "name": "entrance_viewed / entered / skipped",
+      "emit": "CinematicEntranceExperience (Founder review route extras)",
+      "dashboard": "not launch KPI denominators"
+    }
+  ],
+  "conversions": {
+    "registration": "registration_succeeded idempotent on userId",
+    "checkoutStart": "checkout_started + Row 84 checkout_start on Stripe session id",
+    "purchase": "purchase_completed + Row 84 purchase on Stripe checkout session id; sandbox ids cs_test_ / pi_test_ excluded from Founder launch KPIs",
+    "attribution": "First-touch UTM in sessionStorage bh-mkt-attr through registration and Stripe bh_utm_* metadata; Google Sign-In copies bh-mkt-attr / bh-analytics-aid into registration consent cookie",
+    "liveStripeChargeInThisValidation": false,
+    "duplicateProtection": "T6 and T13 PASS (purchase, registration, journey_completed, membership_started)"
+  },
+  "dashboards": {
+    "launchKpi": {
+      "path": "/ops/admin/launch-kpi",
+      "spanishPath": "/es/ops/admin/launch-kpi",
+      "owner": "Nia Prism (primary) / Imani implementation / Michelle verification",
+      "auth": "admin:ops:access",
+      "funnel": "REACH \u2192 ENGAGEMENT \u2192 LINK CLICK \u2192 LANDING-PAGE SESSION \u2192 CHECKOUT START \u2192 PURCHASE",
+      "events": [
+        "landing_page_session",
+        "checkout_start",
+        "purchase"
+      ],
+      "includeTestOnLivePage": false,
+      "historicalPurchases": "19 pre-launch paid records labeled PRE-LAUNCH / HISTORICAL \u2014 EXCLUDED FROM LAUNCH KPI",
+      "launchWindowStartEt": "2026-08-28T04:00:00.000Z",
+      "validationThisRun": "11/11 PASS"
+    },
+    "launchDashboard": {
+      "path": "/ops/admin/launch-dashboard",
+      "spanishPath": "/es/ops/admin/launch-dashboard",
+      "owner": "Michelle Northstar (primary) / Imani supporting",
+      "auth": "admin:ops:access",
+      "consumes": [
+        "Row 150 analytics_events",
+        "Row 84 marketing_kpi_*",
+        "billing paid purchases (authoritative revenue)",
+        "launch_ops_errors",
+        "support_tickets",
+        "launch_dashboard_risks"
+      ],
+      "funnelEventsRead": [
+        "registration_viewed",
+        "registration_started",
+        "registration_succeeded",
+        "checkout_started",
+        "purchase_completed",
+        "cta_clicked become_architect",
+        "cta_clicked journey_explore"
+      ],
+      "mismatchGuard": "WARN if billing paid count \u2260 purchase_completed; ERROR if billing \u2260 Row 84 launch purchases; displayed revenue does not silently pick the larger number",
+      "includeTestOnLivePage": false,
+      "validationThisRun": "40/42 PASS; D15 Row 84 regression PASS; D16 Row 150 regression PASS"
+    }
+  },
+  "suites": {
+    "typecheck": {
+      "command": "npx tsc --noEmit",
+      "result": "PASS",
+      "note": "No typecheck script in package.json; used tsc --noEmit"
+    },
+    "row150": {
+      "command": "npm run fab5:row150",
+      "result": "PASS",
+      "passed": 16,
+      "total": 16,
+      "failures": [],
+      "at": "2026-08-26T18:05:11.060Z",
+      "destination": "isolated ANALYTICS_DB_FILE (not production Postgres)",
+      "evidenceCapture": "/tmp/al-195-out/row-150.json (not committed; official Row 150 evidence file left unchanged)"
+    },
+    "row84": {
+      "command": "npm run fab5:row84",
+      "result": "PASS",
+      "passed": 11,
+      "total": 11,
+      "failures": [],
+      "at": "2026-08-26T18:04:20.062Z",
+      "evidenceCapture": "/tmp/al-195-out/row-84.json (not committed; official Row 84 evidence file left unchanged)"
+    },
+    "row151": {
+      "command": "npm run fab5:row151",
+      "result": "FAIL",
+      "passed": 40,
+      "total": 42,
+      "failures": [
+        "D7 Error metrics do not manufacture zeros for unavailable telemetry",
+        "D13 Empty/unavailable states are truthful"
+      ],
+      "postgresConfiguredOnThisWorkstation": false,
+      "smtpConfiguredOnThisWorkstation": false,
+      "note": "Sibling D15/D16 spawned Row 84 and Row 150 and both PASS. Official committed Row 151 / sibling regression JSON files were restored after the run so this PR does not rewrite those rows' evidence of record."
+    },
+    "row150Persistence": {
+      "command": "npm run fab5:row150-persist",
+      "result": "NOT_RUN",
+      "reason": "This workstation has no .env.local and no POSTGRES_URL. Re-running P1\u2013P10 would fail without the production database and would overwrite ops/fab-5/runs/row-150-persistence-validation.json. Prior 2026-08-21 persistence evidence remains the last Postgres write/read-back proof.",
+      "priorEvidence": "ops/fab-5/runs/row-150-persistence-validation.json",
+      "priorHostedProbe": "FAIL (non-blocking) \u2014 workstation could not reach thebackhalf.org; Vercel aliases Protected or stale"
+    },
+    "packageTestScript": {
+      "present": false,
+      "nearest": [
+        "npm run fab5:row150",
+        "npm run fab5:row84",
+        "npm run fab5:row151"
+      ]
+    },
+    "productionBuild": {
+      "command": "npm run build",
+      "result": "SKIPPED",
+      "reason": "No production application code changed. Status JSON only under ops/fab-5/runs/aos-engineering-status/."
+    }
+  },
+  "knownFindings": [
+    {
+      "id": "AL195-F1",
+      "severity": "non_blocking",
+      "area": "row_151_dashboard_mechanical_checks",
+      "finding": "Row 151 D7 and D13 still FAIL. Inspected values are already null/empty as required (appToday=null, appOpen=null, onboardingToday=null, emptyRegRate=null, emptyAov=null, emptySessions=0). The checks also require view source to contain lowercase 'n/a' string literals. launch-dashboard-view.tsx renders 'N/A' for nulls (`row.today === null ? \"N/A\"`, count/rate/money formatters). This is a pre-existing Row 151 test/view string-case mismatch, not a missing funnel event or conversion.",
+      "action": "Do not mark Row 151 Complete. Founder acceptance stays with Kimberly Walker (human). Out of scope to change Nia/Michelle dashboard copy in this Imani status-only deliverable."
+    },
+    {
+      "id": "AL195-F2",
+      "severity": "limitation",
+      "area": "production_durability",
+      "finding": "This Cloud Agent workstation cannot re-prove analytics_events write/read-back against production Postgres (no POSTGRES_URL / .env.local). Isolated-file PASS is not production persistence.",
+      "action": "Rely on existing 2026-08-21 persistence evidence. Do not treat this run as a new production durability proof."
+    },
+    {
+      "id": "AL195-F3",
+      "severity": "named_deferral",
+      "area": "taxonomy",
+      "finding": "onboarding_abandoned, journey activity IDs, lumina_session_completed, membership_expired, and a standalone completion ceremony remain unimplemented by spec. Static scan confirmed they are not silently emitted.",
+      "action": "Keep as named post-launch / non-launch gaps. Not unexplained launch holes."
+    }
+  ],
+  "ctaInstrumentation": {
+    "mechanism": "document click listener on [data-bh-cta] with 800ms client debounce plus 2-second server window",
+    "CtaButtonInference": {
+      "/register": "become_architect",
+      "/journey or #": "journey_explore",
+      "/checkout": "checkout",
+      "/lumina": "lumina"
+    },
+    "explicitTags": [
+      "components/pages/home-page-view.tsx become_architect",
+      "components/home/hero-section.tsx journey_explore",
+      "components/lumina/lumina-page-content.tsx registration",
+      "components/entrance/cinematic-entrance.tsx enter_the_back_half"
+    ]
+  },
+  "sourceOfTruth": [
+    "ops/fab-5/ROW-150-EVENT-TRACKING-SPECIFICATION.md",
+    "ops/fab-5/ROW-84-LAUNCH-MARKETING-KPI-DASHBOARD.md",
+    "ops/fab-5/ROW-151-LAUNCH-DASHBOARD.md",
+    "lib/analytics/taxonomy.ts"
+  ],
+  "relatedRows": {
+    "row150": "COMPLETE in spec with Founder Acceptance APPROVED recorded in ROW-150-EVENT-TRACKING-SPECIFICATION.md. This run does not re-mark it.",
+    "row84": "Ready for Founder Acceptance Review. Not marked Complete by this work.",
+    "row151": "Ready for Founder Acceptance Review. Not marked Complete by this work."
+  },
+  "validationGates": {
+    "typecheck": "PASS",
+    "nearestTests": "Row 150 PASS; Row 84 PASS; Row 151 40/42 with documented non-event residuals",
+    "build": "SKIPPED_LOCAL_NO_PRODUCTION_CODE_CHANGE",
+    "githubCi": "PASS",
+    "presentedAsSuccessful": true,
+    "caveat": "Successful for event/conversion instrumentation validation. Not a production persistence re-proof. Not Founder acceptance. Vercel preview SUCCESS is not a production deploy."
+  },
+  "githubCi": {
+    "commit": "492600db5b35649c4c65d9f8ff5c3d2c395cc9a9",
+    "branch": "cursor/aos-imani-al-195-600f",
+    "conclusion": "success",
+    "checkCount": 2,
+    "checks": [
+      {
+        "name": "Vercel",
+        "state": "SUCCESS",
+        "note": "Preview deployment check. Not production. Custom domain / nameservers untouched."
+      },
+      {
+        "name": "Vercel Preview Comments",
+        "conclusion": "SUCCESS"
+      }
+    ],
+    "recordedAt": "2026-08-26T18:13:00.000Z"
+  }
+}
