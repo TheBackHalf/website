@@ -1,0 +1,275 @@
+{
+  "aosWorkId": "al-183",
+  "source": "command_center",
+  "sourceReference": "August Launch row 183",
+  "excelRow": 184,
+  "deliverable": "Run Accessibility Review",
+  "description": "Keyboard, screen reader basics, labels, contrast, captions, focus, zoom, mobile, and language switching.",
+  "operatingAgent": "nia",
+  "supportingOwner": "imani",
+  "generatedAt": "2026-08-26T16:30:00.000Z",
+  "softwareChangeApplied": false,
+  "productMarketingLegalFilesChanged": false,
+  "stripeConfigModified": false,
+  "cloudflareDnsModified": false,
+  "vercelCustomDomainModified": false,
+  "secretsPrinted": false,
+  "founderAcceptanceRecorded": false,
+  "niaAcceptanceRecorded": false,
+  "rowMarkedComplete": false,
+  "kimberlyWalkerAiTreatedAsCapacity": false,
+  "reviewStatus": "executed",
+  "accessibilityLaunchReady": false,
+  "method": {
+    "type": "static_source_review_plus_token_contrast",
+    "automatedAxeOrScreenReaderSession": false,
+    "liveProductionFetch": "unreachable_from_this_environment",
+    "liveProductionNote": "www.thebackhalf.org did not resolve from this Cloud Agent network. Review is against the current repository application, not a live assistive-technology pass.",
+    "contrast": "OKLCH brand tokens converted to sRGB; WCAG 2.1 relative-luminance contrast",
+    "scope": [
+      "Public home (EN/ES), hero/nav, Journey marketing page, Lumina, legal, support, contact, eligibility/age-gate",
+      "Auth: login, register, forgot/reset password (labels/keyboard/language only; auth systems not changed)",
+      "Checkout offer/success/cancel (labels/consent/language only; payment systems not changed)",
+      "Architect app shell, mobile nav, account menu",
+      "Founder media player, caption VTT inventory, transcript/poster fields",
+      "Language switcher, html lang, locale routing",
+      "Cinematic entrance (review-only; production `/` mounts HomePageView only)",
+      "Design tokens and globals.css focus, skip-link, reduced-motion, zoom-related CSS"
+    ]
+  },
+  "dependencies": {
+    "named": "Feature-Complete Build; Captions",
+    "captionsVttPresent": true,
+    "captionJobsEnEs": 18,
+    "row138FounderMediaAccessibilityAssets": "Not Started",
+    "row137SpanishFounderVideos": "Not Started (Spanish MP4 files are present in public/videos; row remains open in launch-rows.json)",
+    "row31PriorAccessibilityInclusionReview": "Marked Complete in launch-rows.json; this later Testing/Triple E review still finds open defects and does not inherit that completion",
+    "featureCompleteBuild": "Still named as a blocker for Testing rows; review executed against current repo anyway"
+  },
+  "summary": {
+    "passedAreas": [
+      "Skip links exist on login, register, checkout, legal, support, contact, eligibility, Journey, Lumina, and Architect shell",
+      "Language switcher has accessible name, aria-current, lang/hrefLang, and locale-preserving hrefs; html lang follows x-bh-locale",
+      "Launch-critical forms generally use visible labels, htmlFor, aria-invalid, and aria-describedby",
+      "Age gate uses fieldset/legend and labeled radios",
+      "Founder videos use native controls, playsInline, and aria-label; EN+ES VTT files exist for nine launch videos",
+      "prefers-reduced-motion is honored globally; no user-scalable=no / maximum-scale lock found",
+      "Focus-visible rings exist on CTAs, nav, and form controls",
+      "App-shell mobile menu has sr-only open/close text, aria-expanded, aria-controls, and Escape-to-close",
+      "Core brand pairs pass WCAG AA: ink on cream 16.93:1, muted body on cream 6.16:1, white on purple CTA 9.06:1, white/65 nav on night 8.46:1"
+    ],
+    "openDefectCount": 12,
+    "high": 5,
+    "medium": 5,
+    "low": 2
+  },
+  "findings": [
+    {
+      "id": "A11Y-KBD-01",
+      "area": "keyboard",
+      "severity": "high",
+      "wcag": ["2.4.1 Bypass Blocks"],
+      "status": "fail",
+      "surface": "components/pages/home-page-view.tsx (EN `/` and ES `/es`)",
+      "finding": "The public homepage has no skip link. Other launch pages use SkipLink; home is the highest-traffic public surface and starts with hero nav.",
+      "imaniFix": "Add the existing SkipLink to HomePageView targeting a unique main id. Do not change homepage marketing copy."
+    },
+    {
+      "id": "A11Y-SR-01",
+      "area": "screen_reader_basics",
+      "severity": "medium",
+      "wcag": ["2.1.1 Keyboard", "2.4.3 Focus Order"],
+      "status": "fail",
+      "surface": "components/app-shell/app-account-menu.tsx",
+      "finding": "Account menu toggle has an accessible name, but the menu has no Escape handler, no focus move into the menu, no focus return, and no outside-click/focus trap. Keyboard and screen-reader users can open it and lose a predictable close path.",
+      "imaniFix": "Add Escape-to-close, move focus to the first menu item on open, restore focus to the trigger on close. Do not change auth/session behavior."
+    },
+    {
+      "id": "A11Y-SR-02",
+      "area": "screen_reader_basics",
+      "severity": "medium",
+      "wcag": ["2.4.3 Focus Order"],
+      "status": "fail",
+      "surface": "components/app-shell/app-shell-nav.tsx",
+      "finding": "Mobile nav closes on Escape and has aria-hidden when closed, but does not trap focus or move focus into the drawer when opened.",
+      "imaniFix": "When open, focus the drawer or first link; restore focus to the toggle on close."
+    },
+    {
+      "id": "A11Y-LBL-01",
+      "area": "labels",
+      "severity": "low",
+      "wcag": ["3.1.2 Language of Parts"],
+      "status": "accepted_constraint_not_imani_copy_change",
+      "surface": "components/legal/consent-controls.tsx; content/legal/consent-copy.ts",
+      "finding": "Consent checkbox labels are English-only and forced lang=\"en\", including on Spanish register/checkout. File comment forbids auto-translating or inventing Spanish legal acknowledgments. Screen readers will announce English correctly via lang=en; the surrounding Spanish page remains mixed-language until legal Spanish acknowledgments exist.",
+      "imaniFix": "Do not invent Spanish legal consent copy. Leave until Founder/legal supplies approved Spanish acknowledgments. Then wire locale without dropping lang accuracy."
+    },
+    {
+      "id": "A11Y-CTR-01",
+      "area": "contrast",
+      "severity": "high",
+      "wcag": ["1.4.3 Contrast (Minimum)"],
+      "status": "fail",
+      "surface": "app/globals.css .bh-journey-stage-index, .bh-life-area-index, .bh-journey-stage-nav-link-light .bh-journey-stage-nav-number",
+      "finding": "Purple at 50–55% opacity on cream fails AA: purple/55 on cream 2.81:1; purple/50 on cream 2.52:1 (need 4.5:1 normal / 3:1 large/UI).",
+      "imaniFix": "Use full bh-purple or another token that meets 4.5:1 on cream. Do not lighten brand purple further. Nia will accept the contrast-safe token, not a new palette."
+    },
+    {
+      "id": "A11Y-CTR-02",
+      "area": "contrast",
+      "severity": "medium",
+      "wcag": ["1.4.3 Contrast (Minimum)"],
+      "status": "fail",
+      "surface": "app/globals.css placeholder:text-bh-muted/70",
+      "finding": "Placeholder text composites to about 3.18:1 on cream (below 4.5:1).",
+      "imaniFix": "Use full bh-muted or ink at a passing opacity for placeholders."
+    },
+    {
+      "id": "A11Y-CTR-03",
+      "area": "contrast",
+      "severity": "low",
+      "wcag": ["1.4.3 Contrast (Minimum)"],
+      "status": "residual_risk",
+      "surface": "Hero/nav over photographic atmosphere",
+      "finding": "Computed white/65 on solid night passes (8.46:1). Real hero is a photo plus veil, so local contrast can dip. Not a token failure; needs a visual pass on the live hero.",
+      "imaniFix": "After homepage skip-link/contrast token fixes, sample hero nav against the actual image at the default crop. Do not retint the hero photograph without Nia."
+    },
+    {
+      "id": "A11Y-CAP-01",
+      "area": "captions",
+      "severity": "high",
+      "wcag": ["1.2.2 Captions (Prerecorded)"],
+      "status": "fail",
+      "surface": "content/journey/founder-captions.ts; public/captions/founder/*.vtt",
+      "finding": "Eighteen EN/ES VTT files exist and are wired. Cue timing is duration-weighted by script length, not human-timed to speech. That is not production-accurate captioning.",
+      "imaniFix": "Keep approved script text. Replace duration-weighted timings with speech-aligned cues (Row 138). Nia accepts timing quality; do not rewrite Founder manuscript copy."
+    },
+    {
+      "id": "A11Y-CAP-02",
+      "area": "captions",
+      "severity": "high",
+      "wcag": ["1.2.2 Captions (Prerecorded)", "1.2.3 Audio Description or Media Alternative"],
+      "status": "fail",
+      "surface": "content/journey/*-media.ts transcriptSrc/poster; components/journey/chapter-1/founder-media-placement.tsx",
+      "finding": "All launch Founder placements have transcriptSrc: null and poster: null. Caption tracks are injected with mode \"hidden\" and without default, so captions are not shown unless the user finds native CC. Row 138 still open: captions+transcripts+posters required before media is accessibility-complete.",
+      "imaniFix": "1) Set the approved caption track to showing or default. 2) Publish transcripts from the already-approved scripts (do not invent copy) and link them in the existing transcript slot. 3) Add accessible posters/fallbacks. Coordinate with Row 138; do not mark videos complete while transcripts/posters are missing."
+    },
+    {
+      "id": "A11Y-FCS-01",
+      "area": "focus",
+      "severity": "medium",
+      "wcag": ["2.4.7 Focus Visible"],
+      "status": "pass_with_notes",
+      "surface": "app/globals.css skip-link and interactive rings",
+      "finding": "Skip link uses :focus (correct) and a purple/white chip; CTA/nav/inputs have focus-visible rings. Several outline-none rules are paired with a ring. Account/mobile menus still lack focus movement (A11Y-SR-01/02).",
+      "imaniFix": "Covered by A11Y-SR-01/02. Do not remove existing focus-visible rings."
+    },
+    {
+      "id": "A11Y-ZOM-01",
+      "area": "zoom",
+      "severity": "medium",
+      "wcag": ["1.4.4 Resize Text", "1.4.10 Reflow"],
+      "status": "fail",
+      "surface": "app/globals.css #hero .bh-hero-subtext at min-width 1024px; components/home/hero-section.tsx lg:whitespace-nowrap",
+      "finding": "No zoom lock (good; Next default viewport). Desktop hero supporting sentence is forced nowrap and can overflow/clip at 200% zoom or narrow desktop widths.",
+      "imaniFix": "Allow the hero subtext to wrap at 200% zoom / constrained widths. Do not change the sentence copy."
+    },
+    {
+      "id": "A11Y-MOB-01",
+      "area": "mobile",
+      "severity": "medium",
+      "wcag": ["2.5.8 Target Size (Minimum)"],
+      "status": "fail",
+      "surface": "Hero/public nav and language switcher; app-shell toggle is size-10 (40px)",
+      "finding": "Public header wraps links instead of a disclosure; language-switcher chips are text-[0.62rem] py-1.5 (short of 24px WCAG 2.2 AA in height). App-shell toggle is 40px (near 44px AAA, above 24px AA). Journey stage nav is horizontal-scroll on small screens.",
+      "imaniFix": "Increase public language-switcher and hero nav hit areas to at least 24×24 CSS px without changing labels. Keep Architect mobile drawer."
+    },
+    {
+      "id": "A11Y-LNG-01",
+      "area": "language_switching",
+      "severity": "pass",
+      "wcag": ["3.1.1 Language of Page", "3.1.2 Language of Parts"],
+      "status": "pass_with_notes",
+      "surface": "components/i18n/language-switcher.tsx; app/layout.tsx; middleware.ts; founder media locale bundles",
+      "finding": "Switcher preserves path, sets cookie, exposes English/Español with aria-current. html lang follows /es vs default. Founder media resolves EN/ES sources without silent English substitution. Spanish homepage keeps brand-lock English eyebrow/headline ('The Back Half', 'Magical is Possible.') while subtext/CTA translate — treat as brand lock, not an Imani copy change. Consent English-on-Spanish is A11Y-LBL-01.",
+      "imaniFix": "None for brand-lock headline. After caption/transcript wiring, verify Spanish routes load Spanish VTT/video (already sourced in media locale files)."
+    }
+  ],
+  "checks": {
+    "keyboard": {
+      "result": "FAIL",
+      "detail": "Skip links and native controls exist on most launch pages; homepage skip link missing; account and mobile menus lack full keyboard close/focus behavior."
+    },
+    "screenReaderBasics": {
+      "result": "FAIL",
+      "detail": "Landmarks, html lang, labeled forms, live regions on Lumina/loading exist. Homepage skip, menu focus management, and media transcripts remain open."
+    },
+    "labels": {
+      "result": "PASS_WITH_CONSTRAINTS",
+      "detail": "Visible labels on login/register/support/Lumina/age-gate/Journey exercises. Consent remains English-by-legal-rule."
+    },
+    "contrast": {
+      "result": "FAIL",
+      "detail": "Core body/CTA/nav-on-night pass. Index numerals at purple/50–55 on cream and muted/70 placeholders fail AA."
+    },
+    "captions": {
+      "result": "FAIL",
+      "detail": "VTT files present for 9 EN + 9 ES Founder videos; timing is duration-weighted; tracks default hidden; transcripts and posters missing."
+    },
+    "focus": {
+      "result": "PASS_WITH_NOTES",
+      "detail": "Visible focus styling is present on primary controls; menu focus movement is not."
+    },
+    "zoom": {
+      "result": "FAIL",
+      "detail": "Zoom is not disabled. Hero nowrap at large breakpoints risks overflow at 200%."
+    },
+    "mobile": {
+      "result": "FAIL",
+      "detail": "Architect shell has a mobile drawer. Public language switcher/hero nav hit areas are undersized. Reduced-motion exists."
+    },
+    "languageSwitching": {
+      "result": "PASS_WITH_NOTES",
+      "detail": "Route+cookie switcher and html lang are sound. Spanish media sources exist. Legal consent and brand-lock English remain mixed-language by rule."
+    }
+  },
+  "imaniHandoff": {
+    "owner": "imani",
+    "createdBy": "nia",
+    "purpose": "Implement accessibility fixes from this review. Nia accepts after fixes. Do not mark Row 183 Complete. Do not fabricate Founder acceptance.",
+    "doNotChange": [
+      "Stripe configuration",
+      "Authentication/session/security controls",
+      "Cloudflare DNS / Vercel custom domain / nameservers",
+      "Founder manuscript / caption script wording",
+      "Legal consent copy (no invented Spanish legal acknowledgments)",
+      "Homepage brand-lock headline unless Founder/Nia later directs"
+    ],
+    "priorityFixes": [
+      "A11Y-KBD-01 homepage skip link",
+      "A11Y-CTR-01 index-numeral contrast",
+      "A11Y-CAP-01 human-timed captions (Row 138)",
+      "A11Y-CAP-02 default captions, transcripts from approved scripts, posters",
+      "A11Y-SR-01 account menu keyboard",
+      "A11Y-SR-02 mobile nav focus",
+      "A11Y-CTR-02 placeholder contrast",
+      "A11Y-ZOM-01 hero subtext wrap at zoom",
+      "A11Y-MOB-01 public nav/switcher target size"
+    ]
+  },
+  "acceptance": {
+    "reviewExecutedBy": "nia",
+    "niaAcceptsImaniFixes": false,
+    "founderAcceptanceRequiredForRowComplete": true,
+    "founderAcceptance": null,
+    "note": "Command Center Row 183 stays open. Next action after Imani fixes: Nia re-review/accept. Kimberly Walker (human) remains sole Founder acceptance authority."
+  },
+  "validation": {
+    "packageJsonHasTypecheckScript": false,
+    "packageJsonHasTestScript": false,
+    "productionBuildRequired": false,
+    "reasonProductionBuildNotRequired": "Status-only ops JSON; no product runtime change",
+    "commands": []
+  },
+  "nextAction": "Imani implements listed accessibility fixes. Nia re-reviews and accepts. Do not merge as Complete. Do not deploy this status file as product completion."
+}
