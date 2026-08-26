@@ -1,0 +1,414 @@
+{
+  "aosWorkId": "al-179",
+  "source": "command_center",
+  "sourceReference": "August Launch row 179",
+  "deliverable": "Run Payment and Subscription Testing",
+  "ownerAgent": "imani",
+  "executedAt": "2026-08-26T17:37:46.077Z",
+  "startedAt": "2026-08-26T17:37:45.994Z",
+  "softwareChange": "Test-only Stripe client override in lib/checkout/stripe.ts plus this isolated runner. No product, marketing, or legal copy changes. No Stripe Dashboard / Vercel / DNS mutation.",
+  "stripeMutated": false,
+  "secretsExposed": false,
+  "founderAccepted": false,
+  "rowMarkedComplete": false,
+  "acceptanceState": "open",
+  "paymentsCompleteDependency": "unsatisfied",
+  "liveCardTesting": "BLOCKED",
+  "mechanicalOverall": "PASS",
+  "counts": {
+    "passed": 41,
+    "failed": 0,
+    "blocked": 1,
+    "total": 42
+  },
+  "suites": {
+    "price_plans": {
+      "passed": 7,
+      "failed": 0,
+      "blocked": 0,
+      "total": 7,
+      "result": "PASS"
+    },
+    "failed_cards": {
+      "passed": 4,
+      "failed": 0,
+      "blocked": 0,
+      "total": 4,
+      "result": "PASS"
+    },
+    "installments": {
+      "passed": 3,
+      "failed": 0,
+      "blocked": 0,
+      "total": 3,
+      "result": "PASS"
+    },
+    "receipts": {
+      "passed": 4,
+      "failed": 0,
+      "blocked": 0,
+      "total": 4,
+      "result": "PASS"
+    },
+    "access": {
+      "passed": 5,
+      "failed": 0,
+      "blocked": 0,
+      "total": 5,
+      "result": "PASS"
+    },
+    "cancellation": {
+      "passed": 4,
+      "failed": 0,
+      "blocked": 0,
+      "total": 4,
+      "result": "PASS"
+    },
+    "webhook_recovery": {
+      "passed": 12,
+      "failed": 0,
+      "blocked": 0,
+      "total": 12,
+      "result": "PASS"
+    },
+    "environment": {
+      "passed": 2,
+      "failed": 0,
+      "blocked": 1,
+      "total": 3,
+      "result": "PASS_WITH_BLOCKS"
+    }
+  },
+  "cases": [
+    {
+      "id": "pp-catalog",
+      "suite": "price_plans",
+      "name": "Approved catalog has Blueprint, Bundle, and Community only",
+      "result": "PASS",
+      "detail": "offers=blueprint,bundle,community prices=$1,500 / $1,750 / $50/month"
+    },
+    {
+      "id": "pp-grants",
+      "suite": "price_plans",
+      "name": "Each offer grants the approved entitlement kinds",
+      "result": "PASS",
+      "detail": "blueprint→journey; bundle→journey+community; community→community"
+    },
+    {
+      "id": "pp-ignore-client-price",
+      "suite": "price_plans",
+      "name": "Client-supplied price IDs and amounts are ignored",
+      "result": "PASS",
+      "detail": "{\"status\":\"ok\",\"offerId\":\"blueprint\",\"priceId\":\"price_al179_blueprint\"}"
+    },
+    {
+      "id": "pp-invalid-offer",
+      "suite": "price_plans",
+      "name": "Unknown offer IDs are rejected",
+      "result": "PASS",
+      "detail": "installments is not an approved offer id"
+    },
+    {
+      "id": "pp-blueprint-webhook",
+      "suite": "price_plans",
+      "name": "Blueprint $1,500 checkout grants Journey only",
+      "result": "PASS",
+      "detail": "status=processed journey=true community=false"
+    },
+    {
+      "id": "pp-bundle-webhook",
+      "suite": "price_plans",
+      "name": "Founding Architect $1,750 checkout grants Journey and Community",
+      "result": "PASS",
+      "detail": "status=processed journey=true community=true"
+    },
+    {
+      "id": "pp-community-webhook",
+      "suite": "price_plans",
+      "name": "Community $50/month checkout grants Community only",
+      "result": "PASS",
+      "detail": "status=processed journey=false community=true summary=granted community entitlements for user"
+    },
+    {
+      "id": "fc-async-fail",
+      "suite": "failed_cards",
+      "name": "Async payment failure records purchase failed and grants no access",
+      "result": "PASS",
+      "detail": "status=processed purchases=failed entitlements=0"
+    },
+    {
+      "id": "fc-unpaid-checkout",
+      "suite": "failed_cards",
+      "name": "Unpaid checkout.session.completed is ignored and grants no entitlements",
+      "result": "PASS",
+      "detail": "status=ignored summary=checkout incomplete payment_status=unpaid"
+    },
+    {
+      "id": "fc-invoice-payment-failed",
+      "suite": "failed_cards",
+      "name": "invoice.payment_failed marks Community entitlement past_due and locks access",
+      "result": "PASS",
+      "detail": "status=processed entitlement=past_due active=false"
+    },
+    {
+      "id": "fc-card-only-checkout",
+      "suite": "failed_cards",
+      "name": "Checkout is card-only (declines stay on card; no BNPL fallback)",
+      "result": "PASS",
+      "detail": "payment_method_types locked to card"
+    },
+    {
+      "id": "in-policy",
+      "suite": "installments",
+      "name": "Launch policy does not offer installments",
+      "result": "PASS",
+      "detail": "INSTALLMENTS_OFFERED_AT_LAUNCH=false"
+    },
+    {
+      "id": "in-no-bnpl",
+      "suite": "installments",
+      "name": "Checkout session creation disables coupons and installment methods",
+      "result": "PASS",
+      "detail": "card-only, allow_promotion_codes false"
+    },
+    {
+      "id": "in-no-offer",
+      "suite": "installments",
+      "name": "No installment SKU exists in the approved offer catalog",
+      "result": "PASS",
+      "detail": "installment offer id rejected"
+    },
+    {
+      "id": "rc-receipt-url",
+      "suite": "receipts",
+      "name": "Successful Blueprint payment exposes a hosted receipt",
+      "result": "PASS",
+      "detail": "documents=receipt:paid,invoice:open,invoice:paid"
+    },
+    {
+      "id": "rc-paid-invoice",
+      "suite": "receipts",
+      "name": "Paid invoices are listed; uncollectible invoices are not treated as receipts",
+      "result": "PASS",
+      "detail": "paid=true uncollectible=false"
+    },
+    {
+      "id": "rc-failed-not-receipt",
+      "suite": "receipts",
+      "name": "Failed purchases do not appear as receipts",
+      "result": "PASS",
+      "detail": "documents=0 purchases=failed"
+    },
+    {
+      "id": "rc-success-email",
+      "suite": "receipts",
+      "name": "Payment success notification template exists (receipt email path)",
+      "result": "PASS",
+      "detail": "en/es payment_success templates present"
+    },
+    {
+      "id": "ac-account-snapshot",
+      "suite": "access",
+      "name": "Account access snapshot matches entitlements after paid Blueprint",
+      "result": "PASS",
+      "detail": "{\"journey\":true,\"community\":false,\"paid\":true}"
+    },
+    {
+      "id": "ac-server-gate",
+      "suite": "access",
+      "name": "Paid product routes require server-side entitlement, not client flags",
+      "result": "PASS",
+      "detail": "requireEntitlement is the access gate"
+    },
+    {
+      "id": "ac-expired-locked",
+      "suite": "access",
+      "name": "Expired entitlement does not unlock access",
+      "result": "PASS",
+      "detail": "endsAt=2020-02-01T00:00:00.000Z"
+    },
+    {
+      "id": "ac-past-due-locked",
+      "suite": "access",
+      "name": "past_due entitlement does not unlock access",
+      "result": "PASS",
+      "detail": "status=past_due"
+    },
+    {
+      "id": "ac-success-page",
+      "suite": "access",
+      "name": "Checkout success does not treat URL params as entitlement proof",
+      "result": "PASS",
+      "detail": "success page waits for webhook-provisioned entitlements"
+    },
+    {
+      "id": "cn-period-end",
+      "suite": "cancellation",
+      "name": "cancel_at_period_end keeps Community access through the paid term",
+      "result": "PASS",
+      "detail": "webhook=processed active=true entitlement=active"
+    },
+    {
+      "id": "cn-deleted",
+      "suite": "cancellation",
+      "name": "subscription.deleted marks Community canceled with revokedAt",
+      "result": "PASS",
+      "detail": "status=processed entitlement=canceled revokedAt=2026-08-26T17:37:46.039Z"
+    },
+    {
+      "id": "cn-one-time-not-cancelable",
+      "suite": "cancellation",
+      "name": "One-time Blueprint purchase is not a cancelable subscription",
+      "result": "PASS",
+      "detail": "cancellationAvailable=false"
+    },
+    {
+      "id": "cn-portal-path",
+      "suite": "cancellation",
+      "name": "Cancellation is Stripe Billing Portal; client customer IDs are ignored",
+      "result": "PASS",
+      "detail": "portal ignores client customerId"
+    },
+    {
+      "id": "wh-missing-user-fails",
+      "suite": "webhook_recovery",
+      "name": "Webhook fails closed when the Back Half user cannot be resolved",
+      "result": "PASS",
+      "detail": "status=failed summary=checkout could not resolve Back Half user"
+    },
+    {
+      "id": "wh-failed-event-retry",
+      "suite": "webhook_recovery",
+      "name": "Failed webhook events are not permanent duplicates and recover on retry",
+      "result": "PASS",
+      "detail": "retry=processed journey=true"
+    },
+    {
+      "id": "wh-duplicate",
+      "suite": "webhook_recovery",
+      "name": "Replayed processed events are duplicate and do not double-grant",
+      "result": "PASS",
+      "detail": "duplicate=duplicate journeyRows=1"
+    },
+    {
+      "id": "wh-bundle-year-stable",
+      "suite": "webhook_recovery",
+      "name": "Duplicate bundle events do not extend the included Community term",
+      "result": "PASS",
+      "detail": "endsAt=2027-08-26T17:37:46.048Z"
+    },
+    {
+      "id": "wh-invoice-subscription-id",
+      "suite": "webhook_recovery",
+      "name": "Basil invoice parent.subscription_details is read for recovery",
+      "result": "PASS",
+      "detail": "subscription=sub_al179_invoice_paid"
+    },
+    {
+      "id": "wh-invoice-paid",
+      "suite": "webhook_recovery",
+      "name": "invoice.paid recovers Community access from subscription invoices",
+      "result": "PASS",
+      "detail": "status=processed community=true summary=community renewed through 2026-09-25T17:37:46.000Z"
+    },
+    {
+      "id": "wh-refund",
+      "suite": "webhook_recovery",
+      "name": "charge.refunded revokes entitlements and marks the purchase refunded",
+      "result": "PASS",
+      "detail": "status=processed purchase=refunded journey=false"
+    },
+    {
+      "id": "wh-stripe-retry-status",
+      "suite": "webhook_recovery",
+      "name": "Failed webhook processing returns HTTP 500 so Stripe retries",
+      "result": "PASS",
+      "detail": "failed → 500; missing secret → 503"
+    },
+    {
+      "id": "wh-http-unconfigured",
+      "suite": "webhook_recovery",
+      "name": "Webhook HTTP route fails closed when the signing secret is absent",
+      "result": "PASS",
+      "detail": "http=503"
+    },
+    {
+      "id": "wh-http-missing-signature",
+      "suite": "webhook_recovery",
+      "name": "Webhook HTTP route rejects unsigned payloads",
+      "result": "PASS",
+      "detail": "http=400"
+    },
+    {
+      "id": "wh-http-invalid-signature",
+      "suite": "webhook_recovery",
+      "name": "Webhook HTTP route rejects invalid Stripe signatures",
+      "result": "PASS",
+      "detail": "http=400"
+    },
+    {
+      "id": "wh-http-signed-process",
+      "suite": "webhook_recovery",
+      "name": "Signed webhook HTTP request processes and grants access",
+      "result": "PASS",
+      "detail": "http=200 body={\"received\":true,\"status\":\"processed\"} journey=true"
+    },
+    {
+      "id": "env-no-live-cards",
+      "suite": "environment",
+      "name": "Live/test-card charges were not run (no workstation Stripe secret; Stripe config not mutated)",
+      "result": "BLOCKED",
+      "detail": "STRIPE_SECRET_KEY=ABSENT STRIPE_WEBHOOK_SECRET=ABSENT. Process-local test double only. No Checkout Sessions created at Stripe. No products, prices, or webhook endpoints created or deleted."
+    },
+    {
+      "id": "env-payments-complete-dependency",
+      "suite": "environment",
+      "name": "Payments Complete dependency remains unsatisfied for live production proof",
+      "result": "PASS",
+      "detail": "Row 73 launchFunctions.payments=FAIL. Production webhook historically 503 webhook_not_configured. Live key class previously test/sandbox."
+    },
+    {
+      "id": "env-no-secret-print",
+      "suite": "environment",
+      "name": "No Stripe secrets were printed into this evidence file",
+      "result": "PASS",
+      "detail": "evidence uses ABSENT/PRESENT classification only"
+    }
+  ],
+  "environmentAtStart": {
+    "STRIPE_SECRET_KEY": "ABSENT",
+    "STRIPE_WEBHOOK_SECRET": "ABSENT",
+    "STRIPE_PRICE_BLUEPRINT": "ABSENT",
+    "STRIPE_PRICE_BUNDLE": "ABSENT",
+    "STRIPE_PRICE_COMMUNITY": "ABSENT",
+    "POSTGRES_URL": "ABSENT"
+  },
+  "validation": {
+    "typecheck": {
+      "command": "npx tsc --noEmit",
+      "result": "PASS"
+    },
+    "test": {
+      "command": "npx tsx scripts/fab-5/al-179-payment-subscription-test.ts",
+      "result": "PASS",
+      "note": "package.json has no npm test script; this is the nearest payment/subscription test runner"
+    },
+    "build": {
+      "command": "npm run build",
+      "result": "PASS"
+    }
+  },
+  "constraintsHonored": {
+    "stripeConfigurationUntouched": true,
+    "cloudflareDnsUntouched": true,
+    "vercelCustomDomainUntouched": true,
+    "nameserversUntouched": true,
+    "authenticationNotWeakened": true,
+    "noSecretPrint": true,
+    "notMerged": true,
+    "notDeployed": true,
+    "founderAcceptanceNotFabricated": true
+  },
+  "nextAction": "Mechanical payment/subscription handlers passed in isolation. Live card, installment-not-offered confirmation in Stripe Checkout, and production webhook recovery still require Payments Complete (live Stripe key, live prices, webhook secret on Vercel Production). Leave Founder acceptance open.",
+  "note": "Installments are not offered at launch by policy. Failed-card coverage is webhook/handler-level (async failure, unpaid session, invoice.payment_failed) because this environment has no Stripe secret and AOS forbids mutating Stripe configuration."
+}
