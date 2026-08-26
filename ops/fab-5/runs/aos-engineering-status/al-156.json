@@ -27,8 +27,13 @@
   "tracker": "/ops/admin/support",
   "form": "/support",
   "mailbox": "support@thebackhalf.org",
+  "prUrl": "https://github.com/TheBackHalf/website/pull/22",
   "validation": "ops/fab-5/runs/row-156-launch-support-kb-validation.json",
   "validationResult": "PASS — 12/12",
+  "typecheck": "PASS — npx tsc --noEmit",
+  "build": "PASS — npm run build; route /ops/admin/support/knowledge-base present",
+  "nearestTest": "PASS — npm run fab5:row156 (no npm test script)",
+  "authGate": "PASS — /ops/admin/support/knowledge-base redirects unauthenticated users to /login?next=/ops/admin/support/knowledge-base",
   "notes": "Launch operating knowledge base created for participant-facing replies and internal routing. Answers were matched to production registration, verification, login, checkout, billing, onboarding, Journey, Blueprint downloads, Lumina, cancellation, Community timing, technical, and escalation behavior. Public product, marketing, and legal files were not rewritten. No refunds promised. Architect Community — Coming October 25, 2026. Founder acceptance remains with Kimberly Walker (human). Row is not marked Complete.",
   "remainingBlockers": "Founder acceptance not recorded. Do not merge as Complete.",
   "nextAction": "await_founder_acceptance"
