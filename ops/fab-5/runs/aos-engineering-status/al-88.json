@@ -1,0 +1,384 @@
+{
+  "aosWorkId": "al-88",
+  "row": 88,
+  "excelRow": 89,
+  "tab": "August Launch",
+  "deliverable": "Complete Public Brand Presence Audit",
+  "operatingAgent": "nia",
+  "operatingAgentFull": "Nia Prism — Chief Experience & Transformation Officer",
+  "source": "command_center",
+  "sourceReference": "August Launch row 88",
+  "generatedAt": "2026-08-26T15:18:12.000Z",
+  "auditWindow": "2026-08-26T15:13:00.000Z/2026-08-26T15:18:12.000Z",
+  "timezoneNote": "America/New_York for launch posting clocks; timestamps here are UTC.",
+  "branch": "cursor/aos-nia-al-88-59ff",
+  "pullRequest": "https://github.com/TheBackHalf/website/pull/6",
+  "softwareChangeApplied": false,
+  "productMarketingLegalFilesChanged": false,
+  "stripeConfigModified": false,
+  "dnsModified": false,
+  "vercelCustomDomainModified": false,
+  "secretsPrinted": false,
+  "founderAcceptanceRecorded": false,
+  "founderAcceptance": null,
+  "markedComplete": false,
+  "commandCenterStatusNotUpdated": true,
+  "kimberlyWalkerAiTreatedAsOperatingAgent": false,
+  "finalStatus": "AUDIT COMPLETE — ACCEPTANCE READY. Public brand presence was searched. Naming on the reachable production site and official TikTok is The Back Half. Canonical https://thebackhalf.org does not resolve. Instagram bio/logo/profile image could not be independently read (login wall). TikTok bio is approved-language but not the locked Instagram bio. Obsolete create-next-app README remains on the public GitHub website repo and was not rewritten in this PR (status-only AOS path). Founder acceptance is not recorded.",
+  "authority": {
+    "canonSources": [
+      "ops/fab-5/social-channels.json",
+      "ops/fab-5/ROW-76-OFFICIAL-SOCIAL-CHANNELS.md",
+      "ops/fab-5/ROW-77-LAUNCH-SOCIAL-CHANNEL-GOVERNANCE.md",
+      "ops/fab-5/ROW-33-MARKETING-CLAIMS-TESTIMONIAL-SOCIAL-STANDARD.md",
+      "content/seo/pages.ts",
+      "approved-assets/row-81-social-launch/ROW-81-FINAL-APPROVED-COPY.md"
+    ],
+    "approvedPublicBrandName": "The Back Half",
+    "approvedTagline": "Magical is Possible.",
+    "approvedPositioningSentence": "The Back Half helps people transition from living by expectation to living with intention.",
+    "approvedCta": "Become an Architect",
+    "approvedInstagramBio": "The Back Half helps people transition from living by expectation to living with intention. Magical is Possible. Become an Architect.",
+    "approvedFounderPublicName": "Kimberly M. Walker",
+    "approvedFounderTitle": "Founder",
+    "aiFounderPublicName": "Kimberly M. Walker (AI)",
+    "canonicalWebsite": "https://thebackhalf.org",
+    "officialHandle": "backhalfco",
+    "officialInstagramUrl": "https://www.instagram.com/backhalfco/",
+    "officialTikTokUrl": "https://www.tiktok.com/@backhalfco",
+    "launchDate": "2026-08-31",
+    "socialPostingBegins": "2026-08-28",
+    "trademarkSymbolApproved": false,
+    "doNotMentionInPublicBios": ["Lumina", "Fab 5"],
+    "unrelatedHandlesIgnored": ["thebackhalf"],
+    "outOfLaunchScope": ["linkedin", "youtube", "x_twitter", "facebook", "threads", "bluesky", "pinterest"]
+  },
+  "method": {
+    "liveHttpProbes": true,
+    "dnsLookups": true,
+    "webSearch": true,
+    "duckDuckGoHtmlSearch": true,
+    "githubPublicApi": true,
+    "tiktokPublicHtmlAndOembed": true,
+    "instagramUnauthenticated": true,
+    "noPlatformLogin": true,
+    "noCredentialCollection": true,
+    "noPublicPostPublishedToValidate": true,
+    "unrelatedThebackhalfAccountsNotContacted": true
+  },
+  "surfaces": [
+    {
+      "id": "canonical-apex",
+      "surface": "Website apex",
+      "url": "https://thebackhalf.org/",
+      "inLaunchScope": true,
+      "result": "GAP",
+      "http": null,
+      "error": "Could not resolve host",
+      "notes": "Canonical public origin does not resolve. Cloudflare NS present (anirban / ulla). No A/AAAA. MX points at Google Workspace. Matches Row 75 NOT READY. Do not change DNS from this row."
+    },
+    {
+      "id": "canonical-www",
+      "surface": "Website www",
+      "url": "https://www.thebackhalf.org/",
+      "inLaunchScope": true,
+      "result": "GAP",
+      "http": null,
+      "error": "Could not resolve host",
+      "notes": "www does not resolve. Do not change DNS from this row."
+    },
+    {
+      "id": "production-vercel",
+      "surface": "Reachable production website",
+      "url": "https://website-two-psi-49.vercel.app/",
+      "inLaunchScope": true,
+      "result": "MIXED",
+      "http": 200,
+      "brandName": "PASS — The Back Half",
+      "tagline": "PASS — Magical is Possible. as H1 and document title The Back Half — Magical is Possible",
+      "positioning": "PASS — approved expectation-to-intention sentence in hero and meta description",
+      "cta": "PASS — Become an Architect present on public pages",
+      "founderIdentification": "GAP — homepage Founder section reads Hi, I'm Kimberly. Surname and Founder title are absent on the marketing homepage. Legal AI Disclosure correctly uses Kimberly M. Walker for the human Founder and AI Kimberly.",
+      "logo": "GAP — public header/hero/footer use wordmark text The Back Half. Approved butterfly logo exists at /images/brand/back-half-butterfly-logo.png and is used on Blueprint print, not the public chrome. Temporary favicon /seo/favicon-temporary.svg is live (labeled TEMPORARY in source).",
+      "profileImages": "N/A for website chrome. Founder atmosphere image /images/founder-atmosphere.jpg is present with empty alt. Lumina portrait /images/Lumina Avatar.png is present.",
+      "productDescriptions": "PASS against approved language on / /journey /lumina /register. Journey title The Journey — The Back Half. Lumina title Meet Lumina — The Back Half. Register title Become an Architect — The Back Half. No invented testimonials observed.",
+      "urls": "GAP — live document canonical, Open Graph, JSON-LD, robots sitemap, and og:image host as https://website-gkgw7bxsg-back-half.vercel.app which SSO-gates to Vercel login. The reachable public host is website-two-psi-49.vercel.app. NEXT_PUBLIC_SITE_URL is not emitting https://thebackhalf.org.",
+      "jsonLd": "Organization and WebSite named The Back Half. No logo, no founder, no sameAs social URLs.",
+      "footerTagline": "VARIANT — Live by intention. Live in your fullness. is not the locked Magical is Possible. tagline. Not rewritten (marketing file).",
+      "notes": "Do not treat the Vercel *.vercel.app host as the canonical public brand URL."
+    },
+    {
+      "id": "instagram-official",
+      "surface": "Instagram official",
+      "url": "https://www.instagram.com/backhalfco/",
+      "inLaunchScope": true,
+      "result": "UNVERIFIED_LIVE",
+      "http": 200,
+      "accountExistence": "PASS — URL is not a 404; unauthenticated fetch redirected to Instagram login with next=/backhalfco/. Row 76 Founder-confirmed configured.",
+      "displayName": "NOT INDEPENDENTLY READABLE — login wall",
+      "bio": "NOT INDEPENDENTLY READABLE — login wall. Locked approved bio remains in ops/fab-5/social-channels.json. Do not rewrite.",
+      "profileImage": "NOT INDEPENDENTLY READABLE — login wall",
+      "websiteLink": "NOT INDEPENDENTLY READABLE — login wall. Approved destination is https://thebackhalf.org/ which currently does not resolve.",
+      "notes": "Did not log in. Did not redesign the profile. Founder remains identity owner."
+    },
+    {
+      "id": "instagram-unrelated",
+      "surface": "Instagram unrelated handle",
+      "url": "https://www.instagram.com/thebackhalf/",
+      "inLaunchScope": false,
+      "result": "IGNORE",
+      "http": 200,
+      "notes": "Unrelated third-party handle per Row 76. Not contacted. Not treated as official."
+    },
+    {
+      "id": "tiktok-official",
+      "surface": "TikTok official",
+      "url": "https://www.tiktok.com/@backhalfco",
+      "inLaunchScope": true,
+      "result": "MIXED",
+      "http": 200,
+      "oembed": {
+        "title": "The Back Half's Creator Profile",
+        "authorName": "The Back Half",
+        "authorUrl": "https://www.tiktok.com/@backhalfco"
+      },
+      "displayName": "PASS — The Back Half",
+      "handle": "PASS — backhalfco",
+      "bio": "GAP — live signature is: From expectation to intention. / There is more life inside your life. / Magical is Possible. Approved language, but not the locked Instagram bio. Missing Become an Architect. Missing the full positioning sentence.",
+      "bioLink": "GAP — bioLink is null. Canonical site URL is not on the TikTok profile.",
+      "profileImage": "PRESENT — circular cropped avatar served by TikTok CDN. Visual match to butterfly logo not independently confirmed from this workstation.",
+      "verified": false,
+      "privateAccount": false,
+      "notes": "Nia does not hold TikTok credentials. Bio alignment requires Founder-owned native account edit. Do not add Lumina or Fab 5 to the bio. Posting begins 2026-08-28; empty feed before that date is expected."
+    },
+    {
+      "id": "tiktok-unrelated",
+      "surface": "TikTok unrelated handle",
+      "url": "https://www.tiktok.com/@thebackhalf",
+      "inLaunchScope": false,
+      "result": "IGNORE",
+      "http": 200,
+      "observed": {
+        "uniqueId": "thebackhalf",
+        "nickname": "Raul Salinas",
+        "signature": "",
+        "verified": false
+      },
+      "notes": "Confirmed unrelated. Not The Back Half. Not contacted."
+    },
+    {
+      "id": "linkedin",
+      "surface": "LinkedIn company pages",
+      "urls": [
+        "https://www.linkedin.com/company/thebackhalf",
+        "https://www.linkedin.com/company/the-back-half"
+      ],
+      "inLaunchScope": false,
+      "result": "OUT_OF_SCOPE",
+      "http": [404, 404],
+      "notes": "LinkedIn is a future enhancement. Not a Row 88 launch defect. No company page created from this audit."
+    },
+    {
+      "id": "youtube",
+      "surface": "YouTube",
+      "url": "https://www.youtube.com/@backhalfco",
+      "inLaunchScope": false,
+      "result": "OUT_OF_SCOPE",
+      "http": 404,
+      "notes": "YouTube is Architect Community / post-launch. @thebackhalf also 404."
+    },
+    {
+      "id": "x-twitter",
+      "surface": "X / Twitter",
+      "url": "https://x.com/backhalfco",
+      "inLaunchScope": false,
+      "result": "OUT_OF_SCOPE",
+      "http": 404,
+      "notes": "Do not add X. User Profile Not Found."
+    },
+    {
+      "id": "facebook",
+      "surface": "Facebook",
+      "url": "https://www.facebook.com/backhalfco",
+      "inLaunchScope": false,
+      "result": "OUT_OF_SCOPE",
+      "http": 200,
+      "notes": "Login wall. Not a launch channel. No account created."
+    },
+    {
+      "id": "threads",
+      "surface": "Threads",
+      "url": "https://www.threads.com/@backhalfco",
+      "inLaunchScope": false,
+      "result": "UNVERIFIED",
+      "http": 200,
+      "notes": "URL loads. Brand strings were not extractable from the HTML. Threads is not a launch channel. If Instagram Professional auto-created this profile, treat as a future Nia hygiene item after Founder confirmation — do not post."
+    },
+    {
+      "id": "bluesky",
+      "surface": "Bluesky",
+      "url": "https://bsky.app/profile/backhalfco.bsky.social",
+      "inLaunchScope": false,
+      "result": "ABSENT",
+      "http": 200,
+      "notes": "Generic Bluesky shell. No The Back Half identity observed. Do not create."
+    },
+    {
+      "id": "pinterest",
+      "surface": "Pinterest",
+      "url": "https://www.pinterest.com/backhalfco/",
+      "inLaunchScope": false,
+      "result": "ABSENT",
+      "http": 200,
+      "notes": "user not found in page HTML. Do not create."
+    },
+    {
+      "id": "web-index",
+      "surface": "Public web search",
+      "queries": [
+        "The Back Half Kimberly Walker thebackhalf.org Magical is Possible",
+        "\"thebackhalf.org\" OR \"@backhalfco\" OR \"backhalfco\"",
+        "\"The Back Half\" \"Kimberly M. Walker\" Founder Architect",
+        "DuckDuckGo html: \"The Back Half\" \"Magical is Possible\""
+      ],
+      "inLaunchScope": true,
+      "result": "GAP",
+      "notes": "No indexed official The Back Half / thebackhalf.org / @backhalfco results. Search returns unrelated Kimberly Walker people and generic 'back half' uses. Expected before posting begins 2026-08-28 and while the canonical domain does not resolve. Not treated as a third-party impersonation of this company."
+    },
+    {
+      "id": "github-public",
+      "surface": "GitHub public org/user TheBackHalf",
+      "url": "https://github.com/TheBackHalf",
+      "inLaunchScope": false,
+      "result": "GAP",
+      "http": 200,
+      "account": {
+        "type": "User",
+        "login": "TheBackHalf",
+        "name": null,
+        "bio": null,
+        "blog": "",
+        "twitterUsername": null,
+        "publicRepos": 7
+      },
+      "websiteRepo": {
+        "url": "https://github.com/TheBackHalf/website",
+        "visibility": "public",
+        "description": "Official website for The Back Half",
+        "homepage": "https://website-back-half.vercel.app",
+        "homepageResolvesTo": "Vercel SSO login — not a public brand page",
+        "readme": "create-next-app Getting Started boilerplate (Geist, localhost:3000, Deploy on Vercel). Obsolete/test public artifact."
+      },
+      "siblingPublicRepos": [
+        "backend",
+        "brand-assets",
+        "documentation",
+        "infrastructure",
+        "lumina",
+        "participant-portal"
+      ],
+      "notes": "GitHub profile has no public name, bio, or thebackhalf.org URL. website repo About/homepage points at an SSO-gated Vercel host. brand-assets public tree is LICENSE + one-line README only (no public logo files). Visibility of seven public repos is an Imani/Founder hygiene item, not changed here. README in this repository was not rewritten (AOS status-only path for a non-software deliverable)."
+    }
+  ],
+  "consistencyMatrix": {
+    "naming": {
+      "result": "PASS_WHERE_REACHABLE",
+      "detail": "Reachable production site, TikTok nickname/oembed, GitHub website description, and legal titles use The Back Half. Canonical domain is not on the public internet yet."
+    },
+    "logo": {
+      "result": "GAP",
+      "detail": "Public website chrome is wordmark-only. Approved butterfly logo is not the public header/favicon. Temporary geometric SVG favicon is live. TikTok has an avatar; Instagram avatar not independently read. Do not substitute generic branding."
+    },
+    "tagline": {
+      "result": "MIXED",
+      "detail": "Magical is Possible. is consistent on production title/H1, SEO defaults, and TikTok bio. Footer uses a different line (Live by intention. Live in your fullness.). TikTok omits Become an Architect."
+    },
+    "founderIdentification": {
+      "result": "MIXED",
+      "detail": "Legal AI Disclosure: Kimberly M. Walker correctly distinguished from AI Kimberly. Homepage: first name only (Hi, I'm Kimberly.). Social company accounts are not supposed to sign as the Founder (Row 77). GitHub user has no Founder identity. Public web search does not yet identify Kimberly M. Walker as Founder of The Back Half."
+    },
+    "urls": {
+      "result": "GAP",
+      "detail": "Approved canonical https://thebackhalf.org does not resolve. Production is a Vercel app host. Canonical/OG/JSON-LD/sitemap emit a different SSO-gated Vercel deployment host. GitHub homepage field is a third Vercel SSO host. TikTok has no bio URL."
+    },
+    "profileImages": {
+      "result": "PARTIAL",
+      "detail": "TikTok avatar present. Instagram unread. Website uses atmosphere photography and a temporary favicon rather than the butterfly as the browser identity."
+    },
+    "bios": {
+      "result": "GAP",
+      "detail": "Locked Instagram bio could not be live-verified. TikTok bio is a shorter approved-language variant, not the locked bio. GitHub user bio empty. Website meta description matches the locked positioning sentence."
+    },
+    "productDescriptions": {
+      "result": "PASS_WHERE_REACHABLE",
+      "detail": "Public product language on the reachable site matches approved Journey / Lumina / Become an Architect framing. No prohibited health/financial/guaranteed-outcome claims observed on probed public pages. Architect Community was not presented as live on August 31."
+    }
+  },
+  "obsoleteTestPublicArtifacts": {
+    "removedInThisPr": [],
+    "observedNotRemoved": [
+      {
+        "artifact": "GitHub TheBackHalf/website README create-next-app boilerplate",
+        "publicUrl": "https://github.com/TheBackHalf/website",
+        "controllableInThisRepo": true,
+        "action": "NOT REWRITTEN. AOS instruction for a non-software deliverable is status-only; README is a public marketing-adjacent file. Replacement copy would be new public brand text.",
+        "recommendedReplacementAuthority": "Use only locked strings: The Back Half; Magical is Possible.; expectation-to-intention sentence; https://thebackhalf.org; @backhalfco. Founder may accept a later Nia README replacement."
+      },
+      {
+        "artifact": "Public /entrance-review Founder review page",
+        "publicUrl": "https://website-two-psi-49.vercel.app/entrance-review",
+        "http": 200,
+        "title": "Cinematic Entrance — Founder Review | The Back Half",
+        "robots": "noindex, nofollow; disallowed in robots.txt",
+        "controllableInThisRepo": true,
+        "action": "NOT REMOVED. Intentional Founder review surface. Already noindex. Routing/auth change is infrastructure and out of Nia scope."
+      },
+      {
+        "artifact": "Temporary favicon",
+        "publicUrl": "https://website-two-psi-49.vercel.app/seo/favicon-temporary.svg",
+        "action": "NOT REPLACED. Row 35/77: do not substitute generic branding. Needs approved favicon."
+      },
+      {
+        "artifact": "Canonical/OG/sitemap host pointing at SSO-gated Vercel deployment URL",
+        "observedHost": "website-gkgw7bxsg-back-half.vercel.app",
+        "action": "NOT CHANGED. Site URL is env/infrastructure (Row 75). Nia does not set NEXT_PUBLIC_SITE_URL or DNS."
+      },
+      {
+        "artifact": "GitHub repository homepage https://website-back-half.vercel.app",
+        "action": "NOT CHANGED. GitHub About field is outside this repository. Resolves to Vercel SSO."
+      },
+      {
+        "artifact": "Public sibling GitHub repositories with scaffold READMEs",
+        "action": "NOT CHANGED. Other repositories. Imani/Founder visibility decision."
+      }
+    ]
+  },
+  "dependencies": {
+    "officialSocialMediaChannelsRow76": "Complete. Founder Acceptance YES 2026-08-21. Official handle @backhalfco.",
+    "website": "Reachable on Vercel production host. Canonical domain blocked by Row 75 DNS.",
+    "row75DomainDnsSsl": "NOT READY — canonical DNS missing. Not modified from al-88."
+  },
+  "founderActionsRequired": [
+    "Row 75: add Cloudflare A/CNAME so https://thebackhalf.org and www resolve. Not performed here.",
+    "After DNS: set production NEXT_PUBLIC_SITE_URL to https://thebackhalf.org so canonical/OG/JSON-LD/sitemap stop emitting Vercel deployment hosts. Imani owns env; not performed here.",
+    "Using the Founder-owned TikTok @backhalfco, align bio to the locked Instagram bio (or explicitly accept the shorter live variant) and add website URL once the canonical domain resolves. Nia cannot log in.",
+    "Optional: confirm live Instagram @backhalfco display name, bio, avatar, and website link match the lock. Do not send passwords or MFA.",
+    "Optional: GitHub user name/bio/blog and website repo homepage field. Do not paste secrets."
+  ],
+  "notDone": [
+    "Did not mark Command Center Row 88 Complete.",
+    "Did not record Founder acceptance.",
+    "Did not edit Instagram or TikTok (no credentials; do not invent a Nia seat).",
+    "Did not change product, marketing, or legal files.",
+    "Did not change DNS, Stripe, Vercel custom-domain, or auth.",
+    "Did not interact with unrelated @thebackhalf accounts.",
+    "Did not publish a public post to validate this audit."
+  ],
+  "validation": {
+    "typecheck": "PASS — npx tsc --noEmit (no npm run typecheck script)",
+    "test": "SKIP — no npm test script in package.json",
+    "build": "SKIP — ops status JSON only; production app not changed",
+    "merged": false,
+    "deployed": false
+  }
+}
