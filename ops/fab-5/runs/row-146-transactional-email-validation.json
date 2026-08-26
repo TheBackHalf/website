@@ -1,0 +1,79 @@
+{
+  "row": 146,
+  "deliverable": "Configure Transactional Email",
+  "generatedAt": "2026-08-26T15:55:04.158Z",
+  "result": "PASS",
+  "passed": "11/11",
+  "founderAcceptance": null,
+  "rowMarkedComplete": false,
+  "secretsPrinted": false,
+  "dnsMutated": false,
+  "tests": [
+    {
+      "id": "T1",
+      "name": "SENDER DOMAIN LOCK",
+      "result": "PASS",
+      "detail": "domain=thebackhalf.org"
+    },
+    {
+      "id": "T2",
+      "name": "TRANSACTIONAL SEND RECORDED",
+      "result": "PASS",
+      "detail": "status=sent"
+    },
+    {
+      "id": "T3",
+      "name": "HARD BOUNCE SUPPRESSION",
+      "result": "PASS",
+      "detail": "kind=hard_bounce email=bounce.me@example.com"
+    },
+    {
+      "id": "T4",
+      "name": "SUPPRESSION BLOCKS AUTH AFTER HARD BOUNCE",
+      "result": "PASS",
+      "detail": "status=skipped_suppressed"
+    },
+    {
+      "id": "T5",
+      "name": "UNSUBSCRIBE BLOCKS LIFECYCLE NOT AUTH",
+      "result": "PASS",
+      "detail": "lifecycle=skipped_suppressed auth=sent"
+    },
+    {
+      "id": "T6",
+      "name": "SMTP ERROR CLASSIFICATION",
+      "result": "PASS",
+      "detail": "hard/soft/complaint"
+    },
+    {
+      "id": "T7",
+      "name": "INBOUND BOUNCE DOES NOT CREATE TICKET",
+      "result": "PASS",
+      "detail": "kind=bounce email=dead.letter@example.com"
+    },
+    {
+      "id": "T8",
+      "name": "NORMAL INBOUND IS NOT A BOUNCE",
+      "result": "PASS",
+      "detail": "class=none"
+    },
+    {
+      "id": "T9",
+      "name": "DELIVERABILITY MONITORING",
+      "result": "PASS",
+      "detail": "sent=2 bounces=2 unsub=1"
+    },
+    {
+      "id": "T10",
+      "name": "FOREIGN FROM REJECTED",
+      "result": "PASS",
+      "detail": "status=skipped_invalid_sender"
+    },
+    {
+      "id": "T11",
+      "name": "SUPPRESSION STORE DURABLE",
+      "result": "PASS",
+      "detail": "reason=hard_bounce backend=file_test_override"
+    }
+  ]
+}

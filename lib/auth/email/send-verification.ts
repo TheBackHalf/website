@@ -1,5 +1,5 @@
 import { getSiteUrl, isEmailDeliveryConfigured } from "@/lib/auth/config";
-import { sendSmtpEmail } from "@/lib/auth/email/smtp";
+import { sendTransactionalEmail } from "@/lib/email/send";
 import type { Locale } from "@/lib/i18n/config";
 
 type SendVerificationEmailInput = {
@@ -57,10 +57,11 @@ export async function sendVerificationEmail(
           "The Back Half",
         ].join("\n");
 
-  const result = await sendSmtpEmail({
+  const result = await sendTransactionalEmail({
     to: input.email,
     subject,
     text,
+    category: "auth",
   });
 
   if (result.status === "sent") {

@@ -15,6 +15,8 @@ export default function robots(): MetadataRoute.Robots {
         "/entrance-review",
         "/ops/",
         "/es/ops/",
+        "/unsubscribe",
+        "/es/unsubscribe",
         "/blueprint/",
         "/api/",
       ],

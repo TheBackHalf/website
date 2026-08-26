@@ -1,0 +1,75 @@
+{
+  "aosWorkId": "al-146",
+  "row": 146,
+  "deliverable": "Configure Transactional Email",
+  "assignedOperatingAgent": "imani",
+  "source": "command_center",
+  "sourceReference": "August Launch row 146",
+  "generatedAt": "2026-08-26T15:55:04.158Z",
+  "technicalStatus": "implemented_pending_founder_acceptance",
+  "founderAcceptance": null,
+  "founderAccepted": false,
+  "rowMarkedComplete": false,
+  "merged": false,
+  "deployed": false,
+  "secretsPrinted": false,
+  "dnsMutated": false,
+  "stripeMutated": false,
+  "cloudflareMutated": false,
+  "vercelCustomDomainMutated": false,
+  "authenticationWeakened": false,
+  "provider": {
+    "id": "google_workspace_smtp",
+    "label": "Google Workspace SMTP",
+    "reason": "Row 72 Founder-accepted vendor lock. Current production send path is Google Workspace SMTP from support@thebackhalf.org (Row 153). Resend remains excluded. This row does not provision a new ESP.",
+    "resendProvisioned": false
+  },
+  "sender": {
+    "domain": "thebackhalf.org",
+    "from": "support@thebackhalf.org",
+    "replyTo": "support@thebackhalf.org",
+    "enforcedInCode": true
+  },
+  "implemented": {
+    "senderDomainLock": true,
+    "provider": true,
+    "suppression": true,
+    "bounceHandling": true,
+    "unsubscribe": true,
+    "deliverabilityMonitoring": true
+  },
+  "code": {
+    "sendPath": "lib/email/send.ts",
+    "suppressionStore": "lib/email/store.ts",
+    "bounceIngest": "lib/email/bounce.ts",
+    "unsubscribe": "/unsubscribe and POST /api/email/unsubscribe",
+    "bounceApi": "POST /api/email/bounce",
+    "health": "GET /api/ops/health checks.transactionalEmail",
+    "review": "/_internal/row146-transactional-email-review"
+  },
+  "behavior": {
+    "hardBounceAndComplaint": "suppress all categories including auth",
+    "unsubscribe": "suppress lifecycle only; auth, billing, support, and operations still send",
+    "listUnsubscribeHeaders": "billing, support, lifecycle",
+    "inboundMailerDaemon": "does not create a support ticket"
+  },
+  "remaining": [
+    "SPF/DKIM/DMARC DNS records are Founder-owned on Cloudflare and were not modified.",
+    "Production runtime proof requires a production deploy after Founder review.",
+    "Founder acceptance remains with Kimberly Walker (human)."
+  ],
+  "validation": {
+    "script": "npm run fab5:row146",
+    "result": "PASS",
+    "passed": "11/11",
+    "typecheck": "PASS npx tsc --noEmit",
+    "build": "PASS npm run build",
+    "evidence": "ops/fab-5/runs/row-146-transactional-email-validation.json",
+    "gatesRequired": [
+      "npx tsc --noEmit",
+      "npm run fab5:row146",
+      "npm run build"
+    ]
+  },
+  "notes": "Repository software change. Status also recorded here for AOS ingest. Launch workbook was not rewritten. Founder acceptance was not fabricated."
+}

@@ -1,4 +1,4 @@
-import { sendSmtpEmail } from "@/lib/auth/email/smtp";
+import { sendTransactionalEmail } from "@/lib/email/send";
 import {
   PUBLISHED_RESPONSE_HOURS,
   SUPPORT_FROM_NAME,
@@ -60,10 +60,11 @@ export async function sendSupportAcknowledgment(input: {
   const now = new Date().toISOString();
   const copy = buildAcknowledgmentText(input);
   const messageId = `<${input.ticketId.toLowerCase()}@thebackhalf.org>`;
-  const result = await sendSmtpEmail({
+  const result = await sendTransactionalEmail({
     to: input.requesterEmail,
     subject: copy.subject,
     text: copy.text,
+    category: "support",
     fromName: SUPPORT_FROM_NAME,
     fromAddress: supportFromAddress(),
     replyTo: SUPPORT_MAILBOX,
@@ -75,7 +76,7 @@ export async function sendSupportAcknowledgment(input: {
   if (result.status === "sent") {
     return { status: "sent", at: now, messageId: result.response };
   }
-  if (result.status === "not_configured") {
+  if (result.status === "not_configured" || result.status === "skipped_invalid_sender") {
     return { status: "not_configured", at: now, error: result.error };
   }
   return { status: "failed", at: now, error: result.error };

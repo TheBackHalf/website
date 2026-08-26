@@ -1,7 +1,7 @@
-import { sendSmtpEmail } from "@/lib/auth/email/smtp";
 import { getAuthStore } from "@/lib/auth/store";
 import { getBillingStore } from "@/lib/billing/store";
 import type { BillingNotificationTemplate } from "@/lib/billing/types";
+import { sendTransactionalEmail } from "@/lib/email/send";
 import type { CheckoutOfferId } from "@/lib/checkout/offers";
 import type { Locale } from "@/lib/i18n/config";
 
@@ -172,7 +172,12 @@ export async function sendBillingNotification(input: {
   idempotencyKey: string;
   offerId?: CheckoutOfferId;
 }): Promise<{
-  status: "sent" | "skipped_not_configured" | "failed" | "skipped_duplicate";
+  status:
+    | "sent"
+    | "skipped_not_configured"
+    | "failed"
+    | "skipped_duplicate"
+    | "skipped_suppressed";
 }> {
   const store = getBillingStore();
   const existing = await store.findNotificationByIdempotencyKey(
@@ -204,10 +209,12 @@ export async function sendBillingNotification(input: {
     offerId: input.offerId,
   });
 
-  const result = await sendSmtpEmail({
+  const result = await sendTransactionalEmail({
     to: user.email,
     subject: message.subject,
     text: message.text,
+    category: "billing",
+    locale,
   });
 
   if (result.status === "sent") {
@@ -222,7 +229,20 @@ export async function sendBillingNotification(input: {
     return { status: "sent" };
   }
 
-  if (result.status === "not_configured") {
+  if (result.status === "skipped_suppressed") {
+    await store.recordNotification({
+      idempotencyKey: input.idempotencyKey,
+      userId: input.userId,
+      template: input.template,
+      status: "skipped_suppressed",
+      locale,
+      offerId: input.offerId,
+      detail: result.error,
+    });
+    return { status: "skipped_suppressed" };
+  }
+
+  if (result.status === "not_configured" || result.status === "skipped_invalid_sender") {
     await store.recordNotification({
       idempotencyKey: input.idempotencyKey,
       userId: input.userId,
@@ -230,7 +250,10 @@ export async function sendBillingNotification(input: {
       status: "skipped_not_configured",
       locale,
       offerId: input.offerId,
-      detail: "smtp_not_configured",
+      detail:
+        result.status === "skipped_invalid_sender"
+          ? result.error
+          : "smtp_not_configured",
     });
     return { status: "skipped_not_configured" };
   }

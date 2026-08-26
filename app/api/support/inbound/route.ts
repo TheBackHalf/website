@@ -59,9 +59,12 @@ export async function POST(request: Request) {
 
   return NextResponse.json({
     status: "ok",
-    ticketId: ingested.ticket.id,
-    duplicate: ingested.duplicate,
-    category: ingested.ticket.category,
-    priority: ingested.ticket.priority,
+    kind: ingested.kind,
+    ticketId: ingested.kind === "ticket" ? ingested.ticket.id : null,
+    duplicate: ingested.kind === "ticket" ? ingested.duplicate : false,
+    category: ingested.kind === "ticket" ? ingested.ticket.category : ingested.kind,
+    priority: ingested.kind === "ticket" ? ingested.ticket.priority : null,
+    bounceSuppressed:
+      ingested.kind === "ticket" ? false : ingested.bounce.suppressed,
   });
 }

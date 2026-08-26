@@ -102,7 +102,12 @@ export type BillingNotificationRecord = {
   idempotencyKey: string;
   userId: string;
   template: BillingNotificationTemplate;
-  status: "sent" | "skipped_not_configured" | "failed" | "skipped_duplicate";
+  status:
+    | "sent"
+    | "skipped_not_configured"
+    | "failed"
+    | "skipped_duplicate"
+    | "skipped_suppressed";
   locale: "en" | "es";
   offerId?: CheckoutOfferId;
   createdAt: string;

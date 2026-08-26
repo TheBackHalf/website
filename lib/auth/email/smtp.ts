@@ -10,6 +10,7 @@ export type OutboundEmail = {
   messageId?: string;
   inReplyTo?: string;
   references?: string;
+  headers?: Record<string, string>;
 };
 
 function readEnv(name: string): string | undefined {
@@ -108,6 +109,7 @@ export async function sendSmtpEmail(
       messageId: message.messageId,
       inReplyTo: message.inReplyTo,
       references: message.references,
+      headers: message.headers,
     });
 
     return {
