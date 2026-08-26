@@ -1,0 +1,39 @@
+{
+  "aosWorkId": "al-158",
+  "source": "command_center",
+  "sourceReference": "August Launch row 158",
+  "operatingAgent": "michelle",
+  "deliverable": "Create Voice-of-Architect Capture System",
+  "softwareChangeApplied": true,
+  "changeKind": "operations_capture_system",
+  "productMarketingLegalFilesChanged": false,
+  "stripeConfigModified": false,
+  "dnsModified": false,
+  "authWeakened": false,
+  "founderAcceptanceRecorded": false,
+  "rowMarkedComplete": false,
+  "status": "IMPLEMENTED — FOUNDER ACCEPTANCE REVIEW. Not Complete.",
+  "summary": "Michelle established a Voice-of-Architect capture method for launch day: seven categories (feedback, confusion, compliments, support themes, friction, testimonial/permission, product opportunities), reuse of Row 153 / Row 83 / Row 150 intake, a JSON ledger, and immediate routing of critical issues into Imani defect triage. Compliments are not testimonials. Opportunities do not add launch scope. Founder acceptance is not recorded.",
+  "artifacts": [
+    "ops/fab-5/ROW-158-VOICE-OF-ARCHITECT-CAPTURE.md",
+    "ops/fab-5/voice-of-architect-log.json",
+    "lib/voice-of-architect/",
+    "lib/fab-5/row158-review.ts",
+    "app/%5Finternal/row158-voice-of-architect-review/page.tsx",
+    "scripts/fab-5/row-158-validate.ts"
+  ],
+  "validation": {
+    "command": "npm run fab5:row158",
+    "result": "PASS 22/22",
+    "evidence": "ops/fab-5/runs/row-158-voice-of-architect-validation.json",
+    "typecheck": "npx tsc --noEmit PASS",
+    "build": "npm run build PASS — route /_internal/row158-voice-of-architect-review present",
+    "founderAcceptanceRecorded": false,
+    "rowMarkedComplete": false
+  },
+  "notes": [
+    "Workbook primary owner remains Nia for experience interpretation. AOS assigned capture/routing/cadence to Michelle.",
+    "No public feedback form was added.",
+    "Kimberly Walker (human) remains the sole Founder acceptance authority."
+  ]
+}

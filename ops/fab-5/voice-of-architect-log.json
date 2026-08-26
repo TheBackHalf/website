@@ -1,0 +1,23 @@
+{
+  "store": "ops/fab-5/voice-of-architect-log.json",
+  "protocol": "ops/fab-5/ROW-158-VOICE-OF-ARCHITECT-CAPTURE.md",
+  "rule": "Capture feedback, confusion, compliments, support themes, friction, testimonial/permission requests, and product opportunities beginning launch day. Route critical issues into Imani defect triage. Do not paste passwords, full card data, Journey answers, Lumina transcripts, or another Architect's private record. Do not publish compliments as testimonials.",
+  "launchDay": "2026-08-31",
+  "timezone": "America/New_York",
+  "requiredFields": [
+    "id",
+    "createdAt",
+    "category",
+    "source",
+    "summary",
+    "route",
+    "owner",
+    "coordinator",
+    "status",
+    "criticalDefect",
+    "immediate",
+    "fingerprint"
+  ],
+  "lastUpdatedAt": "2026-08-26T00:00:00.000Z",
+  "entries": []
+}
