@@ -3,7 +3,7 @@
  * Only approved Founder media required by authoritative Chapter VI content.
  */
 
-import { founderCaptionPublicPath } from "@/content/journey/founder-captions";
+import { founderLaunchMediaA11y } from "@/content/journey/founder-accessibility";
 import type { Locale } from "@/lib/i18n/config";
 import {
   listMissingFounderMediaLocales,
@@ -42,16 +42,12 @@ export const chapter6MediaPlacements: readonly Chapter6MediaPlacement[] = [
     locales: {
       en: {
         src: "/videos/chapter-6/chapter-6-expansion.mp4",
-        poster: null,
-        captionsSrc: founderCaptionPublicPath("en", "chapter-6-welcome"),
-        transcriptSrc: null,
+        ...founderLaunchMediaA11y("en", "chapter-6-welcome"),
         playbackEndSeconds: null,
       },
       es: {
         src: "/videos/chapter%206/Chapter_6_Expansion-Spanish.mp4",
-        poster: null,
-        captionsSrc: founderCaptionPublicPath("es", "chapter-6-welcome"),
-        transcriptSrc: null,
+        ...founderLaunchMediaA11y("es", "chapter-6-welcome"),
         playbackEndSeconds: null,
       },
     },
@@ -133,7 +129,7 @@ export function listChapter6MediaPlacements(
 export function listMissingChapter6Media(): Array<{
   id: string;
   locale: Locale;
-  field: "src" | "captions" | "transcript";
+  field: "src" | "captions" | "transcript" | "poster";
 }> {
   return chapter6MediaPlacements.flatMap((placement) =>
     listMissingFounderMediaLocales(placement.id, placement.locales),

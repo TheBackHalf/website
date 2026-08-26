@@ -64,25 +64,37 @@ export function resolveFounderMediaLocales(
   };
 }
 
+export type FounderMediaMissingField = "src" | "captions" | "transcript" | "poster";
+
 export function listMissingFounderMediaLocales(
   id: string,
   locales: FounderMediaLocales,
-): Array<{ id: string; locale: Locale; field: "src" | "captions" | "transcript" }> {
+): Array<{ id: string; locale: Locale; field: FounderMediaMissingField }> {
   const missing: Array<{
     id: string;
     locale: Locale;
-    field: "src" | "captions" | "transcript";
+    field: FounderMediaMissingField;
   }> = [];
   for (const locale of ["en", "es"] as const) {
     const bundle = locales[locale];
-    if (!bundle.src) {
+    const src =
+      typeof bundle.src === "string" && bundle.src.trim()
+        ? bundle.src.trim()
+        : null;
+    if (!src) {
+      // No launch video for this locale — captions/transcripts/posters are
+      // not required until an approved source exists.
       missing.push({ id, locale, field: "src" });
+      continue;
     }
-    if (!bundle.captionsSrc) {
+    if (!bundle.captionsSrc?.trim()) {
       missing.push({ id, locale, field: "captions" });
     }
-    if (!bundle.transcriptSrc) {
+    if (!bundle.transcriptSrc?.trim()) {
       missing.push({ id, locale, field: "transcript" });
+    }
+    if (!bundle.poster?.trim()) {
+      missing.push({ id, locale, field: "poster" });
     }
   }
   return missing;

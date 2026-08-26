@@ -52,9 +52,14 @@ export type FounderVideoReviewItem = {
   title: string;
   placementPath: string;
   src: string | null;
+  poster: string | null;
   captionsSrc: string | null;
+  transcriptSrc: string | null;
   captionsStatus: "available" | "missing";
+  transcriptStatus: "available" | "missing";
+  posterStatus: "available" | "missing";
   assetStatus: "available" | "missing";
+  accessibilityComplete: boolean;
 };
 
 function requireItem<T>(value: T | undefined, label: string): T {
@@ -71,10 +76,15 @@ function itemFromResolved(
   placementPath: string,
   resolved: {
     src: string | null;
+    poster: string | null;
     captionsSrc: string | null;
+    transcriptSrc: string | null;
     assetStatus: "available" | "missing";
   },
 ): FounderVideoReviewItem {
+  const captionsStatus = resolved.captionsSrc ? "available" : "missing";
+  const transcriptStatus = resolved.transcriptSrc ? "available" : "missing";
+  const posterStatus = resolved.poster ? "available" : "missing";
   return {
     id,
     locale,
@@ -82,9 +92,18 @@ function itemFromResolved(
     title,
     placementPath,
     src: resolved.src,
+    poster: resolved.poster,
     captionsSrc: resolved.captionsSrc,
-    captionsStatus: resolved.captionsSrc ? "available" : "missing",
+    transcriptSrc: resolved.transcriptSrc,
+    captionsStatus,
+    transcriptStatus,
+    posterStatus,
     assetStatus: resolved.assetStatus,
+    accessibilityComplete:
+      resolved.assetStatus === "available" &&
+      captionsStatus === "available" &&
+      transcriptStatus === "available" &&
+      posterStatus === "available",
   };
 }
 

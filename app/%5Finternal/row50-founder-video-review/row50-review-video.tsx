@@ -8,6 +8,7 @@ type Row50ReviewVideoProps = {
   locale: Locale;
   src: string;
   captionsSrc: string | null;
+  poster: string | null;
 };
 
 export function Row50ReviewVideo({
@@ -15,6 +16,7 @@ export function Row50ReviewVideo({
   locale,
   src,
   captionsSrc,
+  poster,
 }: Row50ReviewVideoProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const captionsLabel = locale === "es" ? "Subtítulos" : "Captions";
@@ -47,6 +49,9 @@ export function Row50ReviewVideo({
       controls
       playsInline
       preload="metadata"
+      poster={poster ?? undefined}
+      aria-label={id}
+      tabIndex={0}
       data-bh-row50-review-video={id}
       data-bh-row50-locale={locale}
     >

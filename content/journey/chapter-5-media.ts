@@ -3,7 +3,7 @@
  * Only approved Founder media required by authoritative Chapter V content.
  */
 
-import { founderCaptionPublicPath } from "@/content/journey/founder-captions";
+import { founderLaunchMediaA11y } from "@/content/journey/founder-accessibility";
 import type { Locale } from "@/lib/i18n/config";
 import {
   listMissingFounderMediaLocales,
@@ -42,16 +42,12 @@ export const chapter5MediaPlacements: readonly Chapter5MediaPlacement[] = [
     locales: {
       en: {
         src: "/videos/chapter-5/chapter-5-becoming-the-architect.mp4",
-        poster: null,
-        captionsSrc: founderCaptionPublicPath("en", "chapter-5-welcome"),
-        transcriptSrc: null,
+        ...founderLaunchMediaA11y("en", "chapter-5-welcome"),
         playbackEndSeconds: null,
       },
       es: {
         src: "/videos/chapter%205/Chapter_5_Becoming_the_Architect-Spanish.mp4",
-        poster: null,
-        captionsSrc: founderCaptionPublicPath("es", "chapter-5-welcome"),
-        transcriptSrc: null,
+        ...founderLaunchMediaA11y("es", "chapter-5-welcome"),
         playbackEndSeconds: null,
       },
     },
@@ -133,7 +129,7 @@ export function listChapter5MediaPlacements(
 export function listMissingChapter5Media(): Array<{
   id: string;
   locale: Locale;
-  field: "src" | "captions" | "transcript";
+  field: "src" | "captions" | "transcript" | "poster";
 }> {
   return chapter5MediaPlacements.flatMap((placement) =>
     listMissingFounderMediaLocales(placement.id, placement.locales),

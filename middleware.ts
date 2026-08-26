@@ -116,6 +116,6 @@ export const config = {
      * Exclude Next internals, favicon, and static media so large video/audio
      * range requests are not delayed by session verification on every chunk.
      */
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|mp4|webm|mp3|m4a|ogg|wav|vtt|pdf)$).*)",
+    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|mp4|webm|mp3|m4a|ogg|wav|vtt|pdf|txt)$).*)",
   ],
 };

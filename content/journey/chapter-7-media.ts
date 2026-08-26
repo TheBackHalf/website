@@ -3,7 +3,7 @@
  * Only approved Founder media required by authoritative Chapter VII content.
  */
 
-import { founderCaptionPublicPath } from "@/content/journey/founder-captions";
+import { founderLaunchMediaA11y } from "@/content/journey/founder-accessibility";
 import type { Locale } from "@/lib/i18n/config";
 import {
   listMissingFounderMediaLocales,
@@ -47,16 +47,12 @@ export const chapter7MediaPlacements: readonly Chapter7MediaPlacement[] = [
     locales: {
       en: {
         src: "/videos/chapter-7/chapter-7-beginning.mp4",
-        poster: null,
-        captionsSrc: founderCaptionPublicPath("en", "chapter-7-welcome"),
-        transcriptSrc: null,
+        ...founderLaunchMediaA11y("en", "chapter-7-welcome"),
         playbackEndSeconds: null,
       },
       es: {
         src: "/videos/chapter%207/Chapter_7_Living_Your_Back_Half-Spanish.mp4",
-        poster: null,
-        captionsSrc: founderCaptionPublicPath("es", "chapter-7-welcome"),
-        transcriptSrc: null,
+        ...founderLaunchMediaA11y("es", "chapter-7-welcome"),
         playbackEndSeconds: null,
       },
     },
@@ -93,16 +89,12 @@ export const chapter7MediaPlacements: readonly Chapter7MediaPlacement[] = [
     locales: {
       en: {
         src: "/videos/chapter-7/chapter-7-journey-completion.mp4",
-        poster: null,
-        captionsSrc: founderCaptionPublicPath("en", "journey-completion"),
-        transcriptSrc: null,
+        ...founderLaunchMediaA11y("en", "journey-completion"),
         playbackEndSeconds: null,
       },
       es: {
         src: "/videos/journey%20completion/Journey_Completion-Spanish.mp4",
-        poster: null,
-        captionsSrc: founderCaptionPublicPath("es", "journey-completion"),
-        transcriptSrc: null,
+        ...founderLaunchMediaA11y("es", "journey-completion"),
         playbackEndSeconds: null,
       },
     },
@@ -160,7 +152,7 @@ export function listChapter7MediaPlacements(
 export function listMissingChapter7Media(): Array<{
   id: string;
   locale: Locale;
-  field: "src" | "captions" | "transcript";
+  field: "src" | "captions" | "transcript" | "poster";
 }> {
   return chapter7MediaPlacements.flatMap((placement) =>
     listMissingFounderMediaLocales(placement.id, placement.locales),

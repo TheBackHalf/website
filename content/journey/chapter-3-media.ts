@@ -3,7 +3,7 @@
  * Only approved Founder media required by authoritative Chapter III content.
  */
 
-import { founderCaptionPublicPath } from "@/content/journey/founder-captions";
+import { founderLaunchMediaA11y } from "@/content/journey/founder-accessibility";
 import type { Locale } from "@/lib/i18n/config";
 import {
   listMissingFounderMediaLocales,
@@ -42,16 +42,12 @@ export const chapter3MediaPlacements: readonly Chapter3MediaPlacement[] = [
     locales: {
       en: {
         src: "/videos/chapter-3/chapter-3-choosing-intention.mp4",
-        poster: null,
-        captionsSrc: founderCaptionPublicPath("en", "chapter-3-welcome"),
-        transcriptSrc: null,
+        ...founderLaunchMediaA11y("en", "chapter-3-welcome"),
         playbackEndSeconds: null,
       },
       es: {
         src: "/videos/chapter%203/Chapter_3_Choosing_Intention-Spanish.mp4",
-        poster: null,
-        captionsSrc: founderCaptionPublicPath("es", "chapter-3-welcome"),
-        transcriptSrc: null,
+        ...founderLaunchMediaA11y("es", "chapter-3-welcome"),
         playbackEndSeconds: null,
       },
     },
@@ -138,7 +134,7 @@ export function listChapter3MediaPlacements(
 export function listMissingChapter3Media(): Array<{
   id: string;
   locale: Locale;
-  field: "src" | "captions" | "transcript";
+  field: "src" | "captions" | "transcript" | "poster";
 }> {
   return chapter3MediaPlacements.flatMap((placement) =>
     listMissingFounderMediaLocales(placement.id, placement.locales),
