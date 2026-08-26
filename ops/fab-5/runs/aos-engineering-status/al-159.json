@@ -255,10 +255,11 @@
       "npm test or the nearest package test script if present",
       "npm run build if the change can affect production"
     ],
-    "typecheck": "pending_before_pr",
-    "test": "no npm test script in package.json; production code unchanged",
-    "build": "not required — ops status JSON only; production behavior unchanged"
+    "typecheck": "PASS — ./node_modules/.bin/tsc --noEmit",
+    "test": "SKIP — no npm test script in package.json; production code unchanged",
+    "build": "SKIP — ops status JSON only; production behavior unchanged"
   },
+  "pullRequest": "https://github.com/TheBackHalf/website/pull/31",
 
   "remainingBlockers": "Founder acceptance by Kimberly Walker (human). Do not treat this file as Command Center Complete.",
   "nextAction": "Await Founder acceptance of this Community runway as the participant-facing source of truth. Nia may use it for Row 160 without inventing a Community program. Imani should reconcile bundle community_access term length to October 25, 2026–April 25, 2027. Do not quote first-year Community access to purchasers.",
