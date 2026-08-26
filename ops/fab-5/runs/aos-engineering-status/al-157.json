@@ -1,0 +1,480 @@
+{
+  "aos_work_id": "al-157",
+  "title": "Create First-72-Hour Support Coverage Plan",
+  "operating_agent": "michelle",
+  "michelle_northstar": [
+    "operations",
+    "orchestration",
+    "Launch Readiness coordination"
+  ],
+  "source": "command_center August Launch row 157",
+  "spreadsheet_row": 157,
+  "excel_row": 158,
+  "phase": "Email, Analytics, Support & Architect Experience",
+  "primary_workstream": "OPERATIONS",
+  "supporting_owners": ["imani", "nia"],
+  "assigned_repository": "TheBackHalf/website",
+  "branch": "cursor/aos-michelle-al-157-766e",
+  "recorded_at": "2026-08-26T15:30:00.000Z",
+  "deliverable_kind": "status_only",
+  "software_change_applied": false,
+  "product_files_changed": false,
+  "marketing_files_changed": false,
+  "legal_files_changed": false,
+  "runbook_rewritten": false,
+  "launch_roadmap_changed": false,
+  "founder_notes_changed": false,
+  "status": "plan_recorded_awaiting_founder_acceptance",
+  "percent_complete_recorded": 90,
+  "row_marked_complete": false,
+  "summary": "Michelle recorded the First-72-Hour Support Coverage Plan for launch (Monday 31 August 2026 00:00 America/New_York through Thursday 3 September 2026 00:00). The plan assigns support owners, backup coverage, severity mapping (support P1–P4 to incident SEV-1–SEV-4), response expectations, and escalation paths. It integrates existing Row 153 support operations, Row 154 / operating-system incident management, and the Launch-Day Runbook. No product, marketing, legal, Stripe, DNS, or authentication files were changed. Founder acceptance is not recorded.",
+  "sources_of_truth": {
+    "support_channels": "ops/fab-5/ROW-153-SUPPORT-CHANNELS-OPERATING-PROTOCOL.md",
+    "incident_severity": "ops/fab-5/operating-system.json incidentSeverity + incidentEscalationPath",
+    "incident_response_row": "August Launch row 154 Create Incident Response Plan — Complete",
+    "launch_day_runbook": "ops/launch/LAUNCH-DAY-RUNBOOK-AUGUST-31-2026.md",
+    "social_handoff": "ops/fab-5/ROW-83-SOCIAL-ENGAGEMENT-RESPONSE-PROTOCOL.md",
+    "launch_dashboard": "ops/fab-5/ROW-151-LAUNCH-DASHBOARD.md",
+    "production_monitoring": "ops/fab-5/ROW-61-PRODUCTION-MONITORING.md",
+    "ticket_sla_code": "lib/support/catalog.ts PRIORITY_RESPONSE_HOURS"
+  },
+  "does_not_replace": [
+    "Row 153 support protocol (Founder-accepted 2026-08-21)",
+    "Row 154 incident response (Complete in August Launch tab)",
+    "Launch-Day Runbook sections 7 Support and 8 Incident response",
+    "Row 201 Confirm Launch Staffing and Coverage (Founder-gated; broader than support)",
+    "Row 203 / first-week post-launch operating cadence"
+  ],
+  "coverage_window": {
+    "timezone": "America/New_York",
+    "launch_date": "2026-08-31",
+    "start": "2026-08-31T00:00:00-04:00",
+    "end": "2026-09-03T00:00:00-04:00",
+    "duration_hours": 72,
+    "days": [
+      {
+        "day": 1,
+        "date": "2026-08-31",
+        "label": "Launch day"
+      },
+      {
+        "day": 2,
+        "date": "2026-09-01",
+        "label": "First full day after launch"
+      },
+      {
+        "day": 3,
+        "date": "2026-09-02",
+        "label": "Second full day after launch"
+      }
+    ],
+    "watch_hours_et": "7:00 AM–10:00 PM",
+    "launch_day_open_sweep_et": "6:30 AM",
+    "overnight": "10:00 PM–7:00 AM ET. No standing overnight monitor. Act immediately if a P1 / SEV-1 / privacy / legal / reputational item is seen overnight.",
+    "not_24_7": true,
+    "after_window": "Launch-week social/support cadence in Row 83 §17 continues through Sunday 6 September 2026. Normal three-sweep business-day cadence begins 7 September 2026. That handoff is not this row."
+  },
+  "owners": {
+    "primary_support_cx": {
+      "id": "nia",
+      "name": "Nia Prism",
+      "title": "Chief Experience & Transformation Officer",
+      "duty": "Primary Architect support and customer-experience ownership. Public replies as The Back Half Support (never as Kimberly). Primary social voice. Drafts and sends approved-template answers. Closes tickets after resolution."
+    },
+    "backup_routing_ops": {
+      "id": "michelle",
+      "name": "Michelle Northstar",
+      "title": "Chief of Staff & Operations Officer",
+      "duty": "Backup support coverage, intake routing, incident coordination, unresolved-item tracker every 2 hours during watch hours, social-to-ticket handoff, Founder surfacing when thresholds fire. May pause affected operations."
+    },
+    "technical_security": {
+      "id": "imani",
+      "name": "Imani Heartbeat",
+      "title": "Chief Technology & Risk Officer",
+      "duty": "Technical, security, system-risk, and privacy/security investigation after routing. Production monitoring. Containment, rollback, emergency shutdown as already delegated. Not a social or CX voice."
+    },
+    "founder": {
+      "id": "founder",
+      "name": "Kimberly M. Walker",
+      "title": "Founder",
+      "duty": "Escalation only. Not the continuous monitor. Not routine support staffing. Final authority for material launch-stop/resume, irreversible production action, legal/reputational, Go/No-Go."
+    },
+    "not_operating_capacity": [
+      "Kimberly Walker (AI) is not an operating agent and is not support coverage.",
+      "Lumina is the participant-facing AI Guide only. It does not monitor or reply on support or social."
+    ]
+  },
+  "intake": {
+    "mailbox": "support@thebackhalf.org",
+    "form": "https://thebackhalf.org/support and /es/support",
+    "tracker": "/ops/admin/support",
+    "public_identity": "The Back Half Support. Never Kimberly. Never a personal Founder mailbox.",
+    "sources": ["form", "email", "social_row83"],
+    "privacy_path": "privacy@thebackhalf.org is reserved. Privacy requests enter the same tracker as category PRIVACY. Do not invent a legal@ mailbox.",
+    "inbound_poll": "Vercel cron GET /api/support/inbound */15 plus Fetch inbound mail on the console (launch-safe backup if Hobby cron lags).",
+    "dashboard": "/ops/admin/launch-dashboard (support volume, SLA, P1/P2, backlog).",
+    "refunds": "None. Refund requests stay in Payment. Cancellation is not a refund. Do not promise refunds. Do not promise a resolution time."
+  },
+  "watch_roster": [
+    {
+      "when": "2026-08-31 6:30 AM ET",
+      "owner": "nia",
+      "backup": "michelle",
+      "action": "Open-channel sweep of live Instagram and TikTok. Confirm login. Do not improvise accounts. Begin support-console check."
+    },
+    {
+      "when": "2026-08-31 7:00 AM–10:00 PM ET",
+      "owner": "nia",
+      "backup": "michelle",
+      "on_call_technical": "imani",
+      "action": "Primary support + social watch. Posting window 8:00 AM–2:00 PM: 30-minute social sweeps. Other hours: hourly social. Support console checked at each sweep. Michelle unresolved check every 2 hours. Imani on-call for routed technical/security only."
+    },
+    {
+      "when": "2026-08-31 10:00 PM ET–2026-09-01 7:00 AM ET",
+      "owner": null,
+      "action": "No standing overnight monitor. If Nia or Michelle sees a P1 / SEV-1 / privacy / legal item, they act then. First 1 September sweep is 7:00 AM ET (runbook §13)."
+    },
+    {
+      "when": "2026-09-01 7:00 AM–10:00 PM ET",
+      "owner": "nia",
+      "backup": "michelle",
+      "on_call_technical": "imani",
+      "action": "Same launch-week watch as Row 83 §17. Michelle starts with the unresolved list from launch-day close. Hourly social outside any posting window. Support console at each sweep. Two-hour unresolved tracker."
+    },
+    {
+      "when": "2026-09-01 10:00 PM ET–2026-09-02 7:00 AM ET",
+      "owner": null,
+      "action": "No standing overnight monitor. Same overnight exception rule."
+    },
+    {
+      "when": "2026-09-02 7:00 AM–10:00 PM ET",
+      "owner": "nia",
+      "backup": "michelle",
+      "on_call_technical": "imani",
+      "action": "Same launch-week watch. 72-hour window ends at 2026-09-03 00:00 ET; this is the last full watch day inside the window."
+    },
+    {
+      "when": "2026-09-02 10:00 PM ET–2026-09-03 00:00 ET",
+      "owner": null,
+      "action": "Window remainder is overnight. No standing monitor. Continue launch-week protocol at 7:00 AM ET 3 September (outside this row)."
+    }
+  ],
+  "support_priorities": {
+    "published_architect_expectation": "Typically respond within 3 days, with a goal of 72 hours or less. Urgent security and privacy concerns are prioritized. Do not promise a resolution time.",
+    "internal_due_hours": {
+      "P1": 4,
+      "P2": 24,
+      "P3": 72,
+      "P4": 72
+    },
+    "levels": [
+      {
+        "priority": "P1",
+        "label": "Urgent",
+        "internal_due": "4 hours",
+        "examples": [
+          "Broad product access failure",
+          "Checkout/payment outage",
+          "Significant security concern",
+          "Suspected privacy/data exposure",
+          "Major production outage",
+          "Multiple Architects with the same critical failure"
+        ],
+        "first_72h_expectation": "Not an ordinary three-day queue item. Acknowledge as urgent. Michelle routes immediately. Imani contains if technical/security. Founder if SEV-1 / Attention YES."
+      },
+      {
+        "priority": "P2",
+        "label": "High",
+        "internal_due": "24 hours",
+        "examples": [
+          "Individual cannot access a purchased experience",
+          "Duplicate-charge/payment problem",
+          "Registration failure preventing entry",
+          "Serious Lumina/Journey failure"
+        ],
+        "first_72h_expectation": "First human response inside 24 hours. Nia owns CX; Michelle routes payment/access; Imani if system failure."
+      },
+      {
+        "priority": "P3",
+        "label": "Normal",
+        "internal_due": "72 hours",
+        "examples": [
+          "Routine account question",
+          "General product assistance",
+          "Download question",
+          "Non-urgent Journey question"
+        ],
+        "first_72h_expectation": "Stay inside the published 72-hour goal. Do not pull Founder into the queue."
+      },
+      {
+        "priority": "P4",
+        "label": "Low",
+        "internal_due": "72 hours",
+        "examples": [
+          "Informational question",
+          "Feedback",
+          "Non-time-sensitive request"
+        ],
+        "first_72h_expectation": "Same 72-hour goal. Capture Voice-of-Architect themes for later rows; do not invent a second tracker."
+      }
+    ],
+    "sla_states": ["within", "approaching (≤12 hours remaining)", "overdue", "urgent (P1)"],
+    "code_default_ticket_owner": {
+      "michelle": ["TECHNICAL", "PRIVACY", "PAYMENT_BILLING", "ACCOUNT_LOGIN"],
+      "nia": ["REGISTRATION", "ONBOARDING", "JOURNEY", "LUMINA", "DOWNLOADS_MATERIALS", "MEMBERSHIP", "GENERAL", "OTHER"],
+      "note": "Default ticket assignee is routing, not a change of primary CX ownership. Nia remains primary public support. Michelle remains backup/routing. Imani is not auto-assigned as ticket owner; Imani is an escalation target."
+    }
+  },
+  "severity_mapping_to_incidents": {
+    "rule": "Support priority is the Architect-ticket clock. Incident SEV is the production/risk clock from the operating system. Classify both. Do not invent a third scale.",
+    "map": [
+      {
+        "support": "P1",
+        "incident": "SEV-1 CRITICAL",
+        "when": "Launch unavailable; payment broadly failing; material security/privacy; widespread access failure; material data-loss risk; severe participant-impacting production failure.",
+        "notify": ["imani", "michelle", "nia-if-participant-impact", "founder-immediate", "human-expert-if-required"]
+      },
+      {
+        "support": "P1",
+        "incident": "SEV-2 HIGH",
+        "when": "Urgent ticket that is not a broad outage (for example a serious individual security concern already contained, or a payment issue affecting one Architect that is not a checkout outage).",
+        "notify": ["michelle", "domain-owners", "founder-if-material-launch-reputational-financial-or-reserved"]
+      },
+      {
+        "support": "P2",
+        "incident": "SEV-2 HIGH",
+        "when": "Material degradation affecting important functionality or a meaningful participant cohort (several Architects blocked from registration, Journey, Lumina, or paid access).",
+        "notify": ["michelle", "domain-owners", "founder-if-material-launch-reputational-financial-or-reserved"]
+      },
+      {
+        "support": "P2",
+        "incident": "SEV-3 MODERATE",
+        "when": "Contained individual defect with a workaround and no material launch threat.",
+        "notify": ["domain-executive", "michelle-tracks"]
+      },
+      {
+        "support": ["P3", "P4"],
+        "incident": "SEV-4 LOW or no incident",
+        "when": "Routine questions, feedback, cosmetic/non-critical defects. Do not open an incident for ordinary queue work.",
+        "notify": ["domain-executive"]
+      }
+    ],
+    "support_surge": {
+      "trigger": "Open support backlog ≥ 10, or approaching/overdue 72-hour expectation",
+      "launch_health": "YELLOW (Row 151 / runbook §6)",
+      "owners": ["michelle", "nia"],
+      "action": "Staff the queue. No new public claims. Founder only if Attention YES or reputational."
+    }
+  },
+  "escalation_paths": {
+    "sequence": [
+      "DETECTION",
+      "CLASSIFICATION",
+      "DOMAIN OWNER",
+      "CONTAINMENT",
+      "EVIDENCE",
+      "MICHELLE COORDINATION",
+      "CROSS-FUNCTIONAL SUPPORT IF NEEDED",
+      "FOUNDER/HUMAN EXPERT ONLY IF TRIGGERED",
+      "CORRECTION",
+      "RETEST",
+      "RESOLUTION",
+      "AUDIT CLOSE"
+    ],
+    "routes": [
+      {
+        "trigger": "Security / privacy exposure, suspected breach, account-access with security implications",
+        "owner": "Imani Heartbeat",
+        "routing": "Michelle",
+        "founder": "YES — Attention YES; Founder-immediate for SEV-1",
+        "required_response": "Contain. Do not request more secrets publicly. Do not repeat secrets.",
+        "evidence": ["Row 153 ticket", "ops/fab-5/decision-log.json"]
+      },
+      {
+        "trigger": "Major technical failure / outage / material access failure / registration or login broadly failing",
+        "owner": "Imani Heartbeat",
+        "routing": "Michelle coordinates; Nia/Michelle own tickets",
+        "founder": "Immediate if SEV-1 / RED / Attention YES or critical surface unavailable",
+        "required_response": "Investigate; restore; independent technical containment already delegated, then notify Michelle and Founder",
+        "evidence": ["Row 61 probes", "Launch Health", "ticket"]
+      },
+      {
+        "trigger": "Checkout / payment / revenue incident",
+        "owner": "Imani if outage; Michelle if payment ops",
+        "routing": "Michelle",
+        "founder": "If payment broadly failing, exception/chargeback severity, or Attention YES",
+        "required_response": "Restore checkout. No refund promise. No live charge to test.",
+        "evidence": ["Stripe read-only / webhooks", "ticket", "decision log if Founder"]
+      },
+      {
+        "trigger": "Major Architect-experience / Journey / Lumina failure",
+        "owner": "Nia Prism",
+        "routing": "Michelle backup",
+        "founder": "If Attention YES or severe participant-impacting production failure",
+        "required_response": "Experience diagnosis. Use approved public language only.",
+        "evidence": ["ticket"]
+      },
+      {
+        "trigger": "Legal (attorney, litigation, regulator) or material reputational",
+        "owner": "Founder + Legal via established procedure",
+        "routing": "Michelle surfaces; Nia preserves evidence",
+        "founder": "YES immediately",
+        "required_response": "No substantive social/legal reply. No legal@ mailbox. Do not send as kimberly@ from an agent account. No public defense.",
+        "evidence": ["ticket", "decision log ACTION REQUIRED", "Row 83 evidence if social"]
+      },
+      {
+        "trigger": "Serious complaint / executive / Founder-identity request",
+        "owner": "Founder; Nia for Architect-experience harm",
+        "routing": "Michelle",
+        "founder": "YES",
+        "required_response": "Founder judgment. Do not improvise a new promise.",
+        "evidence": ["ticket", "decision log"]
+      }
+    ],
+    "founder_is_contacted_when": [
+      "Founder decision is required",
+      "Launch Health is RED",
+      "Founder Attention = YES",
+      "Material legal/reputational issue",
+      "Serious privacy/security issue",
+      "Rollback / launch-stop is required",
+      "Another OS / Row 151 / Row 83 §11–§12 threshold is reached"
+    ],
+    "founder_is_not_contacted_for": [
+      "Ordinary congratulations volume",
+      "Routine P3/P4 questions inside SLA",
+      "Hourly status that is already GREEN with Attention NO"
+    ]
+  },
+  "backup_coverage": {
+    "chain": [
+      {
+        "function": "Primary CX / support replies / social voice",
+        "primary": "nia",
+        "backup": "michelle",
+        "if_backup_also_unavailable": "Imani does not become the social or CX voice. Log FOUNDER ACTION REQUIRED — support/social coverage gap. Founder is still not the default monitor."
+      },
+      {
+        "function": "Routing, incident coordination, unresolved tracker, inbound fetch backup",
+        "primary": "michelle",
+        "backup": "nia continues CX; Michelle duties are logged as an ops coverage gap",
+        "if_backup_also_unavailable": "Log FOUNDER ACTION REQUIRED — operations coverage gap. Imani continues technical containment only."
+      },
+      {
+        "function": "Technical / security containment",
+        "primary": "imani",
+        "backup": "Michelle coordinates and surfaces; Imani remains technical owner when reachable",
+        "if_backup_also_unavailable": "SEV-1 / RED: Founder immediate. Do not wait. Existing emergency containment authority still belongs to Imani when Imani can act."
+      }
+    ],
+    "coverage_gap_rule": "If Nia is unavailable, Michelle covers using the Row 83 library and The Back Half Support identity. If Michelle is also unavailable, do not invent a fourth operator and do not assign Kimberly Walker (AI). Record the gap in ops/fab-5/decision-log.json.",
+    "console_fetch_backup": "If inbound cron has not run, Michelle uses Fetch inbound mail on /ops/admin/support.",
+    "monitoring_backup": "Row 61 15-minute probes continue regardless of human watch hours. Launch Health and Founder Attention still fire overnight."
+  },
+  "integration": {
+    "launch_day_runbook": {
+      "path": "ops/launch/LAUNCH-DAY-RUNBOOK-AUGUST-31-2026.md",
+      "this_plan_does_not_rewrite_the_runbook": true,
+      "mapped_sections": [
+        {
+          "section": "2 Decision authority",
+          "use": "Nia primary Support; Michelle backup/orchestration; Imani technical; Founder reserved decisions."
+        },
+        {
+          "section": "5 Monitoring — Support volume / SLA",
+          "use": "Nia primary; Michelle routing. Console + Launch Dashboard."
+        },
+        {
+          "section": "6 Launch health",
+          "use": "Support approaching/overdue 72-hour expectation or backlog ≥ 10 produces YELLOW. RED/Attention YES still escalate immediately."
+        },
+        {
+          "section": "7 Support",
+          "use": "Mailbox, form, tracker, identity, P1 4-hour due, no refunds, social handoff. This plan adds the 72-hour roster around that model."
+        },
+        {
+          "section": "8 Incident response",
+          "use": "Detection → classification → domain owner → containment → evidence → Michelle coordination → Founder only if triggered. Support P1/P2 are detection inputs."
+        },
+        {
+          "section": "9 Pause / rollback",
+          "use": "Michelle classifies and coordinates. Imani owns technical rollback. Nia may pause participant-facing release within experience/safety authority."
+        },
+        {
+          "section": "11 Status update cadence",
+          "use": "Two-hour unresolved list (Michelle). Daily Founder Brief. Immediate for Attention YES / SEV-1."
+        },
+        {
+          "section": "13 End-of-day close",
+          "use": "Support backlog owner Nia/Michelle. Next-day follow-up Michelle at 7:00 AM ET 1 September, then the same close each remaining day in the 72-hour window."
+        }
+      ]
+    },
+    "incident_management": {
+      "row": 154,
+      "status": "Complete in August Launch tab",
+      "operating_system": "ops/fab-5/operating-system.json",
+      "use": "SEV-1 through SEV-4, incidentEscalationPath, mailbox monitor rules, and productionChangeAuthority E (Imani emergency containment then notify). This plan maps support tickets onto that path instead of creating a second incident system."
+    },
+    "row_153": {
+      "status": "Complete. Founder Acceptance YES 2026-08-21.",
+      "use": "Categories, P1–P4 clocks, acknowledgment copy, ticket statuses, social_row83 source, urgent escalation table. Do not redesign."
+    },
+    "row_83": {
+      "use": "Launch-day and launch-week watch hours, public templates, privacy/legal first-sight clocks, support handoff into Row 153 tickets."
+    },
+    "row_151": {
+      "use": "Launch Health, Founder Attention, support metrics, Daily Founder Brief. Investigation location remains /ops/admin/launch-dashboard. No second Founder dashboard."
+    },
+    "row_201": {
+      "note": "Confirm Launch Staffing and Coverage is a separate Founder-gated row for Founder, developer, QA, support, payment, and vendor coverage. This plan covers support only. It does not confirm Founder-coverage hours or vendor on-call, and it does not mark Row 201 complete."
+    }
+  },
+  "first_72h_operating_rules": [
+    "Use approved Row 83 templates and Row 153 acknowledgment language. Do not invent new public claims.",
+    "Do not promise refunds or resolution times.",
+    "Do not send as Kimberly. Do not use a personal Founder mailbox as the public support identity.",
+    "Do not request or repeat passwords, payment-card data, Journey answers, or Lumina transcripts.",
+    "One ticket tracker. Social interactions that need support become Row 153 tickets with source social_row83.",
+    "P1 items are routed the same sweep they are seen. Do not wait for the two-hour Michelle tick.",
+    "SEV-1 / Launch Health RED / Attention YES interrupt immediately, including overnight if seen.",
+    "Kimberly Walker (AI) is not coverage.",
+    "Do not treat this JSON as Founder approval to mark August Launch row 157 Complete."
+  ],
+  "known_dependencies_not_unblocked_by_this_plan": [
+    "Row 155 Operationalize Architect Support remains Not Started (inbox human READ/ROUTE is a Workspace authorization item; the ticket path itself is Founder-accepted in Row 153).",
+    "Row 156 Launch Support Knowledge Base remains Not Started. Until it exists, use Row 83 templates and live product behavior only.",
+    "Row 201 Confirm Launch Staffing and Coverage remains Founder-gated and is not this deliverable."
+  ],
+  "out_of_scope_respected": [
+    "No Stripe, Cloudflare DNS, Vercel custom-domain, or thebackhalf.org nameserver changes.",
+    "No authentication or security-control changes.",
+    "No product, marketing, or legal file changes.",
+    "Launch-Day Runbook was not rewritten; this plan maps onto it.",
+    "No Launch Readiness row marked Complete.",
+    "No Founder acceptance recorded or fabricated.",
+    "Imani security/infra ownership and Nia curriculum/brand ownership were not taken.",
+    "Kimberly Walker (AI) was not treated as execution capacity."
+  ],
+  "launch_readiness_row": {
+    "id": "157",
+    "deliverable": "Create First-72-Hour Support Coverage Plan",
+    "marked_complete": false,
+    "workbook_status_not_changed": true,
+    "founder_action_required_in_workbook": false,
+    "aos_founder_gate": "command_center source still requires Kimberly Walker (human) acceptance before AOS may treat the row as Complete"
+  },
+  "founder_acceptance": {
+    "recorded": false,
+    "authority": "Kimberly Walker (human)",
+    "note": "Founder acceptance, if required, stays with Kimberly Walker (human). This status file records the coverage plan for review. It does not claim approval or completion of August Launch row 157."
+  },
+  "validation": {
+    "typecheck": "skipped_status_only_no_product_change",
+    "test": "skipped_status_only_no_test_script_and_no_product_change",
+    "build": "skipped_status_only_does_not_affect_production",
+    "note": "package.json has no typecheck or test script. Production build was not run because no product, marketing, or legal files were changed. This file is ops status only."
+  },
+  "next_action": "await_founder_acceptance",
+  "next_required_input": "Kimberly Walker (human) reviews this First-72-Hour Support Coverage Plan. Until that acceptance, do not mark August Launch row 157 Complete. After acceptance, operators follow this roster plus the Launch-Day Runbook and Row 153; Row 201 still separately confirms broader launch staffing."
+}
