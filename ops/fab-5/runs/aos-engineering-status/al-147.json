@@ -1,0 +1,31 @@
+{
+  "aosWorkId": "al-147",
+  "excelRow": 147,
+  "deliverable": "Build Lifecycle Automations",
+  "operatingAgent": "imani",
+  "heartbeat": "technology, security, risk, repository/engineering",
+  "softwareChange": true,
+  "founderAccepted": false,
+  "founderAcceptance": null,
+  "rowMarkedComplete": false,
+  "status": "ACCEPTANCE_READY",
+  "summary": "Connected account, payment, progress, inactivity, completion, membership, billing, and support triggers to a first-party lifecycle dispatcher. Existing transactional senders are ledgered without double-send. New progress, inactivity, completion, membership-renewal, and past-due emails send through SMTP with idempotent fallback. Daily cron scans 7-day Journey inactivity. Founder acceptance is not recorded.",
+  "implementation": [
+    "lib/lifecycle/",
+    "app/api/lifecycle/run/route.ts",
+    "vercel.json cron /api/lifecycle/run",
+    "Existing senders in auth email, billing notifications, support acknowledgment, journey progress, onboarding, Stripe sync-effects"
+  ],
+  "validation": {
+    "script": "npm run fab5:row147",
+    "typecheck": "npm run typecheck",
+    "build": "npm run build"
+  },
+  "protectedSystemsUntouched": [
+    "Stripe configuration",
+    "Cloudflare DNS",
+    "Vercel custom-domain settings",
+    "thebackhalf.org nameservers",
+    "Authentication controls"
+  ]
+}

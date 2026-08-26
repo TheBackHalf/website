@@ -73,10 +73,43 @@ export async function sendSupportAcknowledgment(input: {
   });
 
   if (result.status === "sent") {
-    return { status: "sent", at: now, messageId: result.response };
+    const acknowledgment: SupportAcknowledgment = {
+      status: "sent",
+      at: now,
+      messageId: result.response,
+    };
+    await recordSupportLifecycle(input, "sent");
+    return acknowledgment;
   }
   if (result.status === "not_configured") {
+    await recordSupportLifecycle(input, "skipped_not_configured", result.error);
     return { status: "not_configured", at: now, error: result.error };
   }
+  await recordSupportLifecycle(input, "failed", result.error);
   return { status: "failed", at: now, error: result.error };
+}
+
+async function recordSupportLifecycle(
+  input: {
+    ticketId: string;
+    requesterEmail: string;
+    requesterName: string;
+    priority: SupportPriority;
+  },
+  status: "sent" | "skipped_not_configured" | "failed",
+  detail?: string,
+): Promise<void> {
+  try {
+    const { dispatchLifecycleAutomation } = await import("@/lib/lifecycle/dispatch");
+    await dispatchLifecycleAutomation({
+      automationId: "support.acknowledged",
+      email: input.requesterEmail,
+      firstName: input.requesterName,
+      idempotencyKey: `lifecycle:support.acknowledged:${input.ticketId}`,
+      existingDelivery: { status, detail },
+      payload: { ticketId: input.ticketId, priority: input.priority, source: "support" },
+    });
+  } catch {
+    // Ledger must not block support acknowledgments.
+  }
 }

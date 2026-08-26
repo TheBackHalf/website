@@ -59,6 +59,20 @@ export async function verifyEmailAction(
     payload: { method: "email" },
   });
 
+  try {
+    const { dispatchLifecycleAutomation } = await import("@/lib/lifecycle/dispatch");
+    await dispatchLifecycleAutomation({
+      automationId: "account.verified",
+      userId: user.id,
+      locale,
+      idempotencyKey: `lifecycle:account.verified:${user.id}`,
+      existingDelivery: { status: "recorded_existing", detail: "email_token" },
+      payload: { method: "email", source: "verify_email" },
+    });
+  } catch {
+    // Ledger must not block verification.
+  }
+
   return { status: "verified", redirectPath };
 }
 

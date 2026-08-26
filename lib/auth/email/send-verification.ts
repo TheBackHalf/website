@@ -19,9 +19,11 @@ export async function sendVerificationEmail(
       console.info(
         `[Row 63] Verification email for ${input.email}: ${verifyUrl}`,
       );
+      await recordAccountVerification(input, "skipped_not_configured", "dev_logged");
       return { status: "logged" };
     }
 
+    await recordAccountVerification(input, "skipped_not_configured", "smtp_not_configured");
     return { status: "not_configured" };
   }
 
@@ -64,6 +66,7 @@ export async function sendVerificationEmail(
   });
 
   if (result.status === "sent") {
+    await recordAccountVerification(input, "sent");
     return { status: "sent" };
   }
 
@@ -71,8 +74,31 @@ export async function sendVerificationEmail(
     console.info(
       `[Row 63] Verification email delivery failed (${result.error}). Fallback link for ${input.email}: ${verifyUrl}`,
     );
+    await recordAccountVerification(input, "skipped_not_configured", "dev_logged_fallback");
     return { status: "logged" };
   }
 
+  await recordAccountVerification(input, "failed", "smtp_send_failed");
   return { status: "not_configured" };
+}
+
+async function recordAccountVerification(
+  input: SendVerificationEmailInput,
+  status: "sent" | "skipped_not_configured" | "failed",
+  detail?: string,
+): Promise<void> {
+  try {
+    const { dispatchLifecycleAutomation } = await import("@/lib/lifecycle/dispatch");
+    await dispatchLifecycleAutomation({
+      automationId: "account.verification",
+      email: input.email,
+      firstName: input.firstName,
+      locale: input.locale,
+      idempotencyKey: `lifecycle:account.verification:${crypto.randomUUID()}`,
+      existingDelivery: { status, detail },
+      payload: { method: "email", source: "verification" },
+    });
+  } catch {
+    // Ledger must not block verification delivery.
+  }
 }

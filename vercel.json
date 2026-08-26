@@ -28,6 +28,10 @@
     {
       "path": "/api/fab-5/aos/validate",
       "schedule": "0 0 1 1 *"
+    },
+    {
+      "path": "/api/lifecycle/run",
+      "schedule": "0 16 * * *"
     }
   ],
   "build": {

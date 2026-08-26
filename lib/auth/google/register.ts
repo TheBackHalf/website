@@ -181,6 +181,20 @@ export async function registerOrLinkGoogleAccount(
     payload: { method: "google" },
   });
 
+  try {
+    const { dispatchLifecycleAutomation } = await import("@/lib/lifecycle/dispatch");
+    await dispatchLifecycleAutomation({
+      automationId: "account.verified",
+      userId: user.id,
+      locale,
+      idempotencyKey: `lifecycle:account.verified:${user.id}`,
+      existingDelivery: { status: "recorded_existing", detail: "google" },
+      payload: { method: "google", source: "google_register" },
+    });
+  } catch {
+    // Ledger must not block Google registration.
+  }
+
   return {
     status: "created",
     userId: user.id,

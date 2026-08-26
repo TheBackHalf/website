@@ -239,6 +239,14 @@ export function createFileJourneyOnboardingStore(options?: {
         } catch {
           // Analytics must not block onboarding.
         }
+        try {
+          const { emitLifecycleFromOnboarding } = await import(
+            "@/lib/lifecycle/hooks"
+          );
+          await emitLifecycleFromOnboarding(undefined, created);
+        } catch {
+          // Lifecycle email must not block onboarding.
+        }
         return created;
       });
     },
@@ -267,6 +275,14 @@ export function createFileJourneyOnboardingStore(options?: {
           await emitOnboardingAnalytics(previous, normalized);
         } catch {
           // Analytics must not block onboarding.
+        }
+        try {
+          const { emitLifecycleFromOnboarding } = await import(
+            "@/lib/lifecycle/hooks"
+          );
+          await emitLifecycleFromOnboarding(previous, normalized);
+        } catch {
+          // Lifecycle email must not block onboarding.
         }
         return normalized;
       });

@@ -179,6 +179,7 @@ export async function sendBillingNotification(input: {
     input.idempotencyKey,
   );
   if (existing) {
+    await recordBillingLifecycle(input, "recorded_existing", "en");
     return { status: "skipped_duplicate" };
   }
 
@@ -193,6 +194,7 @@ export async function sendBillingNotification(input: {
       offerId: input.offerId,
       detail: "user_not_found",
     });
+    await recordBillingLifecycle(input, "failed", "en", "user_not_found");
     return { status: "failed" };
   }
 
@@ -219,6 +221,7 @@ export async function sendBillingNotification(input: {
       locale,
       offerId: input.offerId,
     });
+    await recordBillingLifecycle(input, "sent", locale);
     return { status: "sent" };
   }
 
@@ -232,6 +235,7 @@ export async function sendBillingNotification(input: {
       offerId: input.offerId,
       detail: "smtp_not_configured",
     });
+    await recordBillingLifecycle(input, "skipped_not_configured", locale, "smtp_not_configured");
     return { status: "skipped_not_configured" };
   }
 
@@ -244,5 +248,36 @@ export async function sendBillingNotification(input: {
     offerId: input.offerId,
     detail: "smtp_send_failed",
   });
+  await recordBillingLifecycle(input, "failed", locale, "smtp_send_failed");
   return { status: "failed" };
+}
+
+async function recordBillingLifecycle(
+  input: {
+    userId: string;
+    template: BillingNotificationTemplate;
+    idempotencyKey: string;
+    offerId?: CheckoutOfferId;
+  },
+  status: "sent" | "skipped_not_configured" | "failed" | "recorded_existing",
+  locale: Locale,
+  detail?: string,
+): Promise<void> {
+  try {
+    const { billingTemplateToAutomationId } = await import("@/lib/lifecycle/catalog");
+    const { dispatchLifecycleAutomation } = await import("@/lib/lifecycle/dispatch");
+    await dispatchLifecycleAutomation({
+      automationId: billingTemplateToAutomationId(input.template),
+      userId: input.userId,
+      locale,
+      idempotencyKey: `lifecycle:${billingTemplateToAutomationId(input.template)}:${input.idempotencyKey}`,
+      existingDelivery: { status, detail },
+      payload: {
+        offerId: input.offerId,
+        source: "billing_notification",
+      },
+    });
+  } catch {
+    // Ledger must not block billing webhooks.
+  }
 }

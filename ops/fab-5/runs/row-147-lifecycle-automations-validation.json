@@ -1,0 +1,245 @@
+{
+  "row": 147,
+  "aosWorkId": "al-147",
+  "runId": "r147-2026-08-26T18:41:42.579Z",
+  "deliverable": "Build Lifecycle Automations",
+  "founderAcceptance": null,
+  "founderAccepted": false,
+  "rowMarkedComplete": false,
+  "readyForFounderAcceptanceReview": true,
+  "spec": "ops/fab-5/ROW-147-LIFECYCLE-AUTOMATIONS.md",
+  "families": {
+    "account": 3,
+    "payment": 3,
+    "progress": 2,
+    "inactivity": 1,
+    "completion": 1,
+    "membership": 3,
+    "billing": 1,
+    "support": 1
+  },
+  "automations": [
+    {
+      "id": "account.verification",
+      "family": "account",
+      "trigger": "Email registration created an unverified account",
+      "delayMs": 0,
+      "existingSender": "lib/auth/email/send-verification.ts"
+    },
+    {
+      "id": "account.password_reset",
+      "family": "account",
+      "trigger": "Password reset requested for an email/password account",
+      "delayMs": 0,
+      "existingSender": "lib/auth/email/send-password-reset.ts"
+    },
+    {
+      "id": "account.verified",
+      "family": "account",
+      "trigger": "Email confirmed or Google registration already verified",
+      "delayMs": 0,
+      "existingSender": "lifecycle.dispatch"
+    },
+    {
+      "id": "payment.confirmed",
+      "family": "payment",
+      "trigger": "Stripe payment succeeded on checkout or invoice",
+      "delayMs": 0,
+      "existingSender": "lib/billing/notifications.ts"
+    },
+    {
+      "id": "payment.failed",
+      "family": "payment",
+      "trigger": "Stripe payment failed",
+      "delayMs": 0,
+      "existingSender": "lib/billing/notifications.ts"
+    },
+    {
+      "id": "payment.refunded",
+      "family": "payment",
+      "trigger": "Stripe charge refunded",
+      "delayMs": 0,
+      "existingSender": "lib/billing/notifications.ts"
+    },
+    {
+      "id": "progress.onboarding_completed",
+      "family": "progress",
+      "trigger": "Onboarding record status becomes completed",
+      "delayMs": 0,
+      "existingSender": "lifecycle.dispatch"
+    },
+    {
+      "id": "progress.chapter_completed",
+      "family": "progress",
+      "trigger": "Journey progress status becomes chapter_completed or stage_completed",
+      "delayMs": 0,
+      "existingSender": "lifecycle.dispatch"
+    },
+    {
+      "id": "inactivity.journey_nudge",
+      "family": "inactivity",
+      "trigger": "Journey progress unchanged for 7 days and not completed",
+      "delayMs": 604800000,
+      "existingSender": "lifecycle.dispatch"
+    },
+    {
+      "id": "completion.journey_completed",
+      "family": "completion",
+      "trigger": "Journey progress status becomes journey_completed",
+      "delayMs": 0,
+      "existingSender": "lifecycle.dispatch"
+    },
+    {
+      "id": "membership.activated",
+      "family": "membership",
+      "trigger": "Community subscription activated",
+      "delayMs": 0,
+      "existingSender": "lib/billing/notifications.ts"
+    },
+    {
+      "id": "membership.canceled",
+      "family": "membership",
+      "trigger": "Community subscription canceled",
+      "delayMs": 0,
+      "existingSender": "lib/billing/notifications.ts"
+    },
+    {
+      "id": "membership.renewed",
+      "family": "membership",
+      "trigger": "invoice.paid with billing_reason subscription_cycle",
+      "delayMs": 0,
+      "existingSender": "lifecycle.dispatch"
+    },
+    {
+      "id": "billing.past_due",
+      "family": "billing",
+      "trigger": "Community entitlement marked past_due without a concurrent payment_failed email",
+      "delayMs": 0,
+      "existingSender": "lifecycle.dispatch"
+    },
+    {
+      "id": "support.acknowledged",
+      "family": "support",
+      "trigger": "Support ticket created from form or inbound email",
+      "delayMs": 0,
+      "existingSender": "lib/support/acknowledge.ts"
+    }
+  ],
+  "tests": {
+    "tested": 18,
+    "passed": 18,
+    "failed": 0,
+    "result": "PASS"
+  },
+  "results": [
+    {
+      "id": "T1",
+      "name": "CATALOG FAMILIES",
+      "result": "PASS",
+      "detail": "families=account,payment,progress,inactivity,completion,membership,billing,support automations=15"
+    },
+    {
+      "id": "T2",
+      "name": "EACH FAMILY CONNECTED",
+      "result": "PASS",
+      "detail": "{\"account\":3,\"payment\":3,\"progress\":2,\"inactivity\":1,\"completion\":1,\"membership\":3,\"billing\":1,\"support\":1}"
+    },
+    {
+      "id": "T3",
+      "name": "PAYLOAD PRIVACY",
+      "result": "PASS",
+      "detail": "{\"chapterId\":\"chapter-1\",\"offerId\":\"blueprint\"}"
+    },
+    {
+      "id": "T4",
+      "name": "NEW EMAIL COPY",
+      "result": "PASS",
+      "detail": "chapter=Chapter I — The Awakening complete — The Back Half inactivity=Tu Journey te espera — The Back Half"
+    },
+    {
+      "id": "T5",
+      "name": "ACCOUNT VERIFIED LEDGER",
+      "result": "PASS",
+      "detail": "status=recorded_existing"
+    },
+    {
+      "id": "T6",
+      "name": "PAYMENT TRIGGERS",
+      "result": "PASS",
+      "detail": "confirmed=recorded_existing failed=recorded_existing"
+    },
+    {
+      "id": "T7",
+      "name": "PROGRESS CHAPTER COMPLETE",
+      "result": "PASS",
+      "detail": "progress=chapter_completed dispatch=skipped_not_configured"
+    },
+    {
+      "id": "T8",
+      "name": "PROGRESS ONBOARDING COMPLETE",
+      "result": "PASS",
+      "detail": "dispatch=skipped_not_configured"
+    },
+    {
+      "id": "T9",
+      "name": "INACTIVITY SCAN",
+      "result": "PASS",
+      "detail": "{\"scanned\":1,\"eligible\":1,\"dispatched\":0,\"skippedDuplicate\":0,\"skippedNotConfigured\":1,\"failed\":0}"
+    },
+    {
+      "id": "T10",
+      "name": "COMPLETION TRIGGER",
+      "result": "PASS",
+      "detail": "dispatch=skipped_not_configured"
+    },
+    {
+      "id": "T11",
+      "name": "MEMBERSHIP TRIGGERS",
+      "result": "PASS",
+      "detail": "activated=recorded_existing renewed=skipped_not_configured"
+    },
+    {
+      "id": "T12",
+      "name": "BILLING PAST DUE",
+      "result": "PASS",
+      "detail": "status=skipped_not_configured"
+    },
+    {
+      "id": "T13",
+      "name": "SUPPORT ACKNOWLEDGMENT",
+      "result": "PASS",
+      "detail": "ack=not_configured ledger=skipped_not_configured"
+    },
+    {
+      "id": "T14",
+      "name": "IDEMPOTENT RETRY",
+      "result": "PASS",
+      "detail": "status=skipped_duplicate"
+    },
+    {
+      "id": "T15",
+      "name": "CRON ROUTE",
+      "result": "PASS",
+      "detail": "vercel=true route=true"
+    },
+    {
+      "id": "T16",
+      "name": "EXISTING SENDERS CONNECTED",
+      "result": "PASS",
+      "detail": "verification, password reset, email verified, billing notifications, support ack, renewal, past_due, journey progress"
+    },
+    {
+      "id": "T17",
+      "name": "DELAYED INACTIVITY ONLY",
+      "result": "PASS",
+      "detail": "inactivity.journey_nudge:604800000"
+    },
+    {
+      "id": "T18",
+      "name": "TRANSACTIONAL SEPARATION",
+      "result": "PASS",
+      "detail": "All Row 147 automations are transactional; marketing suppression is a later row"
+    }
+  ],
+  "result": "PASS"
+}
