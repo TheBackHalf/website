@@ -1,0 +1,311 @@
+{
+  "aosWorkId": "al-168",
+  "generatedAt": "2026-08-26T16:35:00.000Z",
+  "operatingAgent": "imani",
+  "source": "command_center",
+  "sourceReference": "August Launch row 168",
+  "deliverable": "Validate Cookie and Tracking Consent",
+  "phase": "Finance, Risk, Privacy & Business Operations",
+  "softwareChange": false,
+  "productMarketingLegalFilesChanged": false,
+  "merged": false,
+  "deployed": false,
+  "secretsPrinted": false,
+  "founderAcceptanceRecorded": false,
+  "founderAcceptance": "NOT RECORDED",
+  "rowMarkedComplete": false,
+  "readyForFounderAcceptance": true,
+  "kimberlyWalkerAiTreatedAsCapacity": false,
+  "mapping": {
+    "aosWorkId": "al-168",
+    "launchRowsId": "168",
+    "launchRowsSpreadsheetRow": 168,
+    "commandCenterSnapshotExcelRowForThisTitle": 169,
+    "commandCenterSnapshotExcelRow168Title": "Operationalize Privacy Rights and Data Governance",
+    "note": "AOS work ID al-168 and launch-rows.json id 168 are Validate Cookie and Tracking Consent. The raw Command Center snapshot uses excelRow 169 for this title (excelRow 168 is the adjacent privacy-rights row). This file follows AOS al-168 / launch-rows 168."
+  },
+  "approvedConsentModel": {
+    "sourceOfTruth": [
+      "Row 32 Founder-accepted legal implementation (Version 1.0 documents and required acknowledgments)",
+      "Row 34 remaining-risk record R34-H1 (Privacy GA/Clarity 'may include' vs first-party launch analytics)",
+      "Row 60 Founder-accepted 18+ eligibility, including public-page anonymous operational analytics",
+      "Row 150 Founder-accepted first-party event tracking (no GA4/Clarity/Segment/Mixpanel)",
+      "Row 72/84 vendor register: launch analytics are first-party, not GA4/Clarity"
+    ],
+    "summary": "Launch uses first-party operational analytics and strictly functional first-party cookies. There is no cookie-management platform, no granular tracking-opt-in, and no third-party marketing pixel. Public pages may emit limited anonymous first-party events before age eligibility and before Privacy Policy acknowledgment. Required legal-document consent is collected at registration (Terms, Privacy Policy, Participant Agreement, AI Disclosure) and at checkout (Terms, Participant Agreement, Membership Agreement, plus billing acknowledgment). Stripe Hosted Checkout and optional Google Sign-In run on those vendors' origins after the applicable Back Half consent gates.",
+    "cookieBannerOrCmp": false,
+    "granularAnalyticsOptIn": false,
+    "doNotSellClaim": "Privacy Policy Version 1.0: The Back Half does not sell personal information.",
+    "preEligibilityAnalytics": "Disclosed in the published Privacy Policy age-eligibility supplement: public pages may use limited anonymous operational analytics before eligibility is confirmed; those events do not include name, email, date of birth, or other participant account information.",
+    "registrationConsents": [
+      "terms-of-use",
+      "privacy-policy",
+      "participant-agreement",
+      "ai-disclosure"
+    ],
+    "checkoutConsents": [
+      "terms-of-use",
+      "participant-agreement",
+      "membership-agreement",
+      "billing acknowledgment"
+    ],
+    "optionalProductConsentNotATracker": "Lumina memory is an authenticated optional preference with its own consent history. It is not a marketing pixel."
+  },
+  "productionProbe": {
+    "canonicalHost": "https://thebackhalf.org",
+    "canonicalHostResolved": false,
+    "canonicalDnsNote": "thebackhalf.org did not resolve from this workstation (Row 75 canonical DNS still open). Production was probed on the Vercel Production host.",
+    "productionHost": "https://website-two-psi-49.vercel.app",
+    "probedAt": "2026-08-26T16:32:09.000Z",
+    "server": "Vercel",
+    "cloudflareProxyCookiesOnThisHost": false,
+    "pages": {
+      "/": { "http": 200, "setCookie": "none" },
+      "/legal/privacy-policy": { "http": 200, "setCookie": "none" },
+      "/register": { "http": 200, "setCookie": "none" },
+      "/checkout": { "http": 200, "setCookie": "none" },
+      "/eligibility": { "http": 200, "setCookie": "none" }
+    },
+    "contentSecurityPolicyHeader": "absent",
+    "strictTransportSecurity": "max-age=63072000; includeSubDomains; preload",
+    "fonts": "Self-hosted next/font woff2 under /_next/static/media (Cormorant Garamond, Outfit). No fonts.googleapis.com or fonts.gstatic.com request in HTML.",
+    "htmlThirdPartyTrackerHits": [],
+    "jsChunkTrackerHits": [],
+    "gTagFalsePositive": "Case-insensitive scan of a Turbopack runtime chunk matched the substring gTag inside toStringTag. gtag(, G-, GTM-, GA_MEASUREMENT, and clarity were absent.",
+    "cookieBannerPresent": false,
+    "privacyPolicyLiveGaClaritySentence": true,
+    "privacyPolicyLiveAnonymousOperationalAnalyticsSentence": true,
+    "privacyPolicyDoesNotSell": true
+  },
+  "firstPartyCookies": [
+    {
+      "name": "bh-session",
+      "category": "essential",
+      "purpose": "Authenticated Architect/session JWT (email, role, locale, ageEligible).",
+      "setWhen": "Email login, email verification, Google OAuth callback, age-eligibility confirm for an authenticated user, profile update.",
+      "httpOnly": true,
+      "secure": "true in NODE_ENV=production",
+      "sameSite": "lax",
+      "maxAgeSeconds": 2592000,
+      "path": "/"
+    },
+    {
+      "name": "bh-age-eligibility",
+      "category": "essential",
+      "purpose": "Signed 18+ / ineligible attestation used to gate registration, purchase, and participant experiences. Does not store date of birth.",
+      "setWhen": "POST /api/eligibility/confirm and after eligible authenticated session establishment.",
+      "httpOnly": true,
+      "secure": "true in NODE_ENV=production",
+      "sameSite": "lax",
+      "maxAgeSeconds": 31536000,
+      "path": "/"
+    },
+    {
+      "name": "bh-locale",
+      "category": "preference",
+      "purpose": "Remember English/Spanish UI preference.",
+      "setWhen": "Language switcher click (document.cookie) or settings profile save.",
+      "httpOnly": false,
+      "secure": "not set by the client language-switcher string; settings save also omits Secure/HttpOnly",
+      "sameSite": "lax",
+      "maxAgeSeconds": 31536000,
+      "path": "/",
+      "note": "Preference cookie, not a tracker. Hardening follow-up (Secure on HTTPS) is optional and was not applied in this status-only deliverable."
+    },
+    {
+      "name": "bh-google-oauth-state",
+      "category": "essential",
+      "purpose": "CSRF nonce for Google Sign-In start/callback.",
+      "setWhen": "GET /api/auth/google",
+      "clearedWhen": "OAuth callback success",
+      "httpOnly": true,
+      "secure": "true in NODE_ENV=production",
+      "sameSite": "lax",
+      "maxAgeSeconds": 600,
+      "path": "/"
+    },
+    {
+      "name": "bh-registration-consents",
+      "category": "essential",
+      "purpose": "Short-lived bridge of required registration acknowledgments (and anonymous analytics id) through Google OAuth.",
+      "setWhen": "After required registration consents validate, before Google redirect",
+      "clearedWhen": "OAuth callback",
+      "httpOnly": true,
+      "secure": "true in NODE_ENV=production",
+      "sameSite": "lax",
+      "maxAgeSeconds": 600,
+      "path": "/"
+    }
+  ],
+  "similarTechnologiesNotCookies": [
+    {
+      "name": "bh-analytics-aid",
+      "storage": "sessionStorage",
+      "purpose": "Ephemeral anonymous id for first-party product events (page_viewed, cta_clicked, registration_*, checkout_viewed, entrance_*).",
+      "setBy": "components/analytics/product-analytics-beacon.tsx (root layout) and cinematic entrance helper"
+    },
+    {
+      "name": "bh-analytics-last-cta",
+      "storage": "sessionStorage",
+      "purpose": "Dedupe first-party CTA clicks within 800ms."
+    },
+    {
+      "name": "bh-mkt-vid",
+      "storage": "sessionStorage",
+      "purpose": "Visitor key for Row 84 landing_page_session on /register only."
+    },
+    {
+      "name": "bh-mkt-attr",
+      "storage": "sessionStorage",
+      "purpose": "First-party UTM/campaign attribution for Row 84/150 dual-write. Not a third-party pixel."
+    }
+  ],
+  "analyticsAndPixels": {
+    "thirdPartyPixelsPresent": false,
+    "vendorsAbsentFromRuntime": [
+      "Google Analytics / GA4",
+      "Google Tag Manager",
+      "Microsoft Clarity",
+      "Meta / Facebook pixel",
+      "TikTok pixel",
+      "LinkedIn Insight Tag",
+      "Hotjar",
+      "Plausible",
+      "PostHog",
+      "Segment",
+      "Mixpanel",
+      "Vercel Web Analytics / Speed Insights packages",
+      "Sentry / Datadog APM",
+      "Stripe.js on thebackhalf origin"
+    ],
+    "firstPartyProductLedger": {
+      "mechanism": "POST /api/analytics/event (allowlisted CLIENT_EVENT_NAMES) and server trackProductEvent / emitAnalyticsEvent",
+      "store": "Supabase Postgres analytics_events (Row 150). Local .data/analytics is not production.",
+      "activation": "ProductAnalyticsBeacon is mounted in app/layout.tsx and fires page_viewed on every client navigation without a cookie-consent gate.",
+      "matchesApprovedModel": true,
+      "reason": "Row 60/150 treat this as limited anonymous operational analytics. Payload is sanitized; client names are allowlisted; unknown names return ignored."
+    },
+    "firstPartyMarketingKpi": {
+      "mechanism": "POST /api/marketing/session from MarketingSessionBeacon on registration pages only",
+      "store": "marketing_kpi_* tables (Row 84)",
+      "activation": "Fires on /register and /es/register without a cookie-consent gate. Non-registration paths are ignored.",
+      "matchesApprovedModel": true
+    },
+    "hostedApiProbes": {
+      "pageViewedWithoutCookies": {
+        "request": "POST /api/analytics/event name=page_viewed anonymousId=al168-consent-probe (no Cookie header)",
+        "response": { "status": "created" },
+        "interpretation": "First-party operational analytics accept anonymous events without a tracking-consent cookie. This matches the approved model and the live Privacy Policy public-page sentence."
+      },
+      "unknownEventName": {
+        "request": "POST /api/analytics/event name=not_a_real_event",
+        "response": { "status": "ignored" }
+      },
+      "marketingSessionRegister": {
+        "request": "POST /api/marketing/session path=/register",
+        "response": { "status": "created" }
+      },
+      "marketingSessionHomeIgnored": {
+        "request": "POST /api/marketing/session path=/",
+        "response": { "status": "ignored" }
+      }
+    }
+  },
+  "offOriginSessionTools": [
+    {
+      "vendor": "Stripe Hosted Checkout",
+      "onBackHalfOrigin": false,
+      "activation": "createCheckoutSession uses stripe.checkout.sessions.create and redirects to Stripe. No @stripe/stripe-js and no js.stripe.com on probed pages.",
+      "consentGate": "Checkout requires authenticated, age-eligible user plus required checkout acknowledgments before session creation.",
+      "cookies": "Any Stripe cookies are on Stripe-controlled hosts after redirect, disclosed as payment processing."
+    },
+    {
+      "vendor": "Google Sign-In OAuth",
+      "onBackHalfOrigin": false,
+      "activation": "Optional. GET /api/auth/google redirects to Google. First-party cookie is only bh-google-oauth-state.",
+      "consentGate": "Google registration requires the registration consent cookie (required legal acknowledgments) before account creation.",
+      "cookies": "Google account cookies stay on Google origins."
+    },
+    {
+      "vendor": "Vercel hosting",
+      "onBackHalfOrigin": true,
+      "note": "Server: Vercel. No Set-Cookie on anonymous document GETs. No @vercel/analytics package. Platform request logs are hosting telemetry, not a marketing pixel."
+    }
+  ],
+  "disclosureAlignment": {
+    "privacyPolicyVersion": "1.0",
+    "effectiveDate": "August 31, 2026",
+    "publishedRouteEn": "/legal/privacy-policy",
+    "publishedRouteEs": "/es/legal/privacy-policy",
+    "spanishManuscripts": "PENDING APPROVED TRANSLATION",
+    "section5CookiesAndAnalytics": {
+      "disclosesSessionsPreferencesPerformanceUsabilityTraffic": true,
+      "overDisclosesUnusedGaAndClarity": true,
+      "liveSentence": "Analytics providers may include Google Analytics and Microsoft Clarity.",
+      "actualLaunchProviders": "None. First-party Rows 84/150/151 only.",
+      "row34Status": "R34-H1 ACCEPTED REMAINING RISK. Row 34 counsel note: Founder decision not required to keep Version 1.0 as published. This deliverable did not rewrite legal copy."
+    },
+    "informationSharingAnalyticsBullet": {
+      "policyListsAnalyticsAmongServiceProviderCategories": true,
+      "actual": "No third-party analytics vendor is in the launch runtime. First-party events persist to the application Postgres database."
+    },
+    "technicalInformationListsIpAddress": {
+      "policyListsIp": true,
+      "firstPartyAnalyticsLedgerStoresIp": false,
+      "note": "Hosting/access logs may still observe IP. The analytics payload sanitizer does not persist IP."
+    },
+    "ageEligibilitySupplementMatchesRuntime": true,
+    "requiredDocumentConsentSurfacesPresent": true,
+    "legalFilesChangedInThisWork": false
+  },
+  "nonessentialTracking": {
+    "definitionUsed": "Third-party marketing/analytics pixels, session-replay vendors, and advertising tags. First-party operational events approved in Rows 60/150 are treated as operational, not nonessential marketing trackers.",
+    "thirdPartyNonessentialTagsInProduction": "NONE",
+    "activatesContraryToApprovedConsentModel": false,
+    "verdict": "PASS"
+  },
+  "verdicts": {
+    "cookieInventoryComplete": "PASS",
+    "noUnauthorizedThirdPartyPixels": "PASS",
+    "anonymousDocumentGetsSetNoTrackingCookies": "PASS",
+    "firstPartyAnalyticsMatchesApprovedOperationalModel": "PASS",
+    "nonessentialTrackingGatedOrAbsent": "PASS",
+    "requiredLegalConsentMomentsRemainEnforced": "PASS",
+    "privacyPolicyMatchesActualProcessors": "PARTIAL",
+    "engineeringRuntime": "PASS",
+    "overall": "PASS WITH DOCUMENTED DISCLOSURE RESIDUAL"
+  },
+  "defectsCorrected": [],
+  "softwareChangesDeclined": [
+    "Did not add a cookie banner or CMP. That would be a new product/legal model, not the approved launch model.",
+    "Did not rewrite Privacy Policy Version 1.0 GA/Clarity language. Legal files are out of scope for this status-only deliverable; R34-H1 already records the residual.",
+    "Did not change locale-cookie Secure flags. Preference-cookie hardening is optional follow-up, not a tracking-consent failure."
+  ],
+  "remainingRisks": [
+    "R34-H1 residual: Privacy Policy Version 1.0 says analytics providers may include Google Analytics and Microsoft Clarity; launch technology is first-party only. Counsel/Founder may later align Version 1.0. Not rewritten here.",
+    "R34-C2 residual: Spanish legal bodies remain PENDING APPROVED TRANSLATION while /es routes are live.",
+    "No CMP: first-party page_viewed and registration landing_page_session fire before Privacy Policy acknowledgment. This is disclosed and is the approved US operational model. A future EU/UK ePrivacy CMP would be a new Founder/legal decision.",
+    "Canonical cookie host thebackhalf.org did not resolve from this run (Row 75). Production evidence is the Vercel host."
+  ],
+  "founderJudgmentItems": [
+    "Founder acceptance of this cookie/tracking-consent validation is not recorded. Do not treat this file as Complete.",
+    "Decide later, with counsel if desired, whether Privacy Policy §5 should drop the unused GA/Clarity 'may include' sentence. Do not auto-edit Version 1.0 from this row.",
+    "A cookie banner is not required to match current approved technology because nonessential third-party tracking is absent."
+  ],
+  "validation": {
+    "typecheck": "npx tsc --noEmit exit 0",
+    "npmTestScript": "absent from package.json (npm test exits 1: Missing script: test)",
+    "nearestPackageTestScripts": [
+      "fab5:row150",
+      "fab5:row32",
+      "fab5:row60"
+    ],
+    "nearestTestsRun": false,
+    "nearestTestsSkippedReason": "This deliverable is a status-only inventory. No product code changed. Prior Founder-accepted Row 32/60/150 validators remain the source of truth for those systems.",
+    "build": "not run — status JSON only; cannot affect production runtime",
+    "productionHtmlScan": "PASS",
+    "productionApiProbe": "PASS"
+  },
+  "nextAction": "await_founder_acceptance",
+  "blockedReason": "founder_acceptance_required"
+}
