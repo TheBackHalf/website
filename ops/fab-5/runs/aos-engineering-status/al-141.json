@@ -1,0 +1,631 @@
+{
+  "aosWorkId": "al-141",
+  "row": 141,
+  "excelRow": 142,
+  "source": "command_center",
+  "sourceReference": "August Launch row 141",
+  "title": "Complete Third-Party Data Processing and AI Privacy Review",
+  "primaryWorkstream": "LEGAL",
+  "ownerAgent": "imani",
+  "supportingOwners": ["michelle"],
+  "generatedAt": "2026-08-26T15:45:00.000Z",
+  "author": "Imani Heartbeat — Chief Technology & Risk Officer",
+  "softwareChange": false,
+  "productMarketingLegalFilesChanged": false,
+  "secretsPrinted": false,
+  "dnsChanged": false,
+  "stripeChanged": false,
+  "vercelDomainChanged": false,
+  "authenticationWeakened": false,
+  "markedComplete": false,
+  "rowMarkedComplete": false,
+  "founderAcceptance": null,
+  "founderAcceptanceFabricated": false,
+  "legalConclusionsIssued": false,
+  "humanCounselRequired": true,
+  "humanExpertRequired": true,
+  "requiresExternalVendorService": true,
+  "status": "ENGINEERING_INVENTORY_READY — NOT COMPLETE",
+  "finalStatus": "ROW 141 IS NOT COMPLETE — engineering subprocessor inventory recorded; DPAs not executed; Privacy Policy not rewritten; qualified human counsel required for legal conclusions; Founder acceptance not recorded",
+  "percentCompleteClaim": "Do not treat this file as Row 141 Complete. Do not update launch-rows.json percentComplete from this work.",
+  "scopeNote": "AOS instructed: if this deliverable is not a repository software change, write status only to this file and do not change product, marketing, or legal files. Imani did not rewrite Privacy Policy, Terms, AI Disclosure, or vendor dashboards. Imani cannot sign DPAs or accept legal terms.",
+  "dependenciesObserved": {
+    "vendorRegister": {
+      "artifact": "ops/fab-5/vendor-saas-register.json",
+      "row": 72,
+      "status": "COMPLETE — Founder accepted 2026-08-24",
+      "usedAs": "Launch vendor identity source of truth. This review adds processing/privacy fields the Row 72 billing/capacity register does not carry."
+    },
+    "dataMap": {
+      "namedDependency": "Data Map",
+      "dedicatedArtifactFound": false,
+      "thisFileRole": "This inventory is the engineering data-processing map for production vendors/subprocessors. It is not a counsel-certified Record of Processing Activities."
+    },
+    "privacyPolicy": {
+      "version": "1.0",
+      "effectiveDate": "August 31, 2026",
+      "publicationStatus": "PUBLISHED / FINAL (English)",
+      "routeEn": "/legal/privacy-policy",
+      "routeEs": "/es/legal/privacy-policy",
+      "source": "content/legal/v1-candidates.ts privacyPolicyV1",
+      "spanishBodyApproved": false,
+      "rewrittenByThisRow": false
+    },
+    "aiProviders": {
+      "participantLumina": "First-party scripted Architect Guide in lib/lumina. No OpenAI/API call in Lumina conversation code.",
+      "participantAiKimberly": "Founder video/static media under public/videos served by Vercel. No live participant LLM API.",
+      "fab5OperatingAgents": "OpenAI Agents SDK via OPENAI_API_KEY for hosted Michelle / Imani / Nia cycles. Not Lumina. Not participant chat.",
+      "niaLiveResearch": "OpenAI webSearchTool on the same SDK."
+    }
+  },
+  "firstPartyDataMap": {
+    "note": "Where data sits before any third party. Not a legal RoPA.",
+    "stores": [
+      {
+        "store": "Supabase Postgres (us-east-1 per Row 62)",
+        "holds": [
+          "Auth accounts when POSTGRES_URL is configured (email, name, password hash, Google subject id, locale, time zone, 18+ attestation, consent records, verification/reset tokens)",
+          "Support tickets (requester name/email/message, channel, SLA fields)",
+          "First-party analytics_events and marketing KPI / launch dashboard / ops error tables",
+          "Fab 5 operational tables"
+        ],
+        "doesNotHoldByDesign": [
+          "Card PAN/CVV (Stripe)",
+          "Date of birth",
+          "Lumina conversation transcripts (file store, not this database)",
+          "Journey progress (file store)"
+        ]
+      },
+      {
+        "store": "Vercel application filesystem (.data) when a feature still uses the file store",
+        "holds": [
+          "Lumina conversations and Lumina memory (lib/lumina/store.ts is file-only)",
+          "Journey progress (lib/journey/progress/store.ts is file-only)",
+          "Billing entitlements/purchases local cache (lib/billing/store.ts is file-only; Stripe remains system of record for charges)",
+          "Local-dev auth/support/analytics fallbacks (production auth/support/analytics require Postgres)"
+        ],
+        "risk": "Serverless filesystem is not a durable multi-instance system of record. Participant Lumina transcripts are first-party and are not sent to OpenAI, but durability/export/deletion automation is incomplete."
+      },
+      {
+        "store": "Vercel hosting logs / request metadata",
+        "holds": "Typical HTTP logs (IP, user-agent, URL, status) per Vercel platform defaults. Not inspected as a Founder dashboard dump in this row."
+      }
+    ],
+    "participantAiConversationPath": {
+      "lumina": "User message → first-party scripted response in lib/lumina/conversation.ts → persist on Lumina file store. No OpenAI import.",
+      "aiKimberly": "Pre-rendered Founder mp4 playback. No live model.",
+      "analyticsAroundAi": "lib/analytics/privacy.ts blocks conversation/message/prompt/journal/answer keys. conversationId may be stored; message text must not."
+    }
+  },
+  "productionProcessors": [
+    {
+      "id": "vercel",
+      "vendor": "Vercel",
+      "role": "Processor (website hosting, HTTPS, serverless, Cron, static media, env, logs)",
+      "receivesParticipantData": true,
+      "purpose": "Host the public site, registration/login, checkout UI, Lumina/Journey UI, support form, admin ops, Fab 5 hosted runtime, Founder video files.",
+      "dataCategories": [
+        "Account and session traffic",
+        "Form posts (registration, support, Lumina messages) in transit and in function execution",
+        "Cookies/session tokens in request headers",
+        "IP address, user-agent, URL, referrer as platform logs",
+        "Static Founder video files (not participant-generated video)"
+      ],
+      "retention": "Platform logs and deployments per Vercel plan defaults — FOUNDER VERIFICATION REQUIRED in Vercel dashboard. Application file-store data lifetime follows Vercel instance/storage behavior.",
+      "deletionExport": "Founder can delete deployments/projects in Vercel. No automated participant DSAR workflow in this application. Vercel DPA describes Customer instructions for deletion.",
+      "securityTerms": "https://vercel.com/legal/dpa and Vercel security/privacy pages. SOC reports via Vercel trust center — FOUNDER VERIFICATION REQUIRED.",
+      "breachContact": {
+        "vendor": "privacy@vercel.com (DPA/subprocessor notices); Security Incident notice to Customer administrators on the Vercel team",
+        "theBackHalf": "privacy@thebackhalf.org"
+      },
+      "subprocessors": "Public list: https://vercel.com/legal/subprocessors (AWS and other infrastructure). Subscribe via privacy@vercel.com. Exact current list FOUNDER VERIFICATION REQUIRED.",
+      "crossBorder": "Vercel Inc. (United States). Customer Data may be processed in the US and other regions where Vercel/subprocessors operate.",
+      "modelTrainingOrProductImprovement": "Hosting is not an LLM product. Do not treat Vercel hosting as using Architect conversation content to train models. Vercel AI/v0 products are out of this production path.",
+      "noTrainingControlsAvailable": "Not applicable as an LLM trainer for this workload.",
+      "noTrainingControlsConfiguredThisRow": "N/A — no dashboard mutation performed.",
+      "dpaStatus": "Public DPA available. Execution/acceptance in the Vercel team account is FOUNDER VERIFICATION REQUIRED. Not executed by Imani.",
+      "launchCritical": true
+    },
+    {
+      "id": "supabase",
+      "vendor": "Supabase Postgres",
+      "role": "Processor (database / backups)",
+      "receivesParticipantData": true,
+      "purpose": "Durable persistence for auth (when configured), analytics, marketing KPI, launch dashboard, ops errors, support tickets, Fab 5 operational tables. WAL backups used by Row 62.",
+      "dataCategories": [
+        "Account identifiers and credentials (hashed passwords, not plaintext)",
+        "Consent records",
+        "Support correspondence",
+        "Sanitized analytics events (userId optional; anonymousId; path; attribution; Stripe object ids — not PAN, not conversation text)",
+        "Operational Fab 5 state"
+      ],
+      "retention": "Until deleted by The Back Half or project destruction. Row 62 backups/PITR entitlement is FOUNDER VERIFICATION REQUIRED. Region recorded in Row 62: us-east-1.",
+      "deletionExport": "SQL export/delete possible for Founder/Imani engineering. No self-serve participant export/delete UI. Account deletion is not available yet (product copy).",
+      "securityTerms": "https://supabase.com/legal/customer-resources/data-processing-addendum — DPA PDF also published by Supabase.",
+      "breachContact": {
+        "vendor": "security@supabase.com / privacy@supabase.com (public vendor contacts; dashboard support also available)",
+        "theBackHalf": "privacy@thebackhalf.org"
+      },
+      "subprocessors": "Listed in the Supabase DPA (AWS and other infrastructure/support vendors). Exact current list FOUNDER VERIFICATION REQUIRED at supabase.com legal/subprocessors.",
+      "crossBorder": "Hosted Postgres in AWS us-east-1 (Row 62). US processing. Supabase Pte. Ltd. is the contracting entity on the public DPA.",
+      "modelTrainingOrProductImprovement": "Not an LLM. Customer database content is not described as used to train public AI models. Usage data for operating the platform is a separate controller-purpose category in the DPA.",
+      "noTrainingControlsAvailable": "N/A as an LLM trainer.",
+      "noTrainingControlsConfiguredThisRow": "N/A — no dashboard mutation performed.",
+      "dpaStatus": "Public DPA available. Click-through/execution in the Supabase project is FOUNDER VERIFICATION REQUIRED. Not executed by Imani.",
+      "launchCritical": true
+    },
+    {
+      "id": "stripe",
+      "vendor": "Stripe",
+      "role": "Independent controller / processor for payment services (per Stripe services terms / DPA)",
+      "receivesParticipantData": true,
+      "purpose": "Checkout, payment processing, webhooks, billing portal, invoices, Radar/fraud. Public policy: no refunds.",
+      "dataCategories": [
+        "Customer email (customer_email / customers.create email)",
+        "bh_user_id metadata on Customer",
+        "Purchase amounts, price ids, Checkout session / PaymentIntent / Invoice / Charge / Subscription ids",
+        "Payment method and card data handled by Stripe-hosted Checkout (PAN never stored in this application; analytics privacy blocks card numbers)",
+        "Billing address if collected by Stripe Checkout — FOUNDER VERIFICATION REQUIRED for exact Checkout fields in the live Dashboard"
+      ],
+      "retention": "Stripe retains transaction records per Stripe data-retention / legal obligations (typically multi-year for payments). Application billing file store is a local cache, not the charge ledger.",
+      "deletionExport": "Stripe Dashboard Customer export/delete subject to Stripe legal retention. No in-app DSAR that calls Stripe Customer deletion. Billing portal exists for the Architect's Stripe Customer when a purchase exists.",
+      "securityTerms": "https://stripe.com/legal/dpa — PCI DSS for card data. Data Transfers Addendum at stripe.com/legal/dta.",
+      "breachContact": {
+        "vendor": "Stripe Data Incident notice to User without undue delay (GDPR/UK GDPR: no later than 48 hours after becoming aware, per public DPA). security.stripe.com for reports.",
+        "theBackHalf": "privacy@thebackhalf.org"
+      },
+      "subprocessors": "https://stripe.com/legal/privacy-center and Stripe sub-processors list. Email subscription available on that list. Exact current list FOUNDER VERIFICATION REQUIRED.",
+      "crossBorder": "Stripe, LLC in the United States. Transfers per Stripe DTA/SCCs.",
+      "modelTrainingOrProductImprovement": "Stripe uses data to provide and improve payment/fraud (Radar) services per Stripe privacy. Not an LLM conversation trainer. Do not send Lumina transcripts to Stripe.",
+      "noTrainingControlsAvailable": "Not an LLM. Radar/fraud product improvement is inherent to the processor. No code-level no-training flag in this repo.",
+      "noTrainingControlsConfiguredThisRow": "N/A — Stripe configuration was not modified (AOS prohibition).",
+      "dpaStatus": "Public DPA available and typically incorporated by using Stripe. Account-level acceptance/privacy settings FOUNDER VERIFICATION REQUIRED. Not executed by Imani. No charges or refunds performed.",
+      "launchCritical": true
+    },
+    {
+      "id": "google_workspace",
+      "vendor": "Google Workspace",
+      "role": "Processor (email) under Cloud Data Processing Addendum when accepted",
+      "receivesParticipantData": true,
+      "purpose": "SMTP from support@thebackhalf.org for verification/reset/support acknowledgments; IMAP poll for inbound tickets; Founder mailbox kimberly@; privacy@ reserved.",
+      "dataCategories": [
+        "Participant email address",
+        "Name as included in messages",
+        "Password-reset and email-verification messages",
+        "Support ticket bodies and inbound email content",
+        "Mailbox metadata"
+      ],
+      "retention": "Google Workspace mailbox retention / Vault is FOUNDER VERIFICATION REQUIRED. Application tickets also persist in Supabase.",
+      "deletionExport": "Mailbox search/export via Workspace Admin. No automated DSAR that wipes Gmail plus Postgres together.",
+      "securityTerms": "Google Cloud Data Processing Addendum (CDPA) for Workspace. Opt-in path: Admin Console → Account → Account settings → Legal and compliance → Security and Privacy Additional Terms.",
+      "breachContact": {
+        "vendor": "Google Workspace Admin / https://support.google.com/a — incident notice per CDPA",
+        "theBackHalf": "privacy@thebackhalf.org"
+      },
+      "subprocessors": "https://workspace.google.com/terms/subprocessors.html",
+      "crossBorder": "Google processes Workspace data globally with US infrastructure common for this deployment. International Users section of Privacy Policy already discloses US/other jurisdictions.",
+      "modelTrainingOrProductImprovement": "Google's current Workspace consumer-data-for-ads prohibition is public; generative AI training on Workspace customer content is a Workspace admin/AI setting — FOUNDER VERIFICATION REQUIRED (Gemini/Workspace AI should remain off unless counsel/Founder decide otherwise).",
+      "noTrainingControlsAvailable": "Disable Workspace Gemini / smart features that train or review content if present. Do not connect support@ to consumer Gmail training products.",
+      "noTrainingControlsConfiguredThisRow": "NOT CONFIGURED FROM THIS ROW — requires Founder Workspace Admin. Imani did not access the Admin Console.",
+      "dpaStatus": "CDPA public. Acceptance in Admin Console is FOUNDER VERIFICATION REQUIRED. Not executed by Imani.",
+      "launchCritical": true
+    },
+    {
+      "id": "openai",
+      "vendor": "OpenAI",
+      "role": "Processor for Fab 5 hosted operating-agent inference (not participant Lumina)",
+      "receivesParticipantData": "INDIRECT / OPERATIONAL — prompts are Fab 5 commands, retrieved ops sources, and tool outputs. Not designed to send Architect Lumina transcripts. Tooling (query_access, vercel_inspect, retrieve_source) can include operational identifiers. Treat as a processor of operational data that must not be fed participant conversation content.",
+      "purpose": "Michelle/Imani/Nia hosted cycles via @openai/agents; Nia live webSearchTool research.",
+      "dataCategories": [
+        "Agent instructions (Fab 5 role text)",
+        "Launch-readiness / ops excerpts retrieved as tools",
+        "Model outputs and token usage",
+        "Nia research questions and cited URLs",
+        "NOT Lumina user messages (code path has no OpenAI import)"
+      ],
+      "retention": "Default API abuse-monitoring retention is up to 30 days unless Zero Data Retention (ZDR) is approved. Application also persists redacted live traces under ops/fab-5/runs when persistDir is used.",
+      "deletionExport": "OpenAI organization dashboard / API logs per plan. ZDR is approval-gated (Compliance APIs or api-compliance@openai.com), not a repo toggle.",
+      "securityTerms": "OpenAI Data Processing Addendum: https://openai.com/policies/data-processing-addendum — FOUNDER must accept in the OpenAI organization. API data controls: https://developers.openai.com/api/docs/guides/your-data",
+      "breachContact": {
+        "vendor": "privacy@openai.com / security@openai.com / api-compliance@openai.com",
+        "theBackHalf": "privacy@thebackhalf.org"
+      },
+      "subprocessors": "https://openai.com/policies/sub-processors — FOUNDER VERIFICATION REQUIRED for the dated list.",
+      "crossBorder": "OpenAI OpCo, LLC (United States) on the public DPA. US processing unless a residency product is purchased.",
+      "modelTrainingOrProductImprovement": "Public API/data-controls documentation (current as of this review): API endpoints used for chat/completions/responses are listed as Data used for training: No. This is distinct from consumer ChatGPT. Default 30-day abuse monitoring still stores customer content unless ZDR/Modified Abuse Monitoring is approved. Imani does not treat public docs as a signed contract.",
+      "noTrainingControlsAvailable": [
+        "Keep using the API (not consumer ChatGPT) for Fab 5 — already the architecture",
+        "Execute the OpenAI DPA in the org",
+        "Request Zero Data Retention if counsel/Founder require it",
+        "Code already sets tracingDisabled: true, OPENAI_AGENTS_DISABLE_TRACING=1, setSensitiveDataLoggingEnabled(false)",
+        "Do not send participant Lumina/Journey answers to the model (already true)"
+      ],
+      "noTrainingControlsConfiguredThisRow": {
+        "codeAlreadyPresent": [
+          "lib/fab-5/live-runner.ts tracingDisabled true and OPENAI_AGENTS_DISABLE_TRACING=1",
+          "setSensitiveDataLoggingEnabled(false)",
+          "redactSecrets on outputs",
+          "lib/fab-5/nia-research-live.ts same tracing/sensitive-log controls"
+        ],
+        "codeNotChangedThisRow": "AOS non-software-change rule. Runner modelSettings.store is not explicitly set to false; ZDR would force store=false if approved.",
+        "dashboardNotChanged": "OpenAI org DPA, ZDR, and data-controls dashboard are FOUNDER-ONLY. Not executed."
+      },
+      "dpaStatus": "Public DPA available. Organization acceptance UNVERIFIED from the repository. Not executed by Imani.",
+      "launchCritical": true,
+      "notUsedFor": "Architect Lumina. Founder video playback."
+    },
+    {
+      "id": "google_cloud_oauth",
+      "vendor": "Google Cloud / Google Sign-In OAuth",
+      "role": "Optional authentication processor",
+      "receivesParticipantData": "YES if production OAuth is enabled; otherwise unused",
+      "purpose": "Optional Google Sign-In (openid email profile). Not mailbox access. Not Workspace super-admin. Email/password remains the required launch path.",
+      "dataCategories": ["Google subject (sub)", "email", "given_name / family_name / name if provided"],
+      "retention": "Google account session on Google's side; The Back Half stores googleId on the user record when used.",
+      "deletionExport": "Unlink would require product work not present. Google account controls are on the participant's Google Account.",
+      "securityTerms": "Google API Services User Data Policy; Cloud DPA if a Cloud project is billed.",
+      "breachContact": {
+        "vendor": "Google Cloud / https://status.cloud.google.com and Cloud support",
+        "theBackHalf": "privacy@thebackhalf.org"
+      },
+      "subprocessors": "Google Cloud subprocessors list",
+      "crossBorder": "Google global infrastructure",
+      "modelTrainingOrProductImprovement": "Sign-In profile fetch is not an LLM. Do not expand scopes.",
+      "noTrainingControlsAvailable": "Keep scopes limited to openid email profile (already the code). Do not enable unused Google APIs.",
+      "noTrainingControlsConfiguredThisRow": "Scopes already limited. Production enablement is Founder verification (Row 20/72).",
+      "dpaStatus": "Covered by Google Cloud/Identity terms when the OAuth client exists. FOUNDER VERIFICATION REQUIRED. Launch-critical: NO.",
+      "launchCritical": false
+    },
+    {
+      "id": "cloudflare_dns_registrar",
+      "vendor": "Cloudflare, Inc. (registrar + authoritative DNS)",
+      "role": "Currently DNS/registrar — NOT an HTTP reverse-proxy for participant application payloads",
+      "receivesParticipantData": "DNS query metadata for names under thebackhalf.org; registrar WHOIS/RDAP for the domain. Not HTTP body/PII while apex A/AAAA remain empty and traffic uses the Vercel host.",
+      "purpose": "Domain registration (RDAP: Cloudflare, Inc., IANA 1910, expiry 2027-07-25) and nameservers anirban.ns.cloudflare.com / ulla.ns.cloudflare.com (Row 75).",
+      "dataCategories": ["Registrant data held by Cloudflare as registrar", "DNS queries for the zone"],
+      "retention": "Registrar/DNS logs per Cloudflare. FOUNDER VERIFICATION REQUIRED.",
+      "deletionExport": "N/A for participant accounts. Domain remains Founder-owned.",
+      "securityTerms": "https://www.cloudflare.com/cloudflare-customer-dpa/",
+      "breachContact": {
+        "vendor": "privacyquestions@cloudflare.com / Cloudflare DPA incident terms",
+        "theBackHalf": "privacy@thebackhalf.org"
+      },
+      "subprocessors": "Cloudflare DPA appendices / trust.cloudflare.com — FOUNDER VERIFICATION REQUIRED.",
+      "crossBorder": "Cloudflare global anycast DNS.",
+      "modelTrainingOrProductImprovement": "DNS/registrar is not an LLM. If the zone is later orange-cloud proxied, Cloudflare would become a full HTTP processor of all participant traffic — do not enable proxy from this row (AOS DNS prohibition).",
+      "noTrainingControlsAvailable": "Keep DNS-only until counsel/Founder decide on proxy. Do not change nameservers from this row.",
+      "noTrainingControlsConfiguredThisRow": "DNS/nameservers/Vercel custom domain were not modified.",
+      "dpaStatus": "Public DPA available. Cloudflare dashboard acceptance FOUNDER VERIFICATION REQUIRED. Not executed by Imani.",
+      "launchCritical": true,
+      "currentHttpProxy": false,
+      "observedDns": "Row 75: SOA/NS present; apex A/AAAA empty from that audit. Active application host: https://website-two-psi-49.vercel.app"
+    },
+    {
+      "id": "heygen",
+      "vendor": "HeyGen",
+      "role": "Media production vendor (Founder voice/avatar). Not website runtime.",
+      "receivesParticipantData": false,
+      "purpose": "Generate Founder videos. Runtime playback is static public/videos on Vercel. No HEYGEN_* env or SDK in the application.",
+      "dataCategories": [
+        "Founder likeness/voice and scripts (Kimberly M. Walker) if an account is in use",
+        "Not Architect account, payment, support, or Lumina conversation data"
+      ],
+      "retention": "HeyGen project/asset retention per account plan — FOUNDER VERIFICATION REQUIRED.",
+      "deletionExport": "HeyGen dashboard. Not a participant DSAR path.",
+      "securityTerms": "https://www.heygen.com/data-processing-addendum — https://www.heygen.com/privacy — https://www.heygen.com/security",
+      "breachContact": {
+        "vendor": "privacy@heygen.com (public privacy/security pages)",
+        "theBackHalf": "privacy@thebackhalf.org"
+      },
+      "subprocessors": "https://security.heygen.com/",
+      "crossBorder": "HeyGen US-oriented SaaS; confirm in DPA/dashboard.",
+      "modelTrainingOrProductImprovement": "Public HeyGen security page: Enterprise customers excluded from AI model training by default; non-enterprise may opt out via privacy@heygen.com. Plan class is FOUNDER VERIFICATION REQUIRED. If the account is not Enterprise, Founder should send the opt-out.",
+      "noTrainingControlsAvailable": "Email privacy@heygen.com to opt out of training if not on Enterprise. Do not upload participant data. Do not add a runtime API.",
+      "noTrainingControlsConfiguredThisRow": "NOT EXECUTED — no HeyGen account access from this agent. Opt-out mail not sent (would be Founder-as-account-holder).",
+      "dpaStatus": "Public DPA available. Execution FOUNDER VERIFICATION REQUIRED.",
+      "launchCritical": "YES for remaining media production rows. NO for website/checkout/Lumina runtime."
+    },
+    {
+      "id": "github",
+      "vendor": "GitHub",
+      "role": "Source repository / deploy origin. Not a participant runtime API.",
+      "receivesParticipantData": "Only if PII is committed. .data/ is gitignored. Ops JSON may contain operational emails (support@, privacy@) but not production participant databases.",
+      "purpose": "https://github.com/TheBackHalf/website.git origin for Vercel deploys and Launch Readiness evidence.",
+      "dataCategories": ["Source code", "ops evidence files", "PR metadata"],
+      "retention": "Git history until org deletion.",
+      "deletionExport": "GitHub org export. Not a participant DSAR path.",
+      "securityTerms": "GitHub DPA/privacy for the org plan — FOUNDER VERIFICATION REQUIRED.",
+      "breachContact": {
+        "vendor": "https://github.com/contact/security",
+        "theBackHalf": "privacy@thebackhalf.org"
+      },
+      "subprocessors": "GitHub/Microsoft subprocessors list — FOUNDER VERIFICATION REQUIRED.",
+      "crossBorder": "United States / Microsoft global.",
+      "modelTrainingOrProductImprovement": "GitHub Copilot/training on private repos depends on org Copilot settings — FOUNDER VERIFICATION REQUIRED. Default recommendation: keep Copilot training off for this private product repo.",
+      "noTrainingControlsAvailable": "Org Copilot 'allow/block training' and secret scanning. Do not commit .env or .data.",
+      "noTrainingControlsConfiguredThisRow": "NOT CONFIGURED FROM THIS ROW — no GitHub org settings mutation (gh is read-only here).",
+      "dpaStatus": "FOUNDER VERIFICATION REQUIRED in GitHub org settings.",
+      "launchCritical": true
+    },
+    {
+      "id": "cursor",
+      "vendor": "Cursor",
+      "role": "Founder engineering environment and Cursor Cloud Agents. Not website runtime.",
+      "receivesParticipantData": "Repo/context may include ops evidence. Cloud Agents process the repository. Not a production participant API.",
+      "purpose": "Implement Launch Readiness / AOS engineering jobs.",
+      "dataCategories": ["Source code", "prompts", "agent transcripts"],
+      "retention": "Per Cursor plan / Privacy Mode / Cloud Agent retention — FOUNDER VERIFICATION REQUIRED.",
+      "deletionExport": "Cursor account settings. Not a participant DSAR path.",
+      "securityTerms": "https://cursor.com/terms/dpa (Teams/Enterprise). Individual plans follow https://cursor.com/privacy. Subprocessors: https://trust.cursor.com/subprocessors",
+      "breachContact": {
+        "vendor": "Cursor privacy/security contacts on cursor.com/privacy — FOUNDER VERIFICATION REQUIRED for the live mailbox",
+        "theBackHalf": "privacy@thebackhalf.org"
+      },
+      "subprocessors": "https://trust.cursor.com/subprocessors (includes model providers). All listed with DPAs per Cursor privacy help.",
+      "crossBorder": "US-oriented; model providers may process prompts.",
+      "modelTrainingOrProductImprovement": "Privacy Mode: code is not used for training by Cursor or model providers. Business/Enterprise can enforce org-wide. Individual must enable. FOUNDER VERIFICATION REQUIRED whether Privacy Mode is on for the Founder seat and Cloud Agents.",
+      "noTrainingControlsAvailable": "Enable/enforce Privacy Mode. Prefer Teams/Enterprise DPA. Do not paste production secrets into chats.",
+      "noTrainingControlsConfiguredThisRow": "NOT CONFIGURED FROM THIS ROW — Founder seat setting.",
+      "dpaStatus": "DPA applies to Teams/Enterprise; Individual plans are Privacy Policy only. Plan class FOUNDER VERIFICATION REQUIRED.",
+      "launchCritical": "YES for engineering. NO for website runtime."
+    },
+    {
+      "id": "instagram",
+      "vendor": "Instagram / Meta (@backhalfco)",
+      "role": "Launch social publishing. Not a website runtime API.",
+      "receivesParticipantData": "Only if a person DMs/comments or if support tickets are taken from the channel. No Instagram Graph API in this application. No Meta pixel in this application.",
+      "purpose": "Official launch social channel.",
+      "dataCategories": ["Public posts; optional inbound social support (channel field exists on tickets)"],
+      "retention": "Meta platform retention.",
+      "deletionExport": "Meta account tools. Not The Back Half account-deletion product.",
+      "securityTerms": "Meta Commercial Terms / Privacy Policy. Not a click-through DPA from this repo.",
+      "breachContact": {
+        "vendor": "Meta Security / privacy.instagram.com",
+        "theBackHalf": "privacy@thebackhalf.org"
+      },
+      "subprocessors": "Meta",
+      "crossBorder": "Global / US.",
+      "modelTrainingOrProductImprovement": "Meta may use platform content per Meta privacy. Do not upload Architect private Journey data to Instagram.",
+      "noTrainingControlsAvailable": "Do not add Meta pixel. Do not connect a Graph API. Keep DMs off-platform into support@ when possible.",
+      "noTrainingControlsConfiguredThisRow": "No pixel/API present. Unchanged.",
+      "dpaStatus": "Not a typical GDPR processor DPA for organic social; counsel should classify. FOUNDER VERIFICATION REQUIRED.",
+      "launchCritical": "YES for campaign. NO for website runtime."
+    },
+    {
+      "id": "tiktok",
+      "vendor": "TikTok (@backhalfco)",
+      "role": "Launch social publishing. Not a website runtime API.",
+      "receivesParticipantData": "Only if a person interacts on-platform or support is taken from the channel. No TikTok API or pixel in this application.",
+      "purpose": "Official launch social channel.",
+      "dataCategories": ["Public posts; optional inbound social support"],
+      "retention": "TikTok platform retention.",
+      "deletionExport": "TikTok account tools.",
+      "securityTerms": "TikTok Terms / Privacy Policy.",
+      "breachContact": {
+        "vendor": "TikTok privacy/support",
+        "theBackHalf": "privacy@thebackhalf.org"
+      },
+      "subprocessors": "TikTok / ByteDance — counsel classification required for cross-border.",
+      "crossBorder": "Significant non-US processing risk — HIGH for any personal data placed on the platform. Do not send participant account dumps to TikTok.",
+      "modelTrainingOrProductImprovement": "Platform may use content per TikTok privacy. No in-app integration.",
+      "noTrainingControlsAvailable": "Do not add TikTok pixel. Do not upload participant PII.",
+      "noTrainingControlsConfiguredThisRow": "No pixel/API present. Unchanged.",
+      "dpaStatus": "Counsel should classify. Not executed by Imani.",
+      "launchCritical": "YES for campaign. NO for website runtime."
+    }
+  ],
+  "excludedNotInProduction": [
+    {
+      "vendor": "Google Analytics (GA4)",
+      "reason": "Not in production code. Replaced by first-party Rows 84/150/151. Privacy Policy §5 still says analytics providers may include Google Analytics."
+    },
+    {
+      "vendor": "Microsoft Clarity",
+      "reason": "Not in production code. Privacy Policy §5 still names it."
+    },
+    {
+      "vendor": "Resend",
+      "reason": "Not used. Email is Google Workspace SMTP (Row 153)."
+    },
+    {
+      "vendor": "Kit / ConvertKit",
+      "reason": "Not present."
+    },
+    {
+      "vendor": "ElevenLabs",
+      "reason": "Removed from scope. No SDK/env."
+    },
+    {
+      "vendor": "Apple Sign-In",
+      "reason": "Not implemented."
+    },
+    {
+      "vendor": "Sentry / Datadog / other APM",
+      "reason": "Row 61 is first-party on Vercel + Postgres."
+    },
+    {
+      "vendor": "LinkedIn / YouTube",
+      "reason": "Not launch runtime processors."
+    },
+    {
+      "vendor": "Google Fonts runtime CDN",
+      "reason": "app/layout.tsx uses next/font/google (Cormorant Garamond, Outfit). Next self-hosts font files at build time, so visitor browsers do not call fonts.googleapis.com at runtime. Not inventoried as a visitor-data subprocessor. Build-time fetch from Google Fonts is a development/build concern, not participant traffic."
+    }
+  ],
+  "codeLevelPrivacyControlsAlreadyPresent": [
+    "lib/analytics/privacy.ts — blocks conversation/message/prompt/journal/answer/card/password keys from analytics",
+    "lib/fab-5/live-runner.ts — tracingDisabled, OPENAI_AGENTS_DISABLE_TRACING=1, setSensitiveDataLoggingEnabled(false), redactSecrets",
+    "lib/fab-5/nia-research-live.ts — same tracing/sensitive-log controls",
+    "Lumina conversation module has no OpenAI/Anthropic/Google generative import",
+    "No GA4, Clarity, Meta pixel, TikTok pixel, or third-party APM packages in package.json",
+    "Google OAuth scopes limited to openid email profile",
+    "Age attestation is 18+ without storing date of birth",
+    "Lumina memory can be cleared by the Architect; copy states account deletion is not available yet"
+  ],
+  "dpaExecutionRegister": {
+    "executedByThisRow": false,
+    "reason": "Imani is not a human account holder and cannot accept vendor legal terms. Kimberly Walker (human) is the sole Founder acceptance authority for click-through DPAs.",
+    "founderDashboardActionsRequired": [
+      {
+        "vendor": "Stripe",
+        "action": "Confirm Stripe DPA applies to the live account; subscribe to subprocessor emails; confirm security contact mailbox is kimberly@ or privacy@.",
+        "url": "https://stripe.com/legal/dpa"
+      },
+      {
+        "vendor": "Vercel",
+        "action": "Accept Vercel DPA if not already part of the plan; subscribe to subprocessors via privacy@vercel.com; confirm team admin email for incident notice.",
+        "url": "https://vercel.com/legal/dpa"
+      },
+      {
+        "vendor": "Supabase",
+        "action": "Execute/download the customer DPA in the project; confirm region us-east-1 and backup/PITR; set incident contact.",
+        "url": "https://supabase.com/legal/customer-resources/data-processing-addendum"
+      },
+      {
+        "vendor": "OpenAI",
+        "action": "Accept the OpenAI DPA in the organization. Confirm API (not consumer ChatGPT) is the billed product. Decide with counsel whether to request Zero Data Retention. Do not paste the API key into tickets.",
+        "url": "https://openai.com/policies/data-processing-addendum"
+      },
+      {
+        "vendor": "Google Workspace",
+        "action": "Admin Console → Review and Accept Cloud Data Processing Addendum. Confirm Gemini/Workspace AI features that would train on mailbox content are off. Confirm privacy@ mailbox exists.",
+        "url": "https://knowledge.workspace.google.com/admin/compliance/privacy-compliance-and-records-for-google-workspace-and-cloud-identity"
+      },
+      {
+        "vendor": "Cloudflare",
+        "action": "Accept Cloudflare Customer DPA for the registrar/DNS account. Do not enable HTTP proxy from this row.",
+        "url": "https://www.cloudflare.com/cloudflare-customer-dpa/"
+      },
+      {
+        "vendor": "HeyGen",
+        "action": "If an account exists and is not Enterprise, email privacy@heygen.com to opt out of model training. Execute DPA if remaining media production continues.",
+        "url": "https://www.heygen.com/data-processing-addendum"
+      },
+      {
+        "vendor": "Cursor",
+        "action": "Enable/enforce Privacy Mode. Confirm plan class (Individual vs Teams/Enterprise DPA).",
+        "url": "https://cursor.com/help/security-and-privacy/privacy.md"
+      },
+      {
+        "vendor": "GitHub",
+        "action": "Confirm org DPA/Copilot training settings; keep this repo private; do not enable training on private code."
+      }
+    ]
+  },
+  "privacyPolicyGapAnalysis": {
+    "legalFilesChanged": false,
+    "reasonLegalFilesUnchanged": "AOS rule for non-software deliverable plus Imani scope: do not change curriculum/brand/Founder-facing marketing copy; do not rewrite Founder-accepted Version 1.0 legal bodies without counsel/Founder. Row 34 already flagged the analytics naming gap as accepted remaining risk pending counsel.",
+    "factualMismatchesForCounsel": [
+      {
+        "id": "PP-ANALYTICS-NAMING",
+        "severity": "HIGH",
+        "policy": "Privacy Policy §5: 'Analytics providers may include Google Analytics and Microsoft Clarity.'",
+        "actual": "Launch analytics are first-party beacons into Supabase Postgres (Rows 84/150/151). No GA4 or Clarity package, pixel, or env.",
+        "priorFinding": "Row 34 remaining risk R34-H1. Counsel recommendation already recorded: review processors against actual use.",
+        "imaniAction": "Documented only. Did not rewrite the published policy."
+      },
+      {
+        "id": "PP-PROCESSORS-UNNAMED",
+        "severity": "HIGH",
+        "policy": "§6 names categories (payment, authentication, hosting, cloud, email, analytics, support) but no legal names.",
+        "actual": "Production processors that receive or may receive personal data: Vercel, Supabase, Stripe, Google Workspace, optional Google Sign-In, OpenAI (Fab 5 operational), Cloudflare (DNS/registrar only today).",
+        "imaniAction": "Inventory recorded here for counsel. Naming subprocessors in the public policy is a legal-drafting decision."
+      },
+      {
+        "id": "PP-AI-IMPROVEMENT-LANGUAGE",
+        "severity": "HIGH",
+        "policy": "§4: Interactions with Lumina and AI Kimberly may be processed to improve quality, safety, consistency, and performance. AI Disclosure §7 similarly lists improving future AI performance.",
+        "actual": "Lumina is first-party scripted and stored on the application file store; it is not sent to OpenAI. AI Kimberly launch playback is pre-rendered video. OpenAI is used for internal Fab 5 agents. 'Improve future AI performance' can be read as model-training. API default is no training on API data; ZDR is not verified.",
+        "imaniAction": "Flag for counsel. Did not rewrite AI Disclosure or Privacy Policy."
+      },
+      {
+        "id": "PP-DELETION-VS-PRODUCT",
+        "severity": "MEDIUM",
+        "policy": "§9 offers deletion and export via privacy@thebackhalf.org.",
+        "actual": "No automated account-deletion or full export implementation. Lumina memory clear exists and is described as separate from account deletion, which is not available yet. Manual privacy@ process is the only path.",
+        "imaniAction": "Operational gap. Product deletion/export is out of this status-only row."
+      },
+      {
+        "id": "PP-OPENAI-UNDISCLOSED-BY-NAME",
+        "severity": "MEDIUM",
+        "policy": "AI experiences disclosed; OpenAI not named as a subprocessor.",
+        "actual": "OpenAI does not receive Lumina transcripts. It does receive Fab 5 operational prompts. Counsel should decide whether to name OpenAI now or only if participant AI inference is added."
+      },
+      {
+        "id": "PP-SPANISH",
+        "severity": "HIGH — already Row 34/140",
+        "policy": "English Version 1.0 published. Spanish bodies pending approved translation.",
+        "actual": "/es/legal/privacy-policy exists as a route; Spanish legal meaning is Row 140, not this row."
+      }
+    ],
+    "matchesThatHold": [
+      "Does not sell personal information — no sale/share pixels found",
+      "Payment processing via a provider — Stripe",
+      "Email communications — Google Workspace",
+      "Website hosting / cloud — Vercel + Supabase",
+      "18+ eligibility without COPPA/DOB collection",
+      "International users may be processed in the United States",
+      "privacy@thebackhalf.org contact",
+      "No-refund is in Terms/Participant/Membership, not this policy"
+    ]
+  },
+  "aiPrivacyReview": {
+    "participantFacingModels": {
+      "lumina": "NOT a third-party LLM. First-party scripted Guide. Conversations stored first-party. Memory optional with in-product clear.",
+      "aiKimberly": "NOT a live third-party LLM at launch runtime. Pre-rendered Founder media."
+    },
+    "internalModels": {
+      "fab5": "OpenAI Agents SDK. Operational. Tracing disabled in code. Must not be pointed at participant Journey/Lumina corpora."
+    },
+    "trainingRisk": {
+      "apiDefaultNoTraining": "Public OpenAI API data-controls table lists chat/completions and responses as not used for training.",
+      "residualRetention": "Up to 30 days abuse monitoring unless ZDR approved.",
+      "zdrStatus": "UNVERIFIED / NOT REQUESTED FROM THIS ROW",
+      "heygenTraining": "Opt-out required if the Founder HeyGen account is not Enterprise — UNVERIFIED",
+      "cursorTraining": "Privacy Mode UNVERIFIED on the Founder seat"
+    },
+    "mustNotDo": [
+      "Do not send Lumina transcripts or Journey answers to OpenAI to 'improve' the Guide",
+      "Do not add GA4/Clarity/pixels to close a disclosure gap; change the policy instead, with counsel",
+      "Do not enable Cloudflare HTTP proxy without treating Cloudflare as a full subprocessor",
+      "Do not mark this row Complete without counsel + Founder acceptance"
+    ]
+  },
+  "deletionExportCapability": {
+    "selfServeAccountDeletion": false,
+    "selfServeFullExport": false,
+    "luminaMemoryClear": true,
+    "privacyMailbox": "privacy@thebackhalf.org — reserved; mailbox existence is Founder verification (Row 74)",
+    "manualProcess": "Not runbooked as a tested DSAR playbook in this row. Counsel should define retention vs tax/transaction exceptions (prior Row 17 legal-hold caution still applies)."
+  },
+  "validation": {
+    "reasonProductionBuildNotRequired": "No product, marketing, or legal source files changed. Status JSON only.",
+    "typecheck": "PASS — ./node_modules/.bin/tsc --noEmit exit 0. npm run typecheck is not a package script.",
+    "npmTest": "No npm test script in package.json. Not invented.",
+    "npmBuild": "Skipped — change cannot affect production runtime.",
+    "lint": "Not required for ops JSON."
+  },
+  "blockersRemaining": [
+    "Qualified human counsel must review this inventory against Privacy Policy / AI Disclosure and decide disclosure amendments. Imani will not issue that legal conclusion.",
+    "Founder must execute or confirm DPAs and no-training/privacy dashboard controls listed in dpaExecutionRegister.",
+    "Founder acceptance of Row 141 is not recorded and is not implied by this file.",
+    "Dedicated Data Map artifact did not previously exist; this file is engineering-only.",
+    "Automated participant deletion/export is not implemented.",
+    "OpenAI ZDR not verified.",
+    "HeyGen training opt-out not verified.",
+    "Workspace Gemini/AI training controls not verified.",
+    "Spanish Privacy Policy body remains Row 140."
+  ],
+  "nextAction": "Human counsel reviews this inventory and the Version 1.0 Privacy Policy / AI Disclosure. Founder executes vendor DPAs and dashboard no-training controls. Do not merge this as Complete. Do not deploy policy text from this PR.",
+  "evidence": [
+    "ops/fab-5/vendor-saas-register.json",
+    "ops/fab-5/ROW-72-VENDOR-SAAS-DEPENDENCY-REGISTER.md",
+    "ops/fab-5/runs/row-34-human-legal-launch-review-validation.json (R34-H1 analytics naming)",
+    "ops/fab-5/runs/row-75-domain-dns-ssl-validation.json (Cloudflare NS/registrar, no A/AAAA)",
+    "content/legal/v1-candidates.ts (published Privacy Policy and AI Disclosure bodies)",
+    "lib/lumina/conversation.ts (no third-party model)",
+    "lib/fab-5/live-runner.ts (OpenAI tracing/sensitive-log controls)",
+    "lib/analytics/privacy.ts",
+    "package.json (stripe, @openai/agents, postgres, nodemailer; no GA4/Clarity/Sentry)"
+  ]
+}
