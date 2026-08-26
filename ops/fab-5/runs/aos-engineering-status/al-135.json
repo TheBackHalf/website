@@ -1,0 +1,46 @@
+{
+  "aosWorkId": "al-135",
+  "source": "command_center",
+  "sourceReference": "August Launch row 135",
+  "deliverable": "Build Completion and Threshold Ceremony",
+  "ownerAgent": "imani",
+  "softwareChange": true,
+  "status": "ENGINEERING_READY_FOR_REVIEW",
+  "founderAcceptance": null,
+  "founderAcceptanceAuthority": "Kimberly Walker (human)",
+  "nextAction": "Nia verifies Triple E. Founder acceptance stays with Kimberly Walker (human).",
+  "validationEvidence": "ops/fab-5/runs/row-135-threshold-ceremony-validation.json",
+  "host": "/architect/journey/chapter-7/complete",
+  "luminaTopic": "threshold",
+  "elements": [
+    "lumina_reflection",
+    "certificate",
+    "founder_congratulations",
+    "portfolio",
+    "community_invitation"
+  ],
+  "validation": {
+    "typecheck": {
+      "command": "npx tsc --noEmit",
+      "result": "PASS"
+    },
+    "tests": {
+      "command": "npm run fab5:row135",
+      "nearestPackageTestScript": "fab5:row135",
+      "npmTestPresent": false,
+      "result": "PASS",
+      "passed": 9,
+      "failed": 0
+    },
+    "build": {
+      "command": "npm run build",
+      "result": "PASS"
+    }
+  },
+  "merged": false,
+  "deployed": false,
+  "prUrl": "https://github.com/TheBackHalf/website/pull/50",
+  "branch": "cursor/aos-imani-al-135-92aa",
+  "ranAt": "2026-08-26T18:24:30.000Z",
+  "pass": true
+}
