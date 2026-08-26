@@ -46,9 +46,9 @@
     "chapterClosingVideos": "EN/ES closing Founder videos remain unproduced; they are not launch videos and are not marked accessibility-complete."
   },
   "validation": {
-    "typecheck": "npx tsc --noEmit",
-    "nearestTest": "npm run fab5:row138",
-    "build": "pending_at_status_write"
+    "typecheck": "npx tsc --noEmit — pass",
+    "nearestTest": "npm run fab5:row138 — 96 checks pass",
+    "build": "npm run build — pass; routes include /transcripts/founder/[id] and /es/transcripts/founder/[id]"
   },
   "notes": [
     "Do not treat Row 138 as Founder-accepted. Kimberly Walker (human) remains the sole Founder acceptance authority.",
