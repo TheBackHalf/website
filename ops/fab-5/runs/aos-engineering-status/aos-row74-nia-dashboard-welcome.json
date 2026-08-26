@@ -1,0 +1,100 @@
+{
+  "aos_work_id": "aos-row74-nia-dashboard-welcome",
+  "title": "Architect Dashboard welcome-copy correction",
+  "operating_agent": "nia",
+  "nia_prism": [
+    "experience",
+    "curriculum",
+    "brand",
+    "transformation"
+  ],
+  "source": "company_objective open-cursor-work:architect-dashboard-welcome",
+  "assigned_repository": "TheBackHalf/website",
+  "branch": "cursor/aos-nia-aos-row74-nia-dashboard-welcome-4c1c",
+  "recorded_at": "2026-08-26T09:47:15Z",
+  "deliverable_kind": "status_only",
+  "software_change_applied": false,
+  "product_files_changed": false,
+  "status": "blocked_missing_surface",
+  "summary": "The Founder-observed duplicate Welcome heading cannot be corrected in TheBackHalf/website because this repository does not contain an Architect Dashboard, dashboard shell, or English/Spanish dictionaries with dashboard.welcomeSlot / dashboard.welcome.",
+  "requested_correction": {
+    "surface": "authenticated Architect Dashboard Welcome card",
+    "defect": "Two participant-facing welcome lines: slot heading (dashboard.welcomeSlot: 'Welcome' / 'Bienvenida') plus body (dashboard.welcome: 'Welcome, {name}.' / 'Te damos la bienvenida, {name}.').",
+    "required": "One participant-facing welcome line, still personalized with the Architect's name. Update English and Spanish dictionaries and the dashboard shell if the heading/body split creates the duplicate.",
+    "locales": ["en", "es"]
+  },
+  "repository_inspection": {
+    "website_head": "fc7407265ece2e304a5500c6a98d4f02485e3a3f",
+    "website_contents": "Marketing homepage only (app/page.tsx, app/layout.tsx, components/ui/button.tsx). No dashboard routes, no i18n dictionaries, no authenticated shell.",
+    "keys_searched": [
+      "welcomeSlot",
+      "dashboard.welcome",
+      "Bienvenida",
+      "Architect Dashboard"
+    ],
+    "keys_found_in_website": false,
+    "sibling_org_repos_checked": [
+      {
+        "repo": "TheBackHalf/participant-portal",
+        "result": "Stub only (.gitignore, LICENSE, README.md). No dashboard source."
+      },
+      {
+        "repo": "TheBackHalf/backend",
+        "result": "Stub only (.gitignore, LICENSE, README.md)."
+      },
+      {
+        "repo": "TheBackHalf/lumina",
+        "result": "Stub only (.gitignore, LICENSE, README.md)."
+      },
+      {
+        "repo": "TheBackHalf/documentation",
+        "result": "Stub only (LICENSE, README.md). No dashboard copy spec."
+      },
+      {
+        "repo": "TheBackHalf/infrastructure",
+        "result": "Stub only. Not inspected for product copy; infrastructure is out of Nia scope."
+      },
+      {
+        "repo": "TheBackHalf/brand-assets",
+        "result": "Stub only. No dashboard copy."
+      }
+    ]
+  },
+  "why_not_implemented_here": [
+    "Inventing an Architect Dashboard in the marketing website would add routing and an authenticated surface that do not exist in this repo.",
+    "The work packet forbids changing other dashboard cards, routing, auth, Stripe, DNS, legal, or Journey curriculum.",
+    "Nia may change experience/brand copy, but the copy keys and dashboard shell are not present to edit.",
+    "Applying a fake Welcome card on the public homepage would not fix the Founder-observed authenticated dashboard defect."
+  ],
+  "out_of_scope_respected": [
+    "No Stripe, Cloudflare DNS, Vercel custom-domain, or thebackhalf.org nameserver changes.",
+    "No authentication or security-control changes.",
+    "No Journey curriculum changes.",
+    "No Launch Readiness row marked Complete.",
+    "No Founder acceptance recorded.",
+    "Kimberly Walker (AI) was not treated as execution capacity."
+  ],
+  "launch_readiness_row": {
+    "id": "aos-row74-nia-dashboard-welcome",
+    "marked_complete": false
+  },
+  "founder_acceptance": {
+    "recorded": false,
+    "authority": "Kimberly Walker (human)",
+    "note": "Founder acceptance, if required, stays with Kimberly Walker (human). This status file does not claim approval or completion of the copy correction."
+  },
+  "validation": {
+    "typecheck": "skipped_status_only_no_product_change",
+    "test": "skipped_status_only_no_test_script_and_no_product_change",
+    "build": "skipped_status_only_does_not_affect_production",
+    "note": "package.json has no typecheck or test script. Production build was not run because no product, marketing, or legal files were changed."
+  },
+  "next_required_input": "Reassign this work to the repository that actually contains the authenticated Architect Dashboard (dashboard shell plus EN/ES dictionaries). Once that surface exists in an assigned repo, Nia can collapse dashboard.welcomeSlot and dashboard.welcome into one personalized participant-facing line.",
+  "recommended_fix_when_surface_exists": {
+    "keep_one_visible_line": true,
+    "personalize_with_architect_name": true,
+    "english_example": "Welcome, {name}.",
+    "spanish_example": "Te damos la bienvenida, {name}.",
+    "shell_note": "If the dashboard card always renders both a slot heading and a body, either omit the heading for this card or make the heading the personalized line and leave the body empty—do not render both."
+  }
+}
