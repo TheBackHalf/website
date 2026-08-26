@@ -1,5 +1,4 @@
 import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
-import path from "node:path";
 import type {
   AccountAccessRecord,
   BillingDatabase,
@@ -10,25 +9,30 @@ import type {
   StripeEventLogRecord,
 } from "@/lib/billing/types";
 
-const DEFAULT_DB_FILE = ".data/billing/database.json";
+const DATA_DIR = ".data/billing";
+const DB_FILE = ".data/billing/database.json";
 
-let overrideDbFile: string | undefined;
+let testDbFile: string | undefined;
+let testDataDir: string | undefined;
 
 function resolveDbFile(): string {
-  return (
-    overrideDbFile ??
-    process.env.BILLING_DB_FILE?.trim() ??
-    DEFAULT_DB_FILE
-  );
+  return testDbFile ?? DB_FILE;
 }
 
 function resolveDataDir(): string {
-  return path.dirname(resolveDbFile());
+  return testDataDir ?? DATA_DIR;
 }
 
 /** Test-only — point the file ledger at an isolated temp path. */
 export function setBillingDbFileForTests(file: string | null): void {
-  overrideDbFile = file ?? undefined;
+  if (!file) {
+    testDbFile = undefined;
+    testDataDir = undefined;
+    return;
+  }
+  const separator = file.lastIndexOf("/");
+  testDbFile = file;
+  testDataDir = separator === -1 ? "." : file.slice(0, separator);
 }
 
 const emptyDatabase = (): BillingDatabase => ({
