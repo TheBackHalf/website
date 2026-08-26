@@ -18,7 +18,31 @@
       "npm run test:download-a11y",
       "npm run build"
     ],
-    "auditPassed": true
+    "auditPassed": true,
+    "executed": {
+      "npx tsc --noEmit": "pass",
+      "npm run test:download-a11y": "pass",
+      "npm run build": "pass"
+    },
+    "merged": false,
+    "htmlPrintSmoke": {
+      "guidebook": {
+        "status": 200,
+        "firstH1": "The Back Half Blueprint",
+        "langEn": true
+      },
+      "aliveness": {
+        "status": 200,
+        "firstH1": "Aliveness Index",
+        "langEn": true,
+        "ratingAndWritingAlternatives": true
+      },
+      "certificate": {
+        "status": 200,
+        "firstH1": "The Back Half Blueprint",
+        "langEn": true
+      }
+    }
   },
   "passed": true,
   "assets": [
