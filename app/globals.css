@@ -1757,6 +1757,22 @@
     @apply flex min-h-0 flex-col;
   }
 
+  .bh-ai-kimberly-media {
+    @apply m-0 w-full;
+  }
+
+  .bh-ai-kimberly-media-video {
+    @apply h-auto w-full rounded-sm bg-bh-ink/5 object-cover;
+  }
+
+  .bh-ai-kimberly-media-unavailable {
+    @apply font-sans text-sm font-light text-bh-muted;
+  }
+
+  .bh-ai-kimberly-media-inline {
+    @apply mb-6 max-w-sm;
+  }
+
   .bh-lumina-chat {
     @apply flex min-h-0 flex-1 flex-col gap-6;
   }

@@ -343,6 +343,7 @@ export const enDictionary: Dictionary = {
       dashboard: "Dashboard",
       journey: "The Journey",
       lumina: "Lumina",
+      aiKimberly: "Founder Conversation",
       resources: "Architect Resources",
       settings: "Settings",
       billing: "Billing",
@@ -1066,6 +1067,30 @@ export const enDictionary: Dictionary = {
       memoryActive: "Memory on",
       memoryInactive: "Memory off",
     },
+    aiKimberly: {
+      title: "Kimberly M. Walker (AI)",
+      description:
+        "Founder Conversation with Kimberly M. Walker (AI) — an authorized digital representation, not a live conversation with Kimberly.",
+      emptyTitle: "Begin when you are ready",
+      emptyBody:
+        "Write a message below. This is Kimberly M. Walker (AI), not a live conversation with Kimberly. Your conversation stays with this Architect account.",
+      composerLabel: "Message to Kimberly M. Walker (AI)",
+      composerPlaceholder: "Write your message…",
+      send: "Send",
+      sending: "Sending…",
+      responding: "Kimberly M. Walker (AI) is responding…",
+      retry: "Retry",
+      errorGeneric: "Something went wrong. You can try again.",
+      citationsLabel: "References",
+      externalLinkHint: "opens in a new tab",
+      architectLabel: "Architect",
+      founderLabel: "Kimberly M. Walker (AI)",
+      disclosureLink: "AI Disclosure",
+      identityNote: "Kimberly M. Walker (AI) — not a live conversation",
+      mediaUnavailable: "Founder media unavailable",
+      mediaCaptions: "Captions",
+      mediaCaption: "Founder Conversation welcome in the active site language",
+    },
     resources: {
       title: "Architect Resources",
       description:
@@ -1139,6 +1164,11 @@ export const enDictionary: Dictionary = {
       lumina: {
         title: "Lumina — Architect — The Back Half",
         description: "Meet Lumina in your Architect space.",
+      },
+      aiKimberly: {
+        title: "Kimberly M. Walker (AI) — Architect — The Back Half",
+        description:
+          "Founder Conversation with Kimberly M. Walker (AI) in your Architect space.",
       },
       resources: {
         title: "Architect Resources — The Back Half",

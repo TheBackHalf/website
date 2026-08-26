@@ -83,6 +83,15 @@ export const appShellIntegrationPoints = {
     uiSlot: "components/app-shell/lumina-entry-shell.tsx",
     status: "connected" as const,
   },
+  /** Row 142 — bilingual AI Kimberly / Founder Conversation (Architect-gated) */
+  aiKimberlyConversation: {
+    row: 142,
+    hook: "useFounderConversation",
+    path: "lib/ai-kimberly/",
+    uiSlot: "components/app-shell/ai-kimberly-entry-shell.tsx",
+    routes: ["/architect/ai-kimberly", "/es/architect/ai-kimberly"],
+    status: "connected" as const,
+  },
   /** Row 76 — Lumina cross-session memory with consent and clear */
   luminaMemory: {
     row: 76,

@@ -1,0 +1,13 @@
+{
+  "aosWorkId": "al-142",
+  "row": 142,
+  "deliverable": "Implement and QA Bilingual AI Kimberly Experience",
+  "operatingAgent": "imani",
+  "source": "command_center August Launch row 142",
+  "technicalStatus": "implemented",
+  "founderAcceptance": "open",
+  "founderAcceptanceAuthority": "Kimberly Walker (human)",
+  "merged": false,
+  "deployed": false,
+  "notes": "Architect-gated Founder Conversation follows the active site language. Español UI and AI Founder replies are Spanish; spoken/avatar media uses locale-resolved Spanish sources with no English fallback. Public homepage Founder section remains the human Founder surface. Founder acceptance is not marked complete."
+}

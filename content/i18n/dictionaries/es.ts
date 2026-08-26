@@ -360,6 +360,7 @@ export const esDictionary: Dictionary = {
       dashboard: "Panel",
       journey: "El Journey",
       lumina: "Lumina",
+      aiKimberly: "Conversación con la Fundadora",
       resources: "Recursos de Architect",
       settings: "Configuración",
       billing: "Facturación",
@@ -1089,6 +1090,31 @@ export const esDictionary: Dictionary = {
       memoryActive: "Memoria activada",
       memoryInactive: "Memoria desactivada",
     },
+    aiKimberly: {
+      title: "Kimberly M. Walker (AI)",
+      description:
+        "Conversación con la Fundadora con Kimberly M. Walker (AI) — una representación digital autorizada, no una conversación en vivo con Kimberly.",
+      emptyTitle: "Empieza cuando estés listo",
+      emptyBody:
+        "Escribe un mensaje abajo. Esta es Kimberly M. Walker (AI), no una conversación en vivo con Kimberly. Tu conversación permanece con esta cuenta de Architect.",
+      composerLabel: "Mensaje para Kimberly M. Walker (AI)",
+      composerPlaceholder: "Escribe tu mensaje…",
+      send: "Enviar",
+      sending: "Enviando…",
+      responding: "Kimberly M. Walker (AI) está respondiendo…",
+      retry: "Reintentar",
+      errorGeneric: "Algo salió mal. Puedes intentarlo de nuevo.",
+      citationsLabel: "Referencias",
+      externalLinkHint: "se abre en una pestaña nueva",
+      architectLabel: "Architect",
+      founderLabel: "Kimberly M. Walker (AI)",
+      disclosureLink: "Divulgación de IA",
+      identityNote: "Kimberly M. Walker (AI) — no es una conversación en vivo",
+      mediaUnavailable: "Medios del Founder no disponibles",
+      mediaCaptions: "Subtítulos",
+      mediaCaption:
+        "Bienvenida de la Conversación con la Fundadora en el idioma activo del sitio",
+    },
     resources: {
       title: "Recursos de Architect",
       description:
@@ -1162,6 +1188,11 @@ export const esDictionary: Dictionary = {
       lumina: {
         title: "Lumina — Architect — The Back Half",
         description: "Continúa con Lumina en tu espacio de Architect.",
+      },
+      aiKimberly: {
+        title: "Kimberly M. Walker (AI) — Architect — The Back Half",
+        description:
+          "Conversación con la Fundadora con Kimberly M. Walker (AI) en tu espacio de Architect.",
       },
       resources: {
         title: "Recursos de Architect — The Back Half",

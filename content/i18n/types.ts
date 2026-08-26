@@ -263,6 +263,7 @@ export type Dictionary = {
       dashboard: TranslatedString;
       journey: TranslatedString;
       lumina: TranslatedString;
+      aiKimberly: TranslatedString;
       resources: TranslatedString;
       settings: TranslatedString;
       billing: TranslatedString;
@@ -878,6 +879,28 @@ export type Dictionary = {
       memoryActive: string;
       memoryInactive: string;
     };
+    aiKimberly: {
+      title: TranslatedString;
+      description: TranslatedString;
+      emptyTitle: string;
+      emptyBody: string;
+      composerLabel: string;
+      composerPlaceholder: string;
+      send: string;
+      sending: string;
+      responding: string;
+      retry: string;
+      errorGeneric: string;
+      citationsLabel: string;
+      externalLinkHint: string;
+      architectLabel: string;
+      founderLabel: string;
+      disclosureLink: string;
+      identityNote: string;
+      mediaUnavailable: TranslatedString;
+      mediaCaptions: string;
+      mediaCaption: string;
+    };
     resources: {
       title: TranslatedString;
       description: TranslatedString;
@@ -925,6 +948,7 @@ export type Dictionary = {
         description: TranslatedString;
       };
       lumina: { title: TranslatedString; description: TranslatedString };
+      aiKimberly: { title: TranslatedString; description: TranslatedString };
       resources: { title: TranslatedString; description: TranslatedString };
       settings: { title: TranslatedString; description: TranslatedString };
       billing: { title: TranslatedString; description: TranslatedString };
