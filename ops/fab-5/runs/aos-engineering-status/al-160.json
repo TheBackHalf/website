@@ -1,0 +1,647 @@
+{
+  "aosWorkId": "al-160",
+  "excelRow": 161,
+  "commandCenterOrder": 160,
+  "launchRowsNumber": 160,
+  "tab": "August Launch",
+  "phase": "Email, Analytics, Support & Architect Experience",
+  "deliverable": "Create Founding Architect Welcome and Retention Plan",
+  "description": "Define communications and touchpoints from purchase through Blueprint completion and toward Community opening so Founding Architects maintain continuity after purchase. Coordinate email, Founder, Lumina, and Community messaging.",
+  "assignedOperatingAgent": "michelle",
+  "assignedTitle": "Michelle Northstar — Chief of Staff & Operations Officer",
+  "workbookPrimaryOwner": "nia",
+  "workbookSupportingOwners": ["michelle"],
+  "michelleScope": "operations, orchestration, Launch Readiness coordination of welcome/retention touchpoints. Does not take Imani security/infra ownership or Nia curriculum/brand ownership.",
+  "kimberlyWalkerAiUsedAsOperatingCapacity": false,
+  "softwareChangeApplied": false,
+  "productMarketingLegalFilesChanged": false,
+  "stripeConfigModified": false,
+  "cloudflareDnsModified": false,
+  "vercelCustomDomainModified": false,
+  "nameserversModified": false,
+  "secretsPrinted": false,
+  "authenticationWeakened": false,
+  "merged": false,
+  "deployed": false,
+  "rowMarkedComplete": false,
+  "founderAcceptanceRecorded": false,
+  "founderAcceptance": null,
+  "acceptanceAuthority": "Kimberly Walker (human) only. This file does not record Founder acceptance. Customer-facing copy in this plan is proposed intent only until Founder accepts Nia-authored language.",
+  "generatedAt": "2026-08-26T16:50:00.000Z",
+  "mode": "operations-orchestration-plan-status-only",
+  "status": "PLAN_DEFINED — ACCEPTANCE_READY",
+  "percentCompleteClaimed": null,
+  "workbookStatusUnchanged": "Not Started",
+  "syntheticLabel": "Not a live participant send. No emails were sent. No Stripe charges. No Community experience was opened.",
+  "purpose": "Keep Founding Architects in a continuous relationship after purchase: they know what they bought, how to begin, how to continue the Journey, what happens when the Blueprint is complete, and what is true about Architect Community before it opens. Continuity is the job. Pressure is not.",
+  "lockedFacts": {
+    "companyLaunch": "August 31, 2026",
+    "communityLaunch": "October 25, 2026",
+    "communityComingCopy": "Architect Community — Coming October 25, 2026",
+    "communityNotLiveOnCompanyLaunch": true,
+    "foundingArchitectOfferName": "Founding Architect",
+    "foundingArchitectPrice": "$1,750 one-time",
+    "foundingArchitectInclusions": "Blueprint + first six months of Architect Community. Not first year.",
+    "foundingArchitectCommunityPeriod": "October 25, 2026 through April 25, 2027",
+    "foundingArchitectEnrollmentWindow": "August 31–December 31, 2026",
+    "standaloneCommunity": "$50/month after Blueprint completion",
+    "renewalAfterIncludedPeriod": "$50/month after the first six months of Architect Community access",
+    "blueprintStandalone": "$1,500 one-time",
+    "eligibility": "18+",
+    "refunds": "No refunds. Cancellation is not a refund.",
+    "primaryCta": "Become an Architect",
+    "registerUrl": "https://thebackhalf.org/register",
+    "supportMailbox": "support@thebackhalf.org",
+    "supportForm": "https://thebackhalf.org/support",
+    "founderSignOff": ["In Gratitude,", "Kimberly M. Walker", "Founder", "The Back Half"],
+    "positioning": "From expectation to intention. Magical is Possible.",
+    "journeyPacingRule": "There is no race through this Journey. Move thoughtfully. Do not send urgency-to-complete copy.",
+    "sources": [
+      "ops/launch/LAUNCH-DAY-RUNBOOK-AUGUST-31-2026.md",
+      "lib/checkout/offers.ts",
+      "content/i18n/dictionaries/en.ts checkout.offerBundleDescription",
+      "content/legal/v1-candidates.ts Membership Agreement §7 Founding Architect Bundle",
+      "lib/marketing-claims/standard.ts",
+      "ops/fab-5/ROW-33-MARKETING-CLAIMS-TESTIMONIAL-SOCIAL-STANDARD.md"
+    ]
+  },
+  "scope": {
+    "inScope": [
+      "Touchpoint map from Founding Architect purchase through Blueprint / Journey completion and toward Architect Community opening",
+      "Channel coordination across email, in-product Founder media, Lumina, dashboard, support, and pre-opening Community messaging",
+      "Cadence, owners, triggers, and fallbacks so continuity does not depend on a single channel",
+      "Handoffs to Nia (copy / Community Runway / Lumina voice) and Imani (transactional email / lifecycle automation)",
+      "Coordination findings that would break continuity if left unaligned"
+    ],
+    "outOfScope": [
+      "Product, marketing, legal, Journey, Lumina, or checkout file changes",
+      "Stripe, Cloudflare DNS, Vercel custom-domain, or nameserver changes",
+      "Inventing a new Community program, first-year benefit, or live Community experience before October 25, 2026",
+      "Writing final Founder-facing or participant-facing copy (Nia brand/curriculum ownership)",
+      "Implementing Resend/Kit/SMTP lifecycle automations (Imani Row 146 / Row 147)",
+      "Marking Command Center row Complete or recording Founder acceptance",
+      "Treating Kimberly Walker (AI) as execution capacity"
+    ]
+  },
+  "dependencies": {
+    "namedInWorkbook": "Email Automation; Journey; Community Runway",
+    "journeyOnboarding": {
+      "row": 124,
+      "status": "Complete",
+      "note": "Purchase confirmation surface, Founder welcome, preferences, consent, Lumina introduction, Aliveness assessment, Awakening entry exist in product."
+    },
+    "journeyChapters": {
+      "rows": "126–132 (Chapters I–VII) plus completion media",
+      "status": "Complete in workbook for Journey build rows reviewed here",
+      "note": "Seven-chapter Journey, Founder chapter welcome videos, Journey Completion video, certificate download events exist."
+    },
+    "lifecycleAutomationMap": {
+      "row": 143,
+      "workbookStatus": "Complete",
+      "evidenceInRepo": "EMPTY — no automation-map artifact found under ops/ or content/. Map is treated as workbook-complete, not as an inspectable email library."
+    },
+    "essentialLaunchEmails": {
+      "row": 144,
+      "workbookStatus": "Complete",
+      "evidenceInRepo": "EMPTY — ops/fab-5/ROW-199-LAUNCH-COMMUNICATIONS-VERIFICATION.md notes empty evidence. No English email library file located. This plan does not invent that library."
+    },
+    "bilingualEmailTemplates": {
+      "row": 145,
+      "status": "Not Started",
+      "owner": "nia"
+    },
+    "transactionalEmail": {
+      "row": 146,
+      "status": "Not Started",
+      "owner": "imani",
+      "currentPath": "Google Workspace SMTP via lib/auth/email/smtp.ts for verification, password reset, billing notifications, and support acknowledgment. Architecture also names Resend transactional and Kit marketing; those are not implemented as a Founding Architect lifecycle in this repo."
+    },
+    "lifecycleAutomationsBuild": {
+      "row": 147,
+      "status": "Not Started",
+      "owner": "imani",
+      "note": "Progress, inactivity, completion, membership, and support email triggers are not built. Continuity today is in-product plus payment/account transactional mail."
+    },
+    "communityRunway": {
+      "row": 159,
+      "excelRow": 160,
+      "status": "Not Started",
+      "primaryOwner": "nia",
+      "michelleRole": "supporting / coordination",
+      "note": "Row 159 owns what Founding Architects are told at purchase/onboarding about Community timing, inclusion, renewal, cadence, and the Blueprint-complete-to-Community-open interval. This al-160 plan coordinates channels around locked facts and does not invent runway copy or a new Community program."
+    },
+    "supportChannels": {
+      "row": 153,
+      "status": "Founder accepted 2026-08-21 in ops/fab-5/row-153-status.json",
+      "mailbox": "support@thebackhalf.org"
+    }
+  },
+  "continuityArc": {
+    "audience": "Purchasers of checkout offerId bundle (Founding Architect). Blueprint-only and standalone Community purchasers are adjacent; they are not the primary audience of this plan.",
+    "objective": "After money is taken, the Architect always has a next true step and a true statement about Community. Silence after purchase is the failure mode.",
+    "phases": [
+      {
+        "id": "P0_PURCHASE",
+        "name": "Purchase and access",
+        "window": "At checkout success through first authenticated session",
+        "continuityJob": "Confirm what was bought, grant access, get them into onboarding. State Community timing without implying it is live."
+      },
+      {
+        "id": "P1_ONBOARDING",
+        "name": "Welcome and begin",
+        "window": "Onboarding steps welcome → preferences → consent → lumina → assessment → awakening",
+        "continuityJob": "Founder welcome (video + letter) and Lumina introduction happen in-product. Email does not replace them."
+      },
+      {
+        "id": "P2_JOURNEY",
+        "name": "Seven-chapter Journey",
+        "window": "Chapter I The Awakening through Chapter VII The Beginning",
+        "continuityJob": "Chapter Founder media + Lumina journey-aware replies + dashboard continue-Journey. Email is a resume prompt, not a curriculum substitute."
+      },
+      {
+        "id": "P3_COMPLETION",
+        "name": "Blueprint / Journey completion",
+        "window": "Chapter VII complete, completion experience, certificate",
+        "continuityJob": "Honor completion. Do not dump them into a missing Community. Point to the locked October 25 opening if it has not occurred."
+      },
+      {
+        "id": "P4_RUNWAY",
+        "name": "Blueprint complete → Community opening",
+        "window": "From journey_completed until October 25, 2026 00:00 America/New_York (or until Community is actually open)",
+        "continuityJob": "This is the highest-risk continuity gap. Keep a Founder/Lumina/email presence that is honest: Community is coming, not live. Do not invent programming."
+      },
+      {
+        "id": "P5_OPENING",
+        "name": "Toward Community opening",
+        "window": "Approximately 14 days before October 25, 2026 through opening day",
+        "continuityJob": "Coordinate opening communications with Nia Row 159 runway. Founding Architect included period is first six months commencing October 25, 2026."
+      },
+      {
+        "id": "P6_INCLUDED_PERIOD",
+        "name": "Included Community period (retention after opening)",
+        "window": "October 25, 2026 through April 25, 2027",
+        "continuityJob": "Welcome into the live Community when it exists. Preview $50/month renewal without surprise. Out of August 31 launch-day scope to operate; in scope to name so purchase-time promises match later mail."
+      }
+    ]
+  },
+  "channelCoordination": {
+    "email": {
+      "role": "Confirm, remind, resume, and announce — never replace Founder or Lumina.",
+      "transactionalNow": [
+        "Account verification (lib/auth/email/send-verification.ts)",
+        "Password reset",
+        "Payment success / failure / refund (lib/billing/notifications.ts)",
+        "Support acknowledgment (Row 153)"
+      ],
+      "notBuilt": [
+        "Founder welcome email",
+        "Onboarding incomplete nudge",
+        "Chapter progress / resume email",
+        "Inactivity email",
+        "Journey completion email",
+        "Community runway / opening email",
+        "Renewal preview email"
+      ],
+      "separationRule": "Transactional (purchase, access, billing, support ack) stays SMTP/Resend path under Imani. Non-transactional lifecycle (progress, inspiration, Community preview) requires sender identity, footer, unsubscribe, and suppression (Row 162). Do not mix Kit marketing blasts with payment mail.",
+      "copyOwner": "nia",
+      "infraOwner": "imani",
+      "orchestrationOwner": "michelle"
+    },
+    "founder": {
+      "role": "Belonging and pacing. The human Founder voice at the moments that change identity.",
+      "inProductNow": [
+        "Onboarding Founder Welcome video + letter (content/journey/onboarding-welcome-media.ts, content/blueprint/manuscript/generated/welcomeLetter.ts)",
+        "Chapter I–VII Founder welcome videos and captions",
+        "Journey Completion video (content/journey/chapter-7-media.ts)",
+        "Dashboard welcome line Welcome, {name}."
+      ],
+      "notABlastChannel": "Do not schedule ad-hoc Founder inbox mail from kimberly@thebackhalf.org as a retention drip. Founder email, if used, is a named approved asset (see Row 199 launch email pattern: approved, not sent, not loaded into platform without Founder action).",
+      "copyOwner": "nia",
+      "acceptanceOwner": "Kimberly Walker (human)"
+    },
+    "lumina": {
+      "role": "Companion inside the Journey. Continuity between sessions. Does not announce Community as live. Does not impersonate Kimberly.",
+      "inProductNow": [
+        "Onboarding Lumina introduction step",
+        "Authenticated Lumina conversation with journey-aware context (lib/lumina/conversation.ts)",
+        "Chapter VII completion orientation: Your Journey does not end here—it begins here."
+      ],
+      "coordinationRule": "Lumina may acknowledge Journey state and invite the next saved step. Community questions must use locked copy: Architect Community — Coming October 25, 2026; Founding Architect includes the first six months; not live on August 31. Nia owns Lumina wording; Michelle flags contradictions; Imani does not change brand voice.",
+      "copyOwner": "nia"
+    },
+    "community": {
+      "role": "Until October 25, 2026 this is messaging only — not a live experience.",
+      "allowedNow": "Timing, inclusion, first-six-months period, renewal at $50/month, and what happens after Blueprint completion — using locked facts.",
+      "forbiddenNow": [
+        "Live Community invitation, feed, events, or 'welcome in' language that implies the space is open",
+        "First year / twelve months",
+        "October 19 or any date other than October 25, 2026",
+        "Inventing runway programming (Nia Row 159)"
+      ],
+      "openingOwner": "nia (Row 159 Community Runway)",
+      "coordinationOwner": "michelle"
+    },
+    "dashboardAndJourney": {
+      "role": "Default next-step surface. Email and Lumina should return here.",
+      "paths": {
+        "onboarding": "/architect/onboarding (ES: /es/architect/onboarding)",
+        "dashboard": "Architect Dashboard continue-Journey / continue-onboarding",
+        "support": "/support"
+      }
+    },
+    "support": {
+      "role": "Human fallback when any channel fails or the Architect is confused about Community timing, access, or billing.",
+      "publicIdentity": "The Back Half Support. Never Kimberly.",
+      "communityAnswer": "Architect Community is not live August 31. Architect Community — Coming October 25, 2026. Founding Architect includes the first six months of Architect Community access.",
+      "owner": "nia primary; michelle routing; imani technical"
+    }
+  },
+  "touchpoints": [
+    {
+      "id": "T01",
+      "phase": "P0_PURCHASE",
+      "name": "Checkout success surface",
+      "channel": "in_product",
+      "trigger": "Stripe checkout return / payment complete page",
+      "existing": true,
+      "intent": "Thank you. Offer named. Next step: Begin Journey onboarding or Architect Dashboard. Do not claim Community is open.",
+      "owner": "nia",
+      "implementation": "existing checkout success copy in content/i18n/dictionaries",
+      "founderCopyRequired": false
+    },
+    {
+      "id": "T02",
+      "phase": "P0_PURCHASE",
+      "name": "Payment confirmed email",
+      "channel": "email_transactional",
+      "trigger": "purchase_completed / paymentSucceeded webhook (lib/billing/sync-effects.ts)",
+      "existing": true,
+      "intent": "Confirm payment for Founding Architect. State access updates automatically. Include locked Community timing in a later Nia-authored revision; current template does not name Community dates.",
+      "owner": "imani infra; nia copy revision",
+      "coordinationFinding": "CF-1",
+      "founderCopyRequired": true
+    },
+    {
+      "id": "T03",
+      "phase": "P0_PURCHASE",
+      "name": "Account verification email",
+      "channel": "email_transactional",
+      "trigger": "registration_succeeded / email_verification_required",
+      "existing": true,
+      "intent": "Get them into the account. Not a welcome essay.",
+      "owner": "imani",
+      "founderCopyRequired": false
+    },
+    {
+      "id": "T04",
+      "phase": "P0_PURCHASE",
+      "name": "Payment failed email",
+      "channel": "email_transactional",
+      "trigger": "paymentFailed webhook",
+      "existing": true,
+      "intent": "No paid access granted. Invite retry. No Community language.",
+      "owner": "imani",
+      "founderCopyRequired": false
+    },
+    {
+      "id": "T05",
+      "phase": "P1_ONBOARDING",
+      "name": "Founder Welcome video and letter",
+      "channel": "founder_in_product",
+      "trigger": "onboarding step welcome",
+      "existing": true,
+      "intent": "Primary welcome. Honors the purchase as an investment in self. Sets pacing: no race. Magical is Possible. Does not open Community.",
+      "owner": "nia (approved manuscript + media)",
+      "paths": [
+        "/architect/onboarding/welcome",
+        "public/videos/onboarding/founding-architect-welcome.mp4",
+        "content/blueprint/manuscript/generated/welcomeLetter.ts"
+      ],
+      "founderCopyRequired": false
+    },
+    {
+      "id": "T06",
+      "phase": "P1_ONBOARDING",
+      "name": "Preferences, consent, Lumina intro, Aliveness, Awakening entry",
+      "channel": "in_product",
+      "trigger": "onboarding_step_completed sequence",
+      "existing": true,
+      "intent": "Complete the start. Lumina is introduced as AI Guide inside the Journey, not as Community host.",
+      "owner": "nia",
+      "founderCopyRequired": false
+    },
+    {
+      "id": "T07",
+      "phase": "P1_ONBOARDING",
+      "name": "Onboarding incomplete resume email",
+      "channel": "email_lifecycle",
+      "trigger": "onboarding_started and not onboarding_completed after 24 hours; second send at 7 days if still open",
+      "existing": false,
+      "intent": "Your Founder Welcome is waiting. Continue onboarding. No urgency, no discount, no Community-is-live.",
+      "owner": "nia copy; imani Row 147 trigger; michelle cadence",
+      "blockedBy": "Row 147 lifecycle automations; Row 145 templates; Row 144 library evidence gap",
+      "founderCopyRequired": true
+    },
+    {
+      "id": "T08",
+      "phase": "P1_ONBOARDING",
+      "name": "Dashboard welcome",
+      "channel": "in_product",
+      "trigger": "Authenticated Architect Dashboard after onboarding or mid-flow",
+      "existing": true,
+      "intent": "Welcome, {name}. Continue onboarding or Continue Journey. Support link present.",
+      "owner": "nia",
+      "founderCopyRequired": false
+    },
+    {
+      "id": "T09",
+      "phase": "P2_JOURNEY",
+      "name": "Chapter Founder welcome videos I–VII",
+      "channel": "founder_in_product",
+      "trigger": "journey_chapter_started",
+      "existing": true,
+      "intent": "Each chapter opens with Founder media. Continuity inside the Journey is Founder + Lumina, not email volume.",
+      "owner": "nia",
+      "founderCopyRequired": false
+    },
+    {
+      "id": "T10",
+      "phase": "P2_JOURNEY",
+      "name": "Lumina journey-aware replies",
+      "channel": "lumina",
+      "trigger": "lumina_message_sent while Journey in progress",
+      "existing": true,
+      "intent": "Meet the Architect at the saved chapter. Do not rewrite their work. Do not invent Community programming.",
+      "owner": "nia",
+      "founderCopyRequired": false
+    },
+    {
+      "id": "T11",
+      "phase": "P2_JOURNEY",
+      "name": "Gentle resume email after inactivity",
+      "channel": "email_lifecycle",
+      "trigger": "No journey_progress_saved or journey_resumed for 14 days while Journey in_progress and onboarding_completed. Cap at 3 sends before Community opening. Suppress if they asked for pause or unsubscribed from non-transactional mail.",
+      "existing": false,
+      "intent": "Your Journey is still here. There is no race. Continue when you are ready. CTA = Continue Journey. Community line only if asked in FAQ footer using locked coming-October-25 copy.",
+      "owner": "nia copy; imani Row 147; michelle cadence",
+      "pacingConstraint": "Must honor Journey 'no race' language. Do not use streaks, loss-aversion, or countdown-to-complete.",
+      "blockedBy": "Row 147; unsubscribe/suppression Row 162",
+      "founderCopyRequired": true
+    },
+    {
+      "id": "T12",
+      "phase": "P2_JOURNEY",
+      "name": "Mid-Journey Lumina check-in (in-product only)",
+      "channel": "lumina",
+      "trigger": "Architect opens Lumina after a gap (journey_resumed already emitted after >6 hours)",
+      "existing": "partial — journey context exists; no push notification",
+      "intent": "When they return, Lumina orients to current chapter. No outbound Lumina email.",
+      "owner": "nia",
+      "founderCopyRequired": false
+    },
+    {
+      "id": "T13",
+      "phase": "P3_COMPLETION",
+      "name": "Journey Completion Founder video + certificate",
+      "channel": "founder_in_product",
+      "trigger": "journey_completed / completion_experience_viewed / certificate_downloaded",
+      "existing": true,
+      "intent": "Honor completion. Your Journey does not end here—it begins here. Do not auto-enroll into a live Community UI.",
+      "owner": "nia",
+      "founderCopyRequired": false
+    },
+    {
+      "id": "T14",
+      "phase": "P3_COMPLETION",
+      "name": "Blueprint completion email",
+      "channel": "email_lifecycle",
+      "trigger": "journey_completed once per user",
+      "existing": false,
+      "intent": "Congratulate. Point to certificate/resources. If before October 25, 2026: Architect Community — Coming October 25, 2026. Founding Architect includes the first six months (October 25, 2026 through April 25, 2027). If on/after October 25: defer to Nia Row 159 live-opening copy; do not invent it here.",
+      "owner": "nia copy; imani trigger; michelle coordination with Row 159",
+      "blockedBy": "Row 147; Row 159 runway copy",
+      "founderCopyRequired": true
+    },
+    {
+      "id": "T15",
+      "phase": "P4_RUNWAY",
+      "name": "Post-completion continuity note",
+      "channel": "email_lifecycle + lumina + dashboard",
+      "trigger": "journey_completed AND now < 2026-10-25T04:00:00.000Z (October 25, 2026 00:00 America/New_York)",
+      "existing": false,
+      "intent": "You finished. Community is not open yet. You remain an Architect. Lumina and resources remain. We will write before October 25. No fake events calendar.",
+      "cadence": "One note within 48 hours of completion if Community is still unopened; one reminder ~14 days before October 25 if not already in T16 window. No weekly drip of invented Community content.",
+      "owner": "nia Row 159 copy; michelle cadence; imani send",
+      "blockedBy": "Row 159 Community Runway is Not Started",
+      "founderCopyRequired": true
+    },
+    {
+      "id": "T16",
+      "phase": "P5_OPENING",
+      "name": "Community opening sequence",
+      "channel": "email_lifecycle + founder + lumina + community",
+      "trigger": "Calendar: 14 days before, 3 days before, and October 25, 2026 — Founding Architects with active bundle entitlement, bilingual by account locale",
+      "existing": false,
+      "intent": "Opening is a coordinated four-channel event. Same facts in every channel: date October 25, 2026; included period through April 25, 2027; then $50/month; Community Guidelines when Nia/legal publish them (due before opening, not required for August 31).",
+      "owner": "nia Row 159 primary; michelle orchestration; imani delivery",
+      "blockedBy": "Row 159; Community Guidelines PRE-COMMUNITY-LAUNCH; Row 147",
+      "founderCopyRequired": true
+    },
+    {
+      "id": "T17",
+      "phase": "P6_INCLUDED_PERIOD",
+      "name": "Live Community welcome (after opening)",
+      "channel": "community + email_lifecycle",
+      "trigger": "Community actually open AND Founding Architect entitlement active",
+      "existing": false,
+      "intent": "Welcome into the live space. Distinct from August 31 Founder Welcome. Do not send this template before opening.",
+      "owner": "nia",
+      "blockedBy": "Community not live; Row 159",
+      "founderCopyRequired": true
+    },
+    {
+      "id": "T18",
+      "phase": "P6_INCLUDED_PERIOD",
+      "name": "Renewal preview before included period ends",
+      "channel": "email_transactional_or_lifecycle",
+      "trigger": "30 days and 7 days before April 25, 2027",
+      "existing": false,
+      "intent": "Founding Architect included Community period concludes April 25, 2027. Continues at $50/month if they choose. No-refund policy unchanged. Not an August 31 launch send.",
+      "owner": "nia copy; imani billing; michelle calendar",
+      "founderCopyRequired": true
+    },
+    {
+      "id": "T19",
+      "phase": "P0_PURCHASE",
+      "name": "Support Community-timing reply",
+      "channel": "support",
+      "trigger": "Inbound asking when Community starts / what Founding Architect includes",
+      "existing": true,
+      "intent": "Use locked launch-day answer. Do not invent first year.",
+      "owner": "nia primary support; michelle routing",
+      "founderCopyRequired": false
+    },
+    {
+      "id": "T20",
+      "phase": "P2_JOURNEY",
+      "name": "Do-not-send: Community membership activated on Founding Architect purchase",
+      "channel": "email_transactional",
+      "trigger": "subscriptionActivated webhook",
+      "existing": true,
+      "intent": "This template currently says Community membership is active / Welcome in. Founding Architect is a one-time bundle, not a live Community subscription on August 31. Do not use this send for offerId bundle before October 25, 2026.",
+      "owner": "imani (when implementing; not changed in this PR)",
+      "coordinationFinding": "CF-2",
+      "founderCopyRequired": false
+    }
+  ],
+  "messageCoordinationRules": {
+    "sameFactsEveryChannel": [
+      "Architect Community is not live on August 31, 2026.",
+      "Architect Community — Coming October 25, 2026.",
+      "Founding Architect includes the first six months of Architect Community, October 25, 2026 through April 25, 2027.",
+      "After the included period, Founding Architect renews at $50/month.",
+      "Standalone Community is $50/month after Blueprint completion.",
+      "No refunds.",
+      "There is no race through this Journey."
+    ],
+    "forbiddenPhrases": [
+      "first year of Architect Community",
+      "twelve months of Community",
+      "Community is open / live / welcome in — before October 25, 2026",
+      "October 19, 2026 as Community date",
+      "soft launch of Community",
+      "Kimberly Walker (AI) as operating support"
+    ],
+    "channelPrecedenceWhenConflict": [
+      "Legal / Membership Agreement locked facts win",
+      "Then checkout / marketing-claims standard",
+      "Then in-product Founder manuscript",
+      "Then Lumina",
+      "Then lifecycle email",
+      "Support uses the locked launch-day FAQ, not an email draft"
+    ],
+    "founderVsLumina": "Founder media carries belonging and chapter openings. Lumina carries between-session companionship and saved-work orientation. Lumina does not send as Kimberly and does not replace Founder Welcome.",
+    "emailVsInProduct": "If SMTP/lifecycle is not ready, in-product Founder + Lumina + dashboard still deliver P0–P3. Email is required for P4–P5 because completers who leave the product otherwise go silent before October 25.",
+    "bilingual": "Account locale en/es. Do not send English Founder or Lumina lines in Español mode. Row 145 templates remain a blocker for ES lifecycle mail.",
+    "lateEnrollment": "Enrollment may run through December 31, 2026. What remaining Community period a December purchaser receives is a Row 159 / legal consistency question. This plan does not invent a new remaining-period formula. Until Row 159 and legal agree, public copy stays: period October 25, 2026 through April 25, 2027."
+  },
+  "cadenceCalendar": {
+    "timezone": "America/New_York",
+    "eventAnchored": [
+      { "event": "purchase_completed bundle", "sends": ["T02 payment confirmed", "in-product T01/T05"] },
+      { "event": "onboarding incomplete 24h / 7d", "sends": ["T07"] },
+      { "event": "journey inactivity 14d (max 3)", "sends": ["T11"] },
+      { "event": "journey_completed", "sends": ["T14", "T15 if before Oct 25"] }
+    ],
+    "dateAnchored": [
+      { "date": "2026-10-11", "sends": ["T16 minus 14 days — Founding Architects"] },
+      { "date": "2026-10-22", "sends": ["T16 minus 3 days"] },
+      { "date": "2026-10-25", "sends": ["T16 opening day", "T17 live welcome only if Community is actually open"] },
+      { "date": "2027-03-26", "sends": ["T18 minus 30 days — not an August launch send"] },
+      { "date": "2027-04-18", "sends": ["T18 minus 7 days"] }
+    ],
+    "doNotSendWindows": [
+      "No Community-is-live mail before Founder-accepted opening confirmation",
+      "No Founder personal inbox drip",
+      "No LinkedIn Community campaign (LinkedIn is not a launch channel)",
+      "No refund-offer retention mail"
+    ]
+  },
+  "coordinationFindings": [
+    {
+      "id": "CF-1",
+      "severity": "medium",
+      "owner": "nia copy + imani when Row 146/147 proceed",
+      "finding": "Payment success email labels offerId bundle as 'The Back Half Journey + Community Bundle' rather than 'Founding Architect', and does not state Architect Community — Coming October 25, 2026 or the first-six-months period.",
+      "thisPr": "Not changed. Product/marketing files are out of scope."
+    },
+    {
+      "id": "CF-2",
+      "severity": "high",
+      "owner": "imani",
+      "finding": "subscription_activated billing template says Community membership is active and 'Welcome in.' Using that for any pre-October-25 send would contradict locked Community timing.",
+      "thisPr": "Not changed. Flagged so Row 147 does not wire bundle purchase to that template."
+    },
+    {
+      "id": "CF-3",
+      "severity": "high",
+      "owner": "imani entitlements; nia Row 159 messaging",
+      "finding": "lib/billing/entitlements.ts still defaults bundle community_access endsAt via addOneYear(grantedAt). Customer-facing and legal locked benefit is first six months, October 25, 2026 through April 25, 2027, not one year from purchase. Welcome/retention messaging must not follow the one-year code path. Entitlement math is Imani ownership and is not edited here.",
+      "thisPr": "Not changed. Do not tell Founding Architects they have a first year."
+    },
+    {
+      "id": "CF-4",
+      "severity": "medium",
+      "owner": "michelle coordination",
+      "finding": "Row 144 Essential Launch Emails and Row 143 Lifecycle Automation Map are workbook-Complete with empty repo evidence. Continuity email (T07, T11, T14–T18) cannot be loaded into a platform until Nia produces the library and Imani builds automations.",
+      "thisPr": "Plan defines the map so those rows have an operating target."
+    },
+    {
+      "id": "CF-5",
+      "severity": "medium",
+      "owner": "nia Row 159",
+      "finding": "Community Runway is Not Started. al-160 can coordinate channels and locked facts; it cannot finalize runway programming, late-enrollment remaining-period language, or opening-day UX.",
+      "thisPr": "Handoff recorded. This row is not blocked from defining the welcome/retention plan; implementation of P4–P5 is blocked on Row 159."
+    }
+  ],
+  "handoffs": [
+    {
+      "to": "nia",
+      "work": "Row 159 Community Runway — what Founding Architects are told at purchase/onboarding about timing, inclusion, renewal, and Blueprint-complete-to-opening. Author T07/T11/T14–T18 copy in brand voice. Lumina Community answers must match locked facts. Do not invent a new Community program."
+    },
+    {
+      "to": "imani",
+      "work": "Row 146 transactional email and Row 147 lifecycle automations should implement triggers listed here without wiring pre-opening 'Community is active' mail. Do not change Stripe config in that work unless Founder-gated and separately assigned. Align bundle community_access duration with locked six-month period (Imani ownership; not done here)."
+    },
+    {
+      "to": "michelle",
+      "work": "Keep this plan as the coordination artifact. Queue Founder acceptance for customer-facing email copy when Nia delivers it. Do not mark al-160 Complete."
+    }
+  ],
+  "successMeasures": {
+    "launchDayMinimum": [
+      "Every Founding Architect purchase has T01 in-product success + T02 payment mail if SMTP is configured + T05 Founder Welcome when they open onboarding",
+      "Support T19 uses locked Community copy",
+      "No channel says Community is live or first year"
+    ],
+    "continuityMinimumByCommunityOpening": [
+      "Completers before October 25 received T14/T15 intent (once automations exist)",
+      "T16 opening sequence exists as Founder-accepted copy and is not sent early",
+      "Lumina and email do not contradict Founder Welcome pacing"
+    ],
+    "analyticsAlreadyAvailable": [
+      "purchase_completed",
+      "onboarding_started / onboarding_completed",
+      "journey_chapter_completed / journey_resumed / journey_completed",
+      "lumina_opened / lumina_message_sent",
+      "completion_experience_viewed / certificate_downloaded"
+    ],
+    "analyticsNotAvailable": [
+      "onboarding_abandoned (explicitly not implemented)",
+      "lifecycle email sent/opened events (automations not built)"
+    ]
+  },
+  "founderAcceptanceItems": [
+    "This operations plan (channel map, cadence, forbidden phrases)",
+    "Nia-authored lifecycle email copy for T07, T11, T14, T15, T16 when written",
+    "Row 159 Community Runway messaging (separate deliverable)",
+    "Any Founder-signed email beyond existing approved Row 199 launch email (which remains approved and not sent)"
+  ],
+  "validation": {
+    "typecheck": "PASS — ./node_modules/.bin/tsc --noEmit (exit 0). JSON parsed. tsconfig does not include this ops JSON.",
+    "npmTestScript": "absent — package.json has no npm test script",
+    "productionBuild": "not_run — status-only ops JSON; no production code change",
+    "gatesRequired": [
+      "npm run typecheck or npx tsc --noEmit if present",
+      "npm test or the nearest package test script if present",
+      "npm run build if the change can affect production"
+    ]
+  },
+  "nextAction": "Park for Founder acceptance of this coordination plan. Do not mark Command Center row Complete. Nia proceeds on Row 159 Community Runway using locked six-month / October 25 facts. Imani does not implement lifecycle sends from this file until copy is Founder-accepted.",
+  "remainingBlockers": [
+    "Founder acceptance not recorded",
+    "Row 159 Community Runway Not Started (blocks P4–P5 copy)",
+    "Row 146 / Row 147 email automation Not Started (blocks outbound continuity mail)",
+    "Row 144/143 workbook-complete with empty email-library evidence"
+  ]
+}
