@@ -1,0 +1,377 @@
+{
+  "aosWorkId": "al-212",
+  "source": "command_center",
+  "sourceReference": "August Launch row 212",
+  "excelRow": 213,
+  "deliverable": "Create 30-Day Launch Performance Review Framework",
+  "assignedOperatingAgent": "nia",
+  "agentScope": "Nia Prism: experience, curriculum, brand, transformation. Did not change infrastructure, auth, or payment systems.",
+  "commandCenterPrimaryOwner": "michelle",
+  "supportingOwners": ["nia", "imani", "kimberly"],
+  "technicalStatus": "ready_for_founder_acceptance",
+  "percentCompleteRecorded": 0,
+  "workbookStatusUnchanged": "Not Started",
+  "founderAcceptance": null,
+  "founderAccepted": false,
+  "rowMarkedComplete": false,
+  "softwareChange": false,
+  "productMarketingLegalFilesChanged": false,
+  "stripeCloudflareVercelDnsUnchanged": true,
+  "authAndPaymentsUnchanged": true,
+  "sourceOfTruth": "ops/fab-5/ROW-212-30-DAY-LAUNCH-PERFORMANCE-REVIEW-FRAMEWORK.md",
+  "generatedAt": "2026-08-26T18:00:00.000Z",
+  "reviewWindow": {
+    "timezone": "America/New_York",
+    "start": "2026-08-31T04:00:00.000Z",
+    "endExclusive": "2026-10-01T04:00:00.000Z",
+    "label": "August 31, 2026 12:00 AM ET through September 30, 2026 11:59 PM ET",
+    "day30AlignsTo": "Post Launch 30-Day Operating Review (Day 30 — Sep 30)"
+  },
+  "systemsOfRecord": {
+    "dailyHealth": {
+      "row": 151,
+      "surface": "/ops/admin/launch-dashboard"
+    },
+    "marketingAcquisition": {
+      "row": 84,
+      "surface": "/ops/admin/launch-kpi"
+    },
+    "events": {
+      "row": 150,
+      "store": "analytics_events"
+    },
+    "support": {
+      "row": 153,
+      "surface": "/ops/admin/support"
+    },
+    "socialSentimentClues": {
+      "row": 83
+    },
+    "payments": "Stripe/billing authoritative; Row 150 payment.refunded, subscription.canceled, membership_cancelled"
+  },
+  "doNotMix": {
+    "preLaunchHistorical": "19 paid purchases excluded from launch performance",
+    "campaignWindow": "2026-08-28 12:00 AM ET through 2026-08-31 remains Row 84 campaign scorecard",
+    "thirtyDayWindow": "This framework; includes post-Sep 1 activity through Sep 30",
+    "testRecords": "cs_test_, pi_test_, test=true excluded from Founder totals"
+  },
+  "lockedFacts": {
+    "launchDate": "2026-08-31",
+    "cta": "Become an Architect",
+    "destination": "https://thebackhalf.org/register",
+    "offers": {
+      "blueprintUsd": 1500,
+      "foundingArchitectUsd": 1750,
+      "communityUsdPerMonth": 50
+    },
+    "communityLive": "2026-10-25 — not in this window",
+    "activeSocial": ["instagram", "tiktok"],
+    "linkedin": "future enhancement — not required",
+    "refunds": "none — cancellation is not a refund",
+    "enrollmentVolumeOkr": "NOT SET — Founder-reserved; not invented",
+    "revenueVolumeOkr": "NOT SET — Founder-reserved; not invented",
+    "sentimentVendor": "none"
+  },
+  "cadence": [
+    {
+      "id": "daily",
+      "when": "Each ET day in window",
+      "output": "Row 151 brief + Row 84 social entry"
+    },
+    {
+      "id": "day1",
+      "when": "2026-09-01",
+      "output": "Post Launch First 24-Hour Review"
+    },
+    {
+      "id": "day3",
+      "when": "2026-09-03",
+      "output": "72-Hour Stabilization Review"
+    },
+    {
+      "id": "day7",
+      "when": "2026-09-07",
+      "output": "Early Architect Experience Review"
+    },
+    {
+      "id": "day14",
+      "when": "2026-09-14",
+      "output": "Mid-window performance note"
+    },
+    {
+      "id": "day21",
+      "when": "2026-09-21",
+      "output": "Feeds Version 1.1 Prioritization"
+    },
+    {
+      "id": "day30",
+      "when": "2026-09-30",
+      "output": "30-Day Launch Performance Review packet → Post Launch 30-Day Operating Review"
+    }
+  ],
+  "domains": [
+    {
+      "id": "enrollment",
+      "metric": "Paid Blueprint + Founding Architect purchases in the 30-day window",
+      "exclude": ["historical_19", "test_sandbox", "community_only_subscription"],
+      "targetType": "operating_band",
+      "volumeOkr": null,
+      "triggers": ["T-ENR-1", "T-ENR-2", "T-ENR-3"]
+    },
+    {
+      "id": "revenue",
+      "metric": "Gross USD from enrollment-eligible paid purchases",
+      "source": "Stripe/billing authoritative; Row 151 reconciliation",
+      "targetType": "operating_band",
+      "volumeOkr": null,
+      "communityRevenueExpected": false,
+      "triggers": ["T-REV-1", "T-REV-2"]
+    },
+    {
+      "id": "conversion",
+      "formulas": {
+        "landingContinuation": "landing_page_sessions / native_link_clicks",
+        "checkoutStartRate": "checkout_starts / landing_page_sessions",
+        "checkoutCompletion": "purchases / checkout_starts",
+        "purchaseConversion": "purchases / landing_page_sessions"
+      },
+      "naIfDenominatorZero": true,
+      "targetType": "operating_band",
+      "triggers": ["T-CONV-1", "T-CONV-2"]
+    },
+    {
+      "id": "marketingAcquisition",
+      "channels": ["instagram", "tiktok"],
+      "manualNativeEntryOwner": "nia",
+      "verifier": "michelle",
+      "emailSignups": "N/A — No Separate Launch Email Signup Mechanism",
+      "linkedinRequired": false,
+      "doNotInventSocialProof": true,
+      "triggers": ["T-ACQ-1"]
+    },
+    {
+      "id": "completionProgress",
+      "activationDefinition": "Paid purchaser who has started Architect onboarding",
+      "fullJourneyCompletionRequiredIn30Days": false,
+      "targetType": "operating_band",
+      "triggers": ["T-ACT-1", "T-PROG-1"]
+    },
+    {
+      "id": "luminaUsageUsefulness",
+      "usageEvents": ["lumina_opened", "lumina_message_sent", "lumina_response_received", "lumina_error"],
+      "conversationContentStored": false,
+      "usefulnessScoreInvented": false,
+      "usefulnessMethod": "Nia Triple E + first-part review + LUMINA tickets",
+      "targetType": "mixed_binding_and_qualitative",
+      "triggers": ["T-LUM-1", "T-LUM-2"]
+    },
+    {
+      "id": "support",
+      "publishedExpectation": "Response within 3 days; goal 72 hours or less. Do not promise resolution or refunds.",
+      "slaHours": { "P1": 4, "P2": 24, "P3": 72, "P4": 72 },
+      "backlogYellowAt": 10,
+      "targetType": "binding",
+      "triggers": ["T-SUP-1", "T-SUP-2"]
+    },
+    {
+      "id": "refundsCancellations",
+      "refundsIssued": "none — expect payment.refunded = 0",
+      "refundRequests": "PAYMENT_BILLING tickets; no Refund category",
+      "communityNotLive": true,
+      "cancellationIsNotRefund": true,
+      "targetType": "binding",
+      "triggers": ["T-REF-1", "T-CAN-1", "T-REV-2"]
+    },
+    {
+      "id": "defects",
+      "health": ["GREEN", "YELLOW", "RED"],
+      "tripleEBlockBinding": true,
+      "targetType": "binding",
+      "triggers": ["T-DEF-1", "T-EEE-1"]
+    },
+    {
+      "id": "participantSentiment",
+      "vendor": "none",
+      "codes": ["Positive", "Mixed", "Negative", "Blocking"],
+      "doNotInventTestimonials": true,
+      "sources": [
+        "support tickets",
+        "row 83 social log",
+        "unsolicited architect messages",
+        "nia day 7 / first-part / first-full completion reviews"
+      ],
+      "targetType": "qualitative",
+      "triggers": ["T-SEN-1", "T-SEN-2"]
+    }
+  ],
+  "correctiveActionLevels": ["WATCH", "ACT", "ESCALATE"],
+  "triggers": [
+    {
+      "id": "T-ENR-1",
+      "when": "Landing-page sessions > 0 and purchases = 0 through Day 1",
+      "level": "WATCH",
+      "owner": "nia+michelle"
+    },
+    {
+      "id": "T-ENR-2",
+      "when": "Checkout starts >= 1 and purchases = 0 through Day 3",
+      "level": "ACT",
+      "owner": "imani+nia"
+    },
+    {
+      "id": "T-ENR-3",
+      "when": "Checkout starts with payment failures and zero purchases on/after Launch Day",
+      "level": "ESCALATE",
+      "owner": "imani+michelle",
+      "alsoCodedIn": "lib/launch-dashboard/health.ts"
+    },
+    {
+      "id": "T-REV-1",
+      "when": "Billing vs Row 84 disagreement",
+      "level": "ACT",
+      "owner": "imani+michelle"
+    },
+    {
+      "id": "T-REV-2",
+      "when": "Any payment.refunded event",
+      "level": "ESCALATE",
+      "owner": "michelle->founder"
+    },
+    {
+      "id": "T-CONV-1",
+      "when": "Checkout starts >= 5 and completion = 0",
+      "level": "ACT",
+      "owner": "imani+nia"
+    },
+    {
+      "id": "T-CONV-2",
+      "when": "Checkout completion < 25% once starts >= 8",
+      "level": "WATCH",
+      "owner": "nia+imani",
+      "bandType": "proposed_operating_band_confirm_at_founder_acceptance"
+    },
+    {
+      "id": "T-ACQ-1",
+      "when": "Live social channel missing native KPI entry for 2 consecutive days after Launch Day",
+      "level": "WATCH",
+      "owner": "nia"
+    },
+    {
+      "id": "T-ACT-1",
+      "when": "< 50% of paid purchasers (n >= 4) started onboarding by Day 7",
+      "level": "ACT",
+      "owner": "nia",
+      "bandType": "proposed_operating_band_confirm_at_founder_acceptance"
+    },
+    {
+      "id": "T-PROG-1",
+      "when": "journey_save_failed >= 3 in a day",
+      "level": "ACT",
+      "owner": "imani; nia retests"
+    },
+    {
+      "id": "T-LUM-1",
+      "when": "lumina_error / lumina_message_sent >= 20% with >= 5 sends in a day",
+      "level": "ACT",
+      "owner": "imani; nia Triple E",
+      "bandType": "proposed_operating_band_confirm_at_founder_acceptance"
+    },
+    {
+      "id": "T-LUM-2",
+      "when": ">= 3 distinct Architects report Lumina not useful or harmful",
+      "level": "ACT",
+      "owner": "nia"
+    },
+    {
+      "id": "T-SUP-1",
+      "when": "P1 overdue or any SLA approaching/overdue",
+      "level": "ACT_OR_ESCALATE",
+      "owner": "nia; michelle backup",
+      "binding": true
+    },
+    {
+      "id": "T-SUP-2",
+      "when": "Unresolved support tickets >= 10",
+      "level": "ACT",
+      "owner": "nia+michelle",
+      "alsoCodedIn": "lib/launch-dashboard/health.ts"
+    },
+    {
+      "id": "T-REF-1",
+      "when": ">= 3 refund-request tickets in 7 days (still no refund issued)",
+      "level": "ACT",
+      "owner": "nia+michelle"
+    },
+    {
+      "id": "T-CAN-1",
+      "when": "membership_cancelled or Blueprint entitlement revoked after cancel",
+      "level": "ACT",
+      "owner": "imani"
+    },
+    {
+      "id": "T-DEF-1",
+      "when": "Launch Health RED or critical surface unavailable",
+      "level": "ESCALATE",
+      "owner": "imani+michelle",
+      "founderAttention": true,
+      "binding": true
+    },
+    {
+      "id": "T-EEE-1",
+      "when": "Material Triple E or approved-promise failure",
+      "level": "ACT",
+      "owner": "nia",
+      "niaReleaseBlock": true,
+      "binding": true
+    },
+    {
+      "id": "T-SEN-1",
+      "when": "Blocking sentiment or public reputational incident",
+      "level": "ESCALATE",
+      "owner": "nia+michelle"
+    },
+    {
+      "id": "T-SEN-2",
+      "when": ">= 3 distinct Architects share the same negative theme in 7 days",
+      "level": "ACT",
+      "owner": "nia"
+    }
+  ],
+  "correctiveActionLoop": [
+    "detect",
+    "classify WATCH|ACT|ESCALATE",
+    "own by domain",
+    "contain if technical/security harm (imani)",
+    "fix approved behavior only",
+    "retest: imani technical; nia required for participant-facing",
+    "record and close only when trigger cleared",
+    "founder only for reserved decisions — do not fabricate approval"
+  ],
+  "day30PacketChapters": [
+    "enrollment_and_revenue",
+    "conversion_funnel",
+    "marketing_acquisition",
+    "activation_and_journey_progress",
+    "lumina_usage_and_usefulness",
+    "support",
+    "refunds_requests_cancellations",
+    "defects_and_triple_e",
+    "sentiment_coding",
+    "corrective_actions",
+    "founder_reserved_decisions"
+  ],
+  "validation": {
+    "typecheckScriptPresent": false,
+    "nearestTypecheck": "./node_modules/.bin/tsc --noEmit",
+    "typecheckResult": "PASS",
+    "testScriptPresent": false,
+    "testResult": "N/A — no npm test script in package.json",
+    "productionSoftwareChanged": false,
+    "buildRequired": false,
+    "buildResult": "SKIPPED — ops documentation only; no production software change",
+    "note": "Ops framework only. No application code change. Local TypeScript compiler passed with no emit. Production build not required."
+  },
+  "nextAction": "await_founder_acceptance",
+  "blockedReason": "founder_acceptance_required",
+  "notes": "Framework drafted by Nia Prism for AOS al-212. Reuses Rows 84/150/151/153. Does not invent enrollment or revenue quotas. Does not mark row 212 Complete. Kimberly Walker (human) remains sole Founder acceptance authority."
+}
