@@ -1,0 +1,37 @@
+{
+  "suite": "ai-kimberly-eval",
+  "row": 142,
+  "aosWorkId": "al-142",
+  "provider": "none",
+  "results": [
+    {
+      "category": "LOCALE ROUTING",
+      "status": "PASS"
+    },
+    {
+      "category": "SPANISH UI",
+      "status": "PASS"
+    },
+    {
+      "category": "FOUNDER REPLIES",
+      "status": "PASS"
+    },
+    {
+      "category": "SPEECH MEDIA",
+      "status": "PASS"
+    },
+    {
+      "category": "CODEX BOUNDARIES",
+      "status": "PASS"
+    },
+    {
+      "category": "PARTICIPANT DATA",
+      "status": "PASS"
+    },
+    {
+      "category": "ENGLISH REGRESSION",
+      "status": "PASS"
+    }
+  ],
+  "allPassed": true
+}

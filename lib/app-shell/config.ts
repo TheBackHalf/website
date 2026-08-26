@@ -9,6 +9,7 @@ export type ArchitectAppRouteKey =
   | "dashboard"
   | "journey"
   | "lumina"
+  | "aiKimberly"
   | "resources"
   | "settings"
   | "billing";
@@ -25,6 +26,7 @@ export const architectNavItems: readonly ArchitectNavItem[] = [
   { key: "dashboard", href: "/architect/dashboard" },
   { key: "journey", href: "/architect/journey" },
   { key: "lumina", href: "/architect/lumina" },
+  { key: "aiKimberly", href: "/architect/ai-kimberly" },
   { key: "resources", href: "/architect/resources" },
   { key: "settings", href: "/architect/settings" },
   { key: "billing", href: "/architect/billing" },
@@ -35,6 +37,7 @@ export const architectRoutePaths: Record<ArchitectAppRouteKey, string> = {
   dashboard: "/architect/dashboard",
   journey: "/architect/journey",
   lumina: "/architect/lumina",
+  aiKimberly: "/architect/ai-kimberly",
   resources: "/architect/resources",
   settings: "/architect/settings",
   billing: "/architect/billing",
