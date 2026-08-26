@@ -1,0 +1,462 @@
+{
+  "aosWorkId": "al-194",
+  "row": 194,
+  "spreadsheetRow": 194,
+  "commandCenterExcelRowNote": "AOS Command Center snapshot lists this deliverable at excelRow 195; launch-rows.json and this work item use spreadsheetRow 194. Deliverable title matches.",
+  "source": "command_center",
+  "sourceReference": "August Launch row 194",
+  "deliverable": "Complete Production Security Audit",
+  "description": "Review secrets, admin access, API keys, permissions, and vulnerabilities.",
+  "phase": "Testing, Validation & Triple E",
+  "primaryWorkstream": "TECHNOLOGY",
+  "ownerAgent": "imani",
+  "ownerAgentTitle": "Imani Heartbeat — Chief Technology & Risk Officer",
+  "supportingOwner": "michelle",
+  "generatedAt": "2026-08-26T18:08:00.000Z",
+  "auditor": "imani",
+  "execution": "cursor_cloud_agent",
+  "branch": "cursor/aos-imani-al-194-51fb",
+  "softwareChangeApplied": false,
+  "productMarketingLegalFilesChanged": false,
+  "stripeConfigModified": false,
+  "cloudflareDnsModified": false,
+  "vercelCustomDomainModified": false,
+  "authenticationWeakened": false,
+  "secretsPrinted": false,
+  "secretsRotated": false,
+  "credentialsExposed": false,
+  "founderAcceptanceRecorded": false,
+  "founderAcceptanceAuthority": "Kimberly Walker (human)",
+  "kimberlyWalkerAiTreatedAsCapacity": false,
+  "rowMarkedComplete": false,
+  "launchRowStatusUnchanged": true,
+  "merged": false,
+  "deployed": false,
+  "auditStatus": "COMPLETE",
+  "productionSecurityClearance": "NOT CLEARED",
+  "technicalStatus": "ACCEPTANCE_READY",
+  "nextAction": "await_founder_acceptance",
+  "blockedReason": "founder_acceptance_required",
+  "dependencyContext": {
+    "namedDependencies": [
+      "Feature-Complete Production Environment",
+      "Security Baseline"
+    ],
+    "securityBaselineRow69": {
+      "workbookStatus": "Complete",
+      "note": "August Launch Row 69 Establish Security Baseline is Complete in launch-rows.json. This audit reviews the current production implementation against that baseline; it does not reopen Row 69."
+    },
+    "featureCompleteProductionEnvironment": {
+      "productionApplication": "PASS — Vercel production host serves the application; /api/ops/health application=ok database=ok",
+      "canonicalDns": "FAIL — thebackhalf.org and www.thebackhalf.org do not resolve (Row 75 still NOT READY)",
+      "livePayments": "NOT READY — Vercel Production STRIPE_SECRET_KEY class is TEST-SANDBOX (Row 73); STRIPE_WEBHOOK_SECRET is not configured (POST /api/stripe/webhook returns webhook_not_configured)"
+    }
+  },
+  "scope": {
+    "inScope": [
+      "Repository secret hygiene",
+      "Environment-variable and API-key handling",
+      "Admin / support / architect access controls",
+      "Cron and ops endpoint authorization",
+      "Authentication, sessions, and role permissions",
+      "Payment webhook and checkout authorization",
+      "Production unauthenticated surface probes",
+      "Known residual vendor MFA / DNS / Stripe risks",
+      "Dependency vulnerability inventory (npm audit)"
+    ],
+    "outOfScope": [
+      "Stripe Dashboard configuration changes",
+      "Cloudflare DNS / nameserver changes",
+      "Vercel custom-domain settings",
+      "Secret value retrieval or rotation",
+      "Product, marketing, or legal file edits",
+      "Founder MFA enrollment",
+      "Patching the npm-audit findings (reported, not applied)"
+    ]
+  },
+  "productionProbe": {
+    "probedAt": "2026-08-26T18:03:04.000Z",
+    "origin": "https://website-two-psi-49.vercel.app",
+    "deploymentId": "dpl_EhwiyGTSVR8TAVxjbVcEhw3pwMGc",
+    "canonicalApex": "thebackhalf.org — NXDOMAIN / could not resolve",
+    "canonicalWww": "www.thebackhalf.org — NXDOMAIN / could not resolve",
+    "health": {
+      "path": "/api/ops/health",
+      "http": 200,
+      "body": {
+        "ok": true,
+        "environment": "production",
+        "service": "the-back-half",
+        "checks": { "application": "ok", "database": "ok" }
+      },
+      "secretsInBody": false
+    },
+    "securityHeaders": {
+      "strictTransportSecurity": "PASS — max-age=63072000; includeSubDomains; preload (Vercel)",
+      "contentSecurityPolicy": "MISSING",
+      "xFrameOptions": "MISSING",
+      "xContentTypeOptions": "MISSING",
+      "referrerPolicy": "MISSING",
+      "permissionsPolicy": "MISSING",
+      "xPoweredBy": "PRESENT — Next.js (information disclosure)"
+    },
+    "unauthenticatedAccess": [
+      {
+        "path": "/ops/admin",
+        "http": 307,
+        "location": "/login?next=%2Fops%2Fadmin",
+        "result": "PASS"
+      },
+      {
+        "path": "/ops/admin/agent-operations",
+        "http": 307,
+        "location": "/login?next=%2Fops%2Fadmin%2Fagent-operations",
+        "result": "PASS"
+      },
+      {
+        "path": "/ops/admin/support",
+        "http": 307,
+        "location": "/login?next=%2Fops%2Fadmin%2Fsupport",
+        "result": "PASS"
+      },
+      {
+        "path": "/api/admin/accounts",
+        "http": 307,
+        "location": "/login?next=%2Fapi%2Fadmin%2Faccounts",
+        "result": "PASS"
+      },
+      {
+        "path": "/api/admin/roles",
+        "http": 307,
+        "location": "/login?next=%2Fapi%2Fadmin%2Froles",
+        "result": "PASS"
+      },
+      {
+        "path": "/api/admin/aos/founder-decision",
+        "method": "POST",
+        "http": 307,
+        "result": "PASS — middleware redirects unauthenticated POST"
+      },
+      {
+        "path": "/architect",
+        "http": 307,
+        "location": "/eligibility?next=%2Farchitect",
+        "result": "PASS — age gate then session required"
+      },
+      {
+        "path": "/api/architect/blueprint/guidebook",
+        "http": 401,
+        "result": "PASS — Sign-in required"
+      },
+      {
+        "path": "/_internal/row74-credential-recovery-review",
+        "http": 404,
+        "result": "PASS — localhost-only review surface not served on production"
+      },
+      {
+        "path": "/_internal/row74-credential-recovery-review",
+        "note": "Host: localhost header on production origin",
+        "http": 404,
+        "result": "PASS — host-header bypass did not expose the review page"
+      }
+    ],
+    "cronWithoutBearer": [
+      { "path": "/api/fab-5/imani/heartbeat", "http": 401, "body": { "error": "unauthorized" }, "result": "PASS — CRON_SECRET is configured and fail-closed" },
+      { "path": "/api/fab-5/aos/tick", "http": 401, "body": { "error": "unauthorized" }, "result": "PASS" },
+      { "path": "/api/fab-5/aos/validate", "http": 401, "body": { "error": "unauthorized" }, "result": "PASS" },
+      { "path": "/api/ops/monitoring/run", "http": 401, "body": { "error": "unauthorized" }, "result": "PASS" },
+      { "path": "/api/support/inbound", "http": 401, "body": { "error": "unauthorized" }, "result": "PASS" },
+      { "path": "/api/fab-5/michelle/cycle", "http": 401, "body": { "error": "unauthorized" }, "result": "PASS" },
+      { "path": "/api/fab-5/nia/cycle", "http": 401, "body": { "error": "unauthorized" }, "result": "PASS" },
+      { "path": "/api/ops/stripe-live-connect", "http": 401, "body": { "error": "unauthorized" }, "result": "PASS" }
+    ],
+    "stripeWebhookUnauthenticated": {
+      "path": "/api/stripe/webhook",
+      "method": "POST",
+      "http": 503,
+      "body": { "error": "webhook_not_configured" },
+      "result": "CONFIG GAP — STRIPE_WEBHOOK_SECRET missing in production. Signature verification code exists but cannot run until the secret is set. No live webhook processing."
+    },
+    "publicRoutesHttp200": ["/login", "/register", "/checkout", "/support"],
+    "loginInvalidCredentials": {
+      "path": "/api/auth/login",
+      "http": 401,
+      "body": { "status": "invalid_credentials" },
+      "result": "PASS — generic failure; does not disclose whether the mailbox exists"
+    },
+    "registerWithoutAgeCookie": {
+      "path": "/api/auth/register",
+      "http": 403,
+      "body": { "status": "age_ineligible" },
+      "result": "PASS — age gate enforced before account creation"
+    }
+  },
+  "secrets": {
+    "gitignore": {
+      "result": "PASS",
+      "patterns": [".env*", "!.env.example", ".data/", ".vercel", "*.pem"]
+    },
+    "trackedEnvFiles": [".env.example"],
+    "gitTrackedSecretValues": {
+      "filesScanned": 1285,
+      "liveStripeKeys": 0,
+      "webhookSecrets": 0,
+      "openaiKeys": 0,
+      "githubTokens": 0,
+      "awsAccessKeys": 0,
+      "privateKeys": 0,
+      "postgresDsns": 0,
+      "vercelTokens": 0,
+      "note": "Only allowlisted fake/test strings and the lumina-eval safety fixture phrase BEGIN PRIVATE KEY were present. No production secret values are in git."
+    },
+    "clientExposure": {
+      "result": "PASS",
+      "note": "STRIPE_SECRET_KEY, AUTH_SECRET, CRON_SECRET, SMTP_PASSWORD, SUPABASE_SERVICE_ROLE_KEY, POSTGRES_URL, CURSOR_API_KEY, VERCEL_TOKEN, BH_ADMIN_EMAILS, and BH_SUPPORT_EMAILS are server-only. NEXT_PUBLIC_SITE_URL is the public site URL only."
+    },
+    "redaction": {
+      "result": "PASS",
+      "locations": [
+        "lib/fab-5/audit.ts",
+        "lib/fab-5/heartbeat.ts",
+        "lib/fab-5/live-runner.ts",
+        "lib/fab-5/access.ts (secret-retrieval requests denied)",
+        "lib/analytics/privacy.ts",
+        "lib/auth/operations/admin.ts (account listing omits password hashes)"
+      ]
+    },
+    "outputFileTracingExcludes": {
+      "result": "PASS",
+      "excluded": [".env.local", ".env*.local", ".data/", ".git/"]
+    }
+  },
+  "apiKeysAndVendorCredentials": {
+    "custody": "Founder-held. AI executives are not independent human credential holders (Row 20 / Row 74).",
+    "vercelProduction": {
+      "CRON_SECRET": "PRESENT — unauthenticated cron calls return 401 unauthorized rather than 503 not_configured",
+      "AUTH_SECRET": "INFERRED PRESENT — production login and session middleware operate",
+      "POSTGRES_URL": "PRESENT — health database=ok",
+      "STRIPE_SECRET_KEY": "TEST-SANDBOX class (Row 73 evidence). Value not printed.",
+      "STRIPE_WEBHOOK_SECRET": "MISSING — webhook returns webhook_not_configured",
+      "BH_ADMIN_EMAILS": "NOT RE-READ — mailbox list is a secret. Row 20 still records Founder confirmation that kimberly@thebackhalf.org is included in production. Do not paste the list.",
+      "TWILIO_ACCOUNT_SID": "NOT CONFIGURED — urgent SMS remains blocked (AOS gate J-sms)",
+      "CURSOR_API_KEY": "PRESENT on hosted AOS path as of Row 74 standup evidence; value not printed"
+    },
+    "row73LiveConnect": {
+      "route": "/api/ops/stripe-live-connect",
+      "auth": "ROW73_STRIPE_CONNECT_TOKEN via x-row73-connect (SHA-256 timing-safe). Production-only. Unauthenticated GET returns 401.",
+      "risk": "Authorized POST can return a newly created webhook secret in JSON when includeWebhookSecret=true. Treat that token as Founder-custody. Do not log the response."
+    }
+  },
+  "adminAccessAndPermissions": {
+    "result": "PASS with residual custody items",
+    "rbac": {
+      "roles": ["architect", "support", "admin", "system"],
+      "defaultRegistrationRole": "architect",
+      "systemAssignableViaUi": false,
+      "adminWinsOverSupportEmailLists": true,
+      "syncConfiguredRoleDoesNotDemoteAdminToSupport": true
+    },
+    "permissions": {
+      "architect": [
+        "architect:dashboard:access",
+        "architect:profile:read_own",
+        "architect:profile:update_own",
+        "architect:consent:read_own",
+        "architect:lumina_memory:manage_own"
+      ],
+      "support": ["support:ops:access", "support:accounts:lookup"],
+      "admin": "architect + admin:ops:access + admin:accounts:list + admin:roles:assign + admin:billing:reconcile + support permissions",
+      "system": ["system:internal:operate", "admin:billing:reconcile"]
+    },
+    "middleware": {
+      "adminOps": "session + admin:ops:access. Ticket console is support-scoped and is not treated as super-admin.",
+      "supportOps": "session + support:ops:access",
+      "architect": "session + architect:dashboard:access + ageEligible",
+      "serverActions": "requirePermission / requireAuthenticatedUser re-load the user from the store (not JWT-only) for mutations"
+    },
+    "leastPrivilegeEvidence": "Row 20 Founder-accepted 2026-08-24. Support cannot assign roles or reconcile billing. AI executives have no human super-admin login.",
+    "residual": [
+      "Middleware trusts the JWT role for route gating until expiry (30 days). Privilege changes in BH_ADMIN_EMAILS take effect at next login, not immediately.",
+      "Founder must keep BH_ADMIN_EMAILS accurate in Vercel Production. This audit did not print or dump the list."
+    ]
+  },
+  "authentication": {
+    "session": {
+      "alg": "HS256",
+      "cookie": "bh-session",
+      "httpOnly": true,
+      "sameSite": "lax",
+      "secureInProduction": "NODE_ENV === production",
+      "ttlSeconds": 2592000,
+      "ttlNote": "30-day sessions. Password reset does not revoke existing sessions."
+    },
+    "passwords": {
+      "algorithm": "bcrypt",
+      "saltRounds": 12,
+      "minLength": 8,
+      "requiresLetterAndNumber": true
+    },
+    "openRedirect": {
+      "result": "PASS",
+      "helper": "getSafeRedirectPath — relative paths only; rejects protocol-relative //"
+    },
+    "oauth": {
+      "google": "Optional. State is a 10-minute HS256 JWT. Callback verifies state. Not required for launch if Google Sign-In remains hidden."
+    },
+    "passwordReset": {
+      "enumeration": "PASS — always returns accepted",
+      "cooldownMs": 60000,
+      "token": "crypto.randomUUID stored in plaintext in bh_auth_password_reset_tokens",
+      "usedTokensDeleted": true,
+      "sessionsRevokedOnReset": false
+    },
+    "loginRateLimit": "MISSING — no IP/account lockout on /api/auth/login or /api/auth/register beyond password-reset and verification-resend cooldowns"
+  },
+  "vulnerabilities": {
+    "repoInjection": {
+      "sql": "PASS — application queries use postgres tagged templates. sql.unsafe appears only in backup fingerprint/restore-test with quoted identifiers, not request input.",
+      "xss": "PASS for reviewed product paths — dangerouslySetInnerHTML is JSON.stringify for JSON-LD only.",
+      "ssrf": "Blueprint PDF generation uses Puppeteer against the same origin with the caller session cookie. architectId is constrained to self-or-admin unless BLUEPRINT_PRINT_SECRET or BLUEPRINT_QA_OPEN=1.",
+      "blueprintQaOpen": "Must remain unset in production. .env.example documents local-only."
+    },
+    "missingControls": [
+      {
+        "id": "SEC-194-01",
+        "severity": "HIGH",
+        "title": "Canonical production hostname does not resolve",
+        "detail": "thebackhalf.org / www.thebackhalf.org NXDOMAIN. Public TLS and cookie domain for the brand hostname cannot be verified. Production currently lives on the Vercel host. Row 75 remains NOT READY. DNS was not changed by this audit."
+      },
+      {
+        "id": "SEC-194-02",
+        "severity": "HIGH",
+        "title": "Stripe webhook secret not configured in production",
+        "detail": "POST /api/stripe/webhook returns 503 webhook_not_configured. Paid-order fulfillment cannot be signature-verified until STRIPE_WEBHOOK_SECRET is set. Combined with TEST-SANDBOX key class, live payment processing is not production-ready."
+      },
+      {
+        "id": "SEC-194-03",
+        "severity": "HIGH",
+        "title": "npm audit: 11 high, 1 moderate on installed tree",
+        "detail": "Lockfile next@16.2.12 inherits PostCSS and sharp advisories; puppeteer@24.x inherits extract-zip / browsers advisories; also brace-expansion, fast-uri, js-yaml, nanoid, hono (moderate). Fixes were not applied. Next bump to 16.3.3 is a semver-minor product change and needs a dedicated Imani engineering item, not a silent patch in this audit.",
+        "counts": { "critical": 0, "high": 11, "moderate": 1, "low": 0 }
+      },
+      {
+        "id": "SEC-194-04",
+        "severity": "MEDIUM",
+        "title": "No brute-force rate limit on login or registration",
+        "detail": "Invalid login returns generic 401. There is no per-IP or per-account lockout. Password-reset cooldown is 60s only."
+      },
+      {
+        "id": "SEC-194-05",
+        "severity": "MEDIUM",
+        "title": "Application security headers incomplete",
+        "detail": "HSTS is present via Vercel. next.config.ts and vercel.json set no CSP, X-Frame-Options / frame-ancestors, X-Content-Type-Options, Referrer-Policy, or Permissions-Policy. x-powered-by: Next.js is emitted."
+      },
+      {
+        "id": "SEC-194-06",
+        "severity": "MEDIUM",
+        "title": "Password-reset tokens stored in plaintext; sessions survive reset",
+        "detail": "Tokens are UUIDs in Postgres. A DB reader can redeem a live token. Successful reset does not invalidate bh-session JWTs already issued."
+      },
+      {
+        "id": "SEC-194-07",
+        "severity": "MEDIUM",
+        "title": "Cloudflare account 2FA inactive",
+        "detail": "Row 74 Founder-accepted residual risk. Not converted to PASS. DNS/registrar lock remains client transfer prohibited. This audit did not enable 2FA and did not change DNS."
+      },
+      {
+        "id": "SEC-194-08",
+        "severity": "LOW",
+        "title": "JWT role used for middleware gating for up to 30 days",
+        "detail": "Mutations re-check the store. Route access can lag a role revocation until re-login or expiry."
+      },
+      {
+        "id": "SEC-194-09",
+        "severity": "LOW",
+        "title": "Unauthenticated analytics and marketing ingest have no rate limit",
+        "detail": "/api/analytics/event and /api/marketing/session are expected public beacons. They can be spammed. Payloads are sanitized; they do not grant admin access."
+      },
+      {
+        "id": "SEC-194-10",
+        "severity": "LOW",
+        "title": "Urgent Founder SMS not configured",
+        "detail": "Twilio / FOUNDER_NOTIFY_SMS absent. Security incidents rely on dashboard + email. Not a remote-code issue."
+      }
+    ]
+  },
+  "controlsThatPassed": [
+    "No production secret values in git",
+    ".env* gitignored; only .env.example tracked",
+    "Admin, support, and architect routes require session + permission in production",
+    "Cron/ops/AOS/heartbeat/inbound/monitoring endpoints require Bearer CRON_SECRET (timing-safe)",
+    "Fail-closed: missing cron secret would 503; current production returns 401 so the secret exists",
+    "Internal Founder review pages are localhost-only and 404 in production",
+    "Host: localhost bypass against production internal review returned 404",
+    "Checkout server action requires authenticated user, ignores client price IDs/amounts, uses catalog prices",
+    "Stripe webhook handler verifies stripe-signature when configured",
+    "Open-redirect helper rejects non-relative and protocol-relative next= values",
+    "Password hashing bcrypt cost 12; login errors are generic",
+    "SYSTEM role cannot be assigned from admin UI or email lists",
+    "Support role cannot assign roles or access admin-only dashboards",
+    "Admin account listing omits password hashes",
+    "Heartbeat/AOS traces redact secret patterns and do not mutate Stripe or production config",
+    "Health endpoint exposes no secrets",
+    "Age eligibility required before registration",
+    "Row 69 Security Baseline workbook-complete; Row 20 access matrix Founder-accepted; Stripe Dashboard MFA PASS; Google Workspace / Instagram / TikTok MFA PASS"
+  ],
+  "relatedEvidence": {
+    "row20Access": "ops/fab-5/row-20-status.json — Founder accepted 2026-08-24",
+    "row61Monitoring": "ops/fab-5/ROW-61-PRODUCTION-MONITORING.md — Complete; Founder accepted 2026-08-21",
+    "row69SecurityBaseline": "ops/fab-5/launch-rows.json number 69 — Complete",
+    "row73StripeKeyClass": "ops/fab-5/runs/row-73-stripe-key-class.json — Vercel Production key class TEST-SANDBOX",
+    "row74Recovery": "ops/fab-5/credential-account-recovery-register.json — Founder accepted 2026-08-25; Cloudflare MFA INACTIVE risk accepted",
+    "row75Dns": "ops/fab-5/ROW-75-DOMAIN-DNS-SSL-CONTINUITY.md — NOT READY; apex A/AAAA empty",
+    "row182SecurityReview": "August Launch row 182 Run Security Review remains Not Started (feature-complete build review). This Row 194 audit is the production-environment counterpart and does not close Row 182."
+  },
+  "recommendedNextEngineering": [
+    {
+      "owner": "imani",
+      "item": "Add CSP, frame-ancestors, nosniff, Referrer-Policy; disable x-powered-by",
+      "class": "B",
+      "founderGate": false
+    },
+    {
+      "owner": "imani",
+      "item": "Add login/register rate limiting and lockout",
+      "class": "B",
+      "founderGate": false
+    },
+    {
+      "owner": "imani",
+      "item": "Hash password-reset tokens at rest and revoke sessions on password change",
+      "class": "B",
+      "founderGate": false
+    },
+    {
+      "owner": "imani",
+      "item": "Dedicated follow-up to bump Next.js past 16.2.12 after regression of auth, checkout, and Blueprint PDF",
+      "class": "C",
+      "founderGate": false
+    },
+    {
+      "owner": "kimberly",
+      "item": "Row 75 Cloudflare DNS A/CNAME for apex and www (Founder-held DNS). Not applied here.",
+      "class": "D",
+      "founderGate": true
+    },
+    {
+      "owner": "kimberly",
+      "item": "Row 73 live Stripe key + STRIPE_WEBHOOK_SECRET in Vercel Production when Founder authorizes live payments. Not applied here.",
+      "class": "D",
+      "founderGate": true
+    }
+  ],
+  "validation": {
+    "typecheck": "PASS — npx tsc --noEmit exit 0",
+    "npmTestScript": "ABSENT — package.json has no test script; nearest suites are scripts/fab-5/*-validate.ts and were not re-run as product tests",
+    "build": "SKIPPED — ops status JSON only; no production runtime code changed",
+    "lint": "not required for JSON status",
+    "secretsInThisFile": false
+  },
+  "finalStatus": "AUDIT COMPLETE — PRODUCTION NOT SECURITY-CLEARED. Unauthenticated admin/cron/architect controls PASS. No secrets in git. Launch clearance is blocked by canonical DNS (Row 75), Stripe webhook/live key (Row 73), Cloudflare MFA residual (Row 74 Founder-accepted), missing login rate limits, incomplete security headers, and high npm-audit findings. Founder acceptance is NOT recorded. Row 194 is NOT marked Complete.",
+  "aosIngestHint": "Park as ACCEPTANCE_READY. Do not mark COMPLETE. Do not merge. Do not deploy from this PR."
+}
