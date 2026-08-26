@@ -8,17 +8,20 @@ import {
   getDictionary,
   resolveAppShellLabel,
 } from "@/content/i18n/get-dictionary";
-import type { Chapter1SectionId } from "@/content/journey/chapter-1-awakening";
+import {
+  CHAPTER_1_SECTIONS,
+  type Chapter1SectionId,
+} from "@/content/journey/chapter-1-awakening";
 import { getLocalizedArchitectPath } from "@/lib/app-shell/routing";
 import {
   AccessDeniedError,
   requireAuthenticatedUser,
 } from "@/lib/auth/access";
 import { getLoginPath } from "@/lib/auth/routing";
-import { getLocalizedPath } from "@/lib/i18n/routing";
 import { loadChapter1ForUser } from "@/lib/journey/chapters/service";
 import { getChapter1Path } from "@/lib/journey/chapters/paths";
 import { redirectIfOnboardingIncomplete } from "@/lib/journey/onboarding/gate";
+import { redirectIfChapterUnavailable } from "@/lib/journey/progress/page-gate";
 import type { Locale } from "@/lib/i18n/config";
 
 type Chapter1PageProps = {
@@ -43,11 +46,16 @@ export async function Chapter1Page({ locale, sectionId }: Chapter1PageProps) {
   await redirectIfOnboardingIncomplete(actor.user.id, locale);
 
   const loaded = await loadChapter1ForUser(actor.user.id);
-  if (loaded.status === "blocked") {
-    if (loaded.reason === "community_only") {
-      redirect(getLocalizedArchitectPath("dashboard", locale));
-    }
-    redirect(`${getLocalizedPath("/checkout", locale)}?need=journey_access`);
+  await redirectIfChapterUnavailable(loaded, {
+    locale,
+    userId: actor.user.id,
+    requestedSection: sectionId,
+    sectionOrder: CHAPTER_1_SECTIONS,
+    chapterPath: (nextLocale, section) =>
+      getChapter1Path(nextLocale, section as Chapter1SectionId),
+  });
+  if (loaded.status !== "ok") {
+    redirect(getLocalizedArchitectPath("journey", locale));
   }
 
   return (

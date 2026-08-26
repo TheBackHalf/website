@@ -502,6 +502,15 @@ export const esDictionary: Dictionary = {
       title: "El Journey",
       description:
         "Continúa el Capítulo Uno — El Despertar y tu experiencia autenticada del Journey.",
+      pauseAndSave: "Guardar y pausar",
+      pausing: "Guardando…",
+      chapterLocked: "Completa el capítulo anterior para desbloquear este.",
+      sectionLocked:
+        "Completa el trabajo requerido en la sección actual primero.",
+      draftSaving: "Guardando borrador…",
+      draftSaved: "Borrador guardado.",
+      draftSaveError:
+        "No pudimos guardar tu borrador. Prueba Guardar respuestas.",
     },
     onboarding: {
       title: "Incorporación al Journey",

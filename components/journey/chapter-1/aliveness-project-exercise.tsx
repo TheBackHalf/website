@@ -14,6 +14,7 @@ import {
   isAlivenessProjectComplete,
   isAlivenessProjectQuestionComplete,
 } from "@/lib/journey/chapters/chapter-1";
+import { useJourneyDraftAutosave } from "@/lib/journey/progress/use-draft-autosave";
 import type { AlivenessProjectAnswers } from "@/lib/journey/chapters/types";
 import type { Locale } from "@/lib/i18n/config";
 
@@ -57,6 +58,19 @@ export function AlivenessProjectExercise({
       );
     }
     return next;
+  });
+  const journeyCopy = getDictionary(locale).appShell.journey;
+  const { saving: autoSaving, saved: autoSaved } = useJourneyDraftAutosave({
+    value: answers,
+    enabled: !onLocalSave,
+    save: async (next) => {
+      const result = await saveChapter1AlivenessProjectAction({ answers: next });
+      if (result.status !== "ok") {
+        return { status: "error" as const };
+      }
+      onSaved?.(next);
+      return { status: "ok" as const };
+    },
   });
 
   const active = useMemo(
@@ -233,10 +247,14 @@ export function AlivenessProjectExercise({
         </div>
       </section>
 
-      {savedNotice ? (
+      {savedNotice || autoSaved ? (
         <StatusNotice variant="success">
           {resolveAppShellLabel(locale, copy.saved)}
         </StatusNotice>
+      ) : autoSaving ? (
+        <p className="mt-4 font-sans text-sm text-bh-muted">
+          {resolveAppShellLabel(locale, journeyCopy.draftSaving)}
+        </p>
       ) : null}
       {error ? <StatusNotice variant="error">{error}</StatusNotice> : null}
       {projectComplete ? (

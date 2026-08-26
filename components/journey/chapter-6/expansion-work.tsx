@@ -17,6 +17,7 @@ import {
   saveChapter6PracticeAction,
   saveChapter6ReflectionAction,
 } from "@/lib/journey/chapters/chapter-6-actions";
+import { useJourneyDraftAutosave } from "@/lib/journey/progress/use-draft-autosave";
 import {
   isExpansionCommitmentComplete,
   isExpansionPracticeComplete,
@@ -48,6 +49,17 @@ export function ExpansionReflectionWork({
   const [savedNotice, setSavedNotice] = useState(false);
   const [answers, setAnswers] =
     useState<ExpansionReflectionAnswers>(initialAnswers);
+  useJourneyDraftAutosave({
+    value: answers,
+    save: async (next) => {
+      const result = await saveChapter6ReflectionAction({ answers: next });
+      if (result.status === "ok") {
+        onSaved?.(next);
+        return { status: "ok" as const };
+      }
+      return { status: "error" as const };
+    },
+  });
 
   const complete = isExpansionReflectionComplete(answers);
 

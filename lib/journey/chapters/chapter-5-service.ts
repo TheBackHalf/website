@@ -25,10 +25,12 @@ import {
 } from "@/lib/journey/chapters/chapter-5-store";
 import type { Chapter5Record } from "@/lib/journey/chapters/types";
 import {
-  loadOnboardingForEntitledUser,
   type OnboardingAccessError,
 } from "@/lib/journey/onboarding/service";
-import { getJourneyProgressStore } from "@/lib/journey/progress";
+import { gateChapterLoad } from "@/lib/journey/progress/gate";
+import { preserveCompletedChapterStatus } from "@/lib/journey/progress/rules";
+import type { JourneyChapterId } from "@/lib/journey/progress/rules";
+import { syncAuthoritativeJourneyProgress } from "@/lib/journey/progress/snapshot";
 
 export type Chapter5LoadResult =
   | {
@@ -37,23 +39,17 @@ export type Chapter5LoadResult =
       resumeSectionId: Chapter5SectionId;
       context: ReturnType<typeof toChapter5ContextSummary>;
     }
-  | { status: "blocked"; reason: OnboardingAccessError };
+  | { status: "blocked"; reason: OnboardingAccessError }
+  | { status: "locked"; requiredChapterId: JourneyChapterId };
 
 async function syncJourneyProgress(record: Chapter5Record): Promise<void> {
-  const progressStatus =
-    record.status === "completed" ? "stage_completed" : "in_progress";
-
-  await getJourneyProgressStore().upsertProgress({
-    userId: record.userId,
-    chapterId: CHAPTER_5_ID,
-    status: progressStatus,
-  });
+  await syncAuthoritativeJourneyProgress(record.userId);
 }
 
 export async function loadChapter5ForUser(
   userId: string,
 ): Promise<Chapter5LoadResult> {
-  const loaded = await loadOnboardingForEntitledUser(userId);
+  const loaded = await gateChapterLoad(userId, CHAPTER_5_ID);
   if (loaded.status !== "ok") {
     return loaded;
   }
@@ -68,7 +64,7 @@ export async function loadChapter5ForUser(
     const now = new Date().toISOString();
     record = {
       ...record,
-      status: "in_progress",
+      status: preserveCompletedChapterStatus(record.status),
       updatedAt: now,
     };
     record = await store.saveChapter5(record);
@@ -89,6 +85,7 @@ export async function saveChapter5ReflectionForUser(input: {
 }): Promise<
   | { status: "ok"; record: Chapter5Record }
   | { status: "blocked"; reason: OnboardingAccessError }
+  | { status: "locked"; requiredChapterId: JourneyChapterId }
 > {
   const loaded = await loadChapter5ForUser(input.userId);
   if (loaded.status !== "ok") {
@@ -105,7 +102,7 @@ export async function saveChapter5ReflectionForUser(input: {
 
   record = {
     ...record,
-    status: "in_progress",
+    status: preserveCompletedChapterStatus(record.status),
     reflection,
     updatedAt: now,
   };
@@ -125,6 +122,7 @@ export async function saveChapter5PracticeForUser(input: {
 }): Promise<
   | { status: "ok"; record: Chapter5Record }
   | { status: "blocked"; reason: OnboardingAccessError }
+  | { status: "locked"; requiredChapterId: JourneyChapterId }
 > {
   const loaded = await loadChapter5ForUser(input.userId);
   if (loaded.status !== "ok") {
@@ -141,7 +139,7 @@ export async function saveChapter5PracticeForUser(input: {
 
   record = {
     ...record,
-    status: "in_progress",
+    status: preserveCompletedChapterStatus(record.status),
     practice,
     updatedAt: now,
   };
@@ -162,6 +160,7 @@ export async function saveChapter5CommitmentForUser(input: {
 }): Promise<
   | { status: "ok"; record: Chapter5Record }
   | { status: "blocked"; reason: OnboardingAccessError }
+  | { status: "locked"; requiredChapterId: JourneyChapterId }
 > {
   const loaded = await loadChapter5ForUser(input.userId);
   if (loaded.status !== "ok") {
@@ -178,7 +177,7 @@ export async function saveChapter5CommitmentForUser(input: {
 
   record = {
     ...record,
-    status: "in_progress",
+    status: preserveCompletedChapterStatus(record.status),
     commitment,
     updatedAt: now,
   };
@@ -202,6 +201,7 @@ export async function advanceChapter5SectionForUser(input: {
       nextSectionId: Chapter5SectionId;
     }
   | { status: "blocked"; reason: OnboardingAccessError }
+  | { status: "locked"; requiredChapterId: JourneyChapterId }
   | { status: "incomplete_work" }
   | { status: "invalid_section" }
 > {
@@ -298,6 +298,7 @@ export async function setChapter5CurrentSectionForUser(input: {
 }): Promise<
   | { status: "ok"; record: Chapter5Record }
   | { status: "blocked"; reason: OnboardingAccessError }
+  | { status: "locked"; requiredChapterId: JourneyChapterId }
   | { status: "invalid_section" }
 > {
   if (!isChapter5SectionId(input.sectionId)) {
@@ -313,8 +314,7 @@ export async function setChapter5CurrentSectionForUser(input: {
   const record = await getChapter5Store().saveChapter5({
     ...loaded.record,
     currentSectionId: input.sectionId,
-    status:
-      loaded.record.status === "completed" ? "completed" : "in_progress",
+    status: preserveCompletedChapterStatus(loaded.record.status),
     updatedAt: now,
   });
   await syncJourneyProgress(record);

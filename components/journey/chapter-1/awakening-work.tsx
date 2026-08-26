@@ -16,6 +16,7 @@ import {
   isAwakeningCommitmentComplete,
   isAwakeningReflectionComplete,
 } from "@/lib/journey/chapters/chapter-1";
+import { useJourneyDraftAutosave } from "@/lib/journey/progress/use-draft-autosave";
 import type {
   AwakeningCommitmentState,
   AwakeningReflectionAnswers,
@@ -40,6 +41,18 @@ export function AwakeningReflectionWork({
   const [savedNotice, setSavedNotice] = useState(false);
   const [answers, setAnswers] =
     useState<AwakeningReflectionAnswers>(initialAnswers);
+  const journeyCopy = getDictionary(locale).appShell.journey;
+  const { saving: autoSaving, saved: autoSaved } = useJourneyDraftAutosave({
+    value: answers,
+    save: async (next) => {
+      const result = await saveChapter1ReflectionAction({ answers: next });
+      if (result.status !== "ok") {
+        return { status: "error" as const };
+      }
+      onSaved?.(next);
+      return { status: "ok" as const };
+    },
+  });
 
   const complete = isAwakeningReflectionComplete(answers);
 
@@ -109,10 +122,14 @@ export function AwakeningReflectionWork({
             : resolveAppShellLabel(locale, copy.saveAnswers)}
         </button>
       </div>
-      {savedNotice ? (
+      {savedNotice || autoSaved ? (
         <StatusNotice variant="success" className="mt-4">
           {resolveAppShellLabel(locale, copy.saved)}
         </StatusNotice>
+      ) : autoSaving ? (
+        <p className="mt-4 font-sans text-sm text-bh-muted">
+          {resolveAppShellLabel(locale, journeyCopy.draftSaving)}
+        </p>
       ) : null}
       {complete ? (
         <p className="mt-4 font-sans text-sm text-bh-muted">
@@ -146,6 +163,23 @@ export function AwakeningCommitmentWork({
   const [savedNotice, setSavedNotice] = useState(false);
   const [affirmed, setAffirmed] = useState(initialCommitment.affirmed);
   const [note, setNote] = useState(initialCommitment.note);
+  const journeyCopy = getDictionary(locale).appShell.journey;
+  const { saving: autoSaving, saved: autoSaved } = useJourneyDraftAutosave({
+    value: { affirmed, note },
+    save: async (next) => {
+      const result = await saveChapter1CommitmentAction(next);
+      if (result.status !== "ok") {
+        return { status: "error" as const };
+      }
+      onSaved?.({
+        affirmed: next.affirmed,
+        note: next.note,
+        updatedAt: new Date().toISOString(),
+        completedAt: next.affirmed ? new Date().toISOString() : null,
+      });
+      return { status: "ok" as const };
+    },
+  });
   const complete = isAwakeningCommitmentComplete({
     affirmed,
     note,
@@ -222,10 +256,14 @@ export function AwakeningCommitmentWork({
             : resolveAppShellLabel(locale, copy.saveAnswers)}
         </button>
       </div>
-      {savedNotice ? (
+      {savedNotice || autoSaved ? (
         <StatusNotice variant="success" className="mt-4">
           {resolveAppShellLabel(locale, copy.saved)}
         </StatusNotice>
+      ) : autoSaving ? (
+        <p className="mt-4 font-sans text-sm text-bh-muted">
+          {resolveAppShellLabel(locale, journeyCopy.draftSaving)}
+        </p>
       ) : null}
       {complete ? (
         <p className="mt-4 font-sans text-sm text-bh-muted">
