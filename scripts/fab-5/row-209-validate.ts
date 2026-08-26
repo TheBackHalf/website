@@ -34,6 +34,7 @@ import type { FounderDecision } from "@/lib/fab-5/aos/types";
 import type { ProductionMonitoringSnapshot } from "@/lib/monitoring/types";
 import type { AnalyticsEventRecord } from "@/lib/analytics/types";
 import type { PurchaseRecord } from "@/lib/billing/types";
+import { runRow209LiveTests } from "./row-209-live";
 
 type Verdict = "PASS" | "FAIL";
 
@@ -252,16 +253,19 @@ async function main() {
 
   tests.push({
     id: "T1",
-    name: "Empty environment exposes all 10 required panels without false RED",
+    name: "Empty environment exposes all 10 required panels as N/A, not false GREEN",
     result: mark(
       emptyModel.panels.length === 10 &&
-        EXECUTIVE_PANEL_IDS.every((id) => emptyModel.panels.some((panel) => panel.id === id)) &&
-        panel(emptyModel, "production-health")?.status === "N/A" &&
-        panel(emptyModel, "lumina-health")?.status === "N/A" &&
+        EXECUTIVE_PANEL_IDS.every((id) => emptyModel.panels.some((entry) => entry.id === id)) &&
+        EXECUTIVE_PANEL_IDS.every((id) => panel(emptyModel, id)?.status === "N/A") &&
+        EXECUTIVE_PANEL_IDS.every((id) => panel(emptyModel, id)?.telemetry === "unconfirmed") &&
+        emptyModel.executiveStatus === "N/A" &&
         emptyModel.founderAttentionRequired === false &&
+        panel(emptyModel, "enrollment-revenue")?.status !== "GREEN" &&
+        panel(emptyModel, "payments")?.status !== "GREEN" &&
         emptyModel.launchHealth !== "RED",
     ),
-    detail: `panels=${emptyModel.panels.map((entry) => `${entry.id}:${entry.status}`).join(",")}`,
+    detail: `panels=${emptyModel.panels.map((entry) => `${entry.id}:${entry.status}:${entry.telemetry}`).join(",")}`,
   });
 
   const purchaseSources = await baseSources({
@@ -616,9 +620,11 @@ async function main() {
         viewSrc.includes("px-6") &&
         viewSrc.includes("data-bh-executive-dashboard") &&
         viewSrc.includes("data-panel-id") &&
+        viewSrc.includes("data-panel-telemetry") &&
+        viewSrc.includes("N/A — telemetry not confirmed") &&
         viewSrc.includes("model.panels.map"),
     ),
-    detail: "Desktop two-column grid, mobile stacked, readable padding",
+    detail: "Desktop two-column grid, mobile stacked, N/A visually distinct from GREEN",
   });
 
   tests.push({
@@ -656,8 +662,50 @@ async function main() {
     detail: "New route is covered by existing /ops/admin prefix. No auth/payment system edits.",
   });
 
+  const zeroMonitor = monitoringFixture();
+  const zeroModel = composeExecutiveDashboard({
+    launch: emptyLaunch,
+    marketing: emptyMarketing,
+    monitoring: zeroMonitor,
+    founderDecisions: [],
+    aosBackend: "none",
+  });
+  tests.push({
+    id: "T21",
+    name: "Zero activity with Row 61 payments PASS is honest GREEN, not N/A",
+    result: mark(
+      panel(zeroModel, "enrollment-revenue")?.status === "GREEN" &&
+        panel(zeroModel, "payments")?.status === "GREEN" &&
+        panel(zeroModel, "production-health")?.status === "GREEN" &&
+        panel(zeroModel, "critical-incidents")?.status === "GREEN" &&
+        panel(zeroModel, "enrollment-revenue")?.telemetry === "confirmed" &&
+        panel(emptyModel, "enrollment-revenue")?.status === "N/A" &&
+        panel(emptyModel, "payments")?.status === "N/A",
+    ),
+    detail: `withProbe enrollment=${panel(zeroModel, "enrollment-revenue")?.status} payments=${panel(zeroModel, "payments")?.status}; empty enrollment=${panel(emptyModel, "enrollment-revenue")?.status}`,
+  });
+
   for (const test of tests) {
     if (test.result === "FAIL") failures.push(`${test.id} ${test.name}: ${test.detail}`);
+  }
+
+  if (process.env.ROW209_SKIP_LIVE !== "1") {
+    try {
+      const liveTests = await runRow209LiveTests();
+      tests.push(...liveTests);
+      for (const test of liveTests) {
+        if (test.result === "FAIL") failures.push(`${test.id} ${test.name}: ${test.detail}`);
+      }
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      tests.push({
+        id: "T22",
+        name: "Authenticated admin loads EN/ES executive dashboard; architect/support denied",
+        result: "FAIL",
+        detail: message,
+      });
+      failures.push(`T22 live access failed: ${message}`);
+    }
   }
 
   const payload = {

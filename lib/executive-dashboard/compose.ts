@@ -9,6 +9,7 @@ import {
   type ExecutiveDecisionCard,
   type ExecutivePanel,
   type PanelStatus,
+  type TelemetryState,
 } from "@/lib/executive-dashboard/types";
 
 const LAUNCH_DAY_ET = "2026-08-31";
@@ -59,7 +60,87 @@ function isLaunchDayOrAfter(dateEt: string): boolean {
   return dateEt >= LAUNCH_DAY_ET;
 }
 
-function enrollmentPanel(launch: LaunchDashboardModel): ExecutivePanel {
+function withTelemetry(
+  panel: Omit<ExecutivePanel, "telemetry">,
+  confirmed: boolean,
+): ExecutivePanel {
+  const telemetry: TelemetryState =
+    panel.status === "RED" || panel.status === "YELLOW" || confirmed
+      ? "confirmed"
+      : "unconfirmed";
+  return { ...panel, telemetry };
+}
+
+function hasBillingActivity(launch: LaunchDashboardModel): boolean {
+  return (
+    launch.revenue.purchasesToday > 0 ||
+    launch.revenue.purchasesCumulative > 0 ||
+    launch.revenue.failedPaymentsToday > 0 ||
+    launch.revenue.failedPaymentsCumulative > 0 ||
+    launch.revenue.refundsTodayCents > 0 ||
+    launch.revenue.refundsCumulativeCents > 0
+  );
+}
+
+function paymentsTelemetryConfirmed(
+  launch: LaunchDashboardModel,
+  monitoring: ProductionMonitoringSnapshot | null,
+): boolean {
+  return Boolean(monitoring?.payments.status) || hasBillingActivity(launch);
+}
+
+function trafficTelemetryConfirmed(launch: LaunchDashboardModel): boolean {
+  return (
+    (launch.traffic.websiteSessions.today ?? 0) > 0 ||
+    (launch.traffic.websiteSessions.cumulative ?? 0) > 0 ||
+    launch.conversion.registrationPage > 0 ||
+    launch.conversion.registrationStarted > 0 ||
+    launch.conversion.registrationCompleted > 0 ||
+    launch.conversion.checkoutStarted > 0 ||
+    launch.conversion.purchases > 0
+  );
+}
+
+function accessTelemetryConfirmed(launch: LaunchDashboardModel): boolean {
+  return (
+    (errorToday(launch, "auth_failed") ?? 0) > 0 ||
+    (errorToday(launch, "registration_failed") ?? 0) > 0 ||
+    launch.activation.purchased > 0 ||
+    launch.activation.accountActive > 0 ||
+    launch.conversion.registrationCompleted > 0 ||
+    launch.conversion.registrationStarted > 0
+  );
+}
+
+function supportTelemetryConfirmed(launch: LaunchDashboardModel): boolean {
+  return (
+    launch.support.newToday > 0 ||
+    launch.support.open > 0 ||
+    launch.support.resolvedToday > 0 ||
+    launch.support.socialRoutedToday > 0 ||
+    launch.support.socialRoutedOpen > 0
+  );
+}
+
+function marketingTelemetryConfirmed(marketing: LaunchKpiDashboardModel): boolean {
+  return (
+    marketing.funnel.landingPageSessions > 0 ||
+    marketing.funnel.checkoutStarts > 0 ||
+    marketing.funnel.purchases > 0
+  );
+}
+
+function incidentsTelemetryConfirmed(
+  launch: LaunchDashboardModel,
+  monitoring: ProductionMonitoringSnapshot | null,
+): boolean {
+  return Boolean(monitoring) || launch.risks.length > 0 || launch.criticalIssuesOpen > 0;
+}
+
+function enrollmentPanel(
+  launch: LaunchDashboardModel,
+  monitoring: ProductionMonitoringSnapshot | null,
+): ExecutivePanel {
   const paymentDown = availabilityStatus(launch, "payment") === "unavailable";
   const billingError = launch.qualityIssues.some((issue) =>
     /billing|revenue|purchase/i.test(issue),
@@ -69,22 +150,28 @@ function enrollmentPanel(launch: LaunchDashboardModel): ExecutivePanel {
     launch.conversion.checkoutStarted > 0 &&
     launch.revenue.purchasesToday === 0 &&
     launch.revenue.failedPaymentsToday > 0;
-  const status = paymentDown
+  const telemetryConfirmed = paymentsTelemetryConfirmed(launch, monitoring);
+  const status: PanelStatus = paymentDown
     ? "RED"
     : billingError || launchDayNoSales
       ? "YELLOW"
-      : "GREEN";
+      : telemetryConfirmed
+        ? "GREEN"
+        : "N/A";
   const issues = [
     ...launch.qualityIssues.filter((issue) => /billing|revenue|purchase/i.test(issue)),
     ...(launchDayNoSales
       ? ["Launch-day checkout starts with failed payments and zero paid purchases."]
       : []),
   ];
-  return {
+  const summary = telemetryConfirmed
+    ? `${count(launch.revenue.purchasesToday)} paid purchase(s) today · ${money(launch.revenue.grossTodayCents)} gross. Cumulative launch ${count(launch.revenue.purchasesCumulative)} / ${money(launch.revenue.grossCumulativeCents)}. ${count(launch.activation.activated)} Activated Architect(s).`
+    : "Billing telemetry is not confirmed (no Row 61 payments probe and no billing activity). Empty is N/A, not GREEN.";
+  return withTelemetry({
     id: "enrollment-revenue",
     title: "Enrollment / revenue",
     status,
-    summary: `${count(launch.revenue.purchasesToday)} paid purchase(s) today · ${money(launch.revenue.grossTodayCents)} gross. Cumulative launch ${count(launch.revenue.purchasesCumulative)} / ${money(launch.revenue.grossCumulativeCents)}. ${count(launch.activation.activated)} Activated Architect(s).`,
+    summary,
     metrics: [
       {
         label: "Purchases today",
@@ -110,17 +197,25 @@ function enrollmentPanel(launch: LaunchDashboardModel): ExecutivePanel {
     sourceLabel: `Row 151 / billing · ${launch.revenue.source}`,
     investigateHref: "/ops/admin/launch-dashboard",
     issues,
-  };
+  }, telemetryConfirmed);
 }
 
 function trafficPanel(launch: LaunchDashboardModel): ExecutivePanel {
   const noTraffic =
     isLaunchDayOrAfter(launch.dateEt) && (launch.traffic.websiteSessions.today ?? 0) === 0;
-  return {
+  const telemetryConfirmed = trafficTelemetryConfirmed(launch);
+  const status: PanelStatus = noTraffic
+    ? "YELLOW"
+    : telemetryConfirmed
+      ? "GREEN"
+      : "N/A";
+  return withTelemetry({
     id: "traffic-conversion",
     title: "Traffic / conversion",
-    status: noTraffic ? "YELLOW" : "GREEN",
-    summary: `${count(launch.traffic.websiteSessions.today)} website session(s) today. Registration conversion ${rate(launch.conversion.registrationConversion.value)}. Landing → purchase ${rate(launch.conversion.landingToPurchase.value)}.`,
+    status,
+    summary: telemetryConfirmed || noTraffic
+      ? `${count(launch.traffic.websiteSessions.today)} website session(s) today. Registration conversion ${rate(launch.conversion.registrationConversion.value)}. Landing → purchase ${rate(launch.conversion.landingToPurchase.value)}.`
+      : "Analytics telemetry is not confirmed in this environment. Zero sessions are N/A, not GREEN.",
     metrics: [
       {
         label: "Website sessions today",
@@ -145,7 +240,7 @@ function trafficPanel(launch: LaunchDashboardModel): ExecutivePanel {
     sourceLabel: "Row 150 analytics + Row 84 landing sessions",
     investigateHref: "/ops/admin/launch-dashboard",
     issues: noTraffic ? ["Launch day has zero website sessions in the analytics ledger."] : [],
-  };
+  }, telemetryConfirmed || noTraffic);
 }
 
 function productionPanel(
@@ -154,7 +249,7 @@ function productionPanel(
 ): ExecutivePanel {
   if (!monitoring) {
     const website = availabilityStatus(launch, "website");
-    return {
+    return withTelemetry({
       id: "production-health",
       title: "Production health",
       status: website === "unavailable" ? "RED" : "N/A",
@@ -169,7 +264,7 @@ function productionPanel(
       sourceLabel: "Row 61 snapshot missing · Row 151 availability as fallback",
       investigateHref: "/ops/admin/launch-dashboard",
       issues: [],
-    };
+    }, false);
   }
   const status = worstPanelStatus([
     monitoringStatus(monitoring.uptime.status),
@@ -187,7 +282,7 @@ function productionPanel(
       .filter((alert) => alert.founderAttention)
       .map((alert) => `${alert.system}: ${alert.failureType}`),
   ];
-  return {
+  return withTelemetry({
     id: "production-health",
     title: "Production health",
     status,
@@ -216,7 +311,7 @@ function productionPanel(
     sourceLabel: "Row 61 production monitoring snapshot (read-only)",
     investigateHref: "/ops/admin/launch-dashboard",
     issues,
-  };
+  }, true);
 }
 
 function paymentsPanel(
@@ -227,16 +322,21 @@ function paymentsPanel(
   const checkoutDown = availabilityStatus(launch, "checkout") === "unavailable";
   const monitorPay = monitoringStatus(monitoring?.payments.status);
   const failed = launch.revenue.failedPaymentsToday;
-  const status = paymentDown || checkoutDown || monitorPay === "RED"
+  const telemetryConfirmed = paymentsTelemetryConfirmed(launch, monitoring);
+  const status: PanelStatus = paymentDown || checkoutDown || monitorPay === "RED"
     ? "RED"
     : failed > 0 || monitorPay === "YELLOW"
       ? "YELLOW"
-      : "GREEN";
-  return {
+      : telemetryConfirmed
+        ? "GREEN"
+        : "N/A";
+  return withTelemetry({
     id: "payments",
     title: "Payments",
     status,
-    summary: `${count(failed)} failed payment(s) today. Checkout ${availabilityStatus(launch, "checkout")} · payment ${availabilityStatus(launch, "payment")}. Stripe mode ${monitoring?.payments.mode ?? "N/A"}.`,
+    summary: telemetryConfirmed
+      ? `${count(failed)} failed payment(s) today. Checkout ${availabilityStatus(launch, "checkout")} · payment ${availabilityStatus(launch, "payment")}. Stripe mode ${monitoring?.payments.mode ?? "N/A"}.`
+      : "No Row 61 payments probe and no billing activity. Missing payment telemetry is N/A, not GREEN.",
     metrics: [
       {
         label: "Failed payments today",
@@ -267,7 +367,7 @@ function paymentsPanel(
       ...(checkoutDown ? ["Checkout surface marked unavailable."] : []),
       ...(monitorPay === "RED" ? ["Row 61 payments probe FAIL."] : []),
     ],
-  };
+  }, telemetryConfirmed);
 }
 
 function accountAccessPanel(launch: LaunchDashboardModel): ExecutivePanel {
@@ -286,16 +386,21 @@ function accountAccessPanel(launch: LaunchDashboardModel): ExecutivePanel {
     launch.support.byCategory.find((row) => row.category === "login")?.open ?? 0;
   const registrationSupport =
     launch.support.byCategory.find((row) => row.category === "registration")?.open ?? 0;
-  const status = loginDown || criticalAuth
+  const telemetryConfirmed = accessTelemetryConfirmed(launch);
+  const status: PanelStatus = loginDown || criticalAuth
     ? "RED"
     : authFailed > 0 || registrationFailed > 0
       ? "YELLOW"
-      : "GREEN";
-  return {
+      : telemetryConfirmed
+        ? "GREEN"
+        : "N/A";
+  return withTelemetry({
     id: "account-access",
     title: "Account / access failures",
     status,
-    summary: `${count(authFailed)} auth failure(s) and ${count(registrationFailed)} registration failure(s) today. Login ${availabilityStatus(launch, "architect_access")}.`,
+    summary: telemetryConfirmed || authFailed > 0 || registrationFailed > 0 || loginDown
+      ? `${count(authFailed)} auth failure(s) and ${count(registrationFailed)} registration failure(s) today. Login ${availabilityStatus(launch, "architect_access")}.`
+      : "No auth/registration events or account activity in this environment. Unreported access is N/A, not GREEN.",
     metrics: [
       { label: "auth_failed today", value: count(errorToday(launch, "auth_failed")) },
       {
@@ -317,7 +422,7 @@ function accountAccessPanel(launch: LaunchDashboardModel): ExecutivePanel {
       ...(loginDown ? ["Registration or Architect access marked unavailable."] : []),
       ...(criticalAuth ? ["Open CRITICAL application/server failure on auth."] : []),
     ],
-  };
+  }, telemetryConfirmed);
 }
 
 function luminaPanel(launch: LaunchDashboardModel): ExecutivePanel {
@@ -333,7 +438,7 @@ function luminaPanel(launch: LaunchDashboardModel): ExecutivePanel {
   else if (luminaAvail === "degraded" || (luminaErrors ?? 0) > 0 || yellowRisk) status = "YELLOW";
   else if (luminaAvail === "available") status = "GREEN";
   else if ((luminaErrors ?? 0) === 0) status = "N/A";
-  return {
+  return withTelemetry({
     id: "lumina-health",
     title: "Lumina health",
     status,
@@ -354,7 +459,7 @@ function luminaPanel(launch: LaunchDashboardModel): ExecutivePanel {
     sourceLabel: "Row 150 Lumina events + Row 151 availability. No conversation text.",
     investigateHref: "/ops/admin/launch-dashboard",
     issues: luminaRisks.map((risk) => risk.description),
-  };
+  }, status !== "N/A");
 }
 
 function supportPanel(launch: LaunchDashboardModel): ExecutivePanel {
@@ -363,11 +468,19 @@ function supportPanel(launch: LaunchDashboardModel): ExecutivePanel {
     launch.support.approachingSla > 0 ||
     launch.support.open >= 10 ||
     launch.support.p1Open > 0;
-  return {
+  const telemetryConfirmed = supportTelemetryConfirmed(launch);
+  const status: PanelStatus = slaPressure
+    ? "YELLOW"
+    : telemetryConfirmed
+      ? "GREEN"
+      : "N/A";
+  return withTelemetry({
     id: "support-volume",
     title: "Support volume",
-    status: slaPressure ? "YELLOW" : "GREEN",
-    summary: `${count(launch.support.newToday)} new today · ${count(launch.support.open)} open · ${count(launch.support.overdue)} overdue. ${launch.support.slaStandard}`,
+    status,
+    summary: telemetryConfirmed || slaPressure
+      ? `${count(launch.support.newToday)} new today · ${count(launch.support.open)} open · ${count(launch.support.overdue)} overdue. ${launch.support.slaStandard}`
+      : "No Row 153 tickets in this environment. Empty support volume is N/A, not GREEN.",
     metrics: [
       { label: "New today", value: count(launch.support.newToday) },
       { label: "Open", value: count(launch.support.open) },
@@ -386,7 +499,7 @@ function supportPanel(launch: LaunchDashboardModel): ExecutivePanel {
     issues: slaPressure
       ? ["Support backlog, SLA pressure, or P1 tickets require operator attention."]
       : [],
-  };
+  }, telemetryConfirmed);
 }
 
 function marketingPanel(
@@ -397,11 +510,14 @@ function marketingPanel(
   const errorIssues = marketing.issues.filter((issue) => issue.severity === "error");
   const ig = marketing.channels.find((channel) => channel.channel === "instagram");
   const tt = marketing.channels.find((channel) => channel.channel === "tiktok");
-  return {
+  const telemetryConfirmed = marketingTelemetryConfirmed(marketing);
+  return withTelemetry({
     id: "marketing-performance",
     title: "Marketing performance",
-    status: errorIssues.length > 0 ? "YELLOW" : "GREEN",
-    summary: `Campaign landing sessions ${formatCount(marketing.funnel.landingPageSessions)} · purchases ${formatCount(marketing.funnel.purchases)} · conversion ${formatRate(marketing.funnel.rates.purchaseConversion)}. LinkedIn is not a launch reporting requirement.`,
+    status: errorIssues.length > 0 ? "YELLOW" : telemetryConfirmed ? "GREEN" : "N/A",
+    summary: telemetryConfirmed || errorIssues.length > 0
+      ? `Campaign landing sessions ${formatCount(marketing.funnel.landingPageSessions)} · purchases ${formatCount(marketing.funnel.purchases)} · conversion ${formatRate(marketing.funnel.rates.purchaseConversion)}. LinkedIn is not a launch reporting requirement.`
+      : "No Row 84 landing sessions or launch purchases in this environment. Empty marketing is N/A, not GREEN.",
     metrics: [
       {
         label: "Landing-page sessions",
@@ -425,7 +541,7 @@ function marketingPanel(
     sourceLabel: "Row 84 Launch Marketing KPI · Instagram and TikTok",
     investigateHref: "/ops/admin/launch-kpi",
     issues: errorIssues.map((issue) => issue.message),
-  };
+  }, telemetryConfirmed);
 }
 
 function incidentsPanel(
@@ -436,17 +552,22 @@ function incidentsPanel(
   const red = open.filter((risk) => risk.severity === "RED");
   const yellow = open.filter((risk) => risk.severity === "YELLOW");
   const firing = monitoring?.alerts.filter((alert) => alert.founderAttention) ?? [];
+  const telemetryConfirmed = incidentsTelemetryConfirmed(launch, monitoring);
   const status: PanelStatus =
     red.length > 0 || launch.criticalIssuesOpen > 0 || firing.length > 0
       ? "RED"
       : yellow.length > 0
         ? "YELLOW"
-        : "GREEN";
-  return {
+        : telemetryConfirmed
+          ? "GREEN"
+          : "N/A";
+  return withTelemetry({
     id: "critical-incidents",
     title: "Critical incidents",
     status,
-    summary: `${count(red.length)} open RED risk(s) · ${count(yellow.length)} YELLOW · ${count(launch.criticalIssuesOpen)} critical issue(s) in launch health.`,
+    summary: telemetryConfirmed || red.length > 0 || yellow.length > 0
+      ? `${count(red.length)} open RED risk(s) · ${count(yellow.length)} YELLOW · ${count(launch.criticalIssuesOpen)} critical issue(s) in launch health.`
+      : "No Row 61 snapshot and no launch risk register entries. Empty incidents are N/A, not GREEN.",
     metrics: [
       { label: "Open RED risks", value: count(red.length) },
       { label: "Open YELLOW risks", value: count(yellow.length) },
@@ -460,7 +581,7 @@ function incidentsPanel(
       ...yellow.map((risk) => `YELLOW: ${risk.description}`),
       ...firing.map((alert) => `${alert.system}: ${alert.failureType}`),
     ],
-  };
+  }, telemetryConfirmed);
 }
 
 function founderPanel(
@@ -494,7 +615,7 @@ function founderPanel(
         ? "No launch-health Founder gate. AOS decision queue is not connected in this environment."
         : "No Founder action required."
       : `${count(decisions.length)} open AOS decision(s). Launch Founder attention ${launch.founderAttentionRequired ? "YES" : "NO"}.`;
-  return {
+  return withTelemetry({
     id: "founder-decisions",
     title: "Decisions requiring Founder attention",
     status,
@@ -517,7 +638,7 @@ function founderPanel(
           `${decision.severity.toUpperCase()}: ${decision.decisionRequired}`,
       ),
     ],
-  };
+  }, status !== "N/A");
 }
 
 export function composeExecutiveDashboard(input: {
@@ -538,7 +659,7 @@ export function composeExecutiveDashboard(input: {
       deadline: decision.deadline,
     }));
   const panels: ExecutivePanel[] = [
-    enrollmentPanel(input.launch),
+    enrollmentPanel(input.launch, input.monitoring),
     trafficPanel(input.launch),
     productionPanel(input.launch, input.monitoring),
     paymentsPanel(input.launch, input.monitoring),

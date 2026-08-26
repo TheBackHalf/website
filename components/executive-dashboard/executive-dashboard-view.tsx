@@ -1,16 +1,39 @@
-import type { ExecutiveDashboardModel, ExecutivePanel, PanelStatus } from "@/lib/executive-dashboard/types";
+import type {
+  ExecutiveDashboardModel,
+  ExecutivePanel,
+  PanelStatus,
+} from "@/lib/executive-dashboard/types";
 
 function statusClass(status: PanelStatus): string {
   if (status === "RED") return "border-red-700 bg-red-50 text-red-950";
   if (status === "YELLOW") return "border-amber-600 bg-amber-50 text-amber-950";
-  if (status === "N/A") return "border-bh-purple/15 bg-bh-cream/60 text-bh-ink";
-  return "border-bh-purple/10 bg-white text-bh-ink";
+  if (status === "N/A") return "border-slate-400 bg-slate-100 text-slate-900";
+  return "border-emerald-700/40 bg-emerald-50/40 text-bh-ink";
 }
 
-function healthClass(health: string): string {
-  if (health === "RED") return "border-red-700 bg-red-50 text-red-900";
-  if (health === "YELLOW") return "border-amber-600 bg-amber-50 text-amber-950";
+function stripClass(model: ExecutiveDashboardModel): string {
+  if (model.launchHealth === "RED" || model.executiveStatus === "RED") {
+    return "border-red-700 bg-red-50 text-red-900";
+  }
+  if (
+    model.founderAttentionRequired ||
+    model.launchHealth === "YELLOW" ||
+    model.executiveStatus === "YELLOW"
+  ) {
+    return "border-amber-600 bg-amber-50 text-amber-950";
+  }
+  if (model.executiveStatus === "N/A") {
+    return "border-slate-400 bg-slate-100 text-slate-900";
+  }
   return "border-emerald-700 bg-emerald-50 text-emerald-950";
+}
+
+function statusLabel(panel: ExecutivePanel): string {
+  if (panel.status === "N/A") return "N/A — telemetry not confirmed";
+  if (panel.status === "GREEN" && panel.telemetry === "confirmed") {
+    return "GREEN — telemetry present";
+  }
+  return panel.status;
 }
 
 function PanelCard({ panel }: { panel: ExecutivePanel }) {
@@ -19,6 +42,7 @@ function PanelCard({ panel }: { panel: ExecutivePanel }) {
       id={panel.id}
       data-panel-id={panel.id}
       data-panel-status={panel.status}
+      data-panel-telemetry={panel.telemetry}
       className={`rounded-sm border px-5 py-4 ${statusClass(panel.status)}`}
       aria-labelledby={`${panel.id}-title`}
     >
@@ -26,7 +50,7 @@ function PanelCard({ panel }: { panel: ExecutivePanel }) {
         <h2 id={`${panel.id}-title`} className="font-display text-xl">
           {panel.title}
         </h2>
-        <p className="font-sans text-[11px] uppercase tracking-[0.14em]">{panel.status}</p>
+        <p className="font-sans text-[11px] uppercase tracking-[0.14em]">{statusLabel(panel)}</p>
       </div>
       <p className="mt-2 font-sans text-sm font-light">{panel.summary}</p>
       <div className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -71,6 +95,8 @@ export function ExecutiveDashboardView({
     <main
       className="mx-auto max-w-6xl px-6 py-12 text-bh-ink"
       data-bh-executive-dashboard="row-209"
+      data-executive-status={model.executiveStatus}
+      data-founder-attention={model.founderAttentionRequired ? "yes" : "no"}
     >
       {reviewBanner ? (
         <p className="mb-4 font-sans text-xs font-medium uppercase tracking-[0.14em] text-bh-muted">
@@ -87,6 +113,8 @@ export function ExecutiveDashboardView({
         One Founder screen for enrollment, traffic, production, payments, access, Lumina,
         support, marketing, incidents, and decisions. This view composes existing systems. It
         does not replace Row 151 investigation, Row 84 marketing detail, or Agent Operations.
+        GREEN means telemetry is present and healthy. N/A means telemetry is missing or
+        unreported — not a healthy zero.
       </p>
       <p className="mt-4 font-sans text-sm">
         <a href="/ops/admin" className="underline decoration-bh-purple/30">
@@ -111,9 +139,10 @@ export function ExecutiveDashboardView({
       </p>
 
       <section
-        className={`mt-8 rounded-sm border px-5 py-4 ${healthClass(model.launchHealth)}`}
+        className={`mt-8 rounded-sm border px-5 py-4 ${stripClass(model)}`}
         aria-labelledby="exec-strip"
         data-founder-attention={model.founderAttentionRequired ? "yes" : "no"}
+        data-executive-status={model.executiveStatus}
       >
         <h2 id="exec-strip" className="font-display text-2xl">
           Launch Health: {model.launchHealth}
@@ -129,6 +158,9 @@ export function ExecutiveDashboardView({
         <p className="mt-1 font-sans text-sm">
           Critical issues open: {model.criticalIssuesOpen}
           {model.monitoringAvailable ? "" : " · Row 61 snapshot N/A"}
+          {model.executiveStatus === "N/A"
+            ? " · Executive telemetry N/A (not GREEN)"
+            : ""}
         </p>
         <p className="mt-1 font-sans text-sm font-medium">
           Founder attention required: {model.founderAttentionRequired ? "YES" : "NO"}

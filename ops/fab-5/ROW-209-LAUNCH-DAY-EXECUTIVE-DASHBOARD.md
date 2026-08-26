@@ -86,7 +86,15 @@ Approve / Reject / Review is **not** duplicated here.
 | Row 61 snapshot missing | Production health **N/A** — not an outage, not false GREEN |
 | Lumina unreported and no `lumina_error` | Lumina health **N/A** — not advertised as ping-monitored |
 | AOS not connected and no launch Founder gate | Founder decisions **N/A** |
-| Empty ledgers before launch day | Zeroes are real reads, not estimated performance |
+| No Row 61 payments probe and no billing activity | Enrollment / revenue and Payments **N/A** — empty is not GREEN |
+| No analytics sessions or conversion events | Traffic / conversion **N/A** unless launch-day zero (YELLOW) |
+| No auth/registration events or account activity | Account / access **N/A** |
+| No Row 153 tickets | Support volume **N/A** |
+| No Row 84 landing sessions or purchases | Marketing performance **N/A** |
+| No Row 61 snapshot and empty risk register | Critical incidents **N/A** |
+| Empty ledgers **with** a confirmed source (Row 61 payments PASS, or recorded activity) | Honest zeroes may be GREEN |
+
+GREEN requires confirmed telemetry. Missing/unreported sources are N/A, never false GREEN.
 
 ---
 

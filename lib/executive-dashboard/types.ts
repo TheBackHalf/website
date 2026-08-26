@@ -18,6 +18,9 @@ export type ExecutivePanelId = (typeof EXECUTIVE_PANEL_IDS)[number];
 export const PANEL_STATUSES = ["GREEN", "YELLOW", "RED", "N/A"] as const;
 export type PanelStatus = (typeof PANEL_STATUSES)[number];
 
+export const TELEMETRY_STATES = ["confirmed", "unconfirmed"] as const;
+export type TelemetryState = (typeof TELEMETRY_STATES)[number];
+
 export type ExecutiveMetric = {
   label: string;
   value: string;
@@ -37,6 +40,7 @@ export type ExecutivePanel = {
   id: ExecutivePanelId;
   title: string;
   status: PanelStatus;
+  telemetry: TelemetryState;
   summary: string;
   metrics: ExecutiveMetric[];
   sourceLabel: string;
