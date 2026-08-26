@@ -14,6 +14,7 @@ import {
   saveChapter3PracticeAction,
   saveChapter3ReflectionAction,
 } from "@/lib/journey/chapters/chapter-3-actions";
+import { useJourneyDraftAutosave } from "@/lib/journey/progress/use-draft-autosave";
 import {
   isDecisionCommitmentComplete,
   isDecisionPracticeComplete,
@@ -44,6 +45,17 @@ export function DecisionReflectionWork({
   const [savedNotice, setSavedNotice] = useState(false);
   const [answers, setAnswers] =
     useState<DecisionReflectionAnswers>(initialAnswers);
+  useJourneyDraftAutosave({
+    value: answers,
+    save: async (next) => {
+      const result = await saveChapter3ReflectionAction({ answers: next });
+      if (result.status === "ok") {
+        onSaved?.(next);
+        return { status: "ok" as const };
+      }
+      return { status: "error" as const };
+    },
+  });
 
   const complete = isDecisionReflectionComplete(answers);
 

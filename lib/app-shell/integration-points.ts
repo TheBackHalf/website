@@ -192,7 +192,7 @@ export const appShellIntegrationPoints = {
   },
   /**
    * Rows 83–94 — Journey chapters, progression, saving, assessments.
-   * Rows 83–86 connected; Chapters III–VII pending 87+.
+   * Chapters I–VII connected. Row 133 progression/save logic connected.
    */
   journeyExperience: {
     rows: [83, 94] as const,
@@ -200,8 +200,16 @@ export const appShellIntegrationPoints = {
     path: "lib/journey/chapters/",
     progressPath: "lib/journey/progress/",
     assessmentPath: "lib/journey/assessments/",
-    uiSlot: "components/journey/chapter-2/",
-    note: "Row 83–86 connected; Chapters III–VII pending 87+",
+    uiSlot: "components/app-shell/journey-entry-shell.tsx",
+    note: "Chapters I–VII connected; Row 133 progression, pause/resume, drafts, and revisiting connected",
+    status: "connected" as const,
+  },
+  /** Row 133 — sequential completion, pause/resume, draft preservation, revisiting */
+  journeyProgressionSave: {
+    row: 133,
+    path: "lib/journey/progress/",
+    rulesPath: "lib/journey/progress/rules.ts",
+    snapshotPath: "lib/journey/progress/snapshot.ts",
     status: "connected" as const,
   },
 } as const;

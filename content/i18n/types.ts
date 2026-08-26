@@ -383,6 +383,13 @@ export type Dictionary = {
     journey: {
       title: TranslatedString;
       description: TranslatedString;
+      pauseAndSave: TranslatedString;
+      pausing: TranslatedString;
+      chapterLocked: TranslatedString;
+      sectionLocked: TranslatedString;
+      draftSaving: TranslatedString;
+      draftSaved: TranslatedString;
+      draftSaveError: TranslatedString;
     };
     onboarding: {
       title: TranslatedString;

@@ -14,6 +14,7 @@ import {
   saveChapter5PracticeAction,
   saveChapter5ReflectionAction,
 } from "@/lib/journey/chapters/chapter-5-actions";
+import { useJourneyDraftAutosave } from "@/lib/journey/progress/use-draft-autosave";
 import {
   isArchitectCommitmentComplete,
   isArchitectPracticeComplete,
@@ -44,6 +45,17 @@ export function ArchitectReflectionWork({
   const [savedNotice, setSavedNotice] = useState(false);
   const [answers, setAnswers] =
     useState<ArchitectReflectionAnswers>(initialAnswers);
+  useJourneyDraftAutosave({
+    value: answers,
+    save: async (next) => {
+      const result = await saveChapter5ReflectionAction({ answers: next });
+      if (result.status === "ok") {
+        onSaved?.(next);
+        return { status: "ok" as const };
+      }
+      return { status: "error" as const };
+    },
+  });
 
   const complete = isArchitectReflectionComplete(answers);
 

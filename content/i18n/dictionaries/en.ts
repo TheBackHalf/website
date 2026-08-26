@@ -480,6 +480,13 @@ export const enDictionary: Dictionary = {
       title: "The Journey",
       description:
         "Continue Chapter One — The Awakening and your authenticated Journey experience.",
+      pauseAndSave: "Save and pause",
+      pausing: "Saving…",
+      chapterLocked: "Complete the previous chapter to unlock this one.",
+      sectionLocked: "Complete the required work in the current section first.",
+      draftSaving: "Saving draft…",
+      draftSaved: "Draft saved.",
+      draftSaveError: "We could not save your draft. Try Save answers.",
     },
     onboarding: {
       title: "Journey Onboarding",

@@ -10,6 +10,8 @@ import {
   ArchitectReflectionWork,
 } from "@/components/journey/chapter-5/architect-work";
 import { FounderMediaPlacement } from "@/components/journey/chapter-1/founder-media-placement";
+import { ChapterPauseControl } from "@/components/journey/chapter-pause-control";
+import { ChapterSectionNav } from "@/components/journey/chapter-section-nav";
 import { StatusNotice } from "@/components/design-system";
 import {
   CHAPTER_5_SECTIONS,
@@ -36,6 +38,7 @@ import {
   getChapter5LuminaDiscussionPath,
 } from "@/lib/journey/chapters/paths";
 import type { Chapter5Record } from "@/lib/journey/chapters/types";
+import { flushJourneyDrafts } from "@/lib/journey/progress/use-draft-autosave";
 import type { Locale } from "@/lib/i18n/config";
 
 type Chapter5ExperienceProps = {
@@ -103,6 +106,7 @@ export function Chapter5Experience({
   function continueFrom(section: Chapter5SectionId) {
     setError(null);
     startTransition(async () => {
+      await flushJourneyDrafts();
       const result = await advanceChapter5SectionAction({ sectionId: section });
       if (result.status !== "ok") {
         setError(
@@ -139,37 +143,25 @@ export function Chapter5Experience({
         ))}
       </header>
 
-      <nav
-        className="bh-chapter-1-nav"
-        aria-label={resolveAppShellLabel(locale, copy.progressLabel)}
-      >
-        <ol className="bh-chapter-1-nav-list">
-          {CHAPTER_5_SECTIONS.map((id) => {
-            const done = record.completedSectionIds.includes(id);
-            const current = id === sectionId;
-            return (
-              <li key={id}>
-                <Link
-                  href={getChapter5Path(locale, id)}
-                  className={
-                    current
-                      ? "bh-chapter-1-nav-link bh-chapter-1-nav-link-current"
-                      : "bh-chapter-1-nav-link"
-                  }
-                  aria-current={current ? "step" : undefined}
-                >
-                  <span>{sectionLabel(locale, id)}</span>
-                  {done ? (
-                    <span className="sr-only">
-                      {resolveAppShellLabel(locale, copy.sectionDone)}
-                    </span>
-                  ) : null}
-                </Link>
-              </li>
-            );
-          })}
-        </ol>
-      </nav>
+      <ChapterSectionNav
+        locale={locale}
+        progressLabel={resolveAppShellLabel(locale, copy.progressLabel)}
+        currentSectionId={sectionId}
+        completedSectionIds={record.completedSectionIds}
+        chapterStatus={record.status}
+        doneLabel={resolveAppShellLabel(locale, copy.sectionDone)}
+        items={CHAPTER_5_SECTIONS.map((id) => ({
+          id,
+          label: sectionLabel(locale, id),
+          href: getChapter5Path(locale, id),
+        }))}
+      />
+      <ChapterPauseControl
+        locale={locale}
+        chapterId="chapter-5-architect"
+        sectionId={sectionId}
+      />
+
 
       {sectionId === "welcome" ? (
         <section

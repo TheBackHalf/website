@@ -16,6 +16,7 @@ import {
   resolveAppShellLabel,
 } from "@/content/i18n/get-dictionary";
 import { saveChapter2MirrorExerciseAction } from "@/lib/journey/chapters/chapter-2-actions";
+import { useJourneyDraftAutosave } from "@/lib/journey/progress/use-draft-autosave";
 import {
   countNonEmptyAnswers,
   isMatrixRowComplete,
@@ -108,6 +109,17 @@ export function MirrorExercise({
     ),
     step4: { ...initialAnswers.step4 },
   }));
+  useJourneyDraftAutosave({
+    value: answers,
+    save: async (next) => {
+      const result = await saveChapter2MirrorExerciseAction({ answers: next });
+      if (result.status === "ok") {
+        onSaved?.(next);
+        return { status: "ok" as const };
+      }
+      return { status: "error" as const };
+    },
+  });
 
   const stepComplete = useMemo(
     () => ({

@@ -27,6 +27,11 @@ import {
   getChapter7Path,
 } from "@/lib/journey/chapters/paths";
 import { getOnboardingPath } from "@/lib/journey/onboarding/paths";
+import {
+  decideChapterAccess,
+  type JourneyChapterId,
+} from "@/lib/journey/progress/rules";
+import type { ChapterProgressStatus } from "@/lib/journey/chapters/types";
 import type { Locale } from "@/lib/i18n/config";
 
 type JourneyEntryShellProps = {
@@ -144,6 +149,61 @@ export function JourneyEntryShell({
         ? resolveAppShellLabel(locale, chapter7.resumeChapter)
         : resolveAppShellLabel(locale, chapter7.openChapter);
 
+  const chapterStatuses: Record<JourneyChapterId, ChapterProgressStatus> = {
+    "chapter-1-awakening": chapter1Status,
+    "chapter-2-mirror": chapter2Status,
+    "chapter-3-decision": chapter3Status,
+    "chapter-4-standards": chapter4Status,
+    "chapter-5-architect": chapter5Status,
+    "chapter-6-expansion": chapter6Status,
+    "chapter-7-beginning": chapter7Status,
+  };
+
+  const chapters = [
+    {
+      id: "chapter-1-awakening" as const,
+      href: getChapter1Path(locale, chapter1ResumeSection),
+      label: chapter1Cta,
+      primary: true,
+    },
+    {
+      id: "chapter-2-mirror" as const,
+      href: getChapter2Path(locale, chapter2ResumeSection),
+      label: chapter2Cta,
+      primary: false,
+    },
+    {
+      id: "chapter-3-decision" as const,
+      href: getChapter3Path(locale, chapter3ResumeSection),
+      label: chapter3Cta,
+      primary: false,
+    },
+    {
+      id: "chapter-4-standards" as const,
+      href: getChapter4Path(locale, chapter4ResumeSection),
+      label: chapter4Cta,
+      primary: false,
+    },
+    {
+      id: "chapter-5-architect" as const,
+      href: getChapter5Path(locale, chapter5ResumeSection),
+      label: chapter5Cta,
+      primary: false,
+    },
+    {
+      id: "chapter-6-expansion" as const,
+      href: getChapter6Path(locale, chapter6ResumeSection),
+      label: chapter6Cta,
+      primary: false,
+    },
+    {
+      id: "chapter-7-beginning" as const,
+      href: getChapter7Path(locale, chapter7ResumeSection),
+      label: chapter7Cta,
+      primary: false,
+    },
+  ];
+
   return (
     <AppShellPage locale={locale}>
       <AppShellPageHeader
@@ -160,48 +220,29 @@ export function JourneyEntryShell({
             beginLabel={chapter1Cta}
           />
           <div className="mx-auto flex max-w-2xl flex-col gap-3 px-6 pb-10 sm:flex-row sm:flex-wrap">
-            <Link
-              href={getChapter1Path(locale, chapter1ResumeSection)}
-              className="bh-cta inline-flex"
-            >
-              {chapter1Cta}
-            </Link>
-            <Link
-              href={getChapter2Path(locale, chapter2ResumeSection)}
-              className="bh-cta bh-cta-secondary inline-flex"
-            >
-              {chapter2Cta}
-            </Link>
-            <Link
-              href={getChapter3Path(locale, chapter3ResumeSection)}
-              className="bh-cta bh-cta-secondary inline-flex"
-            >
-              {chapter3Cta}
-            </Link>
-            <Link
-              href={getChapter4Path(locale, chapter4ResumeSection)}
-              className="bh-cta bh-cta-secondary inline-flex"
-            >
-              {chapter4Cta}
-            </Link>
-            <Link
-              href={getChapter5Path(locale, chapter5ResumeSection)}
-              className="bh-cta bh-cta-secondary inline-flex"
-            >
-              {chapter5Cta}
-            </Link>
-            <Link
-              href={getChapter6Path(locale, chapter6ResumeSection)}
-              className="bh-cta bh-cta-secondary inline-flex"
-            >
-              {chapter6Cta}
-            </Link>
-            <Link
-              href={getChapter7Path(locale, chapter7ResumeSection)}
-              className="bh-cta bh-cta-secondary inline-flex"
-            >
-              {chapter7Cta}
-            </Link>
+            {chapters.map((chapter) => {
+              const access = decideChapterAccess(chapter.id, chapterStatuses);
+              const className = chapter.primary
+                ? "bh-cta inline-flex"
+                : "bh-cta bh-cta-secondary inline-flex";
+              if (access.access === "locked") {
+                return (
+                  <span
+                    key={chapter.id}
+                    className={`${className} cursor-not-allowed opacity-50`}
+                    aria-disabled="true"
+                    title={resolveAppShellLabel(locale, journey.chapterLocked)}
+                  >
+                    {chapter.label}
+                  </span>
+                );
+              }
+              return (
+                <Link key={chapter.id} href={chapter.href} className={className}>
+                  {chapter.label}
+                </Link>
+              );
+            })}
             <Link
               href={getAlivenessAssessmentPath(
                 locale,

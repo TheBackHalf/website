@@ -1,5 +1,6 @@
 "use server";
 
+import { chapterActionErrorCode } from "@/lib/journey/progress/action-error";
 import {
   AccessDeniedError,
   requireAuthenticatedUser,
@@ -45,7 +46,7 @@ export async function saveChapter4ReflectionAction(input: {
       complete: result.record.status === "completed",
     };
   }
-  return { status: "error", code: result.reason };
+  return { status: "error", code: chapterActionErrorCode(result) };
 }
 
 export async function saveChapter4PracticeAction(input: {
@@ -72,7 +73,7 @@ export async function saveChapter4PracticeAction(input: {
       complete: result.record.status === "completed",
     };
   }
-  return { status: "error", code: result.reason };
+  return { status: "error", code: chapterActionErrorCode(result) };
 }
 
 export async function saveChapter4CommitmentAction(input: {
@@ -101,7 +102,7 @@ export async function saveChapter4CommitmentAction(input: {
       complete: result.record.status === "completed",
     };
   }
-  return { status: "error", code: result.reason };
+  return { status: "error", code: chapterActionErrorCode(result) };
 }
 
 export async function advanceChapter4SectionAction(input: {
@@ -130,7 +131,7 @@ export async function advanceChapter4SectionAction(input: {
     };
   }
   if (result.status === "blocked") {
-    return { status: "error", code: result.reason };
+    return { status: "error", code: chapterActionErrorCode(result) };
   }
   if (result.status === "incomplete_work") {
     return { status: "error", code: "incomplete_work" };
@@ -164,7 +165,7 @@ export async function setChapter4SectionAction(input: {
     };
   }
   if (result.status === "blocked") {
-    return { status: "error", code: result.reason };
+    return { status: "error", code: chapterActionErrorCode(result) };
   }
   return { status: "error", code: "invalid_section" };
 }

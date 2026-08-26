@@ -12,6 +12,7 @@ import {
   saveChapter2CommitmentAction,
   saveChapter2ReflectionAction,
 } from "@/lib/journey/chapters/chapter-2-actions";
+import { useJourneyDraftAutosave } from "@/lib/journey/progress/use-draft-autosave";
 import {
   isMirrorCommitmentComplete,
   isMirrorReflectionComplete,
@@ -40,6 +41,17 @@ export function MirrorReflectionWork({
   const [savedNotice, setSavedNotice] = useState(false);
   const [answers, setAnswers] =
     useState<MirrorReflectionAnswers>(initialAnswers);
+  useJourneyDraftAutosave({
+    value: answers,
+    save: async (next) => {
+      const result = await saveChapter2ReflectionAction({ answers: next });
+      if (result.status === "ok") {
+        onSaved?.(next);
+        return { status: "ok" as const };
+      }
+      return { status: "error" as const };
+    },
+  });
 
   const complete = isMirrorReflectionComplete(answers);
 

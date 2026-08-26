@@ -1,17 +1,20 @@
 import { redirect } from "next/navigation";
 import { AppShellPage } from "@/components/app-shell/app-shell-page";
 import { Chapter7Experience } from "@/components/journey/chapter-7/chapter-7-experience";
-import { type Chapter7SectionId } from "@/content/journey/chapter-7-beginning";
+import {
+  CHAPTER_7_SECTIONS,
+  type Chapter7SectionId,
+} from "@/content/journey/chapter-7-beginning";
 import { getLocalizedArchitectPath } from "@/lib/app-shell/routing";
 import {
   AccessDeniedError,
   requireAuthenticatedUser,
 } from "@/lib/auth/access";
 import { getLoginPath } from "@/lib/auth/routing";
-import { getLocalizedPath } from "@/lib/i18n/routing";
 import { loadChapter7ForUser } from "@/lib/journey/chapters/chapter-7-service";
 import { getChapter7Path } from "@/lib/journey/chapters/paths";
 import { redirectIfOnboardingIncomplete } from "@/lib/journey/onboarding/gate";
+import { redirectIfChapterUnavailable } from "@/lib/journey/progress/page-gate";
 import type { Locale } from "@/lib/i18n/config";
 
 type Chapter7PageProps = {
@@ -35,11 +38,16 @@ export async function Chapter7Page({ locale, sectionId }: Chapter7PageProps) {
   await redirectIfOnboardingIncomplete(actor.user.id, locale);
 
   const loaded = await loadChapter7ForUser(actor.user.id);
-  if (loaded.status === "blocked") {
-    if (loaded.reason === "community_only") {
-      redirect(getLocalizedArchitectPath("dashboard", locale));
-    }
-    redirect(`${getLocalizedPath("/checkout", locale)}?need=journey_access`);
+  await redirectIfChapterUnavailable(loaded, {
+    locale,
+    userId: actor.user.id,
+    requestedSection: sectionId,
+    sectionOrder: CHAPTER_7_SECTIONS,
+    chapterPath: (nextLocale, section) =>
+      getChapter7Path(nextLocale, section as Chapter7SectionId),
+  });
+  if (loaded.status !== "ok") {
+    redirect(getLocalizedArchitectPath("journey", locale));
   }
 
   return (
