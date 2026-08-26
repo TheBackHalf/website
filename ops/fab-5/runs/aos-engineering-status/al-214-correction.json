@@ -196,5 +196,58 @@
   ],
   "failed": [],
   "serverProbed": true,
-  "origin": "http://localhost:3000"
+  "origin": "http://localhost:3000",
+  "rowMarkedComplete": false,
+  "founderAcceptance": null,
+  "workbookStatusUnchanged": true,
+  "row88HomepageHeroUntouched": true,
+  "row205MassReclassification": false,
+  "report": {
+    "canonicalDomain": "FOUNDER ACTION REQUIRED",
+    "pricing": {
+      "blueprint": "$500",
+      "foundingArchitect": "$750",
+      "community": "$50/month"
+    },
+    "stalePublicPricingRemaining": "NO",
+    "offerDiscoverability": "PASS",
+    "becomeAnArchitectJourney": "PASS",
+    "standardsPlaceholder": "REMOVED",
+    "sitemapCanonical": "PASS",
+    "socialCtaDestination": "DATE-DEPENDENCY GATED",
+    "checkoutSuccessVerification": "PASS",
+    "directSuccessFalseConfirmation": "CORRECTED",
+    "testModePurchaseE2E": "NOT AVAILABLE",
+    "liveStripeConfiguration": "FOUNDER ACTION REQUIRED",
+    "receipt": "NOT VERIFIED",
+    "accountEntitlement": "NOT VERIFIED",
+    "onboarding": "NOT VERIFIED",
+    "legalAccessibility": "PASS",
+    "englishJourney": "PASS",
+    "spanishJourney": "HUMAN REVIEW REQUIRED",
+    "desktop": "PASS",
+    "mobile": "PASS",
+    "productionRegression": "FAIL",
+    "defectsFound": 9,
+    "defectsCorrected": 8,
+    "remainingGenuineBlockers": [
+      "Row 75 canonical DNS: thebackhalf.org and www.thebackhalf.org still do not resolve (apex A/AAAA empty; www NXDOMAIN). Application SEO now emits https://www.thebackhalf.org. DNS records remain Founder-only.",
+      "Live Stripe Price IDs must match locked amounts $500 / $750 / $50. This environment had no Stripe secret. Production checkout still serves $1,500 / $1,750 until this branch is deployed AND Live/Test price IDs are remapped. Do not create replacement prices if approved locked prices already exist."
+    ],
+    "founderActionsRequired": [
+      "Cloudflare DNS for thebackhalf.org: A @ 10.0.1.2 and CNAME www → cname.vercel-dns.com, DNS-only (Row 75). Do not change MX.",
+      "In Stripe, confirm existing Price IDs for Blueprint $500 one-time, Founding Architect $750 one-time, and Architect Community $50/month. Set STRIPE_PRICE_BLUEPRINT, STRIPE_PRICE_BUNDLE, and STRIPE_PRICE_COMMUNITY on Vercel Production to those IDs. Do not create new prices if the approved amounts already exist. Do not paste secrets into chat.",
+      "Deploy this branch only after Founder review. Production currently still shows $1,500 / $1,750.",
+      "Spanish legal manuscripts remain pending approved translation (pre-existing Row 32/34 gate). Do not invent Spanish legal copy."
+    ],
+    "row214": "FOUNDER ACTION REQUIRED",
+    "autonomousSprint": "RUNNING",
+    "currentAgentsExecuting": 3,
+    "notes": [
+      "Social Aug 28–31 CTAs remain locked at https://thebackhalf.org/register. Site Become an Architect now goes to /checkout. Register copy now explains choosing a path, then Choose your path continues to checkout. Do not publish early while DNS is down.",
+      "Row 88 blank-room homepage correction was not treated as approved. Hero artwork was not changed.",
+      "Row 205 mass reclassification was not performed.",
+      "Technical indexability is configured to https://www.thebackhalf.org. Actual search-engine indexing is not claimed."
+    ]
+  }
 }
