@@ -1,3 +1,5 @@
+import { ingestBounce, type BounceIngestResult } from "@/lib/email/bounce";
+import { classifyInboundMessage } from "@/lib/email/classify";
 import { createSupportTicket } from "@/lib/support/create-ticket";
 import { ticketIdFromText } from "@/lib/support/ids";
 import type { SupportTicket } from "@/lib/support/ticket-types";
@@ -23,10 +25,40 @@ function threadKey(email: InboundEmail): string {
   );
 }
 
-export async function ingestInboundEmail(email: InboundEmail): Promise<{
-  ticket: SupportTicket;
-  duplicate: boolean;
-}> {
+export type InboundIngestResult =
+  | { kind: "ticket"; ticket: SupportTicket; duplicate: boolean }
+  | {
+      kind: "bounce" | "complaint";
+      ticket: null;
+      duplicate: false;
+      bounce: BounceIngestResult;
+    };
+
+export async function ingestInboundEmail(
+  email: InboundEmail,
+): Promise<InboundIngestResult> {
+  const classified = classifyInboundMessage({
+    fromEmail: email.fromEmail,
+    subject: email.subject,
+    text: email.text,
+  });
+  if (classified.class === "bounce" || classified.class === "complaint") {
+    const bounce = await ingestBounce({
+      fromEmail: email.fromEmail,
+      subject: email.subject,
+      text: email.text,
+      email: classified.recipient ?? undefined,
+      source: "inbound_mailbox",
+      test: email.test,
+    });
+    return {
+      kind: classified.class,
+      ticket: null,
+      duplicate: false,
+      bounce,
+    };
+  }
+
   const before = ticketIdFromText(
     `${email.subject}\n${email.inReplyTo ?? ""}\n${email.references ?? ""}`,
   );
@@ -42,5 +74,9 @@ export async function ingestInboundEmail(email: InboundEmail): Promise<{
     test: email.test,
     acknowledge: !before,
   });
-  return { ticket, duplicate: Boolean(before) || ticket.emailMessageIds.length > 1 };
+  return {
+    kind: "ticket",
+    ticket,
+    duplicate: Boolean(before) || ticket.emailMessageIds.length > 1,
+  };
 }

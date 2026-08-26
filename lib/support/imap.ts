@@ -129,7 +129,9 @@ export async function pollSupportMailbox(options?: {
         references: header(headerBlock, "References"),
         test: options?.test,
       });
-      tickets.push(result.ticket.id);
+      if (result.kind === "ticket") {
+        tickets.push(result.ticket.id);
+      }
     }
     socket.write(`A5 LOGOUT\r\n`);
     await readUntil(socket, "A5").catch(() => undefined);

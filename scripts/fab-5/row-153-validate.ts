@@ -93,6 +93,9 @@ async function main() {
     text: "I registered but I cannot log in. Please help without asking for my password.",
     test: true,
   });
+  if (inbound.kind !== "ticket") {
+    throw new Error("Row 153 inbound test was classified as a bounce");
+  }
   tests.push({
     id: "T1",
     name: "SUPPORT EMAIL",
@@ -152,6 +155,9 @@ async function main() {
     inReplyTo: `<${(form.ticketId ?? inbound.ticket.id).toLowerCase()}@thebackhalf.org>`,
     test: true,
   });
+  if (reply.kind !== "ticket") {
+    throw new Error("Row 153 reply test was classified as a bounce");
+  }
   tests.push({
     id: "T4",
     name: "EMAIL REPLY",

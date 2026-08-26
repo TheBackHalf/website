@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { isTransactionalEmailConfigured } from "@/lib/email/config";
 import {
   getLaunchDashboardSql,
   launchDashboardPostgresConfigured,
@@ -37,6 +38,11 @@ export async function GET() {
       checks: {
         application: "ok",
         database,
+        transactionalEmail: {
+          provider: "google_workspace_smtp",
+          senderDomain: "thebackhalf.org",
+          configured: isTransactionalEmailConfigured(),
+        },
       },
     },
     {
