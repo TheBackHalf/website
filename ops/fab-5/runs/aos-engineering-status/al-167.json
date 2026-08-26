@@ -7,18 +7,26 @@
   "repositorySoftwareChange": true,
   "status": "implemented_pending_founder_acceptance",
   "founderAcceptance": null,
-  "summary": "Implemented the privacy-rights operating process: access, correction, deletion, export, consent withdrawal, inquiries, identity verification, response tracking, retention/deletion against a mapped system inventory, and owner/escalation paths. Founder acceptance is not recorded.",
+  "summary": "Implemented the privacy-rights operating process: access, correction, deletion, export, consent withdrawal, inquiries, identity verification, response tracking, retention/deletion against a mapped system inventory, and owner/escalation paths. Browser intake produced BH-PR-20260826-LBWXT. Founder acceptance is not recorded.",
   "evidence": [
     "ops/fab-5/privacy-data-map.json",
     "ops/fab-5/privacy-legal-holds.json",
     "ops/fab-5/ROW-167-PRIVACY-RIGHTS-DATA-GOVERNANCE.md",
     "lib/privacy/",
     "/privacy/request",
-    "/ops/admin/privacy-rights"
+    "/es/privacy/request",
+    "/ops/admin/privacy-rights",
+    "ops/fab-5/runs/row-167-privacy-rights-validation.json"
   ],
   "validation": {
     "script": "npm run fab5:row167",
-    "required": ["npx tsc --noEmit", "npm run fab5:row167", "npm run build"]
+    "required": ["npx tsc --noEmit", "npm run fab5:row167", "npm run build"],
+    "results": {
+      "tsc": "pass",
+      "fab5:row167": "11/11 PASS",
+      "build": "pass",
+      "browser": "pass BH-PR-20260826-LBWXT"
+    }
   },
   "constraintsHonored": {
     "didNotPushMain": true,
