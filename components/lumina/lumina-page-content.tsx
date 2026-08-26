@@ -217,9 +217,9 @@ export function LuminaPageContent({ locale = "en" }: LuminaPageContentProps) {
 
                   <SectionBody className="relative mx-auto mt-8 max-w-xl">
 
-                    Sé el primero en recibir actualizaciones, inspiración y
+                    Elige The Back Half Blueprint, Founding Architect o Architect
 
-                    acceso exclusivo a The Back Half.
+                    Community — luego continúa al checkout seguro.
 
                   </SectionBody>
 
@@ -248,10 +248,10 @@ export function LuminaPageContent({ locale = "en" }: LuminaPageContentProps) {
             </LocalizedBrandCopy>
 
             <CtaButton
-              href="/register"
+              href="/checkout"
               locale={locale}
               className="relative"
-              data-bh-cta="registration"
+              data-bh-cta="become_architect"
             >
 
               {locale === "en" ? luminaCta.button : "Conviértete en Architect"}

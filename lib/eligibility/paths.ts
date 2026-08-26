@@ -62,6 +62,9 @@ export function isEligibilityRequiredPath(pathname: string): boolean {
   if (path === "/checkout") {
     return false;
   }
+  if (path === "/checkout/success" || path === "/checkout/cancel") {
+    return false;
+  }
   if (path === "/register" || path === "/register/confirmation") {
     return false;
   }

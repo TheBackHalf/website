@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import {
   FormError,
   FormField,
@@ -43,6 +44,12 @@ export function LoginForm({
     forgotPasswordLabel,
     createAccountLabel,
   } = useArchitectLogin(locale, { googleAuthEnabled });
+
+  const searchParams = useSearchParams();
+  const next = searchParams.get("next");
+  const registerHref = next
+    ? `${getRegistrationPath(locale)}?next=${encodeURIComponent(next)}`
+    : getRegistrationPath(locale);
 
   const formId = "architect-login-form";
   const emailId = `${formId}-email`;
@@ -161,7 +168,7 @@ export function LoginForm({
 
             <p className="font-sans text-sm font-light text-bh-muted">
               <Link
-                href={getRegistrationPath(locale)}
+                href={registerHref}
                 className="underline underline-offset-4 transition hover:text-bh-ink"
               >
                 {createAccountLabel}

@@ -1,0 +1,253 @@
+{
+  "generatedAt": "2026-08-26T18:14:23.615Z",
+  "row": 214,
+  "markedComplete": false,
+  "founderAcceptanceRecorded": false,
+  "liveStripeChargeAttempted": false,
+  "dnsModified": false,
+  "canonicalDns": "FOUNDER ACTION REQUIRED",
+  "seoCanonicalOrigin": "https://www.thebackhalf.org",
+  "prices": {
+    "blueprintCents": 50000,
+    "bundleCents": 75000,
+    "communityCents": 5000
+  },
+  "tests": [
+    {
+      "id": "locked-prices",
+      "name": "Catalog amounts are $500 / $750 / $50",
+      "result": "PASS",
+      "detail": "blueprint=50000 bundle=75000 community=5000"
+    },
+    {
+      "id": "en-public-prices",
+      "name": "English offer copy shows $500 / $750 / $50 and not $1,500 / $1,750",
+      "result": "PASS",
+      "detail": "The seven-chapter Blueprint experience — $500 one-time. Blueprint + first six months of Architect Community included — $750 one-time. Architect Community — Coming October 25, 2026. Founding Architect Community period runs October 25, 2026 through April 25, 2027. Enrollment August"
+    },
+    {
+      "id": "es-public-prices",
+      "name": "Spanish offer copy shows $500 / $750 / $50 and not $1,500 / $1,750",
+      "result": "PASS",
+      "detail": "La experiencia Blueprint de siete capítulos — $500 compra única. Blueprint + primeros seis meses de Architect Community incluidos — $750 compra única. Architect Community — Próximamente el 25 de octubre de 2026. El período Founding Architect Community es del 25 de octubre de 2026"
+    },
+    {
+      "id": "no-stale-customer-prices",
+      "name": "No $1,500/$1,750 remain in customer-facing application sources",
+      "result": "PASS",
+      "detail": "none"
+    },
+    {
+      "id": "become-architect-to-checkout",
+      "name": "Homepage Become an Architect CTA routes to /checkout",
+      "result": "PASS",
+      "detail": "homepage CTA href=/checkout"
+    },
+    {
+      "id": "offer-cards-on-homepage",
+      "name": "Homepage includes ArchitectPathSection offer cards",
+      "result": "PASS",
+      "detail": "ArchitectPathSection mounted in CTA"
+    },
+    {
+      "id": "standards-approved-copy",
+      "name": "Homepage Standards uses approved manuscript copy",
+      "result": "PASS",
+      "detail": "Goals help you achieve something. Standards determine how you live."
+    },
+    {
+      "id": "contact-placeholder-removed",
+      "name": "Contact intro pending flag is off",
+      "result": "PASS",
+      "detail": "introPending=false"
+    },
+    {
+      "id": "journey-placeholder-removed",
+      "name": "Journey life-area grid does not render Approved copy pending",
+      "result": "PASS",
+      "detail": "life-area-grid no longer prints copyPending"
+    },
+    {
+      "id": "lumina-cta-checkout",
+      "name": "Lumina Become an Architect continues to checkout",
+      "result": "PASS",
+      "detail": "Become an Architect"
+    },
+    {
+      "id": "success-heading-verified-only",
+      "name": "Success H1 says Payment complete only after verified payment",
+      "result": "PASS",
+      "detail": "ok=Payment complete; unverified=Checkout confirmation"
+    },
+    {
+      "id": "success-requires-stripe-session",
+      "name": "Missing session_id never claims payment",
+      "result": "PASS",
+      "detail": "missing cs_ id → invalid_session"
+    },
+    {
+      "id": "seo-canonical-www",
+      "name": "SEO origin ignores Vercel hosts and uses www.thebackhalf.org",
+      "result": "PASS",
+      "detail": "https://www.thebackhalf.org"
+    },
+    {
+      "id": "sitemap-uses-seo-origin",
+      "name": "Sitemap and robots import SEO getSiteUrl",
+      "result": "PASS",
+      "detail": "app/sitemap.ts + app/robots.ts"
+    },
+    {
+      "id": "social-date-gated",
+      "name": "Official social posting remains date-gated to 2026-08-28",
+      "result": "PASS",
+      "detail": "postingBegins=2026-08-28 destination=https://thebackhalf.org/register"
+    },
+    {
+      "id": "canonical-dns-probe",
+      "name": "Canonical DNS still Founder-gated unless records exist",
+      "result": "PASS",
+      "detail": "FOUNDER ACTION REQUIRED — apex A=0/0 www A=3/0 www CNAME=3/0"
+    },
+    {
+      "id": "local-home",
+      "name": "Homepage responds",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "homepage-no-placeholder",
+      "name": "Homepage HTML has no Approved copy pending",
+      "result": "PASS",
+      "detail": "absent"
+    },
+    {
+      "id": "homepage-prices",
+      "name": "Homepage HTML shows $500, $750, and $50",
+      "result": "PASS",
+      "detail": "locked prices in homepage HTML"
+    },
+    {
+      "id": "homepage-become-architect",
+      "name": "Homepage HTML includes Become an Architect",
+      "result": "PASS",
+      "detail": "CTA phrase preserved"
+    },
+    {
+      "id": "checkout-catalog-public",
+      "name": "Checkout catalog is public",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "success-direct-no-false-paid",
+      "name": "Direct /checkout/success does not say Payment complete",
+      "result": "PASS",
+      "detail": "HTTP 200 paidClaim=false"
+    },
+    {
+      "id": "success-invalid-session-no-false-paid",
+      "name": "Invalid session_id does not say Payment complete",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "offer-auth-at-purchase",
+      "name": "Specific offer continues to eligibility or login with checkout next",
+      "result": "PASS",
+      "detail": "/eligibility?next=%2Fcheckout%2Fblueprint"
+    },
+    {
+      "id": "legal-reachable",
+      "name": "Terms of Use is publicly reachable",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "register-points-to-path",
+      "name": "Registration explains Architect path choice",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "es-journey-prices",
+      "name": "Spanish homepage and checkout show locked prices",
+      "result": "PASS",
+      "detail": "home=200 checkout=200"
+    },
+    {
+      "id": "sitemap-canonical-host",
+      "name": "sitemap.xml emits www.thebackhalf.org",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "robots-canonical-host",
+      "name": "robots.txt sitemap points at www.thebackhalf.org",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "no-live-charge",
+      "name": "Validator did not create a Live Stripe charge",
+      "result": "PASS",
+      "detail": "No Stripe secret in this environment"
+    }
+  ],
+  "failed": [],
+  "serverProbed": true,
+  "origin": "http://localhost:3000",
+  "rowMarkedComplete": false,
+  "founderAcceptance": null,
+  "workbookStatusUnchanged": true,
+  "row88HomepageHeroUntouched": true,
+  "row205MassReclassification": false,
+  "report": {
+    "canonicalDomain": "FOUNDER ACTION REQUIRED",
+    "pricing": {
+      "blueprint": "$500",
+      "foundingArchitect": "$750",
+      "community": "$50/month"
+    },
+    "stalePublicPricingRemaining": "NO",
+    "offerDiscoverability": "PASS",
+    "becomeAnArchitectJourney": "PASS",
+    "standardsPlaceholder": "REMOVED",
+    "sitemapCanonical": "PASS",
+    "socialCtaDestination": "DATE-DEPENDENCY GATED",
+    "checkoutSuccessVerification": "PASS",
+    "directSuccessFalseConfirmation": "CORRECTED",
+    "testModePurchaseE2E": "NOT AVAILABLE",
+    "liveStripeConfiguration": "FOUNDER ACTION REQUIRED",
+    "receipt": "NOT VERIFIED",
+    "accountEntitlement": "NOT VERIFIED",
+    "onboarding": "NOT VERIFIED",
+    "legalAccessibility": "PASS",
+    "englishJourney": "PASS",
+    "spanishJourney": "HUMAN REVIEW REQUIRED",
+    "desktop": "PASS",
+    "mobile": "PASS",
+    "productionRegression": "FAIL",
+    "defectsFound": 9,
+    "defectsCorrected": 8,
+    "remainingGenuineBlockers": [
+      "Row 75 canonical DNS: thebackhalf.org and www.thebackhalf.org still do not resolve (apex A/AAAA empty; www NXDOMAIN). Application SEO now emits https://www.thebackhalf.org. DNS records remain Founder-only.",
+      "Live Stripe Price IDs must match locked amounts $500 / $750 / $50. This environment had no Stripe secret. Production checkout still serves $1,500 / $1,750 until this branch is deployed AND Live/Test price IDs are remapped. Do not create replacement prices if approved locked prices already exist."
+    ],
+    "founderActionsRequired": [
+      "Cloudflare DNS for thebackhalf.org: A @ 10.0.1.2 and CNAME www → cname.vercel-dns.com, DNS-only (Row 75). Do not change MX.",
+      "In Stripe, confirm existing Price IDs for Blueprint $500 one-time, Founding Architect $750 one-time, and Architect Community $50/month. Set STRIPE_PRICE_BLUEPRINT, STRIPE_PRICE_BUNDLE, and STRIPE_PRICE_COMMUNITY on Vercel Production to those IDs. Do not create new prices if the approved amounts already exist. Do not paste secrets into chat.",
+      "Deploy this branch only after Founder review. Production currently still shows $1,500 / $1,750.",
+      "Spanish legal manuscripts remain pending approved translation (pre-existing Row 32/34 gate). Do not invent Spanish legal copy."
+    ],
+    "row214": "FOUNDER ACTION REQUIRED",
+    "autonomousSprint": "RUNNING",
+    "currentAgentsExecuting": 3,
+    "notes": [
+      "Social Aug 28–31 CTAs remain locked at https://thebackhalf.org/register. Site Become an Architect now goes to /checkout. Register copy now explains choosing a path, then Choose your path continues to checkout. Do not publish early while DNS is down.",
+      "Row 88 blank-room homepage correction was not treated as approved. Hero artwork was not changed.",
+      "Row 205 mass reclassification was not performed.",
+      "Technical indexability is configured to https://www.thebackhalf.org. Actual search-engine indexing is not claimed."
+    ]
+  }
+}

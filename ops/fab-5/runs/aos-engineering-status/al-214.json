@@ -1,0 +1,354 @@
+{
+  "aosWorkId": "al-214",
+  "row": 214,
+  "excelRow": 215,
+  "source": "command_center",
+  "sourceReference": "August Launch row 214",
+  "phase": "Final Launch Readiness & Controls",
+  "deliverable": "Verify Public Discovery-to-Purchase Journey",
+  "assignedOperatingAgent": "nia",
+  "supportingOwners": ["imani", "michelle"],
+  "generatedAt": "2026-08-26T17:42:00.000Z",
+  "testerStance": "independent_stranger",
+  "softwareChangeApplied": false,
+  "productMarketingLegalFilesChanged": false,
+  "stripeConfigModified": false,
+  "dnsModified": false,
+  "secretsPrinted": false,
+  "liveStripeChargeAttempted": false,
+  "productionAccountCreated": false,
+  "founderAcceptanceRecorded": false,
+  "founderAcceptance": null,
+  "rowMarkedComplete": false,
+  "workbookStatusUnchanged": true,
+  "technicalStatus": "not_ready",
+  "strangerJourneyVerdict": "FAIL",
+  "insiderKnowledgeRequired": true,
+  "readyForFounderAcceptance": false,
+  "finalStatus": "NOT READY — a stranger cannot complete discover → offer → pricing → legal → checkout → receipt → account → onboarding without insider knowledge. Canonical public domain does not resolve. Founder acceptance not recorded.",
+  "dependencies": {
+    "named": "Marketing Live; Production Release Candidate",
+    "marketingLive": {
+      "status": "not_live_as_of_test",
+      "evidence": "Official posting begins 2026-08-28 per ops/fab-5/social-channels.json. Test date 2026-08-26. TikTok @backhalfco exists with 0 videos, 0 followers, and no website link. Instagram @backhalfco is login-walled from this probe and shows no visible thebackhalf.org destination. Google brand search does not surface The Back Half (Kimberly) / Magical is Possible."
+    },
+    "productionReleaseCandidate": {
+      "status": "partial",
+      "workingPublicHost": "https://website-two-psi-49.vercel.app",
+      "canonicalHosts": ["https://thebackhalf.org", "https://www.thebackhalf.org"],
+      "canonicalDns": "FAIL",
+      "note": "Production application is reachable on a Vercel hostname a stranger would not know. Apex A/AAAA empty; www NXDOMAIN via Cloudflare and Google DNS-over-HTTPS. robots.txt/sitemap canonicalize to https://website-4zfoye5d3-back-half.vercel.app which SSO-gates (HTTP 302 to vercel.com/sso-api, x-robots-tag: noindex)."
+    }
+  },
+  "scopeControls": {
+    "didNotModifyStripe": true,
+    "didNotModifyCloudflareDns": true,
+    "didNotModifyVercelCustomDomains": true,
+    "didNotModifyNameservers": true,
+    "didNotWeakenAuth": true,
+    "didNotChangeInfrastructureAuthOrPayments": true,
+    "didNotFabricateFounderApproval": true
+  },
+  "method": {
+    "httpProbes": true,
+    "dnsOverHttps": ["cloudflare-dns.com", "dns.google"],
+    "browserWalkthrough": true,
+    "livePaidCheckout": false,
+    "reasonPaidCheckoutSkipped": "Nia scope: do not change payment systems. Independent stranger test must not place a live Stripe charge."
+  },
+  "hosts": {
+    "canonicalApex": {
+      "url": "https://thebackhalf.org/",
+      "dns": "NO_A_AAAA",
+      "browser": "DNS_PROBE_FINISHED_NXDOMAIN",
+      "http": "curl_6_could_not_resolve_host",
+      "result": "FAIL"
+    },
+    "canonicalWww": {
+      "url": "https://www.thebackhalf.org/",
+      "dns": "NXDOMAIN",
+      "browser": "DNS_PROBE_FINISHED_NXDOMAIN",
+      "http": "curl_6_could_not_resolve_host",
+      "result": "FAIL"
+    },
+    "productionVercel": {
+      "url": "https://website-two-psi-49.vercel.app",
+      "httpHome": 200,
+      "title": "The Back Half — Magical is Possible",
+      "result": "PASS_HOST_ONLY",
+      "strangerWouldKnowThisUrl": false
+    },
+    "sitemapCanonicalHost": {
+      "url": "https://website-4zfoye5d3-back-half.vercel.app",
+      "httpHome": 302,
+      "location": "https://vercel.com/sso-api",
+      "robots": "noindex",
+      "result": "FAIL_FOR_PUBLIC_DISCOVERY"
+    }
+  },
+  "steps": {
+    "discoverSocial": {
+      "result": "FAIL",
+      "instagram": {
+        "url": "https://www.instagram.com/backhalfco/",
+        "observed": "Login wall. Handle mentioned. No thebackhalf.org link visible in this unauthenticated probe.",
+        "officialRecord": "ops/fab-5/social-channels.json — postingBegins 2026-08-28"
+      },
+      "tiktok": {
+        "url": "https://www.tiktok.com/@backhalfco",
+        "accountExists": true,
+        "nickname": "The Back Half",
+        "signature": "From expectation to intention. There is more life inside your life. Magical is Possible.",
+        "followers": 0,
+        "videos": 0,
+        "bioLink": null,
+        "observed": "Empty profile. No videos. No website link a stranger can follow to the offer."
+      },
+      "launchSocialCtaDestination": "https://thebackhalf.org/register",
+      "launchSocialCtaReachable": false
+    },
+    "discoverSearch": {
+      "result": "FAIL",
+      "siteQuery": "site:thebackhalf.org — no official indexed destination; canonical host has no address records so it cannot be crawled.",
+      "brandQuery": "The Back Half / Magical is Possible — public search did not return thebackhalf.org. Unrelated properties (Substack, travel site) occupy the name.",
+      "instagramHandleSearch": "instagram backhalfco The Back Half — did not surface the official company profile in this search.",
+      "robotsSitemap": {
+        "robots": "https://website-two-psi-49.vercel.app/robots.txt HTTP 200 Allow /",
+        "sitemapLocHost": "https://website-4zfoye5d3-back-half.vercel.app",
+        "issue": "Sitemap and canonical URLs point at a Vercel hostname that SSO-gates and is noindexed, not thebackhalf.org."
+      }
+    },
+    "discoverDirect": {
+      "result": "FAIL",
+      "detail": "A stranger typing thebackhalf.org or www.thebackhalf.org cannot reach the company. Browser: This site can’t be reached / DNS_PROBE_FINISHED_NXDOMAIN."
+    },
+    "understandOffer": {
+      "result": "PARTIAL",
+      "whatIsClear": [
+        "Brand name The Back Half",
+        "Line Magical is Possible.",
+        "Promise: transition from living by expectation to living with intention",
+        "Founder first-name introduction (Kimberly)",
+        "Journey has seven named stages",
+        "18+ participation rule is disclosed"
+      ],
+      "whatRequiresInsiderKnowledge": [
+        "What an Architect is, and that Become an Architect is account creation rather than purchase",
+        "That the homepage CTA copy is waitlist-like (Be the first to receive updates...) while launch offers are paid checkout",
+        "How the Blueprint, Founding Architect, and Community offers relate",
+        "That /checkout exists; it is not in header nav (only Manifesto and Contact)",
+        "That Begin Your Journey goes to a philosophy page, not enrollment"
+      ],
+      "publicDefects": [
+        "Homepage Standards section renders Approved copy pending",
+        "Contact page also contains Approved copy pending",
+        "Primary CTA does not say how to buy or what it costs"
+      ]
+    },
+    "pricing": {
+      "result": "FAIL_FROM_STRANGER_PATH",
+      "homepageMentionsPrice": false,
+      "navContainsCheckoutOrPricing": false,
+      "registerMentionsPrice": false,
+      "journeyMentionsPrice": false,
+      "catalogUrl": "https://website-two-psi-49.vercel.app/checkout",
+      "catalogHttp": 200,
+      "catalogReachableWithoutGuessingUrl": false,
+      "offersObserved": [
+        {
+          "id": "blueprint",
+          "name": "The Back Half Blueprint",
+          "price": "$1,500",
+          "mode": "one-time"
+        },
+        {
+          "id": "bundle",
+          "name": "Founding Architect",
+          "price": "$1,750",
+          "mode": "one-time",
+          "notes": "Blueprint + first six months of Architect Community. Community launches October 25, 2026. Enrollment August 31–December 31, 2026."
+        },
+        {
+          "id": "community",
+          "name": "The Back Half Community",
+          "price": "$50/month",
+          "mode": "subscription",
+          "notes": "After Blueprint completion. Coming October 25, 2026."
+        }
+      ]
+    },
+    "legal": {
+      "result": "PASS_ON_WORKING_HOST",
+      "footerLinksPresent": true,
+      "documents": [
+        {
+          "slug": "privacy-policy",
+          "http": 200,
+          "title": "Privacy Policy — The Back Half",
+          "effective": "August 31, 2026",
+          "version": "1.0",
+          "copyPending": false
+        },
+        {
+          "slug": "terms-of-use",
+          "http": 200,
+          "title": "Terms of Use — The Back Half",
+          "copyPending": false
+        },
+        {
+          "slug": "participant-agreement",
+          "http": 200,
+          "title": "Participant Agreement — The Back Half",
+          "copyPending": false
+        },
+        {
+          "slug": "membership-agreement",
+          "http": 200,
+          "title": "Membership Agreement — The Back Half",
+          "copyPending": false
+        },
+        {
+          "slug": "ai-disclosure",
+          "http": 200,
+          "title": "AI Disclosure — The Back Half",
+          "copyPending": false
+        }
+      ],
+      "accountCreationConsentsVisibleOnRegister": [
+        "Terms of Use",
+        "Privacy Policy",
+        "Participant Agreement",
+        "AI Disclosure"
+      ]
+    },
+    "checkout": {
+      "result": "PARTIAL",
+      "catalogPublic": true,
+      "catalogInsiderLanguage": "Select an approved Back Half offer.",
+      "offerContinueRequiresEligibilityThenLogin": true,
+      "observedOfferContinue": {
+        "from": "/checkout/bundle",
+        "unconfirmed": "307 → /eligibility?next=/checkout/bundle",
+        "afterAttestedAdult": "307 → /login?next=/checkout/bundle"
+      },
+      "loginExplainsPurchase": false,
+      "loginCtaToRegister": "Need an account? Become an Architect",
+      "stripeHostedCheckout": "NOT_EXERCISED — no live charge"
+    },
+    "receipt": {
+      "result": "UNVERIFIED_NO_LIVE_PAYMENT",
+      "unauthenticatedSuccessUrl": {
+        "url": "/checkout/success",
+        "http": 200,
+        "heading": "Payment complete",
+        "body": "We could not confirm this payment session. No access has been granted.",
+        "issue": "Heading asserts payment complete when no session exists. Confusing for a stranger. No amount, receipt number, or emailed-receipt confirmation is shown on this surface."
+      },
+      "implementedSuccessCopyWhenPaid": {
+        "source": "components/checkout/checkout-success-view.tsx (not live-paid in this run)",
+        "showsOfferName": true,
+        "showsAmount": false,
+        "showsReceiptNumber": false,
+        "nextStepIfJourneyAccess": "/architect/onboarding",
+        "insiderLanguage": "Access is provisioned by secure webhook processing."
+      }
+    },
+    "account": {
+      "result": "PARTIAL",
+      "primaryPublicCta": {
+        "label": "Become an Architect",
+        "href": "/register",
+        "supportingCopy": "Be the first to receive updates, inspiration, and exclusive access to The Back Half."
+      },
+      "registerHttp": 200,
+      "registerTitle": "Become an Architect — The Back Half",
+      "ageGate": "on-page 18+ attestation before the form",
+      "formFields": ["First name", "Last name", "Email", "Password", "Confirm password"],
+      "mentionsPricingOrCheckout": false,
+      "confirmationNextStep": "Verify email to access Architect space — does not tell a stranger to choose an offer or pay",
+      "productionAccountCreatedThisRun": false
+    },
+    "onboarding": {
+      "result": "UNVERIFIED_NO_ENTITLED_SESSION",
+      "unauthenticated": "307 → /login?next=/architect/onboarding after eligibility cookie; otherwise /eligibility then login",
+      "dashboardUnauthenticated": "307 → /login?next=/architect/dashboard",
+      "implementedStepsIfEntitled": [
+        "welcome",
+        "preferences",
+        "consent",
+        "lumina",
+        "assessment",
+        "awakening"
+      ],
+      "unentitledCopyIfLoggedInWithoutPurchase": "Journey access is required. Complete checkout to unlock this experience. / Get Journey access"
+    }
+  },
+  "strangerPathSummary": [
+    "Type thebackhalf.org → site cannot be reached.",
+    "Search the brand → unrelated results; official site not indexed at the canonical host.",
+    "Open TikTok @backhalfco → empty, no website link.",
+    "If a stranger somehow opens the Vercel host: philosophy is clear; buying is not.",
+    "Homepage CTA creates an account (waitlist-sounding copy) and never shows price.",
+    "Pricing exists only at /checkout, which is not linked from homepage nav.",
+    "Choosing an offer requires 18+ then sign-in. Sign-in does not restate the offer.",
+    "Legal documents are published and linked in the footer on the working host.",
+    "Receipt and entitled onboarding were not live-paid; the public success URL is misleading without a session."
+  ],
+  "blockersForLaunchReadiness": [
+    "Canonical DNS for thebackhalf.org / www.thebackhalf.org — Founder Cloudflare records still required (Row 75). Nia did not change DNS.",
+    "Marketing not live: no published social path a stranger can follow to a working destination.",
+    "Public experience does not expose pricing or checkout from the pages a stranger actually lands on.",
+    "Homepage and contact still show Approved copy pending.",
+    "robots/sitemap canonicalize to an SSO-gated Vercel hostname, not the public brand domain."
+  ],
+  "handoffs": {
+    "imani": "Canonical domain still has no public A/AAAA (apex) and www is NXDOMAIN. Sitemap host website-4zfoye5d3-back-half.vercel.app is SSO-gated and noindexed. Do not treat this file as DNS authorization.",
+    "michelle": "Row 214 remains Not Started / not Founder-accepted. Park for acceptance only after a stranger can use thebackhalf.org without insider URLs. Do not mark Complete from this status file.",
+    "niaFollowUpIfUnblocked": "After Marketing Live and canonical DNS, retest the stranger path. Experience gaps to retest: homepage CTA vs purchase, missing checkout in nav, pending Standards copy, register/login purchase context, success-page heading without a session. This run did not change those files."
+  },
+  "validation": {
+    "gatesRequired": [
+      "npm run typecheck or npx tsc --noEmit if present",
+      "npm test or the nearest package test script if present",
+      "npm run build if the change can affect production"
+    ],
+    "executed": false,
+    "reason": "Status-only deliverable. No product, marketing, or legal source files changed. No production-affecting software change.",
+    "npmTestScriptPresent": false,
+    "nearestPackageTestScripts": [
+      "fab5:qa",
+      "fab5:live",
+      "fab5:aos"
+    ]
+  },
+  "evidence": [
+    "ops/fab-5/runs/aos-engineering-status/al-214.json",
+    "browser: DNS_PROBE_FINISHED_NXDOMAIN on thebackhalf.org and www.thebackhalf.org",
+    "DoH 2026-08-26: apex A/AAAA empty; www status=3 NXDOMAIN; NS Cloudflare; MX Google Workspace present",
+    "HTTP 200 journey on https://website-two-psi-49.vercel.app for /, /journey, /lumina, /register, /login, /checkout, /legal/*, /support, /contact, /eligibility, /robots.txt, /sitemap.xml",
+    "HTTP 307 /checkout/{blueprint,bundle,community} → /eligibility?next=... without eligibility cookie",
+    "HTTP 307 /checkout/bundle → /login?next=/checkout/bundle after attestedAdult=true",
+    "HTTP 200 /checkout/success unauthenticated heading Payment complete / could not confirm session"
+  ],
+  "artifacts": {
+    "recording": "/opt/cursor/artifacts/al_214_stranger_discovery_to_purchase_journey.mp4",
+    "screenshots": [
+      "/opt/cursor/artifacts/al214_canonical_domain_nxdomain.webp",
+      "/opt/cursor/artifacts/al214_homepage_hero.webp",
+      "/opt/cursor/artifacts/al214_homepage_standards_copy_pending.webp",
+      "/opt/cursor/artifacts/al214_homepage_become_architect_cta.webp",
+      "/opt/cursor/artifacts/al214_journey_page.webp",
+      "/opt/cursor/artifacts/al214_register_age_gate.webp",
+      "/opt/cursor/artifacts/al214_register_form.webp",
+      "/opt/cursor/artifacts/al214_privacy_policy.webp",
+      "/opt/cursor/artifacts/al214_terms_of_use.webp",
+      "/opt/cursor/artifacts/al214_checkout_catalog.webp",
+      "/opt/cursor/artifacts/al214_checkout_founding_architect.webp",
+      "/opt/cursor/artifacts/al214_checkout_signin_wall.webp",
+      "/opt/cursor/artifacts/al214_checkout_success_unconfirmed.webp",
+      "/opt/cursor/artifacts/al214_onboarding_signin_wall.webp",
+      "/opt/cursor/artifacts/al214_tiktok_backhalfco_empty.webp",
+      "/opt/cursor/artifacts/al214_instagram_login_wall.webp"
+    ]
+  }
+}

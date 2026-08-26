@@ -2,6 +2,8 @@ import Image from "next/image";
 
 import { LocaleLink } from "@/components/i18n/locale-link";
 
+import { ArchitectPathSection } from "@/components/home/architect-path-section";
+
 import { CtaButton } from "@/components/home/cta-button";
 
 import { HeroSection } from "@/components/home/hero-section";
@@ -22,6 +24,10 @@ import {
   SectionShell,
 
 } from "@/components/home/section-shell";
+
+import { backHalfStandards } from "@/content/blueprint/manuscript/generated/backHalfStandards";
+
+import { chapter4CoreTeachingRawEs } from "@/content/journey/es/chapter-4";
 
 import { luminaAsset } from "@/content/lumina";
 
@@ -591,15 +597,27 @@ export function HomePageView({ locale }: HomePageViewProps) {
 
         </SectionHeading>
 
-        <p className="bh-copy-pending mt-8">
+        <div className="mt-8 max-w-3xl space-y-6 md:mt-10">
 
-          {locale === "en"
+          {locale === "en" ? (
 
-            ? "Approved copy pending"
+            <>
 
-            : "Contenido aprobado pendiente"}
+              <SectionBody>{backHalfStandards.paragraphs[0]}</SectionBody>
 
-        </p>
+              <SectionBody>{backHalfStandards.paragraphs[1]}</SectionBody>
+
+              <SectionBody>{backHalfStandards.paragraphs[2]}</SectionBody>
+
+            </>
+
+          ) : (
+
+            <SectionBody>{chapter4CoreTeachingRawEs}</SectionBody>
+
+          )}
+
+        </div>
 
         <div className="bh-standards-aura" aria-hidden="true" />
 
@@ -615,7 +633,7 @@ export function HomePageView({ locale }: HomePageViewProps) {
 
         eyebrow={locale === "en" ? "Join the Movement" : "Únete al movimiento"}
 
-        containerClassName="max-w-3xl"
+        containerClassName="max-w-6xl"
 
       >
 
@@ -637,9 +655,9 @@ export function HomePageView({ locale }: HomePageViewProps) {
 
                 <SectionBody className="relative mx-auto mt-8 max-w-xl">
 
-                  Sé el primero en recibir actualizaciones, inspiración y acceso
+                  Elige The Back Half Blueprint, Founding Architect o Architect
 
-                  exclusivo a The Back Half.
+                  Community — luego continúa al checkout seguro.
 
                 </SectionBody>
 
@@ -657,11 +675,11 @@ export function HomePageView({ locale }: HomePageViewProps) {
 
               </SectionHeading>
 
-              <SectionBody className="relative mx-auto mt-8 max-w-xl">
+                <SectionBody className="relative mx-auto mt-8 max-w-xl">
 
-                Be the first to receive updates, inspiration, and exclusive
+                Choose The Back Half Blueprint, Founding Architect, or Architect
 
-                access to The Back Half.
+                Community — then continue to secure checkout.
 
               </SectionBody>
 
@@ -669,10 +687,12 @@ export function HomePageView({ locale }: HomePageViewProps) {
 
           </LocalizedBrandCopy>
 
+          <ArchitectPathSection locale={locale} />
+
           <CtaButton
-            href="/register"
+            href="/checkout"
             locale={locale}
-            className="relative"
+            className="relative mt-12"
             data-bh-cta="become_architect"
           >
 

@@ -35,9 +35,27 @@ export type VerifiedCheckoutSuccess =
 /**
  * Success pages must verify payment with Stripe — never trust URL params alone.
  */
+export function checkoutSuccessRequiresLogin(
+  result: VerifiedCheckoutSuccess,
+): result is Extract<VerifiedCheckoutSuccess, { status: "unauthenticated" }> {
+  return result.status === "unauthenticated";
+}
+
+export function checkoutSuccessLoginNext(
+  locale: "en" | "es",
+  sessionId: string | undefined,
+): string {
+  const path = locale === "es" ? "/es/checkout/success" : "/checkout/success";
+  if (sessionId?.startsWith("cs_")) {
+    return `${path}?session_id=${encodeURIComponent(sessionId)}`;
+  }
+  return path;
+}
+
 export async function verifyCheckoutSuccess(
   sessionId: string | undefined,
 ): Promise<VerifiedCheckoutSuccess> {
+  // Never claim a completed payment from URL presence or absence alone.
   if (!sessionId?.startsWith("cs_")) {
     return { status: "invalid_session" };
   }

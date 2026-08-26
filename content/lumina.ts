@@ -39,7 +39,7 @@ export const luminaDisclosure = {
 export const luminaCta = {
   eyebrow: "Join the Movement",
   heading: "The next chapter of your life begins today.",
-  body: "Be the first to receive updates, inspiration, and exclusive access to The Back Half.",
+  body: "Choose The Back Half Blueprint, Founding Architect, or Architect Community — then continue to secure checkout.",
   button: "Become an Architect",
 } as const;
 

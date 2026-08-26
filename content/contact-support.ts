@@ -9,7 +9,7 @@ import {
 export const contactPage = {
   title: "Contact",
   eyebrow: "Contact",
-  introPending: true,
+  introPending: false,
   methodsPending: false,
 } as const;
 
