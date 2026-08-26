@@ -80,6 +80,9 @@ export async function sendSmtpEmail(
     port: config.port,
     secure: config.port === 465,
     requireTLS: config.port === 587,
+    connectionTimeout: 10_000,
+    greetingTimeout: 10_000,
+    socketTimeout: 15_000,
     auth: {
       user: config.user!,
       pass: config.password!,

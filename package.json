@@ -35,6 +35,7 @@
     "fab5:row73": "npx --yes tsx scripts/fab-5/row-73-validate.ts",
     "fab5:row74": "npx --yes tsx scripts/fab-5/row-74-validate.ts",
     "fab5:row75": "npx --yes tsx scripts/fab-5/row-75-validate.ts",
+    "fab5:row185": "npx --yes tsx scripts/fab-5/row-185-validate.ts",
     "fab5:row77": "npx --yes tsx scripts/fab-5/row-77-validate.ts",
     "fab5:row79": "npx --yes tsx scripts/fab-5/row-79-validate.ts",
     "fab5:row82": "npx --yes tsx scripts/fab-5/row-82-validate.ts",
