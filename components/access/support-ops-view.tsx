@@ -21,6 +21,13 @@ export function SupportOpsView({ locale }: SupportOpsViewProps) {
         <a href="/ops/admin/support" className="underline decoration-bh-purple/30">
           {locale === "es" ? "Tickets de soporte" : "Support tickets"}
         </a>
+        {" · "}
+        <a
+          href="/ops/admin/support/knowledge-base"
+          className="underline decoration-bh-purple/30"
+        >
+          {locale === "es" ? "Base de conocimiento" : "Launch knowledge base"}
+        </a>
       </p>
       <div className="bh-app-settings-section mt-8">
         <SupportLookupForm locale={locale} />
