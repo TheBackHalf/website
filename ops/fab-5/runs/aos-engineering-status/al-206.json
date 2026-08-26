@@ -13,7 +13,7 @@
   "workbookPrimaryOwnerNote": "Launch workbook and Command Center assign Row 206 OPERATIONS primary ownership to Michelle Northstar, with Nia and Imani supporting. AOS assigned this engineering run to Nia Prism as experience owner. Nia executed the participant-facing go-live rehearsal (purchase catalog and gates, onboarding gates, Lumina marketing and stub eval, email surfaces, support page/form). Nia did not change infrastructure, auth, or payment systems. Kimberly Walker (AI) is not an operating agent and was not treated as execution capacity.",
   "generatedAt": "2026-08-26T18:50:00.000Z",
   "branch": "cursor/aos-nia-al-206-921e",
-  "pullRequest": null,
+  "pullRequest": "https://github.com/TheBackHalf/website/pull/55",
   "cloudAgentUrl": "https://cursor.com/agents/bc-55cf5490-035a-419c-94a5-86fdbb735faa",
   "softwareChangeApplied": false,
   "productMarketingLegalFilesChanged": false,
