@@ -168,12 +168,12 @@
     "Priority reopenings for launch-critical path: Row 14 sales tax, Row 23 trademark filings, Rows 105–109 live Stripe, Row 67/75 canonical DNS, Rows 32/34 legal acceptance ledger gap, Row 202 draft runbook.",
     "Nia-owned content/brand rows reclassified Partial remain Nia-owned. Imani-owned security/infra rows reclassified Partial remain Imani-owned. Michelle coordinates only."
   ],
-  "validation": {
-    "softwareChange": false,
-    "typecheck": "not_required_for_ops_json_only — ran npx tsc --noEmit as repo gate",
-    "unitTests": "no npm test script; nearest scripts are fab5 row validators; not rerun because no product code changed",
-    "productionBuild": "not_required — ops status JSON cannot affect production"
-  },
+    "validation": {
+      "softwareChange": false,
+      "typecheck": "npx tsc --noEmit PASS (2026-08-26)",
+      "unitTests": "no npm test script; nearest scripts are fab5 row validators; not rerun because no product code changed",
+      "productionBuild": "not required — ops status JSON cannot affect production"
+    },
   "rows": [
     {
       "excelRow": 2,
