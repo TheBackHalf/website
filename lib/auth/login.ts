@@ -93,7 +93,7 @@ export function useArchitectLogin(
       return;
     }
 
-    if (result.status === "invalid_credentials") {
+    if (result.status === "invalid_credentials" || result.status === "rate_limited") {
       setErrors({ form: login.invalidCredentials });
       setSubmitState("error");
       return;

@@ -17,6 +17,8 @@ import type {
   LuminaDatabase,
   LuminaMessage,
 } from "@/lib/lumina/types";
+import { DurablePersistenceError, resolveDurableBackend } from "@/lib/durable/db";
+import { ensureDurableSchema } from "@/lib/durable/schema";
 
 const DEFAULT_DATA_DIR = ".data/lumina";
 
@@ -299,11 +301,197 @@ export function createFileLuminaStore(
   };
 }
 
+type ConversationRow = {
+  id: string;
+  user_id: string;
+  payload: LuminaConversation;
+  created_at: Date | string;
+  updated_at: Date | string;
+};
+
+type MemoryRow = {
+  user_id: string;
+  payload: LuminaMemoryRecord;
+  updated_at: Date | string;
+};
+
+export function createPostgresLuminaStore(): LuminaStore {
+  return {
+    async getOrCreateConversationForUser(userId) {
+      const sql = await ensureDurableSchema();
+      const existing = await sql<ConversationRow[]>`
+        SELECT * FROM bh_lumina_conversations WHERE user_id = ${userId} LIMIT 1
+      `;
+      if (existing[0]) {
+        return normalizeConversation(existing[0].payload);
+      }
+      const created = createConversation(userId);
+      await sql`
+        INSERT INTO bh_lumina_conversations (id, user_id, payload, created_at, updated_at)
+        VALUES (
+          ${created.id},
+          ${created.userId},
+          ${sql.json(created as never)},
+          ${created.createdAt},
+          ${created.updatedAt}
+        )
+        ON CONFLICT (user_id) DO NOTHING
+      `;
+      const again = await sql<ConversationRow[]>`
+        SELECT * FROM bh_lumina_conversations WHERE user_id = ${userId} LIMIT 1
+      `;
+      return normalizeConversation(again[0]!.payload);
+    },
+
+    async findConversationForUser(conversationId, userId) {
+      const sql = await ensureDurableSchema();
+      const rows = await sql<ConversationRow[]>`
+        SELECT * FROM bh_lumina_conversations
+        WHERE id = ${conversationId} AND user_id = ${userId}
+        LIMIT 1
+      `;
+      return rows[0] ? normalizeConversation(rows[0].payload) : undefined;
+    },
+
+    async saveConversation(conversation) {
+      const sql = await ensureDurableSchema();
+      const normalized = normalizeConversation(conversation);
+      const current = await sql<ConversationRow[]>`
+        SELECT * FROM bh_lumina_conversations WHERE id = ${normalized.id} LIMIT 1
+      `;
+      if (current[0] && current[0].user_id !== normalized.userId) {
+        return normalizeConversation(current[0].payload);
+      }
+      await sql`
+        INSERT INTO bh_lumina_conversations (id, user_id, payload, created_at, updated_at)
+        VALUES (
+          ${normalized.id},
+          ${normalized.userId},
+          ${sql.json(normalized as never)},
+          ${normalized.createdAt},
+          ${normalized.updatedAt}
+        )
+        ON CONFLICT (id) DO UPDATE SET
+          payload = EXCLUDED.payload,
+          updated_at = EXCLUDED.updated_at
+        WHERE bh_lumina_conversations.user_id = EXCLUDED.user_id
+      `;
+      return normalized;
+    },
+
+    async appendMessageForUser(input) {
+      const sql = await ensureDurableSchema();
+      const rows = await sql<ConversationRow[]>`
+        SELECT * FROM bh_lumina_conversations
+        WHERE id = ${input.conversationId} AND user_id = ${input.userId}
+        LIMIT 1
+      `;
+      if (!rows[0]) return undefined;
+      const current = normalizeConversation(rows[0].payload);
+      const message = createMessage({
+        conversationId: current.id,
+        role: input.message.role,
+        content: input.message.content,
+        citations: input.message.citations,
+        createdAt: input.message.createdAt,
+      });
+      if (input.message.id) {
+        message.id = input.message.id;
+      }
+      const updated = appendMessage(current, message);
+      await sql`
+        UPDATE bh_lumina_conversations
+        SET payload = ${sql.json(updated as never)}, updated_at = ${updated.updatedAt}
+        WHERE id = ${updated.id} AND user_id = ${updated.userId}
+      `;
+      return updated;
+    },
+
+    async getOrCreateMemoryForUser(userId) {
+      const sql = await ensureDurableSchema();
+      const rows = await sql<MemoryRow[]>`
+        SELECT * FROM bh_lumina_memories WHERE user_id = ${userId} LIMIT 1
+      `;
+      if (rows[0]) {
+        return normalizeLuminaMemoryRecord(rows[0].payload) ?? emptyLuminaMemoryRecord(userId);
+      }
+      const created = emptyLuminaMemoryRecord(userId);
+      await sql`
+        INSERT INTO bh_lumina_memories (user_id, payload, updated_at)
+        VALUES (${created.userId}, ${sql.json(created as never)}, ${created.updatedAt})
+        ON CONFLICT (user_id) DO NOTHING
+      `;
+      const again = await sql<MemoryRow[]>`
+        SELECT * FROM bh_lumina_memories WHERE user_id = ${userId} LIMIT 1
+      `;
+      return normalizeLuminaMemoryRecord(again[0]!.payload) ?? created;
+    },
+
+    async findMemoryForUser(userId) {
+      const sql = await ensureDurableSchema();
+      const rows = await sql<MemoryRow[]>`
+        SELECT * FROM bh_lumina_memories WHERE user_id = ${userId} LIMIT 1
+      `;
+      return rows[0] ? normalizeLuminaMemoryRecord(rows[0].payload) ?? undefined : undefined;
+    },
+
+    async saveMemory(record) {
+      const sql = await ensureDurableSchema();
+      const normalized = normalizeLuminaMemoryRecord(record);
+      if (!normalized) {
+        throw new Error("Invalid memory record.");
+      }
+      await sql`
+        INSERT INTO bh_lumina_memories (user_id, payload, updated_at)
+        VALUES (
+          ${normalized.userId},
+          ${sql.json(normalized as never)},
+          ${normalized.updatedAt}
+        )
+        ON CONFLICT (user_id) DO UPDATE SET
+          payload = EXCLUDED.payload,
+          updated_at = EXCLUDED.updated_at
+      `;
+      return normalized;
+    },
+
+    async clearMemoryPayloadForUser(userId) {
+      const store = createPostgresLuminaStore();
+      const existing = await store.findMemoryForUser(userId);
+      const base = existing ?? emptyLuminaMemoryRecord(userId);
+      const cleared = clearLuminaMemoryPayload(base);
+      return store.saveMemory(cleared);
+    },
+  };
+}
+
+function createUnconfiguredProductionLuminaStore(): LuminaStore {
+  const reject = () =>
+    Promise.reject(new DurablePersistenceError("lumina_postgres_unconfigured"));
+  return {
+    getOrCreateConversationForUser: reject,
+    findConversationForUser: reject,
+    saveConversation: reject,
+    appendMessageForUser: reject,
+    getOrCreateMemoryForUser: reject,
+    findMemoryForUser: reject,
+    saveMemory: reject,
+    clearMemoryPayloadForUser: reject,
+  };
+}
+
 let luminaStore: LuminaStore | undefined;
 
 export function getLuminaStore(): LuminaStore {
   if (!luminaStore) {
-    luminaStore = createFileLuminaStore();
+    const backend = resolveDurableBackend();
+    if (backend === "supabase_postgres") {
+      luminaStore = createPostgresLuminaStore();
+    } else if (backend === "unconfigured_production") {
+      luminaStore = createUnconfiguredProductionLuminaStore();
+    } else {
+      luminaStore = createFileLuminaStore();
+    }
   }
   return luminaStore;
 }

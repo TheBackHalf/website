@@ -29,6 +29,8 @@ import {
   migrateChapter2CurrentSectionId,
   needsChapterStructureMigration,
 } from "@/lib/journey/chapters/legacy-teaching";
+import { DurablePersistenceError, resolveDurableBackend } from "@/lib/durable/db";
+import { createUserDocumentAdapter } from "@/lib/durable/documents";
 
 const DEFAULT_DATA_DIR = ".data/journey";
 const DEFAULT_DB_FILE = "chapter-2.json";
@@ -328,9 +330,33 @@ export function createFileChapter2Store(options?: {
 
 let storeInstance: Chapter2Store | null = null;
 
+function createPostgresChapter2Store(): Chapter2Store {
+  const docs = createUserDocumentAdapter<Chapter2Record>({
+    collection: "journey_chapter_2",
+    normalize: (raw) => normalizeRecord(raw),
+  });
+  return {
+    findChapter2ForUser: (userId) => docs.findForUser(userId),
+    saveChapter2: (record) => docs.save(record),
+  };
+}
+
+function createUnconfiguredChapter2Store(): Chapter2Store {
+  const reject = () =>
+    Promise.reject(new DurablePersistenceError("journey_postgres_unconfigured"));
+  return { findChapter2ForUser: reject, saveChapter2: reject };
+}
+
 export function getChapter2Store(): Chapter2Store {
   if (!storeInstance) {
-    storeInstance = createFileChapter2Store();
+    const backend = resolveDurableBackend();
+    if (backend === "supabase_postgres") {
+      storeInstance = createPostgresChapter2Store();
+    } else if (backend === "unconfigured_production") {
+      storeInstance = createUnconfiguredChapter2Store();
+    } else {
+      storeInstance = createFileChapter2Store();
+    }
   }
   return storeInstance;
 }

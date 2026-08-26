@@ -7,10 +7,14 @@ import {
 import { AUTH_COOKIE_NAME } from "@/lib/auth/session";
 import { architectDownloadTracker } from "@/lib/analytics/downloads";
 import { launchPdfBrowser } from "@/lib/blueprint/launch-pdf-browser";
+import {
+  blueprintChromeUnsafeOnThisRuntime,
+  blueprintPrintFallbackResponse,
+} from "@/lib/blueprint/print-fallback";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
-export const maxDuration = 300;
+export const maxDuration = 30;
 
 function resolveOrigin(request: Request): string {
   const url = new URL(request.url);
@@ -41,6 +45,16 @@ export async function GET(request: Request) {
 
   const download = architectDownloadTracker(actor.user.id, "declaration");
   await download.started();
+
+  if (blueprintChromeUnsafeOnThisRuntime()) {
+    await download.failed();
+    return blueprintPrintFallbackResponse({
+      request,
+      kind: "declaration",
+      architectId: actor.user.id,
+      locale: actor.user.locale === "es" ? "es" : "en",
+    });
+  }
 
   const origin = resolveOrigin(request);
   const printUrl = `${origin}/blueprint/print/artifacts/back-half-declaration?architectId=${encodeURIComponent(actor.user.id)}`;

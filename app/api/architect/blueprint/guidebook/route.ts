@@ -6,10 +6,14 @@ import {
 } from "@/lib/auth/access";
 import { AUTH_COOKIE_NAME } from "@/lib/auth/session";
 import { architectDownloadTracker } from "@/lib/analytics/downloads";
+import {
+  blueprintChromeUnsafeOnThisRuntime,
+  blueprintPrintFallbackResponse,
+} from "@/lib/blueprint/print-fallback";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
-export const maxDuration = 300;
+export const maxDuration = 30;
 
 function resolveOrigin(request: Request): string {
   const url = new URL(request.url);
@@ -43,6 +47,16 @@ export async function GET(request: Request) {
   const download = architectDownloadTracker(actor.user.id, "guidebook");
   await download.started();
 
+  if (blueprintChromeUnsafeOnThisRuntime()) {
+    await download.failed();
+    return blueprintPrintFallbackResponse({
+      request,
+      kind: "guidebook",
+      architectId: actor.user.id,
+      locale: actor.user.locale === "es" ? "es" : "en",
+    });
+  }
+
   const origin = resolveOrigin(request);
   const printUrl = `${origin}/blueprint/print/guidebook?variant=print&architectId=${encodeURIComponent(actor.user.id)}`;
 
@@ -51,7 +65,7 @@ export async function GET(request: Request) {
     const browser = await puppeteer.default.launch({
       headless: true,
       protocolTimeout: 300_000,
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+      args: ["--disable-dev-shm-usage"],
     });
 
     try {

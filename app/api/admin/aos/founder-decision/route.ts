@@ -1,16 +1,22 @@
 import { NextResponse } from "next/server";
 
 import { requirePermission } from "@/lib/auth/access";
+import { isFounderHumanEmail } from "@/lib/auth/founder";
 import { resolveFounderDecision } from "@/lib/fab-5/aos/store";
 import { runAosTick } from "@/lib/fab-5/aos/engine";
 
 export const runtime = "nodejs";
 
 export async function POST(request: Request) {
+  let actor;
   try {
-    await requirePermission("admin:ops:access");
+    actor = await requirePermission("admin:ops:access");
   } catch {
     return NextResponse.json({ error: "forbidden" }, { status: 403 });
+  }
+
+  if (!isFounderHumanEmail(actor.user.email)) {
+    return NextResponse.json({ error: "founder_only" }, { status: 403 });
   }
 
   let body: {

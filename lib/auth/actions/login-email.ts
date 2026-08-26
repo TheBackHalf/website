@@ -20,6 +20,13 @@ import { validateLoginForm } from "@/lib/auth/validation";
 import type { Locale } from "@/lib/i18n/config";
 import { trackProductEvent } from "@/lib/analytics/track";
 import { persistAgeEligibilityStatus } from "@/lib/eligibility/cookie";
+import { DurablePersistenceError } from "@/lib/durable/db";
+import {
+  clearRateLimit,
+  consumeRateLimit,
+  peekRateLimit,
+} from "@/lib/rate-limit/consume";
+import { RATE_LIMITS, clientIpFromHeaders } from "@/lib/rate-limit/http";
 
 export type LoginEmailActionInput = LoginFormData & {
   next?: string;
@@ -41,11 +48,48 @@ export async function loginWithEmailAction(
     return { status: "validation_error", errors: validationErrors };
   }
 
+  try {
+    const ip = await clientIpFromHeaders();
+    const ipLimit = await consumeRateLimit({
+      bucket: RATE_LIMITS.loginIp.bucket,
+      key: ip,
+      limit: RATE_LIMITS.loginIp.limit,
+      windowMs: RATE_LIMITS.loginIp.windowMs,
+    });
+    if (!ipLimit.allowed) {
+      return { status: "rate_limited" };
+    }
+    const accountKey = normalizeEmail(input.email);
+    const lock = await peekRateLimit({
+      bucket: RATE_LIMITS.loginAccount.bucket,
+      key: accountKey,
+      limit: RATE_LIMITS.loginAccount.limit,
+      windowMs: RATE_LIMITS.loginAccount.windowMs,
+    });
+    if (!lock.allowed) {
+      return { status: "invalid_credentials" };
+    }
+  } catch (error) {
+    if (error instanceof DurablePersistenceError) {
+      return { status: "error", message: "Sign-in is not configured." };
+    }
+    throw error;
+  }
+
   const store = getAuthStore();
   const normalizedEmail = normalizeEmail(input.email);
   const user = await store.findUserByEmail(normalizedEmail);
 
   if (!user?.passwordHash || !user.emailVerified) {
+    await consumeRateLimit({
+      bucket: RATE_LIMITS.loginAccount.bucket,
+      key: normalizeEmail(input.email),
+      limit: RATE_LIMITS.loginAccount.limit,
+      windowMs: RATE_LIMITS.loginAccount.windowMs,
+      lockAfter: RATE_LIMITS.loginAccount.lockAfter,
+      lockMs: RATE_LIMITS.loginAccount.lockMs,
+      countFailures: true,
+    }).catch(() => undefined);
     await trackProductEvent({
       name: "auth_failed",
       productArea: "auth",
@@ -59,6 +103,15 @@ export async function loginWithEmailAction(
   const passwordMatches = await verifyPassword(input.password, user.passwordHash);
 
   if (!passwordMatches) {
+    await consumeRateLimit({
+      bucket: RATE_LIMITS.loginAccount.bucket,
+      key: normalizeEmail(input.email),
+      limit: RATE_LIMITS.loginAccount.limit,
+      windowMs: RATE_LIMITS.loginAccount.windowMs,
+      lockAfter: RATE_LIMITS.loginAccount.lockAfter,
+      lockMs: RATE_LIMITS.loginAccount.lockMs,
+      countFailures: true,
+    }).catch(() => undefined);
     await trackProductEvent({
       name: "auth_failed",
       productArea: "auth",
@@ -70,6 +123,9 @@ export async function loginWithEmailAction(
   }
 
   const syncedUser = await syncConfiguredRole(user);
+  await clearRateLimit(RATE_LIMITS.loginAccount.bucket, normalizeEmail(input.email)).catch(
+    () => undefined,
+  );
   const locale: Locale = input.locale === "es" ? "es" : syncedUser.locale;
   const redirectPath = getSafeRedirectPath(
     input.next,

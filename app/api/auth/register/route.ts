@@ -75,6 +75,8 @@ export async function POST(request: Request) {
         ? 409
         : result.status === "age_ineligible"
           ? 403
+          : result.status === "rate_limited"
+            ? 429
           : result.status === "error"
             ? 503
             : 400;

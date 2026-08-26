@@ -29,6 +29,7 @@ export async function createSessionToken(user: UserRecord): Promise<string> {
     locale: user.locale,
     role,
     ageEligible: user.ageEligible === true,
+    sessionVersion: user.sessionVersion ?? 1,
   } satisfies Omit<SessionPayload, "sub" | "iat" | "exp">)
     .setProtectedHeader({ alg: "HS256" })
     .setSubject(user.id)
@@ -69,6 +70,10 @@ export async function verifySessionToken(
       locale: payload.locale,
       role: normalizeAppRole(payload.role),
       ageEligible: payload.ageEligible === true,
+      sessionVersion:
+        typeof payload.sessionVersion === "number" && payload.sessionVersion > 0
+          ? payload.sessionVersion
+          : 1,
       iat: payload.iat ?? 0,
       exp: payload.exp ?? 0,
     };

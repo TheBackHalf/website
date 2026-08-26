@@ -44,7 +44,8 @@ CREATE TABLE IF NOT EXISTS bh_auth_users (
   age_eligible BOOLEAN,
   age_eligible_confirmed_at TIMESTAMPTZ,
   created_at TIMESTAMPTZ NOT NULL,
-  updated_at TIMESTAMPTZ NOT NULL
+  updated_at TIMESTAMPTZ NOT NULL,
+  session_version INTEGER NOT NULL DEFAULT 1
 );
 CREATE INDEX IF NOT EXISTS bh_auth_users_created_idx ON bh_auth_users (created_at);
 
@@ -94,6 +95,9 @@ let schemaReady = false;
 export async function ensureAuthSchema(sql: Sql): Promise<void> {
   if (schemaReady) return;
   await sql.unsafe(SCHEMA_SQL);
+  await sql.unsafe(
+    `ALTER TABLE bh_auth_users ADD COLUMN IF NOT EXISTS session_version INTEGER NOT NULL DEFAULT 1`,
+  );
   schemaReady = true;
 }
 

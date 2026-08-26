@@ -39,7 +39,10 @@
     "fab5:row79": "npx --yes tsx scripts/fab-5/row-79-validate.ts",
     "fab5:row82": "npx --yes tsx scripts/fab-5/row-82-validate.ts",
     "fab5:aos": "npx --yes tsx scripts/fab-5/aos-validate.ts",
-    "fab5:aos-prod": "npx --yes tsx scripts/fab-5/aos-production-invoke.ts"
+    "fab5:aos-prod": "npx --yes tsx scripts/fab-5/aos-production-invoke.ts",
+    "fab5:row181": "npx --yes tsx scripts/fab-5/row-181-validate.ts",
+    "fab5:row185": "npx --yes tsx scripts/fab-5/row-185-validate.ts",
+    "fab5:row182-security": "npx --yes tsx scripts/fab-5/row-182-security-validate.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
@@ -62,6 +65,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@electric-sql/pglite": "^0.5.8",
     "@tailwindcss/postcss": "^4",
     "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20",

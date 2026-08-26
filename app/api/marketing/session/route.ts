@@ -4,10 +4,13 @@ import {
   parseAttributionFromUnknown,
 } from "@/lib/marketing-kpi/attribution";
 import { recordLandingPageSession } from "@/lib/marketing-kpi/collect";
+import { enforceIpRateLimit } from "@/lib/rate-limit/http";
 
 export const runtime = "nodejs";
 
 export async function POST(request: Request) {
+  const limited = await enforceIpRateLimit(request, "marketingSessionIp");
+  if (limited) return limited;
   let body: {
     path?: unknown;
     visitorKey?: unknown;

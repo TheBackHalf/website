@@ -1,9 +1,12 @@
 import { NextResponse } from "next/server";
 import { ingestClientAnalyticsEvent } from "@/lib/analytics/client-ingest";
+import { enforceIpRateLimit } from "@/lib/rate-limit/http";
 
 export const runtime = "nodejs";
 
 export async function POST(request: Request) {
+  const limited = await enforceIpRateLimit(request, "analyticsIp");
+  if (limited) return limited;
   let body: Record<string, unknown>;
   try {
     body = (await request.json()) as Record<string, unknown>;

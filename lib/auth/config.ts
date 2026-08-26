@@ -17,6 +17,14 @@ export function getAuthSecret(): string | undefined {
     return process.env.AUTH_SECRET;
   }
 
+  const hosted =
+    process.env.VERCEL === "1" ||
+    process.env.VERCEL_ENV === "production" ||
+    process.env.VERCEL_ENV === "preview";
+  if (hosted) {
+    return undefined;
+  }
+
   if (process.env.NODE_ENV === "development") {
     return "development-only-auth-secret";
   }

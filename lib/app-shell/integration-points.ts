@@ -18,7 +18,7 @@ export const appShellIntegrationPoints = {
     row: 64,
     hook: "useArchitectLogin",
     path: "lib/auth/login.ts",
-    layoutGuard: "middleware.ts",
+    layoutGuard: "proxy.ts",
     logoutAction: "components/app-shell/app-account-menu.tsx",
     status: "connected" as const,
   },

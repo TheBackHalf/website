@@ -762,7 +762,7 @@ async function main() {
 
   const pageEn = readFileSync("app/ops/admin/launch-dashboard/page.tsx", "utf8");
   const pageEs = readFileSync("app/es/ops/admin/launch-dashboard/page.tsx", "utf8");
-  const middlewareSrc = readFileSync("middleware.ts", "utf8");
+  const proxySrc = readFileSync("proxy.ts", "utf8");
   const viewSrc = readFileSync("components/launch-dashboard/launch-dashboard-view.tsx", "utf8");
   const riskApi = readFileSync("app/api/admin/launch-dashboard/risk/route.ts", "utf8");
   const snapshotApi = readFileSync(
@@ -798,9 +798,9 @@ async function main() {
       !roleHasPermission("architect", "admin:ops:access") &&
         !roleHasPermission("support", "admin:ops:access") &&
         roleHasPermission("admin", "admin:ops:access") &&
-        middlewareSrc.includes("isAdminOpsPath") &&
-        middlewareSrc.includes("admin:ops:access") &&
-        middlewareSrc.includes('searchParams.set("next", pathname)') &&
+        proxySrc.includes("isAdminOpsPath") &&
+        proxySrc.includes("admin:ops:access") &&
+        proxySrc.includes('searchParams.set("next", pathname)') &&
         riskApi.includes('requirePermission("admin:ops:access")') &&
         snapshotApi.includes('requirePermission("admin:ops:access")') &&
         supportApi.includes('requirePermission("admin:ops:access")') &&

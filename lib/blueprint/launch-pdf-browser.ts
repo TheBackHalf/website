@@ -44,6 +44,10 @@ export function resolvePdfBrowserExecutable(): string | undefined {
 }
 
 export async function launchPdfBrowser() {
+  const { isHostedProduction } = await import("@/lib/analytics/db");
+  if (isHostedProduction() || process.env.VERCEL === "1") {
+    throw new Error("blueprint_chrome_unavailable");
+  }
   const puppeteer = await import("puppeteer");
   let bundled: string | undefined;
   try {
@@ -60,7 +64,7 @@ export async function launchPdfBrowser() {
   return puppeteer.default.launch({
     headless: true,
     protocolTimeout: 300_000,
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    args: ["--disable-dev-shm-usage"],
     ...(executablePath ? { executablePath } : {}),
   });
 }

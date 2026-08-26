@@ -4,6 +4,8 @@ import type {
   JourneyProgressRecord,
   JourneyProgressStatus,
 } from "@/lib/journey/progress/types";
+import { DurablePersistenceError, resolveDurableBackend } from "@/lib/durable/db";
+import { createUserDocumentAdapter } from "@/lib/durable/documents";
 
 const DEFAULT_DATA_DIR = ".data/journey";
 const DEFAULT_DB_FILE = "progress.json";
@@ -147,11 +149,67 @@ export function createFileJourneyProgressStore(options?: {
   };
 }
 
+function createPostgresJourneyProgressStore(): JourneyProgressStore {
+  const docs = createUserDocumentAdapter<JourneyProgressRecord>({
+    collection: "journey_progress",
+    normalize: (raw) => {
+      if (!raw?.userId?.trim() || !raw.chapterId?.trim()) return null;
+      return raw;
+    },
+  });
+  return {
+    findProgressForUser: (userId) => docs.findForUser(userId),
+    async upsertProgress(input) {
+      const userId = input.userId.trim();
+      const chapterId = input.chapterId.trim();
+      const status = typeof input.status === "string" ? input.status.trim() : "";
+      if (!userId || !chapterId || !status) {
+        throw new Error("Invalid journey progress payload.");
+      }
+      const previous = await docs.findForUser(userId);
+      const next: JourneyProgressRecord = {
+        userId,
+        chapterId,
+        status,
+        updatedAt: new Date().toISOString(),
+      };
+      await docs.save(next);
+      try {
+        const { emitJourneyProgressAnalytics } = await import(
+          "@/lib/analytics/product-hooks"
+        );
+        await emitJourneyProgressAnalytics(previous, next);
+      } catch {
+        // Analytics must not block Journey progress.
+      }
+      return next;
+    },
+    listProgress: () => docs.list(),
+  };
+}
+
+function createUnconfiguredJourneyProgressStore(): JourneyProgressStore {
+  const reject = () =>
+    Promise.reject(new DurablePersistenceError("journey_postgres_unconfigured"));
+  return {
+    findProgressForUser: reject,
+    upsertProgress: reject,
+    listProgress: reject,
+  };
+}
+
 let storeInstance: JourneyProgressStore | null = null;
 
 export function getJourneyProgressStore(): JourneyProgressStore {
   if (!storeInstance) {
-    storeInstance = createFileJourneyProgressStore();
+    const backend = resolveDurableBackend();
+    if (backend === "supabase_postgres") {
+      storeInstance = createPostgresJourneyProgressStore();
+    } else if (backend === "unconfigured_production") {
+      storeInstance = createUnconfiguredJourneyProgressStore();
+    } else {
+      storeInstance = createFileJourneyProgressStore();
+    }
   }
   return storeInstance;
 }

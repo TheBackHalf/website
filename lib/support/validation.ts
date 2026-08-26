@@ -32,6 +32,15 @@ export function validateSupportRequest(
     errors.message = forms.messageRequired;
   } else if (data.message.trim().length < 10) {
     errors.message = forms.messageMinLength;
+  } else if (data.message.trim().length > 4000) {
+    errors.message = forms.messageMinLength;
+  }
+
+  if (data.name.trim().length > 200) {
+    errors.name = forms.nameRequired;
+  }
+  if (data.subject.trim().length > 200) {
+    errors.subject = forms.subjectRequired;
   }
 
   return errors;

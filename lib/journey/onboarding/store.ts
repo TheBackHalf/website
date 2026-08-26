@@ -11,6 +11,8 @@ import {
   type OnboardingRecord,
   type OnboardingStepId,
 } from "@/lib/journey/onboarding/types";
+import { DurablePersistenceError, resolveDurableBackend } from "@/lib/durable/db";
+import { createUserDocumentAdapter } from "@/lib/durable/documents";
 
 const DEFAULT_DATA_DIR = ".data/journey";
 const DEFAULT_DB_FILE = "onboarding.json";
@@ -283,9 +285,68 @@ export function createFileJourneyOnboardingStore(options?: {
 
 let storeInstance: JourneyOnboardingStore | null = null;
 
+function createPostgresJourneyOnboardingStore(): JourneyOnboardingStore {
+  const docs = createUserDocumentAdapter<OnboardingRecord>({
+    collection: "journey_onboarding",
+    normalize: (raw) => normalizeRecord(raw),
+  });
+  return {
+    findOnboardingForUser: (userId) => docs.findForUser(userId),
+    async getOrCreateOnboardingForUser(userId) {
+      const trimmed = userId.trim();
+      if (!trimmed) throw new Error("Invalid user id.");
+      const existing = await docs.findForUser(trimmed);
+      if (existing) return existing;
+      const created = createEmptyOnboardingRecord(trimmed);
+      await docs.save(created);
+      try {
+        const { emitOnboardingAnalytics } = await import(
+          "@/lib/analytics/product-hooks"
+        );
+        await emitOnboardingAnalytics(undefined, created);
+      } catch {
+        // Analytics must not block onboarding.
+      }
+      return created;
+    },
+    async saveOnboarding(record) {
+      const previous = await docs.findForUser(record.userId);
+      const saved = await docs.save(record);
+      try {
+        const { emitOnboardingAnalytics } = await import(
+          "@/lib/analytics/product-hooks"
+        );
+        await emitOnboardingAnalytics(previous, saved);
+      } catch {
+        // Analytics must not block onboarding.
+      }
+      return saved;
+    },
+    listOnboarding: () => docs.list(),
+  };
+}
+
+function createUnconfiguredJourneyOnboardingStore(): JourneyOnboardingStore {
+  const reject = () =>
+    Promise.reject(new DurablePersistenceError("journey_postgres_unconfigured"));
+  return {
+    findOnboardingForUser: reject,
+    getOrCreateOnboardingForUser: reject,
+    saveOnboarding: reject,
+    listOnboarding: reject,
+  };
+}
+
 export function getJourneyOnboardingStore(): JourneyOnboardingStore {
   if (!storeInstance) {
-    storeInstance = createFileJourneyOnboardingStore();
+    const backend = resolveDurableBackend();
+    if (backend === "supabase_postgres") {
+      storeInstance = createPostgresJourneyOnboardingStore();
+    } else if (backend === "unconfigured_production") {
+      storeInstance = createUnconfiguredJourneyOnboardingStore();
+    } else {
+      storeInstance = createFileJourneyOnboardingStore();
+    }
   }
   return storeInstance;
 }

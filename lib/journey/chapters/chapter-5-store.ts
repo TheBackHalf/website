@@ -24,6 +24,8 @@ import {
   migrateCurrentSectionId,
   needsTeachingProgressMigration,
 } from "@/lib/journey/chapters/legacy-teaching";
+import { DurablePersistenceError, resolveDurableBackend } from "@/lib/durable/db";
+import { createUserDocumentAdapter } from "@/lib/durable/documents";
 
 const DEFAULT_DATA_DIR = ".data/journey";
 const DEFAULT_DB_FILE = "chapter-5.json";
@@ -265,9 +267,33 @@ export function createFileChapter5Store(options?: {
 
 let storeInstance: Chapter5Store | null = null;
 
+function createPostgresChapter5Store(): Chapter5Store {
+  const docs = createUserDocumentAdapter<Chapter5Record>({
+    collection: "journey_chapter_5",
+    normalize: (raw) => normalizeRecord(raw),
+  });
+  return {
+    findChapter5ForUser: (userId) => docs.findForUser(userId),
+    saveChapter5: (record) => docs.save(record),
+  };
+}
+
+function createUnconfiguredChapter5Store(): Chapter5Store {
+  const reject = () =>
+    Promise.reject(new DurablePersistenceError("journey_postgres_unconfigured"));
+  return { findChapter5ForUser: reject, saveChapter5: reject };
+}
+
 export function getChapter5Store(): Chapter5Store {
   if (!storeInstance) {
-    storeInstance = createFileChapter5Store();
+    const backend = resolveDurableBackend();
+    if (backend === "supabase_postgres") {
+      storeInstance = createPostgresChapter5Store();
+    } else if (backend === "unconfigured_production") {
+      storeInstance = createUnconfiguredChapter5Store();
+    } else {
+      storeInstance = createFileChapter5Store();
+    }
   }
   return storeInstance;
 }

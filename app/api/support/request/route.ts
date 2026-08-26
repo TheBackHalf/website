@@ -3,10 +3,13 @@ import { submitSupportRequest } from "@/lib/support/submit-support-request";
 import type { SupportRequestFormData } from "@/lib/support/types";
 import { isLocale } from "@/lib/i18n/config";
 import { readAgeEligibilityFromServerCookies } from "@/lib/eligibility/cookie";
+import { enforceIpRateLimit } from "@/lib/rate-limit/http";
 
 export const runtime = "nodejs";
 
 export async function POST(request: Request) {
+  const limited = await enforceIpRateLimit(request, "supportIp");
+  if (limited) return limited;
   const ageStatus = await readAgeEligibilityFromServerCookies();
   if (ageStatus !== "eligible") {
     return NextResponse.json(

@@ -16,6 +16,14 @@ export const CRITICAL_PUBLIC_TABLES = [
   "launch_dashboard_meta",
   "launch_ops_errors",
   "support_tickets",
+  "bh_auth_users",
+  "bh_auth_consents",
+  "bh_durable_documents",
+  "bh_lumina_conversations",
+  "bh_lumina_memories",
+  "bh_billing_stripe_events",
+  "bh_billing_entitlements",
+  "bh_billing_purchases",
 ] as const;
 
 export const RECOVERY_DIR = ".tmp-row62-recovery";

@@ -42,6 +42,7 @@ type UserRow = {
   age_eligible_confirmed_at: Date | string | null;
   created_at: Date | string;
   updated_at: Date | string;
+  session_version: number | null;
 };
 
 type ConsentRow = {
@@ -107,6 +108,10 @@ function fromUserRow(row: UserRow): UserRecord {
     timeZone: row.time_zone ?? undefined,
     ageEligible: row.age_eligible === true ? true : row.age_eligible === false ? false : undefined,
     ageEligibleConfirmedAt: optionalIso(row.age_eligible_confirmed_at),
+    sessionVersion:
+      typeof row.session_version === "number" && row.session_version > 0
+        ? row.session_version
+        : 1,
     createdAt: iso(row.created_at),
     updatedAt: iso(row.updated_at),
   };
@@ -149,6 +154,7 @@ function buildUser(input: CreateUserInput): UserRecord {
     emailVerified: input.emailVerified,
     locale: input.locale,
     role: getConfiguredRoleForEmail(normalized) ?? DEFAULT_APP_ROLE,
+    sessionVersion: 1,
     ageEligible: input.ageEligible === true ? true : undefined,
     ageEligibleConfirmedAt: input.ageEligibleConfirmedAt,
     createdAt: timestamp,
@@ -162,7 +168,8 @@ async function insertUser(sql: SqlClient, user: UserRecord): Promise<void> {
       INSERT INTO bh_auth_users (
         id, email, first_name, last_name, password_hash, auth_provider, google_id,
         arc_code, email_verified, locale, role, pronunciation, support_preference,
-        time_zone, age_eligible, age_eligible_confirmed_at, created_at, updated_at
+        time_zone, age_eligible, age_eligible_confirmed_at, created_at, updated_at,
+        session_version
       ) VALUES (
         ${user.id},
         ${user.email},
@@ -181,7 +188,8 @@ async function insertUser(sql: SqlClient, user: UserRecord): Promise<void> {
         ${user.ageEligible === true ? true : user.ageEligible === false ? false : null},
         ${user.ageEligibleConfirmedAt ?? null},
         ${user.createdAt},
-        ${user.updatedAt}
+        ${user.updatedAt},
+        ${user.sessionVersion ?? 1}
       )
     `;
   } catch (error) {
@@ -369,7 +377,9 @@ export function createPostgresAuthStore(): AuthStore {
       await ensureAuthSchema(sql);
       const rows = await sql<UserRow[]>`
         UPDATE bh_auth_users
-        SET role = ${role}, updated_at = ${new Date().toISOString()}
+        SET role = ${role},
+            session_version = COALESCE(session_version, 1) + 1,
+            updated_at = ${new Date().toISOString()}
         WHERE id = ${id}
         RETURNING *
       `;
@@ -506,6 +516,19 @@ export function createPostgresAuthStore(): AuthStore {
         ON CONFLICT (email) DO UPDATE SET last_resend_at = EXCLUDED.last_resend_at
       `;
     },
+
+    async bumpSessionVersion(id) {
+      const sql = requireSql();
+      await ensureAuthSchema(sql);
+      const rows = await sql<UserRow[]>`
+        UPDATE bh_auth_users
+        SET session_version = COALESCE(session_version, 1) + 1,
+            updated_at = ${new Date().toISOString()}
+        WHERE id = ${id}
+        RETURNING *
+      `;
+      return rows[0] ? fromUserRow(rows[0]) : undefined;
+    },
   };
 }
 
@@ -536,5 +559,6 @@ export function createUnconfiguredProductionAuthStore(): AuthStore {
     deletePasswordResetTokensForUser: reject,
     getLastResendAt: reject,
     setLastResendAt: reject,
+    bumpSessionVersion: reject,
   };
 }

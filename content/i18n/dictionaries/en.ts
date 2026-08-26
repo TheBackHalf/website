@@ -313,10 +313,10 @@ export const enDictionary: Dictionary = {
     returnDashboard: "Go to Architect Dashboard",
     offerBlueprintName: "The Back Half Blueprint",
     offerBlueprintDescription:
-      "The seven-chapter Blueprint experience — $1,500 one-time.",
+      "The seven-chapter Blueprint experience — $500 one-time.",
     offerBundleName: "Founding Architect",
     offerBundleDescription:
-      "Blueprint + first six months of Architect Community included — $1,750 one-time. Architect Community launches October 25, 2026. Founding Architect Community period runs October 25, 2026 through April 25, 2027. Enrollment August 31–December 31, 2026.",
+      "Blueprint + first six months of Architect Community included — $750 one-time. Architect Community launches October 25, 2026. Founding Architect Community period runs October 25, 2026 through April 25, 2027. Enrollment August 31–December 31, 2026.",
     offerCommunityName: "The Back Half Community",
     offerCommunityDescription:
       "$50/month after Blueprint completion. Architect Community — Coming October 25, 2026. Founding Architect renews at $50/month after the first six months of Architect Community access.",

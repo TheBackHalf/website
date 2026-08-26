@@ -83,6 +83,7 @@ export async function resetPasswordAction(input: {
 
   const passwordHash = await hashPassword(input.password);
   await store.updateUser(user.id, { passwordHash });
+  await store.bumpSessionVersion(user.id);
   await store.markPasswordResetTokenUsed(record.token);
   await store.deletePasswordResetToken(record.token);
   await store.deletePasswordResetTokensForUser(user.id);

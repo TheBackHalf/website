@@ -19,6 +19,10 @@ function normalizeUserRecord(user: UserRecord): UserRecord {
   return {
     ...user,
     role: normalizeAppRole(user.role),
+    sessionVersion:
+      typeof user.sessionVersion === "number" && user.sessionVersion > 0
+        ? user.sessionVersion
+        : 1,
     ageEligible:
       user.ageEligible === true
         ? true
@@ -115,6 +119,7 @@ function buildUserRecord(input: CreateUserInput): UserRecord {
     emailVerified: input.emailVerified,
     locale: input.locale,
     role: getConfiguredRoleForEmail(normalized) ?? DEFAULT_APP_ROLE,
+    sessionVersion: 1,
     ageEligible: input.ageEligible === true ? true : undefined,
     ageEligibleConfirmedAt: input.ageEligibleConfirmedAt,
     createdAt: timestamp,
@@ -273,6 +278,7 @@ export function createFileAuthStore(
         const updated: UserRecord = {
           ...current,
           role,
+          sessionVersion: (current.sessionVersion ?? 1) + 1,
           updatedAt: new Date().toISOString(),
         };
         database.users[index] = updated;
@@ -412,6 +418,23 @@ export function createFileAuthStore(
         const database = await readDatabase(dbFile);
         database.resendTimestamps[normalizeEmail(email)] = timestamp;
         await writeDatabase(dataDir, dbFile, database);
+      });
+    },
+
+    bumpSessionVersion(id) {
+      return enqueueWrite(async () => {
+        const database = await readDatabase(dbFile);
+        const index = database.users.findIndex((user) => user.id === id);
+        if (index === -1) return undefined;
+        const current = normalizeUserRecord(database.users[index]!);
+        const updated: UserRecord = {
+          ...current,
+          sessionVersion: (current.sessionVersion ?? 1) + 1,
+          updatedAt: new Date().toISOString(),
+        };
+        database.users[index] = updated;
+        await writeDatabase(dataDir, dbFile, database);
+        return updated;
       });
     },
   };

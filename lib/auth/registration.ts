@@ -182,8 +182,11 @@ export function useArchitectRegistration(
       return;
     }
 
-    if (result.status === "error") {
-      setErrors({ form: result.message });
+    if (result.status === "error" || result.status === "rate_limited") {
+      setErrors({
+        form:
+          result.status === "error" ? result.message : registration.genericError,
+      });
       setSubmitState("error");
       return;
     }

@@ -9,6 +9,11 @@ import type {
   PurchaseRecord,
   StripeEventLogRecord,
 } from "@/lib/billing/types";
+import { resolveDurableBackend } from "@/lib/durable/db";
+import {
+  createPostgresBillingStore,
+  createUnconfiguredProductionBillingStore,
+} from "@/lib/billing/postgres-store";
 
 const DATA_DIR = ".data/billing";
 const DB_FILE = ".data/billing/database.json";
@@ -457,9 +462,22 @@ function mergeEndsAt(
 
 let billingStore: BillingStore | undefined;
 
+/**
+ * Stripe remains the system of record for money movement.
+ * This store is a durable webhook/entitlement projection so serverless
+ * instances share access state. Postgres restore of these tables is not a
+ * Stripe ledger restore.
+ */
 export function getBillingStore(): BillingStore {
   if (!billingStore) {
-    billingStore = createFileBillingStore();
+    const backend = resolveDurableBackend();
+    if (backend === "supabase_postgres") {
+      billingStore = createPostgresBillingStore();
+    } else if (backend === "unconfigured_production") {
+      billingStore = createUnconfiguredProductionBillingStore();
+    } else {
+      billingStore = createFileBillingStore();
+    }
   }
   return billingStore;
 }

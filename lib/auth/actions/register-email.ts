@@ -38,6 +38,9 @@ import {
   persistAgeEligibilityStatus,
   readAgeEligibilityFromServerCookies,
 } from "@/lib/eligibility/cookie";
+import { DurablePersistenceError } from "@/lib/durable/db";
+import { consumeRateLimit } from "@/lib/rate-limit/consume";
+import { RATE_LIMITS, clientIpFromHeaders } from "@/lib/rate-limit/http";
 
 export type RegisterEmailActionInput = RegistrationFormData & {
   consents: ConsentValue[];
@@ -80,6 +83,23 @@ export async function registerWithEmailAction(
       status: "error",
       message: "Account registration is not configured. AUTH_SECRET is required.",
     };
+  }
+
+  try {
+    const ipLimit = await consumeRateLimit({
+      bucket: RATE_LIMITS.registerIp.bucket,
+      key: await clientIpFromHeaders(),
+      limit: RATE_LIMITS.registerIp.limit,
+      windowMs: RATE_LIMITS.registerIp.windowMs,
+    });
+    if (!ipLimit.allowed) {
+      return { status: "rate_limited" };
+    }
+  } catch (error) {
+    if (error instanceof DurablePersistenceError) {
+      return { status: "error", message: "Account registration is not configured." };
+    }
+    throw error;
   }
 
   const validationErrors = validateRegistrationForm(input);

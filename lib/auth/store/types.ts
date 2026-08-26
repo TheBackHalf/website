@@ -90,4 +90,6 @@ export type AuthStore = {
   deletePasswordResetTokensForUser(userId: string): Promise<void>;
   getLastResendAt(email: string): Promise<string | undefined>;
   setLastResendAt(email: string, timestamp: string): Promise<void>;
+  /** Invalidate existing JWTs after password reset or role change. */
+  bumpSessionVersion(id: string): Promise<UserRecord | undefined>;
 };

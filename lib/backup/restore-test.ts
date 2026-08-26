@@ -53,15 +53,20 @@ async function loadPglite(): Promise<{
     close?: () => Promise<void>;
   };
 }> {
-  const candidate = path.resolve(
-    process.cwd(),
-    RECOVERY_DIR,
-    "node_modules/@electric-sql/pglite/dist/index.js",
-  );
-  if (existsSync(candidate)) {
-    return (await import(pathToFileURL(candidate).href)) as never;
+  const candidates = [
+    path.resolve(process.cwd(), RECOVERY_DIR, "node_modules/@electric-sql/pglite/dist/index.js"),
+    path.resolve(process.cwd(), "node_modules/@electric-sql/pglite/dist/index.js"),
+  ];
+  for (const candidate of candidates) {
+    if (existsSync(candidate)) {
+      return (await import(pathToFileURL(candidate).href)) as never;
+    }
   }
-  throw new Error("pglite_not_installed");
+  try {
+    return (await import("@electric-sql/pglite")) as never;
+  } catch {
+    throw new Error("pglite_not_installed");
+  }
 }
 
 export async function exportPublicSchema(sql: postgres.Sql): Promise<{

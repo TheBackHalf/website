@@ -49,6 +49,12 @@ export async function requireAuthenticatedUser(): Promise<AuthenticatedActor> {
     throw new AccessDeniedError("unauthenticated", "Sign-in required.");
   }
 
+  const tokenVersion = session.sessionVersion ?? 1;
+  const liveVersion = user.sessionVersion ?? 1;
+  if (tokenVersion !== liveVersion) {
+    throw new AccessDeniedError("unauthenticated", "Sign-in required.");
+  }
+
   return {
     sessionSub: session.sub,
     user,

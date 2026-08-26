@@ -35,6 +35,11 @@ export type UserRecord = {
    */
   ageEligible?: boolean;
   ageEligibleConfirmedAt?: string;
+  /**
+   * Incremented on password reset and role change so existing JWTs are rejected.
+   * Missing values are treated as 1.
+   */
+  sessionVersion?: number;
   createdAt: string;
   updatedAt: string;
 };
@@ -67,6 +72,7 @@ export type LoginValidationErrors = Partial<Record<"email" | "password" | "form"
 export type LoginEmailResult =
   | { status: "success"; redirectPath: string }
   | { status: "invalid_credentials" }
+  | { status: "rate_limited" }
   | { status: "validation_error"; errors: LoginValidationErrors }
   | { status: "error"; message: string };
 
@@ -123,6 +129,9 @@ export type RegisterEmailResult =
       status: "age_ineligible";
     }
   | {
+      status: "rate_limited";
+    }
+  | {
       status: "error";
       message: string;
     };
@@ -157,6 +166,7 @@ export type SessionPayload = {
   locale: Locale;
   role: AppRole;
   ageEligible: boolean;
+  sessionVersion?: number;
   iat: number;
   exp: number;
 };

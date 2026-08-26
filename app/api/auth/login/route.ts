@@ -30,6 +30,8 @@ export async function POST(request: Request) {
       ? 200
       : result.status === "invalid_credentials"
         ? 401
+        : result.status === "rate_limited"
+          ? 429
         : result.status === "error"
           ? 503
           : 400;

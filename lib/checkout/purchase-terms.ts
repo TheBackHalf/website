@@ -8,9 +8,9 @@ export const CHECKOUT_PURCHASE_TERMS: Record<
   CheckoutOfferId,
   readonly string[]
 > = {
-  blueprint: ["Blueprint — $1,500 one-time payment", "NO REFUNDS"],
+  blueprint: ["Blueprint — $500 one-time payment", "NO REFUNDS"],
   bundle: [
-    "Founding Architect — $1,750 one-time payment",
+    "Founding Architect — $750 one-time payment",
     "Founding Architect includes Blueprint + first six months of Architect Community",
     "Architect Community launches October 25, 2026",
     "Founding Architect Community period runs October 25, 2026 through April 25, 2027",
