@@ -1,0 +1,399 @@
+{
+  "aosWorkId": "al-173",
+  "source": "command_center",
+  "sourceReference": "August Launch row 173",
+  "tab": "August Launch",
+  "excelRow": 174,
+  "order": 173,
+  "launchRowNumber": 173,
+  "phase": "Finance, Risk, Privacy & Business Operations",
+  "deliverable": "Establish Monthly Bookkeeping and Financial Close",
+  "description": "Define the ongoing monthly close: reconcile bank and Stripe, categorize expenses, record fees and liabilities, preserve receipts, produce P&L/balance sheet/cash view, review budget variance, and certify books are ready for tax reporting.",
+  "generatedAt": "2026-08-26T17:20:00.000Z",
+  "operatingAgent": "michelle",
+  "operatingAgentTitle": "Michelle Northstar — Chief of Staff & Operations Officer",
+  "primaryWorkbookOwner": "kimberly",
+  "supportingOwners": ["michelle"],
+  "founder": "Kimberly Walker (human) — Founder; sole acceptance authority",
+  "kimberlyWalkerAiIsNotAnOperatingAgent": true,
+  "softwareChange": false,
+  "productFilesChanged": false,
+  "marketingFilesChanged": false,
+  "legalFilesChanged": false,
+  "stripeConfigChanged": false,
+  "dnsChanged": false,
+  "secretsPrinted": false,
+  "authenticationWeakened": false,
+  "repositoryScope": "ops/fab-5/runs/aos-engineering-status/al-173.json only",
+  "technicalStatus": "process_defined_awaiting_founder_acceptance",
+  "percentCompleteRecorded": 90,
+  "status": "Defined — not Complete",
+  "workbookStatusUnchanged": "Not Started",
+  "founderAcceptance": "PENDING",
+  "founderAccepted": false,
+  "founderAcceptedAt": null,
+  "rowMarkedComplete": false,
+  "commandCenterCompleteFabricated": false,
+  "readyForFounderAcceptance": true,
+  "acceptanceSubject": "Monthly close operating definition (SOP). Not a closed set of books. Not tax advice. Not first-month certification.",
+  "firstMonthlyCloseExecutable": false,
+  "entity": {
+    "legalName": "KLW Group, LLC",
+    "jurisdiction": "Georgia",
+    "einOnFile": true,
+    "einValuePrinted": false,
+    "authorizedToOperateAsGeorgiaBusiness": true,
+    "taxDayRecorded": "April 15",
+    "taxDaySource": "August Launch row 13 Command Center notes",
+    "accountingMethod": "LOCKED BY ROW 11 / QUALIFIED ADVISOR — do not invent cash vs accrual in this file"
+  },
+  "purpose": "This file is the ongoing monthly bookkeeping and financial-close operating definition for The Back Half. It tells Michelle how to run the close, what artifacts to produce, who may certify, and what must already exist before the first live close. It does not replace Row 11 (chart of accounts), Row 163 (daily Stripe/bank/entitlement reconciliation), or a qualified tax professional.",
+  "boundaries": {
+    "michelleOwns": [
+      "Orchestrate the monthly close calendar",
+      "Collect extracts and receipts from Founder-held systems without storing secrets in git",
+      "Categorize expenses to the Row 11 chart of accounts once it exists",
+      "Assemble P&L, balance sheet, and cash view from the books",
+      "Prepare budget-variance review against the approved $5,000 launch cap (then the operating budget)",
+      "Record exceptions and escalate Class D / Founder-reserved items",
+      "Prepare the close pack for Founder certification"
+    ],
+    "michelleDoesNotOwn": [
+      "Imani security/infra, Stripe live-key or webhook mutation, Cloudflare DNS, Vercel custom-domain, or nameserver changes",
+      "Nia curriculum, brand voice, or participant-facing marketing copy",
+      "Bank account opening, Stripe Dashboard owner actions, tax-reserve transfers, or vendor payment-method changes",
+      "Tax conclusions, nexus determinations, sales-tax treatment, estimated-tax calculations, or filings",
+      "Founder acceptance of this Command Center row"
+    ],
+    "imaniSuppliesNotMutates": "Stripe/system payment extracts, fee reports, and entitlement counts for reconciling to books. Does not change Stripe configuration, DNS, or auth controls from this row.",
+    "niaOutOfScope": "Curriculum/brand. May confirm participant-facing receipt language only if a close exception involves customer communications.",
+    "founderReserved": [
+      "Business banking, payout destination, and tax-reserve transfers",
+      "Stripe Live Dashboard, live keys, payouts, disputes/chargebacks evidence submission",
+      "Vendor billing payment methods",
+      "Material/unbudgeted spend (Spend Class D)",
+      "Monthly close certification that books are ready for tax-reporting handoff",
+      "Command Center / Founder acceptance of Row 173"
+    ],
+    "qualifiedHumanExpert": "Tax, accounting-method, deferred-revenue, sales/use tax, estimated-tax, and filing conclusions. Stripe Tax does not replace tax compliance (Row 13)."
+  },
+  "dependencies": {
+    "named": ["Accounting", "Revenue Reconciliation"],
+    "mappedRows": [
+      {
+        "name": "Open Business Banking",
+        "launchRow": 10,
+        "excelRow": 11,
+        "statusAtDefinition": "Not Started",
+        "whyRequired": "Operating, tax-reserve, and payment-settlement accounts are the bank side of monthly recon."
+      },
+      {
+        "name": "Set Up Accounting",
+        "launchRow": 11,
+        "excelRow": 12,
+        "statusAtDefinition": "Not Started",
+        "whyRequired": "Chart of accounts, expense categories, revenue tracking, and receipt process are the books the close certifies."
+      },
+      {
+        "name": "Operationalize Daily Revenue Reconciliation",
+        "launchRow": 163,
+        "excelRow": 164,
+        "statusAtDefinition": "Not Started",
+        "whyRequired": "Daily Stripe/bank/entitlement recon is the inbound control the monthly close rolls up."
+      }
+    ],
+    "relatedNotOwnedHere": [
+      {
+        "name": "Establish Tax Compliance and Filing Calendar",
+        "launchRow": 13,
+        "commandCenterNotes": "Tax day for KLW Group, LLC is April 15th",
+        "commandCenterStatus": "Complete in workbook snapshot; launch-rows adapter still open — do not re-litigate tax conclusions here"
+      },
+      {
+        "name": "Validate Sales Tax and Checkout Tax Treatment",
+        "launchRow": 14,
+        "commandCenterNotes": "This will be addressed as part of tax submission",
+        "useInClose": "Record sales-tax liability only if a qualified advisor confirms an amount due. Do not assume Stripe tax handling."
+      },
+      {
+        "name": "Create Launch Cash and Spend Control",
+        "launchRow": 164,
+        "useInClose": "Launch-period variance uses the approved $5,000 cap. Do not invent other dollar thresholds."
+      },
+      {
+        "name": "Verify Launch-Critical Vendor Capacity and Billing",
+        "launchRow": 73,
+        "statusAtDefinition": "Not Complete — Production Stripe key is Test/Sandbox, not Live",
+        "useInClose": "Live Stripe activity cannot be closed until Live payments exist. Vendor invoices still close against bank/cards once banking exists."
+      }
+    ],
+    "unlocks": [
+      {
+        "tab": "Post Launch",
+        "deliverable": "Monthly Financial Close and Tax Readiness",
+        "dependency": "Monthly Bookkeeping and Financial Close",
+        "targetTiming": "Monthly through Dec 2026"
+      },
+      {
+        "tab": "Post Launch",
+        "deliverable": "2026 Year-End Business Close",
+        "dependency": "December Financial Close"
+      }
+    ]
+  },
+  "cadence": {
+    "period": "Calendar month",
+    "currency": "USD",
+    "timezone": "America/New_York",
+    "cutoff": "Last calendar day of the period, 23:59:59 America/New_York",
+    "closeDue": "10th calendar day of the following month, or the next US business day if the 10th is a weekend/federal holiday",
+    "firstExpectedOperationalClose": "Month containing the first operating-bank or Live Stripe settlement activity. If launch is 2026-08-31 and banking/Live Stripe are in place, the first close is August 2026 (stub) then September 2026 (first full month).",
+    "doNotCloseAgainstSandbox": true,
+    "recurringOwner": "michelle",
+    "certifier": "Kimberly Walker (human)"
+  },
+  "monthlyCloseChecklist": [
+    {
+      "step": 1,
+      "id": "freeze-period",
+      "name": "Freeze the close period",
+      "owner": "michelle",
+      "requiresFounder": false,
+      "actions": [
+        "Name the period (YYYY-MM) and cutoff timestamp",
+        "Confirm Row 163 daily recon exists through cutoff, or record that daily recon is missing and treat the month as exception-held",
+        "Do not include post-cutoff activity in the period pack"
+      ]
+    },
+    {
+      "step": 2,
+      "id": "bank-reconcile",
+      "name": "Reconcile bank accounts",
+      "owner": "michelle",
+      "requiresFounder": true,
+      "founderAction": "Export operating, tax-reserve, and payment-settlement statements from the bank (Founder-held login). Do not store credentials in the repo.",
+      "actions": [
+        "Match every bank line to a book entry or documented exception",
+        "Confirm Stripe payouts landing in the payment-settlement account equal Stripe payout reports for the period",
+        "Confirm tax-reserve transfers are balance-sheet movements, not operating expense",
+        "Record bank fees in the Row 11 bank-fee category"
+      ],
+      "doneWhen": "Bank rec shows $0 unexplained difference for each account."
+    },
+    {
+      "step": 3,
+      "id": "stripe-reconcile",
+      "name": "Reconcile Stripe",
+      "owner": "michelle",
+      "requiresFounder": true,
+      "imaniRole": "Supply non-secret payment/fee/payout extracts from authorized systems. Do not mutate Stripe config.",
+      "actions": [
+        "Gross charges by offer: Blueprint $1,500 one-time, Founding Architect $1,750 one-time, Community $50/month",
+        "Processing fees (Stripe): record as payment-processing expense, not as a reduction of list price in customer-facing copy",
+        "Payouts: Stripe payouts vs bank deposits (step 2)",
+        "Failed payments: no revenue; confirm entitlements were not granted or were revoked per billing reconcile",
+        "Disputes/chargebacks: record contra-revenue or liability even though public policy is no refunds; cancellation is not a refund",
+        "Refunds: standard policy is no refunds; if a Founder-authorized exception occurs, record it and do not change public policy from this close",
+        "Do not treat sandbox/test charges as books"
+      ],
+      "doneWhen": "Stripe gross, fees, payouts, and dispute/exception items reconciling to bank and to Row 163 daily recon."
+    },
+    {
+      "step": 4,
+      "id": "categorize-expenses",
+      "name": "Categorize expenses",
+      "owner": "michelle",
+      "requiresFounder": false,
+      "actions": [
+        "Code every expense to the Row 11 chart of accounts (do not maintain a second chart in this file)",
+        "Map known launch vendors from ops/fab-5/vendor-saas-register.json: Vercel hosting, Supabase database, Google Workspace email, OpenAI Fab 5 cycles, Cursor engineering, GitHub source, domain/DNS, HeyGen pre-rendered media (non-runtime), Stripe processing fees",
+        "Instagram/TikTok: record paid spend if any; organic social is not an invented expense",
+        "Insurance: Founder elected to launch without business insurance; record $0 unless a policy is later bound",
+        "Spend Class B/C stays inside the approved $5,000 launch cap; Class D unbudgeted spend is Founder-gated and must appear as an exception if it occurred"
+      ],
+      "doneWhen": "Every period expense has a category, vendor, amount, date, and receipt or documented missing-receipt exception."
+    },
+    {
+      "step": 5,
+      "id": "fees-and-liabilities",
+      "name": "Record fees and liabilities",
+      "owner": "michelle",
+      "requiresFounder": false,
+      "qualifiedAdvisor": true,
+      "actions": [
+        "Stripe processing fees",
+        "Bank fees",
+        "Accrued vendor SaaS only if Row 11 method is accrual; otherwise record when paid",
+        "Sales/use tax payable only if a qualified advisor has determined an amount — do not invent nexus or rates",
+        "Estimated income-tax reserve: transfer to tax-reserve account per Founder; Michelle tracks, Founder moves cash",
+        "Chargeback/dispute reserves as identified",
+        "Deferred/unearned revenue treatment for Community subscriptions and Founding Architect included months is a qualified-advisor decision, not an agent invention"
+      ],
+      "doneWhen": "Fee and liability accounts match source reports and advisor-approved treatment."
+    },
+    {
+      "step": 6,
+      "id": "preserve-receipts",
+      "name": "Preserve receipts",
+      "owner": "michelle",
+      "requiresFounder": true,
+      "actions": [
+        "Every vendor invoice, Stripe fee report, bank statement, and payout report for the period is stored in the Founder-held receipt store",
+        "Do not commit receipts, card numbers, bank statements with account numbers, or API keys to git",
+        "Close pack contains an index (vendor, date, amount, category, evidence location) not the images/PDFs",
+        "Retention follows the tax calendar / qualified advisor; do not invent a conflicting retention rule here"
+      ],
+      "doneWhen": "Receipt index is complete; missing items are listed as exceptions with Founder owner and due date."
+    },
+    {
+      "step": 7,
+      "id": "statements",
+      "name": "Produce P&L, balance sheet, and cash view",
+      "owner": "michelle",
+      "requiresFounder": false,
+      "outputs": [
+        "Profit and loss for the period and YTD",
+        "Balance sheet as of cutoff (cash by account, receivables if any, liabilities, tax reserve)",
+        "Cash view: opening cash, inflows (Stripe payouts / other), outflows (vendors, fees, tax-reserve transfers), closing cash, reconciling to bank"
+      ],
+      "doneWhen": "Three statements exist, tie to recon, and use Row 11 accounts."
+    },
+    {
+      "step": 8,
+      "id": "budget-variance",
+      "name": "Review budget variance",
+      "owner": "michelle",
+      "requiresFounder": false,
+      "actions": [
+        "Launch window: actual spend vs approved $5,000 launch budget cap (August Launch row 3). Do not invent other dollar thresholds.",
+        "After launch budget is exhausted or post-launch operating budget exists: variance vs that budget",
+        "Explain material over/under by vendor and spend class (A/B/C/D)",
+        "Unbudgeted spend is not closed silently — escalate to Founder"
+      ],
+      "doneWhen": "Variance sheet is attached and every Class D item is Founder-visible."
+    },
+    {
+      "step": 9,
+      "id": "exceptions",
+      "name": "Resolve or hold exceptions",
+      "owner": "michelle",
+      "requiresFounder": true,
+      "holdCloseIf": [
+        "Any bank or Stripe unexplained difference remains",
+        "Live vs test Stripe activity cannot be distinguished",
+        "Row 11 accounts are missing so categorization cannot be evidenced",
+        "A Founder-reserved tax or spend decision is required and is open"
+      ],
+      "actions": [
+        "Log each exception with owner, amount if known, due date, and whether the close is HELD or CERTIFIED WITH EXCEPTION",
+        "Chargebacks: Founder + Imani evidence path; no public refund promise",
+        "Do not mark the month certified while a hold condition is open"
+      ]
+    },
+    {
+      "step": 10,
+      "id": "certify",
+      "name": "Certify books ready for tax reporting",
+      "owner": "kimberly",
+      "requiresFounder": true,
+      "michellePreparesOnly": true,
+      "actions": [
+        "Michelle presents the close pack and exception log",
+        "Kimberly Walker (human) certifies or rejects",
+        "Certification means: period reconciling, receipts preserved, statements produced, variance reviewed, remaining exceptions listed, pack ready for qualified tax/accountant handoff",
+        "Certification is not a tax filing and is not attorney/CPA advice",
+        "Do not treat Kimberly Walker (AI) as certifier"
+      ],
+      "doneWhen": "Founder certification recorded with period, date, and exception list. Post Launch 'Monthly Financial Close and Tax Readiness' may then run for that month."
+    }
+  ],
+  "closePackContents": [
+    "Period cover sheet (entity, period, cutoff, owners, certification status)",
+    "Bank reconciliation (operating / tax-reserve / payment-settlement)",
+    "Stripe reconciliation (gross by offer, fees, payouts, failed payments, disputes/chargebacks, authorized exceptions)",
+    "Expense register with Row 11 categories",
+    "Fee and liability register",
+    "Receipt index (no secrets, no full account numbers)",
+    "Profit and loss (period + YTD)",
+    "Balance sheet as of cutoff",
+    "Cash view",
+    "Budget variance vs $5,000 launch cap or successor operating budget",
+    "Exception log",
+    "Founder certification (or explicit hold)"
+  ],
+  "evidenceLocation": {
+    "processDefinition": "ops/fab-5/runs/aos-engineering-status/al-173.json",
+    "vendorRegister": "ops/fab-5/vendor-saas-register.json",
+    "spendAuthority": "ops/fab-5/operating-system.json spendingAuthority",
+    "receiptStore": "Founder-held private store (Workspace/Drive or accountant portal). NOT git. NOT this repository.",
+    "monthlyPacks": "Founder-held finance folder named YYYY-MM-close. Index may be summarized in AOS evidence refs after a live close; source statements stay private."
+  },
+  "revenueCategoriesExpected": [
+    {
+      "offerId": "blueprint",
+      "name": "The Back Half Blueprint",
+      "amountCents": 150000,
+      "mode": "one-time"
+    },
+    {
+      "offerId": "bundle",
+      "name": "Founding Architect",
+      "amountCents": 175000,
+      "mode": "one-time",
+      "note": "Includes first six months of Architect Community (Oct 25, 2026–Apr 25, 2027). Deferred-revenue split is a qualified-advisor decision."
+    },
+    {
+      "offerId": "community",
+      "name": "The Back Half Community",
+      "amountCents": 5000,
+      "mode": "subscription-monthly"
+    }
+  ],
+  "expenseCategoryMapPendingRow11": [
+    { "vendorId": "vercel", "suggestedAccount": "Hosting" },
+    { "vendorId": "supabase", "suggestedAccount": "Database / infrastructure" },
+    { "vendorId": "stripe", "suggestedAccount": "Payment processing fees" },
+    { "vendorId": "google_workspace", "suggestedAccount": "Software — email / workspace" },
+    { "vendorId": "openai", "suggestedAccount": "Software — AI operations (Fab 5, not Lumina participant runtime)" },
+    { "vendorId": "cursor", "suggestedAccount": "Software — engineering" },
+    { "vendorId": "github", "suggestedAccount": "Software — source control" },
+    { "vendorId": "domain_dns", "suggestedAccount": "Domain / DNS" },
+    { "vendorId": "heygen", "suggestedAccount": "Media production (non-runtime)" },
+    { "vendorId": "instagram", "suggestedAccount": "Marketing — paid social (if any)" },
+    { "vendorId": "tiktok", "suggestedAccount": "Marketing — paid social (if any)" }
+  ],
+  "controls": {
+    "noRefundPolicyPreserved": true,
+    "doNotInventSpendThresholds": true,
+    "approvedLaunchBudgetCap": "$5,000",
+    "doNotStoreSecretsInRepo": true,
+    "doNotModifyStripeConfig": true,
+    "doNotModifyDnsOrNameservers": true,
+    "doNotWeakenAuth": true,
+    "sandboxActivityExcludedFromBooks": true,
+    "stripeTaxDoesNotReplaceCompliance": true,
+    "agentsAreNotAccountantsOrLawyers": true
+  },
+  "blockersForFirstLiveClose": [
+    "Row 10 Open Business Banking is Not Started — no operating / tax-reserve / payment-settlement accounts to reconcile.",
+    "Row 11 Set Up Accounting is Not Started — no chart of accounts, expense categories, revenue tracking, or receipt process.",
+    "Row 163 Operationalize Daily Revenue Reconciliation is Not Started — no daily Stripe/bank/entitlement recon to roll up.",
+    "Row 73 Stripe Live is not connected (Production key classified Test/Sandbox). Do not close sandbox charges as company books."
+  ],
+  "remainingBlockers": "Accounting (Row 11) and Revenue Reconciliation (Row 163) are not established. Business Banking (Row 10) is not open. Live Stripe settlement is not available. The monthly close SOP is defined; the first live close cannot be executed or certified.",
+  "nextAction": "Founder Acceptance Review of this monthly close definition. Do not mark August Launch row 173 Complete until Kimberly Walker (human) explicitly accepts. Do not execute the first live close until Banking, Accounting, and Daily Revenue Reconciliation exist and Live Stripe activity (or documented $0 activity) can be evidenced.",
+  "validation": {
+    "typecheck": "PASS — ./node_modules/.bin/tsc --noEmit (package.json has no typecheck script; TypeScript noEmit succeeded). Ops JSON only; no production code changed.",
+    "npmTest": "SKIP — package.json has no test script. Nearest scripts are fab5:* row validators, not applicable to this non-software deliverable.",
+    "build": "SKIP — change cannot affect production (ops status JSON only).",
+    "jsonParse": "PASS"
+  },
+  "aosIngest": {
+    "parkStatusExpected": "ACCEPTANCE_READY",
+    "blockedReasonExpected": "founder_acceptance_required",
+    "completeWork": false,
+    "merge": false,
+    "deploy": false
+  },
+  "notes": "Michelle defined the ongoing monthly close for AOS work al-173. This is operations/orchestration, not Imani infra and not Nia brand. No Founder approval was fabricated. Command Center Complete was not written. No product, marketing, or legal files were changed. No Stripe, DNS, Vercel domain, or nameserver settings were changed. Secrets were not printed."
+}
