@@ -169,7 +169,7 @@ async function main() {
           composed.headers["X-BH-Email-Kind"] === "marketing",
       ),
     ),
-    detail: composed?.unsubscribeUrl ?? marketing.status,
+    detail: composed?.unsubscribeUrl ? "unsubscribe_url_present" : marketing.status,
   });
 
   const added2 = await addMarketingRecipient({

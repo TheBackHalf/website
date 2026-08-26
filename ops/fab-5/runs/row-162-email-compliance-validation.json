@@ -1,0 +1,114 @@
+{
+  "generatedAt": "2026-08-26T18:54:51.442Z",
+  "row": 162,
+  "aosWorkId": "al-162",
+  "origin": "mechanical",
+  "secretsPrinted": false,
+  "founderAcceptanceRecorded": false,
+  "rowMarkedComplete": false,
+  "kitWired": false,
+  "summary": {
+    "total": 16,
+    "pass": 16,
+    "fail": 0
+  },
+  "tests": [
+    {
+      "id": "catalog-separation",
+      "name": "Transactional and marketing templates are classified separately",
+      "result": "PASS",
+      "detail": "12 catalog entries"
+    },
+    {
+      "id": "consent-source-rejected",
+      "name": "Registration, purchase, inferred, scraped, purchased-list, and Kit-sync cannot enroll marketing recipients",
+      "result": "PASS",
+      "detail": "rejected_source,rejected_source,rejected_source,rejected_source,rejected_source,rejected_source"
+    },
+    {
+      "id": "explicit-opt-in",
+      "name": "Explicit opt-in creates a consent/source record",
+      "result": "PASS",
+      "detail": "added"
+    },
+    {
+      "id": "sender-identification",
+      "name": "Marketing email identifies The Back Half / KLW Group, LLC",
+      "result": "PASS",
+      "detail": "The Back Half / KLW Group, LLC"
+    },
+    {
+      "id": "required-footer",
+      "name": "Marketing email includes physical address and commercial footer",
+      "result": "PASS",
+      "detail": "KLW Group, LLC, 123 Test Postal Address, Atlanta, GA 30301"
+    },
+    {
+      "id": "unsubscribe-mechanism",
+      "name": "Marketing email includes visible unsubscribe URL and List-Unsubscribe headers",
+      "result": "PASS",
+      "detail": "unsubscribe_url_present"
+    },
+    {
+      "id": "unsubscribe-e2e",
+      "name": "Unsubscribe token processes end-to-end and records suppression",
+      "result": "PASS",
+      "detail": "added/unsubscribed"
+    },
+    {
+      "id": "suppression-blocks-marketing",
+      "name": "Suppressed recipient is not sent marketing email",
+      "result": "PASS",
+      "detail": "suppressed"
+    },
+    {
+      "id": "automation-cannot-readd",
+      "name": "Automations cannot re-add a suppressed recipient",
+      "result": "PASS",
+      "detail": "suppressed:suppressed_cannot_readd_by_automation"
+    },
+    {
+      "id": "transactional-separation",
+      "name": "Transactional email still sends to a marketing-suppressed recipient and has no marketing footer",
+      "result": "PASS",
+      "detail": "dry_run"
+    },
+    {
+      "id": "token-integrity",
+      "name": "Tampered unsubscribe tokens are rejected",
+      "result": "PASS",
+      "detail": "invalid_token"
+    },
+    {
+      "id": "one-click-unsubscribe",
+      "name": "RFC 8058 one-click POST unsubscribes and suppresses the recipient",
+      "result": "PASS",
+      "detail": "http=200 body=unsubscribed send=suppressed"
+    },
+    {
+      "id": "fail-closed-address",
+      "name": "Marketing send fails closed without a physical postal address",
+      "result": "PASS",
+      "detail": "missing_physical_address"
+    },
+    {
+      "id": "fail-closed-consent",
+      "name": "Marketing send fails closed without a consent/source record",
+      "result": "PASS",
+      "detail": "missing_consent"
+    },
+    {
+      "id": "unsubscribe-age-exempt",
+      "name": "Unsubscribe routes are age-eligibility exempt so opt-out remains reachable",
+      "result": "PASS",
+      "detail": "exempt"
+    },
+    {
+      "id": "not-marked-complete",
+      "name": "Row 162 is not marked Complete and Founder acceptance is not fabricated",
+      "result": "PASS",
+      "detail": "complete=false accepted=false"
+    }
+  ],
+  "remainingBlockers": "Founder acceptance remains with Kimberly Walker (human). Do not mark Row 162 Complete from this review."
+}
