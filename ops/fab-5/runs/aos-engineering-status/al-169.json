@@ -1,0 +1,703 @@
+{
+  "aosWorkId": "al-169",
+  "source": "command_center",
+  "sourceReference": "August Launch row 169",
+  "excelRow": 170,
+  "deliverable": "Create Cybersecurity Incident and Breach Response Procedure",
+  "description": "Extend technical incident response to privacy/security events: detection, containment, evidence preservation, credential rotation, vendor escalation, legal assessment, notification decision process, communications ownership, and post-incident review. Run a tabletop scenario before launch.",
+  "generatedAt": "2026-08-26T15:32:00.000Z",
+  "operatingAgent": "michelle",
+  "operatingAgentTitle": "Michelle Northstar — Chief of Staff & Operations Officer",
+  "primaryWorkbookOwner": "imani",
+  "primaryWorkbookOwnerTitle": "Imani Heartbeat — Chief Technology & Risk Officer",
+  "supportingOwners": ["michelle"],
+  "workstream": "LEGAL",
+  "phase": "Finance, Risk, Privacy & Business Operations",
+  "repositorySoftwareChange": false,
+  "filesChangedByThisWork": [
+    "ops/fab-5/runs/aos-engineering-status/al-169.json"
+  ],
+  "productMarketingLegalFilesChanged": false,
+  "stripeCloudflareVercelDnsTouched": false,
+  "secretsPrinted": false,
+  "authenticationWeakened": false,
+  "merged": false,
+  "deployed": false,
+  "founderAcceptance": "NOT_ACCEPTED",
+  "founderAcceptanceAuthority": "Kimberly Walker (human) only. Do not fabricate Founder approval.",
+  "kimberlyWalkerAiIsNotExecutionCapacity": true,
+  "aosEngineeringStatus": "READY_FOR_FOUNDER_REVIEW",
+  "workbookStatusClaim": "Do not mark August Launch row 169 Complete. Do not write Founder acceptance. Human legal remains required for notification-law conclusions.",
+  "percentCompleteClaim": null,
+  "humanExpertRequired": true,
+  "humanExpertRole": "Qualified human legal counsel for whether an event is a legally notifiable breach, who must be notified, by when, and in what form.",
+  "independentCounselStatus": "NOT COMPLETED (Row 34 residual R34-M5). Recommended. Not claimed by this procedure. Founder engages counsel; agents do not retain counsel.",
+  "notificationLawConclusions": "NOT_MADE",
+  "nextAction": "Founder reviews this operational procedure and tabletop. Founder engages qualified human legal counsel for notification-law conclusions before any participant, regulator, or public breach notice is sent. Imani remains technical/security owner. Do not mark row 169 Complete.",
+  "scopeBoundary": {
+    "michelleOwns": "Launch Readiness coordination, incident classification/routing, evidence log coordination, tabletop facilitation, communications routing, Founder surfacing, post-incident review scheduling.",
+    "imaniOwns": "Technical incident command, containment, forensic/system evidence, vendor technical escalation, control restoration, credential-rotation identification. This file does not take Imani security/infra ownership.",
+    "niaOwns": "Participant-experience impact, approved-template Architect comms after Founder/legal clearance. Does not own security investigation or legal conclusions. Does not invent public claims.",
+    "founderOwns": "Public, legal, or reputational communication; irreversible actions; human SaaS identity/MFA/secret rotation in vendor consoles; engaging counsel; sending or withholding notices after counsel; Founder acceptance of this row.",
+    "doesNotReplace": [
+      "Row 154 technical Incident Response Plan (workbook Complete; OS severity and escalation path remain authoritative for technical IR)",
+      "ops/fab-5/operating-system.json incidentSeverity, incidentEscalationPath, legalHoldProtocol, and decision matrix",
+      "ops/launch/LAUNCH-DAY-RUNBOOK-AUGUST-31-2026.md §8–§9",
+      "ops/fab-5/ROW-153-SUPPORT-CHANNELS-OPERATING-PROTOCOL.md privacy/security escalation",
+      "ops/fab-5/ROW-83-SOCIAL-ENGAGEMENT-RESPONSE-PROTOCOL.md preserve-then-route",
+      "ops/fab-5/ROW-62-BACKUP-DISASTER-RECOVERY.md",
+      "ops/fab-5/ROW-74-CREDENTIAL-ACCOUNT-RECOVERY.md",
+      "ops/fab-5/vendor-saas-register.json",
+      "ops/fab-5/decision-log.json as the material-decision tracker"
+    ],
+    "extends": "Technical IR (detection → classification → domain owner → containment → evidence → Michelle coordination → cross-functional support → Founder/human expert if triggered → correction → retest → resolution → audit close) to privacy and security events that may involve personal data, credentials, vendor subprocessors, or legal/notification questions."
+  },
+  "authoritativeReferences": {
+    "operatingSystem": "ops/fab-5/operating-system.json",
+    "row19Authority": "ops/fab-5/runs/row-19-authority-escalation-validation.json",
+    "launchDayRunbook": "ops/launch/LAUNCH-DAY-RUNBOOK-AUGUST-31-2026.md",
+    "supportProtocol": "ops/fab-5/ROW-153-SUPPORT-CHANNELS-OPERATING-PROTOCOL.md",
+    "socialProtocol": "ops/fab-5/ROW-83-SOCIAL-ENGAGEMENT-RESPONSE-PROTOCOL.md",
+    "vendorRegister": "ops/fab-5/vendor-saas-register.json",
+    "credentialRecovery": "ops/fab-5/credential-account-recovery-register.json",
+    "backupRestore": "ops/fab-5/ROW-62-BACKUP-DISASTER-RECOVERY.md",
+    "monitoring": "ops/fab-5/ROW-61-PRODUCTION-MONITORING.md",
+    "legalHold": "ops/fab-5/operating-system.json legalHoldProtocol",
+    "privacyMailbox": "privacy@thebackhalf.org (reserved). Privacy intake currently uses Row 153 Support tracker category PRIVACY. Do not invent legal@.",
+    "supportMailbox": "support@thebackhalf.org"
+  },
+  "procedure": {
+    "title": "Cybersecurity Incident and Breach Response Procedure — operational extension of technical IR",
+    "version": "al-169-v1",
+    "status": "DRAFTED — pending Founder review and human legal notification-law conclusions",
+    "effectiveWhenAccepted": "Not in force as a Founder-accepted launch control until Kimberly Walker (human) accepts. Operators may use it as the coordinating playbook for pre-launch tabletop and pending incidents, without treating legal conclusions as settled.",
+    "definitionsOperationalNotLegal": {
+      "securityIncident": "An event that may compromise confidentiality, integrity, or availability of The Back Half systems, credentials, or data. Operational term only.",
+      "privacyEvent": "An event that may involve unauthorized access, acquisition, use, disclosure, alteration, or loss of personal information of Architects, prospects, or operators. Operational term only.",
+      "suspectedBreach": "A privacy/security event that might later be a legally notifiable breach. Agents must not conclude that a legal 'breach' has or has not occurred.",
+      "personalInformationInScopeExamples": [
+        "Name and email",
+        "Account credentials and session material",
+        "Billing information processed by Stripe (card data is not stored by The Back Half application; Stripe is the processor)",
+        "Purchase history and membership status",
+        "Support ticket contents",
+        "Journey answers and Lumina transcripts (first-party; Lumina does not call OpenAI)",
+        "Analytics events tied to a userId",
+        "Consent/version acceptance records"
+      ],
+      "clockStart": "Michelle records detectionTime (first credible signal) and confirmationTime (Imani confirms a security/privacy event, or Founder/counsel later confirms a legal breach). Notification clocks, if any, are determined only by human legal counsel. Agents do not start or stop statutory clocks."
+    },
+    "severityForPrivacySecurityEvents": {
+      "rule": "Reuse OS SEV-1 through SEV-4. Do not invent a second severity scale. Material security/privacy incidents are SEV-1 examples in the OS.",
+      "SEV-1": {
+        "name": "CRITICAL",
+        "privacySecurityExamples": [
+          "Confirmed or highly likely unauthorized access to Architect personal data",
+          "Production credential or admin-session compromise",
+          "Widespread account takeover",
+          "Payment processor account compromise",
+          "Material data-loss or destructive event involving personal data",
+          "Vendor notice that The Back Half production project is in a confirmed unauthorized-access window"
+        ],
+        "notify": [
+          "Imani immediately (technical command)",
+          "Michelle immediately (coordination)",
+          "Nia if participant impact or public surfaces",
+          "Founder immediately",
+          "Human legal expert if required — Founder engages"
+        ]
+      },
+      "SEV-2": {
+        "name": "HIGH",
+        "privacySecurityExamples": [
+          "Contained exposure affecting a meaningful cohort, not yet confirmed as broadly acquired",
+          "Vendor notice of possible but unconfirmed project impact",
+          "Single-account compromise with personal data at risk",
+          "Misdirected communication containing another Architect's personal information"
+        ],
+        "notify": [
+          "Michelle",
+          "Imani",
+          "Nia if participant-facing",
+          "Founder if material launch, reputational, financial, or reserved"
+        ]
+      },
+      "SEV-3": {
+        "name": "MODERATE",
+        "privacySecurityExamples": [
+          "Failed intrusion with no data access",
+          "Single support message that included a secret, already redacted, no further exposure",
+          "Vendor generic advisory with no indication The Back Half is in scope"
+        ],
+        "notify": ["Imani as domain executive", "Michelle tracks"]
+      },
+      "SEV-4": {
+        "name": "LOW",
+        "privacySecurityExamples": [
+          "Phishing attempt with no credential use",
+          "Public rumor with no corroborating evidence after Imani triage"
+        ],
+        "notify": ["domain executive"]
+      }
+    },
+    "roles": {
+      "incidentCoordinator": {
+        "owner": "Michelle Northstar",
+        "duties": [
+          "Open the incident record",
+          "Classify SEV with Imani input",
+          "Route to Imani / Nia / Founder per matrix",
+          "Keep a single timeline",
+          "Surface Founder Attention when thresholds hit",
+          "Prevent duplicate informal trackers",
+          "Schedule post-incident review"
+        ]
+      },
+      "incidentCommanderTechnical": {
+        "owner": "Imani Heartbeat",
+        "duties": [
+          "Confirm or refute the technical event",
+          "Contain",
+          "Preserve system evidence",
+          "Identify credentials and sessions to rotate",
+          "Escalate to vendors technically",
+          "Restore approved safe behavior",
+          "Retest"
+        ]
+      },
+      "experienceAndApprovedCommsDrafts": {
+        "owner": "Nia Prism",
+        "duties": [
+          "Assess Architect-experience impact",
+          "Draft participant-facing language only from approved templates or Founder-approved new copy",
+          "Do not publish security/legal admissions"
+        ]
+      },
+      "humanCredentialAndNoticeAuthority": {
+        "owner": "Kimberly M. Walker — Founder",
+        "duties": [
+          "Execute identity/MFA/secret rotation in vendor consoles",
+          "Engage qualified human legal counsel",
+          "Decide and send or withhold external notices after counsel",
+          "Approve any new public claim"
+        ]
+      },
+      "humanLegalExpert": {
+        "owner": "Qualified human legal counsel engaged by Founder",
+        "duties": [
+          "Legal-hold scope and duration",
+          "Whether a legally notifiable breach occurred",
+          "Who must be notified, by when, in what form",
+          "Regulator vs individual vs vendor contractual notice"
+        ],
+        "agentsMayNot": "Conclude legal questions, invent governing-law or timeline claims, or send notices as if they were counsel."
+      }
+    },
+    "phases": {
+      "1_detection": {
+        "name": "Detection",
+        "owner": "Any operator who first sees a credible signal; Michelle records; Imani triages technical truth.",
+        "sources": [
+          "Row 61 probes, launch_ops_errors, Row 151 Launch Health / Founder Attention",
+          "Row 153 support form, support@, category PRIVACY or TECHNICAL, P1 security language",
+          "Row 83 social reports of exposure, credential stuffing, impersonation, or alleged company breach",
+          "Vendor status pages and vendor-to-Founder security emails (Vercel, Supabase, Stripe, Google Workspace, OpenAI, GitHub, Cloudflare/registrar, Meta/Instagram, TikTok)",
+          "Unusual Stripe Radar/disputes, auth failure spikes, admin-console access anomalies",
+          "Founder or operator observation of unauthorized posts, DNS change, or missing MFA"
+        ],
+        "intakeRules": [
+          "Do not request passwords, OTP, full PAN, CVV, or recovery codes from the reporter.",
+          "If an Architect already sent a secret: redact, do not repeat, escalate to Imani, do not ask them to resend the secret (Row 153).",
+          "Privacy allegations against the company are not ordinary CX. Michelle routes to Imani + Founder. Do not investigate publicly.",
+          "Attorney, regulator, or government contact: preserve, do not reply substantively, Michelle surfaces Founder immediately. No legal@ mailbox.",
+          "Create or attach a Row 153 ticket when the signal came from an Architect or public support path. Do not open a second informal tracker."
+        ],
+        "immediateClassificationDefault": "Treat suspected personal-data exposure or credential compromise as SEV-1 or SEV-2 until Imani downgrades with evidence. Do not wait for perfect confirmation to contain obvious ongoing leakage."
+      },
+      "2_containment": {
+        "name": "Containment",
+        "owner": "Imani Heartbeat. Michelle notified immediately. Founder notified for SEV-1.",
+        "authority": "OS: incident response — technical containment is Imani independent A (no prior Founder approval). Emergency shutdown is Imani execute, Michelle notify, Founder notify. Public/legal/reputational communication remains Founder-reserved.",
+        "allowedWithoutPriorFounderApproval": [
+          "Disable or isolate a leaking path (feature flag, route disable, pause SMTP send, pause checkout UI, revoke application sessions Imani can revoke in-app)",
+          "Rollback to restore approved safe behavior",
+          "Emergency shutdown to prevent ongoing harm",
+          "Pause social publishing when security-related (Imani/Michelle/Nia per Row 77/83)",
+          "Redact secrets in tickets and logs",
+          "Block further export/download of the affected store if Imani has an authorized control"
+        ],
+        "requiresFounder": [
+          "Destructive restore or cutover over production (Row 62)",
+          "Rotation of human-owned SaaS passwords, MFA, API keys, and Vercel/Stripe/GitHub/Cloudflare secrets",
+          "DNS, nameserver, or custom-domain changes",
+          "Stripe configuration changes",
+          "New public statements, participant notices, regulator notices",
+          "Unbudgeted IR vendor spend"
+        ],
+        "forbiddenDuringContainment": [
+          "Do not restore over production as the first action (Row 62).",
+          "Do not wipe logs or rotate in a way that destroys needed evidence before a snapshot is taken.",
+          "Do not post a public 'we were breached' statement.",
+          "Do not promise refunds.",
+          "Do not change Cloudflare DNS, Vercel custom-domain, or thebackhalf.org nameservers from agent execution.",
+          "Do not weaken authentication to 'keep the site up'.",
+          "Do not paste secrets into tickets, chat, git, or this procedure."
+        ]
+      },
+      "3_evidencePreservation": {
+        "name": "Evidence preservation",
+        "owner": "Imani preserves technical records. Michelle coordinates the inventory. Nia preserves participant-facing/social evidence. Human legal expert later defines authoritative hold scope. Agents may preserve pending review and may not conclude legal scope or duration (OS legalHoldProtocol).",
+        "preserveBeforeDeletion": true,
+        "whatToCapture": [
+          "Detection time, reporter, channel, ticket ID",
+          "Imani's technical timeline (systems, routes, env names — never values)",
+          "Affected data categories (not dumps of personal data into git)",
+          "Approximate population if knowable (count, not a spreadsheet of Architects in the repo)",
+          "Support ticket and social-evidence copies under existing stores (tickets; ops/fab-5/social-evidence/ for social; no secrets in filenames)",
+          "Relevant launch_ops_errors fingerprints",
+          "Vendor ticket/case IDs and notice timestamps",
+          "What containment was applied and by whom"
+        ],
+        "where": [
+          "Row 153 ticket for Architect-originated events",
+          "ops/fab-5/decision-log.json for material operating decisions and Founder-gated steps (append only when a real incident requires it; this al-169 work does not append a fake incident)",
+          "Imani technical notes in authorized ops/admin or launch_ops_errors — sanitized",
+          "Do not create a second durable tracker. This JSON is the procedure, not the live incident log."
+        ],
+        "personalDataHandling": "Copy only the minimum needed to investigate. Do not commit Architect dumps, email lists, Journey answers, or Lumina transcripts to git. Do not expand access during investigation."
+      },
+      "4_credentialRotation": {
+        "name": "Credential rotation",
+        "owner": "Imani identifies what is implicated. Michelle coordinates Founder action list. Founder executes human-console rotation. Agents do not print, commit, or store replacement secrets.",
+        "humanAccountFact": "Kimberly M. Walker is the sole human SaaS credential holder. Michelle, Imani, and Nia are operational roles, not independent human credential holders (Row 20 / Row 72 / Row 74).",
+        "rotationDecisionTree": [
+          {
+            "class": "Application sessions / in-app Architect sessions",
+            "actor": "Imani if an authorized in-app control exists",
+            "founderRequired": false
+          },
+          {
+            "class": "Env names on Vercel (AUTH_SECRET, STRIPE_*, POSTGRES_*, SMTP_PASSWORD, OPENAI_API_KEY, CRON_SECRET, SUPABASE_SERVICE_ROLE_KEY, etc.)",
+            "actor": "Founder in Vercel + source vendor. Imani names the env keys to rotate without values.",
+            "founderRequired": true,
+            "note": "Do not rotate working keys as part of al-169. Rotate only during a real incident or Founder-directed hygiene."
+          },
+          {
+            "class": "Stripe Dashboard login, restricted keys, webhook signing secret",
+            "actor": "Founder. Stripe MFA was Founder-verified ENABLED 2026-08-25.",
+            "founderRequired": true,
+            "constraint": "Do not modify Stripe configuration from this procedure except Founder-executed incident rotation."
+          },
+          {
+            "class": "Google Workspace / SMTP app password / IMAP",
+            "actor": "Founder as Workspace super-admin. Independent recovery already PASS (Row 77/74).",
+            "founderRequired": true
+          },
+          {
+            "class": "GitHub org tokens, deploy keys, Vercel git access",
+            "actor": "Founder",
+            "founderRequired": true
+          },
+          {
+            "class": "Cloudflare / registrar",
+            "actor": "Founder. Cloudflare MFA is INACTIVE — Founder risk accepted 2026-08-25. Residual risk: account takeover is easier than Stripe. Do not enable 2FA or change DNS from this row.",
+            "founderRequired": true,
+            "constraint": "Do not modify Cloudflare DNS, nameservers, or Vercel custom-domain from agent execution."
+          },
+          {
+            "class": "Instagram/TikTok @backhalfco",
+            "actor": "Founder identity recovery. MFA PASS (Row 77). Imani if compromise. Nia pause/remove unauthorized posts after evidence preserve.",
+            "founderRequired": true
+          }
+        ],
+        "order": [
+          "Snapshot evidence",
+          "Revoke the compromised secret/session",
+          "Issue replacement in the vendor console (Founder)",
+          "Update the corresponding Vercel Production env name (Founder) without pasting values into chat",
+          "Invalidate sessions that could use the old secret",
+          "Imani retests the path",
+          "Michelle records env names rotated, not values"
+        ]
+      },
+      "5_vendorEscalation": {
+        "name": "Vendor escalation",
+        "owner": "Imani for technical vendor cases. Michelle tracks case IDs and time. Founder is the human account owner who can open billed support or identity-verified vendor recovery.",
+        "register": "ops/fab-5/vendor-saas-register.json is the single vendor source of truth. Do not invent a second register.",
+        "vendors": [
+          {
+            "id": "vercel",
+            "supportPath": "https://vercel.com/help",
+            "statusPage": "https://www.vercel-status.com",
+            "escalateWhen": "Hosting compromise, env exposure, unauthorized deploy, cron abuse"
+          },
+          {
+            "id": "supabase",
+            "supportPath": "https://supabase.com/dashboard/support",
+            "statusPage": "https://status.supabase.com",
+            "escalateWhen": "Postgres unauthorized access, leaked service role, backup exposure"
+          },
+          {
+            "id": "stripe",
+            "supportPath": "https://support.stripe.com",
+            "statusPage": "https://status.stripe.com",
+            "escalateWhen": "Account compromise, webhook secret leak, unauthorized payout/key use. No refunds. No live charge to 'test'."
+          },
+          {
+            "id": "google_workspace",
+            "supportPath": "https://support.google.com/a",
+            "statusPage": "https://www.google.com/appsstatus/dashboard/",
+            "escalateWhen": "Mailbox compromise, unauthorized SMTP, privacy@ / support@ / kimberly@ takeover"
+          },
+          {
+            "id": "openai",
+            "supportPath": "https://help.openai.com",
+            "statusPage": "https://status.openai.com",
+            "escalateWhen": "API key leak or unauthorized use. Lumina does not send Architect conversation to OpenAI; Fab 5 hosted cycles do."
+          },
+          {
+            "id": "github",
+            "supportPath": "https://support.github.com",
+            "statusPage": "https://www.githubstatus.com",
+            "escalateWhen": "Repo or org token compromise, unauthorized push"
+          },
+          {
+            "id": "domain_dns",
+            "supportPath": "Cloudflare account recovery / Cloudflare Support identity verification (Row 74). Do not change DNS from this procedure.",
+            "statusPage": "https://www.cloudflarestatus.com",
+            "escalateWhen": "Registrar/DNS account compromise, unauthorized nameserver change"
+          },
+          {
+            "id": "instagram",
+            "supportPath": "https://help.instagram.com",
+            "statusPage": "https://metastatus.com",
+            "escalateWhen": "Handle compromise or impersonation @backhalfco"
+          },
+          {
+            "id": "tiktok",
+            "supportPath": "https://www.tiktok.com/feedback",
+            "statusPage": "Vendor status via TikTok availability; no API in this app",
+            "escalateWhen": "Handle compromise or impersonation @backhalfco"
+          }
+        ],
+        "rules": [
+          "Use the vendor's official support path. Do not paste secrets into vendor tickets.",
+          "Ask whether The Back Half production project/account is in scope; do not assume it is.",
+          "Record vendor case ID, time, and the vendor's written statement. Counsel may need it.",
+          "Contractual vendor-notice obligations, if any, are a legal question. Founder + counsel. Agents do not conclude DPA notice clocks."
+        ]
+      },
+      "6_legalAssessment": {
+        "name": "Legal assessment",
+        "owner": "Human legal expert for conclusions. Imani identifies technical facts and risk. Michelle escalates and packages facts. Founder engages counsel and accepts/signs.",
+        "agentsAreNotLawyers": true,
+        "alwaysEscalateToFounderForCounselWhen": [
+          "Unauthorized access to or acquisition of personal information is confirmed or reasonably likely",
+          "A misdirected communication exposed another person's personal information",
+          "A production credential that can read personal data was exposed",
+          "A vendor notice says The Back Half is in a confirmed incident window",
+          "Attorney, regulator, or law-enforcement contact",
+          "Public allegation of a company data breach",
+          "Any question of whether notice is legally required"
+        ],
+        "factsPackageForCounsel": {
+          "purpose": "Enable counsel to decide notification law. Not a legal conclusion.",
+          "fields": [
+            "detectionTime",
+            "confirmationTime",
+            "what happened (technical, in plain language)",
+            "systems involved (vendor IDs from the register)",
+            "data categories involved (from Privacy Policy categories actually collected — name, email, billing via Stripe, account, purchase/membership, Journey/Lumina if implicated, support contents, analytics identifiers)",
+            "whether encryption/hashing applied and whether keys were also compromised (Imani fact, not legal conclusion)",
+            "approximate number of individuals if knowable",
+            "geography if knowable (country/time zone collected; no DOB; 18+ only)",
+            "containment status and whether exposure is ongoing",
+            "evidence preserved",
+            "vendor notices and case IDs",
+            "any public discussion already occurring",
+            "Privacy Policy Version 1.0 / contact privacy@thebackhalf.org as published — do not rewrite the policy from IR"
+          ]
+        },
+        "explicitlyNotConcludedHere": [
+          "Whether the event is a 'breach of security' under any U.S. state law",
+          "Whether CCPA/CPRA, GDPR, or other regimes apply to these facts",
+          "Notification deadlines (72 hours or otherwise)",
+          "Whether encryption safe harbors apply",
+          "Whether vendor contractual notice is due",
+          "Whether insurance notice is due",
+          "Content of any notice"
+        ]
+      },
+      "7_notificationDecisionProcess": {
+        "name": "Notification decision process",
+        "owner": "Founder decides after human legal counsel. Michelle runs the process. Nia does not send. Imani does not send. Kimberly Walker (AI) does not send.",
+        "steps": [
+          {
+            "id": "ND-1",
+            "step": "Imani confirms technical facts and containment status."
+          },
+          {
+            "id": "ND-2",
+            "step": "Michelle completes the facts package. No legal conclusions in the package."
+          },
+          {
+            "id": "ND-3",
+            "step": "Michelle surfaces Founder Attention YES / SEV-1. Founder engages qualified human legal counsel. Independent counsel is not currently retained (Row 34). Founder chooses counsel."
+          },
+          {
+            "id": "ND-4",
+            "step": "Counsel determines whether notice is legally required, to whom, by when, and in what form; and whether contractual vendor/insurer notice is required."
+          },
+          {
+            "id": "ND-5",
+            "step": "Founder accepts or rejects counsel's recommendation. Record in decision-log.json. This is Founder-reserved public/legal/reputational communication (OS independent E, founderApproval true, humanExpert true)."
+          },
+          {
+            "id": "ND-6",
+            "step": "If notice is required: Founder (or Founder-authorized human sending as The Back Half, never as an agent impersonating Kimberly) sends the counsel-approved text. privacy@ or support@ as counsel directs. Do not invent legal@."
+          },
+          {
+            "id": "ND-7",
+            "step": "If notice is not required: record counsel's conclusion and the Founder's decision. Continue containment, monitoring, and Architect-specific support using approved templates only."
+          }
+        ],
+        "defaultWhileAwaitingCounsel": "Contain. Do not notify a population 'to be safe' with unapproved legal language. Do not tell the public there was or was not a legally notifiable breach. Individual Architects who already know they were affected (for example a misdirected email) may receive a factual, non-legal acknowledgment through Support: we received this, we are investigating, do not send secrets — no admission beyond facts Imani has confirmed.",
+        "noAgentMay": [
+          "Send regulator notices",
+          "Send class-wide Architect breach emails",
+          "Post social statements about a breach",
+          "Rewrite Privacy Policy, Terms, or checkout legal copy as an IR action"
+        ]
+      },
+      "8_communicationsOwnership": {
+        "name": "Communications ownership",
+        "matrix": [
+          {
+            "audience": "Internal incident channel (executives)",
+            "owner": "Michelle coordinates. Imani supplies technical status. Nia supplies experience impact.",
+            "founderRequired": false,
+            "note": "SEV-1 includes Founder immediately."
+          },
+          {
+            "audience": "Affected Architect who already contacted Support about the event",
+            "owner": "Nia (Michelle backup) using Support identity support@thebackhalf.org",
+            "founderRequired": false,
+            "constraint": "Factual ticket handling only. No legal characterization. No refund promise. No request for more secrets."
+          },
+          {
+            "audience": "Population-wide Architect notice, regulator, law enforcement, press, social public statement",
+            "owner": "Founder after counsel",
+            "founderRequired": true,
+            "constraint": "Nia may draft only after Founder requests it and only using counsel-approved substance. Row 83: no improvised public defense."
+          },
+          {
+            "audience": "Vendors",
+            "owner": "Imani technical; Founder as account holder for identity-gated support",
+            "founderRequired": "when the vendor requires the human account owner"
+          },
+          {
+            "audience": "Social comments alleging a company breach",
+            "owner": "Michelle routes; Nia uses Row 83 templates only; Imani if exposure; Founder if the protocol's legal/reputational threshold is met",
+            "founderRequired": "if attorney/regulator/media or new public claim is needed"
+          }
+        ],
+        "senderIdentities": {
+          "support": "The Back Half Support <support@thebackhalf.org>",
+          "privacy": "privacy@thebackhalf.org reserved; Privacy category on the Support tracker until mailbox READ/ROUTE is proven (Row 83 known limitation)",
+          "founderMailbox": "Do not send IR mail as kimberly@ from an agent account",
+          "legalMailbox": "Do not invent legal@"
+        }
+      },
+      "9_postIncidentReview": {
+        "name": "Post-incident review",
+        "owner": "Michelle schedules. Imani technical findings. Nia experience/comms findings. Founder attends if SEV-1 or if notices were sent.",
+        "when": "After containment is stable, within 7 days for SEV-1/SEV-2, within 14 days for SEV-3. Do not delay containment to write the review.",
+        "agenda": [
+          "What happened, detection gap, time to contain",
+          "Data categories and population (facts only)",
+          "What worked in this procedure",
+          "Credential and vendor follow-ups still open",
+          "Whether counsel's notification decision is recorded",
+          "Control improvements Imani will implement within approved authority",
+          "Whether Row 194 security-audit items are implicated",
+          "Decision-log entry for material outcomes",
+          "What will be retested"
+        ],
+        "output": "A decision-log entry plus Imani's technical follow-up list. Do not mark this al-169 file as an after-action for a fictional production incident. Tabletop after-action is in tabletop.review.",
+        "noBlameRule": "Record control and process gaps. Do not store secrets. Do not rewrite legal documents from a review without the normal legal change path."
+      }
+    },
+    "incidentRecordSchema": {
+      "useWhen": "A real incident is opened. Store in the Row 153 ticket custom fields/notes and, if material, append decision-log.json. Do not commit personal data.",
+      "fields": [
+        "incidentId",
+        "openedAt",
+        "openedBy",
+        "detectionTime",
+        "confirmationTime",
+        "sev",
+        "type (security | privacy | vendor | credential | mixed)",
+        "ticketId",
+        "technicalCommander (imani)",
+        "coordinator (michelle)",
+        "containmentStatus",
+        "evidenceInventory",
+        "envNamesImplicated (names only)",
+        "vendorCaseIds",
+        "founderNotifiedAt",
+        "counselEngagedAt",
+        "notificationDecision (pending_counsel | not_required_per_counsel | required_pending_founder | sent_by_founder)",
+        "closedAt",
+        "postIncidentReviewAt"
+      ]
+    }
+  },
+  "tabletop": {
+    "id": "T-169-PRELAUNCH-1",
+    "title": "Misdirected Architect personal data in Support acknowledgment plus simulated vendor-scope question",
+    "executedAt": "2026-08-26T15:40:00.000Z",
+    "mode": "PAPER EXERCISE — no production systems mutated, no secrets accessed, no notices sent, no vendor tickets opened, no DNS/Stripe/Vercel changes",
+    "facilitator": "Michelle Northstar",
+    "technicalSeat": "Imani Heartbeat (procedure role; this coordination pass does not take Imani infra ownership or execute containment)",
+    "experienceSeat": "Nia Prism (procedure role)",
+    "founderSeat": "Kimberly Walker (human) — not present; Founder actions were identified, not executed, and not marked approved",
+    "counselSeat": "UNFILLED — independent counsel not retained. Notification-law conclusions deliberately not made.",
+    "objective": "Walk detection, containment, evidence, credential rotation, vendor escalation, legal assessment, notification decision process, communications ownership, and post-incident review against launch-realistic systems.",
+    "injects": [
+      {
+        "t": "T+0 min",
+        "from": "Architect email to support@thebackhalf.org",
+        "text": "TABLETOP ONLY. An Architect reports that an automated Support acknowledgment named a different person, showed that person's email, and quoted a ticket subject the reporter does not recognize."
+      },
+      {
+        "t": "T+20 min",
+        "from": "Simulated vendor bulletin (not a real vendor incident)",
+        "text": "TABLETOP ONLY. Simulated Supabase advisory: some projects in us-east-1 may have had an unauthorized access window. Recipients must determine whether their project is in scope. This inject is fictional."
+      }
+    ],
+    "walkthrough": [
+      {
+        "phase": "Detection",
+        "action": "Inbound mail creates or maps a Row 153 ticket. Category PRIVACY. Priority P1 (suspected privacy/data exposure). Automated P1 acknowledgment: urgent, do not treat as a three-day item; do not echo the Architect's message; do not request secrets. Michelle records detectionTime = ticket createdAt. Concurrent simulated vendor notice is treated as a second signal, not proof The Back Half is in scope.",
+        "result": "PASS — existing Support protocol already detects Architect-reported exposure. Vendor notice detection depends on Founder mailbox monitoring; agents do not have Workspace super-admin. Residual: Founder is the human recipient of vendor security mail."
+      },
+      {
+        "phase": "Classification",
+        "action": "Michelle classifies SEV-2 pending Imani (contained misdirected personal data affecting at least one other Architect; vendor impact unconfirmed). Default is not SEV-4. If Imani later confirms bulk SMTP mis-addressing or confirmed Supabase unauthorized access to The Back Half project, upgrade to SEV-1 and Founder-immediate.",
+        "result": "PASS — severity mapping is usable without inventing a second scale."
+      },
+      {
+        "phase": "Containment",
+        "action": "Imani would pause further automated acknowledgment sends if the defect is in the mailer, inspect whether ticket IDs/emails were swapped, and not restore Postgres over production. Simulated vendor inject: do not assume compromise; Imani checks whether production project is named. Michelle does not change SMTP secrets or DNS. No Stripe changes.",
+        "result": "PASS as a role split. GAP: pausing SMTP send may require Founder's Workspace/Vercel env action if Imani has no authorized pause control. Emergency technical containment authority exists; human-secret rotation does not proceed while Founder is absent."
+      },
+      {
+        "phase": "Evidence preservation",
+        "action": "Keep the original ticket, redact any secrets, snapshot the misdirected acknowledgment headers (Message-ID, From, To) without copying unrelated Architects into git. Social evidence path not implicated. Legal hold: preserve pending review; do not conclude hold duration.",
+        "result": "PASS — stores exist (ticket tracker, decision log for material steps). GAP: no dedicated sanitized IR envelope; procedure forbids dumping personal data into git, which this tabletop obeyed."
+      },
+      {
+        "phase": "Credential rotation",
+        "action": "If Imani finds a mailer logic defect only, SMTP_PASSWORD rotation is not automatically required. If the inject's vendor window is confirmed in-scope for The Back Half Postgres, Imani names POSTGRES_URL, POSTGRES_URL_NON_POOLING, SUPABASE_SERVICE_ROLE_KEY for Founder rotation after evidence snapshot. Tabletop did not rotate anything.",
+        "result": "PASS as a decision tree. GAP: Founder is single human rotator. Cloudflare MFA remains INACTIVE (accepted residual risk, out of primary inject)."
+      },
+      {
+        "phase": "Vendor escalation",
+        "action": "Misdirected mail: Imani traces first-party mailer before opening Google Workspace support. Simulated Supabase advisory: Founder/Imani would open https://supabase.com/dashboard/support as the account owner and ask whether this project is in scope. No real ticket opened.",
+        "result": "PASS — register supplies supportPath/statusPage. GAP: billed vendor support may be Founder-gated."
+      },
+      {
+        "phase": "Legal assessment",
+        "action": "Facts package drafted in tabletop.review.factsPackage. Counsel seat empty. No conclusion whether this is a legally notifiable breach. Founder would be surfaced to engage counsel because another person's email and name were disclosed to a third party.",
+        "result": "PASS as process. BLOCKER for notification-law conclusions: no retained counsel; agents must not fill that seat."
+      },
+      {
+        "phase": "Notification decision process",
+        "action": "ND-1 facts: at least one misdirected name+email+ticket subject. ND-2 package ready. ND-3 Founder engagement identified, not performed. ND-4 through ND-7 stopped. Individual reporter may receive a factual Support reply; no population notice; no regulator notice; no social post.",
+        "result": "PASS — process stops correctly before illegal/unapproved notice. NOT a legal conclusion that notice is or is not required."
+      },
+      {
+        "phase": "Communications ownership",
+        "action": "Nia/Michelle reply on the P1 ticket as The Back Half Support, facts only. No LinkedIn. No Instagram/TikTok statement. No kimberly@ agent send. If the reporter is the unintended recipient, do not ask them to forward the full original with more PII in a public channel.",
+        "result": "PASS — matches Row 153 / Row 83 / OS communications split."
+      },
+      {
+        "phase": "Post-incident review",
+        "action": "Facilitated in this file. Agenda completed for the tabletop. No production after-action log appended, because no real incident occurred.",
+        "result": "PASS for tabletop. Real incidents will use decision-log.json."
+      }
+    ],
+    "review": {
+      "whatWorked": [
+        "Existing Support P1 / PRIVACY routing, OS SEV scale, Founder-reserved public comms, and vendor register are enough to run the operational procedure without new product code.",
+        "The notification decision process can run as a process even when counsel is not retained, by refusing to conclude the law.",
+        "Containment vs. irreversible/secret-rotation split matches Row 19 emergency authority."
+      ],
+      "gapsObserved": [
+        "Independent legal counsel is not retained (Row 34 R34-M5). Notification-law conclusions cannot be completed before launch by agents.",
+        "privacy@thebackhalf.org READ/ROUTE is not proven; Privacy still uses the Support tracker (Row 83 limitation).",
+        "Founder is the sole human credential rotator and the likely recipient of vendor security email. Founder-unavailable mode allows emergency containment, not secret replacement or notices.",
+        "Row 194 Production Security Audit is Not Started. Detection of silent data-exfiltration is not claimed.",
+        "Row 154 Incident Response Plan is Complete in the workbook with empty evidence[] in launch-rows.json. This procedure extends OS + Launch Day Runbook §8 rather than a missing dedicated IR markdown.",
+        "Cloudflare MFA INACTIVE remains an accepted residual account-takeover risk (Row 74). Out of primary inject; still relevant to DNS/account compromise scenarios."
+      ],
+      "factsPackage": {
+        "detectionTime": "tabletop T+0 (simulated)",
+        "confirmationTime": "not confirmed as a legal breach; technical misdirected-mail fact assumed for exercise",
+        "whatHappened": "Simulated Support acknowledgment delivered one Architect's name, email, and ticket subject to a different Architect. Parallel fictional Supabase regional advisory with unknown project scope.",
+        "systems": ["google_workspace", "support ticket store", "supabase (unconfirmed)"],
+        "dataCategories": ["name", "email", "support ticket subject"],
+        "approximateIndividuals": 2,
+        "geography": "unknown in tabletop",
+        "containmentStatus": "not executed (paper)",
+        "counselConclusion": "NOT_MADE"
+      },
+      "launchReadinessJudgment": "Operational procedure and pre-launch tabletop are recorded. This is not Founder acceptance. This is not a legal opinion. This is not a claim that production monitoring would have caught the defect. Do not mark row 169 Complete."
+    }
+  },
+  "dependencyStatusAtDraft": {
+    "incidentResponsePlanRow154": "Workbook Complete. Repo evidence array empty. OS incident path + Launch Day Runbook §8 used as the technical IR baseline.",
+    "securityAuditRow194": "Not Started. Residual detection gap. Procedure still drafted because IR extension cannot wait on an unstarted audit to define routing and notice process.",
+    "vendorRegisterRow72": "Complete. Founder accepted 2026-08-24.",
+    "credentialRecoveryRow74": "Complete. Founder accepted 2026-08-25. Stripe MFA PASS. Cloudflare MFA INACTIVE, risk accepted.",
+    "supportRow153": "Complete. Founder accepted 2026-08-21.",
+    "humanLegalRow34": "Complete as Founder legal launch risk review. Independent counsel NOT COMPLETED."
+  },
+  "validation": {
+    "requiredByAos": [
+      "npm run typecheck or npx tsc --noEmit if present",
+      "npm test or the nearest package test script if present",
+      "npm run build if the change can affect production"
+    ],
+    "typecheck": {
+      "command": "npx tsc --noEmit",
+      "reason": "No npm run typecheck script; tsconfig noEmit is present.",
+      "result": "PASS",
+      "executedAt": "2026-08-26T15:45:00.000Z"
+    },
+    "test": {
+      "command": "node -e JSON.parse(al-169.json)",
+      "reason": "No npm test script. Nearest package tests are row-specific fab5:* validators and do not cover this ops status file. JSON parse is the local check.",
+      "result": "PASS"
+    },
+    "build": {
+      "command": null,
+      "reason": "Ops status JSON cannot affect production runtime. Build skipped per AOS rule.",
+      "result": "SKIPPED_NON_PRODUCTION_CHANGE"
+    },
+    "jsonParse": "PASS",
+    "githubCi": {
+      "pr": "https://github.com/TheBackHalf/website/pull/10",
+      "head": "9c2ae06431c4d070eed288a74779ed059e7f9971",
+      "result": "PASS",
+      "checks": 2,
+      "note": "Vercel preview comments + Vercel deploy. No GitHub Actions workflows in this repository."
+    }
+  },
+  "acceptanceGatesRemaining": [
+    "Kimberly Walker (human) Founder review of this procedure and tabletop",
+    "Qualified human legal counsel conclusions on notification law when/if a real event occurs, and counsel review of this process if Founder so directs",
+    "Imani remains technical/security owner for live containment",
+    "Do not treat READY_FOR_FOUNDER_REVIEW as workbook Complete"
+  ]
+}
