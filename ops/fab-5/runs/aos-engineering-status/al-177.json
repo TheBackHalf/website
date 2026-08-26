@@ -1,0 +1,875 @@
+{
+  "aosWorkId": "al-177",
+  "row": 177,
+  "deliverable": "Run Functional Testing",
+  "generatedAt": "2026-08-26T17:13:56.526Z",
+  "operatingAgent": "imani",
+  "founderAccepted": false,
+  "rowMarkedComplete": false,
+  "commandCenterStatus": "Not Started",
+  "evidenceAcceptanceState": "open",
+  "overall": "PASS_WITH_GAPS",
+  "mechanicalPass": true,
+  "validation": {
+    "typecheck": {
+      "command": "npx tsc --noEmit",
+      "result": "PASS"
+    },
+    "packageTestScript": {
+      "npmTest": "not present",
+      "nearest": "npm run fab5:row177",
+      "result": "PASS_WITH_GAPS"
+    },
+    "productionBuild": {
+      "ran": false,
+      "reason": "Ops status + test runner only. No production application, marketing, or legal files changed."
+    }
+  },
+  "browserVerification": {
+    "origin": "http://127.0.0.1:3017",
+    "result": "PASS",
+    "flows": [
+      {
+        "id": "BV1",
+        "name": "Homepage Begin Your Journey CTA",
+        "result": "PASS",
+        "detail": "CTA navigates toward Journey; age eligibility gate appears before Architect entry."
+      },
+      {
+        "id": "BV2",
+        "name": "Login empty submit validation",
+        "result": "PASS",
+        "detail": "Email is required. Password is required."
+      },
+      {
+        "id": "BV3",
+        "name": "Eligibility age gate",
+        "result": "PASS",
+        "detail": "18+ attestation radios and CONTINUE control present."
+      },
+      {
+        "id": "BV4",
+        "name": "Checkout catalog offers",
+        "result": "PASS",
+        "detail": "Blueprint $1,500, Founding Architect $1,750, Community $50/month."
+      },
+      {
+        "id": "BV5",
+        "name": "Support age-gated request form",
+        "result": "PASS",
+        "detail": "Send a request section shows 18+ gate before the form hydrates."
+      },
+      {
+        "id": "BV6",
+        "name": "Architect dashboard unauthenticated gate",
+        "result": "PASS",
+        "detail": "Redirected to /eligibility?next=%2Farchitect%2Fdashboard"
+      },
+      {
+        "id": "BV7",
+        "name": "Privacy Policy published",
+        "result": "PASS",
+        "detail": "Effective August 31, 2026 Version 1.0"
+      }
+    ]
+  },
+  "counts": {
+    "PASS": 103,
+    "FAIL": 0,
+    "GAP": 1,
+    "BLOCKED": 0
+  },
+  "http": {
+    "origin": "http://127.0.0.1:3017",
+    "serverStarted": true,
+    "notes": []
+  },
+  "scope": {
+    "tested": [
+      "Public and Spanish marketing/account/legal pages",
+      "Homepage, login, register, support, checkout form controls",
+      "Registration/login/reset/support/consent form validation",
+      "Age eligibility rules and HTTP confirm/error paths",
+      "Auth/admin/support/architect unauthenticated gates",
+      "Onboarding step order, skip lock, entitlement blocks",
+      "Chapter I save, incomplete advance, completion, progress pointer",
+      "Certificate withheld until Journey completion",
+      "Blueprint download catalog and unauthenticated 401",
+      "Checkout catalog, client price ignore, Stripe unconfigured webhook",
+      "Analytics ingest + privacy blocking",
+      "Health endpoint"
+    ],
+    "notClaimed": [
+      "Production Postgres / live participant accounts",
+      "Live Stripe Checkout charge or webhook signature success",
+      "Google OAuth live redirect with provisioned credentials",
+      "SMTP verification/reset email delivery",
+      "Puppeteer PDF byte generation for authenticated Architects",
+      "Nia participant-facing Triple E review",
+      "Founder acceptance / Command Center Complete"
+    ]
+  },
+  "findings": [
+    {
+      "id": "G1",
+      "result": "GAP",
+      "name": "Inter-chapter sequential lock is not enforced at service or Journey entry UI",
+      "detail": "Journey entry links every chapter. Chapter 2–7 services only require onboarding entitlement, not prior chapter completion. Intra-chapter incomplete_exercise and onboarding step_locked do enforce progress."
+    }
+  ],
+  "nextAction": "Nia verifies participant-facing failures. Command Center row 177 stays open pending workbook/Founder evidence. Sequential chapter lock (G1) is a progress-rule gap for product review, not Founder-accepted.",
+  "tests": [
+    {
+      "id": "F1",
+      "category": "form",
+      "name": "Registration rejects empty required fields",
+      "result": "PASS",
+      "detail": "firstName,lastName,email,password,passwordConfirm"
+    },
+    {
+      "id": "F2",
+      "category": "form",
+      "name": "Registration rejects invalid email",
+      "result": "PASS",
+      "detail": "Enter a valid email address."
+    },
+    {
+      "id": "F3",
+      "category": "form",
+      "name": "Registration rejects weak password",
+      "result": "PASS",
+      "detail": "Password must be at least 8 characters."
+    },
+    {
+      "id": "F4",
+      "category": "form",
+      "name": "Registration rejects password mismatch",
+      "result": "PASS",
+      "detail": "Passwords do not match."
+    },
+    {
+      "id": "F5",
+      "category": "form",
+      "name": "Valid registration form has no errors",
+      "result": "PASS",
+      "detail": "{}"
+    },
+    {
+      "id": "F6",
+      "category": "form",
+      "name": "Login rejects empty credentials",
+      "result": "PASS",
+      "detail": "email,password"
+    },
+    {
+      "id": "F7",
+      "category": "form",
+      "name": "Password reset rejects mismatch",
+      "result": "PASS",
+      "detail": "Passwords do not match."
+    },
+    {
+      "id": "F8",
+      "category": "form",
+      "name": "Support request rejects empty required fields",
+      "result": "PASS",
+      "detail": "name,email,category,subject,message"
+    },
+    {
+      "id": "F9",
+      "category": "form",
+      "name": "Support request enforces minimum message length",
+      "result": "PASS",
+      "detail": "Message must be at least 10 characters."
+    },
+    {
+      "id": "F10",
+      "category": "form",
+      "name": "Account creation consents required",
+      "result": "PASS",
+      "detail": "terms_of_use,privacy_policy,participant_agreement,ai_disclosure"
+    },
+    {
+      "id": "F11",
+      "category": "form",
+      "name": "Accepted account consents pass",
+      "result": "PASS",
+      "detail": "accepted_all"
+    },
+    {
+      "id": "F12",
+      "category": "form",
+      "name": "Checkout consents required",
+      "result": "PASS",
+      "detail": "terms_of_use,participant_agreement,membership_agreement"
+    },
+    {
+      "id": "E1",
+      "category": "error",
+      "name": "Age 17 is ineligible",
+      "result": "PASS",
+      "detail": "17"
+    },
+    {
+      "id": "E2",
+      "category": "error",
+      "name": "Age 18 is eligible",
+      "result": "PASS",
+      "detail": "18"
+    },
+    {
+      "id": "E3",
+      "category": "error",
+      "name": "Adult attestation is eligible",
+      "result": "PASS",
+      "detail": "attestedAdult=true"
+    },
+    {
+      "id": "E4",
+      "category": "error",
+      "name": "Refused attestation is ineligible",
+      "result": "PASS",
+      "detail": "attestedAdult=false"
+    },
+    {
+      "id": "E5",
+      "category": "error",
+      "name": "Eligibility claim parser rejects empty body",
+      "result": "PASS",
+      "detail": "empty"
+    },
+    {
+      "id": "E6",
+      "category": "error",
+      "name": "Unconfirmed visitors are gated from Architect/checkout-offer paths",
+      "result": "PASS",
+      "detail": "architect+checkout-offer"
+    },
+    {
+      "id": "P1",
+      "category": "progress",
+      "name": "Active entitlement unlocks access",
+      "result": "PASS",
+      "detail": "active"
+    },
+    {
+      "id": "P2",
+      "category": "progress",
+      "name": "Canceled-at-period-end retains access until endsAt",
+      "result": "PASS",
+      "detail": "canceled+future-endsAt"
+    },
+    {
+      "id": "P3",
+      "category": "progress",
+      "name": "Expired and past_due entitlements do not unlock",
+      "result": "PASS",
+      "detail": "expired+past_due"
+    },
+    {
+      "id": "P4",
+      "category": "progress",
+      "name": "Onboarding step order is welcome→preferences→consent→lumina→assessment→awakening",
+      "result": "PASS",
+      "detail": "welcome→preferences→consent→lumina→assessment→awakening"
+    },
+    {
+      "id": "P5",
+      "category": "progress",
+      "name": "Onboarding cannot skip to later steps",
+      "result": "PASS",
+      "detail": "current=welcome"
+    },
+    {
+      "id": "P6",
+      "category": "progress",
+      "name": "Incomplete Chapter I reflection is not complete",
+      "result": "PASS",
+      "detail": "empty"
+    },
+    {
+      "id": "P7",
+      "category": "progress",
+      "name": "Incomplete Aliveness Project is not complete",
+      "result": "PASS",
+      "detail": "q1 target=50"
+    },
+    {
+      "id": "P8",
+      "category": "progress",
+      "name": "Aliveness Project completion uses manuscript target counts",
+      "result": "PASS",
+      "detail": "{\"q1\":50,\"q2\":50,\"q3\":1,\"q4\":50,\"q5\":1}"
+    },
+    {
+      "id": "P9",
+      "category": "progress",
+      "name": "Commitment requires affirmation",
+      "result": "PASS",
+      "detail": "affirmed"
+    },
+    {
+      "id": "P10",
+      "category": "progress",
+      "name": "Resume pointer starts at welcome",
+      "result": "PASS",
+      "detail": "welcome"
+    },
+    {
+      "id": "P11",
+      "category": "progress",
+      "name": "Incomplete Aliveness assessment cannot complete",
+      "result": "PASS",
+      "detail": "empty responses"
+    },
+    {
+      "id": "S1",
+      "category": "save",
+      "name": "Journey save/load blocked without entitlement",
+      "result": "PASS",
+      "detail": "{\"status\":\"blocked\",\"reason\":\"not_entitled\"}"
+    },
+    {
+      "id": "S2",
+      "category": "save",
+      "name": "Community-only accounts cannot enter Journey onboarding",
+      "result": "PASS",
+      "detail": "{\"status\":\"blocked\",\"reason\":\"community_only\"}"
+    },
+    {
+      "id": "S3",
+      "category": "progress",
+      "name": "Completed onboarding cannot be advanced (step_locked)",
+      "result": "PASS",
+      "detail": "{\"status\":\"step_locked\",\"currentStep\":\"completed\"}"
+    },
+    {
+      "id": "S4",
+      "category": "progress",
+      "name": "Onboarding blocks skipping to consent from welcome",
+      "result": "PASS",
+      "detail": "{\"status\":\"step_locked\",\"currentStep\":\"welcome\"}"
+    },
+    {
+      "id": "S5",
+      "category": "save",
+      "name": "Onboarding welcome save/advance succeeds",
+      "result": "PASS",
+      "detail": "preferences"
+    },
+    {
+      "id": "S6",
+      "category": "progress",
+      "name": "Assessment cannot complete with empty responses (step still locked or incomplete)",
+      "result": "PASS",
+      "detail": "{\"status\":\"step_locked\",\"currentStep\":\"preferences\"}"
+    },
+    {
+      "id": "S7",
+      "category": "progress",
+      "name": "Chapter I cannot advance reflection until answers are saved",
+      "result": "PASS",
+      "detail": "{\"status\":\"incomplete_exercise\"}"
+    },
+    {
+      "id": "S8",
+      "category": "save",
+      "name": "Chapter I reflection saves partial answers without completing",
+      "result": "PASS",
+      "detail": "status=in_progress"
+    },
+    {
+      "id": "S9",
+      "category": "save",
+      "name": "Complete Chapter I reflection marks the reflection section complete",
+      "result": "PASS",
+      "detail": "reflection"
+    },
+    {
+      "id": "S10",
+      "category": "save",
+      "name": "Complete Aliveness Project save marks practice complete",
+      "result": "PASS",
+      "detail": "reflection,practice"
+    },
+    {
+      "id": "S11",
+      "category": "progress",
+      "name": "Commitment save without affirmation does not complete the section",
+      "result": "PASS",
+      "detail": "reflection,practice"
+    },
+    {
+      "id": "S12",
+      "category": "save",
+      "name": "Affirmed commitment save completes the commitment section",
+      "result": "PASS",
+      "detail": "reflection,practice,commitment"
+    },
+    {
+      "id": "S13",
+      "category": "progress",
+      "name": "Chapter I completes only after all required sections",
+      "result": "PASS",
+      "detail": "completed"
+    },
+    {
+      "id": "S14",
+      "category": "progress",
+      "name": "Journey progress pointer updates on Chapter I completion",
+      "result": "PASS",
+      "detail": "{\"userId\":\"architect-entitled\",\"chapterId\":\"chapter-1-awakening\",\"status\":\"stage_completed\",\"updatedAt\":\"2026-08-26T17:13:50.165Z\"}"
+    },
+    {
+      "id": "S15",
+      "category": "progress",
+      "name": "Chapter II service does not require Chapter I completion (sequential lock absent)",
+      "result": "PASS",
+      "detail": "GAP: later chapters are loadable before prior chapter completion"
+    },
+    {
+      "id": "G1",
+      "category": "progress",
+      "name": "Inter-chapter sequential lock is not enforced at service or Journey entry UI",
+      "result": "GAP",
+      "detail": "Journey entry links every chapter. Chapter 2–7 services only require onboarding entitlement, not prior chapter completion. Intra-chapter incomplete_exercise and onboarding step_locked do enforce progress."
+    },
+    {
+      "id": "D1",
+      "category": "download",
+      "name": "Blueprint download catalog has nine Architect assets",
+      "result": "PASS",
+      "detail": "guidebook,aliveness-index,architects-commitment,decision-statement,back-half-standards,architect-identity,expansion-plan,declaration,certificate"
+    },
+    {
+      "id": "D2",
+      "category": "download",
+      "name": "Chapter I downloads include guidebook and Aliveness Index",
+      "result": "PASS",
+      "detail": "guidebook,aliveness-index"
+    },
+    {
+      "id": "D3",
+      "category": "download",
+      "name": "Completion certificate is withheld until Journey completion",
+      "result": "PASS",
+      "detail": "incomplete=guidebook,declaration complete=guidebook,declaration,certificate"
+    },
+    {
+      "id": "I1",
+      "category": "integration",
+      "name": "Checkout ignores client-supplied price IDs",
+      "result": "PASS",
+      "detail": "offer_ok=true bogus_offer=invalid_offer"
+    },
+    {
+      "id": "I2",
+      "category": "integration",
+      "name": "Unknown checkout offer is rejected",
+      "result": "PASS",
+      "detail": "invalid_offer"
+    },
+    {
+      "id": "I3",
+      "category": "integration",
+      "name": "Approved checkout catalog is blueprint $1500 / bundle $1750 / community $50",
+      "result": "PASS",
+      "detail": "amounts locked"
+    },
+    {
+      "id": "I4",
+      "category": "integration",
+      "name": "Local Stripe is not configured (no live charge attempted)",
+      "result": "PASS",
+      "detail": "STRIPE_SECRET_KEY absent in this run — expected"
+    },
+    {
+      "id": "I5",
+      "category": "integration",
+      "name": "Five launch legal documents are published",
+      "result": "PASS",
+      "detail": "privacy-policy,terms-of-use,participant-agreement,membership-agreement,ai-disclosure"
+    },
+    {
+      "id": "I6",
+      "category": "integration",
+      "name": "Analytics privacy blocks secrets and journal text",
+      "result": "PASS",
+      "detail": "blocked_key:password,sensitive_value:password,blocked_key:message"
+    },
+    {
+      "id": "I7",
+      "category": "integration",
+      "name": "Analytics event ingest accepts allowed page_viewed",
+      "result": "PASS",
+      "detail": "status=created stored=1"
+    },
+    {
+      "id": "H0",
+      "category": "error",
+      "name": "Local Next.js server started for HTTP tests",
+      "result": "PASS",
+      "detail": "http://127.0.0.1:3017"
+    },
+    {
+      "id": "H1",
+      "category": "button",
+      "name": "Public page / renders",
+      "result": "PASS",
+      "detail": "status=200 bytes=53610 extra=true"
+    },
+    {
+      "id": "H2",
+      "category": "button",
+      "name": "Public page /login renders",
+      "result": "PASS",
+      "detail": "status=200 bytes=29652 extra=true"
+    },
+    {
+      "id": "H3",
+      "category": "button",
+      "name": "Public page /register renders",
+      "result": "PASS",
+      "detail": "status=200 bytes=30526 extra=true"
+    },
+    {
+      "id": "H4",
+      "category": "button",
+      "name": "Public page /forgot-password renders",
+      "result": "PASS",
+      "detail": "status=200 bytes=29432 extra=true"
+    },
+    {
+      "id": "H5",
+      "category": "button",
+      "name": "Public page /support renders",
+      "result": "PASS",
+      "detail": "status=200 bytes=41048 extra=true"
+    },
+    {
+      "id": "H6",
+      "category": "button",
+      "name": "Public page /contact renders",
+      "result": "PASS",
+      "detail": "status=200 bytes=31370 extra=true"
+    },
+    {
+      "id": "H7",
+      "category": "button",
+      "name": "Public page /eligibility renders",
+      "result": "PASS",
+      "detail": "status=200 bytes=30199 extra=true"
+    },
+    {
+      "id": "H8",
+      "category": "button",
+      "name": "Public page /not-eligible renders",
+      "result": "PASS",
+      "detail": "status=200 bytes=29187 extra=true"
+    },
+    {
+      "id": "H9",
+      "category": "button",
+      "name": "Public page /checkout renders",
+      "result": "PASS",
+      "detail": "status=200 bytes=35289 extra=true"
+    },
+    {
+      "id": "H10",
+      "category": "button",
+      "name": "Public page /lumina renders",
+      "result": "PASS",
+      "detail": "status=200 bytes=28428 extra=true"
+    },
+    {
+      "id": "H11",
+      "category": "button",
+      "name": "Public page /legal/privacy-policy renders",
+      "result": "PASS",
+      "detail": "status=200 bytes=67496 extra=true"
+    },
+    {
+      "id": "H12",
+      "category": "button",
+      "name": "Public page /legal/terms-of-use renders",
+      "result": "PASS",
+      "detail": "status=200 bytes=63492 extra=true"
+    },
+    {
+      "id": "H13",
+      "category": "button",
+      "name": "Public page /legal/participant-agreement renders",
+      "result": "PASS",
+      "detail": "status=200 bytes=59615 extra=true"
+    },
+    {
+      "id": "H14",
+      "category": "button",
+      "name": "Public page /legal/membership-agreement renders",
+      "result": "PASS",
+      "detail": "status=200 bytes=61901 extra=true"
+    },
+    {
+      "id": "H15",
+      "category": "button",
+      "name": "Public page /legal/ai-disclosure renders",
+      "result": "PASS",
+      "detail": "status=200 bytes=58424 extra=true"
+    },
+    {
+      "id": "H16",
+      "category": "button",
+      "name": "Public page /es renders",
+      "result": "PASS",
+      "detail": "status=200 bytes=54590 extra=true"
+    },
+    {
+      "id": "H17",
+      "category": "button",
+      "name": "Public page /es/login renders",
+      "result": "PASS",
+      "detail": "status=200 bytes=30542 extra=true"
+    },
+    {
+      "id": "H18",
+      "category": "button",
+      "name": "Public page /es/register renders",
+      "result": "PASS",
+      "detail": "status=200 bytes=31365 extra=true"
+    },
+    {
+      "id": "H19",
+      "category": "button",
+      "name": "Public page /es/eligibility renders",
+      "result": "PASS",
+      "detail": "status=200 bytes=31109 extra=true"
+    },
+    {
+      "id": "H20",
+      "category": "button",
+      "name": "Public page /es/legal/privacy-policy renders",
+      "result": "PASS",
+      "detail": "status=200 bytes=38752 extra=true"
+    },
+    {
+      "id": "B1",
+      "category": "button",
+      "name": "Homepage exposes primary CTAs",
+      "result": "PASS",
+      "detail": "buttons=0 cta_markers=10"
+    },
+    {
+      "id": "B2",
+      "category": "button",
+      "name": "Registration form submit control is present",
+      "result": "PASS",
+      "detail": "submit present"
+    },
+    {
+      "id": "B3",
+      "category": "button",
+      "name": "Login form submit control is present",
+      "result": "PASS",
+      "detail": "submit present"
+    },
+    {
+      "id": "B4",
+      "category": "button",
+      "name": "Support page mounts age-gated request form",
+      "result": "PASS",
+      "detail": "age-gated form section present (submit hydrates client-side after eligibility)"
+    },
+    {
+      "id": "B5",
+      "category": "button",
+      "name": "Checkout catalog renders offer actions",
+      "result": "PASS",
+      "detail": "status=200"
+    },
+    {
+      "id": "H21",
+      "category": "error",
+      "name": "Architect dashboard is gated (eligibility then login) for unauthenticated visitors",
+      "result": "PASS",
+      "detail": "status=307 location=/eligibility?next=%2Farchitect%2Fdashboard"
+    },
+    {
+      "id": "H22",
+      "category": "error",
+      "name": "Admin ops redirects unauthenticated users to login",
+      "result": "PASS",
+      "detail": "status=307 location=/login?next=%2Fops%2Fadmin"
+    },
+    {
+      "id": "H23",
+      "category": "error",
+      "name": "Support ops redirects unauthenticated users to login",
+      "result": "PASS",
+      "detail": "status=307 location=/login?next=%2Fops%2Fsupport"
+    },
+    {
+      "id": "H24",
+      "category": "error",
+      "name": "Unknown route returns 404",
+      "result": "PASS",
+      "detail": "status=404"
+    },
+    {
+      "id": "A1",
+      "category": "error",
+      "name": "Register API rejects invalid JSON",
+      "result": "PASS",
+      "detail": "status=400 body={\"status\":\"error\",\"message\":\"invalid_json\"}"
+    },
+    {
+      "id": "A2",
+      "category": "error",
+      "name": "Register API rejects age-unconfirmed visitors",
+      "result": "PASS",
+      "detail": "status=403 body={\"status\":\"age_ineligible\"}"
+    },
+    {
+      "id": "A3",
+      "category": "error",
+      "name": "Login API rejects empty credentials",
+      "result": "PASS",
+      "detail": "status=400 body={\"status\":\"validation_error\",\"errors\":{\"email\":\"Email is required.\",\"password\":\"Password is required.\"}}"
+    },
+    {
+      "id": "A4",
+      "category": "error",
+      "name": "Login API rejects unknown credentials",
+      "result": "PASS",
+      "detail": "status=401 body={\"status\":\"invalid_credentials\"}"
+    },
+    {
+      "id": "A5",
+      "category": "error",
+      "name": "Eligibility confirm rejects missing claim",
+      "result": "PASS",
+      "detail": "status=400 body={\"error\":\"eligibility_required\"}"
+    },
+    {
+      "id": "A6",
+      "category": "integration",
+      "name": "Eligibility confirm 18+ sets eligibility cookie",
+      "result": "PASS",
+      "detail": "status=200 cookie=set"
+    },
+    {
+      "id": "A7",
+      "category": "error",
+      "name": "Eligibility confirm refusal returns ineligible redirect",
+      "result": "PASS",
+      "detail": "{\"status\":\"ineligible\",\"redirect\":\"/not-eligible\"}"
+    },
+    {
+      "id": "A8",
+      "category": "error",
+      "name": "Support API rejects age-unconfirmed visitors",
+      "result": "PASS",
+      "detail": "status=403 body={\"status\":\"age_ineligible\",\"error\":\"age_ineligible\"}"
+    },
+    {
+      "id": "A9",
+      "category": "form",
+      "name": "Support API returns validation errors for incomplete form",
+      "result": "PASS",
+      "detail": "status=400 body={\"status\":\"validation_error\",\"errors\":{\"name\":\"Name is required.\",\"email\":\"Enter a valid email address.\",\"category\":\"Select a reason or category.\",\"subject\":\"Subject is required.\",\"message\":\"Message m"
+    },
+    {
+      "id": "A10",
+      "category": "download",
+      "name": "Blueprint guidebook download requires authentication",
+      "result": "PASS",
+      "detail": "status=401 body={\"error\":\"Sign-in required.\"}"
+    },
+    {
+      "id": "A11",
+      "category": "download",
+      "name": "Certificate download requires authentication",
+      "result": "PASS",
+      "detail": "status=401"
+    },
+    {
+      "id": "A12",
+      "category": "integration",
+      "name": "Stripe webhook refuses unconfigured or unsigned payloads",
+      "result": "PASS",
+      "detail": "status=503 body={\"error\":\"webhook_not_configured\"}"
+    },
+    {
+      "id": "A13",
+      "category": "error",
+      "name": "Analytics ingest rejects invalid JSON",
+      "result": "PASS",
+      "detail": "status=400"
+    },
+    {
+      "id": "A14",
+      "category": "integration",
+      "name": "Analytics ingest accepts page_viewed over HTTP",
+      "result": "PASS",
+      "detail": "status=200 body={\"status\":\"created\"}"
+    },
+    {
+      "id": "A15",
+      "category": "integration",
+      "name": "Health endpoint reports application ok",
+      "result": "PASS",
+      "detail": "status=200 body={\"ok\":true,\"environment\":\"development\",\"service\":\"the-back-half\",\"checks\":{\"application\":\"ok\",\"database\":\"unconfigured\"}}"
+    },
+    {
+      "id": "A16",
+      "category": "error",
+      "name": "Admin dashboard API is not publicly readable",
+      "result": "PASS",
+      "detail": "status=307 location=/login?next=%2Fapi%2Fadmin%2Flaunch-dashboard%2Fsnapshot"
+    },
+    {
+      "id": "A17",
+      "category": "error",
+      "name": "Checkout offer path requires eligibility confirmation",
+      "result": "PASS",
+      "detail": "status=307 location=/eligibility?next=%2Fcheckout%2Fblueprint"
+    },
+    {
+      "id": "A18",
+      "category": "form",
+      "name": "Age-eligible unauthenticated visitor is sent to login for Blueprint checkout (not eligibility)",
+      "result": "PASS",
+      "detail": "status=307 location=/login?next=%2Fcheckout%2Fblueprint"
+    },
+    {
+      "id": "A19",
+      "category": "integration",
+      "name": "Google registration start is age-gated or unconfigured (no open OAuth bypass)",
+      "result": "PASS",
+      "detail": "status=307 location=/register?google=age_required"
+    }
+  ],
+  "cursorCloudAgent": {
+    "bcId": "bc-f2165ab0-a9ac-4b07-b72f-d2a06beed051",
+    "url": "https://cursor.com/agents/bc-f2165ab0-a9ac-4b07-b72f-d2a06beed051",
+    "branch": "cursor/aos-imani-al-177-2a85",
+    "prUrl": "https://github.com/TheBackHalf/website/pull/40"
+  },
+  "githubCi": {
+    "commit": "0bc733dd874aae6bceeb530ad0510e68afb25a92",
+    "branch": "cursor/aos-imani-al-177-2a85",
+    "conclusion": "success",
+    "recordedAt": "2026-08-26T17:31:10Z",
+    "checks": [
+      {
+        "name": "Vercel",
+        "result": "PASS",
+        "url": "https://vercel.com/back-half/website/EB6pqDT85CF9gbQAFtttjQfFnuT7"
+      },
+      {
+        "name": "Vercel Preview Comments",
+        "result": "PASS",
+        "url": "https://vercel.com/github"
+      }
+    ]
+  }
+}
