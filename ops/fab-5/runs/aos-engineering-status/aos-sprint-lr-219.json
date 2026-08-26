@@ -193,7 +193,7 @@
     "out": "Product code, enrollment gating flags, Stripe Live connection, DNS, freeze, Go/No-Go, social publish, launch email."
   },
   "validation": {
-    "typecheck": "pending_npx_tsc_noEmit",
+    "typecheck": "npx tsc --noEmit exit 0",
     "npmTestScript": "absent_in_package.json",
     "build": "skipped_ops_json_only_no_production_runtime_change",
     "gatesRequired": [
