@@ -362,10 +362,14 @@
   ],
   "validation": {
     "typecheckScriptPresent": false,
+    "nearestTypecheck": "./node_modules/.bin/tsc --noEmit",
+    "typecheckResult": "PASS",
     "testScriptPresent": false,
+    "testResult": "N/A — no npm test script in package.json",
     "productionSoftwareChanged": false,
     "buildRequired": false,
-    "note": "Ops framework only. No application code change. Run npx tsc --noEmit as nearest typecheck; skip production build."
+    "buildResult": "SKIPPED — ops documentation only; no production software change",
+    "note": "Ops framework only. No application code change. Local TypeScript compiler passed with no emit. Production build not required."
   },
   "nextAction": "await_founder_acceptance",
   "blockedReason": "founder_acceptance_required",
