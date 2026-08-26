@@ -1,0 +1,643 @@
+{
+  "aos_work_id": "al-208",
+  "title": "Establish Hypercare Command Center",
+  "operating_agent": "michelle",
+  "michelle_northstar": [
+    "operations",
+    "orchestration",
+    "Launch Readiness coordination"
+  ],
+  "source": "command_center August Launch row 208",
+  "spreadsheet_row": 208,
+  "excel_row": 209,
+  "phase": "Final Launch Readiness & Controls",
+  "primary_workstream": "OPERATIONS",
+  "supporting_owners": ["imani", "nia"],
+  "assigned_repository": "TheBackHalf/website",
+  "branch": "cursor/aos-michelle-al-208-1911",
+  "recorded_at": "2026-08-26T16:15:00.000Z",
+  "cursor_cloud_agent": {
+    "bcId": "bc-675ac32e-9746-42fa-9f21-cad7c6e295bf",
+    "branch": "cursor/aos-michelle-al-208-1911",
+    "url": "https://cursor.com/agents/bc-675ac32e-9746-42fa-9f21-cad7c6e295bf"
+  },
+  "deliverable_kind": "status_only",
+  "software_change_applied": false,
+  "product_files_changed": false,
+  "marketing_files_changed": false,
+  "legal_files_changed": false,
+  "runbook_rewritten": false,
+  "stripe_config_changed": false,
+  "cloudflare_dns_changed": false,
+  "vercel_custom_domain_changed": false,
+  "nameservers_changed": false,
+  "authentication_weakened": false,
+  "secrets_exposed": false,
+  "launch_roadmap_changed": false,
+  "founder_notes_changed": false,
+  "command_center_workbook_updated": false,
+  "launch_rows_json_status_unchanged": true,
+  "merged": false,
+  "deployed": false,
+  "status": "plan_recorded_awaiting_founder_acceptance",
+  "percent_complete_recorded": 90,
+  "row_marked_complete": false,
+  "summary": "Michelle recorded the Hypercare Command Center for the first 30 days of live operations (Monday 31 August 2026 00:00 America/New_York through Wednesday 30 September 2026 00:00). The plan defines a step-down monitoring cadence, a single issue-triage model mapped onto existing support P1–P4 / incident SEV-1–SEV-4 / defect critical–low scales, and daily (plus weekly) reviews. It uses the existing Launch-Day Runbook, Row 61 probes, Row 151 Launch Dashboard and Daily Founder Brief, Row 153 support, Row 83 social, and operating-system incident path. It does not create a second Founder dashboard, a new tracker, or a 24/7 overnight monitor. Founder acceptance is not recorded. August Launch row 208 is not marked Complete.",
+  "sources_of_truth": {
+    "launch_day_runbook": "ops/launch/LAUNCH-DAY-RUNBOOK-AUGUST-31-2026.md",
+    "production_monitoring": "ops/fab-5/ROW-61-PRODUCTION-MONITORING.md",
+    "launch_dashboard_and_daily_brief": "ops/fab-5/ROW-151-LAUNCH-DASHBOARD.md",
+    "support_channels": "ops/fab-5/ROW-153-SUPPORT-CHANNELS-OPERATING-PROTOCOL.md",
+    "social_engagement": "ops/fab-5/ROW-83-SOCIAL-ENGAGEMENT-RESPONSE-PROTOCOL.md",
+    "incident_severity": "ops/fab-5/operating-system.json incidentSeverity + incidentEscalationPath",
+    "authority": "ops/fab-5/operating-system.json",
+    "backup_restore": "ops/fab-5/ROW-62-BACKUP-DISASTER-RECOVERY.md",
+    "marketing_kpi": "ops/fab-5/ROW-84-LAUNCH-MARKETING-KPI-DASHBOARD.md",
+    "first_72h_support_plan": "ops/fab-5/runs/aos-engineering-status/al-157.json (unmerged sibling PR; not Founder-accepted)",
+    "defect_triage": "ops/fab-5/runs/aos-engineering-status/al-188.json (unmerged sibling PR; not Founder-accepted)",
+    "change_control": "ops/fab-5/ROW-203-PRODUCTION-CHANGE-CONTROL-PROTOCOL.md and ops/fab-5/runs/aos-engineering-status/al-203.json (unmerged sibling PR; not Founder-accepted)"
+  },
+  "does_not_replace": [
+    "Launch-Day Runbook (Row 202) — launch-day timed release, pause/rollback, EOD close",
+    "Row 61 production monitoring — Imani technical/risk ownership of probes and error ledger",
+    "Row 151 Launch Dashboard and Daily Founder Brief — existing command view; no second Founder dashboard",
+    "Row 153 support protocol (Founder-accepted 2026-08-21)",
+    "Row 83 social engagement protocol — Nia primary social/CX voice",
+    "Row 157 First-72-Hour Support Coverage Plan — nested inside Days 1–3 of this cadence",
+    "Row 201 Confirm Launch Staffing and Coverage — Founder-gated broader staffing",
+    "Row 203 Production Change-Control Protocol — who may change production during hypercare",
+    "Row 209 Launch-Day Executive Dashboard — separate Michelle deliverable; this CC uses Row 151 until 209 is accepted",
+    "Row 211 7-Day Executive Post-Launch Plan — September 1–7 owners/cadence (Command Center text). This CC does not close that row.",
+    "Row 212 30-Day Launch Performance Review Framework — targets, reporting, and corrective-action triggers. This CC is operating cadence, not the performance-review framework.",
+    "Row 222 Monitor First-Day Operations",
+    "Row 224 End-of-Day Executive Review",
+    "Row 225 Begin 72-Hour Stabilization"
+  ],
+  "michelle_did": [
+    "Define the 30-day hypercare window, phases, and step-down monitoring cadence from existing systems",
+    "Define issue triage: intake, classification, routing, trackers, and daily triage inside the standup — without a new tracker product",
+    "Define daily reviews (morning standup + Daily Founder Brief + EOD close), weekly synthesis, Day-15 checkpoint, and Day-30 close",
+    "Map owners: Michelle chairs/coordinates; Imani owns tech/security monitoring and containment; Nia owns CX/support/social; Founder is escalation only"
+  ],
+  "michelle_did_not": [
+    "Take Imani security/infra ownership or change Row 61 probes, Stripe, DNS, Vercel custom-domain, or nameservers",
+    "Take Nia curriculum/brand ownership or rewrite social/content plans",
+    "Create a second Founder dashboard or a new ticket/incident product",
+    "Invent 24/7 overnight coverage or hourly Founder check-ins",
+    "Invent enrollment/revenue/conversion targets (Row 212)",
+    "Execute go-live simulation (Row 206) or activate hypercare against live launch",
+    "Mark Command Center row 208 Complete",
+    "Record Founder acceptance",
+    "Treat Kimberly Walker (AI) as execution capacity"
+  ],
+  "hypercare_window": {
+    "timezone": "America/New_York",
+    "launch_date": "2026-08-31",
+    "start": "2026-08-31T00:00:00-04:00",
+    "end": "2026-09-30T00:00:00-04:00",
+    "duration_calendar_days": 30,
+    "inclusive_dates": "2026-08-31 through 2026-09-29",
+    "last_full_watch_date": "2026-09-29",
+    "watch_hours_et": "7:00 AM–10:00 PM",
+    "launch_day_open_sweep_et": "6:30 AM",
+    "overnight": "10:00 PM–7:00 AM ET. No standing overnight monitor. Act immediately if a P1 / SEV-1 / privacy / legal / reputational item is seen overnight.",
+    "not_24_7": true,
+    "founder_is_not_continuous_monitor": true,
+    "purpose": "Keep operations, monitoring, triage, and Founder briefing running after launch day and after the first 72-hour window. Do not allow the command to fall off after stabilization."
+  },
+  "phases": [
+    {
+      "id": "P0_launch_day",
+      "label": "Launch day",
+      "dates": ["2026-08-31"],
+      "intensity": "highest",
+      "owns_cadence": "Launch-Day Runbook §§3, 5–11, 13",
+      "also_applies": ["Row 157 first 72 hours (Day 1)", "Row 222 first-day operations", "Row 224 EOD executive review"],
+      "note": "Hypercare Command Center is standing but does not rewrite launch-day timed release."
+    },
+    {
+      "id": "P1_first_72h",
+      "label": "First 72 hours",
+      "start": "2026-08-31T00:00:00-04:00",
+      "end": "2026-09-03T00:00:00-04:00",
+      "dates": ["2026-08-31", "2026-09-01", "2026-09-02"],
+      "intensity": "highest",
+      "owns_cadence": "al-157 First-72-Hour Support Coverage Plan + runbook monitoring/incident sections + Row 225 72-hour stabilization",
+      "note": "Do not drop daily reviews when the 72-hour window ends."
+    },
+    {
+      "id": "P2_days_4_to_7",
+      "label": "Remainder of first week / 7-day post-launch window",
+      "dates": ["2026-09-03", "2026-09-04", "2026-09-05", "2026-09-06", "2026-09-07"],
+      "intensity": "high",
+      "owns_cadence": "Row 83 §17 launch-week through Sunday 6 September; Sep 7 is first reduced social day. Daily hypercare standup continues. Row 211 (Sep 1–7 owners) is the dedicated 7-day executive plan and is not closed by this file.",
+      "note": "Command Center Row 211 text is September 1–7. launch-rows.json still carries stale August 20–26 wording from the prior launch date; this CC uses August 31 / September 1–7."
+    },
+    {
+      "id": "P3_days_8_to_14",
+      "label": "Second week",
+      "dates_inclusive": "2026-09-08 through 2026-09-14",
+      "intensity": "elevated",
+      "owns_cadence": "Daily standup + Daily Founder Brief + async EOD. Social: three business-day sweeps (Row 83 §2). Monitoring probes remain 15 minutes."
+    },
+    {
+      "id": "P4_days_15_to_30",
+      "label": "Steady hypercare through Day 30",
+      "dates_inclusive": "2026-09-15 through 2026-09-29",
+      "intensity": "steady",
+      "owns_cadence": "Same daily reviews, shorter if GREEN. Weekly synthesis. Day-15 checkpoint. Day-30 close hands operating trends to Row 212 without replacing that framework."
+    }
+  ],
+  "command_location": {
+    "primary_view": "/ops/admin/launch-dashboard",
+    "spanish_ops_view": "/es/ops/admin/launch-dashboard",
+    "marketing_kpi": "/ops/admin/launch-kpi",
+    "support": "/ops/admin/support",
+    "health_model": "lib/launch-dashboard/health.ts GREEN / YELLOW / RED",
+    "daily_founder_brief": "buildDailyFounderBrief — Date, Health, Founder Attention, Traffic, Conversion, Revenue, Activation, Errors, Support, Launch Risks, Action Required",
+    "second_founder_dashboard": false,
+    "row_209": "Create Launch-Day Executive Dashboard remains a separate Michelle deliverable. Until it is accepted, hypercare investigates here."
+  },
+  "owners": {
+    "command_chair": {
+      "id": "michelle",
+      "name": "Michelle Northstar",
+      "title": "Chief of Staff & Operations Officer",
+      "duty": "Chairs hypercare. Orchestrates daily reviews, issue triage, unresolved tracker, pause of affected operations, Founder surfacing, decision-log records. Backup social/support. Does not own production monitoring implementation, curriculum, or brand voice."
+    },
+    "technology_risk": {
+      "id": "imani",
+      "name": "Imani Heartbeat",
+      "title": "Chief Technology & Risk Officer",
+      "duty": "Owns Row 61 probes, error ledger, technical/security containment, rollback/emergency shutdown as already delegated, payment/outage technical response after routing. Not the social or CX voice. Not the hypercare chair."
+    },
+    "experience_support_social": {
+      "id": "nia",
+      "name": "Nia Prism",
+      "title": "Chief Experience & Transformation Officer",
+      "duty": "Primary Architect support and public CX/social voice. Journey/Lumina quality signals in daily review. Does not own infra or incident containment."
+    },
+    "founder": {
+      "id": "founder",
+      "name": "Kimberly M. Walker",
+      "title": "Founder",
+      "duty": "Escalation only. Receives the Daily Founder Brief and immediate notice when Attention = YES or a reserved decision is required. Not the continuous monitor. Not a standup attendee unless a Founder-reserved decision is queued. Sole acceptance authority for this deliverable."
+    },
+    "not_operating_capacity": [
+      "Kimberly Walker (AI) is not an operating agent and is not hypercare coverage.",
+      "Lumina is the participant-facing AI Guide only. It does not monitor, triage, or brief the Founder."
+    ]
+  },
+  "monitoring_cadence": {
+    "rule": "Reuse existing automated systems. Do not invent a second probe fleet or Founder pager. Step down human sweep intensity; do not step down 15-minute technical probes during the 30 days.",
+    "automated": [
+      {
+        "cadence": "every 15 minutes",
+        "what": "Uptime, error, database, and payment probes",
+        "endpoint": "GET /api/ops/monitoring/run",
+        "owner": "imani",
+        "source": "Row 61",
+        "phases": ["P0", "P1", "P2", "P3", "P4"]
+      },
+      {
+        "cadence": "every 15 minutes",
+        "what": "Support inbound IMAP poll",
+        "endpoint": "GET /api/support/inbound",
+        "owner": "nia_primary_michelle_routing",
+        "source": "Row 153",
+        "phases": ["P0", "P1", "P2", "P3", "P4"]
+      },
+      {
+        "cadence": "every 15 minutes",
+        "what": "AOS orchestration tick",
+        "endpoint": "GET /api/fab-5/aos/tick",
+        "owner": "michelle",
+        "source": "ops/fab-5/AOS-PERMANENT-OPERATING-SYSTEM.md",
+        "phases": ["P0", "P1", "P2", "P3", "P4"]
+      },
+      {
+        "cadence": "continuous / on each dashboard load",
+        "what": "Launch Health GREEN/YELLOW/RED and Founder Attention YES/NO",
+        "location": "/ops/admin/launch-dashboard",
+        "owner": "michelle_ops_imani_tech_nia_experience",
+        "source": "Row 151",
+        "phases": ["P0", "P1", "P2", "P3", "P4"]
+      },
+      {
+        "cadence": "daily snapshot freeze",
+        "what": "Prior ET-day dashboard snapshot persists and is not overwritten",
+        "store": "launch_dashboard_snapshots",
+        "owner": "michelle",
+        "source": "Row 151 Daily snapshots",
+        "phases": ["P0", "P1", "P2", "P3", "P4"]
+      }
+    ],
+    "human_sweeps": [
+      {
+        "when": "2026-08-31 6:30 AM ET",
+        "who": "nia",
+        "backup": "michelle",
+        "action": "Open-channel sweep of live Instagram and TikTok. Confirm login. Do not improvise accounts. Begin support-console check."
+      },
+      {
+        "when": "Launch day 7:00 AM–10:00 PM ET",
+        "phase": "P0",
+        "who": "nia",
+        "backup": "michelle",
+        "on_call_technical": "imani",
+        "social": "Posting window 8:00 AM–2:00 PM ET: 30-minute sweeps. Other watch hours: hourly.",
+        "unresolved_tracker": "Michelle every 2 hours during watch hours",
+        "source": "Runbook §3 and §11; Row 83 §16"
+      },
+      {
+        "when": "Sep 1–6 7:00 AM–10:00 PM ET",
+        "phase": "P1_and_P2_through_Sep_6",
+        "who": "nia",
+        "backup": "michelle",
+        "on_call_technical": "imani",
+        "social": "Launch-week: 30-minute sweeps on any day a launch post is scheduled during posting window; otherwise hourly during watch hours.",
+        "unresolved_tracker": "Michelle every 2 hours during watch hours",
+        "source": "Row 83 §17"
+      },
+      {
+        "when": "Sep 7 onward, business days",
+        "phase": "P2_from_Sep_7_then_P3_P4",
+        "who": "nia",
+        "backup": "michelle",
+        "on_call_technical": "imani",
+        "social": "Three sweeps: 9:00 AM, 1:00 PM, 5:00 PM ET on live Instagram and TikTok. LinkedIn is not a launch channel.",
+        "unresolved_tracker": "Michelle once per business day at the morning standup, plus immediately on URGENT",
+        "source": "Row 83 §2"
+      }
+    ],
+    "immediate": {
+      "trigger": "SEV-1, Launch Health RED, Founder Attention YES, critical surface unavailable, material privacy/security/legal/reputational",
+      "who": "Michelle surfaces; Imani contains if technical/security; Nia if participant-facing; Founder immediate when the existing threshold fires",
+      "do_not_wait_for": "standup, 2-hour tracker, or Daily Founder Brief"
+    },
+    "does_not_include": [
+      "Hourly Founder check-ins",
+      "Standing overnight monitor",
+      "A new APM or synthetic probe product beyond Row 61",
+      "Invented performance targets"
+    ]
+  },
+  "issue_triage": {
+    "purpose": "One classification and routing model for everything that arrives during hypercare: support tickets, production incidents, defects, launch risks, social handoffs, and privacy/security. Do not invent a third severity scale or a second informal tracker.",
+    "chair": "michelle",
+    "rule": "Support priority is the Architect-ticket clock. Incident SEV is the production/risk clock. Defect severity is the release/fix clock. Classify all that apply. Map; do not stack new labels.",
+    "intake_sources": [
+      {
+        "source": "support_form_and_email",
+        "path": "https://thebackhalf.org/support and support@thebackhalf.org",
+        "tracker": "/ops/admin/support",
+        "owner_after_routing": "nia_cx_michelle_routing"
+      },
+      {
+        "source": "social_row83",
+        "path": "ops/fab-5/social-engagement-log.json then Row 153 ticket source=social_row83",
+        "tracker": "engagement log + one support ticket; not two cases",
+        "owner_after_routing": "michelle_routes"
+      },
+      {
+        "source": "row_61_probes_and_launch_ops_errors",
+        "path": "/ops/admin/launch-dashboard",
+        "tracker": "launch_ops_errors + Launch Health",
+        "owner_after_routing": "imani"
+      },
+      {
+        "source": "launch_risk_register",
+        "path": "launch_dashboard_risks",
+        "tracker": "Row 151 risk register",
+        "owner_after_routing": "michelle_ops_imani_tech_nia_experience"
+      },
+      {
+        "source": "known_defects",
+        "path": "al-188 triage register and Row 189 fix work",
+        "tracker": "existing defect triage; new post-launch defects added at daily review",
+        "owner_after_routing": "michelle_classifies_imani_fixes_nia_retests_if_participant_facing"
+      },
+      {
+        "source": "voice_of_architect",
+        "path": "Row 158 when accepted; until then P4/feedback tickets and social themes",
+        "tracker": "do not invent a second feedback product",
+        "owner_after_routing": "nia_themes_michelle_routes_critical_into_defect_triage"
+      }
+    ],
+    "classification_scales": {
+      "support_priorities": {
+        "source": "Row 153",
+        "internal_due_hours": { "P1": 4, "P2": 24, "P3": 72, "P4": 72 },
+        "published_architect_expectation": "Typically respond within 3 days, with a goal of 72 hours or less. Do not promise a resolution time. Do not promise refunds.",
+        "p1_is_not_ordinary_three_day_queue": true
+      },
+      "incident_sev": {
+        "source": "ops/fab-5/operating-system.json incidentSeverity",
+        "SEV-1": "CRITICAL — launch unavailable; payment broadly failing; material security/privacy; widespread access failure; material data-loss risk; severe participant-impacting production failure. Founder immediate.",
+        "SEV-2": "HIGH — material degradation of important functionality or a meaningful participant cohort.",
+        "SEV-3": "MODERATE — contained defect with workaround; no material launch threat.",
+        "SEV-4": "LOW — minor, cosmetic, or non-critical."
+      },
+      "defect_severity": {
+        "source": "al-188 taxonomy mapped to SEV",
+        "critical": "SEV-1 / must_fix_now during hypercare if the live surface is still blocked",
+        "high": "SEV-2 / fix in the current hypercare window unless an accepted remaining risk is recorded",
+        "medium": "SEV-3 / scheduled; not a launch-stop",
+        "low": "SEV-4 / backlog"
+      },
+      "launch_health": {
+        "source": "Row 151 / runbook §6",
+        "RED": "Open RED risk; website/registration/checkout/payment unavailable; open RED security/privacy/legal; open CRITICAL failure on a critical surface.",
+        "YELLOW": "Open YELLOW risk; elevated critical/high errors; support approaching/overdue 72-hour expectation; backlog ≥ 10; on/after launch day checkout starts with payment failures and zero purchases; data-quality ERROR; error ledger unavailable.",
+        "GREEN": "No RED/YELLOW. Missing error ledger cannot produce false GREEN."
+      }
+    },
+    "support_to_incident_map": [
+      {
+        "support": "P1",
+        "incident": "SEV-1 CRITICAL",
+        "when": "Broad outage, payment broadly failing, material security/privacy, widespread access failure, material data-loss risk, severe participant-impacting production failure."
+      },
+      {
+        "support": "P1",
+        "incident": "SEV-2 HIGH",
+        "when": "Urgent ticket that is not a broad outage (contained individual security concern, or a payment issue affecting one Architect that is not a checkout outage)."
+      },
+      {
+        "support": "P2",
+        "incident": "SEV-2 HIGH",
+        "when": "Material degradation affecting important functionality or a meaningful participant cohort."
+      },
+      {
+        "support": "P2",
+        "incident": "SEV-3 MODERATE",
+        "when": "Contained individual defect with a workaround and no material launch threat."
+      },
+      {
+        "support": ["P3", "P4"],
+        "incident": "SEV-4 LOW or no incident",
+        "when": "Routine questions, feedback, cosmetic/non-critical. Do not open an incident for ordinary queue work."
+      }
+    ],
+    "routing": [
+      {
+        "class": "Technical / outage / auth / registration / checkout-system / database",
+        "owner": "imani",
+        "michelle": "coordinates, logs, pauses affected operations if needed",
+        "nia": "tickets and participant language"
+      },
+      {
+        "class": "Security / privacy / suspected breach",
+        "owner": "imani",
+        "michelle": "routes immediately; decision log",
+        "nia": "preserves participant-facing evidence; no public secrets",
+        "founder": "Attention YES; Founder-immediate for SEV-1"
+      },
+      {
+        "class": "Payment ops (not a system outage): duplicate charge, cancellation, no-refund policy questions",
+        "owner": "michelle",
+        "imani": "if webhook/outage",
+        "founder": "exception/chargeback severity only",
+        "rule": "No refund promise. Cancellation is not a refund."
+      },
+      {
+        "class": "Journey / Lumina / onboarding / Architect-experience",
+        "owner": "nia",
+        "imani": "if a runtime/system failure",
+        "michelle": "backup and defect-triage entry"
+      },
+      {
+        "class": "Social / reputational / legal",
+        "owner": "michelle_surfaces",
+        "nia": "preserves evidence; approved templates only",
+        "founder": "YES immediately for legal/reputational. No legal@ mailbox. Do not send as Kimberly."
+      }
+    ],
+    "escalation_sequence": [
+      "DETECTION",
+      "CLASSIFICATION",
+      "DOMAIN OWNER",
+      "CONTAINMENT",
+      "EVIDENCE",
+      "MICHELLE COORDINATION",
+      "CROSS-FUNCTIONAL SUPPORT IF NEEDED",
+      "FOUNDER/HUMAN EXPERT ONLY IF TRIGGERED",
+      "CORRECTION",
+      "RETEST",
+      "RESOLUTION",
+      "AUDIT CLOSE"
+    ],
+    "trackers_existing_only": {
+      "support_tickets": "/ops/admin/support",
+      "incidents_and_material_decisions": "ops/fab-5/decision-log.json",
+      "social": "ops/fab-5/social-engagement-log.json",
+      "launch_risks": "launch_dashboard_risks on /ops/admin/launch-dashboard",
+      "errors": "launch_ops_errors",
+      "defects": "al-188 register until a Founder-accepted defect log exists; do not create a parallel spreadsheet in this PR",
+      "production_changes": "decision-log entry type production_change (Row 203)",
+      "duplicate_tracker_created": false
+    },
+    "daily_triage_in_standup": {
+      "new_since_last_review": "Classify support P, incident SEV, defect severity, owner, next action, Founder required Y/N",
+      "open_p1_p2": "Age against internal clocks (4h / 24h)",
+      "open_sev1_sev2": "Containment status, evidence pointer, retest owner",
+      "support_surge": "Backlog ≥ 10 or approaching/overdue 72-hour expectation → Launch Health YELLOW; staff the queue; no new public claims",
+      "production_fix": "Any live fix follows Row 203 change-control. AOS / Cursor Cloud Agents open PRs only. Never merge from this status file. Never deploy failed work."
+    },
+    "hypercare_release_requirement": [
+      "must_fix_now — live critical surface or SEV-1/SEV-2 without workaround",
+      "fix_this_week — high, meaningful cohort, workaround exists",
+      "schedule_after_hypercare — medium/low; record in defect register",
+      "accepted_remaining_risk — only with explicit Founder acceptance; agents do not self-accept residual launch risk",
+      "not_a_defect — known limitation already documented"
+    ],
+    "privacy_rule": "Do not log passwords, tokens, full card data, CVV, Journey answers, Lumina transcripts, or another Architect’s private record. Paraphrase. Do not print secrets."
+  },
+  "daily_reviews": {
+    "timezone": "America/New_York",
+    "founder_does_not_attend_by_default": true,
+    "morning_standup": {
+      "name": "Hypercare daily review",
+      "chair": "michelle",
+      "attendees": ["michelle", "imani", "nia"],
+      "founder": "Does not attend unless Founder Attention is already YES or a reserved decision is queued. Receives the Daily Founder Brief instead.",
+      "time_et": {
+        "P0_P1_P2": "8:00 AM (after the 7:00 AM sweep; launch-day Instagram is 8:00 AM and is not delayed for this meeting)",
+        "P3_P4": "8:30 AM"
+      },
+      "duration_minutes": {
+        "P0_P1_P2": 15,
+        "P3_P4_if_green": 10,
+        "P3_P4_if_yellow_or_red": 15
+      },
+      "may_skip_live_meeting_only_if": [
+        "Launch Health is GREEN",
+        "Founder Attention is NO",
+        "Zero open P1/P2",
+        "Zero open SEV-1/SEV-2",
+        "Michelle confirms on the dashboard and still files the Daily Founder Brief"
+      ],
+      "never_skip": ["Daily Founder Brief generation", "SEV-1 / RED / Attention YES handling"],
+      "fixed_agenda": [
+        "Launch Health and Founder Attention",
+        "Open incidents (SEV, owner, containment, evidence)",
+        "Support queue (P1/P2, backlog, SLA approaching/overdue)",
+        "Row 61 probe status and open CRITICAL/HIGH ops errors",
+        "Enrollment / revenue / conversion actuals — report, do not invent targets",
+        "New or aging defects and release requirement",
+        "Journey / Lumina / Architect-experience signals (Nia)",
+        "Marketing/social coverage gaps (Nia; Row 84 status only)",
+        "Production changes in flight (Row 203)",
+        "Decisions requiring Founder — exact ask or none",
+        "Next 24 hours"
+      ]
+    },
+    "daily_founder_brief": {
+      "generated_from": "Row 151 buildDailyFounderBrief",
+      "fields": [
+        "Date",
+        "Launch health GREEN/YELLOW/RED",
+        "Founder Attention YES/NO",
+        "Traffic",
+        "Conversion",
+        "Revenue",
+        "Activation",
+        "Errors",
+        "Support",
+        "Launch Risks",
+        "Action Required"
+      ],
+      "owner_confirms": "michelle",
+      "when_sent_if_attention_no": "Once daily after the morning review",
+      "when_sent_if_attention_yes": "Immediately, then the daily brief still goes on its cadence",
+      "do_not_send": "Ordinary congratulations volume, hourly GREEN status, routine P3/P4 inside SLA"
+    },
+    "end_of_day_close": {
+      "P0_P1_P2_time_et": "9:30 PM (before 10:00 PM watch close)",
+      "P3_P4": "Async note from Michelle using the same checklist; no standing evening meeting if GREEN",
+      "checklist": [
+        "Final Launch Health GREEN/YELLOW/RED",
+        "Unresolved incidents with owner",
+        "Support backlog, P1, approaching/overdue",
+        "Purchase/conversion actuals (no invented targets)",
+        "Row 61 monitoring healthy / degraded / down",
+        "Founder Attention YES/NO — if YES, already notified or notify now",
+        "Next-day first action (7:00 AM ET sweep unless a P1 is already open)"
+      ],
+      "source": "Runbook §13, continued through Day 30 in reduced form"
+    },
+    "weekly_synthesis": {
+      "when": "Mondays 9:00 AM ET on 2026-09-07 (first reduced-social Monday; still inside Day 4–7), 2026-09-14, 2026-09-21, and 2026-09-28",
+      "chair": "michelle",
+      "attendees": ["michelle", "imani", "nia"],
+      "founder": "Does not attend. Weekly bullets attach to that day’s Daily Founder Brief. Founder is pulled in only for reserved decisions.",
+      "covers": [
+        "Health trend vs prior week",
+        "SEV-1/SEV-2 count and mean time to contain",
+        "Support volume, SLA breaches, surge days",
+        "Recurring defect themes",
+        "Journey/Lumina quality themes (Nia)",
+        "Whether intensity can stay stepped-down",
+        "Open Founder decisions"
+      ],
+      "does_not_replace": "Row 212 30-day performance review framework"
+    },
+    "day_15_checkpoint": {
+      "date": "2026-09-14",
+      "owner": "michelle",
+      "purpose": "Mid-hypercare: confirm the command is still running after 72-hour and 7-day windows, list accepted remaining risks (Founder only), and confirm Row 212 inputs are being captured as actuals rather as invented targets."
+    },
+    "day_30_close": {
+      "date": "2026-09-29",
+      "owner": "michelle",
+      "actions": [
+        "Final 30-day hypercare close note: health, open incidents, open P1/P2, defects still must_fix_now, coverage gaps",
+        "Handoff operating trends to Row 212 without closing Row 212",
+        "Confirm social remains on the three-sweep business-day cadence",
+        "Confirm Row 61 15-minute probes continue as ordinary production monitoring after hypercare",
+        "Do not declare launch success. Founder acceptance of row 208 and of Go/No-Go (row 217) stay with Kimberly Walker (human)."
+      ]
+    }
+  },
+  "founder_communication": {
+    "source": "Runbook §10 + Row 151 Founder escalation + OS A–J contact cases",
+    "contact_founder_when": [
+      "Founder decision is required",
+      "Launch Health is RED",
+      "Founder Attention = YES",
+      "Material legal/reputational issue",
+      "Serious privacy/security issue",
+      "Rollback / launch-stop is required",
+      "Another OS / Row 151 / Row 83 §11–§12 threshold is reached"
+    ],
+    "do_not_contact_founder_for": [
+      "Ordinary congratulations volume",
+      "Routine P3/P4 inside SLA",
+      "Hourly GREEN status with Attention NO",
+      "Attendance at the daily hypercare standup"
+    ]
+  },
+  "pause_rollback_during_hypercare": {
+    "source": "Runbook §9 + operating-system productionChangeAuthority + Row 62 + Row 203",
+    "michelle_may": "Pause affected operations; coordinate; record",
+    "imani_may": "Contain, disable affected functionality, roll back to restore approved safe behavior, emergency shutdown; notify Michelle and Founder. Independent technical containment already delegated.",
+    "nia_may": "Pause participant-facing release/content within experience/safety authority. No improvised replacement posts.",
+    "founder": "Material launch-stop/resume, irreversible production action, destructive restore/cutover, Go/No-Go, legal/reputational commitments",
+    "row_62": "Never restore over production as the first action."
+  },
+  "integration": {
+    "row_61": "Technical probes remain Imani-owned for all 30 days. Hypercare consumes Launch Health; it does not reimplement monitoring.",
+    "row_151": "Daily command view and Daily Founder Brief. Hypercare standup agenda is this brief plus triage actions.",
+    "row_153": "Support intake, SLA, P1–P4. Unchanged.",
+    "row_157": "Days 1–3 coverage roster. Nested, not replaced.",
+    "row_83": "Social sweep intensity steps down on the published dates. Hypercare does not change templates or owners.",
+    "row_188": "Pre-launch defect triage. New live defects enter the same taxonomy at daily review.",
+    "row_203": "Every production change during hypercare follows change-control. This CC does not grant merge/deploy authority to agents.",
+    "row_206": "Go-Live Simulation remains Not Started. Defining this CC does not execute or skip the rehearsal. Activating hypercare against public launch still depends on a regression-passed candidate and the runbook.",
+    "row_211": "7-day executive post-launch plan (Sep 1–7) remains a separate Michelle deliverable.",
+    "row_212": "30-day performance review framework (targets and corrective-action triggers) remains a separate Michelle deliverable. This CC reports actuals into the existing dashboards."
+  },
+  "known_dependencies": {
+    "named_in_workbook": [
+      "Go-Live Simulation (August Launch row 206) — Not Started",
+      "Launch-Day Runbook (August Launch row 202) — Founder-accepted 2026-08-21 per ops/fab-5/row-202-status.json; named runbook at ops/launch/LAUNCH-DAY-RUNBOOK-AUGUST-31-2026.md"
+    ],
+    "this_file_unblocks": "Definition of the 30-day operating command. It does not unblock public launch, Go/No-Go, or Founder acceptance of sibling rows.",
+    "does_not_claim_simulation_ran": true
+  },
+  "out_of_scope_respected": [
+    "Stripe configuration",
+    "Cloudflare DNS",
+    "Vercel custom-domain settings",
+    "thebackhalf.org nameservers",
+    "Authentication / security control weakening",
+    "Product, marketing, and legal file changes",
+    "Push to main, merge, force-push, or deploy",
+    "Imani-owned infra implementation",
+    "Nia-owned curriculum/brand copy",
+    "Fabricating Founder approval"
+  ],
+  "launch_readiness_row": {
+    "id": "208",
+    "deliverable": "Establish Hypercare Command Center",
+    "description": "Define first 30-day monitoring cadence, issue triage, and daily reviews.",
+    "marked_complete": false,
+    "workbook_status_not_changed": true,
+    "founder_action_required_in_workbook": false,
+    "aos_founder_gate": "command_center source still requires Kimberly Walker (human) acceptance before AOS may treat the row as Complete"
+  },
+  "founder_acceptance": {
+    "recorded": false,
+    "authority": "Kimberly Walker (human)",
+    "note": "Founder acceptance, if required, stays with Kimberly Walker (human). This status file records the Hypercare Command Center definition for review. It does not claim approval or completion of August Launch row 208."
+  },
+  "validation": {
+    "typecheck": "skipped_status_only_no_product_change",
+    "test": "skipped_status_only_no_test_script_and_no_product_change",
+    "build": "skipped_status_only_does_not_affect_production",
+    "json_parse": "passed",
+    "note": "package.json has no typecheck or test script. Production build was not run because no product, marketing, or legal files were changed. This file is ops status only."
+  },
+  "next_action": "await_founder_acceptance",
+  "next_required_input": "Kimberly Walker (human) reviews this Hypercare Command Center definition (30-day monitoring cadence, issue triage, and daily reviews). Until that acceptance, do not mark August Launch row 208 Complete. After acceptance, operators follow this cadence on top of the Launch-Day Runbook, Row 61, Row 151, Row 153, and Row 83. Row 211 and Row 212 remain separate deliverables. Row 206 go-live simulation remains required before treating hypercare as activated against public launch."
+}
