@@ -2,8 +2,15 @@
   "row": 167,
   "aosWorkId": "al-167",
   "deliverable": "Operationalize Privacy Rights and Data Governance",
-  "generatedAt": "2026-08-26T16:33:33.100Z",
+  "generatedAt": "2026-08-26T19:59:22.317Z",
   "result": "PASS",
+  "acceptanceReady": true,
+  "founderAcceptance": null,
+  "founderActionRequired": {
+    "slice": "live_privacy_mailbox",
+    "mailbox": "privacy@thebackhalf.org",
+    "reason": "In-product form and Support ticket bridge are operational. Live privacy@ mailbox connection remains a Founder Workspace action if unconnected."
+  },
   "tests": [
     {
       "id": "T1",
@@ -21,7 +28,7 @@
       "id": "T3",
       "name": "Access request tracks identity pending",
       "result": "PASS",
-      "detail": "id=BH-PR-20260826-5DHD7 status=IDENTITY_PENDING"
+      "detail": "id=BH-PR-20260826-Q4EBZ status=IDENTITY_PENDING"
     },
     {
       "id": "T4",
@@ -45,13 +52,19 @@
       "id": "T7",
       "name": "Support Privacy rights ticket opens tracker request",
       "result": "PASS",
-      "detail": "ticket=BH-S-20260826-TSMJS linked=true"
+      "detail": "ticket=BH-S-20260826-WTWWR linked=true"
     },
     {
       "id": "T8",
-      "name": "Public form creates tracked inquiry",
+      "name": "Public form creates tracked inquiry and Support ticket bridge",
       "result": "PASS",
-      "detail": "BH-PR-20260826-UUNRK"
+      "detail": "BH-PR-20260826-9KXAG ticket=BH-S-20260826-JSANJ"
+    },
+    {
+      "id": "T8b",
+      "name": "Consent withdrawal clears Lumina memory payload",
+      "result": "PASS",
+      "detail": "enabled=false summaries=0"
     },
     {
       "id": "T9",
@@ -61,17 +74,40 @@
     },
     {
       "id": "T10",
-      "name": "Verified deletion anonymizes account and keeps consent audit",
+      "name": "Verified deletion anonymizes account, deletes Journey/Lumina, keeps retained classes",
       "result": "PASS",
-      "detail": "deletedAt=2026-08-26T16:33:33.098Z consents=1 login=invalid_credentials status=PARTIALLY_FULFILLED"
+      "detail": "deletedAt=2026-08-26T19:59:22.312Z consents=1 login=invalid_credentials status=PARTIALLY_FULFILLED retained=billing_purchases,analytics_events,auth_consents,support_tickets,privacy_rights_requests,google_workspace_email,stripe_vendor,supabase_backups,vercel_logs,openai_fab5"
     },
     {
       "id": "T11",
-      "name": "Mailbox and owners are established",
+      "name": "Mailbox listed; live inbox is Founder slice only",
       "result": "PASS",
-      "detail": "privacy@thebackhalf.org"
+      "detail": "privacy@thebackhalf.org; FOUNDER_ACTION_REQUIRED live mailbox only"
+    },
+    {
+      "id": "T12",
+      "name": "Deployable app includes EN and ES privacy intake routes",
+      "result": "PASS",
+      "detail": "app/privacy/request and app/es/privacy/request present"
+    },
+    {
+      "id": "T13",
+      "name": "No contradictory account-deletion-unavailable copy EN/ES",
+      "result": "PASS",
+      "detail": "Lumina memory and settings copy point at the privacy-rights process"
+    },
+    {
+      "id": "T14",
+      "name": "Journey/Lumina deletion uses launch-dashboard Postgres pattern",
+      "result": "PASS",
+      "detail": "schema=true backend=file_local_development"
+    },
+    {
+      "id": "T15",
+      "name": "EN/ES retention disclosure is not complete erasure",
+      "result": "PASS",
+      "detail": "Retention and Support routing disclosed in both locales"
     }
   ],
-  "founderAcceptance": null,
-  "note": "Operational process implemented. Founder acceptance remains with Kimberly Walker (human)."
+  "note": "Operational process implemented against durable Postgres pattern. Founder acceptance remains with Kimberly Walker (human). Do not merge. Do not mark the August Launch row complete."
 }

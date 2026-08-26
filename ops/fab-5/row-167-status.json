@@ -3,12 +3,13 @@
   "excelRow": 168,
   "aosWorkId": "al-167",
   "deliverable": "Operationalize Privacy Rights and Data Governance",
-  "technicalStatus": "implemented_pending_founder_acceptance",
+  "technicalStatus": "ACCEPTANCE_READY",
   "percentCompleteRecorded": 0,
   "status": "Not Started",
   "workbookStatus": "Not Started",
   "founderAcceptance": null,
   "founderDecision": null,
+  "priorFounderDecision": "NEEDS_CHANGES",
   "founderAccepted": false,
   "rowMarkedComplete": false,
   "primaryOwner": "imani",
@@ -34,6 +35,11 @@
   "marketingFilesUnchanged": true,
   "stripeConfigurationUnchanged": true,
   "founderAcceptanceFabricated": false,
-  "nextAction": "Await Founder acceptance from Kimberly Walker (human). Do not mark the August Launch row complete.",
-  "notes": "Operational process implemented in repository: intake, identity verification, tracking, system map, retention/deletion, owners and escalation. Founder acceptance is not recorded."
+  "founderActionRequired": {
+    "slice": "live_privacy_mailbox",
+    "mailbox": "privacy@thebackhalf.org",
+    "reason": "In-product form and Support ticket bridge are operational. Live privacy@ mailbox connection remains a Founder Workspace action if unconnected."
+  },
+  "nextAction": "Await Founder acceptance from Kimberly Walker (human). Do not mark the August Launch row complete. Do not merge. Live privacy@ mailbox is FOUNDER_ACTION_REQUIRED for that slice only.",
+  "notes": "Corrected after Founder NEEDS CHANGES: deployable EN/ES intake, durable Journey/Lumina deletion on launch-dashboard Postgres, no deletion-unavailable copy, retained-record disclosure, Support ticket bridge. Founder acceptance is not recorded."
 }
