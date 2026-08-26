@@ -26,6 +26,7 @@ import {
   getChapter6Path,
   getChapter7Path,
 } from "@/lib/journey/chapters/paths";
+import { getThresholdCeremonyPath } from "@/lib/journey/completion/threshold-ceremony";
 import { getOnboardingPath } from "@/lib/journey/onboarding/paths";
 import type { Locale } from "@/lib/i18n/config";
 
@@ -197,10 +198,16 @@ export function JourneyEntryShell({
               {chapter6Cta}
             </Link>
             <Link
-              href={getChapter7Path(locale, chapter7ResumeSection)}
+              href={
+                chapter7Status === "completed"
+                  ? getThresholdCeremonyPath(locale)
+                  : getChapter7Path(locale, chapter7ResumeSection)
+              }
               className="bh-cta bh-cta-secondary inline-flex"
             >
-              {chapter7Cta}
+              {chapter7Status === "completed"
+                ? dictionary.appShell.ceremony.title
+                : chapter7Cta}
             </Link>
             <Link
               href={getAlivenessAssessmentPath(

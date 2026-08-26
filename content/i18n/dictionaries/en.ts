@@ -357,6 +357,7 @@ export const enDictionary: Dictionary = {
       currentChapter: "Current Journey chapter",
       progress: "Journey progress",
       continueJourney: "Continue Journey",
+      continueCeremony: "Open Journey Completion",
       continueOnboarding: "Continue onboarding",
       continueCheckout: "Get Journey access",
       resourcesPreview: "Architect Resources",
@@ -1045,6 +1046,31 @@ export const enDictionary: Dictionary = {
       mediaTranscript: "Transcript",
       translationPendingNote: "",
       error: "Something went wrong. Please try again.",
+    },
+    ceremony: {
+      eyebrow: "Journey Completion",
+      title: "Journey Completion",
+      description:
+        "Your Journey work remains saved with this Architect account. This is not the finish line. It's the starting line.",
+      founderTitle: "Founder congratulations",
+      certificateTitle: "Architect Completion Certificate",
+      certificateBody:
+        "Download your personalized Architect Completion Certificate. It is available after Journey completion.",
+      portfolioTitle: "Architect Portfolio",
+      portfolioBody:
+        "Completed Journey artifacts assembled from this Architect account. A compiled portfolio PDF remains a separate deliverable.",
+      luminaTitle: "Final Lumina reflection",
+      luminaBody:
+        "Reflect with Lumina on what you created — without rewriting your work.",
+      luminaCta: "Begin final Lumina reflection",
+      communityTitle: "Architect Community",
+      communityNotLive:
+        "Architect Community is not live on August 31, 2026.",
+      communityFoundingIncluded:
+        "Founding Architect includes the first six months of Architect Community access commencing October 25, 2026 through April 25, 2027.",
+      communityStandalone:
+        "$50/month after Blueprint completion. Architect Community — Coming October 25, 2026.",
+      communityCta: "View Architect Community offer",
     },
     lumina: {
       title: "Lumina",

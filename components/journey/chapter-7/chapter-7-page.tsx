@@ -9,6 +9,7 @@ import {
 } from "@/lib/auth/access";
 import { getLoginPath } from "@/lib/auth/routing";
 import { getLocalizedPath } from "@/lib/i18n/routing";
+import { userHasActiveEntitlement } from "@/lib/billing/entitlements";
 import { loadChapter7ForUser } from "@/lib/journey/chapters/chapter-7-service";
 import { getChapter7Path } from "@/lib/journey/chapters/paths";
 import { redirectIfOnboardingIncomplete } from "@/lib/journey/onboarding/gate";
@@ -42,6 +43,11 @@ export async function Chapter7Page({ locale, sectionId }: Chapter7PageProps) {
     redirect(`${getLocalizedPath("/checkout", locale)}?need=journey_access`);
   }
 
+  const communityAccess = await userHasActiveEntitlement(
+    actor.user.id,
+    "community_access",
+  );
+
   return (
     <AppShellPage locale={locale} className="bh-chapter-1-page">
       <div className="bh-onboarding-panel pb-16">
@@ -49,6 +55,7 @@ export async function Chapter7Page({ locale, sectionId }: Chapter7PageProps) {
           locale={locale}
           sectionId={sectionId}
           record={loaded.record}
+          communityAccess={communityAccess}
         />
       </div>
     </AppShellPage>

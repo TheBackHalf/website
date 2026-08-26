@@ -26,7 +26,8 @@ export function LuminaEntryShell({ locale, topic }: LuminaEntryShellProps) {
     topic === "standards" ||
     topic === "architect" ||
     topic === "expansion" ||
-    topic === "beginning"
+    topic === "beginning" ||
+    topic === "threshold"
       ? topic
       : null;
 

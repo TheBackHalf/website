@@ -276,6 +276,7 @@ export type Dictionary = {
       currentChapter: TranslatedString;
       progress: TranslatedString;
       continueJourney: TranslatedString;
+      continueCeremony: TranslatedString;
       continueOnboarding: TranslatedString;
       continueCheckout: TranslatedString;
       resourcesPreview: TranslatedString;
@@ -857,6 +858,24 @@ export type Dictionary = {
       mediaTranscript: TranslatedString;
       translationPendingNote: TranslatedString;
       error: TranslatedString;
+    };
+    ceremony: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      founderTitle: string;
+      certificateTitle: string;
+      certificateBody: string;
+      portfolioTitle: string;
+      portfolioBody: string;
+      luminaTitle: string;
+      luminaBody: string;
+      luminaCta: string;
+      communityTitle: string;
+      communityNotLive: string;
+      communityFoundingIncluded: string;
+      communityStandalone: string;
+      communityCta: string;
     };
     lumina: {
       title: TranslatedString;

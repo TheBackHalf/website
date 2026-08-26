@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { Chapter7Resources } from "@/components/journey/chapter-7/chapter-7-resources";
+import { ThresholdCeremony } from "@/components/journey/completion/threshold-ceremony";
 import {
   BeginningCommitmentWork,
   BeginningPracticeWork,
@@ -35,6 +36,7 @@ import {
   getChapter7Path,
   getChapter7LuminaDiscussionPath,
 } from "@/lib/journey/chapters/paths";
+import { getThresholdLuminaReflectionPath } from "@/lib/journey/completion/threshold-ceremony";
 import type { Chapter7Record } from "@/lib/journey/chapters/types";
 import type { Locale } from "@/lib/i18n/config";
 
@@ -42,6 +44,7 @@ type Chapter7ExperienceProps = {
   locale: Locale;
   sectionId: Chapter7SectionId;
   record: Chapter7Record;
+  communityAccess?: boolean;
 };
 
 function sectionLabel(locale: Locale, sectionId: Chapter7SectionId): string {
@@ -66,6 +69,7 @@ export function Chapter7Experience({
   locale,
   sectionId,
   record,
+  communityAccess = false,
 }: Chapter7ExperienceProps) {
   const router = useRouter();
   const copy = getDictionary(locale).appShell.chapter7;
@@ -84,14 +88,7 @@ export function Chapter7Experience({
   const welcomeText = content.personalizeWelcome(content.founderWelcomeRaw);
   const welcomeLines = content.formatForDisplay(welcomeText);
   const closingLines = content.formatForDisplay(content.founderClosingRaw);
-  const congratulationsLines = content.formatForDisplay(
-    content.founderCongratulationsRaw,
-  );
   const welcomeMedia = getChapter7MediaForSection("welcome", locale);
-  const completionMedia =
-    record.status === "completed"
-      ? getChapter7MediaForSection("complete", locale)
-      : [];
 
   const reflectionComplete = isBeginningReflectionComplete(reflectionAnswers);
   const practiceComplete = isBeginningPracticeComplete(practice);
@@ -365,37 +362,25 @@ export function Chapter7Experience({
           className="bh-chapter-1-section"
           aria-labelledby="chapter-7-complete-heading"
         >
-          <h2
-            id="chapter-7-complete-heading"
-            className="bh-onboarding-step-title"
-          >
-            {resolveAppShellLabel(locale, copy.sectionComplete)}
-          </h2>
-          <p className="bh-onboarding-step-body">
-            {record.status === "completed"
-              ? resolveAppShellLabel(locale, copy.completeBody)
-              : resolveAppShellLabel(locale, copy.completePendingBody)}
-          </p>
           {record.status === "completed" ? (
+            <ThresholdCeremony
+              locale={locale}
+              communityAccess={communityAccess}
+            />
+          ) : (
             <>
-              {completionMedia.map((placement) => (
-                <FounderMediaPlacement
-                  key={placement.id}
-                  locale={locale}
-                  placement={placement}
-                />
-              ))}
-              <div className="bh-onboarding-prose mt-8">
-                {congratulationsLines.map((line) => (
-                  <p key={line}>{line}</p>
-                ))}
-              </div>
+              <h2
+                id="chapter-7-complete-heading"
+                className="bh-onboarding-step-title"
+              >
+                {resolveAppShellLabel(locale, copy.sectionComplete)}
+              </h2>
+              <p className="bh-onboarding-step-body">
+                {resolveAppShellLabel(locale, copy.completePendingBody)}
+              </p>
+              <Chapter7Resources locale={locale} journeyComplete={false} />
             </>
-          ) : null}
-          <Chapter7Resources
-            locale={locale}
-            journeyComplete={record.status === "completed"}
-          />
+          )}
           <div className="bh-chapter-1-complete-actions">
             {record.status !== "completed" ? (
               <button
@@ -408,10 +393,16 @@ export function Chapter7Experience({
               </button>
             ) : null}
             <Link
-              href={getChapter7LuminaDiscussionPath(locale)}
+              href={
+                record.status === "completed"
+                  ? getThresholdLuminaReflectionPath(locale)
+                  : getChapter7LuminaDiscussionPath(locale)
+              }
               className="bh-cta bh-chapter-1-complete-action"
             >
-              {resolveAppShellLabel(locale, copy.discussWithLumina)}
+              {record.status === "completed"
+                ? getDictionary(locale).appShell.ceremony.luminaCta
+                : resolveAppShellLabel(locale, copy.discussWithLumina)}
             </Link>
             <Link
               href={getLocalizedArchitectPath("dashboard", locale)}

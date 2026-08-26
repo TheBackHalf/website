@@ -204,6 +204,15 @@ export const appShellIntegrationPoints = {
     note: "Row 83–86 connected; Chapters III–VII pending 87+",
     status: "connected" as const,
   },
+  /** Row 135 — Completion and Threshold Ceremony (Chapter VII complete host). */
+  thresholdCeremony: {
+    row: 135,
+    path: "lib/journey/completion/threshold-ceremony.ts",
+    uiSlot: "components/journey/completion/threshold-ceremony.tsx",
+    hostRoute: "/architect/journey/chapter-7/complete",
+    luminaTopic: "threshold",
+    status: "connected" as const,
+  },
 } as const;
 
 export type IntegrationPointStatus = "pending" | "connected";
