@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, Outfit } from "next/font/google";
 import { ProductAnalyticsBeacon } from "@/components/analytics/product-analytics-beacon";
 import { OrganizationJsonLd } from "@/components/seo/json-ld";
+import { DocumentLocale } from "@/components/i18n/document-locale";
 import { createRootMetadata } from "@/lib/seo/metadata";
 import { isLocale } from "@/lib/i18n/config";
 import "./globals.css";
@@ -42,6 +43,7 @@ export default async function RootLayout({
       className={`${display.variable} ${sans.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
+        <DocumentLocale />
         <OrganizationJsonLd />
         <ProductAnalyticsBeacon />
         {children}
