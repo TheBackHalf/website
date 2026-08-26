@@ -1,0 +1,417 @@
+{
+  "aosWorkId": "al-215",
+  "excelRow": 216,
+  "commandCenterOrder": 215,
+  "tab": "August Launch",
+  "phase": "Final Launch Readiness & Controls",
+  "deliverable": "Verify Founder Absence Operating Capability",
+  "assignedOperatingAgent": "michelle",
+  "assignedTitle": "Michelle Northstar — Chief of Staff & Operations Officer",
+  "supportingOwners": ["imani", "nia"],
+  "kimberlyWalkerAiUsedAsOperatingCapacity": false,
+  "founderPresentDuringSimulation": false,
+  "softwareChangeApplied": false,
+  "productMarketingLegalFilesChanged": false,
+  "stripeConfigModified": false,
+  "cloudflareDnsModified": false,
+  "vercelCustomDomainModified": false,
+  "nameserversModified": false,
+  "secretsPrinted": false,
+  "authenticationWeakened": false,
+  "merged": false,
+  "deployed": false,
+  "rowMarkedComplete": false,
+  "founderAcceptanceRecorded": false,
+  "founderAcceptance": null,
+  "acceptanceAuthority": "Kimberly Walker (human) only. This file does not record Founder acceptance.",
+  "generatedAt": "2026-08-26T16:45:00.000Z",
+  "mode": "tabletop-simulation-plus-live-probes-plus-in-process-rules",
+  "syntheticLabel": "SYNTHETIC TEST — not real participant validation. No live Stripe charges. No Founder inbox or SMS traffic was sent from this run.",
+  "simulatedWindow": {
+    "dateEt": "2026-08-31",
+    "timezone": "America/New_York",
+    "startEt": "06:30",
+    "endEt": "14:00",
+    "hoursWithoutFounderContinuousMonitor": 7.5,
+    "runbookRule": "Founder is escalation only. No hourly Founder check-ins. Daily Founder Brief otherwise."
+  },
+  "dependencies": {
+    "fab5Operational": {
+      "source": "ops/fab-5/operating-system.json",
+      "rows": ["15", "16", "17", "19"],
+      "founderUnavailableMode": "Continue approved, reversible, in-authority, non-material work. Queue Founder-reserved items. Never increase authority.",
+      "queueLabel": "FOUNDER ACTION REQUIRED",
+      "status": "PASS — Founder-unavailable mode is encoded and previously tested (Row 16 T17; Row 17; Row 19 L-T20/L-T21)."
+    },
+    "launchDayRunbook": {
+      "path": "ops/launch/LAUNCH-DAY-RUNBOOK-AUGUST-31-2026.md",
+      "row202Status": "Complete. Founder accepted 2026-08-21.",
+      "status": "PASS — named runbook located. This verification did not rewrite it."
+    }
+  },
+  "domainCoverage": {
+    "marketing": {
+      "owners": {
+        "primary": "Nia Prism — launch posting, social voice, KPI visibility",
+        "backup": "Michelle Northstar — backup social monitor, unresolved check every 2 hours",
+        "founder": "escalation only"
+      },
+      "systems": [
+        "Row 76 official Instagram @backhalfco and TikTok @backhalfco",
+        "Row 81 locked Aug 31 assets",
+        "Row 82 Option B native scheduling",
+        "Row 83 engagement protocol",
+        "Row 84 /ops/admin/launch-kpi"
+      ],
+      "canMonitorWithoutFounder": true,
+      "note": "Routine approved posting and template replies continue. New public claims, pricing, and native-scheduler authorization remain Founder-reserved."
+    },
+    "payments": {
+      "owners": {
+        "technical": "Imani Heartbeat",
+        "coordination": "Michelle Northstar",
+        "founder": "SEV-1 / RED / Attention YES, refunds, live key changes"
+      },
+      "systems": [
+        "Row 61 Stripe read-only Balance retrieve — no charge executed",
+        "Stripe webhook recordings into launch_ops_errors",
+        "Row 151 revenue / checkout_failed",
+        "Row 153 Payment category — refund requests stay Payment; no refunds"
+      ],
+      "canMonitorWithoutFounder": true
+    },
+    "access": {
+      "owners": {
+        "technical": "Imani Heartbeat — registration / login / auth",
+        "support": "Nia Prism primary; Michelle routing",
+        "founder": "widespread access failure / SEV-1"
+      },
+      "systems": [
+        "Row 61 probes /register /login",
+        "Row 153 ACCOUNT_LOGIN / REGISTRATION tickets",
+        "Row 151 availability architect_access"
+      ],
+      "canMonitorWithoutFounder": true
+    },
+    "support": {
+      "owners": {
+        "primary": "Nia Prism",
+        "backupRouting": "Michelle Northstar",
+        "technicalSecurity": "Imani Heartbeat after routing",
+        "founder": "escalation only"
+      },
+      "systems": [
+        "support@thebackhalf.org",
+        "https://thebackhalf.org/support",
+        "/ops/admin/support",
+        "Vercel cron GET /api/support/inbound */15"
+      ],
+      "canMonitorWithoutFounder": true,
+      "publicIdentity": "The Back Half Support. Never Kimberly."
+    },
+    "technology": {
+      "owners": {
+        "technical": "Imani Heartbeat",
+        "coordination": "Michelle Northstar"
+      },
+      "systems": [
+        "Row 61 cron GET /api/ops/monitoring/run */15",
+        "GET /api/ops/health",
+        "launch_ops_errors",
+        "Row 62 backup/DR — never restore over production first",
+        "AOS tick */15"
+      ],
+      "canMonitorWithoutFounder": true
+    },
+    "incidents": {
+      "path": "Detection → Classification → Domain owner → Containment → Evidence → Michelle coordination → Cross-functional if needed → Founder/human expert only if triggered → Correction → Retest → Resolution → Audit close",
+      "sev1": "Imani contains immediately (Level 5). Michelle coordinates. Founder notified immediately. Authority does not expand.",
+      "canOperateWithoutFounderUntilReservedDecision": true
+    }
+  },
+  "hourByHourSimulation": [
+    {
+      "et": "06:30",
+      "action": "Nia open-channel sweep of live Instagram and TikTok. Confirm login. Do not improvise accounts.",
+      "owner": "nia",
+      "founderContacted": false,
+      "result": "PASS — Founder is not the channel monitor."
+    },
+    {
+      "et": "07:00",
+      "action": "Watch window opens. Imani production probes continue on 15-minute cron once deployed. Michelle on-call for routing.",
+      "owner": "imani",
+      "founderContacted": false,
+      "result": "PASS — systems and team monitor."
+    },
+    {
+      "et": "08:00",
+      "action": "Publish locked Instagram launch carousel R81-0831-IG if native schedule already loaded.",
+      "owner": "nia",
+      "founderContacted": false,
+      "precondition": "Row 82 native Meta Business Suite load is a prior Founder action. If not loaded, Michelle queues FOUNDER ACTION REQUIRED and Nia does not improvise a replacement post.",
+      "result": "PASS for in-authority publish of already-approved locked assets. classifyCommand('Publish the locked Instagram launch carousel at 8:00 AM ET') founderApproval=false."
+    },
+    {
+      "et": "08:30",
+      "action": "30-minute social sweep. Evaluate Launch Health on steady-state traffic/purchases.",
+      "owner": "nia",
+      "health": "GREEN",
+      "founderAttention": "NO",
+      "briefAction": "No Founder action required.",
+      "founderContacted": false,
+      "result": "PASS — H1_STEADY_GREEN in-process evaluation."
+    },
+    {
+      "et": "09:00",
+      "action": "SYNTHETIC support: Architect Community timing FAQ.",
+      "owner": "nia",
+      "classification": {
+        "category": "GENERAL",
+        "priority": "P3",
+        "escalationTargets": [],
+        "founderContacted": false
+      },
+      "response": "Use approved Row 83 T28 / Community Coming October 25, 2026. Do not invent.",
+      "founderContacted": false,
+      "result": "PASS — routine CX does not page Founder."
+    },
+    {
+      "et": "09:30",
+      "action": "SYNTHETIC support: individual cannot log in after purchase.",
+      "owner": "michelle",
+      "classification": {
+        "category": "ACCOUNT_LOGIN",
+        "priority": "P2",
+        "escalationTargets": [],
+        "founderContacted": false
+      },
+      "handoff": "Michelle routes. Imani if technical. Nia CX. Not Founder.",
+      "founderContacted": false,
+      "result": "PASS — individual access failure is P2, not SEV-1."
+    },
+    {
+      "et": "10:00",
+      "action": "Michelle unresolved social/support check (every 2 hours). SYNTHETIC backlog 11 + approaching SLA.",
+      "owner": "michelle",
+      "health": "YELLOW",
+      "founderAttention": "NO",
+      "briefAction": "No Founder action required.",
+      "response": "Staff the queue. No new public claims. Nia + Michelle continue.",
+      "founderContacted": false,
+      "result": "PASS — H2_SUPPORT_BACKLOG_YELLOW does not set Founder Attention."
+    },
+    {
+      "et": "11:15",
+      "action": "SYNTHETIC launch-day checkout starts with payment failures and zero purchases. Surfaces still available.",
+      "owner": "imani",
+      "health": "YELLOW",
+      "founderAttention": "NO",
+      "briefAction": "No Founder action required.",
+      "response": "Imani investigates checkout_failed. Michelle tracks. Not yet critical-surface unavailable.",
+      "founderContacted": false,
+      "result": "PASS — H3_CHECKOUT_FAILS_ZERO_PURCHASE_YELLOW is YELLOW without Founder Attention."
+    },
+    {
+      "et": "12:00",
+      "action": "Publish locked TikTok launch video R81-0831-TT if native schedule already loaded.",
+      "owner": "nia",
+      "founderContacted": false,
+      "result": "PASS for already-approved locked asset. LinkedIn is not a launch-day action."
+    },
+    {
+      "et": "12:30",
+      "action": "SYNTHETIC SEV-1: checkout and payment marked unavailable; CRITICAL payment_provider_unreachable.",
+      "owner": "imani",
+      "health": "RED",
+      "founderAttention": "YES",
+      "briefAction": "Launch Health is RED. Critical availability: checkout is unavailable. Critical availability: payment is unavailable. CRITICAL application/server failure: payment / payment_provider_unreachable.",
+      "containment": "Imani Level 5 emergency containment without prior Founder approval, then notify Michelle and Founder. Do not live-charge to test. Do not promise refunds.",
+      "founderContacted": true,
+      "briefingRequired": {
+        "dashboard": "YES — Founder Attention YES + Daily Founder Brief fields",
+        "email": "YES — Michelle surfaces; AOS notifyFounderDecision email path when a Founder Decision Queue item is opened. Production SMTP was smtp_ready as of 2026-08-25 AOS production validation.",
+        "sms": "REQUIRED by AOS urgent path, NOT DELIVERABLE — Twilio/FOUNDER_NOTIFY_SMS not in production env. Recorded not_configured. Never labeled sent."
+      },
+      "result": "PASS for detection, containment, and Founder-only escalation. PARTIAL for briefing delivery because text cannot send."
+    },
+    {
+      "et": "13:00",
+      "action": "Michelle 2-hour unresolved check includes open SEV-1. Pause publishing if needed. No LinkedIn. No improvised replacement posts.",
+      "owner": "michelle",
+      "founderContacted": true,
+      "reason": "Attention already YES. Do not send ordinary congratulations volume. Do not re-page for the same fingerprint inside 30-minute alert cooldown except to confirm Founder was notified.",
+      "result": "PASS — pause of affected operations is Michelle/Nia authority; material launch-stop/resume remains Founder."
+    },
+    {
+      "et": "13:20",
+      "action": "SYNTHETIC open RED privacy risk with founderEscalationRequired.",
+      "owner": "imani",
+      "health": "RED",
+      "founderAttention": "YES",
+      "supportLayer": "Privacy ticket auto-escalates to Imani (containment). Row 151 sets Founder Attention. Michelle surfaces immediately. Do not request more secrets publicly.",
+      "founderContacted": true,
+      "result": "PASS — H5_PRIVACY_RISK_RED."
+    },
+    {
+      "et": "13:30",
+      "action": "SYNTHETIC attorney demand / lawsuit language on support.",
+      "owner": "michelle",
+      "classification": {
+        "category": "OTHER",
+        "priority": "P3",
+        "escalationTargets": ["founder"],
+        "reason": "Legal / reputational matter. Do not invent a legal@ mailbox."
+      },
+      "response": "Preserve evidence. Do not send as kimberly@ from an agent account. Human legal expert for judgment. Founder notified.",
+      "founderContacted": true,
+      "result": "PASS — S5_LEGAL_THREAT auto-targets Founder."
+    },
+    {
+      "et": "14:00",
+      "action": "Posting window ends. Watch continues to 10:00 PM ET per runbook. Daily Founder Brief remains generated from Row 151 without Founder sitting at telemetry.",
+      "owner": "michelle",
+      "founderContacted": false,
+      "note": "No additional Founder contact unless Attention remains YES and was not already delivered.",
+      "result": "PASS — several hours operated; Founder interrupted only at documented thresholds."
+    }
+  ],
+  "inProcessRuleEvaluation": {
+    "functions": [
+      "evaluateLaunchHealth",
+      "classifyCategory",
+      "classifyPriority",
+      "autoEscalationTargets",
+      "classifyCommand",
+      "queryAuthority",
+      "smsConfigured",
+      "isSmtpReady"
+    ],
+    "overEscalation": {
+      "greenDoesNotPageFounder": true,
+      "yellowSupportBacklogDoesNotPageFounder": true,
+      "yellowCheckoutFailuresDoNotPageFounder": true,
+      "faqDoesNotPageFounder": true,
+      "individualLoginDoesNotPageFounder": true,
+      "paymentOutageTicketRoutesImaniNotFounder": true,
+      "privacyTicketRoutesImaniFirst": true,
+      "legalThreatPagesFounder": true,
+      "redPaymentSetsFounderAttention": true,
+      "redPrivacySetsFounderAttention": true
+    },
+    "classifierNuance": {
+      "pressScamWithoutP1OrLegalKeywords": "autoEscalationTargets did not add Founder for a journalist/scam-accusation sample at P3. Row 83 §11 still requires Michelle to surface material reputational items immediately. Ticket auto-escalation is not the only path.",
+      "queryAuthorityKeywordMatching": "Free-form questions that do not hit encoded patterns fall through to generic Michelle coordination. Encoded patterns for pricing, Go/No-Go, SEV-1/emergency, and unbudgeted spend remain the operational authority source."
+    },
+    "classifyCommand": [
+      {
+        "command": "Publish the locked Instagram launch carousel at 8:00 AM ET",
+        "founderApproval": false,
+        "founderUnavailableBehavior": "CONTINUE — approved in-authority work"
+      },
+      {
+        "command": "Continue monitoring production probes",
+        "founderApproval": false,
+        "founderUnavailableBehavior": "CONTINUE — approved in-authority work"
+      },
+      {
+        "command": "Change the launch date to next week",
+        "founderApproval": true,
+        "founderUnavailableBehavior": "QUEUE FOUNDER ACTION REQUIRED — do not execute — do not expand authority"
+      },
+      {
+        "command": "Change pricing to $47",
+        "founderApproval": true,
+        "founderUnavailableBehavior": "QUEUE FOUNDER ACTION REQUIRED — do not execute — do not expand authority"
+      }
+    ]
+  },
+  "liveProductionProbes": {
+    "at": "2026-08-26T16:40:00.000Z",
+    "canonicalThebackhalfOrg": {
+      "resolve": "FAIL — host thebackhalf.org and www.thebackhalf.org did not resolve from this workstation",
+      "row75": "Founder-held Cloudflare DNS. This agent did not change DNS, nameservers, or Vercel custom-domain settings."
+    },
+    "applicationOrigin": "https://website-two-psi-49.vercel.app",
+    "results": {
+      "/api/ops/health": { "http": 200, "body": { "ok": true, "environment": "production", "service": "the-back-half", "checks": { "application": "ok", "database": "ok" } } },
+      "/": { "http": 200 },
+      "/register": { "http": 200 },
+      "/login": { "http": 200 },
+      "/checkout": { "http": 200 },
+      "/support": { "http": 200 }
+    },
+    "interpretation": "Imani can monitor the live production application origin without Founder. Canonical public hostname remains a Founder DNS action (Row 75) and is outside Michelle/Imani execution in this path."
+  },
+  "briefingCapability": {
+    "dailyFounderBrief": {
+      "generator": "lib/launch-dashboard/brief.ts buildDailyFounderBrief",
+      "fields": [
+        "Date",
+        "Launch Health",
+        "Founder Attention",
+        "Traffic",
+        "Conversion",
+        "Revenue",
+        "Activation",
+        "Errors",
+        "Support",
+        "Launch Risks",
+        "Action Required"
+      ],
+      "location": "/ops/admin/launch-dashboard",
+      "generatedWithoutFounder": true,
+      "autoEmailedOnEveryAttentionYes": false,
+      "note": "The brief is generated on the dashboard from the same launch model. Runbook §10: Michelle surfaces immediately when thresholds require it. Ordinary hours use the Daily Founder Brief. No hourly Founder check-ins."
+    },
+    "email": {
+      "adapter": "lib/fab-5/aos/notify.ts notifyFounderDecision",
+      "transport": "existing Workspace SMTP",
+      "productionEvidence": "ops/fab-5/runs/aos-production-validation.json test I-email smtp_ready PASS (2026-08-25)",
+      "thisWorkstationSmtpReady": false,
+      "sentFromThisRun": false,
+      "status": "PASS — production email path exists. Controlled tests hold sends. This verification did not send Founder mail."
+    },
+    "sms": {
+      "adapter": "Twilio in notifyFounderDecision for severity=urgent",
+      "productionEvidence": "ops/fab-5/runs/aos-production-validation.json test J-sms BLOCKED — Twilio/FOUNDER_NOTIFY_SMS not in production env",
+      "thisWorkstationSmsConfigured": false,
+      "sentFromThisRun": false,
+      "unconfiguredLabeledSent": false,
+      "founderGatedWork": "aos-founder-twilio-sms (AOS-31). Michelle must not invent Twilio credentials.",
+      "osRule": "SMS is not required for the AOS engineering path. Email + dashboard remain operational escalation channels until Twilio is authorized. Unconfigured SMS is stored as not_configured and is never labeled sent.",
+      "status": "NOT CONFIGURED — text briefing cannot be delivered until Founder authorizes an SMS vendor and secrets."
+    }
+  },
+  "preconditionsOutsideThisRow": [
+    "Row 75: canonical thebackhalf.org DNS remains Founder-held. Do not change Cloudflare DNS from this path.",
+    "Row 82: native Instagram/TikTok scheduler load remains Founder platform authorization. Agents must not add a second human admin or purchase a scheduler.",
+    "AOS-31: urgent Founder SMS remains Founder-gated until Twilio (or equivalent) is authorized."
+  ],
+  "validation": {
+    "typecheck": { "command": "npx tsc --noEmit", "exitCode": 0, "pass": true },
+    "npmTestScript": "absent",
+    "nearestPackageTest": "No npm test script. This deliverable is not a software change. In-process rule evaluation of evaluateLaunchHealth / support classify / classifyCommand was executed instead of fab5:qa (which is not this row's suite).",
+    "build": "not required — no production application change",
+    "npmRunBuild": "skipped"
+  },
+  "verdict": {
+    "monitorMarketingWithoutFounder": "PASS",
+    "monitorPaymentsWithoutFounder": "PASS",
+    "monitorAccessWithoutFounder": "PASS",
+    "monitorSupportWithoutFounder": "PASS",
+    "monitorTechnologyWithoutFounder": "PASS",
+    "monitorIncidentsWithoutFounder": "PASS",
+    "escalateOnlyFounderAuthorityIssues": "PASS",
+    "emailBriefingWhenRequired": "PASS — dashboard Daily Founder Brief + production SMTP for Founder Decision Queue; Michelle surfaces per Runbook. This run did not send mail.",
+    "textBriefingWhenRequired": "FAIL — Twilio not configured in production. Honest not_configured; not claimed sent.",
+    "overall": "VERIFIED WITH KNOWN GAP — Fab 5 and the Launch-Day Runbook can operate several launch hours without Kimberly as continuous monitor, contain in-authority incidents, and escalate only reserved/SEV-1/Attention-YES items. Email + dashboard briefing paths exist. Urgent text briefing cannot be delivered until Founder authorizes SMS. Command Center row 215 is not Complete. Founder acceptance is not recorded."
+  },
+  "remainingBlockers": [
+    "Urgent Founder text (SMS) is not configured (Twilio / FOUNDER_NOTIFY_SMS). Founder-gated; not an agent secret-install.",
+    "Canonical thebackhalf.org still does not resolve from this workstation (Row 75 Founder DNS). Application origin is healthy.",
+    "Founder acceptance of this row has not occurred."
+  ],
+  "nextAction": "await_founder_acceptance",
+  "blockedReason": "founder_acceptance_required"
+}
