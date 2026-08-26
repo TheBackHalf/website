@@ -3,7 +3,7 @@
  * Approved source only — do not invent or substitute Founder media.
  */
 
-import { founderCaptionPublicPath } from "@/content/journey/founder-captions";
+import { founderLaunchMediaA11y } from "@/content/journey/founder-accessibility";
 import type { Locale } from "@/lib/i18n/config";
 import {
   listMissingFounderMediaLocales,
@@ -35,16 +35,12 @@ export const onboardingWelcomeMediaPlacement: OnboardingWelcomeMediaPlacement =
     locales: {
       en: {
         src: "/videos/onboarding/founding-architect-welcome.mp4",
-        poster: null,
-        captionsSrc: founderCaptionPublicPath("en", "founding-architect-welcome"),
-        transcriptSrc: null,
+        ...founderLaunchMediaA11y("en", "founding-architect-welcome"),
         playbackEndSeconds: null,
       },
       es: {
         src: "/videos/Founding%20Architect%20Welcome/Founding_Architect_Welcome-Spanish.mp4",
-        poster: null,
-        captionsSrc: founderCaptionPublicPath("es", "founding-architect-welcome"),
-        transcriptSrc: null,
+        ...founderLaunchMediaA11y("es", "founding-architect-welcome"),
         playbackEndSeconds: null,
       },
     },
@@ -81,7 +77,7 @@ export function getOnboardingWelcomeMediaPlacement(
 export function listMissingOnboardingWelcomeMedia(): Array<{
   id: string;
   locale: Locale;
-  field: "src" | "captions" | "transcript";
+  field: "src" | "captions" | "transcript" | "poster";
 }> {
   return listMissingFounderMediaLocales(
     onboardingWelcomeMediaPlacement.id,

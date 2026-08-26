@@ -1,0 +1,57 @@
+{
+  "aosWorkId": "al-138",
+  "source": "command_center August Launch row 138",
+  "deliverable": "Complete Founder Media Accessibility Assets",
+  "operatingAgent": "imani",
+  "generatedAt": "2026-08-26T18:50:00.000Z",
+  "secretsPrinted": false,
+  "founderAcceptanceRecorded": false,
+  "commandCenterMarkedComplete": false,
+  "softwareChangeApplied": true,
+  "branch": "cursor/aos-imani-al-138-fb18",
+  "status": "engineering_complete_pending_founder_acceptance",
+  "summary": "Connected captions, transcripts, and posters for all 18 launch-critical Founder videos (9 English, 9 Spanish). Player now applies posters, shows captions by default, exposes keyboard-focusable controls, transcript links, and a non-video fallback. Closing videos without an approved source are not treated as accessibility-complete.",
+  "launchCriticalVideos": {
+    "count": 18,
+    "languages": ["en", "es"],
+    "ids": [
+      "founding-architect-welcome",
+      "chapter-1-welcome",
+      "chapter-2-welcome",
+      "chapter-3-welcome",
+      "chapter-4-welcome",
+      "chapter-5-welcome",
+      "chapter-6-welcome",
+      "chapter-7-welcome",
+      "journey-completion"
+    ]
+  },
+  "assets": {
+    "captions": "public/captions/founder/{locale}-{id}.vtt",
+    "transcriptPages": "/transcripts/founder/{id} and /es/transcripts/founder/{id}",
+    "transcriptText": "public/transcripts/founder/{locale}-{id}.txt",
+    "posters": "public/posters/founder/{locale}-{id}.jpg"
+  },
+  "player": {
+    "controls": true,
+    "captionsDefaultShowing": true,
+    "posterApplied": true,
+    "transcriptLink": true,
+    "keyboardFocusVisible": true,
+    "ariaLabelAndDescribedBy": true,
+    "unsupportedFallback": true,
+    "cueContrastIncreased": true
+  },
+  "outOfScope": {
+    "chapterClosingVideos": "EN/ES closing Founder videos remain unproduced; they are not launch videos and are not marked accessibility-complete."
+  },
+  "validation": {
+    "typecheck": "npx tsc --noEmit",
+    "nearestTest": "npm run fab5:row138",
+    "build": "pending_at_status_write"
+  },
+  "notes": [
+    "Do not treat Row 138 as Founder-accepted. Kimberly Walker (human) remains the sole Founder acceptance authority.",
+    "Transcript copy is the approved Founder scripts; curriculum and brand voice were not rewritten."
+  ]
+}

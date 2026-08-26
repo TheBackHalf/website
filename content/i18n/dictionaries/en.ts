@@ -17,6 +17,10 @@ export const enDictionary: Dictionary = {
     skipToMain: "Skip to main content",
     legal: "Legal",
     submitting: "Submitting…",
+    founderTranscript: "Transcript",
+    founderTranscriptDownload: "Download plain-text transcript",
+    founderVideoUnsupported:
+      "This video cannot play in your browser. Open the transcript instead.",
   },
   languageSwitcher: {
     label: "Language",

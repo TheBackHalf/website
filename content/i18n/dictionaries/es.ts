@@ -23,6 +23,10 @@ export const esDictionary: Dictionary = {
     skipToMain: "Saltar al contenido principal",
     legal: "Legal",
     submitting: "Enviando…",
+    founderTranscript: "Transcripción",
+    founderTranscriptDownload: "Descargar transcripción en texto plano",
+    founderVideoUnsupported:
+      "Este video no se puede reproducir en tu navegador. Abre la transcripción.",
   },
   languageSwitcher: {
     label: "Idioma",

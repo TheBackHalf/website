@@ -57,6 +57,21 @@ function ReviewVideoSection({
           ? `available (${item.captionsSrc})`
           : "missing"}
       </p>
+      <p className="mt-1 font-sans text-sm font-light text-bh-muted">
+        Transcript:{" "}
+        {item.transcriptStatus === "available"
+          ? `available (${item.transcriptSrc})`
+          : "missing"}
+      </p>
+      <p className="mt-1 font-sans text-sm font-light text-bh-muted">
+        Poster:{" "}
+        {item.posterStatus === "available"
+          ? `available (${item.poster})`
+          : "missing"}
+      </p>
+      <p className="mt-1 font-sans text-sm font-light text-bh-muted">
+        Accessibility complete: {item.accessibilityComplete ? "yes" : "no"}
+      </p>
       <div className="mt-5">
                 {videoLoaded && item.src ? (
                   <figure className="bh-founder-media">
@@ -66,8 +81,14 @@ function ReviewVideoSection({
                         locale={item.locale}
                         src={item.src}
                         captionsSrc={item.captionsSrc}
+                        poster={item.poster}
                       />
                     </div>
+                    {item.transcriptSrc ? (
+                      <p className="bh-founder-media-transcript">
+                        <a href={item.transcriptSrc}>Transcript</a>
+                      </p>
+                    ) : null}
                   </figure>
                 ) : (
           <p className="font-sans text-sm font-light text-bh-muted">

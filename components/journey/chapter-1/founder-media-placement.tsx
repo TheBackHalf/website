@@ -58,6 +58,8 @@ function ensureCaptionTrack(
     textTrack.mode = "disabled";
   }
   if (!captionsSrc) {
+    delete video.dataset.bhCaptionLocale;
+    delete video.dataset.bhCaptionLabel;
     return;
   }
   const track = document.createElement("track");
@@ -65,6 +67,7 @@ function ensureCaptionTrack(
   track.src = captionsSrc;
   track.srclang = locale;
   track.label = label;
+  track.default = true;
   track.setAttribute("data-bh-founder-captions", "1");
   video.appendChild(track);
   video.dataset.bhCaptionLocale = locale;
@@ -76,7 +79,7 @@ function ensureCaptionTrack(
       const isApproved =
         textTrack.language === approvedLocale &&
         textTrack.label === approvedLabel;
-      textTrack.mode = isApproved ? "hidden" : "disabled";
+      textTrack.mode = isApproved ? "showing" : "disabled";
     }
   };
   if (video.dataset.bhCaptionListener !== "1") {
@@ -84,6 +87,46 @@ function ensureCaptionTrack(
     video.dataset.bhCaptionListener = "1";
   }
   applyPreferredTrack();
+}
+
+function applyPoster(video: HTMLVideoElement, poster: string | null) {
+  if (poster) {
+    video.setAttribute("poster", poster);
+    video.dataset.bhPoster = poster;
+  } else {
+    video.removeAttribute("poster");
+    delete video.dataset.bhPoster;
+  }
+}
+
+function applyTranscriptDescribedBy(
+  video: HTMLVideoElement,
+  transcriptId: string | null,
+) {
+  if (transcriptId) {
+    video.setAttribute("aria-describedby", transcriptId);
+  } else {
+    video.removeAttribute("aria-describedby");
+  }
+}
+
+function applyFounderVideoChrome(
+  video: HTMLVideoElement,
+  src: string,
+  label: string,
+  poster: string | null,
+  transcriptId: string | null,
+) {
+  video.controls = true;
+  video.playsInline = true;
+  video.preload = "metadata";
+  video.autoplay = false;
+  video.setAttribute("aria-label", label);
+  video.setAttribute("data-bh-media-src", src);
+  video.setAttribute("tabindex", "0");
+  applyPoster(video, poster);
+  applyTranscriptDescribedBy(video, transcriptId);
+  ensureVideoSource(video, src);
 }
 
 /**
@@ -416,19 +459,19 @@ function startVideo4EndpointWatch(video: HTMLVideoElement) {
   applyVideo4WithinFileEndpoint(video);
 }
 
-function getOrCreateVideo2Element(src: string, label: string): HTMLVideoElement {
+function getOrCreateVideo2Element(
+  src: string,
+  label: string,
+  poster: string | null,
+  transcriptId: string | null,
+): HTMLVideoElement {
   if (!video2Element) {
     const video = document.createElement("video");
     video.className = "bh-founder-media-video";
-    video.controls = true;
-    video.playsInline = true;
-    video.preload = "metadata";
     video.muted = false;
     video.defaultMuted = false;
     video.volume = 1;
     video.setAttribute(VIDEO_2_INSTANCE_ATTR, "1");
-    video.setAttribute("data-bh-media-src", src);
-    video.setAttribute("aria-label", label);
     video2Element = video;
     ensureVideo2Listeners(video);
   }
@@ -439,26 +482,24 @@ function getOrCreateVideo2Element(src: string, label: string): HTMLVideoElement 
   if (video.volume <= 0) {
     video.volume = 1;
   }
-  video.setAttribute("aria-label", label);
-  video.setAttribute("data-bh-media-src", src);
-  ensureVideoSource(video, src);
+  applyFounderVideoChrome(video, src, label, poster, transcriptId);
   return video;
 }
 
-function getOrCreateVideo4Element(src: string, label: string): HTMLVideoElement {
+function getOrCreateVideo4Element(
+  src: string,
+  label: string,
+  poster: string | null,
+  transcriptId: string | null,
+): HTMLVideoElement {
   if (!video4Element) {
     const video = document.createElement("video");
     video.className = "bh-founder-media-video";
-    video.controls = true;
-    video.playsInline = true;
-    video.preload = "metadata";
     video.muted = false;
     video.defaultMuted = false;
     video.volume = 1;
     video.autoplay = false;
     video.setAttribute(VIDEO_4_INSTANCE_ATTR, "1");
-    video.setAttribute("data-bh-media-src", src);
-    video.setAttribute("aria-label", label);
     video4Element = video;
     ensureVideo4Listeners(video);
   }
@@ -470,9 +511,7 @@ function getOrCreateVideo4Element(src: string, label: string): HTMLVideoElement 
   if (video.volume <= 0) {
     video.volume = 1;
   }
-  video.setAttribute("aria-label", label);
-  video.setAttribute("data-bh-media-src", src);
-  ensureVideoSource(video, src);
+  applyFounderVideoChrome(video, src, label, poster, transcriptId);
   return video;
 }
 
@@ -484,13 +523,15 @@ function mountVideo2IntoHost(
   captionsSrc: string | null,
   locale: Locale,
   captionsLabel: string,
+  poster: string | null,
+  transcriptId: string | null,
 ): HTMLVideoElement {
   detachOtherFounderSingletons("video2");
   video2PhraseEndSeconds =
     typeof phraseEndSeconds === "number" && Number.isFinite(phraseEndSeconds)
       ? phraseEndSeconds
       : null;
-  const video = getOrCreateVideo2Element(src, label);
+  const video = getOrCreateVideo2Element(src, label, poster, transcriptId);
   silenceAllExcept(video);
   if (video2PhraseEndSeconds != null) {
     video.dataset.bhPlaybackEnd = String(video2PhraseEndSeconds);
@@ -527,6 +568,8 @@ function mountVideo4IntoHost(
   captionsSrc: string | null,
   locale: Locale,
   captionsLabel: string,
+  poster: string | null,
+  transcriptId: string | null,
 ): HTMLVideoElement {
   detachOtherFounderSingletons("video4");
 
@@ -537,7 +580,7 @@ function mountVideo4IntoHost(
   clearVideo4HoldTimer();
   video4EndApplied = false;
 
-  const video = getOrCreateVideo4Element(src, label);
+  const video = getOrCreateVideo4Element(src, label, poster, transcriptId);
   silenceAllExcept(video);
   delete video.dataset.bhPhraseEnd;
   if (video4PlaybackEndSeconds != null) {
@@ -620,20 +663,17 @@ function ensureWelcomeListeners(video: HTMLVideoElement) {
 function getOrCreateWelcomeElement(
   src: string,
   label: string,
+  poster: string | null,
+  transcriptId: string | null,
 ): HTMLVideoElement {
   if (!welcomeElement) {
     const video = document.createElement("video");
     video.className = "bh-founder-media-video";
-    video.controls = true;
-    video.playsInline = true;
-    video.preload = "metadata";
     video.muted = false;
     video.defaultMuted = false;
     video.volume = 1;
     video.autoplay = false;
     video.setAttribute(WELCOME_INSTANCE_ATTR, "1");
-    video.setAttribute("data-bh-media-src", src);
-    video.setAttribute("aria-label", label);
     welcomeElement = video;
     ensureWelcomeListeners(video);
   }
@@ -645,9 +685,7 @@ function getOrCreateWelcomeElement(
   if (video.volume <= 0) {
     video.volume = 1;
   }
-  video.setAttribute("aria-label", label);
-  video.setAttribute("data-bh-media-src", src);
-  ensureVideoSource(video, src);
+  applyFounderVideoChrome(video, src, label, poster, transcriptId);
   return video;
 }
 
@@ -684,10 +722,12 @@ function mountWelcomeIntoHost(
   captionsSrc: string | null,
   locale: Locale,
   captionsLabel: string,
+  poster: string | null,
+  transcriptId: string | null,
 ): HTMLVideoElement {
   detachOtherFounderSingletons("welcome");
 
-  const video = getOrCreateWelcomeElement(src, label);
+  const video = getOrCreateWelcomeElement(src, label, poster, transcriptId);
   silenceAllExcept(video);
   delete video.dataset.bhPhraseEnd;
   delete video.dataset.bhPlaybackEnd;
@@ -730,13 +770,16 @@ function unmountWelcomeFromHost(host: HTMLElement) {
 type Chapter3FounderVideoProps = {
   locale: Locale;
   labelId: string;
+  transcriptId: string;
   label: string;
   src: string;
+  poster?: string | null;
   captionsSrc?: string | null;
   transcriptSrc?: string | null;
   captionsLabel: string;
   transcriptLabel: string;
   loadingLabel: string;
+  unsupportedLabel: string;
   placementId?: string;
 };
 
@@ -747,13 +790,16 @@ type Chapter3FounderVideoProps = {
 function Chapter3FounderVideo({
   locale,
   labelId,
+  transcriptId,
   label,
   src,
+  poster,
   captionsSrc,
   transcriptSrc,
   captionsLabel,
   transcriptLabel,
   loadingLabel,
+  unsupportedLabel,
   placementId = "chapter-3-welcome",
 }: Chapter3FounderVideoProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -777,7 +823,7 @@ function Chapter3FounderVideo({
           Boolean(captionsSrc) &&
           textTrack.language === locale &&
           textTrack.label === captionsLabel;
-        textTrack.mode = isApproved ? "hidden" : "disabled";
+        textTrack.mode = isApproved ? "showing" : "disabled";
       }
     };
     video.addEventListener("loadedmetadata", preferApprovedCaptions);
@@ -790,12 +836,15 @@ function Chapter3FounderVideo({
     };
   }, [src, captionsSrc, locale, captionsLabel]);
 
+  const a11yComplete = Boolean(captionsSrc && transcriptSrc && poster);
+
   return (
     <figure
       className="bh-founder-media"
       aria-labelledby={labelId}
       data-bh-founder-media={placementId}
       data-bh-natural-end="true"
+      data-bh-a11y-complete={a11yComplete ? "true" : "false"}
     >
       <figcaption id={labelId} className="bh-founder-media-label">
         {label}
@@ -813,7 +862,10 @@ function Chapter3FounderVideo({
           playsInline
           preload="metadata"
           src={src}
+          poster={poster ?? undefined}
           aria-label={label}
+          aria-describedby={transcriptSrc ? transcriptId : undefined}
+          tabIndex={0}
           onLoadedMetadata={() => setIsLoading(false)}
           onCanPlay={() => setIsLoading(false)}
           onPlay={(event) => {
@@ -835,13 +887,23 @@ function Chapter3FounderVideo({
               src={captionsSrc}
               srcLang={locale}
               label={captionsLabel}
+              default
             />
+          ) : null}
+          {unsupportedLabel}
+          {transcriptSrc ? (
+            <>
+              {" "}
+              <a href={transcriptSrc}>{transcriptLabel}</a>
+            </>
           ) : null}
         </video>
       </div>
       {transcriptSrc ? (
         <p className="bh-founder-media-transcript">
-          <a href={transcriptSrc}>{transcriptLabel}</a>
+          <a id={transcriptId} href={transcriptSrc}>
+            {transcriptLabel}
+          </a>
         </p>
       ) : null}
     </figure>
@@ -875,7 +937,9 @@ export function FounderMediaPlacement({
                   placement.id === "chapter-7-complete"
                 ? getDictionary(locale).appShell.chapter7
             : getDictionary(locale).appShell.chapter1;
+  const common = getDictionary(locale).common;
   const labelId = useId();
+  const transcriptId = useId();
   const hostRef = useRef<HTMLDivElement | null>(null);
   const [hasError, setHasError] = useState(false);
   const [isLoading, setIsLoading] = useState(Boolean(placement.src));
@@ -909,6 +973,9 @@ export function FounderMediaPlacement({
       : null;
   const captionsSrc = placement.captionsSrc ?? null;
   const captionsLabel = resolveAppShellLabel(locale, copy.mediaCaptions);
+  const poster = placement.poster ?? null;
+  const transcriptSrc = placement.transcriptSrc ?? null;
+  const a11yComplete = Boolean(src && captionsSrc && transcriptSrc && poster);
 
   useEffect(() => {
     if (!src || !isVideo2) {
@@ -927,6 +994,8 @@ export function FounderMediaPlacement({
       captionsSrc,
       locale,
       captionsLabel,
+      poster,
+      transcriptSrc ? transcriptId : null,
     );
     setIsLoading(video.readyState < 1);
 
@@ -945,7 +1014,7 @@ export function FounderMediaPlacement({
       video.removeEventListener("error", onError);
       unmountVideo2FromHost(host);
     };
-  }, [src, isVideo2, placement.label, phraseEndSeconds, captionsSrc, locale, captionsLabel]);
+  }, [src, isVideo2, placement.label, phraseEndSeconds, captionsSrc, locale, captionsLabel, poster, transcriptSrc, transcriptId]);
 
   useEffect(() => {
     if (!src || !isVideo4) {
@@ -964,6 +1033,8 @@ export function FounderMediaPlacement({
       captionsSrc,
       locale,
       captionsLabel,
+      poster,
+      transcriptSrc ? transcriptId : null,
     );
     setIsLoading(video.readyState < 1);
 
@@ -982,7 +1053,7 @@ export function FounderMediaPlacement({
       video.removeEventListener("error", onError);
       unmountVideo4FromHost(host);
     };
-  }, [src, isVideo4, placement.label, video4EndSeconds, captionsSrc, locale, captionsLabel]);
+  }, [src, isVideo4, placement.label, video4EndSeconds, captionsSrc, locale, captionsLabel, poster, transcriptSrc, transcriptId]);
 
   useEffect(() => {
     if (!src || !isWelcome) {
@@ -1000,6 +1071,8 @@ export function FounderMediaPlacement({
       captionsSrc,
       locale,
       captionsLabel,
+      poster,
+      transcriptSrc ? transcriptId : null,
     );
     setIsLoading(video.readyState < 1);
 
@@ -1018,7 +1091,7 @@ export function FounderMediaPlacement({
       video.removeEventListener("error", onError);
       unmountWelcomeFromHost(host);
     };
-  }, [src, isWelcome, placement.label, captionsSrc, locale, captionsLabel]);
+  }, [src, isWelcome, placement.label, captionsSrc, locale, captionsLabel, poster, transcriptSrc, transcriptId]);
 
   if (!src) {
     // Locale-specific asset missing — never expose internal project/asset language.
@@ -1028,13 +1101,14 @@ export function FounderMediaPlacement({
       <figure
         className="bh-founder-media bh-founder-media-missing"
         aria-labelledby={labelId}
+        data-bh-a11y-complete="false"
       >
         <figcaption id={labelId} className="bh-founder-media-label">
           {placement.label}
         </figcaption>
         <div
           className="bh-founder-media-frame"
-          role="group"
+          role="status"
           aria-label={unavailable}
         >
           {unavailable ? (
@@ -1062,6 +1136,7 @@ export function FounderMediaPlacement({
         }
         data-bh-player="singleton"
         data-bh-natural-end={isVideo4 || isWelcome ? "true" : undefined}
+        data-bh-a11y-complete={a11yComplete ? "true" : "false"}
       >
         <figcaption id={labelId} className="bh-founder-media-label">
           {placement.label}
@@ -1080,9 +1155,9 @@ export function FounderMediaPlacement({
           ) : null}
           <div ref={hostRef} className="bh-founder-media-host" />
         </div>
-        {placement.transcriptSrc ? (
+        {transcriptSrc ? (
           <p className="bh-founder-media-transcript">
-            <a href={placement.transcriptSrc}>
+            <a id={transcriptId} href={transcriptSrc}>
               {resolveAppShellLabel(locale, copy.mediaTranscript)}
             </a>
           </p>
@@ -1096,13 +1171,16 @@ export function FounderMediaPlacement({
       <Chapter3FounderVideo
         locale={locale}
         labelId={labelId}
+        transcriptId={transcriptId}
         label={placement.label}
         src={src}
+        poster={poster}
         captionsSrc={placement.captionsSrc}
         transcriptSrc={placement.transcriptSrc}
         captionsLabel={resolveAppShellLabel(locale, copy.mediaCaptions)}
         transcriptLabel={resolveAppShellLabel(locale, copy.mediaTranscript)}
         loadingLabel={resolveAppShellLabel(locale, copy.mediaLoading)}
+        unsupportedLabel={common.founderVideoUnsupported}
         placementId={placementId}
       />
     );

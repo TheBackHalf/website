@@ -1512,11 +1512,18 @@
     @apply aspect-video w-full bg-bh-ink/90;
   }
 
+  .bh-founder-media-video:focus,
+  .bh-founder-media-video:focus-visible {
+    outline: 3px solid var(--bh-cream);
+    outline-offset: 3px;
+  }
+
   .bh-founder-media-video::cue {
     color: var(--bh-cream);
-    background-color: color-mix(in oklab, var(--bh-night) 72%, transparent);
-    font-size: 0.95rem;
-    line-height: 1.35;
+    background-color: color-mix(in oklab, var(--bh-night) 92%, black);
+    font-size: 1rem;
+    line-height: 1.4;
+    font-weight: 500;
   }
 
   .bh-founder-media-loading {
@@ -1536,7 +1543,21 @@
   }
 
   .bh-founder-media-transcript {
-    @apply mt-3 font-sans text-sm text-bh-purple;
+    @apply mt-3 font-sans text-sm font-medium text-bh-purple-deep;
+  }
+
+  .bh-founder-media-transcript a {
+    @apply underline underline-offset-4;
+    color: var(--bh-purple-deep);
+  }
+
+  .bh-founder-media-transcript a:hover {
+    color: var(--bh-purple);
+  }
+
+  .bh-founder-media-transcript a:focus-visible {
+    outline: 3px solid var(--bh-purple);
+    outline-offset: 3px;
   }
 
   .bh-chapter-exercise-header {

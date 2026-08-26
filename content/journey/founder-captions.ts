@@ -250,7 +250,20 @@ export function founderCaptionPublicPath(
   return captionPath(locale, id);
 }
 
-function prepareCaptionScript(script: string): string {
+export function getFounderCaptionJob(
+  locale: Locale,
+  id: FounderCaptionJobId,
+): FounderCaptionJob {
+  const job = founderCaptionJobs.find(
+    (entry) => entry.locale === locale && entry.id === id,
+  );
+  if (!job) {
+    throw new Error(`Missing Founder caption job for ${locale}/${id}`);
+  }
+  return job;
+}
+
+export function normalizeFounderSpokenScript(script: string): string {
   return script
     .replace(/\r\n/g, "\n")
     .replace(/\.\.\.([A-Za-zÁÉÍÓÚÑÜáéíóúñü“"‘'¿¡])/g, "... $1")
@@ -288,7 +301,7 @@ function wrapCue(text: string, maxChars = 84): string[] {
 }
 
 function splitScriptIntoCues(script: string): string[] {
-  const prepared = prepareCaptionScript(script);
+  const prepared = normalizeFounderSpokenScript(script);
   const paragraphs = prepared
     .split(/\n{2,}/)
     .map((part) => part.replace(/\s+/g, " ").trim())
@@ -331,6 +344,43 @@ function formatTimestamp(seconds: number): string {
   const whole = Math.floor(remainder);
   const millis = Math.round((remainder - whole) * 1000);
   return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(whole).padStart(2, "0")}.${String(millis).padStart(3, "0")}`;
+}
+
+export function splitFounderTranscriptParagraphs(script: string): string[] {
+  const blocks = script
+    .replace(/\r\n/g, "\n")
+    .split(/\n{2,}/)
+    .map((part) => normalizeFounderSpokenScript(part))
+    .filter(Boolean);
+  if (blocks.length > 1) {
+    return blocks;
+  }
+  const prepared = normalizeFounderSpokenScript(script);
+  if (!prepared) {
+    return [];
+  }
+  const sentences = prepared
+    .split(/(?<=[.?!…])\s+(?=\S)/)
+    .map((part) => part.trim())
+    .filter(Boolean);
+  if (sentences.length <= 2) {
+    return [prepared];
+  }
+  const paragraphs: string[] = [];
+  let buffer = "";
+  for (const sentence of sentences) {
+    const next = buffer ? `${buffer} ${sentence}` : sentence;
+    if (buffer && next.length > 280) {
+      paragraphs.push(buffer);
+      buffer = sentence;
+    } else {
+      buffer = next;
+    }
+  }
+  if (buffer) {
+    paragraphs.push(buffer);
+  }
+  return paragraphs;
 }
 
 export function buildFounderCaptionVtt(

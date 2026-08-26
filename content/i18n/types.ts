@@ -35,6 +35,9 @@ export type Dictionary = {
     skipToMain: string;
     legal: string;
     submitting: string;
+    founderTranscript: string;
+    founderTranscriptDownload: string;
+    founderVideoUnsupported: string;
   };
   languageSwitcher: {
     label: string;
