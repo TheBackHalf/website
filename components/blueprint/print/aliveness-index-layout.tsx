@@ -15,12 +15,15 @@ type AlivenessIndexLayoutProps = {
 
 function RatingBoxes() {
   return (
-    <span className="bh-bp-alive-boxes" aria-hidden="true">
-      {[1, 2, 3, 4, 5].map((value) => (
-        <span key={value} className="bh-bp-alive-box">
-          {value}
-        </span>
-      ))}
+    <span className="bh-bp-alive-boxes">
+      <span className="bh-bp-sr-only">Rate 1 lowest to 5 highest. </span>
+      <span aria-hidden="true">
+        {[1, 2, 3, 4, 5].map((value) => (
+          <span key={value} className="bh-bp-alive-box">
+            {value}
+          </span>
+        ))}
+      </span>
     </span>
   );
 }
@@ -86,7 +89,7 @@ export function AlivenessIndexLayout({
             <p key={paragraph}>{paragraph}</p>
           ))}
         </div>
-        <p className="bh-bp-alive-scale-heading">{model.ratingScaleHeading}</p>
+        <h2 className="bh-bp-alive-scale-heading">{model.ratingScaleHeading}</h2>
         <ol className="bh-bp-alive-scale">
           {model.ratingScaleItems.map((item) => (
             <li key={item}>{item}</li>
@@ -149,6 +152,9 @@ export function AlivenessIndexLayout({
           {model.reflectionPrompts.map((prompt) => (
             <div key={prompt} className="bh-bp-alive-prompt">
               <p>{prompt}</p>
+              <p className="bh-bp-sr-only">
+                Blank lines are provided for a handwritten or typed response.
+              </p>
               <span className="bh-bp-writing-line" aria-hidden="true" />
               <span className="bh-bp-writing-line" aria-hidden="true" />
             </div>

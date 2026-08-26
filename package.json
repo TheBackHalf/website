@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "export:blueprint": "node scripts/export-blueprint.mjs",
+    "test:download-a11y": "npx --yes tsx scripts/fab-5/al-136-download-a11y-validate.ts",
     "eval:lumina": "npx --yes tsx scripts/lumina-eval/run.ts",
     "fab5:qa": "npx --yes tsx scripts/fab-5/qa.ts",
     "fab5:run": "npx --yes tsx scripts/fab-5/run-row.ts",

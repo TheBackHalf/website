@@ -35,17 +35,21 @@ export function CertificateLayout({
         <p className="bh-bp-certificate-body">{body}</p>
         <div className="bh-bp-certificate-fields bh-bp-certificate-fields-centered">
           <div className="bh-bp-certificate-field">
-            <span className="bh-bp-certificate-field-label">Architect Name</span>
+            <p className="bh-bp-certificate-field-label">Architect Name</p>
             {name ? (
-              <span className="bh-bp-certificate-field-value">{name}</span>
-            ) : null}
+              <p className="bh-bp-certificate-field-value">{name}</p>
+            ) : (
+              <p className="bh-bp-sr-only">Name is filled after Journey completion.</p>
+            )}
             <span className="bh-bp-certificate-field-line" aria-hidden="true" />
           </div>
           <div className="bh-bp-certificate-field">
-            <span className="bh-bp-certificate-field-label">Completion Date</span>
+            <p className="bh-bp-certificate-field-label">Completion Date</p>
             {date ? (
-              <span className="bh-bp-certificate-field-value">{date}</span>
-            ) : null}
+              <p className="bh-bp-certificate-field-value">{date}</p>
+            ) : (
+              <p className="bh-bp-sr-only">Date is filled after Journey completion.</p>
+            )}
             <span className="bh-bp-certificate-field-line" aria-hidden="true" />
           </div>
         </div>

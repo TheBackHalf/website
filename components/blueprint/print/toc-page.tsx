@@ -25,7 +25,10 @@ export function TocPage({ variant = "print" }: TocPageProps) {
               {entry.label}
             </a>
             <span className="bh-bp-toc-leader" aria-hidden="true" />
-            <span className="bh-bp-toc-page-hint">{entry.page}</span>
+            <span className="bh-bp-toc-page-hint">
+              <span className="bh-bp-sr-only">page </span>
+              {entry.page}
+            </span>
           </li>
         ))}
       </ol>

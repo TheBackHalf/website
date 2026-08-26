@@ -19,6 +19,19 @@ See `document-structure.ts` for the canonical section order matching the approve
 - Invent, summarize, or rewrite approved copy in this folder.
 - Change section order without founder approval.
 
+## Accessibility (AOS al-136)
+
+Launch-critical Architect downloads are generated from the HTML print views under `/blueprint/print/*` with Chrome tagged PDF output (`tagged: true`, `outline: true`).
+
+- Reading order follows the HTML source. Repeated running headers/footers are marked as artifacts.
+- Section titles, exercises, and artifacts use headings. Cover title is an `h1`.
+- Body copy is live HTML text (selectable), not flattened artwork.
+- Cover photography and rules are decorative. The butterfly mark has empty alt beside the visible title.
+- Blank writing/rating areas include text alternatives for assistive technology.
+- Print contrast uses darker secondary text than the marketing muted token; cover gold is unchanged.
+
+The HTML print view is the engineering-recommended accessible equivalent source. A separate public HTML/EPUB download is **not** Founder-approved.
+
 ## Export outputs
 
 PDFs are written to `public/downloads/blueprint/`:

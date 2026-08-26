@@ -18,17 +18,15 @@ from pathlib import Path
 import pymupdf
 path = Path(sys.argv[1])
 doc = pymupdf.open(path)
-keep = [i for i, p in enumerate(doc) if p.get_text('text').strip()]
-if len(keep) == len(doc):
+drop = [i for i, p in enumerate(doc) if not p.get_text('text').strip()]
+if not drop:
     doc.close()
     raise SystemExit(0)
-out = pymupdf.open()
-for i in keep:
-    out.insert_pdf(doc, from_page=i, to_page=i)
+for i in reversed(drop):
+    doc.delete_page(i)
+doc.save(path, incremental=False, deflate=True, garbage=4)
 doc.close()
-out.save(path, deflate=True, garbage=4)
-out.close()
-print(f'Stripped blank pages -> {len(keep)} pages')
+print(f'Stripped blank pages -> remaining pages kept in place')
 `;
   const result = spawnSync("python", ["-c", script, pdfPath], { encoding: "utf8" });
   if (result.stdout) process.stdout.write(result.stdout);
@@ -82,13 +80,24 @@ await page.evaluate(() => {
     root.style.background = "transparent";
     root.style.margin = "0";
     root.style.padding = "0";
+    const title = root.getAttribute("data-document")?.trim();
+    if (title) document.title = title;
   }
+  document.querySelectorAll(".bh-bp-page").forEach((el) => {
+    if (el instanceof HTMLElement) {
+      el.style.margin = "0";
+      el.style.boxShadow = "none";
+    }
+  });
+  document.documentElement.lang = "en";
 });
 await page.pdf({
   path: outPath,
   format: "Letter",
   printBackground: true,
   preferCSSPageSize: true,
+  tagged: true,
+  outline: true,
   margin: { top: 0, right: 0, bottom: 0, left: 0 },
 });
 await browser.close();

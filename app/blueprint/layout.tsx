@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "@/styles/blueprint-print.css";
 
 export const metadata: Metadata = {
-  title: "Blueprint Production",
+  title: "The Back Half Blueprint",
   robots: { index: false, follow: false },
 };
 

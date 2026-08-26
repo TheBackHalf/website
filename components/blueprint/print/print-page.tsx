@@ -42,12 +42,12 @@ export function PrintPage({
       data-variant={variant}
     >
       {header ? (
-        <header className="bh-bp-page-header">
+        <header className="bh-bp-page-header" aria-hidden="true">
           <span className="bh-bp-page-header-text">{header}</span>
         </header>
       ) : null}
       <div className="bh-bp-page-body">{children}</div>
-      <footer className="bh-bp-page-footer" aria-hidden={hidePageNumber}>
+      <footer className="bh-bp-page-footer" aria-hidden="true">
         <span className="bh-bp-page-brand">The Back Half Blueprint</span>
         {!hidePageNumber ? (
           <span className="bh-bp-page-number" />
