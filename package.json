@@ -24,6 +24,7 @@
     "fab5:row150-persist": "npx --yes tsx scripts/fab-5/row-150-persist-validate.ts",
     "fab5:entrance-review": "npx --yes tsx scripts/fab-5/cinematic-entrance-validate.ts",
     "fab5:row151": "npx --yes tsx scripts/fab-5/row-151-validate.ts",
+    "fab5:row209": "npx --yes tsx scripts/fab-5/row-209-validate.ts",
     "fab5:row153": "npx --yes tsx scripts/fab-5/row-153-validate.ts",
     "fab5:row60": "npx --yes tsx scripts/fab-5/row-60-validate.ts",
     "fab5:row32": "npx --yes tsx scripts/fab-5/row-32-validate.ts",

@@ -1,0 +1,21 @@
+{
+  "row": 209,
+  "excelRow": 210,
+  "aosWorkId": "al-209",
+  "deliverable": "Create Launch-Day Executive Dashboard",
+  "technicalStatus": "correction_in_progress",
+  "percentCompleteRecorded": 90,
+  "founderAcceptance": null,
+  "founderAccepted": false,
+  "rowMarkedComplete": false,
+  "primaryOwner": "michelle",
+  "engineeringPassOwner": "nia",
+  "supportingOwner": "imani",
+  "dashboard": "/ops/admin/executive-dashboard",
+  "dashboardEs": "/es/ops/admin/executive-dashboard",
+  "founderReviewUrl": "http://localhost:3000/_internal/row209-executive-dashboard-review",
+  "sourceOfTruth": "ops/fab-5/ROW-209-LAUNCH-DAY-EXECUTIVE-DASHBOARD.md",
+  "validation": "ops/fab-5/runs/row-209-executive-dashboard-validation.json",
+  "nextAction": "Founder Acceptance Review after NEEDS CHANGES correction. Isolated fab5:row209 including live auth and desktop/mobile browser tests must pass. Do not mark Complete until explicit Founder approval from Kimberly Walker (human).",
+  "generatedAt": "2026-08-26T18:30:00.000Z"
+}

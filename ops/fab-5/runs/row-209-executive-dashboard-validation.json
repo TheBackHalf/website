@@ -1,0 +1,164 @@
+{
+  "row": 209,
+  "aosWorkId": "al-209",
+  "generatedAt": "2026-08-26T20:16:30.778Z",
+  "founderAccepted": false,
+  "rowMarkedComplete": false,
+  "dashboard": "/ops/admin/executive-dashboard",
+  "review": "/_internal/row209-executive-dashboard-review",
+  "tests": [
+    {
+      "id": "T1",
+      "name": "Empty environment exposes all 10 required panels as N/A, not false GREEN",
+      "result": "PASS",
+      "detail": "panels=enrollment-revenue:N/A:unconfirmed,traffic-conversion:N/A:unconfirmed,production-health:N/A:unconfirmed,payments:N/A:unconfirmed,account-access:N/A:unconfirmed,lumina-health:N/A:unconfirmed,support-volume:N/A:unconfirmed,marketing-performance:N/A:unconfirmed,critical-incidents:N/A:unconfirmed,founder-decisions:N/A:unconfirmed"
+    },
+    {
+      "id": "T2",
+      "name": "Enrollment/revenue shows paid launch purchase and excludes historical label field",
+      "result": "PASS",
+      "detail": "purchasesToday=1 gross=9700 status=YELLOW"
+    },
+    {
+      "id": "T3",
+      "name": "Traffic/conversion counts first-party sessions",
+      "result": "PASS",
+      "detail": "sessions=1"
+    },
+    {
+      "id": "T4",
+      "name": "Production health RED on Row 61 uptime FAIL raises Founder attention",
+      "result": "PASS",
+      "detail": "production=RED attention=true"
+    },
+    {
+      "id": "T5",
+      "name": "Payments panel YELLOW when failed payments exist today",
+      "result": "PASS",
+      "detail": "failedToday=1 status=YELLOW"
+    },
+    {
+      "id": "T6",
+      "name": "Account/access YELLOW on auth_failed today",
+      "result": "PASS",
+      "detail": "auth_failed=1"
+    },
+    {
+      "id": "T7",
+      "name": "Lumina unreported is N/A; lumina_error today is YELLOW; no conversation text",
+      "result": "PASS",
+      "detail": "empty=N/A withError=YELLOW opened=1"
+    },
+    {
+      "id": "T8",
+      "name": "Support volume YELLOW on overdue / P1 tickets (counts only)",
+      "result": "PASS",
+      "detail": "overdue=1 p1=1"
+    },
+    {
+      "id": "T9",
+      "name": "Marketing panel reads Row 84 funnel and does not require LinkedIn",
+      "result": "PASS",
+      "detail": "landing=1 linkedinRequired=false"
+    },
+    {
+      "id": "T10",
+      "name": "Critical incidents RED on open RED launch risk",
+      "result": "PASS",
+      "detail": "health=RED incidents=RED"
+    },
+    {
+      "id": "T11",
+      "name": "Founder decisions panel lists OPEN urgent AOS decisions",
+      "result": "PASS",
+      "detail": "decisions=1 status=RED"
+    },
+    {
+      "id": "T12",
+      "name": "Live pages are force-dynamic, noindex, includeTest false",
+      "result": "PASS",
+      "detail": "EN/ES/review pages set force-dynamic, noindex, includeTest: false"
+    },
+    {
+      "id": "T13",
+      "name": "EN, ES, and localhost review routes exist",
+      "result": "PASS",
+      "detail": "/ops/admin/executive-dashboard · /es/ops/admin/executive-dashboard · /_internal/row209-executive-dashboard-review"
+    },
+    {
+      "id": "T14",
+      "name": "Admin middleware covers the executive dashboard; architect/support denied",
+      "result": "PASS",
+      "detail": "Existing isAdminOpsPath prefix; no auth catalog change required"
+    },
+    {
+      "id": "T15",
+      "name": "Serialized model has no secrets, emails, or payment credentials",
+      "result": "PASS",
+      "detail": "Aggregates and operational titles only"
+    },
+    {
+      "id": "T16",
+      "name": "Composer is read-only: loads monitoring snapshot, does not run probes or Stripe",
+      "result": "PASS",
+      "detail": "Read-only composition over Row 151 / 84 / 61 / AOS"
+    },
+    {
+      "id": "T17",
+      "name": "View is responsive and renders every required panel id",
+      "result": "PASS",
+      "detail": "Desktop two-column grid, mobile stacked, N/A visually distinct from GREEN"
+    },
+    {
+      "id": "T18",
+      "name": "Missing Row 61 snapshot is N/A and does not fabricate GREEN/RED production health",
+      "result": "PASS",
+      "detail": "Unconfigured monitoring cannot produce false GREEN or false RED"
+    },
+    {
+      "id": "T19",
+      "name": "Approve/Reject stays on Agent Operations; executive view does not execute decisions",
+      "result": "PASS",
+      "detail": "Nia experience view only; AOS decision actions unchanged"
+    },
+    {
+      "id": "T20",
+      "name": "Auth, Stripe webhook, and middleware files were not modified for this row",
+      "result": "PASS",
+      "detail": "New route is covered by existing /ops/admin prefix. No auth/payment system edits."
+    },
+    {
+      "id": "T21",
+      "name": "Zero activity with Row 61 payments PASS is honest GREEN, not N/A",
+      "result": "PASS",
+      "detail": "withProbe enrollment=GREEN payments=GREEN; empty enrollment=N/A"
+    },
+    {
+      "id": "T21b",
+      "name": "Partial telemetry cannot paint executive status GREEN",
+      "result": "PASS",
+      "detail": "purchaseExec=YELLOW emptyExec=N/A zeroExec=N/A"
+    },
+    {
+      "id": "T22",
+      "name": "Authenticated admin loads EN/ES executive dashboard; architect/support denied",
+      "result": "PASS",
+      "detail": "none=307:/login?next=%2Fops%2Fadmin%2Fexecutive-dashboard esNone=307:/es/login?next=%2Fes%2Fops%2Fadmin%2Fexecutive-dashboard architect=307:/access-denied support=307:/access-denied admin=200 adminEs=200 marker=true esMarker=true panels=true esPanels=true falseGreen=false esFalseGreen=false actions=false approve=false"
+    },
+    {
+      "id": "T23",
+      "name": "Localhost review route renders the same executive view (not production)",
+      "result": "PASS",
+      "detail": "review=200 localhostOnlyAsserted=true"
+    },
+    {
+      "id": "T24",
+      "name": "Real desktop and mobile browser validation of the live executive view",
+      "result": "PASS",
+      "detail": "desktopPanels=10 desktopOverflow=false exec=N/A mobilePanels=10 stacked=true mobileOverflow=false falseGreen=false"
+    }
+  ],
+  "failures": [],
+  "passCount": 25,
+  "failCount": 0
+}

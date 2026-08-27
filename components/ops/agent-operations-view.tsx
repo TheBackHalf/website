@@ -54,6 +54,10 @@ export function AgentOperationsView({ snapshot }: { snapshot: AgentOperationsSna
           Admin
         </a>
         {" · "}
+        <a href="/ops/admin/executive-dashboard" className="underline decoration-bh-purple/30">
+          Launch-Day Executive Dashboard
+        </a>
+        {" · "}
         <a href="/ops/admin/launch-dashboard" className="underline decoration-bh-purple/30">
           Daily Launch Dashboard
         </a>

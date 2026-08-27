@@ -99,6 +99,19 @@ export function LaunchDashboardView({
         Consolidated command view. Marketing detail remains on the Row 84 dashboard.
         This page does not replace source systems.
       </p>
+      <p className="mt-3 font-sans text-sm">
+        <a href="/ops/admin/executive-dashboard" className="underline decoration-bh-purple/30">
+          Launch-Day Executive Dashboard
+        </a>
+        {" · "}
+        <a href="/ops/admin/launch-kpi" className="underline decoration-bh-purple/30">
+          Marketing KPI
+        </a>
+        {" · "}
+        <a href="/ops/admin" className="underline decoration-bh-purple/30">
+          Admin
+        </a>
+      </p>
 
       <section
         className={`mt-8 rounded-sm border px-5 py-4 ${healthClass(model.health)}`}
