@@ -1,0 +1,129 @@
+{
+  "workId": "al-187",
+  "row": 187,
+  "deliverable": "Fix Responsive and Touch Issues",
+  "at": "2026-08-27T14:08:46.032Z",
+  "owner": "imani",
+  "founderAcceptanceRecorded": false,
+  "commandCenterMarkedComplete": false,
+  "stripeConfigModified": false,
+  "customDomainDnsModified": false,
+  "tests": [
+    {
+      "id": "F-layout",
+      "name": "app/layout.tsx exists",
+      "result": "PASS",
+      "detail": "app/layout.tsx"
+    },
+    {
+      "id": "F-globals",
+      "name": "app/globals.css exists",
+      "result": "PASS",
+      "detail": "app/globals.css"
+    },
+    {
+      "id": "F-tokens",
+      "name": "styles/design-tokens.css exists",
+      "result": "PASS",
+      "detail": "styles/design-tokens.css"
+    },
+    {
+      "id": "F-mobile",
+      "name": "styles/mobile-touch.css exists",
+      "result": "PASS",
+      "detail": "styles/mobile-touch.css"
+    },
+    {
+      "id": "F-inset",
+      "name": "components/mobile/visual-viewport-inset.tsx exists",
+      "result": "PASS",
+      "detail": "components/mobile/visual-viewport-inset.tsx"
+    },
+    {
+      "id": "F-geometry",
+      "name": "lib/ui/visual-viewport.ts exists",
+      "result": "PASS",
+      "detail": "lib/ui/visual-viewport.ts"
+    },
+    {
+      "id": "F-section",
+      "name": "components/home/section-shell.tsx exists",
+      "result": "PASS",
+      "detail": "components/home/section-shell.tsx"
+    },
+    {
+      "id": "V1",
+      "name": "Root layout exports Next.js Viewport",
+      "result": "PASS",
+      "detail": "device-width, cover, resizes-content"
+    },
+    {
+      "id": "V2",
+      "name": "Viewport does not disable pinch-zoom",
+      "result": "PASS",
+      "detail": "userScalable remains enabled"
+    },
+    {
+      "id": "V3",
+      "name": "VisualViewportInset is mounted in root layout",
+      "result": "PASS",
+      "detail": "keyboard inset + focused-field scroll"
+    },
+    {
+      "id": "C1",
+      "name": "Mobile-touch stylesheet is imported",
+      "result": "PASS",
+      "detail": "globals.css imports styles/mobile-touch.css"
+    },
+    {
+      "id": "C2",
+      "name": "Overflow clip and 16px form inputs",
+      "result": "PASS",
+      "detail": "html/body clip + 16px inputs prevent iOS zoom"
+    },
+    {
+      "id": "C3",
+      "name": "Tap-target token and 44px controls",
+      "result": "PASS",
+      "detail": "44px language switcher, ratings, mobile toggle, account"
+    },
+    {
+      "id": "C4",
+      "name": "Keyboard overlap padding uses visual-viewport inset",
+      "result": "PASS",
+      "detail": "composer dock + chat column shrink when keyboard is open"
+    },
+    {
+      "id": "C5",
+      "name": "Media does not overflow the viewport",
+      "result": "PASS",
+      "detail": "img/video/iframe max-width + founder media contain"
+    },
+    {
+      "id": "C6",
+      "name": "Public and dashboard headers wrap instead of clipping",
+      "result": "PASS",
+      "detail": "site header wrap, dashboard CTAs stack, section clip-x"
+    },
+    {
+      "id": "C7",
+      "name": "Reduced-data path drops decorative hero motion",
+      "result": "PASS",
+      "detail": "performance: skip glow/noise/kenburns when requested"
+    },
+    {
+      "id": "K1",
+      "name": "Keyboard inset geometry",
+      "result": "PASS",
+      "detail": "closed=0; open=380; scrolled=340"
+    },
+    {
+      "id": "S1",
+      "name": "No secrets in Row 187 sources",
+      "result": "PASS",
+      "detail": "no API keys or connection strings"
+    }
+  ],
+  "failures": [],
+  "result": "PASS"
+}

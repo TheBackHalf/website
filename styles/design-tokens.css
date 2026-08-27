@@ -90,6 +90,9 @@
   --bh-space-40: 10rem;
   --bh-space-48: 12rem;
 
+  /* ——— Touch / mobile (Row 187) ——— */
+  --bh-tap-min: 2.75rem;
+
   /* ——— Layout / content widths ——— */
   --bh-width-content: 72rem;
   --bh-width-wide: 64rem;
