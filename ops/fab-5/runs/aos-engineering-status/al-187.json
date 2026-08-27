@@ -1,0 +1,34 @@
+{
+  "aosWorkId": "al-187",
+  "source": "command_center",
+  "sourceReference": "August Launch row 187",
+  "deliverable": "Fix Responsive and Touch Issues",
+  "ownerAgent": "imani",
+  "status": "IMPLEMENTATION_READY",
+  "founderAcceptance": "required_not_claimed",
+  "commandCenterComplete": false,
+  "percentCompleteClaim": null,
+  "repositoryChange": true,
+  "prUrl": "https://github.com/TheBackHalf/website/pull/66",
+  "branch": "cursor/aos-imani-al-187-05ff",
+  "summary": "Implemented launch-critical responsive and touch repairs: viewport keyboard/safe-area metadata, visualViewport keyboard inset, 44px tap targets, overflow/clipping, iOS dvh, media max-width, mobile scroll lock, and reduced hero animation cost on phones.",
+  "fixes": [
+    "overflow",
+    "clipped_text",
+    "keyboard_overlap",
+    "tap_targets",
+    "scrolling",
+    "media",
+    "performance"
+  ],
+  "validation": {
+    "typecheck": "PASS",
+    "nearestTest": "npm run fab5:row187",
+    "nearestTestResult": "PASS 27/27",
+    "build": "PASS",
+    "browserProbe": "PASS — no overflow or tap-target failures at 390x844 and 360x800 on /, /register, /login, /journey, /eligibility, /contact, /es",
+    "merged": false
+  },
+  "nextAction": "Nia retests participant experience on priority devices. Founder acceptance stays with Kimberly Walker (human). Do not mark the Command Center row Complete from this file.",
+  "updatedAt": "2026-08-27T14:37:00.000Z"
+}

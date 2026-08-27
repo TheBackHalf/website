@@ -1,0 +1,179 @@
+{
+  "row": 187,
+  "aosWorkId": "al-187",
+  "deliverable": "Fix Responsive and Touch Issues",
+  "ownerAgent": "imani",
+  "generatedAt": "2026-08-27T15:05:07.655Z",
+  "founderAcceptance": "required_not_claimed",
+  "commandCenterStatusClaim": "not_marked_complete",
+  "summary": {
+    "total": 27,
+    "passed": 27,
+    "failed": 0
+  },
+  "checks": [
+    {
+      "id": "keyboard-closed",
+      "name": "No keyboard inset when visual viewport matches layout",
+      "result": "PASS",
+      "detail": "inset=0"
+    },
+    {
+      "id": "keyboard-open",
+      "name": "Keyboard inset equals covered layout height",
+      "result": "PASS",
+      "detail": "inset=320"
+    },
+    {
+      "id": "keyboard-offset-top",
+      "name": "iOS visualViewport.offsetTop is subtracted",
+      "result": "PASS",
+      "detail": "inset=280"
+    },
+    {
+      "id": "keyboard-invalid",
+      "name": "Non-finite viewport metrics yield 0 inset",
+      "result": "PASS",
+      "detail": "NaN guarded"
+    },
+    {
+      "id": "viewport-file",
+      "name": "Launch viewport module exists",
+      "result": "PASS",
+      "detail": "lib/responsive/viewport.ts"
+    },
+    {
+      "id": "viewport-zoom",
+      "name": "Pinch-zoom remains enabled",
+      "result": "PASS",
+      "detail": "{\"userScalable\":\"default\",\"maximumScale\":\"default\"}"
+    },
+    {
+      "id": "viewport-keyboard",
+      "name": "interactive-widget resizes content for software keyboard",
+      "result": "PASS",
+      "detail": "resizes-content"
+    },
+    {
+      "id": "viewport-safe-area",
+      "name": "viewport-fit cover enables safe-area insets",
+      "result": "PASS",
+      "detail": "cover"
+    },
+    {
+      "id": "layout-viewport-export",
+      "name": "Root layout exports the launch viewport",
+      "result": "PASS",
+      "detail": "app/layout.tsx viewport export"
+    },
+    {
+      "id": "layout-insets",
+      "name": "Root layout mounts VisualViewportInsets",
+      "result": "PASS",
+      "detail": "VisualViewportInsets in app/layout.tsx"
+    },
+    {
+      "id": "overflow-clip",
+      "name": "Document clips horizontal overflow",
+      "result": "PASS",
+      "detail": "html/body overflow-x: clip"
+    },
+    {
+      "id": "tap-min-token",
+      "name": "44px tap-target token is defined",
+      "result": "PASS",
+      "detail": "--bh-tap-min"
+    },
+    {
+      "id": "tap-nav",
+      "name": "Primary nav/header links use 44px tap targets",
+      "result": "PASS",
+      "detail": "nav, language switcher, mobile toggle"
+    },
+    {
+      "id": "keyboard-css",
+      "name": "Composer dock and inputs use --bh-keyboard-inset",
+      "result": "PASS",
+      "detail": "composer dock + form scroll-margin"
+    },
+    {
+      "id": "no-hero-nowrap",
+      "name": "Hero supporting sentence is allowed to wrap",
+      "result": "PASS",
+      "detail": "nowrap removed from #hero .bh-hero-subtext"
+    },
+    {
+      "id": "hero-dvh",
+      "name": "Hero uses dynamic viewport height",
+      "result": "PASS",
+      "detail": "bh-hero min-h-dvh"
+    },
+    {
+      "id": "touch-scroll",
+      "name": "Horizontal and chat scrollers use touch momentum",
+      "result": "PASS",
+      "detail": "journey nav + lumina scroll"
+    },
+    {
+      "id": "journey-label-wrap",
+      "name": "Journey stage labels wrap as words, not characters",
+      "result": "PASS",
+      "detail": "bh-journey-stage-nav-label"
+    },
+    {
+      "id": "media-max-width",
+      "name": "Embedded media cannot overflow the viewport",
+      "result": "PASS",
+      "detail": "img/video/iframe max-width"
+    },
+    {
+      "id": "mobile-perf",
+      "name": "Hero kenburns is disabled on small screens",
+      "result": "PASS",
+      "detail": "phone GPU/battery"
+    },
+    {
+      "id": "scroll-lock",
+      "name": "Body scroll lock class exists for mobile nav",
+      "result": "PASS",
+      "detail": "bh-scroll-locked"
+    },
+    {
+      "id": "hero-subtext-wrap",
+      "name": "Hero markup no longer forces nowrap",
+      "result": "PASS",
+      "detail": "components/home/hero-section.tsx"
+    },
+    {
+      "id": "section-overflow",
+      "name": "Section shells clip x-overflow without clipping vertical text",
+      "result": "PASS",
+      "detail": "components/home/section-shell.tsx"
+    },
+    {
+      "id": "app-scroll-lock",
+      "name": "Architect mobile nav locks background scroll",
+      "result": "PASS",
+      "detail": "AppShellLayout"
+    },
+    {
+      "id": "composer-focus",
+      "name": "Lumina composer scrolls focused field into view",
+      "result": "PASS",
+      "detail": "LuminaComposer onFocus"
+    },
+    {
+      "id": "age-gate-tap",
+      "name": "Age-gate choices use 44px labels and 24px radios",
+      "result": "PASS",
+      "detail": "age-gate labels"
+    },
+    {
+      "id": "no-zoom-lock",
+      "name": "Security/accessibility: zoom is not disabled",
+      "result": "PASS",
+      "detail": "viewport zoom remains available"
+    }
+  ],
+  "nextAction": "Nia retests participant experience. Founder acceptance stays with Kimberly Walker (human)."
+}
