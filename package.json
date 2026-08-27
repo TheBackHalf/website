@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "typecheck": "tsc --noEmit",
     "export:blueprint": "node scripts/export-blueprint.mjs",
     "eval:lumina": "npx --yes tsx scripts/lumina-eval/run.ts",
     "fab5:qa": "npx --yes tsx scripts/fab-5/qa.ts",
@@ -39,7 +40,8 @@
     "fab5:row79": "npx --yes tsx scripts/fab-5/row-79-validate.ts",
     "fab5:row82": "npx --yes tsx scripts/fab-5/row-82-validate.ts",
     "fab5:aos": "npx --yes tsx scripts/fab-5/aos-validate.ts",
-    "fab5:aos-prod": "npx --yes tsx scripts/fab-5/aos-production-invoke.ts"
+    "fab5:aos-prod": "npx --yes tsx scripts/fab-5/aos-production-invoke.ts",
+    "fab5:row187": "npx --yes tsx scripts/fab-5/row-187-validate.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",

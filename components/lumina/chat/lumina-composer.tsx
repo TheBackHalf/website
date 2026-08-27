@@ -68,6 +68,13 @@ export function LuminaComposer({
           aria-invalid={Boolean(errorMessage) || undefined}
           aria-describedby={errorMessage ? errorId : undefined}
           className="bh-lumina-chat-composer-input"
+          enterKeyHint="send"
+          onFocus={(event) => {
+            event.currentTarget.scrollIntoView({
+              block: "nearest",
+              inline: "nearest",
+            });
+          }}
           onChange={(event) => setValue(event.target.value)}
           onKeyDown={(event) => {
             if (event.key === "Enter" && !event.shiftKey) {

@@ -44,7 +44,7 @@ export function SectionShell({
       id={id}
       aria-label={ariaLabel}
       className={cn(
-        "bh-section-shell relative scroll-mt-6 overflow-hidden px-5 sm:px-6 md:scroll-mt-8 md:px-10",
+        "bh-section-shell relative scroll-mt-[5.5rem] overflow-x-clip px-5 sm:px-6 md:scroll-mt-24 md:px-10",
         density === "compact" ? "bh-section-compact" : "bh-section-default",
         variantClasses[variant],
         className,

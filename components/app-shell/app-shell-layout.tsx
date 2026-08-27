@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SkipLink } from "@/components/design-system";
 import { LanguageSwitcher } from "@/components/i18n/language-switcher";
 import { AppAccountMenu } from "@/components/app-shell/app-account-menu";
@@ -27,6 +27,20 @@ export function AppShellLayout({ locale, children }: AppShellLayoutProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const dictionary = getDictionary(locale).appShell;
   const homeHref = getLocalizedArchitectPath("dashboard", locale);
+
+  useEffect(() => {
+    const html = document.documentElement;
+    const body = document.body;
+    if (!mobileOpen) {
+      return;
+    }
+    html.classList.add("bh-scroll-locked");
+    body.classList.add("bh-scroll-locked");
+    return () => {
+      html.classList.remove("bh-scroll-locked");
+      body.classList.remove("bh-scroll-locked");
+    };
+  }, [mobileOpen]);
 
   return (
     <div className="bh-app-shell min-h-screen bg-bh-cream text-bh-ink">
