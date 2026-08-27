@@ -1,11 +1,19 @@
 import { headers } from "next/headers";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Outfit } from "next/font/google";
 import { ProductAnalyticsBeacon } from "@/components/analytics/product-analytics-beacon";
 import { OrganizationJsonLd } from "@/components/seo/json-ld";
+import { ViewportStability } from "@/components/site/viewport-stability";
 import { createRootMetadata } from "@/lib/seo/metadata";
 import { isLocale } from "@/lib/i18n/config";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  interactiveWidget: "resizes-content",
+};
 
 const display = Cormorant_Garamond({
   variable: "--font-bh-display",
@@ -39,9 +47,10 @@ export default async function RootLayout({
   return (
     <html
       lang={htmlLang}
-      className={`${display.variable} ${sans.variable} h-full antialiased`}
+      className={`${display.variable} ${sans.variable} h-full overflow-x-clip antialiased`}
     >
-      <body className="flex min-h-full flex-col">
+      <body className="flex min-h-full flex-col overflow-x-clip">
+        <ViewportStability />
         <OrganizationJsonLd />
         <ProductAnalyticsBeacon />
         {children}

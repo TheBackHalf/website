@@ -145,4 +145,8 @@
   --bh-z-nav: 20;
   --bh-z-overlay: 40;
   --bh-z-skip: 50;
+
+  /* ——— Touch / viewport (Row 187) ——— */
+  --bh-tap-min: 2.75rem;
+  --bh-keyboard-inset: 0px;
 }

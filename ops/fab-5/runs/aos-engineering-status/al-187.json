@@ -1,0 +1,26 @@
+{
+  "aosWorkId": "al-187",
+  "row": 187,
+  "title": "Fix Responsive and Touch Issues",
+  "ownerAgent": "imani",
+  "source": "command_center",
+  "sourceReference": "August Launch row 187",
+  "softwareChange": true,
+  "status": "in_progress",
+  "founderAcceptanceRecorded": false,
+  "founderAcceptanceAuthority": "Kimberly Walker (human)",
+  "merged": false,
+  "deployed": false,
+  "secretsExposed": false,
+  "authWeakened": false,
+  "stripeOrDnsChanged": false,
+  "scope": [
+    "overflow and clipped text",
+    "keyboard overlap",
+    "tap targets",
+    "scrolling",
+    "media containment",
+    "mobile performance"
+  ],
+  "notes": "Engineering implementation in progress. Validation, typecheck, and build have not been recorded yet. Founder acceptance is not claimed."
+}
