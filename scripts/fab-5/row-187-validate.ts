@@ -160,6 +160,19 @@ function mainSync() {
     css.includes("-webkit-overflow-scrolling: touch"),
     "journey nav + lumina scroll",
   );
+  const journeyLabelBlock = css.slice(
+    css.indexOf(".bh-journey-stage-nav-label"),
+    css.indexOf(".bh-journey-stage-nav-label") + 420,
+  );
+  check(
+    "journey-label-wrap",
+    "Journey stage labels wrap as words, not characters",
+    journeyLabelBlock.includes("overflow-wrap: normal") &&
+      journeyLabelBlock.includes("word-break: normal") &&
+      !journeyLabelBlock.includes("overflow-wrap:anywhere") &&
+      !journeyLabelBlock.includes("[overflow-wrap:anywhere]"),
+    "bh-journey-stage-nav-label",
+  );
   check(
     "media-max-width",
     "Embedded media cannot overflow the viewport",

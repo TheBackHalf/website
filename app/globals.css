@@ -208,7 +208,7 @@
   }
 
   .bh-heading {
-    @apply font-display text-balance font-medium tracking-[-0.02em] text-bh-ink [overflow-wrap:anywhere];
+    @apply font-display text-balance font-medium tracking-[-0.02em] text-bh-ink [overflow-wrap:break-word];
   }
 
   .bh-body {
@@ -741,7 +741,7 @@
   }
 
   .bh-journey-stage-nav-link {
-    @apply flex min-h-11 shrink-0 snap-start flex-col items-center justify-center gap-1.5 rounded-sm border border-white/15 bg-white/5 px-3 py-3 transition duration-300 hover:border-bh-champagne/40 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bh-champagne md:min-w-[7.5rem] md:px-4 md:py-4;
+    @apply flex min-h-11 min-w-[8.25rem] shrink-0 snap-start flex-col items-center justify-center gap-1.5 rounded-sm border border-white/15 bg-white/5 px-3 py-3 transition duration-300 hover:border-bh-champagne/40 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bh-champagne md:min-w-[7.5rem] md:px-4 md:py-4;
   }
 
   .bh-journey-stage-nav-link-light {
@@ -757,7 +757,9 @@
   }
 
   .bh-journey-stage-nav-label {
-    @apply max-w-[7.5rem] text-center font-sans text-[0.58rem] font-medium leading-snug tracking-[0.18em] text-white/85 uppercase [overflow-wrap:anywhere] md:max-w-none md:text-[0.62rem] md:tracking-[0.22em];
+    @apply max-w-[7.75rem] text-center font-sans text-[0.58rem] font-medium leading-snug tracking-[0.14em] text-white/85 uppercase md:max-w-none md:text-[0.62rem] md:tracking-[0.22em];
+    overflow-wrap: normal;
+    word-break: normal;
   }
 
   .bh-journey-stage-nav-link-light .bh-journey-stage-nav-label {
@@ -1952,7 +1954,7 @@
   .bh-hero-headline,
   .bh-app-page-title,
   .bh-statement-text {
-    overflow-wrap: anywhere;
+    overflow-wrap: break-word;
   }
 
   @media (max-width: 379px) {

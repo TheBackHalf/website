@@ -1,0 +1,13 @@
+{
+  "row": 187,
+  "aosWorkId": "al-187",
+  "origin": "http://localhost:3000",
+  "generatedAt": "2026-08-27T14:38:30.000Z",
+  "founderAcceptance": "required_not_claimed",
+  "result": "PASS",
+  "viewports": ["iphone-14 390x844", "android-compact 360x800"],
+  "paths": ["/", "/register", "/login", "/journey", "/eligibility", "/contact", "/es"],
+  "overflowFailures": 0,
+  "tapTargetFailures": 0,
+  "viewportMeta": "width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content"
+}
