@@ -8,13 +8,42 @@
   "founderAcceptance": "open",
   "founderAcceptanceAuthority": "Kimberly Walker (human)",
   "dependency": "Mobile Device Testing (row 186) remains open; Nia retest still required",
+  "pullRequest": "https://github.com/TheBackHalf/website/pull/68",
+  "branch": "cursor/aos-imani-al-187-d7d0",
+  "merged": false,
+  "deployed": false,
   "validation": {
-    "script": "npm run fab5:row187",
-    "passed": 10,
-    "failed": 0,
-    "total": 10,
-    "evidence": "ops/fab-5/runs/row-187-responsive-touch-validation.json"
+    "typecheck": {
+      "command": "npx tsc --noEmit",
+      "result": "PASS"
+    },
+    "nearestTest": {
+      "command": "npm run fab5:row187",
+      "result": "PASS",
+      "passed": 10,
+      "failed": 0,
+      "total": 10
+    },
+    "packageTestScript": null,
+    "build": {
+      "command": "npm run build",
+      "result": "PASS",
+      "note": "Pre-existing middleware-to-proxy deprecation and row79 NFT trace warning are unrelated"
+    },
+    "browserProbe": {
+      "command": "node scripts/fab-5/row-187-browser-probe.mjs",
+      "result": "PASS",
+      "passed": 28,
+      "failed": 0,
+      "total": 28,
+      "evidence": "ops/fab-5/runs/row-187-browser-probe.json"
+    },
+    "evidence": [
+      "ops/fab-5/runs/row-187-responsive-touch-validation.json",
+      "ops/fab-5/runs/row-187-browser-probe.json"
+    ]
   },
   "nextAction": "review_pr_then_nia_device_retest",
-  "generatedAt": "2026-08-27T15:06:06.475Z"
+  "generatedAt": "2026-08-27T15:26:12.160Z",
+  "updatedAt": "2026-08-27T15:28:00.000Z"
 }
