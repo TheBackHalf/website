@@ -1,0 +1,90 @@
+{
+  "at": "2026-08-27T16:07:35.468Z",
+  "row": 187,
+  "excelRow": 187,
+  "aosWorkId": "al-187",
+  "title": "Fix Responsive and Touch Issues",
+  "owner": "imani",
+  "passed": 11,
+  "failed": 0,
+  "tests": [
+    {
+      "id": "R187-01",
+      "name": "viewport export with keyboard-safe interactiveWidget",
+      "result": "PASS",
+      "detail": "device-width viewport, cover fit, resizes-content; zoom not disabled"
+    },
+    {
+      "id": "R187-02",
+      "name": "visualViewport keyboard inset hook mounted",
+      "result": "PASS",
+      "detail": "KeyboardInsets sets CSS vars and scrolls focused fields into view"
+    },
+    {
+      "id": "R187-03",
+      "name": "horizontal overflow and media containment",
+      "result": "PASS",
+      "detail": "html/body clip overflow; img/video/iframe max-width 100%"
+    },
+    {
+      "id": "R187-04",
+      "name": "hero subtext no longer forced nowrap",
+      "result": "PASS",
+      "detail": "Supporting sentence wraps instead of clipping on mid/large viewports"
+    },
+    {
+      "id": "R187-05",
+      "name": "public mobile nav on hero and site header",
+      "result": "PASS",
+      "detail": "Hamburger + drawer replaces nowrap public link row on small screens"
+    },
+    {
+      "id": "R187-06",
+      "name": "44px tap targets on launch-critical controls",
+      "result": "PASS",
+      "detail": "Language switcher, nav, account, consent, age-gate, and CTAs use 44px targets"
+    },
+    {
+      "id": "R187-07",
+      "name": "keyboard overlap padding on Lumina composer and forms",
+      "result": "PASS",
+      "detail": "Composer dock and inputs reserve keyboard + safe-area space"
+    },
+    {
+      "id": "R187-08",
+      "name": "dvh shells, safe-area, and mobile media performance",
+      "result": "PASS",
+      "detail": "iOS 100vh replaced; safe-area on chrome; hero kenburns off on small screens"
+    },
+    {
+      "id": "R187-09",
+      "name": "journey stage labels wrap instead of clipping",
+      "result": "PASS",
+      "detail": "Horizontal stage scroller is containable; labels wrap"
+    },
+    {
+      "id": "R187-10",
+      "name": "validation scripts registered",
+      "result": "PASS",
+      "detail": "typecheck + fab5:row187 / test scripts present"
+    },
+    {
+      "id": "R187-11",
+      "name": "no Founder approval fabricated",
+      "result": "PASS",
+      "detail": "Technical repair only. Founder acceptance remains with Kimberly Walker (human)."
+    }
+  ],
+  "founderAcceptanceRecorded": false,
+  "founderAcceptanceAuthority": "Kimberly Walker (human)",
+  "niaRetest": "Nia retests participant experience on priority iPhone/Android after this repair lands.",
+  "defectsAddressed": [
+    "overflow",
+    "clipped text",
+    "keyboard overlap",
+    "tap targets",
+    "scrolling",
+    "media",
+    "performance"
+  ]
+}

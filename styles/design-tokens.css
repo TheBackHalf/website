@@ -145,4 +145,10 @@
   --bh-z-nav: 20;
   --bh-z-overlay: 40;
   --bh-z-skip: 50;
+
+  /* ——— Touch / mobile (Row 187) ——— */
+  --bh-tap: 2.75rem;
+  --bh-keyboard-inset: 0px;
+  --bh-vv-offset-top: 0px;
+  --bh-vv-height: 100dvh;
 }
