@@ -32,7 +32,10 @@ export function SiteHeader({
         </LocaleLink>
 
         <div className="bh-hero-nav-actions">
-          <LanguageSwitcher variant={variant} />
+          <LanguageSwitcher
+            variant={variant}
+            className="bh-public-language-desktop"
+          />
           <PublicPrimaryNav locale={locale} variant={variant} />
         </div>
       </div>

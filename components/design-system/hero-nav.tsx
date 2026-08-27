@@ -18,7 +18,7 @@ export function HeroNav({ locale = "en", className }: HeroNavProps) {
         </LocaleLink>
 
         <div className="bh-hero-nav-actions">
-          <LanguageSwitcher variant="dark" />
+          <LanguageSwitcher variant="dark" className="bh-public-language-desktop" />
           <PublicPrimaryNav locale={locale} variant="dark" />
         </div>
       </div>

@@ -468,7 +468,7 @@
   }
 
   .bh-hero-nav-brand {
-    @apply shrink-0 font-sans text-[0.7rem] font-medium tracking-[0.38em] text-white/95 uppercase transition hover:text-bh-champagne;
+    @apply inline-flex min-h-11 shrink-0 items-center font-sans text-[0.7rem] font-medium tracking-[0.38em] text-white/95 uppercase transition hover:text-bh-champagne;
   }
 
   .bh-hero-nav-link {
@@ -809,7 +809,7 @@
   }
 
   .bh-site-header-brand {
-    @apply shrink-0 font-sans text-[0.7rem] font-medium tracking-[0.38em] text-bh-ink uppercase transition hover:text-bh-purple;
+    @apply inline-flex min-h-11 shrink-0 items-center font-sans text-[0.7rem] font-medium tracking-[0.38em] text-bh-ink uppercase transition hover:text-bh-purple;
   }
 
   .bh-site-header-link {
@@ -1901,7 +1901,15 @@
 
   /* ——— Public mobile nav + touch targets (Row 187) ——— */
   .bh-public-nav {
-    @apply relative flex items-center;
+    @apply relative flex shrink-0 items-center;
+  }
+
+  .bh-public-language-desktop {
+    @apply hidden md:block;
+  }
+
+  .bh-public-nav-drawer-language {
+    @apply mt-6 border-t border-bh-purple/10 pt-4;
   }
 
   .bh-public-nav-desktop {

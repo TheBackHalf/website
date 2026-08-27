@@ -3,6 +3,7 @@
  * Static source gates. Does not print secrets.
  */
 import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { existsSync } from "node:fs";
 import path from "node:path";
 
 type Result = "PASS" | "FAIL";
@@ -94,9 +95,12 @@ async function main(): Promise<void> {
       publicNav.includes("bh-public-nav-toggle") &&
         publicNav.includes("bh-public-nav-drawer") &&
         publicNav.includes("Escape") &&
+        publicNav.includes("bh-public-nav-drawer-language") &&
         heroNav.includes("PublicPrimaryNav") &&
+        heroNav.includes("bh-public-language-desktop") &&
         siteHeader.includes("PublicPrimaryNav") &&
         css.includes(".bh-public-nav-toggle") &&
+        css.includes(".bh-public-language-desktop") &&
         css.includes("size-11"),
     ),
     detail: "Hamburger + drawer replaces nowrap public link row on small screens",
@@ -208,6 +212,15 @@ async function main(): Promise<void> {
     `${JSON.stringify(report, null, 2)}\n`,
     "utf8",
   );
+  const liveAuditPath = path.join(runDir, "row-187-mobile-live-audit.json");
+  const liveAudit = existsSync(liveAuditPath)
+    ? (JSON.parse(await readFile(liveAuditPath, "utf8")) as {
+        passed: number;
+        failed: number;
+        results?: unknown[];
+      })
+    : null;
+
   await writeFile(
     path.join(statusDir, "al-187.json"),
     `${JSON.stringify(
@@ -224,6 +237,12 @@ async function main(): Promise<void> {
           failed,
           script: "npm run fab5:row187",
           evidence: "ops/fab-5/runs/row-187-responsive-touch-validation.json",
+          liveAudit: liveAudit ? "ops/fab-5/runs/row-187-mobile-live-audit.json" : null,
+          liveAuditResult: liveAudit
+            ? `${liveAudit.passed}/${(liveAudit.results ?? []).length} PASS failed=${liveAudit.failed}`
+            : "not_run",
+          typecheck: "run separately: npm run typecheck",
+          build: "run separately: npm run build",
         },
         nextAction: "Nia retests participant mobile experience. Founder acceptance stays with Kimberly Walker (human).",
         at: report.at,

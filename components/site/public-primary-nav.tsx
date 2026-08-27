@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useState } from "react";
+import { LanguageSwitcher } from "@/components/i18n/language-switcher";
 import { LocaleLink } from "@/components/i18n/locale-link";
 import { navLinks } from "@/components/home/nav-links";
 import { getDictionary, resolveNavLabel } from "@/content/i18n/get-dictionary";
@@ -106,6 +107,9 @@ export function PublicPrimaryNav({
             </li>
           ))}
         </ul>
+        <div className="bh-public-nav-drawer-language">
+          <LanguageSwitcher variant="light" />
+        </div>
       </nav>
     </div>
   );
