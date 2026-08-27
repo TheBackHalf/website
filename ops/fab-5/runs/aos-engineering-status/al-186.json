@@ -1,0 +1,5190 @@
+{
+  "aosWorkId": "al-186",
+  "row": 186,
+  "excelRow": 187,
+  "source": "command_center",
+  "sourceReference": "August Launch row 186",
+  "deliverable": "Test Priority Mobile Devices",
+  "description": "Test current iPhone and Android sizes, Safari and Chrome, portrait/landscape, forms, chat, videos, downloads, and checkout.",
+  "generatedAt": "2026-08-27T13:39:26.349Z",
+  "operatingAgent": "imani",
+  "founderAccepted": false,
+  "rowMarkedComplete": false,
+  "commandCenterStatus": "Not Started",
+  "evidenceAcceptanceState": "open",
+  "overall": "PASS_WITH_GAPS",
+  "secretsPrinted": false,
+  "stripeConfigModified": false,
+  "dnsModified": false,
+  "authenticationWeakened": false,
+  "productFilesChanged": false,
+  "softwareChangeApplied": false,
+  "matrix": {
+    "chrome": "Google Chrome stable via Playwright channel=chrome (Blink). Covers current Android Chrome and iOS Chrome (CriOS user-agent + mobile viewport).",
+    "safari": "Native Safari on iOS/macOS is not available on this Linux runner. Playwright WebKit 26.5 is the documented Safari / iOS Safari engine equivalent, with iOS 18 Safari user-agent.",
+    "edge": "Not in scope for this row. Blink-equivalent to Chrome.",
+    "devices": [
+      {
+        "id": "iphone-se",
+        "label": "iPhone SE (3rd gen)",
+        "css": "375x667",
+        "family": "iphone"
+      },
+      {
+        "id": "iphone-16",
+        "label": "iPhone 16",
+        "css": "393x852",
+        "family": "iphone"
+      },
+      {
+        "id": "iphone-16-pro",
+        "label": "iPhone 16 Pro",
+        "css": "402x874",
+        "family": "iphone"
+      },
+      {
+        "id": "iphone-16-pro-max",
+        "label": "iPhone 16 Pro Max",
+        "css": "440x956",
+        "family": "iphone"
+      },
+      {
+        "id": "android-compact",
+        "label": "Android compact (Galaxy S24/S25 class)",
+        "css": "360x780",
+        "family": "android"
+      },
+      {
+        "id": "pixel-9",
+        "label": "Pixel 9 / common Android",
+        "css": "412x915",
+        "family": "android"
+      },
+      {
+        "id": "android-large",
+        "label": "Android large (Pixel 9 Pro XL class)",
+        "css": "448x998",
+        "family": "android"
+      }
+    ],
+    "orientations": [
+      "portrait",
+      "landscape"
+    ],
+    "layoutPaths": [
+      "/",
+      "/register",
+      "/checkout",
+      "/lumina",
+      "/login",
+      "/support"
+    ],
+    "deepWalkDevices": [
+      "iphone-16-pro",
+      "pixel-9"
+    ]
+  },
+  "origins": {
+    "production": "https://website-two-psi-49.vercel.app",
+    "canonicalApex": "https://thebackhalf.org (ENOTFOUND from this environment; DNS not changed)",
+    "canonicalWww": "https://www.thebackhalf.org (ENOTFOUND from this environment; DNS not changed)"
+  },
+  "counts": {
+    "PASS": 488,
+    "FAIL": 0,
+    "GAP": 2,
+    "BLOCKED": 0
+  },
+  "countsByArea": {
+    "navigation": {
+      "GAP": 2,
+      "PASS": 10
+    },
+    "videos": {
+      "PASS": 25
+    },
+    "downloads": {
+      "PASS": 13
+    },
+    "layout": {
+      "PASS": 336
+    },
+    "forms": {
+      "PASS": 72
+    },
+    "chat": {
+      "PASS": 16
+    },
+    "checkout": {
+      "PASS": 16
+    }
+  },
+  "countsByEngine": {
+    "http": {
+      "GAP": 2,
+      "PASS": 24
+    },
+    "chrome": {
+      "PASS": 232
+    },
+    "webkit": {
+      "PASS": 232
+    }
+  },
+  "consoleErrors": [
+    "webkit/iphone-se-landscape pageerror /website-two-psi-49.vercel.app/contact?_rsc=tXyZJ52UQVBCVsD3 due to access control checks."
+  ],
+  "surfaces": {
+    "forms": {
+      "result": "PASS",
+      "tested": [
+        "Eligibility 18+ age gate on /register",
+        "Registration fields and incomplete-submit validation",
+        "Login fields and invalid-submit validation",
+        "Support request form",
+        "Contact methods + Support CTA",
+        "Forgot-password email field"
+      ],
+      "notExecuted": [
+        "Live account creation",
+        "SMTP delivery"
+      ]
+    },
+    "chat": {
+      "result": "PASS_WITH_GAPS",
+      "tested": [
+        "Public /lumina opening and main content on iPhone 16 Pro and Pixel 9, both orientations, Chrome and WebKit",
+        "Authenticated /architect/lumina redirects to login"
+      ],
+      "notExecuted": [
+        "Logged-in Lumina composer send on production participant account"
+      ]
+    },
+    "videos": {
+      "result": "PASS_WITH_GAPS",
+      "tested": [
+        "Nine production MP4s HTTP 200",
+        "Public /journey loads without overflow",
+        "Chapter I route is auth-gated"
+      ],
+      "notExecuted": [
+        "Full in-player playback of every chapter video on a signed-in Architect"
+      ]
+    },
+    "downloads": {
+      "result": "PASS",
+      "tested": [
+        "Public Blueprint PDFs HTTP 200",
+        "Personalized guidebook API returns 401 without session",
+        "Architect Resources route redirects to login"
+      ]
+    },
+    "checkout": {
+      "result": "PASS_WITH_GAPS",
+      "tested": [
+        "Catalog shows Blueprint, Founding Architect, and Community offers",
+        "Offer start /checkout/blueprint is login-gated",
+        "No horizontal overflow on catalog"
+      ],
+      "notExecuted": [
+        "Live Stripe Checkout charge",
+        "Webhook entitlement"
+      ]
+    }
+  },
+  "findings": [
+    {
+      "id": "G1",
+      "severity": "gap",
+      "area": "navigation",
+      "detail": "thebackhalf.org and www.thebackhalf.org did not resolve from this Cloud Agent network (ENOTFOUND). Same pre-existing gap recorded on al-178/al-184. DNS was not changed."
+    },
+    {
+      "id": "G2",
+      "severity": "gap",
+      "area": "chat",
+      "detail": "Authenticated Lumina composer was not live-sent. Production participant accounts were not used. Login gate to /architect/lumina was verified."
+    },
+    {
+      "id": "G3",
+      "severity": "gap",
+      "area": "checkout",
+      "detail": "Live Stripe Checkout was not executed. Stripe configuration was not modified."
+    },
+    {
+      "id": "G4",
+      "severity": "gap",
+      "area": "safari",
+      "detail": "Native Safari on iOS/macOS was not available. Playwright WebKit 26.5 with iOS 18 Safari UA is the documented engine equivalent."
+    },
+    {
+      "id": "N1",
+      "severity": "note",
+      "area": "videos",
+      "detail": "One WebKit pageerror on /contact RSC fetch (access control checks) during iPhone SE landscape layout sweep. Page still loaded. Same class of WebKit RSC noise recorded on al-184. Not treated as launch-blocking."
+    }
+  ],
+  "gaps": [
+    "Canonical domain DNS from this Cloud Agent network",
+    "Native Safari on iOS/macOS",
+    "Native Chrome on iOS (CriOS) \u2014 UA emulated on Blink",
+    "Logged-in Lumina chat send",
+    "Live Stripe charge",
+    "Personalized download generation for a signed-in Architect"
+  ],
+  "notClaimed": [
+    "Founder acceptance",
+    "Command Center row 186 Complete",
+    "Native iPhone/Android hardware",
+    "Live Stripe charges",
+    "Production participant accounts",
+    "DNS or custom-domain changes"
+  ],
+  "nextAction": "Row 187 (Fix Responsive and Touch Issues) may proceed with remaining tap-target/keyboard polish. This matrix found no launch-blocking overflow, form, chat-gate, video HTTP, download, or checkout-catalog failures. Founder acceptance stays with Kimberly Walker (human).",
+  "launchBlockingDefectsCorrected": [],
+  "validation": {
+    "typecheck": {
+      "command": "./node_modules/.bin/tsc --noEmit",
+      "result": "PASS"
+    },
+    "test": {
+      "command": "npm test",
+      "result": "NOT_PRESENT",
+      "nearest": "none committed; one-off Playwright runner lived at /tmp/al-186-mobile-test.mjs"
+    },
+    "build": {
+      "command": "npm run build",
+      "result": "SKIPPED",
+      "reason": "status-only ops file; cannot affect production"
+    },
+    "gatesRequired": [
+      "npm run typecheck or npx tsc --noEmit if present",
+      "npm test or the nearest package test script if present",
+      "npm run build if the change can affect production"
+    ]
+  },
+  "visualWalkthrough": {
+    "chromeDeviceMode": true,
+    "pages": [
+      "/",
+      "/register",
+      "/login",
+      "/checkout",
+      "/lumina",
+      "/support",
+      "/architect/lumina"
+    ],
+    "viewports": ["402x874", "412x915", "874x402"],
+    "result": "PASS",
+    "note": "Chrome DevTools device mode walkthrough on production. No overflow or clipped forms observed. Auth gates redirected to login. No accounts created. No Stripe charge."
+  },
+  "host": {
+    "os": "linux",
+    "chrome": "Google Chrome stable (channel=chrome)",
+    "webkit": "Playwright WebKit 26.5",
+    "nativeSafari": false,
+    "nativeIosAndroid": false
+  },
+  "checks": [
+    {
+      "id": "DNS-APEX",
+      "area": "navigation",
+      "name": "https://thebackhalf.org reachable",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://thebackhalf.org",
+      "result": "GAP",
+      "detail": "fetch failed"
+    },
+    {
+      "id": "DNS-WWW",
+      "area": "navigation",
+      "name": "https://www.thebackhalf.org reachable",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://www.thebackhalf.org",
+      "result": "GAP",
+      "detail": "fetch failed"
+    },
+    {
+      "id": "PROD-ORIGIN",
+      "area": "navigation",
+      "name": "https://website-two-psi-49.vercel.app reachable",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "VIDEO-/videos/onboarding/founding-architect-welcome.mp4",
+      "area": "videos",
+      "name": "Production video /videos/onboarding/founding-architect-welcome.mp4",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "VIDEO-/videos/chapter-1/chapter-1-the-awakening.mp4",
+      "area": "videos",
+      "name": "Production video /videos/chapter-1/chapter-1-the-awakening.mp4",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "VIDEO-/videos/chapter-2/chapter-2-the-mirror.mp4",
+      "area": "videos",
+      "name": "Production video /videos/chapter-2/chapter-2-the-mirror.mp4",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "VIDEO-/videos/chapter-3/chapter-3-choosing-intention.mp4",
+      "area": "videos",
+      "name": "Production video /videos/chapter-3/chapter-3-choosing-intention.mp4",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "VIDEO-/videos/chapter-4/chapter-4-creating-your-standards.mp4",
+      "area": "videos",
+      "name": "Production video /videos/chapter-4/chapter-4-creating-your-standards.mp4",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "VIDEO-/videos/chapter-5/chapter-5-becoming-the-architect.mp4",
+      "area": "videos",
+      "name": "Production video /videos/chapter-5/chapter-5-becoming-the-architect.mp4",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "VIDEO-/videos/chapter-6/chapter-6-expansion.mp4",
+      "area": "videos",
+      "name": "Production video /videos/chapter-6/chapter-6-expansion.mp4",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "VIDEO-/videos/chapter-7/chapter-7-beginning.mp4",
+      "area": "videos",
+      "name": "Production video /videos/chapter-7/chapter-7-beginning.mp4",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "VIDEO-/videos/chapter-7/chapter-7-journey-completion.mp4",
+      "area": "videos",
+      "name": "Production video /videos/chapter-7/chapter-7-journey-completion.mp4",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "DOWNLOAD-/downloads/blueprint/the-back-half-blueprint.pdf",
+      "area": "downloads",
+      "name": "Public Blueprint PDF /downloads/blueprint/the-back-half-blueprint.pdf",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 location="
+    },
+    {
+      "id": "DOWNLOAD-/downloads/blueprint/back-half-aliveness-index.pdf",
+      "area": "downloads",
+      "name": "Public Blueprint PDF /downloads/blueprint/back-half-aliveness-index.pdf",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 location="
+    },
+    {
+      "id": "DOWNLOAD-/downloads/blueprint/back-half-architects-commitment.pdf",
+      "area": "downloads",
+      "name": "Public Blueprint PDF /downloads/blueprint/back-half-architects-commitment.pdf",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 location="
+    },
+    {
+      "id": "DOWNLOAD-/downloads/blueprint/back-half-architect-completion-certificate.pdf",
+      "area": "downloads",
+      "name": "Public Blueprint PDF /downloads/blueprint/back-half-architect-completion-certificate.pdf",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 location="
+    },
+    {
+      "id": "DOWNLOAD-/api/architect/blueprint/guidebook",
+      "area": "downloads",
+      "name": "Auth-gated download /api/architect/blueprint/guidebook",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 401 location="
+    },
+    {
+      "id": "HTTP-/register",
+      "area": "navigation",
+      "name": "Production /register",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "HTTP-/login",
+      "area": "navigation",
+      "name": "Production /login",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "HTTP-/support",
+      "area": "navigation",
+      "name": "Production /support",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "HTTP-/contact",
+      "area": "navigation",
+      "name": "Production /contact",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "HTTP-/checkout",
+      "area": "navigation",
+      "name": "Production /checkout",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "HTTP-/lumina",
+      "area": "navigation",
+      "name": "Production /lumina",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "HTTP-/journey",
+      "area": "navigation",
+      "name": "Production /journey",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "HTTP-/forgot-password",
+      "area": "navigation",
+      "name": "Production /forgot-password",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "HTTP-/eligibility",
+      "area": "navigation",
+      "name": "Production /eligibility",
+      "engine": "http",
+      "viewport": "n/a",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "chrome/iphone-se-portrait///http",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) portrait HTTP /",
+      "engine": "chrome",
+      "viewport": "iphone-se-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=The Back Half \u2014 Magical is Possible"
+    },
+    {
+      "id": "chrome/iphone-se-portrait///overflow",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) portrait overflow /",
+      "engine": "chrome",
+      "viewport": "iphone-se-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=375 innerWidth=375"
+    },
+    {
+      "id": "chrome/iphone-se-portrait//register/http",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) portrait HTTP /register",
+      "engine": "chrome",
+      "viewport": "iphone-se-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Become an Architect \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-se-portrait//register/overflow",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) portrait overflow /register",
+      "engine": "chrome",
+      "viewport": "iphone-se-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=375 innerWidth=375"
+    },
+    {
+      "id": "chrome/iphone-se-portrait//checkout/http",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) portrait HTTP /checkout",
+      "engine": "chrome",
+      "viewport": "iphone-se-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Checkout \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-se-portrait//checkout/overflow",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) portrait overflow /checkout",
+      "engine": "chrome",
+      "viewport": "iphone-se-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=375 innerWidth=375"
+    },
+    {
+      "id": "chrome/iphone-se-portrait//lumina/http",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) portrait HTTP /lumina",
+      "engine": "chrome",
+      "viewport": "iphone-se-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Meet Lumina \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-se-portrait//lumina/overflow",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) portrait overflow /lumina",
+      "engine": "chrome",
+      "viewport": "iphone-se-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=375 innerWidth=375"
+    },
+    {
+      "id": "chrome/iphone-se-portrait//login/http",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) portrait HTTP /login",
+      "engine": "chrome",
+      "viewport": "iphone-se-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Sign in \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-se-portrait//login/overflow",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) portrait overflow /login",
+      "engine": "chrome",
+      "viewport": "iphone-se-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=375 innerWidth=375"
+    },
+    {
+      "id": "chrome/iphone-se-portrait//support/http",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) portrait HTTP /support",
+      "engine": "chrome",
+      "viewport": "iphone-se-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Support \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-se-portrait//support/overflow",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) portrait overflow /support",
+      "engine": "chrome",
+      "viewport": "iphone-se-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=375 innerWidth=375"
+    },
+    {
+      "id": "chrome/iphone-se-landscape///http",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) landscape HTTP /",
+      "engine": "chrome",
+      "viewport": "iphone-se-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=The Back Half \u2014 Magical is Possible"
+    },
+    {
+      "id": "chrome/iphone-se-landscape///overflow",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) landscape overflow /",
+      "engine": "chrome",
+      "viewport": "iphone-se-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=667 innerWidth=667"
+    },
+    {
+      "id": "chrome/iphone-se-landscape//register/http",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) landscape HTTP /register",
+      "engine": "chrome",
+      "viewport": "iphone-se-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Become an Architect \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-se-landscape//register/overflow",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) landscape overflow /register",
+      "engine": "chrome",
+      "viewport": "iphone-se-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=667 innerWidth=667"
+    },
+    {
+      "id": "chrome/iphone-se-landscape//checkout/http",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) landscape HTTP /checkout",
+      "engine": "chrome",
+      "viewport": "iphone-se-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Checkout \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-se-landscape//checkout/overflow",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) landscape overflow /checkout",
+      "engine": "chrome",
+      "viewport": "iphone-se-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=667 innerWidth=667"
+    },
+    {
+      "id": "chrome/iphone-se-landscape//lumina/http",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) landscape HTTP /lumina",
+      "engine": "chrome",
+      "viewport": "iphone-se-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Meet Lumina \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-se-landscape//lumina/overflow",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) landscape overflow /lumina",
+      "engine": "chrome",
+      "viewport": "iphone-se-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=667 innerWidth=667"
+    },
+    {
+      "id": "chrome/iphone-se-landscape//login/http",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) landscape HTTP /login",
+      "engine": "chrome",
+      "viewport": "iphone-se-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Sign in \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-se-landscape//login/overflow",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) landscape overflow /login",
+      "engine": "chrome",
+      "viewport": "iphone-se-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=667 innerWidth=667"
+    },
+    {
+      "id": "chrome/iphone-se-landscape//support/http",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) landscape HTTP /support",
+      "engine": "chrome",
+      "viewport": "iphone-se-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Support \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-se-landscape//support/overflow",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) landscape overflow /support",
+      "engine": "chrome",
+      "viewport": "iphone-se-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=667 innerWidth=667"
+    },
+    {
+      "id": "chrome/iphone-16-portrait///http",
+      "area": "layout",
+      "name": "iPhone 16 portrait HTTP /",
+      "engine": "chrome",
+      "viewport": "iphone-16-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=The Back Half \u2014 Magical is Possible"
+    },
+    {
+      "id": "chrome/iphone-16-portrait///overflow",
+      "area": "layout",
+      "name": "iPhone 16 portrait overflow /",
+      "engine": "chrome",
+      "viewport": "iphone-16-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=393 innerWidth=393"
+    },
+    {
+      "id": "chrome/iphone-16-portrait//register/http",
+      "area": "layout",
+      "name": "iPhone 16 portrait HTTP /register",
+      "engine": "chrome",
+      "viewport": "iphone-16-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Become an Architect \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-16-portrait//register/overflow",
+      "area": "layout",
+      "name": "iPhone 16 portrait overflow /register",
+      "engine": "chrome",
+      "viewport": "iphone-16-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=393 innerWidth=393"
+    },
+    {
+      "id": "chrome/iphone-16-portrait//checkout/http",
+      "area": "layout",
+      "name": "iPhone 16 portrait HTTP /checkout",
+      "engine": "chrome",
+      "viewport": "iphone-16-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Checkout \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-16-portrait//checkout/overflow",
+      "area": "layout",
+      "name": "iPhone 16 portrait overflow /checkout",
+      "engine": "chrome",
+      "viewport": "iphone-16-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=393 innerWidth=393"
+    },
+    {
+      "id": "chrome/iphone-16-portrait//lumina/http",
+      "area": "layout",
+      "name": "iPhone 16 portrait HTTP /lumina",
+      "engine": "chrome",
+      "viewport": "iphone-16-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Meet Lumina \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-16-portrait//lumina/overflow",
+      "area": "layout",
+      "name": "iPhone 16 portrait overflow /lumina",
+      "engine": "chrome",
+      "viewport": "iphone-16-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=393 innerWidth=393"
+    },
+    {
+      "id": "chrome/iphone-16-portrait//login/http",
+      "area": "layout",
+      "name": "iPhone 16 portrait HTTP /login",
+      "engine": "chrome",
+      "viewport": "iphone-16-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Sign in \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-16-portrait//login/overflow",
+      "area": "layout",
+      "name": "iPhone 16 portrait overflow /login",
+      "engine": "chrome",
+      "viewport": "iphone-16-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=393 innerWidth=393"
+    },
+    {
+      "id": "chrome/iphone-16-portrait//support/http",
+      "area": "layout",
+      "name": "iPhone 16 portrait HTTP /support",
+      "engine": "chrome",
+      "viewport": "iphone-16-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Support \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-16-portrait//support/overflow",
+      "area": "layout",
+      "name": "iPhone 16 portrait overflow /support",
+      "engine": "chrome",
+      "viewport": "iphone-16-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=393 innerWidth=393"
+    },
+    {
+      "id": "chrome/iphone-16-landscape///http",
+      "area": "layout",
+      "name": "iPhone 16 landscape HTTP /",
+      "engine": "chrome",
+      "viewport": "iphone-16-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=The Back Half \u2014 Magical is Possible"
+    },
+    {
+      "id": "chrome/iphone-16-landscape///overflow",
+      "area": "layout",
+      "name": "iPhone 16 landscape overflow /",
+      "engine": "chrome",
+      "viewport": "iphone-16-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=852 innerWidth=852"
+    },
+    {
+      "id": "chrome/iphone-16-landscape//register/http",
+      "area": "layout",
+      "name": "iPhone 16 landscape HTTP /register",
+      "engine": "chrome",
+      "viewport": "iphone-16-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Become an Architect \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-16-landscape//register/overflow",
+      "area": "layout",
+      "name": "iPhone 16 landscape overflow /register",
+      "engine": "chrome",
+      "viewport": "iphone-16-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=852 innerWidth=852"
+    },
+    {
+      "id": "chrome/iphone-16-landscape//checkout/http",
+      "area": "layout",
+      "name": "iPhone 16 landscape HTTP /checkout",
+      "engine": "chrome",
+      "viewport": "iphone-16-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Checkout \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-16-landscape//checkout/overflow",
+      "area": "layout",
+      "name": "iPhone 16 landscape overflow /checkout",
+      "engine": "chrome",
+      "viewport": "iphone-16-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=852 innerWidth=852"
+    },
+    {
+      "id": "chrome/iphone-16-landscape//lumina/http",
+      "area": "layout",
+      "name": "iPhone 16 landscape HTTP /lumina",
+      "engine": "chrome",
+      "viewport": "iphone-16-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Meet Lumina \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-16-landscape//lumina/overflow",
+      "area": "layout",
+      "name": "iPhone 16 landscape overflow /lumina",
+      "engine": "chrome",
+      "viewport": "iphone-16-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=852 innerWidth=852"
+    },
+    {
+      "id": "chrome/iphone-16-landscape//login/http",
+      "area": "layout",
+      "name": "iPhone 16 landscape HTTP /login",
+      "engine": "chrome",
+      "viewport": "iphone-16-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Sign in \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-16-landscape//login/overflow",
+      "area": "layout",
+      "name": "iPhone 16 landscape overflow /login",
+      "engine": "chrome",
+      "viewport": "iphone-16-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=852 innerWidth=852"
+    },
+    {
+      "id": "chrome/iphone-16-landscape//support/http",
+      "area": "layout",
+      "name": "iPhone 16 landscape HTTP /support",
+      "engine": "chrome",
+      "viewport": "iphone-16-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Support \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-16-landscape//support/overflow",
+      "area": "layout",
+      "name": "iPhone 16 landscape overflow /support",
+      "engine": "chrome",
+      "viewport": "iphone-16-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=852 innerWidth=852"
+    },
+    {
+      "id": "chrome/iphone-16-pro-portrait///http",
+      "area": "layout",
+      "name": "iPhone 16 Pro portrait HTTP /",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=The Back Half \u2014 Magical is Possible"
+    },
+    {
+      "id": "chrome/iphone-16-pro-portrait///overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro portrait overflow /",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=402 innerWidth=402"
+    },
+    {
+      "id": "chrome/iphone-16-pro-portrait//register/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro portrait HTTP /register",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Become an Architect \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-16-pro-portrait//register/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro portrait overflow /register",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=402 innerWidth=402"
+    },
+    {
+      "id": "chrome/iphone-16-pro-portrait//checkout/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro portrait HTTP /checkout",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Checkout \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-16-pro-portrait//checkout/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro portrait overflow /checkout",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=402 innerWidth=402"
+    },
+    {
+      "id": "chrome/iphone-16-pro-portrait//lumina/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro portrait HTTP /lumina",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Meet Lumina \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-16-pro-portrait//lumina/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro portrait overflow /lumina",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=402 innerWidth=402"
+    },
+    {
+      "id": "chrome/iphone-16-pro-portrait//login/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro portrait HTTP /login",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Sign in \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-16-pro-portrait//login/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro portrait overflow /login",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=402 innerWidth=402"
+    },
+    {
+      "id": "chrome/iphone-16-pro-portrait//support/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro portrait HTTP /support",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Support \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-16-pro-portrait//support/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro portrait overflow /support",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=402 innerWidth=402"
+    },
+    {
+      "id": "chrome/iphone-16-pro-landscape///http",
+      "area": "layout",
+      "name": "iPhone 16 Pro landscape HTTP /",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=The Back Half \u2014 Magical is Possible"
+    },
+    {
+      "id": "chrome/iphone-16-pro-landscape///overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro landscape overflow /",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=874 innerWidth=874"
+    },
+    {
+      "id": "chrome/iphone-16-pro-landscape//register/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro landscape HTTP /register",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Become an Architect \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-16-pro-landscape//register/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro landscape overflow /register",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=874 innerWidth=874"
+    },
+    {
+      "id": "chrome/iphone-16-pro-landscape//checkout/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro landscape HTTP /checkout",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Checkout \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-16-pro-landscape//checkout/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro landscape overflow /checkout",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=874 innerWidth=874"
+    },
+    {
+      "id": "chrome/iphone-16-pro-landscape//lumina/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro landscape HTTP /lumina",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Meet Lumina \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-16-pro-landscape//lumina/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro landscape overflow /lumina",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=874 innerWidth=874"
+    },
+    {
+      "id": "chrome/iphone-16-pro-landscape//login/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro landscape HTTP /login",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Sign in \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-16-pro-landscape//login/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro landscape overflow /login",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=874 innerWidth=874"
+    },
+    {
+      "id": "chrome/iphone-16-pro-landscape//support/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro landscape HTTP /support",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Support \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-16-pro-landscape//support/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro landscape overflow /support",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=874 innerWidth=874"
+    },
+    {
+      "id": "chrome/iphone-16-pro-max-portrait///http",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max portrait HTTP /",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-max-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=The Back Half \u2014 Magical is Possible"
+    },
+    {
+      "id": "chrome/iphone-16-pro-max-portrait///overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max portrait overflow /",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-max-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=440 innerWidth=440"
+    },
+    {
+      "id": "chrome/iphone-16-pro-max-portrait//register/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max portrait HTTP /register",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-max-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Become an Architect \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-16-pro-max-portrait//register/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max portrait overflow /register",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-max-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=440 innerWidth=440"
+    },
+    {
+      "id": "chrome/iphone-16-pro-max-portrait//checkout/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max portrait HTTP /checkout",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-max-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Checkout \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-16-pro-max-portrait//checkout/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max portrait overflow /checkout",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-max-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=440 innerWidth=440"
+    },
+    {
+      "id": "chrome/iphone-16-pro-max-portrait//lumina/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max portrait HTTP /lumina",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-max-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Meet Lumina \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-16-pro-max-portrait//lumina/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max portrait overflow /lumina",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-max-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=440 innerWidth=440"
+    },
+    {
+      "id": "chrome/iphone-16-pro-max-portrait//login/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max portrait HTTP /login",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-max-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Sign in \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-16-pro-max-portrait//login/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max portrait overflow /login",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-max-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=440 innerWidth=440"
+    },
+    {
+      "id": "chrome/iphone-16-pro-max-portrait//support/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max portrait HTTP /support",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-max-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Support \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-16-pro-max-portrait//support/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max portrait overflow /support",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-max-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=440 innerWidth=440"
+    },
+    {
+      "id": "chrome/iphone-16-pro-max-landscape///http",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max landscape HTTP /",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-max-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=The Back Half \u2014 Magical is Possible"
+    },
+    {
+      "id": "chrome/iphone-16-pro-max-landscape///overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max landscape overflow /",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-max-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=956 innerWidth=956"
+    },
+    {
+      "id": "chrome/iphone-16-pro-max-landscape//register/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max landscape HTTP /register",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-max-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Become an Architect \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-16-pro-max-landscape//register/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max landscape overflow /register",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-max-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=956 innerWidth=956"
+    },
+    {
+      "id": "chrome/iphone-16-pro-max-landscape//checkout/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max landscape HTTP /checkout",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-max-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Checkout \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-16-pro-max-landscape//checkout/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max landscape overflow /checkout",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-max-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=956 innerWidth=956"
+    },
+    {
+      "id": "chrome/iphone-16-pro-max-landscape//lumina/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max landscape HTTP /lumina",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-max-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Meet Lumina \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-16-pro-max-landscape//lumina/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max landscape overflow /lumina",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-max-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=956 innerWidth=956"
+    },
+    {
+      "id": "chrome/iphone-16-pro-max-landscape//login/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max landscape HTTP /login",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-max-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Sign in \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-16-pro-max-landscape//login/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max landscape overflow /login",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-max-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=956 innerWidth=956"
+    },
+    {
+      "id": "chrome/iphone-16-pro-max-landscape//support/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max landscape HTTP /support",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-max-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Support \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/iphone-16-pro-max-landscape//support/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max landscape overflow /support",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-max-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=956 innerWidth=956"
+    },
+    {
+      "id": "chrome/android-compact-portrait///http",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) portrait HTTP /",
+      "engine": "chrome",
+      "viewport": "android-compact-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=The Back Half \u2014 Magical is Possible"
+    },
+    {
+      "id": "chrome/android-compact-portrait///overflow",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) portrait overflow /",
+      "engine": "chrome",
+      "viewport": "android-compact-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=360 innerWidth=360"
+    },
+    {
+      "id": "chrome/android-compact-portrait//register/http",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) portrait HTTP /register",
+      "engine": "chrome",
+      "viewport": "android-compact-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Become an Architect \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/android-compact-portrait//register/overflow",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) portrait overflow /register",
+      "engine": "chrome",
+      "viewport": "android-compact-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=360 innerWidth=360"
+    },
+    {
+      "id": "chrome/android-compact-portrait//checkout/http",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) portrait HTTP /checkout",
+      "engine": "chrome",
+      "viewport": "android-compact-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Checkout \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/android-compact-portrait//checkout/overflow",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) portrait overflow /checkout",
+      "engine": "chrome",
+      "viewport": "android-compact-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=360 innerWidth=360"
+    },
+    {
+      "id": "chrome/android-compact-portrait//lumina/http",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) portrait HTTP /lumina",
+      "engine": "chrome",
+      "viewport": "android-compact-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Meet Lumina \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/android-compact-portrait//lumina/overflow",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) portrait overflow /lumina",
+      "engine": "chrome",
+      "viewport": "android-compact-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=360 innerWidth=360"
+    },
+    {
+      "id": "chrome/android-compact-portrait//login/http",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) portrait HTTP /login",
+      "engine": "chrome",
+      "viewport": "android-compact-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Sign in \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/android-compact-portrait//login/overflow",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) portrait overflow /login",
+      "engine": "chrome",
+      "viewport": "android-compact-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=360 innerWidth=360"
+    },
+    {
+      "id": "chrome/android-compact-portrait//support/http",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) portrait HTTP /support",
+      "engine": "chrome",
+      "viewport": "android-compact-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Support \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/android-compact-portrait//support/overflow",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) portrait overflow /support",
+      "engine": "chrome",
+      "viewport": "android-compact-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=360 innerWidth=360"
+    },
+    {
+      "id": "chrome/android-compact-landscape///http",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) landscape HTTP /",
+      "engine": "chrome",
+      "viewport": "android-compact-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=The Back Half \u2014 Magical is Possible"
+    },
+    {
+      "id": "chrome/android-compact-landscape///overflow",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) landscape overflow /",
+      "engine": "chrome",
+      "viewport": "android-compact-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=780 innerWidth=780"
+    },
+    {
+      "id": "chrome/android-compact-landscape//register/http",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) landscape HTTP /register",
+      "engine": "chrome",
+      "viewport": "android-compact-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Become an Architect \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/android-compact-landscape//register/overflow",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) landscape overflow /register",
+      "engine": "chrome",
+      "viewport": "android-compact-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=780 innerWidth=780"
+    },
+    {
+      "id": "chrome/android-compact-landscape//checkout/http",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) landscape HTTP /checkout",
+      "engine": "chrome",
+      "viewport": "android-compact-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Checkout \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/android-compact-landscape//checkout/overflow",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) landscape overflow /checkout",
+      "engine": "chrome",
+      "viewport": "android-compact-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=780 innerWidth=780"
+    },
+    {
+      "id": "chrome/android-compact-landscape//lumina/http",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) landscape HTTP /lumina",
+      "engine": "chrome",
+      "viewport": "android-compact-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Meet Lumina \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/android-compact-landscape//lumina/overflow",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) landscape overflow /lumina",
+      "engine": "chrome",
+      "viewport": "android-compact-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=780 innerWidth=780"
+    },
+    {
+      "id": "chrome/android-compact-landscape//login/http",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) landscape HTTP /login",
+      "engine": "chrome",
+      "viewport": "android-compact-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Sign in \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/android-compact-landscape//login/overflow",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) landscape overflow /login",
+      "engine": "chrome",
+      "viewport": "android-compact-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=780 innerWidth=780"
+    },
+    {
+      "id": "chrome/android-compact-landscape//support/http",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) landscape HTTP /support",
+      "engine": "chrome",
+      "viewport": "android-compact-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Support \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/android-compact-landscape//support/overflow",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) landscape overflow /support",
+      "engine": "chrome",
+      "viewport": "android-compact-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=780 innerWidth=780"
+    },
+    {
+      "id": "chrome/pixel-9-portrait///http",
+      "area": "layout",
+      "name": "Pixel 9 / common Android portrait HTTP /",
+      "engine": "chrome",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=The Back Half \u2014 Magical is Possible"
+    },
+    {
+      "id": "chrome/pixel-9-portrait///overflow",
+      "area": "layout",
+      "name": "Pixel 9 / common Android portrait overflow /",
+      "engine": "chrome",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=412 innerWidth=412"
+    },
+    {
+      "id": "chrome/pixel-9-portrait//register/http",
+      "area": "layout",
+      "name": "Pixel 9 / common Android portrait HTTP /register",
+      "engine": "chrome",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Become an Architect \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/pixel-9-portrait//register/overflow",
+      "area": "layout",
+      "name": "Pixel 9 / common Android portrait overflow /register",
+      "engine": "chrome",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=412 innerWidth=412"
+    },
+    {
+      "id": "chrome/pixel-9-portrait//checkout/http",
+      "area": "layout",
+      "name": "Pixel 9 / common Android portrait HTTP /checkout",
+      "engine": "chrome",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Checkout \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/pixel-9-portrait//checkout/overflow",
+      "area": "layout",
+      "name": "Pixel 9 / common Android portrait overflow /checkout",
+      "engine": "chrome",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=412 innerWidth=412"
+    },
+    {
+      "id": "chrome/pixel-9-portrait//lumina/http",
+      "area": "layout",
+      "name": "Pixel 9 / common Android portrait HTTP /lumina",
+      "engine": "chrome",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Meet Lumina \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/pixel-9-portrait//lumina/overflow",
+      "area": "layout",
+      "name": "Pixel 9 / common Android portrait overflow /lumina",
+      "engine": "chrome",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=412 innerWidth=412"
+    },
+    {
+      "id": "chrome/pixel-9-portrait//login/http",
+      "area": "layout",
+      "name": "Pixel 9 / common Android portrait HTTP /login",
+      "engine": "chrome",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Sign in \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/pixel-9-portrait//login/overflow",
+      "area": "layout",
+      "name": "Pixel 9 / common Android portrait overflow /login",
+      "engine": "chrome",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=412 innerWidth=412"
+    },
+    {
+      "id": "chrome/pixel-9-portrait//support/http",
+      "area": "layout",
+      "name": "Pixel 9 / common Android portrait HTTP /support",
+      "engine": "chrome",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Support \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/pixel-9-portrait//support/overflow",
+      "area": "layout",
+      "name": "Pixel 9 / common Android portrait overflow /support",
+      "engine": "chrome",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=412 innerWidth=412"
+    },
+    {
+      "id": "chrome/pixel-9-landscape///http",
+      "area": "layout",
+      "name": "Pixel 9 / common Android landscape HTTP /",
+      "engine": "chrome",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=The Back Half \u2014 Magical is Possible"
+    },
+    {
+      "id": "chrome/pixel-9-landscape///overflow",
+      "area": "layout",
+      "name": "Pixel 9 / common Android landscape overflow /",
+      "engine": "chrome",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=915 innerWidth=915"
+    },
+    {
+      "id": "chrome/pixel-9-landscape//register/http",
+      "area": "layout",
+      "name": "Pixel 9 / common Android landscape HTTP /register",
+      "engine": "chrome",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Become an Architect \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/pixel-9-landscape//register/overflow",
+      "area": "layout",
+      "name": "Pixel 9 / common Android landscape overflow /register",
+      "engine": "chrome",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=915 innerWidth=915"
+    },
+    {
+      "id": "chrome/pixel-9-landscape//checkout/http",
+      "area": "layout",
+      "name": "Pixel 9 / common Android landscape HTTP /checkout",
+      "engine": "chrome",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Checkout \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/pixel-9-landscape//checkout/overflow",
+      "area": "layout",
+      "name": "Pixel 9 / common Android landscape overflow /checkout",
+      "engine": "chrome",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=915 innerWidth=915"
+    },
+    {
+      "id": "chrome/pixel-9-landscape//lumina/http",
+      "area": "layout",
+      "name": "Pixel 9 / common Android landscape HTTP /lumina",
+      "engine": "chrome",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Meet Lumina \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/pixel-9-landscape//lumina/overflow",
+      "area": "layout",
+      "name": "Pixel 9 / common Android landscape overflow /lumina",
+      "engine": "chrome",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=915 innerWidth=915"
+    },
+    {
+      "id": "chrome/pixel-9-landscape//login/http",
+      "area": "layout",
+      "name": "Pixel 9 / common Android landscape HTTP /login",
+      "engine": "chrome",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Sign in \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/pixel-9-landscape//login/overflow",
+      "area": "layout",
+      "name": "Pixel 9 / common Android landscape overflow /login",
+      "engine": "chrome",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=915 innerWidth=915"
+    },
+    {
+      "id": "chrome/pixel-9-landscape//support/http",
+      "area": "layout",
+      "name": "Pixel 9 / common Android landscape HTTP /support",
+      "engine": "chrome",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Support \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/pixel-9-landscape//support/overflow",
+      "area": "layout",
+      "name": "Pixel 9 / common Android landscape overflow /support",
+      "engine": "chrome",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=915 innerWidth=915"
+    },
+    {
+      "id": "chrome/android-large-portrait///http",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) portrait HTTP /",
+      "engine": "chrome",
+      "viewport": "android-large-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=The Back Half \u2014 Magical is Possible"
+    },
+    {
+      "id": "chrome/android-large-portrait///overflow",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) portrait overflow /",
+      "engine": "chrome",
+      "viewport": "android-large-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=448 innerWidth=448"
+    },
+    {
+      "id": "chrome/android-large-portrait//register/http",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) portrait HTTP /register",
+      "engine": "chrome",
+      "viewport": "android-large-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Become an Architect \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/android-large-portrait//register/overflow",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) portrait overflow /register",
+      "engine": "chrome",
+      "viewport": "android-large-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=448 innerWidth=448"
+    },
+    {
+      "id": "chrome/android-large-portrait//checkout/http",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) portrait HTTP /checkout",
+      "engine": "chrome",
+      "viewport": "android-large-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Checkout \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/android-large-portrait//checkout/overflow",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) portrait overflow /checkout",
+      "engine": "chrome",
+      "viewport": "android-large-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=448 innerWidth=448"
+    },
+    {
+      "id": "chrome/android-large-portrait//lumina/http",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) portrait HTTP /lumina",
+      "engine": "chrome",
+      "viewport": "android-large-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Meet Lumina \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/android-large-portrait//lumina/overflow",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) portrait overflow /lumina",
+      "engine": "chrome",
+      "viewport": "android-large-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=448 innerWidth=448"
+    },
+    {
+      "id": "chrome/android-large-portrait//login/http",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) portrait HTTP /login",
+      "engine": "chrome",
+      "viewport": "android-large-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Sign in \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/android-large-portrait//login/overflow",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) portrait overflow /login",
+      "engine": "chrome",
+      "viewport": "android-large-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=448 innerWidth=448"
+    },
+    {
+      "id": "chrome/android-large-portrait//support/http",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) portrait HTTP /support",
+      "engine": "chrome",
+      "viewport": "android-large-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Support \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/android-large-portrait//support/overflow",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) portrait overflow /support",
+      "engine": "chrome",
+      "viewport": "android-large-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=448 innerWidth=448"
+    },
+    {
+      "id": "chrome/android-large-landscape///http",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) landscape HTTP /",
+      "engine": "chrome",
+      "viewport": "android-large-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=The Back Half \u2014 Magical is Possible"
+    },
+    {
+      "id": "chrome/android-large-landscape///overflow",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) landscape overflow /",
+      "engine": "chrome",
+      "viewport": "android-large-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=998 innerWidth=998"
+    },
+    {
+      "id": "chrome/android-large-landscape//register/http",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) landscape HTTP /register",
+      "engine": "chrome",
+      "viewport": "android-large-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Become an Architect \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/android-large-landscape//register/overflow",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) landscape overflow /register",
+      "engine": "chrome",
+      "viewport": "android-large-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=998 innerWidth=998"
+    },
+    {
+      "id": "chrome/android-large-landscape//checkout/http",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) landscape HTTP /checkout",
+      "engine": "chrome",
+      "viewport": "android-large-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Checkout \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/android-large-landscape//checkout/overflow",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) landscape overflow /checkout",
+      "engine": "chrome",
+      "viewport": "android-large-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=998 innerWidth=998"
+    },
+    {
+      "id": "chrome/android-large-landscape//lumina/http",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) landscape HTTP /lumina",
+      "engine": "chrome",
+      "viewport": "android-large-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Meet Lumina \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/android-large-landscape//lumina/overflow",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) landscape overflow /lumina",
+      "engine": "chrome",
+      "viewport": "android-large-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=998 innerWidth=998"
+    },
+    {
+      "id": "chrome/android-large-landscape//login/http",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) landscape HTTP /login",
+      "engine": "chrome",
+      "viewport": "android-large-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Sign in \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/android-large-landscape//login/overflow",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) landscape overflow /login",
+      "engine": "chrome",
+      "viewport": "android-large-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=998 innerWidth=998"
+    },
+    {
+      "id": "chrome/android-large-landscape//support/http",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) landscape HTTP /support",
+      "engine": "chrome",
+      "viewport": "android-large-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Support \u2014 The Back Half"
+    },
+    {
+      "id": "chrome/android-large-landscape//support/overflow",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) landscape overflow /support",
+      "engine": "chrome",
+      "viewport": "android-large-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=998 innerWidth=998"
+    },
+    {
+      "id": "chrome/iphone-16-pro-portrait/register-form",
+      "area": "forms",
+      "name": "Registration form visible after 18+ gate",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "ageGateUsed=true firstName=1 email=1"
+    },
+    {
+      "id": "chrome/iphone-16-pro-portrait/register-validation",
+      "area": "forms",
+      "name": "Registration empty/incomplete submit shows validation",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "errorNodes=6"
+    },
+    {
+      "id": "chrome/iphone-16-pro-portrait/register-overflow",
+      "area": "forms",
+      "name": "Registration form no horizontal overflow",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=402"
+    },
+    {
+      "id": "chrome/iphone-16-pro-portrait/login-form",
+      "area": "forms",
+      "name": "Login form fields visible and usable",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "email=true"
+    },
+    {
+      "id": "chrome/iphone-16-pro-portrait/login-validation",
+      "area": "forms",
+      "name": "Login invalid submit shows validation",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "errorNodes=2"
+    },
+    {
+      "id": "chrome/iphone-16-pro-portrait/support-form",
+      "area": "forms",
+      "name": "Support request form visible",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "name=1 message=1"
+    },
+    {
+      "id": "chrome/iphone-16-pro-portrait/support-overflow",
+      "area": "forms",
+      "name": "Support page no horizontal overflow",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=402"
+    },
+    {
+      "id": "chrome/iphone-16-pro-portrait/contact",
+      "area": "forms",
+      "name": "Contact methods and Support CTA reachable",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "mailto=1 supportCta=1"
+    },
+    {
+      "id": "chrome/iphone-16-pro-portrait/forgot-password",
+      "area": "forms",
+      "name": "Forgot-password form visible",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "email=1"
+    },
+    {
+      "id": "chrome/iphone-16-pro-portrait/lumina-public",
+      "area": "chat",
+      "name": "Public Lumina opening and main content",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "opened=true main=2 overflow=false"
+    },
+    {
+      "id": "chrome/iphone-16-pro-portrait/lumina-auth-gate",
+      "area": "chat",
+      "name": "Authenticated Lumina chat requires login",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Flumina status=200"
+    },
+    {
+      "id": "chrome/iphone-16-pro-portrait/journey",
+      "area": "videos",
+      "name": "Public Journey page loads on device",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "overflow=false"
+    },
+    {
+      "id": "chrome/iphone-16-pro-portrait/chapter1-gate",
+      "area": "videos",
+      "name": "Chapter I video route is auth-gated",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Fjourney%2Fchapter-1"
+    },
+    {
+      "id": "chrome/iphone-16-pro-portrait/resources-gate",
+      "area": "downloads",
+      "name": "Architect Resources/downloads require login",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Fresources"
+    },
+    {
+      "id": "chrome/iphone-16-pro-portrait/checkout-catalog",
+      "area": "checkout",
+      "name": "Checkout catalog shows launch offers",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "articles=6 offerLinks=3 overflow=false"
+    },
+    {
+      "id": "chrome/iphone-16-pro-portrait/checkout-offer-gate",
+      "area": "checkout",
+      "name": "Checkout offer start is login-gated",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Fcheckout%2Fblueprint status=200"
+    },
+    {
+      "id": "chrome/iphone-16-pro-landscape/register-form",
+      "area": "forms",
+      "name": "Registration form visible after 18+ gate",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "ageGateUsed=true firstName=1 email=1"
+    },
+    {
+      "id": "chrome/iphone-16-pro-landscape/register-validation",
+      "area": "forms",
+      "name": "Registration empty/incomplete submit shows validation",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "errorNodes=6"
+    },
+    {
+      "id": "chrome/iphone-16-pro-landscape/register-overflow",
+      "area": "forms",
+      "name": "Registration form no horizontal overflow",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=874"
+    },
+    {
+      "id": "chrome/iphone-16-pro-landscape/login-form",
+      "area": "forms",
+      "name": "Login form fields visible and usable",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "email=true"
+    },
+    {
+      "id": "chrome/iphone-16-pro-landscape/login-validation",
+      "area": "forms",
+      "name": "Login invalid submit shows validation",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "errorNodes=2"
+    },
+    {
+      "id": "chrome/iphone-16-pro-landscape/support-form",
+      "area": "forms",
+      "name": "Support request form visible",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "name=1 message=1"
+    },
+    {
+      "id": "chrome/iphone-16-pro-landscape/support-overflow",
+      "area": "forms",
+      "name": "Support page no horizontal overflow",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=874"
+    },
+    {
+      "id": "chrome/iphone-16-pro-landscape/contact",
+      "area": "forms",
+      "name": "Contact methods and Support CTA reachable",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "mailto=1 supportCta=1"
+    },
+    {
+      "id": "chrome/iphone-16-pro-landscape/forgot-password",
+      "area": "forms",
+      "name": "Forgot-password form visible",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "email=1"
+    },
+    {
+      "id": "chrome/iphone-16-pro-landscape/lumina-public",
+      "area": "chat",
+      "name": "Public Lumina opening and main content",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "opened=true main=2 overflow=false"
+    },
+    {
+      "id": "chrome/iphone-16-pro-landscape/lumina-auth-gate",
+      "area": "chat",
+      "name": "Authenticated Lumina chat requires login",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Flumina status=200"
+    },
+    {
+      "id": "chrome/iphone-16-pro-landscape/journey",
+      "area": "videos",
+      "name": "Public Journey page loads on device",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "overflow=false"
+    },
+    {
+      "id": "chrome/iphone-16-pro-landscape/chapter1-gate",
+      "area": "videos",
+      "name": "Chapter I video route is auth-gated",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Fjourney%2Fchapter-1"
+    },
+    {
+      "id": "chrome/iphone-16-pro-landscape/resources-gate",
+      "area": "downloads",
+      "name": "Architect Resources/downloads require login",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Fresources"
+    },
+    {
+      "id": "chrome/iphone-16-pro-landscape/checkout-catalog",
+      "area": "checkout",
+      "name": "Checkout catalog shows launch offers",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "articles=6 offerLinks=3 overflow=false"
+    },
+    {
+      "id": "chrome/iphone-16-pro-landscape/checkout-offer-gate",
+      "area": "checkout",
+      "name": "Checkout offer start is login-gated",
+      "engine": "chrome",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Fcheckout%2Fblueprint status=200"
+    },
+    {
+      "id": "chrome/pixel-9-portrait/register-form",
+      "area": "forms",
+      "name": "Registration form visible after 18+ gate",
+      "engine": "chrome",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "ageGateUsed=true firstName=1 email=1"
+    },
+    {
+      "id": "chrome/pixel-9-portrait/register-validation",
+      "area": "forms",
+      "name": "Registration empty/incomplete submit shows validation",
+      "engine": "chrome",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "errorNodes=6"
+    },
+    {
+      "id": "chrome/pixel-9-portrait/register-overflow",
+      "area": "forms",
+      "name": "Registration form no horizontal overflow",
+      "engine": "chrome",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=412"
+    },
+    {
+      "id": "chrome/pixel-9-portrait/login-form",
+      "area": "forms",
+      "name": "Login form fields visible and usable",
+      "engine": "chrome",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "email=true"
+    },
+    {
+      "id": "chrome/pixel-9-portrait/login-validation",
+      "area": "forms",
+      "name": "Login invalid submit shows validation",
+      "engine": "chrome",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "errorNodes=2"
+    },
+    {
+      "id": "chrome/pixel-9-portrait/support-form",
+      "area": "forms",
+      "name": "Support request form visible",
+      "engine": "chrome",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "name=1 message=1"
+    },
+    {
+      "id": "chrome/pixel-9-portrait/support-overflow",
+      "area": "forms",
+      "name": "Support page no horizontal overflow",
+      "engine": "chrome",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=412"
+    },
+    {
+      "id": "chrome/pixel-9-portrait/contact",
+      "area": "forms",
+      "name": "Contact methods and Support CTA reachable",
+      "engine": "chrome",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "mailto=1 supportCta=1"
+    },
+    {
+      "id": "chrome/pixel-9-portrait/forgot-password",
+      "area": "forms",
+      "name": "Forgot-password form visible",
+      "engine": "chrome",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "email=1"
+    },
+    {
+      "id": "chrome/pixel-9-portrait/lumina-public",
+      "area": "chat",
+      "name": "Public Lumina opening and main content",
+      "engine": "chrome",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "opened=true main=2 overflow=false"
+    },
+    {
+      "id": "chrome/pixel-9-portrait/lumina-auth-gate",
+      "area": "chat",
+      "name": "Authenticated Lumina chat requires login",
+      "engine": "chrome",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Flumina status=200"
+    },
+    {
+      "id": "chrome/pixel-9-portrait/journey",
+      "area": "videos",
+      "name": "Public Journey page loads on device",
+      "engine": "chrome",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "overflow=false"
+    },
+    {
+      "id": "chrome/pixel-9-portrait/chapter1-gate",
+      "area": "videos",
+      "name": "Chapter I video route is auth-gated",
+      "engine": "chrome",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Fjourney%2Fchapter-1"
+    },
+    {
+      "id": "chrome/pixel-9-portrait/resources-gate",
+      "area": "downloads",
+      "name": "Architect Resources/downloads require login",
+      "engine": "chrome",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Fresources"
+    },
+    {
+      "id": "chrome/pixel-9-portrait/checkout-catalog",
+      "area": "checkout",
+      "name": "Checkout catalog shows launch offers",
+      "engine": "chrome",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "articles=6 offerLinks=3 overflow=false"
+    },
+    {
+      "id": "chrome/pixel-9-portrait/checkout-offer-gate",
+      "area": "checkout",
+      "name": "Checkout offer start is login-gated",
+      "engine": "chrome",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Fcheckout%2Fblueprint status=200"
+    },
+    {
+      "id": "chrome/pixel-9-landscape/register-form",
+      "area": "forms",
+      "name": "Registration form visible after 18+ gate",
+      "engine": "chrome",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "ageGateUsed=true firstName=1 email=1"
+    },
+    {
+      "id": "chrome/pixel-9-landscape/register-validation",
+      "area": "forms",
+      "name": "Registration empty/incomplete submit shows validation",
+      "engine": "chrome",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "errorNodes=6"
+    },
+    {
+      "id": "chrome/pixel-9-landscape/register-overflow",
+      "area": "forms",
+      "name": "Registration form no horizontal overflow",
+      "engine": "chrome",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=915"
+    },
+    {
+      "id": "chrome/pixel-9-landscape/login-form",
+      "area": "forms",
+      "name": "Login form fields visible and usable",
+      "engine": "chrome",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "email=true"
+    },
+    {
+      "id": "chrome/pixel-9-landscape/login-validation",
+      "area": "forms",
+      "name": "Login invalid submit shows validation",
+      "engine": "chrome",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "errorNodes=2"
+    },
+    {
+      "id": "chrome/pixel-9-landscape/support-form",
+      "area": "forms",
+      "name": "Support request form visible",
+      "engine": "chrome",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "name=1 message=1"
+    },
+    {
+      "id": "chrome/pixel-9-landscape/support-overflow",
+      "area": "forms",
+      "name": "Support page no horizontal overflow",
+      "engine": "chrome",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=915"
+    },
+    {
+      "id": "chrome/pixel-9-landscape/contact",
+      "area": "forms",
+      "name": "Contact methods and Support CTA reachable",
+      "engine": "chrome",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "mailto=1 supportCta=1"
+    },
+    {
+      "id": "chrome/pixel-9-landscape/forgot-password",
+      "area": "forms",
+      "name": "Forgot-password form visible",
+      "engine": "chrome",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "email=1"
+    },
+    {
+      "id": "chrome/pixel-9-landscape/lumina-public",
+      "area": "chat",
+      "name": "Public Lumina opening and main content",
+      "engine": "chrome",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "opened=true main=2 overflow=false"
+    },
+    {
+      "id": "chrome/pixel-9-landscape/lumina-auth-gate",
+      "area": "chat",
+      "name": "Authenticated Lumina chat requires login",
+      "engine": "chrome",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Flumina status=200"
+    },
+    {
+      "id": "chrome/pixel-9-landscape/journey",
+      "area": "videos",
+      "name": "Public Journey page loads on device",
+      "engine": "chrome",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "overflow=false"
+    },
+    {
+      "id": "chrome/pixel-9-landscape/chapter1-gate",
+      "area": "videos",
+      "name": "Chapter I video route is auth-gated",
+      "engine": "chrome",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Fjourney%2Fchapter-1"
+    },
+    {
+      "id": "chrome/pixel-9-landscape/resources-gate",
+      "area": "downloads",
+      "name": "Architect Resources/downloads require login",
+      "engine": "chrome",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Fresources"
+    },
+    {
+      "id": "chrome/pixel-9-landscape/checkout-catalog",
+      "area": "checkout",
+      "name": "Checkout catalog shows launch offers",
+      "engine": "chrome",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "articles=6 offerLinks=3 overflow=false"
+    },
+    {
+      "id": "chrome/pixel-9-landscape/checkout-offer-gate",
+      "area": "checkout",
+      "name": "Checkout offer start is login-gated",
+      "engine": "chrome",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Fcheckout%2Fblueprint status=200"
+    },
+    {
+      "id": "webkit/iphone-se-portrait///http",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) portrait HTTP /",
+      "engine": "webkit",
+      "viewport": "iphone-se-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=The Back Half \u2014 Magical is Possible"
+    },
+    {
+      "id": "webkit/iphone-se-portrait///overflow",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) portrait overflow /",
+      "engine": "webkit",
+      "viewport": "iphone-se-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=375 innerWidth=375"
+    },
+    {
+      "id": "webkit/iphone-se-portrait//register/http",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) portrait HTTP /register",
+      "engine": "webkit",
+      "viewport": "iphone-se-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Become an Architect \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-se-portrait//register/overflow",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) portrait overflow /register",
+      "engine": "webkit",
+      "viewport": "iphone-se-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=375 innerWidth=375"
+    },
+    {
+      "id": "webkit/iphone-se-portrait//checkout/http",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) portrait HTTP /checkout",
+      "engine": "webkit",
+      "viewport": "iphone-se-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Checkout \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-se-portrait//checkout/overflow",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) portrait overflow /checkout",
+      "engine": "webkit",
+      "viewport": "iphone-se-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=375 innerWidth=375"
+    },
+    {
+      "id": "webkit/iphone-se-portrait//lumina/http",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) portrait HTTP /lumina",
+      "engine": "webkit",
+      "viewport": "iphone-se-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Meet Lumina \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-se-portrait//lumina/overflow",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) portrait overflow /lumina",
+      "engine": "webkit",
+      "viewport": "iphone-se-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=375 innerWidth=375"
+    },
+    {
+      "id": "webkit/iphone-se-portrait//login/http",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) portrait HTTP /login",
+      "engine": "webkit",
+      "viewport": "iphone-se-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Sign in \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-se-portrait//login/overflow",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) portrait overflow /login",
+      "engine": "webkit",
+      "viewport": "iphone-se-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=375 innerWidth=375"
+    },
+    {
+      "id": "webkit/iphone-se-portrait//support/http",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) portrait HTTP /support",
+      "engine": "webkit",
+      "viewport": "iphone-se-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Support \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-se-portrait//support/overflow",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) portrait overflow /support",
+      "engine": "webkit",
+      "viewport": "iphone-se-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=375 innerWidth=375"
+    },
+    {
+      "id": "webkit/iphone-se-landscape///http",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) landscape HTTP /",
+      "engine": "webkit",
+      "viewport": "iphone-se-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=The Back Half \u2014 Magical is Possible"
+    },
+    {
+      "id": "webkit/iphone-se-landscape///overflow",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) landscape overflow /",
+      "engine": "webkit",
+      "viewport": "iphone-se-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=667 innerWidth=667"
+    },
+    {
+      "id": "webkit/iphone-se-landscape//register/http",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) landscape HTTP /register",
+      "engine": "webkit",
+      "viewport": "iphone-se-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Become an Architect \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-se-landscape//register/overflow",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) landscape overflow /register",
+      "engine": "webkit",
+      "viewport": "iphone-se-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=667 innerWidth=667"
+    },
+    {
+      "id": "webkit/iphone-se-landscape//checkout/http",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) landscape HTTP /checkout",
+      "engine": "webkit",
+      "viewport": "iphone-se-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Checkout \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-se-landscape//checkout/overflow",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) landscape overflow /checkout",
+      "engine": "webkit",
+      "viewport": "iphone-se-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=667 innerWidth=667"
+    },
+    {
+      "id": "webkit/iphone-se-landscape//lumina/http",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) landscape HTTP /lumina",
+      "engine": "webkit",
+      "viewport": "iphone-se-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Meet Lumina \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-se-landscape//lumina/overflow",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) landscape overflow /lumina",
+      "engine": "webkit",
+      "viewport": "iphone-se-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=667 innerWidth=667"
+    },
+    {
+      "id": "webkit/iphone-se-landscape//login/http",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) landscape HTTP /login",
+      "engine": "webkit",
+      "viewport": "iphone-se-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Sign in \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-se-landscape//login/overflow",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) landscape overflow /login",
+      "engine": "webkit",
+      "viewport": "iphone-se-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=667 innerWidth=667"
+    },
+    {
+      "id": "webkit/iphone-se-landscape//support/http",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) landscape HTTP /support",
+      "engine": "webkit",
+      "viewport": "iphone-se-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Support \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-se-landscape//support/overflow",
+      "area": "layout",
+      "name": "iPhone SE (3rd gen) landscape overflow /support",
+      "engine": "webkit",
+      "viewport": "iphone-se-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=667 innerWidth=667"
+    },
+    {
+      "id": "webkit/iphone-16-portrait///http",
+      "area": "layout",
+      "name": "iPhone 16 portrait HTTP /",
+      "engine": "webkit",
+      "viewport": "iphone-16-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=The Back Half \u2014 Magical is Possible"
+    },
+    {
+      "id": "webkit/iphone-16-portrait///overflow",
+      "area": "layout",
+      "name": "iPhone 16 portrait overflow /",
+      "engine": "webkit",
+      "viewport": "iphone-16-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=393 innerWidth=393"
+    },
+    {
+      "id": "webkit/iphone-16-portrait//register/http",
+      "area": "layout",
+      "name": "iPhone 16 portrait HTTP /register",
+      "engine": "webkit",
+      "viewport": "iphone-16-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Become an Architect \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-16-portrait//register/overflow",
+      "area": "layout",
+      "name": "iPhone 16 portrait overflow /register",
+      "engine": "webkit",
+      "viewport": "iphone-16-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=393 innerWidth=393"
+    },
+    {
+      "id": "webkit/iphone-16-portrait//checkout/http",
+      "area": "layout",
+      "name": "iPhone 16 portrait HTTP /checkout",
+      "engine": "webkit",
+      "viewport": "iphone-16-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Checkout \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-16-portrait//checkout/overflow",
+      "area": "layout",
+      "name": "iPhone 16 portrait overflow /checkout",
+      "engine": "webkit",
+      "viewport": "iphone-16-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=393 innerWidth=393"
+    },
+    {
+      "id": "webkit/iphone-16-portrait//lumina/http",
+      "area": "layout",
+      "name": "iPhone 16 portrait HTTP /lumina",
+      "engine": "webkit",
+      "viewport": "iphone-16-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Meet Lumina \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-16-portrait//lumina/overflow",
+      "area": "layout",
+      "name": "iPhone 16 portrait overflow /lumina",
+      "engine": "webkit",
+      "viewport": "iphone-16-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=393 innerWidth=393"
+    },
+    {
+      "id": "webkit/iphone-16-portrait//login/http",
+      "area": "layout",
+      "name": "iPhone 16 portrait HTTP /login",
+      "engine": "webkit",
+      "viewport": "iphone-16-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Sign in \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-16-portrait//login/overflow",
+      "area": "layout",
+      "name": "iPhone 16 portrait overflow /login",
+      "engine": "webkit",
+      "viewport": "iphone-16-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=393 innerWidth=393"
+    },
+    {
+      "id": "webkit/iphone-16-portrait//support/http",
+      "area": "layout",
+      "name": "iPhone 16 portrait HTTP /support",
+      "engine": "webkit",
+      "viewport": "iphone-16-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Support \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-16-portrait//support/overflow",
+      "area": "layout",
+      "name": "iPhone 16 portrait overflow /support",
+      "engine": "webkit",
+      "viewport": "iphone-16-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=393 innerWidth=393"
+    },
+    {
+      "id": "webkit/iphone-16-landscape///http",
+      "area": "layout",
+      "name": "iPhone 16 landscape HTTP /",
+      "engine": "webkit",
+      "viewport": "iphone-16-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=The Back Half \u2014 Magical is Possible"
+    },
+    {
+      "id": "webkit/iphone-16-landscape///overflow",
+      "area": "layout",
+      "name": "iPhone 16 landscape overflow /",
+      "engine": "webkit",
+      "viewport": "iphone-16-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=852 innerWidth=852"
+    },
+    {
+      "id": "webkit/iphone-16-landscape//register/http",
+      "area": "layout",
+      "name": "iPhone 16 landscape HTTP /register",
+      "engine": "webkit",
+      "viewport": "iphone-16-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Become an Architect \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-16-landscape//register/overflow",
+      "area": "layout",
+      "name": "iPhone 16 landscape overflow /register",
+      "engine": "webkit",
+      "viewport": "iphone-16-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=852 innerWidth=852"
+    },
+    {
+      "id": "webkit/iphone-16-landscape//checkout/http",
+      "area": "layout",
+      "name": "iPhone 16 landscape HTTP /checkout",
+      "engine": "webkit",
+      "viewport": "iphone-16-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Checkout \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-16-landscape//checkout/overflow",
+      "area": "layout",
+      "name": "iPhone 16 landscape overflow /checkout",
+      "engine": "webkit",
+      "viewport": "iphone-16-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=852 innerWidth=852"
+    },
+    {
+      "id": "webkit/iphone-16-landscape//lumina/http",
+      "area": "layout",
+      "name": "iPhone 16 landscape HTTP /lumina",
+      "engine": "webkit",
+      "viewport": "iphone-16-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Meet Lumina \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-16-landscape//lumina/overflow",
+      "area": "layout",
+      "name": "iPhone 16 landscape overflow /lumina",
+      "engine": "webkit",
+      "viewport": "iphone-16-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=852 innerWidth=852"
+    },
+    {
+      "id": "webkit/iphone-16-landscape//login/http",
+      "area": "layout",
+      "name": "iPhone 16 landscape HTTP /login",
+      "engine": "webkit",
+      "viewport": "iphone-16-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Sign in \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-16-landscape//login/overflow",
+      "area": "layout",
+      "name": "iPhone 16 landscape overflow /login",
+      "engine": "webkit",
+      "viewport": "iphone-16-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=852 innerWidth=852"
+    },
+    {
+      "id": "webkit/iphone-16-landscape//support/http",
+      "area": "layout",
+      "name": "iPhone 16 landscape HTTP /support",
+      "engine": "webkit",
+      "viewport": "iphone-16-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Support \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-16-landscape//support/overflow",
+      "area": "layout",
+      "name": "iPhone 16 landscape overflow /support",
+      "engine": "webkit",
+      "viewport": "iphone-16-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=852 innerWidth=852"
+    },
+    {
+      "id": "webkit/iphone-16-pro-portrait///http",
+      "area": "layout",
+      "name": "iPhone 16 Pro portrait HTTP /",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=The Back Half \u2014 Magical is Possible"
+    },
+    {
+      "id": "webkit/iphone-16-pro-portrait///overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro portrait overflow /",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=402 innerWidth=402"
+    },
+    {
+      "id": "webkit/iphone-16-pro-portrait//register/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro portrait HTTP /register",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Become an Architect \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-16-pro-portrait//register/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro portrait overflow /register",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=402 innerWidth=402"
+    },
+    {
+      "id": "webkit/iphone-16-pro-portrait//checkout/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro portrait HTTP /checkout",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Checkout \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-16-pro-portrait//checkout/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro portrait overflow /checkout",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=402 innerWidth=402"
+    },
+    {
+      "id": "webkit/iphone-16-pro-portrait//lumina/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro portrait HTTP /lumina",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Meet Lumina \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-16-pro-portrait//lumina/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro portrait overflow /lumina",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=402 innerWidth=402"
+    },
+    {
+      "id": "webkit/iphone-16-pro-portrait//login/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro portrait HTTP /login",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Sign in \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-16-pro-portrait//login/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro portrait overflow /login",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=402 innerWidth=402"
+    },
+    {
+      "id": "webkit/iphone-16-pro-portrait//support/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro portrait HTTP /support",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Support \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-16-pro-portrait//support/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro portrait overflow /support",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=402 innerWidth=402"
+    },
+    {
+      "id": "webkit/iphone-16-pro-landscape///http",
+      "area": "layout",
+      "name": "iPhone 16 Pro landscape HTTP /",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=The Back Half \u2014 Magical is Possible"
+    },
+    {
+      "id": "webkit/iphone-16-pro-landscape///overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro landscape overflow /",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=874 innerWidth=874"
+    },
+    {
+      "id": "webkit/iphone-16-pro-landscape//register/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro landscape HTTP /register",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Become an Architect \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-16-pro-landscape//register/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro landscape overflow /register",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=874 innerWidth=874"
+    },
+    {
+      "id": "webkit/iphone-16-pro-landscape//checkout/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro landscape HTTP /checkout",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Checkout \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-16-pro-landscape//checkout/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro landscape overflow /checkout",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=874 innerWidth=874"
+    },
+    {
+      "id": "webkit/iphone-16-pro-landscape//lumina/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro landscape HTTP /lumina",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Meet Lumina \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-16-pro-landscape//lumina/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro landscape overflow /lumina",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=874 innerWidth=874"
+    },
+    {
+      "id": "webkit/iphone-16-pro-landscape//login/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro landscape HTTP /login",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Sign in \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-16-pro-landscape//login/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro landscape overflow /login",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=874 innerWidth=874"
+    },
+    {
+      "id": "webkit/iphone-16-pro-landscape//support/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro landscape HTTP /support",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Support \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-16-pro-landscape//support/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro landscape overflow /support",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=874 innerWidth=874"
+    },
+    {
+      "id": "webkit/iphone-16-pro-max-portrait///http",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max portrait HTTP /",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-max-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=The Back Half \u2014 Magical is Possible"
+    },
+    {
+      "id": "webkit/iphone-16-pro-max-portrait///overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max portrait overflow /",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-max-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=440 innerWidth=440"
+    },
+    {
+      "id": "webkit/iphone-16-pro-max-portrait//register/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max portrait HTTP /register",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-max-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Become an Architect \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-16-pro-max-portrait//register/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max portrait overflow /register",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-max-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=440 innerWidth=440"
+    },
+    {
+      "id": "webkit/iphone-16-pro-max-portrait//checkout/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max portrait HTTP /checkout",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-max-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Checkout \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-16-pro-max-portrait//checkout/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max portrait overflow /checkout",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-max-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=440 innerWidth=440"
+    },
+    {
+      "id": "webkit/iphone-16-pro-max-portrait//lumina/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max portrait HTTP /lumina",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-max-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Meet Lumina \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-16-pro-max-portrait//lumina/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max portrait overflow /lumina",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-max-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=440 innerWidth=440"
+    },
+    {
+      "id": "webkit/iphone-16-pro-max-portrait//login/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max portrait HTTP /login",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-max-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Sign in \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-16-pro-max-portrait//login/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max portrait overflow /login",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-max-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=440 innerWidth=440"
+    },
+    {
+      "id": "webkit/iphone-16-pro-max-portrait//support/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max portrait HTTP /support",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-max-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Support \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-16-pro-max-portrait//support/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max portrait overflow /support",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-max-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=440 innerWidth=440"
+    },
+    {
+      "id": "webkit/iphone-16-pro-max-landscape///http",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max landscape HTTP /",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-max-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=The Back Half \u2014 Magical is Possible"
+    },
+    {
+      "id": "webkit/iphone-16-pro-max-landscape///overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max landscape overflow /",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-max-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=956 innerWidth=956"
+    },
+    {
+      "id": "webkit/iphone-16-pro-max-landscape//register/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max landscape HTTP /register",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-max-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Become an Architect \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-16-pro-max-landscape//register/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max landscape overflow /register",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-max-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=956 innerWidth=956"
+    },
+    {
+      "id": "webkit/iphone-16-pro-max-landscape//checkout/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max landscape HTTP /checkout",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-max-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Checkout \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-16-pro-max-landscape//checkout/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max landscape overflow /checkout",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-max-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=956 innerWidth=956"
+    },
+    {
+      "id": "webkit/iphone-16-pro-max-landscape//lumina/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max landscape HTTP /lumina",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-max-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Meet Lumina \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-16-pro-max-landscape//lumina/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max landscape overflow /lumina",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-max-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=956 innerWidth=956"
+    },
+    {
+      "id": "webkit/iphone-16-pro-max-landscape//login/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max landscape HTTP /login",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-max-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Sign in \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-16-pro-max-landscape//login/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max landscape overflow /login",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-max-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=956 innerWidth=956"
+    },
+    {
+      "id": "webkit/iphone-16-pro-max-landscape//support/http",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max landscape HTTP /support",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-max-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Support \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/iphone-16-pro-max-landscape//support/overflow",
+      "area": "layout",
+      "name": "iPhone 16 Pro Max landscape overflow /support",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-max-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=956 innerWidth=956"
+    },
+    {
+      "id": "webkit/android-compact-portrait///http",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) portrait HTTP /",
+      "engine": "webkit",
+      "viewport": "android-compact-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=The Back Half \u2014 Magical is Possible"
+    },
+    {
+      "id": "webkit/android-compact-portrait///overflow",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) portrait overflow /",
+      "engine": "webkit",
+      "viewport": "android-compact-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=360 innerWidth=360"
+    },
+    {
+      "id": "webkit/android-compact-portrait//register/http",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) portrait HTTP /register",
+      "engine": "webkit",
+      "viewport": "android-compact-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Become an Architect \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/android-compact-portrait//register/overflow",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) portrait overflow /register",
+      "engine": "webkit",
+      "viewport": "android-compact-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=360 innerWidth=360"
+    },
+    {
+      "id": "webkit/android-compact-portrait//checkout/http",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) portrait HTTP /checkout",
+      "engine": "webkit",
+      "viewport": "android-compact-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Checkout \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/android-compact-portrait//checkout/overflow",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) portrait overflow /checkout",
+      "engine": "webkit",
+      "viewport": "android-compact-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=360 innerWidth=360"
+    },
+    {
+      "id": "webkit/android-compact-portrait//lumina/http",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) portrait HTTP /lumina",
+      "engine": "webkit",
+      "viewport": "android-compact-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Meet Lumina \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/android-compact-portrait//lumina/overflow",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) portrait overflow /lumina",
+      "engine": "webkit",
+      "viewport": "android-compact-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=360 innerWidth=360"
+    },
+    {
+      "id": "webkit/android-compact-portrait//login/http",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) portrait HTTP /login",
+      "engine": "webkit",
+      "viewport": "android-compact-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Sign in \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/android-compact-portrait//login/overflow",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) portrait overflow /login",
+      "engine": "webkit",
+      "viewport": "android-compact-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=360 innerWidth=360"
+    },
+    {
+      "id": "webkit/android-compact-portrait//support/http",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) portrait HTTP /support",
+      "engine": "webkit",
+      "viewport": "android-compact-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Support \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/android-compact-portrait//support/overflow",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) portrait overflow /support",
+      "engine": "webkit",
+      "viewport": "android-compact-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=360 innerWidth=360"
+    },
+    {
+      "id": "webkit/android-compact-landscape///http",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) landscape HTTP /",
+      "engine": "webkit",
+      "viewport": "android-compact-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=The Back Half \u2014 Magical is Possible"
+    },
+    {
+      "id": "webkit/android-compact-landscape///overflow",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) landscape overflow /",
+      "engine": "webkit",
+      "viewport": "android-compact-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=780 innerWidth=780"
+    },
+    {
+      "id": "webkit/android-compact-landscape//register/http",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) landscape HTTP /register",
+      "engine": "webkit",
+      "viewport": "android-compact-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Become an Architect \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/android-compact-landscape//register/overflow",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) landscape overflow /register",
+      "engine": "webkit",
+      "viewport": "android-compact-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=780 innerWidth=780"
+    },
+    {
+      "id": "webkit/android-compact-landscape//checkout/http",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) landscape HTTP /checkout",
+      "engine": "webkit",
+      "viewport": "android-compact-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Checkout \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/android-compact-landscape//checkout/overflow",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) landscape overflow /checkout",
+      "engine": "webkit",
+      "viewport": "android-compact-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=780 innerWidth=780"
+    },
+    {
+      "id": "webkit/android-compact-landscape//lumina/http",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) landscape HTTP /lumina",
+      "engine": "webkit",
+      "viewport": "android-compact-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Meet Lumina \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/android-compact-landscape//lumina/overflow",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) landscape overflow /lumina",
+      "engine": "webkit",
+      "viewport": "android-compact-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=780 innerWidth=780"
+    },
+    {
+      "id": "webkit/android-compact-landscape//login/http",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) landscape HTTP /login",
+      "engine": "webkit",
+      "viewport": "android-compact-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Sign in \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/android-compact-landscape//login/overflow",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) landscape overflow /login",
+      "engine": "webkit",
+      "viewport": "android-compact-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=780 innerWidth=780"
+    },
+    {
+      "id": "webkit/android-compact-landscape//support/http",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) landscape HTTP /support",
+      "engine": "webkit",
+      "viewport": "android-compact-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Support \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/android-compact-landscape//support/overflow",
+      "area": "layout",
+      "name": "Android compact (Galaxy S24/S25 class) landscape overflow /support",
+      "engine": "webkit",
+      "viewport": "android-compact-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=780 innerWidth=780"
+    },
+    {
+      "id": "webkit/pixel-9-portrait///http",
+      "area": "layout",
+      "name": "Pixel 9 / common Android portrait HTTP /",
+      "engine": "webkit",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=The Back Half \u2014 Magical is Possible"
+    },
+    {
+      "id": "webkit/pixel-9-portrait///overflow",
+      "area": "layout",
+      "name": "Pixel 9 / common Android portrait overflow /",
+      "engine": "webkit",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=412 innerWidth=412"
+    },
+    {
+      "id": "webkit/pixel-9-portrait//register/http",
+      "area": "layout",
+      "name": "Pixel 9 / common Android portrait HTTP /register",
+      "engine": "webkit",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Become an Architect \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/pixel-9-portrait//register/overflow",
+      "area": "layout",
+      "name": "Pixel 9 / common Android portrait overflow /register",
+      "engine": "webkit",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=412 innerWidth=412"
+    },
+    {
+      "id": "webkit/pixel-9-portrait//checkout/http",
+      "area": "layout",
+      "name": "Pixel 9 / common Android portrait HTTP /checkout",
+      "engine": "webkit",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Checkout \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/pixel-9-portrait//checkout/overflow",
+      "area": "layout",
+      "name": "Pixel 9 / common Android portrait overflow /checkout",
+      "engine": "webkit",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=412 innerWidth=412"
+    },
+    {
+      "id": "webkit/pixel-9-portrait//lumina/http",
+      "area": "layout",
+      "name": "Pixel 9 / common Android portrait HTTP /lumina",
+      "engine": "webkit",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Meet Lumina \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/pixel-9-portrait//lumina/overflow",
+      "area": "layout",
+      "name": "Pixel 9 / common Android portrait overflow /lumina",
+      "engine": "webkit",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=412 innerWidth=412"
+    },
+    {
+      "id": "webkit/pixel-9-portrait//login/http",
+      "area": "layout",
+      "name": "Pixel 9 / common Android portrait HTTP /login",
+      "engine": "webkit",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Sign in \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/pixel-9-portrait//login/overflow",
+      "area": "layout",
+      "name": "Pixel 9 / common Android portrait overflow /login",
+      "engine": "webkit",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=412 innerWidth=412"
+    },
+    {
+      "id": "webkit/pixel-9-portrait//support/http",
+      "area": "layout",
+      "name": "Pixel 9 / common Android portrait HTTP /support",
+      "engine": "webkit",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Support \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/pixel-9-portrait//support/overflow",
+      "area": "layout",
+      "name": "Pixel 9 / common Android portrait overflow /support",
+      "engine": "webkit",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=412 innerWidth=412"
+    },
+    {
+      "id": "webkit/pixel-9-landscape///http",
+      "area": "layout",
+      "name": "Pixel 9 / common Android landscape HTTP /",
+      "engine": "webkit",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=The Back Half \u2014 Magical is Possible"
+    },
+    {
+      "id": "webkit/pixel-9-landscape///overflow",
+      "area": "layout",
+      "name": "Pixel 9 / common Android landscape overflow /",
+      "engine": "webkit",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=915 innerWidth=915"
+    },
+    {
+      "id": "webkit/pixel-9-landscape//register/http",
+      "area": "layout",
+      "name": "Pixel 9 / common Android landscape HTTP /register",
+      "engine": "webkit",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Become an Architect \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/pixel-9-landscape//register/overflow",
+      "area": "layout",
+      "name": "Pixel 9 / common Android landscape overflow /register",
+      "engine": "webkit",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=915 innerWidth=915"
+    },
+    {
+      "id": "webkit/pixel-9-landscape//checkout/http",
+      "area": "layout",
+      "name": "Pixel 9 / common Android landscape HTTP /checkout",
+      "engine": "webkit",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Checkout \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/pixel-9-landscape//checkout/overflow",
+      "area": "layout",
+      "name": "Pixel 9 / common Android landscape overflow /checkout",
+      "engine": "webkit",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=915 innerWidth=915"
+    },
+    {
+      "id": "webkit/pixel-9-landscape//lumina/http",
+      "area": "layout",
+      "name": "Pixel 9 / common Android landscape HTTP /lumina",
+      "engine": "webkit",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Meet Lumina \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/pixel-9-landscape//lumina/overflow",
+      "area": "layout",
+      "name": "Pixel 9 / common Android landscape overflow /lumina",
+      "engine": "webkit",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=915 innerWidth=915"
+    },
+    {
+      "id": "webkit/pixel-9-landscape//login/http",
+      "area": "layout",
+      "name": "Pixel 9 / common Android landscape HTTP /login",
+      "engine": "webkit",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Sign in \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/pixel-9-landscape//login/overflow",
+      "area": "layout",
+      "name": "Pixel 9 / common Android landscape overflow /login",
+      "engine": "webkit",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=915 innerWidth=915"
+    },
+    {
+      "id": "webkit/pixel-9-landscape//support/http",
+      "area": "layout",
+      "name": "Pixel 9 / common Android landscape HTTP /support",
+      "engine": "webkit",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Support \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/pixel-9-landscape//support/overflow",
+      "area": "layout",
+      "name": "Pixel 9 / common Android landscape overflow /support",
+      "engine": "webkit",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=915 innerWidth=915"
+    },
+    {
+      "id": "webkit/android-large-portrait///http",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) portrait HTTP /",
+      "engine": "webkit",
+      "viewport": "android-large-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=The Back Half \u2014 Magical is Possible"
+    },
+    {
+      "id": "webkit/android-large-portrait///overflow",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) portrait overflow /",
+      "engine": "webkit",
+      "viewport": "android-large-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=448 innerWidth=448"
+    },
+    {
+      "id": "webkit/android-large-portrait//register/http",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) portrait HTTP /register",
+      "engine": "webkit",
+      "viewport": "android-large-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Become an Architect \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/android-large-portrait//register/overflow",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) portrait overflow /register",
+      "engine": "webkit",
+      "viewport": "android-large-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=448 innerWidth=448"
+    },
+    {
+      "id": "webkit/android-large-portrait//checkout/http",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) portrait HTTP /checkout",
+      "engine": "webkit",
+      "viewport": "android-large-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Checkout \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/android-large-portrait//checkout/overflow",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) portrait overflow /checkout",
+      "engine": "webkit",
+      "viewport": "android-large-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=448 innerWidth=448"
+    },
+    {
+      "id": "webkit/android-large-portrait//lumina/http",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) portrait HTTP /lumina",
+      "engine": "webkit",
+      "viewport": "android-large-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Meet Lumina \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/android-large-portrait//lumina/overflow",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) portrait overflow /lumina",
+      "engine": "webkit",
+      "viewport": "android-large-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=448 innerWidth=448"
+    },
+    {
+      "id": "webkit/android-large-portrait//login/http",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) portrait HTTP /login",
+      "engine": "webkit",
+      "viewport": "android-large-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Sign in \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/android-large-portrait//login/overflow",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) portrait overflow /login",
+      "engine": "webkit",
+      "viewport": "android-large-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=448 innerWidth=448"
+    },
+    {
+      "id": "webkit/android-large-portrait//support/http",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) portrait HTTP /support",
+      "engine": "webkit",
+      "viewport": "android-large-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Support \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/android-large-portrait//support/overflow",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) portrait overflow /support",
+      "engine": "webkit",
+      "viewport": "android-large-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=448 innerWidth=448"
+    },
+    {
+      "id": "webkit/android-large-landscape///http",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) landscape HTTP /",
+      "engine": "webkit",
+      "viewport": "android-large-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=The Back Half \u2014 Magical is Possible"
+    },
+    {
+      "id": "webkit/android-large-landscape///overflow",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) landscape overflow /",
+      "engine": "webkit",
+      "viewport": "android-large-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=998 innerWidth=998"
+    },
+    {
+      "id": "webkit/android-large-landscape//register/http",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) landscape HTTP /register",
+      "engine": "webkit",
+      "viewport": "android-large-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Become an Architect \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/android-large-landscape//register/overflow",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) landscape overflow /register",
+      "engine": "webkit",
+      "viewport": "android-large-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=998 innerWidth=998"
+    },
+    {
+      "id": "webkit/android-large-landscape//checkout/http",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) landscape HTTP /checkout",
+      "engine": "webkit",
+      "viewport": "android-large-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Checkout \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/android-large-landscape//checkout/overflow",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) landscape overflow /checkout",
+      "engine": "webkit",
+      "viewport": "android-large-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=998 innerWidth=998"
+    },
+    {
+      "id": "webkit/android-large-landscape//lumina/http",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) landscape HTTP /lumina",
+      "engine": "webkit",
+      "viewport": "android-large-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Meet Lumina \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/android-large-landscape//lumina/overflow",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) landscape overflow /lumina",
+      "engine": "webkit",
+      "viewport": "android-large-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=998 innerWidth=998"
+    },
+    {
+      "id": "webkit/android-large-landscape//login/http",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) landscape HTTP /login",
+      "engine": "webkit",
+      "viewport": "android-large-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Sign in \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/android-large-landscape//login/overflow",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) landscape overflow /login",
+      "engine": "webkit",
+      "viewport": "android-large-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=998 innerWidth=998"
+    },
+    {
+      "id": "webkit/android-large-landscape//support/http",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) landscape HTTP /support",
+      "engine": "webkit",
+      "viewport": "android-large-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "HTTP 200 title=Support \u2014 The Back Half"
+    },
+    {
+      "id": "webkit/android-large-landscape//support/overflow",
+      "area": "layout",
+      "name": "Android large (Pixel 9 Pro XL class) landscape overflow /support",
+      "engine": "webkit",
+      "viewport": "android-large-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=998 innerWidth=998"
+    },
+    {
+      "id": "webkit/iphone-16-pro-portrait/register-form",
+      "area": "forms",
+      "name": "Registration form visible after 18+ gate",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "ageGateUsed=true firstName=1 email=1"
+    },
+    {
+      "id": "webkit/iphone-16-pro-portrait/register-validation",
+      "area": "forms",
+      "name": "Registration empty/incomplete submit shows validation",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "errorNodes=6"
+    },
+    {
+      "id": "webkit/iphone-16-pro-portrait/register-overflow",
+      "area": "forms",
+      "name": "Registration form no horizontal overflow",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=402"
+    },
+    {
+      "id": "webkit/iphone-16-pro-portrait/login-form",
+      "area": "forms",
+      "name": "Login form fields visible and usable",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "email=true"
+    },
+    {
+      "id": "webkit/iphone-16-pro-portrait/login-validation",
+      "area": "forms",
+      "name": "Login invalid submit shows validation",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "errorNodes=2"
+    },
+    {
+      "id": "webkit/iphone-16-pro-portrait/support-form",
+      "area": "forms",
+      "name": "Support request form visible",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "name=1 message=1"
+    },
+    {
+      "id": "webkit/iphone-16-pro-portrait/support-overflow",
+      "area": "forms",
+      "name": "Support page no horizontal overflow",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=402"
+    },
+    {
+      "id": "webkit/iphone-16-pro-portrait/contact",
+      "area": "forms",
+      "name": "Contact methods and Support CTA reachable",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "mailto=1 supportCta=1"
+    },
+    {
+      "id": "webkit/iphone-16-pro-portrait/forgot-password",
+      "area": "forms",
+      "name": "Forgot-password form visible",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "email=1"
+    },
+    {
+      "id": "webkit/iphone-16-pro-portrait/lumina-public",
+      "area": "chat",
+      "name": "Public Lumina opening and main content",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "opened=true main=2 overflow=false"
+    },
+    {
+      "id": "webkit/iphone-16-pro-portrait/lumina-auth-gate",
+      "area": "chat",
+      "name": "Authenticated Lumina chat requires login",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Flumina status=200"
+    },
+    {
+      "id": "webkit/iphone-16-pro-portrait/journey",
+      "area": "videos",
+      "name": "Public Journey page loads on device",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "overflow=false"
+    },
+    {
+      "id": "webkit/iphone-16-pro-portrait/chapter1-gate",
+      "area": "videos",
+      "name": "Chapter I video route is auth-gated",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Fjourney%2Fchapter-1"
+    },
+    {
+      "id": "webkit/iphone-16-pro-portrait/resources-gate",
+      "area": "downloads",
+      "name": "Architect Resources/downloads require login",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Fresources"
+    },
+    {
+      "id": "webkit/iphone-16-pro-portrait/checkout-catalog",
+      "area": "checkout",
+      "name": "Checkout catalog shows launch offers",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "articles=6 offerLinks=3 overflow=false"
+    },
+    {
+      "id": "webkit/iphone-16-pro-portrait/checkout-offer-gate",
+      "area": "checkout",
+      "name": "Checkout offer start is login-gated",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Fcheckout%2Fblueprint status=200"
+    },
+    {
+      "id": "webkit/iphone-16-pro-landscape/register-form",
+      "area": "forms",
+      "name": "Registration form visible after 18+ gate",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "ageGateUsed=true firstName=1 email=1"
+    },
+    {
+      "id": "webkit/iphone-16-pro-landscape/register-validation",
+      "area": "forms",
+      "name": "Registration empty/incomplete submit shows validation",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "errorNodes=6"
+    },
+    {
+      "id": "webkit/iphone-16-pro-landscape/register-overflow",
+      "area": "forms",
+      "name": "Registration form no horizontal overflow",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=874"
+    },
+    {
+      "id": "webkit/iphone-16-pro-landscape/login-form",
+      "area": "forms",
+      "name": "Login form fields visible and usable",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "email=true"
+    },
+    {
+      "id": "webkit/iphone-16-pro-landscape/login-validation",
+      "area": "forms",
+      "name": "Login invalid submit shows validation",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "errorNodes=2"
+    },
+    {
+      "id": "webkit/iphone-16-pro-landscape/support-form",
+      "area": "forms",
+      "name": "Support request form visible",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "name=1 message=1"
+    },
+    {
+      "id": "webkit/iphone-16-pro-landscape/support-overflow",
+      "area": "forms",
+      "name": "Support page no horizontal overflow",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=874"
+    },
+    {
+      "id": "webkit/iphone-16-pro-landscape/contact",
+      "area": "forms",
+      "name": "Contact methods and Support CTA reachable",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "mailto=1 supportCta=1"
+    },
+    {
+      "id": "webkit/iphone-16-pro-landscape/forgot-password",
+      "area": "forms",
+      "name": "Forgot-password form visible",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "email=1"
+    },
+    {
+      "id": "webkit/iphone-16-pro-landscape/lumina-public",
+      "area": "chat",
+      "name": "Public Lumina opening and main content",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "opened=true main=2 overflow=false"
+    },
+    {
+      "id": "webkit/iphone-16-pro-landscape/lumina-auth-gate",
+      "area": "chat",
+      "name": "Authenticated Lumina chat requires login",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Flumina status=200"
+    },
+    {
+      "id": "webkit/iphone-16-pro-landscape/journey",
+      "area": "videos",
+      "name": "Public Journey page loads on device",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "overflow=false"
+    },
+    {
+      "id": "webkit/iphone-16-pro-landscape/chapter1-gate",
+      "area": "videos",
+      "name": "Chapter I video route is auth-gated",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Fjourney%2Fchapter-1"
+    },
+    {
+      "id": "webkit/iphone-16-pro-landscape/resources-gate",
+      "area": "downloads",
+      "name": "Architect Resources/downloads require login",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Fresources"
+    },
+    {
+      "id": "webkit/iphone-16-pro-landscape/checkout-catalog",
+      "area": "checkout",
+      "name": "Checkout catalog shows launch offers",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "articles=6 offerLinks=3 overflow=false"
+    },
+    {
+      "id": "webkit/iphone-16-pro-landscape/checkout-offer-gate",
+      "area": "checkout",
+      "name": "Checkout offer start is login-gated",
+      "engine": "webkit",
+      "viewport": "iphone-16-pro-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Fcheckout%2Fblueprint status=200"
+    },
+    {
+      "id": "webkit/pixel-9-portrait/register-form",
+      "area": "forms",
+      "name": "Registration form visible after 18+ gate",
+      "engine": "webkit",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "ageGateUsed=true firstName=1 email=1"
+    },
+    {
+      "id": "webkit/pixel-9-portrait/register-validation",
+      "area": "forms",
+      "name": "Registration empty/incomplete submit shows validation",
+      "engine": "webkit",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "errorNodes=6"
+    },
+    {
+      "id": "webkit/pixel-9-portrait/register-overflow",
+      "area": "forms",
+      "name": "Registration form no horizontal overflow",
+      "engine": "webkit",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=412"
+    },
+    {
+      "id": "webkit/pixel-9-portrait/login-form",
+      "area": "forms",
+      "name": "Login form fields visible and usable",
+      "engine": "webkit",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "email=true"
+    },
+    {
+      "id": "webkit/pixel-9-portrait/login-validation",
+      "area": "forms",
+      "name": "Login invalid submit shows validation",
+      "engine": "webkit",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "errorNodes=2"
+    },
+    {
+      "id": "webkit/pixel-9-portrait/support-form",
+      "area": "forms",
+      "name": "Support request form visible",
+      "engine": "webkit",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "name=1 message=1"
+    },
+    {
+      "id": "webkit/pixel-9-portrait/support-overflow",
+      "area": "forms",
+      "name": "Support page no horizontal overflow",
+      "engine": "webkit",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=412"
+    },
+    {
+      "id": "webkit/pixel-9-portrait/contact",
+      "area": "forms",
+      "name": "Contact methods and Support CTA reachable",
+      "engine": "webkit",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "mailto=1 supportCta=1"
+    },
+    {
+      "id": "webkit/pixel-9-portrait/forgot-password",
+      "area": "forms",
+      "name": "Forgot-password form visible",
+      "engine": "webkit",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "email=1"
+    },
+    {
+      "id": "webkit/pixel-9-portrait/lumina-public",
+      "area": "chat",
+      "name": "Public Lumina opening and main content",
+      "engine": "webkit",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "opened=true main=2 overflow=false"
+    },
+    {
+      "id": "webkit/pixel-9-portrait/lumina-auth-gate",
+      "area": "chat",
+      "name": "Authenticated Lumina chat requires login",
+      "engine": "webkit",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Flumina status=200"
+    },
+    {
+      "id": "webkit/pixel-9-portrait/journey",
+      "area": "videos",
+      "name": "Public Journey page loads on device",
+      "engine": "webkit",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "overflow=false"
+    },
+    {
+      "id": "webkit/pixel-9-portrait/chapter1-gate",
+      "area": "videos",
+      "name": "Chapter I video route is auth-gated",
+      "engine": "webkit",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Fjourney%2Fchapter-1"
+    },
+    {
+      "id": "webkit/pixel-9-portrait/resources-gate",
+      "area": "downloads",
+      "name": "Architect Resources/downloads require login",
+      "engine": "webkit",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Fresources"
+    },
+    {
+      "id": "webkit/pixel-9-portrait/checkout-catalog",
+      "area": "checkout",
+      "name": "Checkout catalog shows launch offers",
+      "engine": "webkit",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "articles=6 offerLinks=3 overflow=false"
+    },
+    {
+      "id": "webkit/pixel-9-portrait/checkout-offer-gate",
+      "area": "checkout",
+      "name": "Checkout offer start is login-gated",
+      "engine": "webkit",
+      "viewport": "pixel-9-portrait",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Fcheckout%2Fblueprint status=200"
+    },
+    {
+      "id": "webkit/pixel-9-landscape/register-form",
+      "area": "forms",
+      "name": "Registration form visible after 18+ gate",
+      "engine": "webkit",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "ageGateUsed=true firstName=1 email=1"
+    },
+    {
+      "id": "webkit/pixel-9-landscape/register-validation",
+      "area": "forms",
+      "name": "Registration empty/incomplete submit shows validation",
+      "engine": "webkit",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "errorNodes=6"
+    },
+    {
+      "id": "webkit/pixel-9-landscape/register-overflow",
+      "area": "forms",
+      "name": "Registration form no horizontal overflow",
+      "engine": "webkit",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=915"
+    },
+    {
+      "id": "webkit/pixel-9-landscape/login-form",
+      "area": "forms",
+      "name": "Login form fields visible and usable",
+      "engine": "webkit",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "email=true"
+    },
+    {
+      "id": "webkit/pixel-9-landscape/login-validation",
+      "area": "forms",
+      "name": "Login invalid submit shows validation",
+      "engine": "webkit",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "errorNodes=2"
+    },
+    {
+      "id": "webkit/pixel-9-landscape/support-form",
+      "area": "forms",
+      "name": "Support request form visible",
+      "engine": "webkit",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "name=1 message=1"
+    },
+    {
+      "id": "webkit/pixel-9-landscape/support-overflow",
+      "area": "forms",
+      "name": "Support page no horizontal overflow",
+      "engine": "webkit",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "scrollWidth=915"
+    },
+    {
+      "id": "webkit/pixel-9-landscape/contact",
+      "area": "forms",
+      "name": "Contact methods and Support CTA reachable",
+      "engine": "webkit",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "mailto=1 supportCta=1"
+    },
+    {
+      "id": "webkit/pixel-9-landscape/forgot-password",
+      "area": "forms",
+      "name": "Forgot-password form visible",
+      "engine": "webkit",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "email=1"
+    },
+    {
+      "id": "webkit/pixel-9-landscape/lumina-public",
+      "area": "chat",
+      "name": "Public Lumina opening and main content",
+      "engine": "webkit",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "opened=true main=2 overflow=false"
+    },
+    {
+      "id": "webkit/pixel-9-landscape/lumina-auth-gate",
+      "area": "chat",
+      "name": "Authenticated Lumina chat requires login",
+      "engine": "webkit",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Flumina status=200"
+    },
+    {
+      "id": "webkit/pixel-9-landscape/journey",
+      "area": "videos",
+      "name": "Public Journey page loads on device",
+      "engine": "webkit",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "overflow=false"
+    },
+    {
+      "id": "webkit/pixel-9-landscape/chapter1-gate",
+      "area": "videos",
+      "name": "Chapter I video route is auth-gated",
+      "engine": "webkit",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Fjourney%2Fchapter-1"
+    },
+    {
+      "id": "webkit/pixel-9-landscape/resources-gate",
+      "area": "downloads",
+      "name": "Architect Resources/downloads require login",
+      "engine": "webkit",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Fresources"
+    },
+    {
+      "id": "webkit/pixel-9-landscape/checkout-catalog",
+      "area": "checkout",
+      "name": "Checkout catalog shows launch offers",
+      "engine": "webkit",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "articles=6 offerLinks=3 overflow=false"
+    },
+    {
+      "id": "webkit/pixel-9-landscape/checkout-offer-gate",
+      "area": "checkout",
+      "name": "Checkout offer start is login-gated",
+      "engine": "webkit",
+      "viewport": "pixel-9-landscape",
+      "origin": "https://website-two-psi-49.vercel.app",
+      "result": "PASS",
+      "detail": "url=https://website-two-psi-49.vercel.app/login?next=%2Fcheckout%2Fblueprint status=200"
+    }
+  ]
+}
