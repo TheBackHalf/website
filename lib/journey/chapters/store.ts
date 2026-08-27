@@ -27,6 +27,11 @@ import {
   migrateChapter1CurrentSectionId,
   needsChapterStructureMigration,
 } from "@/lib/journey/chapters/legacy-teaching";
+import {
+  createPostgresChapterDocumentAdapter,
+  rejectUnconfiguredJourneyStore,
+} from "@/lib/journey/chapters/postgres-store";
+import { createJourneyChapterStoreInstance } from "@/lib/journey/chapters/runtime";
 
 const DEFAULT_DATA_DIR = ".data/journey";
 const DEFAULT_DB_FILE = "chapter-1.json";
@@ -293,9 +298,32 @@ export function createFileChapter1Store(options?: {
 
 let storeInstance: Chapter1Store | null = null;
 
+function createPostgresChapter1Store(): Chapter1Store {
+  const docs = createPostgresChapterDocumentAdapter<Chapter1Record>({
+    chapterId: "chapter-1-awakening",
+    normalize: normalizeRecord,
+    invalidMessage: "Invalid Chapter I payload.",
+  });
+  return {
+    findChapter1ForUser: (userId) => docs.find(userId),
+    saveChapter1: (record) => docs.save(record),
+  };
+}
+
+function createUnconfiguredChapter1Store(): Chapter1Store {
+  return {
+    findChapter1ForUser: rejectUnconfiguredJourneyStore,
+    saveChapter1: rejectUnconfiguredJourneyStore,
+  };
+}
+
 export function getChapter1Store(): Chapter1Store {
   if (!storeInstance) {
-    storeInstance = createFileChapter1Store();
+    storeInstance = createJourneyChapterStoreInstance({
+      file: () => createFileChapter1Store(),
+      postgres: createPostgresChapter1Store,
+      unconfigured: createUnconfiguredChapter1Store,
+    });
   }
   return storeInstance;
 }

@@ -1,0 +1,64 @@
+{
+  "aosWorkId": "al-197",
+  "source": "command_center",
+  "sourceReference": "August Launch row 197",
+  "ownerAgent": "nia",
+  "title": "Validate Blueprint-to-Journey Alignment",
+  "generatedAt": "2026-08-26T19:53:03.547Z",
+  "technicalStatus": "ready_for_founder_acceptance",
+  "founderAcceptance": null,
+  "nextAction": "await_founder_acceptance",
+  "result": "PASS",
+  "passed": 101,
+  "failed": 0,
+  "prUrl": "https://github.com/TheBackHalf/website/pull/30",
+  "branch": "cursor/aos-nia-al-197-e7c1",
+  "merged": false,
+  "evidence": [
+    "ops/fab-5/runs/row-197-blueprint-journey-alignment.json",
+    "lib/blueprint/journey-alignment.ts",
+    "lib/blueprint/map-journey-to-blueprint.ts",
+    "lib/blueprint/persisted-journey-alignment.ts",
+    "lib/journey/chapters/db.ts",
+    "https://github.com/TheBackHalf/website/pull/30"
+  ],
+  "failedChecks": [],
+  "softwareChange": true,
+  "acceptanceGate": {
+    "fixtureOnly": false,
+    "persistedStorePopulate": true,
+    "guidebookPersonalizationPath": true,
+    "hostedBackendNotFile": true,
+    "postgresLiveRoundTrip": "SKIPPED"
+  },
+  "durability": {
+    "backend": "file_local_development",
+    "productionSourceOfTruth": "Local development file fallback. Not the production system of record.",
+    "dataDirIsSourceOfTruth": false
+  },
+  "validation": {
+    "typecheck": {
+      "command": "npx tsc --noEmit",
+      "result": "PASS"
+    },
+    "test": {
+      "command": "npm run fab5:row197",
+      "note": "Fixture structure plus persisted chapter-store populate and guidebook personalization path. Not fixture-only.",
+      "result": "PASS",
+      "passed": 101,
+      "failed": 0
+    },
+    "build": {
+      "command": "npm run build",
+      "result": "PASS"
+    }
+  },
+  "notes": [
+    "Chapter I–II Foundry reflection questions remain Journey-digital; Blueprint pages are Aliveness Project / Mirror steps.",
+    "Chapter IV emits Architect Reflection (index 0) + The Standards Exercise (index 1), matching reserved exercisePageCount 2.",
+    "Three Lives and Founder Closing Reflections are excluded from participant Blueprint writing pages.",
+    "Saved answers are persisted through Chapter I–VII store APIs, then loaded via loadArchitectGuidebookResponses.",
+    "Hosted production uses shared bh_journey_chapters Postgres (same POSTGRES_URL client as B2). Filesystem fallback is disabled on Vercel.",
+    "Founder acceptance stays with Kimberly Walker (human). This run does not mark the Command Center row complete."
+  ]
+}

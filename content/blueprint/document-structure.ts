@@ -73,6 +73,7 @@ export const blueprintDocumentSections: readonly BlueprintSectionDefinition[] = 
     chapterName: chapterName(4),
     romanNumeral: "IV",
     includeInToc: true,
+    /** Participant exercises: Architect Reflection + The Standards Exercise. */
     exercisePageCount: 2,
   },
   {

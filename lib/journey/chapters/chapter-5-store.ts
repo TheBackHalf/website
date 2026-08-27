@@ -24,6 +24,11 @@ import {
   migrateCurrentSectionId,
   needsTeachingProgressMigration,
 } from "@/lib/journey/chapters/legacy-teaching";
+import {
+  createPostgresChapterDocumentAdapter,
+  rejectUnconfiguredJourneyStore,
+} from "@/lib/journey/chapters/postgres-store";
+import { createJourneyChapterStoreInstance } from "@/lib/journey/chapters/runtime";
 
 const DEFAULT_DATA_DIR = ".data/journey";
 const DEFAULT_DB_FILE = "chapter-5.json";
@@ -265,9 +270,32 @@ export function createFileChapter5Store(options?: {
 
 let storeInstance: Chapter5Store | null = null;
 
+function createPostgresChapter5Store(): Chapter5Store {
+  const docs = createPostgresChapterDocumentAdapter<Chapter5Record>({
+    chapterId: "chapter-5-architect",
+    normalize: normalizeRecord,
+    invalidMessage: "Invalid Chapter V payload.",
+  });
+  return {
+    findChapter5ForUser: (userId) => docs.find(userId),
+    saveChapter5: (record) => docs.save(record),
+  };
+}
+
+function createUnconfiguredChapter5Store(): Chapter5Store {
+  return {
+    findChapter5ForUser: rejectUnconfiguredJourneyStore,
+    saveChapter5: rejectUnconfiguredJourneyStore,
+  };
+}
+
 export function getChapter5Store(): Chapter5Store {
   if (!storeInstance) {
-    storeInstance = createFileChapter5Store();
+    storeInstance = createJourneyChapterStoreInstance({
+      file: () => createFileChapter5Store(),
+      postgres: createPostgresChapter5Store,
+      unconfigured: createUnconfiguredChapter5Store,
+    });
   }
   return storeInstance;
 }

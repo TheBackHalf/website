@@ -24,6 +24,11 @@ import {
   migrateCurrentSectionId,
   needsTeachingProgressMigration,
 } from "@/lib/journey/chapters/legacy-teaching";
+import {
+  createPostgresChapterDocumentAdapter,
+  rejectUnconfiguredJourneyStore,
+} from "@/lib/journey/chapters/postgres-store";
+import { createJourneyChapterStoreInstance } from "@/lib/journey/chapters/runtime";
 
 const DEFAULT_DATA_DIR = ".data/journey";
 const DEFAULT_DB_FILE = "chapter-3.json";
@@ -265,9 +270,32 @@ export function createFileChapter3Store(options?: {
 
 let storeInstance: Chapter3Store | null = null;
 
+function createPostgresChapter3Store(): Chapter3Store {
+  const docs = createPostgresChapterDocumentAdapter<Chapter3Record>({
+    chapterId: "chapter-3-decision",
+    normalize: normalizeRecord,
+    invalidMessage: "Invalid Chapter III payload.",
+  });
+  return {
+    findChapter3ForUser: (userId) => docs.find(userId),
+    saveChapter3: (record) => docs.save(record),
+  };
+}
+
+function createUnconfiguredChapter3Store(): Chapter3Store {
+  return {
+    findChapter3ForUser: rejectUnconfiguredJourneyStore,
+    saveChapter3: rejectUnconfiguredJourneyStore,
+  };
+}
+
 export function getChapter3Store(): Chapter3Store {
   if (!storeInstance) {
-    storeInstance = createFileChapter3Store();
+    storeInstance = createJourneyChapterStoreInstance({
+      file: () => createFileChapter3Store(),
+      postgres: createPostgresChapter3Store,
+      unconfigured: createUnconfiguredChapter3Store,
+    });
   }
   return storeInstance;
 }
