@@ -1,4 +1,6 @@
 import bundledSnapshot from "@/ops/fab-5/aos-command-center-snapshot.json";
+import { classifyExecution } from "@/lib/fab-5/aos/operating-model";
+import { AUGUST_LAUNCH_AGENT_ROWS } from "@/lib/fab-5/aos/sprint";
 import { enqueueWork, getWork } from "@/lib/fab-5/aos/store";
 import {
   isHumanFounderOwner,
@@ -56,6 +58,9 @@ function initialStatus(row: CommandCenterRow): { status: WorkStatus; scheduledAt
   if (row.tab === "Post Launch") {
     return { status: "DATE_GATED", scheduledAt: LAUNCH_AT, blockedReason: dep || "post_launch_queue" };
   }
+  if (row.tab === "August Launch" && AUGUST_LAUNCH_AGENT_ROWS.has(row.order)) {
+    return { status: "READY", scheduledAt: null, blockedReason: null };
+  }
   if (/august 31|launch day|first 24-hour|72-hour|october 25/.test(gateText)) {
     return { status: "DATE_GATED", scheduledAt: LAUNCH_AT, blockedReason: dep || "date_gated" };
   }
@@ -83,6 +88,25 @@ export async function ingestCommandCenterSnapshot(
   const items: WorkItem[] = [];
   for (const row of snapshot.rows) {
     if (!row.deliverable.trim() && !row.description.trim()) continue;
+    if (row.tab === "August Launch") {
+      if (row.order === 74 || row.order === 10 || row.order === 217) {
+        skippedComplete += 1;
+        continue;
+      }
+      if (!AUGUST_LAUNCH_AGENT_ROWS.has(row.order)) {
+        skippedKim += 1;
+        continue;
+      }
+      const workbookStatus = row.status.trim().toLowerCase();
+      if (
+        workbookStatus === "planned" ||
+        workbookStatus === "deferred" ||
+        workbookStatus.includes("removed")
+      ) {
+        skippedComplete += 1;
+        continue;
+      }
+    }
     if (!isIncomplete(row)) {
       skippedComplete += 1;
       continue;
@@ -99,6 +123,11 @@ export async function ingestCommandCenterSnapshot(
     const existing = await getWork(workIdFor(row));
     if (existing && existing.status === "COMPLETE") continue;
     const gate = initialStatus(row);
+    const routing = classifyExecution({
+      title: row.deliverable,
+      description: row.description,
+      source: "command_center",
+    });
     const item = await enqueueWork({
       workId: workIdFor(row),
       source: "command_center",
@@ -109,10 +138,10 @@ export async function ingestCommandCenterSnapshot(
       priority: row.tab === "August Launch" ? row.order : 300 + row.order,
       status: gate.status,
       scheduledAt: gate.scheduledAt,
-      nextAction: gate.blockedReason ?? "execute",
+      nextAction: gate.blockedReason ?? (routing.engineeringRequired ? "cursor_cloud_engineering" : "await_domain_execution"),
       blockedReason: gate.blockedReason,
       resourceKey: `cc:${row.tab}:${row.order}`,
-      runtimeClass: "engineering",
+      runtimeClass: routing.runtimeClass,
       actionClass: /spend|payment|bank|insurance|tax/i.test(`${row.deliverable} ${row.description}`) ? "C" : "A",
       controlledTest: false,
       synthetic: false,

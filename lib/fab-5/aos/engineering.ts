@@ -11,7 +11,6 @@ import {
 } from "@/lib/fab-5/aos/cursor-cloud";
 import {
   completeWork,
-  countActiveEngineeringJobs,
   failWork,
   getEngineeringJobByWorkId,
   getWork,
@@ -21,10 +20,15 @@ import {
   recordCost,
   releaseWork,
   updateEngineeringJob,
+  updateWorkRouting,
 } from "@/lib/fab-5/aos/store";
+import {
+  classifyWorkItem,
+  cursorModelPreference,
+  evaluateCursorLaunch,
+} from "@/lib/fab-5/aos/operating-model";
 import type { EngineeringJob, WorkItem } from "@/lib/fab-5/aos/types";
 
-const MAX_OPEN_ENGINEERING_JOBS = Number.parseInt(process.env.AOS_MAX_OPEN_ENGINEERING_JOBS ?? "2", 10) || 2;
 const STALE_JOB_MS = 4 * 60 * 60 * 1000;
 
 const REQUIRED_VALIDATION_COMMANDS = [
@@ -83,7 +87,33 @@ export function buildEngineeringPrompt(item: WorkItem): string {
       ".json and do not change product, marketing, or legal files.",
     "Open a pull request. Never merge. Never deploy failed work.",
     "This result returns to AOS. Founder acceptance, if required, stays with Kimberly Walker (human).",
+    "Use the most economical model that can complete this software change without sacrificing required engineering quality.",
   ].join("\n");
+}
+
+async function parkForCursorGate(
+  item: WorkItem,
+  leaseToken: string,
+  reason: "at_capacity" | "budget_exhausted" | "not_engineering",
+): Promise<EngineeringExecutionOutcome> {
+  if (reason === "not_engineering") {
+    await updateWorkRouting({
+      workId: item.workId,
+      leaseToken,
+      runtimeClass: "hosted",
+      nextAction: item.source === "command_center" ? "await_domain_execution" : "hosted_operational_execute",
+      status: "READY",
+    });
+    return "BLOCKED";
+  }
+  await releaseWork({
+    workId: item.workId,
+    leaseToken,
+    status: "READY",
+    nextAction: reason === "budget_exhausted" ? "wait_cursor_budget" : "wait_engineering_capacity",
+    blockedReason: reason === "budget_exhausted" ? "cursor_monthly_budget_reached" : null,
+  });
+  return "BLOCKED";
 }
 
 async function ingestSuccessfulJob(job: EngineeringJob, item: WorkItem, runResult: string | null): Promise<void> {
@@ -186,6 +216,11 @@ export async function startEngineeringExecution(
     return item.synthetic || item.controlledTest ? "LAUNCHED" : "BLOCKED";
   }
 
+  const classified = classifyWorkItem(item);
+  if (!classified.engineeringRequired) {
+    return parkForCursorGate(item, leaseToken, "not_engineering");
+  }
+
   const prompt = existing?.prompt ?? buildEngineeringPrompt(item);
   const repo = existing?.repository ?? engineeringRepoUrl();
   const isolated = true;
@@ -227,16 +262,13 @@ export async function startEngineeringExecution(
     return "BLOCKED";
   }
 
-  const active = await countActiveEngineeringJobs();
-  if (active >= MAX_OPEN_ENGINEERING_JOBS) {
-    await releaseWork({
-      workId: item.workId,
+  const gate = await evaluateCursorLaunch(item);
+  if (!gate.allowed) {
+    return parkForCursorGate(
+      item,
       leaseToken,
-      status: "READY",
-      nextAction: "wait_engineering_capacity",
-      blockedReason: null,
-    });
-    return "BLOCKED";
+      gate.reason === "budget_exhausted" ? "budget_exhausted" : "at_capacity",
+    );
   }
 
   const job =
@@ -273,6 +305,7 @@ export async function startEngineeringExecution(
       skipReviewerRequest: true,
       workOnCurrentBranch: false,
       agentId: `bc-${randomUUID()}`,
+      model: cursorModelPreference(),
     });
     await updateEngineeringJob(job.jobId, {
       providerAgentId: created.agent.id,
@@ -324,7 +357,8 @@ export async function pollEngineeringJobs(): Promise<{
 
     if (job.status === "blocked_unconfigured") {
       if (!configured) continue;
-      if ((await countActiveEngineeringJobs()) >= MAX_OPEN_ENGINEERING_JOBS) continue;
+      const gate = await evaluateCursorLaunch(item);
+      if (!gate.allowed) continue;
       const outcome = await relaunchJob(job, item);
       if (outcome === "LAUNCHED") launched += 1;
       continue;
@@ -391,6 +425,7 @@ async function relaunchJob(job: EngineeringJob, item: WorkItem): Promise<Enginee
       autoCreatePR: true,
       skipReviewerRequest: true,
       workOnCurrentBranch: false,
+      model: cursorModelPreference(),
     });
     await updateEngineeringJob(job.jobId, {
       providerAgentId: created.agent.id,

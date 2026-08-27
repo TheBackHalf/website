@@ -155,6 +155,7 @@ export async function createCursorCloudAgent(input: {
   skipReviewerRequest?: boolean;
   workOnCurrentBranch?: boolean;
   agentId?: string;
+  model?: string;
 }): Promise<CursorCreateAgentResult> {
   const body: Record<string, unknown> = {
     prompt: { text: input.prompt },
@@ -170,6 +171,7 @@ export async function createCursorCloudAgent(input: {
     skipReviewerRequest: input.skipReviewerRequest !== false,
   };
   if (input.agentId) body.agentId = input.agentId;
+  if (input.model) body.model = input.model;
   const payload = await cursorFetch("/agents", {
     method: "POST",
     body: JSON.stringify(body),

@@ -1,6 +1,6 @@
 # Permanent AI Agent Operating System
 
-**Status:** Orchestration is production-hosted. Programmatic engineering via Cursor Cloud Agents is implemented. Unattended engineering is **not verified** until `CURSOR_API_KEY` is on Vercel Production and a hosted tick has launched, polled, and ingested a Cloud Agent run. Not Founder-approved until Kimberly Walker explicitly accepts it.  
+**Status:** Operating Model V2 is encoded. Orchestration is production-hosted. Michelle, Imani, and Nia are the three persistent business agents. Cursor Cloud Agents are a controlled engineering resource (normal max 1 concurrent, approved launch/hypercare max 2). Unattended engineering is **not verified** until `CURSOR_API_KEY` is on Vercel Production and a hosted tick has launched, polled, and ingested a Cloud Agent run. Not Founder-approved until Kimberly Walker explicitly accepts it.  
 **Extends:** Accepted Fab 5 Operating System (Rows 15–19 in `ops/fab-5/operating-system.json`).  
 **Does not replace:** Michelle / Imani / Nia role files, Command Center commitments, Launch Roadmap, or Founder Notes.
 
@@ -26,7 +26,7 @@ Workstation CLI may load Postgres names from `.env.local`. Hosted Vercel already
 | Cursor Cloud Agents API `https://api.cursor.com/v1/agents` | Programmatic isolated-repo engineering (official Cursor API) |
 | `/ops/admin/agent-operations` | Founder/executive view |
 
-Hosted ticks claim eligible work. **Hosted operational work** (`runtime_class=hosted`, company-objective standup items) executes read-only audits/inspects in-process and completes with durable evidence. **Engineering work** launches Cursor Cloud Agents when `CURSOR_API_KEY` is present, then polls run status. Engineering runs on an isolated `cursor/...` branch with `autoCreatePR`. AOS never silently merges or deploys failed work. Command Center / Founder-acceptance rows are never marked Complete by a hosted tick.
+Hosted ticks claim eligible work. **Hosted operational work** (`runtime_class=hosted`, company-objective standup items and Operating Model V2 cadence) executes read-only audits/inspects in-process and completes with durable evidence. **Engineering work** is launched only after AOS classifies the task as `ENGINEERING_REQUIRED`. Routine inspects (email, health, queues, dashboards, scheduled events, deterministic database work, status reports) must not invoke Cursor. Engineering runs on an isolated `cursor/...` branch with `autoCreatePR`. AOS never silently merges or deploys failed work. Command Center / Founder-acceptance rows are never marked Complete by a hosted tick.
 
 Cursor Desktop remains available for Founder-directed work. It is not a required runtime for AOS orchestration or engineering launch/poll once `CURSOR_API_KEY` is configured on Vercel.
 
@@ -36,9 +36,11 @@ If `CURSOR_API_KEY` is missing, engineering jobs are recorded as `blocked_unconf
 
 | Agent | Role | Hosted cycles |
 |---|---|---|
-| Michelle Northstar | Chief of Staff & Operations Officer | `/api/fab-5/michelle/cycle` (daily) + AOS tick |
-| Imani Heartbeat | Chief Technology & Risk Officer | `/api/fab-5/imani/heartbeat` (daily) + AOS tick |
-| Nia Prism | Chief Experience & Transformation Officer | `/api/fab-5/nia/cycle` (daily) + AOS tick |
+| Michelle Northstar | Chief of Staff & Operations Officer | `/api/fab-5/michelle/cycle` (daily) + AOS tick + `aos-omv2-michelle-ops-cycle` |
+| Imani Heartbeat | Chief Technology & Risk Officer | `/api/fab-5/imani/heartbeat` (daily) + AOS tick + `aos-omv2-imani-tech-cycle` + monitoring cron |
+| Nia Prism | Chief Experience & Transformation Officer | `/api/fab-5/nia/cycle` (daily) + AOS tick + `aos-omv2-nia-experience-cycle` |
+
+These are three persistent business roles. They do **not** require three continuously running Cursor Cloud Agents.
 
 **Kimberly Walker (human)** is Founder, executive authority, and escalation endpoint.  
 **Kimberly Walker (AI)** is the participant-facing digital twin. Enqueueing work owned by Kimberly Walker (AI) throws `kimberly_walker_ai_is_not_an_operating_agent`. She is not a fourth execution agent.
@@ -87,7 +89,9 @@ Path: **AOS → authorized engineering task → Cursor Cloud Agents API → isol
 - Provider: official `POST/GET https://api.cursor.com/v1/agents` (Basic auth `CURSOR_API_KEY:`).
 - Default repository: `https://github.com/TheBackHalf/website` (`AOS_ENGINEERING_REPO` override).
 - `workOnCurrentBranch: false` (isolated `cursor/...` branch).
-- Concurrent cloud jobs capped by `AOS_MAX_OPEN_ENGINEERING_JOBS` (default 2).
+- Concurrent cloud jobs: **1 in normal operations**, **2 in approved launch/hypercare** (`AOS_CURSOR_MODE=hypercare`). A third engineering job queues. `AOS_MAX_OPEN_ENGINEERING_JOBS` may only lower the cap, never raise it above the mode maximum.
+- Monthly Cursor budget: `AOS_CURSOR_MONTHLY_BUDGET_UNITS` (default 20 launch units). When reached, AOS does not purchase capacity; engineering is preserved/queued; hosted work continues; Founder Attention is surfaced.
+- Optional cost-conscious model: `AOS_CURSOR_MODEL` is passed to the Cloud Agents API when set.
 - Resource locks held while status is `VALIDATING`.
 - Synthetic/controlled tests may complete after a successful run.
 - Command Center and Founder-gated deliverables never auto-complete.
@@ -184,9 +188,10 @@ Synthetic tests are labeled `SYNTHETIC TEST — not real participant validation`
 
 - `aos_cost_events` records hosted inspect, synthetic execution, and Cursor Cloud Agent launch units.
 - Default max 2 claims per agent per tick (`AOS_MAX_PER_AGENT`).
-- Default max 2 concurrent Cloud Agent jobs (`AOS_MAX_OPEN_ENGINEERING_JOBS`).
+- Cursor concurrency: 1 normal / 2 hypercare. Monthly budget via `AOS_CURSOR_MONTHLY_BUDGET_UNITS`.
 - Action class D cannot execute without a Founder decision.
 - Hosted ticks do not mark production Command Center rows Complete.
+- Unimplemented routine capabilities are recorded as hosted gap work items (`aos-omv2-gap-*`) instead of being sent to Cursor forever.
 
 ---
 

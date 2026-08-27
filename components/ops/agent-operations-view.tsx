@@ -47,7 +47,14 @@ export function AgentOperationsView({ snapshot }: { snapshot: AgentOperationsSna
       </h1>
       <p className="mt-3 max-w-2xl font-sans text-base font-light text-bh-muted">
         Michelle, Imani, and Nia are the autonomous operating executives. Kimberly Walker (AI)
-        is not execution capacity. Founder decisions appear here instead of in agent logs.
+        is not execution capacity. Cursor Cloud Agents are a controlled engineering resource.
+        Founder decisions appear here instead of in agent logs.
+      </p>
+      <p className="mt-3 font-sans text-sm text-bh-muted">
+        Operating Model {snapshot.operatingModel.version} · {snapshot.operatingModel.businessAgents} business
+        agents · Cursor {snapshot.operatingModel.cursorMode} max {snapshot.operatingModel.cursorConcurrencyLimit}{" "}
+        · active {snapshot.operatingModel.cursorActive} · monthly budget {snapshot.operatingModel.monthlyBudgetUnits}{" "}
+        units
       </p>
       <p className="mt-4 font-sans text-sm">
         <a href="/ops/admin" className="underline decoration-bh-purple/30">

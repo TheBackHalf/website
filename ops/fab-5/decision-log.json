@@ -1178,6 +1178,20 @@
       "summary": "Founder visually retested the production registration form and accepted the First Name / Last Name alignment correction as complete. Layout uses the existing two-column name grid with [&>.bh-form-field]:mt-0. This acceptance is limited to that registration layout defect. It does not accept Google Sign-In UX, age-gate, Stripe, DNS, or other Launch Readiness rows.",
       "owner": "nia",
       "requiresFounderAcceptance": false
+    },
+    {
+      "id": "fab-5-operating-model-v2",
+      "at": "2026-08-27",
+      "type": "implementation",
+      "status": "implemented",
+      "founderAcceptance": "not_required",
+      "summary": "Operating Model V2 encoded: Michelle, Imani, and Nia remain the three persistent business agents. Cursor Cloud Agents are a controlled engineering resource (normal max 1 concurrent, approved launch/hypercare max 2). AOS classifies ENGINEERING_REQUIRED before any Cursor launch. Routine/deterministic work uses hosted jobs. Configurable monthly Cursor budget queues engineering, continues non-Cursor operations, and surfaces Founder Attention without purchasing capacity. Hosted cadence work items: aos-omv2-michelle-ops-cycle, aos-omv2-imani-tech-cycle, aos-omv2-nia-experience-cycle. Capability gaps recorded as hosted work items, not Cursor. Founder-approved roles/authority and completed Launch Readiness rows were not changed.",
+      "owner": "michelle",
+      "requiresFounderAcceptance": false,
+      "evidence": [
+        "lib/fab-5/aos/operating-model.ts",
+        "ops/fab-5/AOS-PERMANENT-OPERATING-SYSTEM.md"
+      ]
     }
   ]
 }

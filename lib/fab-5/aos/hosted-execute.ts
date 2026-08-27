@@ -8,11 +8,16 @@ import { randomUUID } from "node:crypto";
 
 import { cursorCloudConfigured, probeCursorCloudAuth } from "@/lib/fab-5/aos/cursor-cloud";
 import { notifyFounderDecision } from "@/lib/fab-5/aos/notify";
+import { classifyExecution, operatingModelProof } from "@/lib/fab-5/aos/operating-model";
+import { loadSocialPublishQueue } from "@/lib/fab-5/social-publishing";
+import { OPEN_TICKET_STATUSES } from "@/lib/support/catalog";
+import { getSupportStore } from "@/lib/support/store";
 import {
   LAUNCH_SPRINT_KICKOFF_ID,
   reclassifyLaunchBacklog,
   type ClassifiedLaunchRow,
 } from "@/lib/fab-5/aos/reclassify";
+import { AUGUST_LAUNCH_AGENT_ROWS } from "@/lib/fab-5/aos/sprint";
 import {
   checkpointWork,
   completeWork,
@@ -96,12 +101,20 @@ export function isHostedOperationalWork(item: WorkItem): boolean {
   if (item.runtimeClass !== "hosted") return false;
   if (item.actionClass === "D") return false;
   if (item.source === "command_center") return false;
+  if (item.workId.startsWith("aos-omv2-gap-") || item.workId === "aos-omv2-cursor-budget-attention") {
+    return false;
+  }
   return (
     item.nextAction === HOSTED_OPERATIONAL_ACTION ||
     item.workId.startsWith("aos-hosted-") ||
     item.workId.startsWith("aos-row74-") ||
     item.workId.startsWith("aos-open-") ||
-    item.resourceKey?.startsWith("aos-standup:") === true
+    item.workId.startsWith("aos-omv2-cycle") ||
+    item.workId.startsWith("aos-omv2-michelle-") ||
+    item.workId.startsWith("aos-omv2-imani-") ||
+    item.workId.startsWith("aos-omv2-nia-") ||
+    item.resourceKey?.startsWith("aos-standup:") === true ||
+    item.resourceKey?.startsWith("aos-omv2:") === true
   );
 }
 
@@ -132,7 +145,8 @@ async function queueExecutableWork(items: ClassifiedLaunchRow[]): Promise<{ queu
       skipped += 1;
       continue;
     }
-    if (item.row === 75 || item.id === "75") {
+    const numericId = item.row ?? Number.parseInt(item.id, 10);
+    if (numericId === 75 || AUGUST_LAUNCH_AGENT_ROWS.has(numericId)) {
       skipped += 1;
       continue;
     }
@@ -159,7 +173,11 @@ async function queueExecutableWork(items: ClassifiedLaunchRow[]): Promise<{ queu
       dependencyIds: [LAUNCH_SPRINT_KICKOFF_ID],
       parentWorkId: LAUNCH_SPRINT_KICKOFF_ID,
       actionClass: "A",
-      runtimeClass: owner === "imani" ? "engineering" : "hosted",
+      runtimeClass: classifyExecution({
+        title: item.deliverable,
+        description: item.deliverable,
+        source: "company_objective",
+      }).runtimeClass,
       nextAction: "await_row74_founder_kickoff",
       blockedReason: "await_row74_founder_kickoff",
       resourceKey: `aos-sprint:${item.id}`,
@@ -188,6 +206,9 @@ async function ensureKickoffAndGate(): Promise<{ kickoffId: string; decisionOpen
       resourceKey: "aos-standup:launch-sprint-kickoff",
       evidenceRefs: ["ops/fab-5/AOS-PERMANENT-OPERATING-SYSTEM.md"],
     });
+  }
+  if (kickoff.status === "COMPLETE") {
+    return { kickoffId: kickoff.workId, decisionOpened: false };
   }
   if (kickoff.status === "FOUNDER_GATED" && kickoff.founderDecisionId) {
     return { kickoffId: kickoff.workId, decisionOpened: false };
@@ -334,6 +355,74 @@ async function niaInventory(): Promise<Record<string, unknown>> {
   };
 }
 
+async function michelleOpsCycle(): Promise<Record<string, unknown>> {
+  let support: { open: number; overdue: number; urgent: number; backend: string } = {
+    open: 0,
+    overdue: 0,
+    urgent: 0,
+    backend: "unavailable",
+  };
+  try {
+    const store = getSupportStore();
+    const tickets = await store.list();
+    const open = tickets.filter((ticket) => OPEN_TICKET_STATUSES.includes(ticket.status));
+    support = {
+      open: open.length,
+      overdue: open.filter((ticket) => ticket.slaState === "overdue").length,
+      urgent: open.filter((ticket) => ticket.slaState === "urgent").length,
+      backend: store.backend,
+    };
+  } catch {
+    support.backend = "unavailable";
+  }
+  const [ready, blocked, founder] = await Promise.all([
+    listWork({ status: ["QUEUED", "READY", "RETRY"], limit: 400 }),
+    listWork({ status: ["BLOCKED", "DEPENDENCY_GATED", "DATE_GATED"], limit: 200 }),
+    listOpenDecisions(false),
+  ]);
+  return {
+    agent: "michelle",
+    role: "Chief of Staff & Operations Officer",
+    cycle: "operations_inbox_support_work_queue",
+    cursorInvoked: false,
+    support,
+    queues: {
+      ready: ready.filter((item) => item.runtimeClass === "hosted").length,
+      engineeringQueued: ready.filter((item) => item.runtimeClass === "engineering").length,
+      blocked: blocked.length,
+      founderOpen: founder.length,
+    },
+    operatingModel: operatingModelProof(),
+    inboxBeyondSupportImap: "GAP aos-omv2-gap-michelle-ops-inbox",
+  };
+}
+
+async function niaExperienceCycle(): Promise<Record<string, unknown>> {
+  const inventory = await niaInventory();
+  let social: Record<string, unknown> = { queueReadable: false };
+  try {
+    const queue = loadSocialPublishQueue();
+    social = {
+      queueReadable: true,
+      livePublishEnabled: queue.livePublishEnabled,
+      jobs: queue.jobs.length,
+      pending: queue.jobs.filter((job) => job.status !== "published" && !job.paused).length,
+      nativeScheduleVerified: queue.nativeScheduleVerified,
+    };
+  } catch {
+    social = { queueReadable: false };
+  }
+  return {
+    ...inventory,
+    cycle: "experience_content_engagement",
+    cursorInvoked: false,
+    social,
+    publishVerify: "GAP aos-omv2-gap-nia-publish-verify",
+    engagementMonitor: "GAP aos-omv2-gap-nia-engagement-monitor",
+    published: false,
+  };
+}
+
 async function executeFor(item: WorkItem): Promise<Record<string, unknown>> {
   if (item.workId === LAUNCH_SPRINT_KICKOFF_ID) {
     return {
@@ -342,6 +431,11 @@ async function executeFor(item: WorkItem): Promise<Record<string, unknown>> {
       note: "Founder approved Launch Sprint kickoff. Dependent queued work unlocks on the next tick.",
     };
   }
+  if (item.workId === "aos-omv2-michelle-ops-cycle") return michelleOpsCycle();
+  if (item.workId === "aos-omv2-imani-tech-cycle") {
+    return { ...(await imaniInspect()), cycle: "technology_risk_health", cursorInvoked: false };
+  }
+  if (item.workId === "aos-omv2-nia-experience-cycle") return niaExperienceCycle();
   if (item.ownerAgent === "michelle") return michelleAudit();
   if (item.workId === "aos-open-google-signin-hide" || item.ownerAgent === "imani") {
     return imaniInspect();

@@ -173,6 +173,46 @@ export type EngineeringJob = {
   updatedAt: string;
 };
 
+export type AgentExecutionProof = {
+  agent: OperatingAgentId;
+  workId: string | null;
+  row: string | null;
+  state: string | null;
+  lastActivity: string | null;
+  title: string | null;
+};
+
+export type ExecutionProof = {
+  at: string;
+  agents: Record<OperatingAgentId, AgentExecutionProof>;
+  heartbeats: Array<{
+    agent: OperatingAgentId;
+    lastHeartbeat: string | null;
+    currentWorkId: string | null;
+    queueDepth: number;
+    runtimeError: string | null;
+  }>;
+  engineeringJobs: Array<{
+    jobId: string;
+    workId: string;
+    status: string;
+    ownerAgent: OperatingAgentId;
+    providerAgentId: string | null;
+    providerRunId: string | null;
+    updatedAt: string;
+  }>;
+  counts: {
+    completed: number;
+    executing: number;
+    ready: number;
+    dependencyBlocked: number;
+    founderHumanGated: number;
+    blocked: number;
+    remaining: number;
+  };
+  staleLeases: number;
+};
+
 export type TickResult = {
   ok: boolean;
   at: string;
@@ -189,6 +229,19 @@ export type TickResult = {
   engineeringJobsIngested: number;
   errors: string[];
   parallel: boolean;
+  sprint?: Record<string, unknown>;
+  execution?: ExecutionProof;
+  operatingModel?: {
+    version: "v2";
+    businessAgents: number;
+    cursorMode: "normal" | "hypercare";
+    cursorConcurrencyLimit: number;
+    cursorActive: number;
+    cursorBudgetUsed: number;
+    cursorBudgetLimit: number;
+    cursorBudgetExhausted: boolean;
+    founderComputerRequired: false;
+  };
 };
 
 export function isOperatingAgent(value: string): value is OperatingAgentId {

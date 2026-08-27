@@ -1,8 +1,14 @@
 import { cursorCloudConfigured, engineeringRepoUrl } from "@/lib/fab-5/aos/cursor-cloud";
-import { pollEngineeringJobs } from "@/lib/fab-5/aos/engineering";
+import { pollEngineeringJobs, startEngineeringExecution } from "@/lib/fab-5/aos/engineering";
 import { isSmtpReady } from "@/lib/auth/email/smtp";
 import { createHandoff, executeClaimedWork, openFounderGate, runAosTick } from "@/lib/fab-5/aos/engine";
 import { notifyFounderDecision, smsConfigured } from "@/lib/fab-5/aos/notify";
+import {
+  classifyExecution,
+  evaluateCursorLaunch,
+  getCursorConcurrencyLimit,
+  threeBusinessAgentsLocked,
+} from "@/lib/fab-5/aos/operating-model";
 import {
   aosConfigured,
   assertOwnerAgent,
@@ -13,6 +19,7 @@ import {
   getDecision,
   getEngineeringJobByWorkId,
   getWork,
+  insertEngineeringJob,
   listAudit,
   listNotifications,
   listWork,
@@ -634,6 +641,130 @@ export async function runAosValidation(): Promise<{
       "Cursor Cloud Agents API key present on this host",
       true,
       configuredCursor ? "configured" : "BLOCKED — CURSOR_API_KEY not in host env",
+    );
+
+    push("OMV2-AGENTS", "Three business agents remain locked", threeBusinessAgentsLocked(), "michelle/imani/nia");
+    const routineClass = classifyExecution({
+      title: "Check email and inspect the support queue",
+      description: "Inbox monitoring, SLA oversight, and a routine status report. Deterministic database read.",
+    });
+    const healthClass = classifyExecution({
+      title: "Check server health",
+      description: "Inspect /api/ops/health and the production dashboard. Verify the scheduled cron.",
+    });
+    const engClass = classifyExecution({
+      title: "Implement TypeScript API route and open a pull request",
+      description: "Software engineering change on an isolated branch in the repository.",
+    });
+    push(
+      "OMV2-ROUTE",
+      "Routine work is not Cursor; engineering classifies as ENGINEERING_REQUIRED",
+      routineClass.engineeringRequired === false &&
+        healthClass.engineeringRequired === false &&
+        engClass.engineeringRequired === true &&
+        routineClass.path === "ROUTINE_DETERMINISTIC",
+      `${routineClass.path}/${healthClass.path}/${engClass.path}`,
+    );
+    push("OMV2-NORMAL", "Normal Cursor concurrency is 1", getCursorConcurrencyLimit("normal") === 1, String(getCursorConcurrencyLimit("normal")));
+    push("OMV2-HYPER", "Launch/hypercare Cursor concurrency is 2", getCursorConcurrencyLimit("hypercare") === 2, String(getCursorConcurrencyLimit("hypercare")));
+
+    const capItem = await enqueueWork({
+      workId: id("OMV2-CAP"),
+      source: "controlled_test",
+      sourceReference: "TEST OMV2-CAP",
+      title: "Implement TypeScript repository pull request",
+      description: "SYNTHETIC TEST — isolated software engineering. Do not launch if capacity is full.",
+      ownerAgent: "imani",
+      synthetic: true,
+      controlledTest: true,
+      runtimeClass: "engineering",
+      actionClass: "A",
+      priority: 0,
+    });
+    await insertEngineeringJob({
+      workId: id("OMV2-HOLD"),
+      sourceReference: "capacity-hold",
+      ownerAgent: "imani",
+      repository: engineeringRepoUrl(),
+      prompt: "SYNTHETIC TEST capacity hold — do not launch a Cloud Agent for this row.",
+      status: "running",
+      controlledTest: true,
+      synthetic: true,
+    });
+    const atCap = await evaluateCursorLaunch(capItem, { mode: "normal" });
+    const thirdHyper = await evaluateCursorLaunch(capItem, { mode: "hypercare", active: 2 });
+    const budgetGate = await evaluateCursorLaunch(capItem, { monthlyUsed: 999 });
+    let claimedCap = await claimNext({
+      ownerAgent: "imani",
+      includeTest: true,
+      engineeringRuntime: true,
+      leaseSeconds: 60,
+    });
+    for (let i = 0; i < 4 && claimedCap && claimedCap.workId !== capItem.workId; i += 1) {
+      if (claimedCap.leaseToken) await executeClaimedWork(claimedCap, claimedCap.leaseToken);
+      claimedCap = await claimNext({
+        ownerAgent: "imani",
+        includeTest: true,
+        engineeringRuntime: true,
+        leaseSeconds: 60,
+      });
+    }
+    let capOutcome = "none";
+    if (claimedCap?.workId === capItem.workId && claimedCap.leaseToken) {
+      capOutcome = await startEngineeringExecution(claimedCap, claimedCap.leaseToken);
+    }
+    const capAfter = await getWork(capItem.workId);
+    const capJob = await getEngineeringJobByWorkId(capItem.workId);
+    push(
+      "OMV2-CAP",
+      "Normal capacity queues the next Cursor job; third hypercare job queues; no Cloud Agent launched",
+      atCap.reason === "at_capacity" &&
+        thirdHyper.reason === "at_capacity" &&
+        capOutcome === "BLOCKED" &&
+        capAfter?.status === "READY" &&
+        !capJob?.providerAgentId,
+      `${atCap.reason}/${thirdHyper.reason}/${capOutcome}/${capAfter?.status ?? "missing"}`,
+    );
+    push(
+      "OMV2-BUDGET",
+      "Monthly budget exhaustion preserves engineering work",
+      budgetGate.reason === "budget_exhausted" && budgetGate.allowed === false,
+      `${budgetGate.monthlyUsed}/${budgetGate.monthlyLimit}`,
+    );
+
+    await enqueueWork({
+      workId: id("OMV2-HOSTED"),
+      source: "company_objective",
+      sourceReference: "TEST OMV2-HOSTED",
+      title: "Hosted operations continue while Cursor is at capacity",
+      description: "SYNTHETIC TEST wrapper around hosted operational execution.",
+      ownerAgent: "michelle",
+      controlledTest: true,
+      synthetic: false,
+      runtimeClass: "hosted",
+      actionClass: "A",
+      nextAction: "hosted_operational_execute",
+      resourceKey: id("res-omv2-hosted"),
+    });
+    const hostedWhileFull = await runAosTick({
+      includeTest: true,
+      engineeringRuntime: true,
+      agents: ["michelle"],
+      maxPerAgent: 1,
+      leaseSeconds: 60,
+    });
+    const hostedWhileFullDone = await getWork(id("OMV2-HOSTED"));
+    push(
+      "OMV2-HOSTED",
+      "Non-Cursor operations continue when Cursor capacity is unavailable",
+      hostedWhileFullDone?.status === "COMPLETE" || hostedWhileFull.claimed.includes(id("OMV2-HOSTED")),
+      hostedWhileFullDone?.status ?? "missing",
+    );
+    push(
+      "OMV2-LOCAL",
+      "Founder computer is not required for hosted AOS",
+      hostedWhileFull.operatingModel?.founderComputerRequired === false,
+      String(hostedWhileFull.operatingModel?.founderComputerRequired),
     );
 
     const gDecision = await getDecision(decisionId);

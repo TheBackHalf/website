@@ -436,6 +436,8 @@ export async function claimNext(input: {
   leaseSeconds?: number;
   engineeringRuntime?: boolean;
   includeTest?: boolean;
+  cursorLaunchAllowed?: boolean;
+  includeCommandCenterHosted?: boolean;
 }): Promise<WorkItem | null> {
   const token = randomUUID();
   const leaseSeconds = input.leaseSeconds ?? 300;
@@ -449,7 +451,12 @@ export async function claimNext(input: {
           AND (w.lease_expires_at IS NULL OR w.lease_expires_at < NOW())
           AND (w.scheduled_at IS NULL OR w.scheduled_at <= NOW())
           AND (${input.includeTest === true} OR w.controlled_test = FALSE)
-          AND (${input.engineeringRuntime === true} OR w.runtime_class <> 'engineering')
+          AND (${input.engineeringRuntime === true && input.cursorLaunchAllowed !== false} OR w.runtime_class <> 'engineering')
+          AND (
+            ${input.includeCommandCenterHosted === true}
+            OR w.source <> 'command_center'
+            OR w.runtime_class = 'engineering'
+          )
           AND (
             w.resource_key IS NULL
             OR NOT EXISTS (
@@ -541,6 +548,47 @@ export async function checkpointWork(
 async function releaseLock(sql: TransactionSql, item: WorkItem): Promise<void> {
   if (!item.resourceKey) return;
   await sql`DELETE FROM aos_resource_locks WHERE resource_key = ${item.resourceKey} AND work_id = ${item.workId}`;
+}
+
+export async function updateWorkRouting(input: {
+  workId: string;
+  leaseToken?: string | null;
+  runtimeClass: RuntimeClass;
+  nextAction?: string | null;
+  blockedReason?: string | null;
+  status?: "READY" | "BLOCKED";
+}): Promise<WorkItem | null> {
+  return withAosTx(async (sql) => {
+    const existing = await sql`SELECT * FROM aos_work_items WHERE work_id = ${input.workId} LIMIT 1`;
+    if (!existing[0]) return null;
+    const current = mapWork(existing[0]);
+    if (input.leaseToken && current.leaseToken && current.leaseToken !== input.leaseToken) {
+      return null;
+    }
+    const rows = await sql`
+      UPDATE aos_work_items
+      SET runtime_class = ${input.runtimeClass},
+          next_action = ${input.nextAction ?? current.nextAction},
+          blocked_reason = ${input.blockedReason ?? null},
+          status = ${input.status ?? "READY"},
+          lease_token = NULL,
+          lease_expires_at = NULL,
+          updated_at = NOW()
+      WHERE work_id = ${input.workId}
+      RETURNING *
+    `;
+    const item = mapWork(rows[0]);
+    await releaseLock(sql, current);
+    await audit(sql, {
+      at: new Date().toISOString(),
+      agent: item.ownerAgent,
+      action: "reclassify_routing",
+      workId: item.workId,
+      result: item.runtimeClass,
+      detail: { nextAction: item.nextAction },
+    });
+    return item;
+  });
 }
 
 export async function releaseWork(input: {
@@ -1025,6 +1073,88 @@ export async function parkWork(input: {
   });
 }
 
+const SPRINT_PRESERVE = new Set(["CLAIMED", "RUNNING", "VALIDATING", "COMPLETE", "CANCELLED"]);
+
+export async function applySprintWorkState(input: {
+  workId: string;
+  ownerAgent?: OperatingAgentId;
+  status: WorkStatus;
+  runtimeClass?: RuntimeClass;
+  nextAction?: string | null;
+  blockedReason?: string | null;
+  founderGateRequired?: boolean;
+  dependencyIds?: string[];
+  priority?: number;
+  evidenceRefs?: string[];
+  force?: boolean;
+}): Promise<WorkItem | null> {
+  return withAosTx(async (sql) => {
+    const existing = await sql`SELECT * FROM aos_work_items WHERE work_id = ${input.workId} LIMIT 1`;
+    if (!existing[0]) return null;
+    const current = mapWork(existing[0]);
+    if (!input.force && SPRINT_PRESERVE.has(current.status) && current.status !== input.status) {
+      return current;
+    }
+    if (!input.force && current.status === "ACCEPTANCE_READY" && input.status !== "ACCEPTANCE_READY") {
+      return current;
+    }
+    const evidence = input.evidenceRefs
+      ? [...current.evidenceRefs, ...input.evidenceRefs]
+      : current.evidenceRefs;
+    const rows = await sql`
+      UPDATE aos_work_items
+      SET status = ${input.status},
+          owner_agent = ${input.ownerAgent ?? current.ownerAgent},
+          runtime_class = ${input.runtimeClass ?? current.runtimeClass},
+          next_action = ${input.nextAction ?? current.nextAction},
+          blocked_reason = ${input.blockedReason ?? null},
+          founder_gate_required = ${input.founderGateRequired ?? current.founderGateRequired},
+          dependency_ids = ${sql.json(input.dependencyIds ?? current.dependencyIds)},
+          priority = ${input.priority ?? current.priority},
+          evidence_refs = ${sql.json(evidence)},
+          lease_token = ${SPRINT_PRESERVE.has(input.status) ? current.leaseToken : null},
+          lease_expires_at = ${SPRINT_PRESERVE.has(input.status) ? current.leaseExpiresAt : null},
+          updated_at = NOW()
+      WHERE work_id = ${input.workId}
+      RETURNING *
+    `;
+    const item = mapWork(rows[0]);
+    if (!["CLAIMED", "RUNNING", "VALIDATING"].includes(item.status)) {
+      await releaseLock(sql, current);
+    }
+    await audit(sql, {
+      at: new Date().toISOString(),
+      agent: item.ownerAgent,
+      action: "sprint_apply",
+      workId: item.workId,
+      result: item.status,
+      detail: { blockedReason: item.blockedReason },
+    });
+    return item;
+  });
+}
+
+export async function blockOutOfSprintCommandCenter(keepIds: string[]): Promise<number> {
+  if (!(await ensureAos())) return 0;
+  const sql = getAosSql();
+  if (!sql) return 0;
+  const rows = await sql`
+    UPDATE aos_work_items
+    SET status = 'BLOCKED',
+        blocked_reason = 'out_of_august_launch_agent_78',
+        next_action = 'not_in_agent_sprint',
+        updated_at = NOW(),
+        lease_token = NULL,
+        lease_expires_at = NULL
+    WHERE source = 'command_center'
+      AND work_id LIKE 'al-%'
+      AND NOT (work_id = ANY(${keepIds}))
+      AND status IN ('READY', 'RETRY', 'QUEUED', 'BLOCKED', 'DEPENDENCY_GATED')
+    RETURNING work_id
+  `;
+  return rows.length;
+}
+
 export async function unblockLegacyEngineeringRuntime(): Promise<number> {
   if (!(await ensureAos())) return 0;
   const sql = getAosSql();
@@ -1208,7 +1338,7 @@ export async function listEngineeringJobs(limit = 20): Promise<EngineeringJob[]>
   return rows.map(mapJob);
 }
 
-export async function countActiveEngineeringJobs(): Promise<number> {
+export async function countActiveEngineeringJobs(includeTest = false): Promise<number> {
   if (!(await ensureAos())) return 0;
   const sql = getAosSql();
   if (!sql) return 0;
@@ -1216,6 +1346,20 @@ export async function countActiveEngineeringJobs(): Promise<number> {
     SELECT COUNT(*)::int AS n
     FROM aos_engineering_jobs
     WHERE status IN ('launching', 'running', 'validating')
+      AND (${includeTest} OR controlled_test = FALSE)
+  `;
+  return Number(rows[0]?.n ?? 0);
+}
+
+export async function sumCostSince(kinds: string[], sinceIso: string): Promise<number> {
+  if (!(await ensureAos())) return 0;
+  const sql = getAosSql();
+  if (!sql) return 0;
+  const rows = await sql`
+    SELECT COALESCE(SUM(units), 0)::int AS n
+    FROM aos_cost_events
+    WHERE kind = ANY(${kinds})
+      AND at >= ${sinceIso}
   `;
   return Number(rows[0]?.n ?? 0);
 }

@@ -4,6 +4,16 @@ export { pollEngineeringJobs, startEngineeringExecution } from "@/lib/fab-5/aos/
 export { cursorCloudConfigured, probeCursorCloudAuth } from "@/lib/fab-5/aos/cursor-cloud";
 export { reclassifyLaunchBacklog } from "@/lib/fab-5/aos/reclassify";
 export { ingestCommandCenterSnapshot, loadCommandCenterSnapshot } from "@/lib/fab-5/aos/ingest";
+export { releaseAugustLaunchSprint } from "@/lib/fab-5/aos/sprint";
 export { buildAgentOperationsSnapshot } from "@/lib/fab-5/aos/snapshot";
 export { runAosValidation } from "@/lib/fab-5/aos/validate";
 export { aosConfigured } from "@/lib/fab-5/aos/store";
+export {
+  classifyExecution,
+  evaluateCursorLaunch,
+  getCursorConcurrencyLimit,
+  getCursorMode,
+  getMonthlyCursorBudgetUnits,
+  operatingModelProof,
+  threeBusinessAgentsLocked,
+} from "@/lib/fab-5/aos/operating-model";

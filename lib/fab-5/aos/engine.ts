@@ -8,14 +8,27 @@ import {
 } from "@/lib/fab-5/aos/hosted-execute";
 import { notifyFounderDecision } from "@/lib/fab-5/aos/notify";
 import {
+  classifyWorkItem,
+  ensureCursorBudgetAttentionWork,
+  ensureOperatingModelWork,
+  evaluateCursorLaunch,
+  getCursorConcurrencyLimit,
+  getCursorMode,
+  getMonthlyCursorBudgetUnits,
+} from "@/lib/fab-5/aos/operating-model";
+import { buildExecutionProof } from "@/lib/fab-5/aos/snapshot";
+import { releaseAugustLaunchSprint, type SprintReleaseResult } from "@/lib/fab-5/aos/sprint";
+import {
   aosConfigured,
   checkpointWork,
   claimNext,
   completeWork,
+  countActiveEngineeringJobs,
   enqueueWork,
   insertFounderDecision,
   listWork,
   markRunning,
+  applySprintWorkState,
   recordCost,
   recoverStaleLeases,
   releaseWork,
@@ -23,6 +36,7 @@ import {
   unblockLegacyEngineeringRuntime,
   unlockDateGated,
   unlockReadyDependencies,
+  updateWorkRouting,
 } from "@/lib/fab-5/aos/store";
 import type { OperatingAgentId, TickResult, WorkItem } from "@/lib/fab-5/aos/types";
 
@@ -50,15 +64,44 @@ export async function executeClaimedWork(
     return "GATED";
   }
 
-  if (item.runtimeClass === "engineering") {
+  const classified = classifyWorkItem(item);
+  if (classified.path === "FOUNDER_RESERVED" && item.status !== "FOUNDER_GATED") {
+    await openFounderGate(item, classified.reason);
+    return "GATED";
+  }
+  if (classified.path === "HUMAN_EXPERT") {
+    await applySprintWorkState({
+      workId: item.workId,
+      status: "FOUNDER_GATED",
+      runtimeClass: "hosted",
+      nextAction: "await_human",
+      blockedReason: "human_acceptance_required",
+      founderGateRequired: true,
+      force: true,
+    });
+    return "GATED";
+  }
+
+  if (classified.engineeringRequired) {
     await checkpointWork(item.workId, leaseToken, {
       step: "engineering_launch",
       provider: "cursor_cloud_agent",
+      classified: classified.path,
     }, "launch_cursor_cloud_agent");
     return startEngineeringExecution(item, leaseToken);
   }
 
-  if (isHostedOperationalWork(item)) {
+  if (item.runtimeClass === "engineering") {
+    await updateWorkRouting({
+      workId: item.workId,
+      leaseToken,
+      runtimeClass: "hosted",
+      nextAction: classified.nextAction,
+      status: "READY",
+    });
+  }
+
+  if (isHostedOperationalWork({ ...item, runtimeClass: "hosted", nextAction: classified.nextAction })) {
     return executeHostedOperationalWork(item, leaseToken);
   }
 
@@ -193,6 +236,17 @@ export async function runAosTick(input?: {
       engineeringJobsIngested: 0,
       errors: ["aos_backend_unconfigured"],
       parallel: false,
+      operatingModel: {
+        version: "v2",
+        businessAgents: 3,
+        cursorMode: getCursorMode(),
+        cursorConcurrencyLimit: getCursorConcurrencyLimit(),
+        cursorActive: 0,
+        cursorBudgetUsed: 0,
+        cursorBudgetLimit: getMonthlyCursorBudgetUnits(),
+        cursorBudgetExhausted: false,
+        founderComputerRequired: false,
+      },
     };
   }
 
@@ -200,11 +254,67 @@ export async function runAosTick(input?: {
   const dateUnlocked = await unlockDateGated();
   const dependencyUnlocked = await unlockReadyDependencies();
   await unblockLegacyEngineeringRuntime();
+  let sprint: SprintReleaseResult | undefined;
   if (input?.includeTest !== true) {
     try {
       await ensureStandupWork();
+      await ensureOperatingModelWork();
+      sprint = await releaseAugustLaunchSprint();
     } catch (error) {
       errors.push(`standup_seed:${error instanceof Error ? error.message : "failed"}`);
+    }
+  }
+
+  const cursorActiveNow = await countActiveEngineeringJobs(false);
+  const cursorProbe = await evaluateCursorLaunch({
+    workId: "aos-omv2-cursor-probe",
+    source: "controlled_test",
+    sourceReference: "cursor-capacity",
+    title: "Implement TypeScript repository pull request",
+    description: "Software engineering capacity probe. Isolated branch. Not a launch.",
+    ownerAgent: "imani",
+    priority: 0,
+    status: "READY",
+    createdAt: at,
+    updatedAt: at,
+    scheduledAt: null,
+    startedAt: null,
+    completedAt: null,
+    blockedReason: null,
+    dependencyIds: [],
+    parentWorkId: null,
+    attemptCount: 0,
+    maxAttempts: 1,
+    leaseToken: null,
+    leaseExpiresAt: null,
+    evidenceRefs: [],
+    founderGateRequired: false,
+    founderDecisionId: null,
+    nextAction: "cursor_cloud_engineering",
+    errorState: null,
+    checkpoint: null,
+    resourceKey: null,
+    actionClass: "A",
+    runtimeClass: "engineering",
+    controlledTest: false,
+    synthetic: true,
+  }, { active: cursorActiveNow });
+  if (cursorProbe.reason === "budget_exhausted" && input?.includeTest !== true) {
+    try {
+      const attention = await ensureCursorBudgetAttentionWork();
+      if (attention && !attention.founderDecisionId) {
+        await openFounderGate(
+          attention,
+          `Cursor monthly budget reached (${cursorProbe.monthlyUsed}/${cursorProbe.monthlyLimit} units). Queue engineering. Continue hosted operations. Do not purchase additional Cursor capacity.`,
+          {
+            severity: "normal",
+            recommendation:
+              "Do not purchase more Cursor capacity. Keep the configured budget. Review queued engineering after the next month or after Founder reallocation.",
+          },
+        );
+      }
+    } catch (error) {
+      errors.push(`cursor_budget:${error instanceof Error ? error.message : "failed"}`);
     }
   }
   let engineeringPoll = { polled: 0, ingested: 0, launched: 0 };
@@ -234,6 +344,7 @@ export async function runAosTick(input?: {
             leaseSeconds,
             engineeringRuntime: input?.engineeringRuntime ?? engineeringRuntimeEnabled(),
             includeTest: input?.includeTest === true,
+            cursorLaunchAllowed: cursorProbe.allowed,
           });
           if (!item) {
             results.push("NONE");
@@ -252,13 +363,21 @@ export async function runAosTick(input?: {
           await beat(agent, null, message);
         }
       }
-      await beat(agent, null, null);
+      const stillExecuting = await listWork({
+        ownerAgent: agent,
+        status: ["CLAIMED", "RUNNING", "VALIDATING"],
+        controlledTest: input?.includeTest === true ? undefined : false,
+        limit: 3,
+      });
+      await beat(agent, stillExecuting[0]?.workId ?? null, null);
       return results;
     }),
   );
 
   const leftover = await listWork({ status: ["READY", "RETRY"], limit: 400 });
   skippedEngineering = leftover.filter((item) => item.runtimeClass === "engineering").length;
+  const execution = await buildExecutionProof(input?.includeTest === true);
+  const cursorActive = await countActiveEngineeringJobs();
 
   return {
     ok: errors.length === 0,
@@ -276,5 +395,18 @@ export async function runAosTick(input?: {
     engineeringJobsIngested: engineeringPoll.ingested,
     errors,
     parallel: agents.length > 1 && perAgent.every((list) => list.length >= 0),
+    sprint,
+    execution,
+    operatingModel: {
+      version: "v2",
+      businessAgents: 3,
+      cursorMode: getCursorMode(),
+      cursorConcurrencyLimit: getCursorConcurrencyLimit(),
+      cursorActive,
+      cursorBudgetUsed: cursorProbe.monthlyUsed,
+      cursorBudgetLimit: getMonthlyCursorBudgetUnits(),
+      cursorBudgetExhausted: cursorProbe.reason === "budget_exhausted",
+      founderComputerRequired: false,
+    },
   };
 }

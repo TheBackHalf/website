@@ -1,0 +1,24 @@
+{
+  "id": "operating-model-v2-2026-08-27",
+  "at": "2026-08-27T14:35:00.000Z",
+  "model": "v2",
+  "pass": true,
+  "cloudAgentsLaunchedToTest": false,
+  "row197Touched": false,
+  "postgresOnWorkstation": false,
+  "mechanical": {
+    "threeBusinessAgentsLocked": true,
+    "routineWorkUsesCursor": false,
+    "cursorEngineeringOnly": true,
+    "normalCursorConcurrency": 1,
+    "hypercareCursorConcurrency": 2,
+    "firstEngineeringAllowedWhenIdle": true,
+    "secondNormalJobQueues": true,
+    "secondHypercareAllowed": true,
+    "thirdHypercareJobQueues": true,
+    "monthlyBudgetExhaustionPreservesWork": true,
+    "nonEngineeringRejectedFromCursor": true,
+    "founderComputerRequired": false,
+    "hostedAosCron": "*/15 * * * * GET /api/fab-5/aos/tick"
+  }
+}
