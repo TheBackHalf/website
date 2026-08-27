@@ -118,5 +118,14 @@
       "result": "PASS",
       "detail": "no Stripe/auth rewrite required for responsive/touch work"
     }
-  ]
+  ],
+  "browserProbe": {
+    "origin": "http://127.0.0.1:3000",
+    "viewports": ["375x667", "1280x800"],
+    "routes": ["/", "/es", "/register", "/login", "/journey", "/contact", "/lumina"],
+    "overflowFails": 0,
+    "tapFails": 0,
+    "viewportMeta": "width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content",
+    "interactiveWalkthrough": "375x812 homepage language switch, journey, login field focus, contact footer — no horizontal overflow observed"
+  }
 }
