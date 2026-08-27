@@ -263,6 +263,21 @@
       "npm run build if the change can affect production"
     ]
   },
+  "visualWalkthrough": {
+    "chromeDeviceMode": true,
+    "pages": [
+      "/",
+      "/register",
+      "/login",
+      "/checkout",
+      "/lumina",
+      "/support",
+      "/architect/lumina"
+    ],
+    "viewports": ["402x874", "412x915", "874x402"],
+    "result": "PASS",
+    "note": "Chrome DevTools device mode walkthrough on production. No overflow or clipped forms observed. Auth gates redirected to login. No accounts created. No Stripe charge."
+  },
   "host": {
     "os": "linux",
     "chrome": "Google Chrome stable (channel=chrome)",
