@@ -84,7 +84,7 @@ export function ForgotPasswordForm({ locale = "en" }: ForgotPasswordFormProps) {
             <p className="font-sans text-sm font-light text-bh-muted">
               <Link
                 href={getLoginPath(locale)}
-                className="underline underline-offset-4 transition hover:text-bh-ink"
+                className="inline-flex min-h-11 items-center underline underline-offset-4 transition hover:text-bh-ink"
               >
                 {backToLoginLabel}
               </Link>

@@ -57,14 +57,14 @@ export function ResetPasswordForm({
         <p className="mt-8 font-sans text-sm font-light text-bh-muted">
           <Link
             href={getForgotPasswordPath(locale)}
-            className="underline underline-offset-4 transition hover:text-bh-ink"
+            className="inline-flex min-h-11 items-center underline underline-offset-4 transition hover:text-bh-ink"
           >
             {translate(locale, dictionary.forgotPassword.submit)}
           </Link>
           {" · "}
           <Link
             href={getLoginPath(locale)}
-            className="underline underline-offset-4 transition hover:text-bh-ink"
+            className="inline-flex min-h-11 items-center underline underline-offset-4 transition hover:text-bh-ink"
           >
             {translate(locale, dictionary.forgotPassword.backToLogin)}
           </Link>
@@ -155,7 +155,7 @@ export function ResetPasswordForm({
             <p className="font-sans text-sm font-light text-bh-muted">
               <Link
                 href={getLoginPath(locale)}
-                className="underline underline-offset-4 transition hover:text-bh-ink"
+                className="inline-flex min-h-11 items-center underline underline-offset-4 transition hover:text-bh-ink"
               >
                 {translate(locale, dictionary.forgotPassword.backToLogin)}
               </Link>

@@ -965,7 +965,7 @@
 
   /* ——— Text links ——— */
   .bh-text-link {
-    @apply font-sans text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bh-purple/30 focus-visible:ring-offset-2 focus-visible:ring-offset-bh-cream;
+    @apply inline-flex min-h-11 items-center font-sans text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bh-purple/30 focus-visible:ring-offset-2 focus-visible:ring-offset-bh-cream;
     letter-spacing: var(--bh-tracking-link);
     color: var(--bh-color-purple);
   }
