@@ -1,0 +1,314 @@
+{
+  "aosWorkId": "al-186",
+  "row": 186,
+  "excelRow": 187,
+  "source": "command_center",
+  "sourceReference": "August Launch row 186",
+  "deliverable": "Test Priority Mobile Devices",
+  "description": "Test current iPhone and Android sizes, Safari and Chrome, portrait/landscape, forms, chat, videos, downloads, and checkout.",
+  "primaryOwner": "imani",
+  "primaryOwnerTitle": "Imani Heartbeat — technology, security, risk, repository/engineering",
+  "supportingOwners": ["nia"],
+  "assignedOperatingAgent": "imani",
+  "kimberlyWalkerAiTreatedAsCapacity": false,
+  "softwareChangeApplied": false,
+  "productMarketingLegalUnchanged": true,
+  "stripeCloudflareVercelDnsUnchanged": true,
+  "secretsPrinted": false,
+  "authenticationWeakened": false,
+  "founderAccepted": false,
+  "founderAcceptance": null,
+  "founderAcceptanceRecorded": false,
+  "rowMarkedComplete": false,
+  "markedComplete": false,
+  "percentCompleteRecorded": null,
+  "workbookStatusUnchanged": true,
+  "launchRowsJsonUnchanged": true,
+  "status": "ACCEPTANCE_READY",
+  "technicalStatus": "pass_with_findings",
+  "overallResult": "PASS_WITH_GAPS",
+  "generatedAt": "2026-08-27T16:18:00.000Z",
+  "testedAt": "2026-08-27T16:05:13.392Z",
+  "testedUntil": "2026-08-27T16:16:00.000Z",
+  "branch": "cursor/aos-imani-al-186-8e15",
+  "agentRunUrl": "https://cursor.com/agents/bc-5fba6387-e9f7-4424-8ac1-e1d3ace46f4d",
+  "targetHost": {
+    "canonical": "https://thebackhalf.org",
+    "canonicalResolvedFromThisEnvironment": false,
+    "wwwResolvedFromThisEnvironment": false,
+    "canonicalDnsError": "ENOTFOUND / no address associated with hostname",
+    "productionVercelHost": "https://website-two-psi-49.vercel.app",
+    "productionVercelStatus": 200,
+    "productionTitle": "The Back Half — Magical is Possible",
+    "aliasedPreviewHostBlockedBySso": "https://website-lnnyla7rc-back-half.vercel.app",
+    "dnsNotChanged": true
+  },
+  "method": {
+    "engines": [
+      "Playwright Chromium 151 (Chrome for Testing)",
+      "Playwright WebKit 26.5 (Safari-equivalent engine on Linux)",
+      "Google Chrome DevTools device mode (iPhone 16 393x852) live visual walkthrough"
+    ],
+    "nativeSafariAppAvailable": false,
+    "nativeIosAndroidHardwareAvailable": false,
+    "safariCoverage": "WebKit 26.5 plus iOS Safari 18.6 user-agent. Native Safari.app on iOS/macOS was not available on this Linux host.",
+    "chromeCoverage": "Playwright Chromium + Chrome DevTools device mode. Chrome iOS and Chrome Android user-agents applied.",
+    "layoutCases": 280,
+    "interactiveCases": 117,
+    "totalAutomatedCases": 397,
+    "automatedFailures": 0,
+    "followUpInteractiveRuns": [
+      "iphone-16 Chromium portrait",
+      "iphone-16 WebKit portrait",
+      "Pixel 9 Chromium portrait",
+      "iphone-16 Chromium landscape"
+    ],
+    "liveVisualWalkthrough": true,
+    "stripeChargesAttempted": false,
+    "productionAccountCreated": false
+  },
+  "devices": [
+    {
+      "id": "iphone-se",
+      "label": "iPhone SE (3rd gen)",
+      "cssViewport": "375x667",
+      "family": "iphone",
+      "orientations": ["portrait", "landscape"],
+      "engines": ["chromium", "webkit"]
+    },
+    {
+      "id": "iphone-16",
+      "label": "iPhone 16",
+      "cssViewport": "393x852",
+      "family": "iphone",
+      "orientations": ["portrait", "landscape"],
+      "engines": ["chromium", "webkit"]
+    },
+    {
+      "id": "iphone-16-pro",
+      "label": "iPhone 16 Pro",
+      "cssViewport": "402x874",
+      "family": "iphone",
+      "orientations": ["portrait", "landscape"],
+      "engines": ["chromium", "webkit"]
+    },
+    {
+      "id": "iphone-16-pro-max",
+      "label": "iPhone 16 Pro Max",
+      "cssViewport": "440x956",
+      "family": "iphone",
+      "orientations": ["portrait", "landscape"],
+      "engines": ["chromium", "webkit"]
+    },
+    {
+      "id": "galaxy-s25",
+      "label": "Galaxy S25 compact",
+      "cssViewport": "360x780",
+      "family": "android",
+      "orientations": ["portrait", "landscape"],
+      "engines": ["chromium", "webkit"]
+    },
+    {
+      "id": "pixel-9",
+      "label": "Pixel 9",
+      "cssViewport": "412x915",
+      "family": "android",
+      "orientations": ["portrait", "landscape"],
+      "engines": ["chromium", "webkit"]
+    },
+    {
+      "id": "pixel-9-pro-xl",
+      "label": "Pixel 9 Pro XL class",
+      "cssViewport": "448x998",
+      "family": "android",
+      "orientations": ["portrait", "landscape"],
+      "engines": ["chromium", "webkit"]
+    }
+  ],
+  "viewportMeta": {
+    "observed": "width=device-width, initial-scale=1",
+    "viewportFitCover": false,
+    "interactiveWidget": false,
+    "note": "Next.js default viewport. Missing viewport-fit=cover and interactive-widget=resizes-content. Hand off to Row 187."
+  },
+  "surfaces": {
+    "layout": {
+      "result": "PASS",
+      "paths": [
+        "/",
+        "/register",
+        "/login",
+        "/checkout",
+        "/lumina",
+        "/support",
+        "/journey",
+        "/contact",
+        "/forgot-password",
+        "/eligibility"
+      ],
+      "http": "All 280 layout loads returned HTTP 200 on Chromium and WebKit.",
+      "overflow": "No horizontal overflow (scrollWidth - innerWidth <= 2) on any device, orientation, or engine.",
+      "notes": "Homepage hero, language switcher, Manifesto/Contact, and BEGIN YOUR JOURNEY remain in view at iPhone 16 and Pixel 9 portrait in Chrome DevTools."
+    },
+    "forms": {
+      "result": "PASS_WITH_FINDINGS",
+      "pathsExercised": [
+        "/eligibility",
+        "/register",
+        "/login",
+        "/forgot-password",
+        "/support"
+      ],
+      "ageGate": {
+        "presentOn": ["register", "architect routes", "checkout offer start"],
+        "yesPlusContinueUnlocksForm": true,
+        "radioVisualSizePx": "16x16",
+        "labelsWrapRadios": true
+      },
+      "register": {
+        "afterAgeGateH1": "Become an Architect",
+        "fieldsTyped": ["firstName=Imani", "lastName=Heartbeat", "email=imani-al186-test@example.com"],
+        "accountNotCreated": true,
+        "textInputs": "16px font, 50px tall, full-width (303px on iPhone 16, 322px on Pixel 9). Landscape stacks first/last name at 291px and remaining fields at 606px.",
+        "consentCheckboxes": "16x16 visual boxes for Terms, Privacy, Participant Agreement, AI Disclosure"
+      },
+      "login": {
+        "emptySubmitShowsValidation": true,
+        "errorsObserved": ["Email is required.", "Password is required."],
+        "inputs": "16px font, 50px tall"
+      },
+      "support": {
+        "fieldsVisible": ["name", "email", "category", "subject", "isArchitect", "message"],
+        "stackedOnMobile": true,
+        "overflowX": 0
+      }
+    },
+    "chat": {
+      "result": "PASS_WITH_GAPS",
+      "publicLumina": {
+        "path": "/lumina",
+        "meetLuminaOpens": true,
+        "overflowX": 0,
+        "aiDisclosureVisibleAfterOpen": true,
+        "authenticatedComposerPresentOnPublicPage": false
+      },
+      "authenticatedLumina": {
+        "path": "/architect/lumina",
+        "unauthenticatedRedirect": "/login?next=%2Farchitect%2Flumina",
+        "liveComposerSendExecuted": false
+      }
+    },
+    "videos": {
+      "result": "PASS_WITH_GAPS",
+      "publicJourneyPageHasVideoElement": false,
+      "productionMp4Head": [
+        { "path": "/videos/onboarding/founding-architect-welcome.mp4", "status": 200, "contentType": "video/mp4" },
+        { "path": "/videos/chapter-1/chapter-1-the-awakening.mp4", "status": 200, "contentType": "video/mp4" },
+        { "path": "/videos/chapter-2/chapter-2-the-mirror.mp4", "status": 200, "contentType": "video/mp4" },
+        { "path": "/videos/chapter-3/chapter-3-choosing-intention.mp4", "status": 200, "contentType": "video/mp4" },
+        { "path": "/videos/chapter-4/chapter-4-creating-your-standards.mp4", "status": 200, "contentType": "video/mp4" },
+        { "path": "/videos/chapter-5/chapter-5-becoming-the-architect.mp4", "status": 200, "contentType": "video/mp4" },
+        { "path": "/videos/chapter-6/chapter-6-expansion.mp4", "status": 200, "contentType": "video/mp4" },
+        { "path": "/videos/chapter-7/chapter-7-beginning.mp4", "status": 200, "contentType": "video/mp4" },
+        { "path": "/videos/chapter-7/chapter-7-journey-completion.mp4", "status": 200, "contentType": "video/mp4" }
+      ],
+      "rangeRequest": {
+        "path": "/videos/chapter-1/chapter-1-the-awakening.mp4",
+        "status": 206,
+        "bytes": 1024
+      },
+      "chromiumDirectPlayback": "Native player loaded Chapter 1 (0:00 / 1:01) with playsinline-compatible controls on iPhone 16 Chromium.",
+      "webkitDirectNavigation": "WebKit started a download of the MP4 instead of inline navigation. In-page <video playsInline> on Architect chapter routes was not exercised because those routes are login-gated.",
+      "chapterRouteGate": "/architect/journey/chapter-1 → /login?next=%2Farchitect%2Fjourney%2Fchapter-1",
+      "signedInInPlayerPlaybackExecuted": false
+    },
+    "downloads": {
+      "result": "PASS_WITH_GAPS",
+      "publicPdfsHead200": [
+        "/downloads/blueprint/the-back-half-blueprint.pdf",
+        "/downloads/blueprint/back-half-aliveness-index.pdf",
+        "/downloads/blueprint/back-half-architects-commitment.pdf",
+        "/downloads/blueprint/back-half-decision-statement.pdf",
+        "/downloads/blueprint/back-half-standards.pdf",
+        "/downloads/blueprint/back-half-architect-identity-statement.pdf",
+        "/downloads/blueprint/back-half-expansion-plan.pdf",
+        "/downloads/blueprint/back-half-declaration.pdf",
+        "/downloads/blueprint/back-half-architect-completion-certificate.pdf"
+      ],
+      "browserDownloadStarts": true,
+      "architectResourcesGate": "/architect/resources → /login?next=%2Farchitect%2Fresources",
+      "personalizedApisUnauthenticated": [
+        { "path": "/api/architect/blueprint/guidebook", "status": 401 },
+        { "path": "/api/architect/blueprint/certificate", "status": 401 }
+      ],
+      "signedInPersonalizedDownloadExecuted": false
+    },
+    "checkout": {
+      "result": "PASS_WITH_GAPS",
+      "catalogPath": "/checkout",
+      "offersVisible": [
+        { "id": "blueprint", "name": "The Back Half Blueprint", "price": "$1,500", "mode": "one-time" },
+        { "id": "bundle", "name": "Founding Architect", "price": "$1,750", "mode": "one-time" },
+        { "id": "community", "name": "The Back Half Community", "price": "$50/month", "mode": "subscription" }
+      ],
+      "continueOnBlueprintLands": "/login?next=%2Fcheckout%2Fblueprint",
+      "offerRoutesWithoutSession": {
+        "/checkout/blueprint": "307 /eligibility?next=%2Fcheckout%2Fblueprint",
+        "/checkout/bundle": "307 /eligibility?next=%2Fcheckout%2Fbundle",
+        "/checkout/community": "307 /eligibility?next=%2Fcheckout%2Fcommunity"
+      },
+      "hostedStripeCheckoutEntered": false,
+      "stripeConfigModified": false
+    }
+  },
+  "findingsForRow187": [
+    {
+      "severity": "medium",
+      "id": "tap-targets-header-footer",
+      "summary": "Public header/footer tap targets are below the 44x44 CSS-pixel minimum.",
+      "measured": {
+        "brand": "138x17",
+        "languageSwitcher": "79–82x25",
+        "manifestoContact": "67–83x15"
+      }
+    },
+    {
+      "severity": "medium",
+      "id": "checkbox-radio-size",
+      "summary": "Age-gate radios and registration consent checkboxes render at 16x16. Labels wrap the radios; checkboxes still need a larger hit area.",
+      "measured": "16x16"
+    },
+    {
+      "severity": "low",
+      "id": "viewport-meta",
+      "summary": "Viewport meta is width=device-width, initial-scale=1 only. No viewport-fit=cover or interactive-widget=resizes-content."
+    },
+    {
+      "severity": "low",
+      "id": "lumina-100vh",
+      "summary": "Lumina opening uses min-h-[calc(100vh-6rem)] rather than dvh. Chat column already uses dvh."
+    }
+  ],
+  "gapsRequiringDeviceLab": [
+    "Native Safari.app on a physical iPhone",
+    "Chrome and Samsung Internet on a physical Android phone",
+    "Authenticated Architect session: Lumina composer send, chapter <video playsInline> playback, personalized Blueprint PDF downloads",
+    "Hosted Stripe Checkout UI on iOS Safari and Chrome Android",
+    "Canonical host thebackhalf.org (did not resolve from this environment; DNS was not changed)"
+  ],
+  "validation": {
+    "typecheckScriptPresent": false,
+    "testScriptPresent": false,
+    "npmRunTypecheck": "not run — package.json has no typecheck script; this change cannot affect production",
+    "npxTscNoEmit": "not run — node_modules/typescript not installed in this checkout; status-only ops file",
+    "npmTest": "not present",
+    "npmRunBuild": "skipped — status-only ops file cannot affect production",
+    "automatedMobileMatrix": "397 PASS / 0 FAIL / 0 GAP",
+    "liveChromeDeviceMode": "PASS"
+  },
+  "handoff": {
+    "row187": "Fix Responsive and Touch Issues — consume tap-target, checkbox, viewport, and 100vh findings.",
+    "niaRetest": "Nia retests participant experience after Row 187 lands.",
+    "founder": "Kimberly Walker (human) is the sole acceptance authority. This file does not record Founder acceptance and does not mark Command Center row 186 Complete."
+  }
+}
