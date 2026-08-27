@@ -1,0 +1,204 @@
+{
+  "aosWorkId": "al-186",
+  "source": "command_center",
+  "sourceReference": "August Launch row 186",
+  "excelRow": 187,
+  "deliverable": "Test Priority Mobile Devices",
+  "description": "Test current iPhone and Android sizes, Safari and Chrome, portrait/landscape, forms, chat, videos, downloads, and checkout.",
+  "ownerAgent": "imani",
+  "supportingOwners": ["nia"],
+  "generatedAt": "2026-08-27T14:55:00.000Z",
+  "repositorySoftwareChange": false,
+  "productMarketingLegalFilesChanged": false,
+  "stripeCloudflareVercelDnsTouched": false,
+  "authenticationWeakened": false,
+  "secretsExposed": false,
+  "founderAcceptanceRecorded": false,
+  "founderAcceptance": null,
+  "rowMarkedComplete": false,
+  "workbookStatusUnchanged": "Not Started",
+  "acceptanceState": "open",
+  "executionStatus": "TESTED_WITH_FINDINGS",
+  "merged": false,
+  "deployed": false,
+  "nextAction": "Hand findings to August Launch row 187 (Fix Responsive and Touch Issues). Nia retests participant experience after fixes. Founder acceptance stays with Kimberly Walker (human).",
+  "blockedReason": null,
+  "limits": {
+    "nativeSafariUnavailable": true,
+    "nativeIosAndroidDevicesUnavailable": true,
+    "webkitEngineUnavailable": true,
+    "authenticatedArchitectSessionUnavailable": true,
+    "liveStripeCheckoutNotExecuted": true,
+    "canonicalDomainUnreachable": true,
+    "note": "This Linux Cloud Agent VM has Chromium only. Safari was exercised via iOS Safari and Chrome-iOS user-agent strings plus static WebKit review (playsInline, 16px text inputs, safe-area, -webkit-mask). No physical iPhone/Android and no macOS/iOS Safari. Architect chat, Journey chapter players, and Blueprint PDF downloads require a signed-in 18+ session; those surfaces were login-gated and reviewed in code/CSS, not as a live participant session. Offer checkout redirects unauthenticated users to login before Stripe. Canonical thebackhalf.org / www.thebackhalf.org did not resolve from this workstation (pre-existing Row 75 DNS note)."
+  },
+  "environment": {
+    "origin": "http://localhost:3000",
+    "engine": "chromium-puppeteer + Chrome DevTools device mode",
+    "next": "16.2.12",
+    "hostedPreview": {
+      "website-two-psi-49.vercel.app": "HTTP 200",
+      "website-mze89uokz-back-half.vercel.app": "HTTP 302 Vercel SSO",
+      "thebackhalf.org": "no DNS response",
+      "www.thebackhalf.org": "no DNS response"
+    }
+  },
+  "deviceMatrix": [
+    {
+      "id": "iphone-16",
+      "label": "iPhone 16/17 CSS viewport",
+      "portrait": { "width": 393, "height": 852 },
+      "landscape": { "width": 852, "height": 393 },
+      "userAgents": ["safari-ios-ua", "chrome-ios-ua"]
+    },
+    {
+      "id": "iphone-16-pro-max",
+      "label": "iPhone 16/17 Pro Max CSS viewport",
+      "portrait": { "width": 430, "height": 932 },
+      "landscape": { "width": 932, "height": 430 },
+      "userAgents": ["safari-ios-ua"]
+    },
+    {
+      "id": "iphone-se-3",
+      "label": "iPhone SE (3rd gen) CSS viewport",
+      "portrait": { "width": 375, "height": 667 },
+      "landscape": { "width": 667, "height": 375 },
+      "userAgents": ["safari-ios-ua"]
+    },
+    {
+      "id": "pixel-9",
+      "label": "Pixel 8/9 CSS viewport",
+      "portrait": { "width": 412, "height": 915 },
+      "landscape": { "width": 915, "height": 412 },
+      "userAgents": ["chrome-android-ua"]
+    },
+    {
+      "id": "galaxy-s24",
+      "label": "Galaxy S24/S25 compact CSS viewport",
+      "portrait": { "width": 360, "height": 780 },
+      "landscape": { "width": 780, "height": 360 },
+      "userAgents": ["chrome-android-ua"]
+    },
+    {
+      "id": "pixel-7-devtools",
+      "label": "Chrome DevTools Pixel 7",
+      "portrait": { "width": 412, "height": 915 },
+      "userAgents": ["chrome-desktop-device-mode"]
+    }
+  ],
+  "surfaces": {
+    "home": {
+      "paths": ["/"],
+      "result": "PASS_WITH_FINDINGS",
+      "detail": "Hero, manifesto/contact nav, language switcher, and Begin Your Journey render on all five CSS viewports. No horizontal overflow. iPhone landscape (height 393) clips the hero CTA below the fold."
+    },
+    "forms": {
+      "paths": [
+        "/eligibility",
+        "/register",
+        "/login",
+        "/forgot-password",
+        "/support"
+      ],
+      "result": "PASS_WITH_FINDINGS",
+      "detail": "Age gate radios + Continue work. After 18+ confirmation, registration and support forms are usable; fields use 16px text (iOS zoom-safe). Login and forgot-password are public and usable. Support and register stay behind AgeGatedSection until eligible. Radio controls themselves are 16×16; labels are the actual tap area. Language switcher and header/footer links are below 44px height. Forms were filled, not submitted (no account, ticket, or email created)."
+    },
+    "chat": {
+      "paths": ["/lumina", "/architect/lumina"],
+      "result": "PARTIAL",
+      "detail": "Public /lumina opening control reveals the Lumina page on iPhone 16 and Pixel 9. Authenticated Architect Lumina chat (/architect/lumina) correctly redirects to /login?next=/architect/lumina. Composer CSS already uses sticky safe-area padding and min-h-11 send/retry controls. Live chat send/receive was not exercised without a session."
+    },
+    "videos": {
+      "paths": [
+        "/journey",
+        "/_internal/row50-founder-video-review",
+        "/architect/journey/chapter-1"
+      ],
+      "result": "PASS_WITH_FINDINGS",
+      "detail": "Founder review page loaded 18 <video> elements with playsInline and controls. Players stay inside the viewport in portrait and landscape (example iPhone 16 portrait 359×202; landscape 766×431). Chrome Pixel 7 device-mode playback of Founding Architect Welcome worked with captions. Several Spanish sources stayed at readyState 0 during the automated pass (load timing, not layout). Portrait-shot Founder video is pillarboxed in the 16:9 frame. Authenticated Journey chapter players redirect to login."
+    },
+    "downloads": {
+      "paths": ["/architect/resources"],
+      "result": "GATE_CONFIRMED",
+      "detail": "Blueprint PDF routes (/api/architect/blueprint/*) and Architect Resources require authentication. Unauthenticated /architect/resources redirects to /login?next=/architect/resources. Download links stack as a column below 640px in ResourcesShell. No live PDF download without a session."
+    },
+    "checkout": {
+      "paths": [
+        "/checkout",
+        "/checkout/blueprint",
+        "/checkout/bundle",
+        "/checkout/community"
+      ],
+      "result": "PASS_WITH_FINDINGS",
+      "detail": "Public catalog lists Blueprint $1,500, Founding Architect $1,750, Community $50/month with Continue CTAs and 18+ disclosure. Unauthenticated /checkout/blueprint redirects to login (page-level session check). Stripe Checkout was not opened and no card data was entered. Catalog has no horizontal overflow on the five viewports."
+    }
+  },
+  "measurement": {
+    "sessions": 11,
+    "pagesMeasured": 167,
+    "http200": 167,
+    "horizontalOverflowPages": 0,
+    "pagesWithTapTargetBelow44": 156,
+    "formPagesObserved": 90,
+    "videoPagesObserved": 11,
+    "downloadPagesObservedUnauthenticated": 0,
+    "iosInputZoomRiskOnTextInputs": false,
+    "iosInputZoomRiskOnAgeRadiosOnly": true
+  },
+  "findings": [
+    {
+      "id": "AL186-F1",
+      "severity": "medium",
+      "row187": true,
+      "title": "Public header and footer tap targets are below 44px",
+      "detail": "Repeated across iPhone and Android sizes: Manifesto/Contact ~80×15, language switcher English/Español ~78×25, brand lockup ~139×17, footer legal/support links ~18px tall, Forgot password 112×18. Primary CTAs (Sign in, Continue, Create account, Lumina send) already use min-h-11. WCAG 2.5.8 AA is 24×24; several nav links are below that height."
+    },
+    {
+      "id": "AL186-F2",
+      "severity": "medium",
+      "row187": true,
+      "title": "iPhone landscape hero CTA sits below the short viewport",
+      "detail": "On 852×393 (iPhone 16/17 landscape) the homepage hero headline fits but Begin Your Journey is clipped at the bottom edge. Not horizontal overflow; short-viewport vertical clip. Needs row 187 hero density/scroll treatment."
+    },
+    {
+      "id": "AL186-F3",
+      "severity": "low",
+      "row187": true,
+      "title": "Age-gate radios are 16×16 controls",
+      "detail": "Eligibility, register, and support age gates use 16px radios (h-4 w-4). The wrapping label is the intended hit area. Still a touch-precision issue on compact Android (360 CSS px)."
+    },
+    {
+      "id": "AL186-F4",
+      "severity": "low",
+      "row187": true,
+      "title": "Founder video is portrait content in a 16:9 frame",
+      "detail": "Review players keep aspect-video and do not overflow, but the source is pillarboxed. Confirm intended presentation on mobile Safari/Chrome before launch; optional object-fit/frame work is row 187, not this test row."
+    },
+    {
+      "id": "AL186-F5",
+      "severity": "info",
+      "row187": false,
+      "title": "Authenticated mobile chat, downloads, and offer checkout were not live-session tested",
+      "detail": "Correct login redirects were confirmed for /architect/lumina, /architect/resources, /architect/journey/chapter-1, and /checkout/{offer}. A real Architect session plus Stripe sandbox checkout on a physical device remains open work for Founder/Nia acceptance, not claimed here."
+    }
+  ],
+  "staticSafariReview": {
+    "viewportMeta": "Next.js default width=device-width (no custom viewport export; no user-scalable=no)",
+    "textInputsUse16px": true,
+    "founderVideoPlaysInline": true,
+    "luminaComposerSafeArea": true,
+    "cinematicEntranceSafeAreaAndDvh": true,
+    "webkitMaskUsage": "decorative only (entrance + print CSS)"
+  },
+  "validation": {
+    "typecheckScriptPresent": false,
+    "testScriptPresent": false,
+    "productionBuildRequired": false,
+    "note": "Status-only ops JSON. package.json has no typecheck or test script. npm run build was not run because this is not a production software change."
+  },
+  "evidence": [
+    "ops/fab-5/runs/aos-engineering-status/al-186.json",
+    "chromium matrix 11 sessions / 167 HTTP 200 page loads",
+    "Chrome DevTools Pixel 7 interactive pass: home, register, login, forgot-password, support, eligibility, checkout, lumina, architect login gates, founder video play+captions"
+  ]
+}
