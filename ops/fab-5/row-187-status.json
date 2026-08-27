@@ -1,0 +1,19 @@
+{
+  "row": 187,
+  "excelRow": 188,
+  "aosWorkId": "al-187",
+  "deliverable": "Fix Responsive and Touch Issues",
+  "technicalStatus": "ready_for_retest",
+  "percentCompleteRecorded": 80,
+  "status": "In Progress",
+  "workbookStatus": "Not Started",
+  "founderAcceptance": null,
+  "founderAccepted": false,
+  "rowMarkedComplete": false,
+  "primaryOwner": "imani",
+  "supportingOwners": ["nia"],
+  "sourceOfTruth": "ops/fab-5/ROW-187-RESPONSIVE-TOUCH.md",
+  "validation": "ops/fab-5/runs/row-187-responsive-touch-validation.json",
+  "nextAction": "Nia retests participant experience on priority iPhone/Android sizes. Founder acceptance remains with Kimberly Walker (human).",
+  "notes": "Mechanical source fixes for overflow, clipped text, keyboard overlap, tap targets, scrolling, media, and mobile hero performance. Does not claim Founder acceptance or production device-lab proof. Row 186 Mobile Device Testing remains a workbook dependency."
+}
