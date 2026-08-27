@@ -1,0 +1,233 @@
+{
+  "aosWorkId": "al-186",
+  "source": "command_center",
+  "sourceReference": "August Launch row 186",
+  "spreadsheetRow": 186,
+  "commandCenterExcelRowNote": "Founder Command Center snapshot excelRow 187 also titles this deliverable Test Priority Mobile Devices (header-offset). This file is bound to AOS work ID al-186 / launch-rows spreadsheetRow 186.",
+  "deliverable": "Test Priority Mobile Devices",
+  "description": "Test current iPhone and Android sizes, Safari and Chrome, portrait/landscape, forms, chat, videos, downloads, and checkout.",
+  "ownerAgent": "imani",
+  "ownerTitle": "Imani Heartbeat — Chief Technology & Risk Officer",
+  "supportingOwner": "nia",
+  "generatedAt": "2026-08-27T15:28:00.000Z",
+  "branch": "cursor/aos-imani-al-186-ec6d",
+  "softwareChangeApplied": false,
+  "productMarketingLegalFilesChanged": false,
+  "stripeChanged": false,
+  "dnsChanged": false,
+  "authWeakened": false,
+  "secretsPrinted": false,
+  "founderAcceptanceRecorded": false,
+  "founderAcceptanceRequired": true,
+  "rowMarkedComplete": false,
+  "status": "TESTED_ACCEPTANCE_READY",
+  "result": "PASS_WITH_FINDINGS",
+  "blockedByFeatureCompleteBuild": false,
+  "nextAction": "await_founder_acceptance",
+  "unlocks": [
+    "August Launch row 187 — Fix Responsive and Touch Issues"
+  ],
+  "environment": {
+    "originTested": "https://website-two-psi-49.vercel.app",
+    "canonicalApex": "https://thebackhalf.org",
+    "canonicalApexFromThisRunner": "DNS_UNRESOLVED",
+    "canonicalApexError": "Could not resolve host: thebackhalf.org",
+    "wwwFromThisRunner": "DNS_UNRESOLVED",
+    "chromeVersion": "Google Chrome 148.0.7778.96",
+    "engine": "chromium-device-emulation",
+    "nativeSafariAvailable": false,
+    "nativeWebKitAvailable": false,
+    "physicalDevicesAvailable": false,
+    "authenticatedTestSessionAvailable": false,
+    "note": "This Linux Cloud Agent runner cannot execute Apple Safari or ship a Playwright WebKit browser. Safari-class coverage is iOS Safari and Chrome-iOS user-agent plus viewport emulation on Chromium. Physical iPhone/Android Safari and Chrome remain a device-lab gap. Canonical apex DNS failure is an observation from this runner only; Imani did not change Cloudflare DNS, Vercel custom-domain settings, or nameservers."
+  },
+  "matrix": {
+    "devices": [
+      { "id": "iphone-se-3", "label": "iPhone SE (3rd gen)", "css": "375x667", "dpr": 2, "family": "iphone" },
+      { "id": "iphone-16", "label": "iPhone 16", "css": "393x852", "dpr": 3, "family": "iphone" },
+      { "id": "iphone-16-pro-max", "label": "iPhone 16 Pro Max", "css": "440x956", "dpr": 3, "family": "iphone" },
+      { "id": "galaxy-s25", "label": "Samsung Galaxy S25", "css": "360x780", "dpr": 3, "family": "android" },
+      { "id": "pixel-9", "label": "Google Pixel 9", "css": "412x915", "dpr": 2.625, "family": "android" }
+    ],
+    "orientations": ["portrait", "landscape"],
+    "userAgents": ["safari-ios-18", "chrome-android-15", "chrome-ios-18"],
+    "cases": 79,
+    "httpErrors": 0,
+    "horizontalOverflowFails": 0,
+    "viewportMeta": "width=device-width, initial-scale=1"
+  },
+  "surfaces": {
+    "forms": {
+      "result": "PASS",
+      "tested": [
+        "/register age gate then Architect registration fields and consent validation",
+        "/login email/password with invalid credentials",
+        "/eligibility 18+ attestation",
+        "/support age gate then support request client validation"
+      ],
+      "notSubmittedForReal": [
+        "No Architect account created",
+        "No support ticket posted",
+        "No password reset requested"
+      ],
+      "evidence": {
+        "registerInputs": "firstName/lastName/email/password/passwordConfirm at 16px font and 50px height after age gate",
+        "registerValidation": "Required acknowledgment has not been provided / Required acknowledgments must be accepted",
+        "loginValidation": "Invalid email or password",
+        "supportInputs": "name/email/category/subject/isArchitect/message at 16px; heights 48–182px",
+        "supportValidation": "Name is required; Enter a valid email address; Select a reason or category; Subject is required; Message is required",
+        "eligibilityYes": "Proceeds; /checkout/blueprint then redirects to /login?next=%2Fcheckout%2Fblueprint"
+      }
+    },
+    "chat": {
+      "result": "PASS_PUBLIC_MARKETING_ONLY",
+      "publicLumina": {
+        "path": "/lumina",
+        "openingTriggerWorks": true,
+        "ariaExpandedAfterClick": "true",
+        "composerPresent": false,
+        "joinHref": "/register"
+      },
+      "authenticatedChat": {
+        "path": "/architect/lumina",
+        "afterEligibility": "https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Flumina",
+        "composerTested": false,
+        "reason": "No Architect test session. Auth gate held. Imani did not bypass authentication."
+      }
+    },
+    "videos": {
+      "result": "NOT_ON_PUBLIC_SURFACES",
+      "publicJourney": { "path": "/journey", "videoElements": 0 },
+      "authenticatedChapterVideos": {
+        "paths": [
+          "/videos/chapter-1/chapter-1-the-awakening.mp4",
+          "/videos/chapter-2/chapter-2-the-mirror.mp4",
+          "/videos/onboarding/founding-architect-welcome.mp4"
+        ],
+        "testedOnDevice": false,
+        "reason": "Chapter <video> placements are inside authenticated Journey. Public /journey has no <video>."
+      }
+    },
+    "downloads": {
+      "result": "AUTH_GATED_NOT_EXECUTED",
+      "publicDownloadLinks": 0,
+      "architectResources": {
+        "path": "/architect/resources",
+        "afterEligibility": "https://website-two-psi-49.vercel.app/login?next=%2Farchitect%2Fresources",
+        "pdfDownloadTested": false
+      }
+    },
+    "checkout": {
+      "result": "PASS_CATALOG_AUTH_GATE_HELD",
+      "catalog": {
+        "path": "/checkout",
+        "http": 200,
+        "overflowX": 0,
+        "cta": "/checkout/blueprint",
+        "offersVisible": [
+          "The Back Half Blueprint — $1,500 one-time",
+          "Founding Architect — $1,750 one-time",
+          "The Back Half Community — $50/month"
+        ]
+      },
+      "offerStart": {
+        "path": "/checkout/blueprint",
+        "unauthenticated": "redirects to eligibility then /login?next=%2Fcheckout%2Fblueprint",
+        "stripeCheckoutOpened": false,
+        "livePurchaseAttempted": false
+      }
+    }
+  },
+  "findings": [
+    {
+      "id": "AL186-F1",
+      "severity": "medium",
+      "owner": "imani",
+      "handoff": "row_187",
+      "title": "Header and footer tap targets below 44px",
+      "detail": "Measured on every device/orientation: brand link height 17px; English/Español language controls height 25px; Manifesto and Contact 15px. WCAG 2.2 target-size minimum is 24px; recommended mobile tap target remains 44px. Primary CTAs (Begin your Journey, Create account, Contact, Sign in) measured 48px and pass."
+    },
+    {
+      "id": "AL186-F2",
+      "severity": "low",
+      "owner": "imani",
+      "handoff": "row_187",
+      "title": "Age-gate radios and consent checkboxes are 16×16 visual boxes",
+      "detail": "bh-age-eligible radios render at 16×16 and 14px computed font. Registration consent checkboxes are 16×16 with 16px font. Associated labels likely enlarge the hit area; Row 187 should confirm label wrapping on real iPhone/Android and enlarge if the label does not cover 44px."
+    },
+    {
+      "id": "AL186-F3",
+      "severity": "low",
+      "owner": "imani",
+      "handoff": "row_187",
+      "title": "Inline Sign in text link is 18px tall",
+      "detail": "Register page 'Already have an account? Sign in' measured 18×204. Not launch-blocking; fix with Row 187 touch pass."
+    },
+    {
+      "id": "AL186-F4",
+      "severity": "info",
+      "owner": "imani",
+      "handoff": "device_lab",
+      "title": "Native Safari and physical devices were not available",
+      "detail": "Chromium 148 with iOS Safari / Chrome iOS / Chrome Android user-agents and current iPhone/Android CSS viewports. Apple Safari and WebKit were not installed on this runner. Physical iPhone 16 / SE and Galaxy / Pixel Chrome+Safari portrait/landscape remain required before treating this row as production-complete."
+    },
+    {
+      "id": "AL186-F5",
+      "severity": "info",
+      "owner": "imani",
+      "handoff": "authenticated_retest",
+      "title": "Authenticated chat, chapter videos, PDF downloads, and Stripe Checkout UI were not executed",
+      "detail": "Auth and eligibility gates held. No Architect test session was used. /architect/lumina, /architect/resources, and /checkout/blueprint stop at login. Public /lumina opening works; chat composer is not on the public page. Chapter MP4s and Blueprint PDF downloads were not fetched."
+    },
+    {
+      "id": "AL186-F6",
+      "severity": "info",
+      "owner": "imani",
+      "handoff": "row_75_observation_only",
+      "title": "thebackhalf.org did not resolve from this runner",
+      "detail": "getent/curl: Could not resolve host for thebackhalf.org and www.thebackhalf.org. website-two-psi-49.vercel.app returned 200 for launch-critical public routes. Imani did not change DNS, nameservers, or Vercel custom domains. Do not treat this file as a Row 75 DNS change."
+    }
+  ],
+  "checks": [
+    { "id": "M1", "name": "iPhone SE / 16 / 16 Pro Max portrait+landscape public core", "result": "PASS", "detail": "/, /register, /support, /checkout, /lumina, /journey HTTP 200 overflowX=0" },
+    { "id": "M2", "name": "Galaxy S25 and Pixel 9 portrait+landscape public core", "result": "PASS", "detail": "same routes HTTP 200 overflowX=0" },
+    { "id": "M3", "name": "Chrome iOS user-agent on iPhone 16", "result": "PASS", "detail": "/, /register, /checkout HTTP 200 overflowX=0" },
+    { "id": "M4", "name": "ES public routes on iPhone 16 and Pixel 9", "result": "PASS", "detail": "/es, /es/register, /es/checkout HTTP 200" },
+    { "id": "M5", "name": "Registration form after 18+ gate", "result": "PASS", "detail": "16px inputs, 50px height, consent validation visible, no overflow in portrait or landscape" },
+    { "id": "M6", "name": "Login form validation", "result": "PASS", "detail": "Invalid email or password on non-account probe; auth not weakened" },
+    { "id": "M7", "name": "Support form after 18+ gate", "result": "PASS", "detail": "Client validation on iPhone 16; no ticket created" },
+    { "id": "M8", "name": "Checkout catalog + auth gate", "result": "PASS", "detail": "Offers and prices render; offer start requires login" },
+    { "id": "M9", "name": "Public Lumina opening", "result": "PASS", "detail": "Meet Lumina sets aria-expanded=true and reveals #lumina-main; no public chat composer" },
+    { "id": "M10", "name": "Authenticated Lumina / resources / videos", "result": "NOT_RUN", "detail": "Login gate held" },
+    { "id": "M11", "name": "Native Safari / physical device lab", "result": "NOT_RUN", "detail": "Runner limitation" },
+    { "id": "M12", "name": "Canonical apex thebackhalf.org", "result": "NOT_RUN", "detail": "DNS unresolved from this runner; Vercel alias was tested instead" }
+  ],
+  "validation": {
+    "typecheck": {
+      "command": "npm run typecheck or npx tsc --noEmit",
+      "ran": false,
+      "reason": "Status-only deliverable. package.json has no typecheck script. No TypeScript or product files changed."
+    },
+    "test": {
+      "command": "npm test",
+      "ran": false,
+      "reason": "package.json has no test script. This row is a device-matrix test, not a unit-suite change."
+    },
+    "build": {
+      "command": "npm run build",
+      "ran": false,
+      "reason": "No production software change. Build would not validate mobile-device findings."
+    },
+    "merged": false,
+    "deployed": false
+  },
+  "evidenceRefs": [
+    "ops/fab-5/runs/aos-engineering-status/al-186.json",
+    "branch:cursor/aos-imani-al-186-ec6d",
+    "origin:https://website-two-psi-49.vercel.app",
+    "chrome:148.0.7778.96",
+    "matrix:79-cases-0-http-errors-0-overflow"
+  ],
+  "kimberlyWalkerAi": "not_an_operating_agent",
+  "acceptanceAuthority": "Kimberly Walker (human) — Founder. This file does not record Founder acceptance."
+}
