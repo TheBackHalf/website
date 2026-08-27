@@ -1,0 +1,13 @@
+{
+  "workId": "al-187",
+  "source": "command_center August Launch row 187",
+  "owner": "imani",
+  "deliverable": "Fix Responsive and Touch Issues",
+  "repositoryChange": true,
+  "status": "VALIDATING",
+  "founderAcceptance": null,
+  "commandCenterComplete": false,
+  "evidence": "ops/fab-5/runs/row-187-responsive-touch-validation.json",
+  "notes": "Software change: mobile overflow, tap targets, keyboard inset, media, and performance. Nia retests participant experience. Founder acceptance stays with Kimberly Walker (human).",
+  "at": "2026-08-27T13:38:41.581Z"
+}

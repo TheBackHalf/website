@@ -1,0 +1,170 @@
+/**
+ * Row 187 — launch mobile / touch hardening.
+ * Overflow, clipped text, keyboard overlap, tap targets, scrolling, media, performance.
+ * Does not change brand voice or Founder-facing marketing copy.
+ */
+
+:root {
+  --bh-tap-min: 2.75rem;
+  --bh-keyboard-inset: 0px;
+  --bh-vv-height: 100dvh;
+  --bh-vv-offset-top: 0px;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-x: clip;
+  scroll-padding-top: calc(5.25rem + env(safe-area-inset-top, 0px));
+}
+
+body {
+  overflow-x: clip;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+}
+
+.bh-hero,
+.bh-app-shell {
+  min-height: 100dvh;
+}
+
+.bh-app-header {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.bh-site-header .bh-hero-nav-actions,
+.bh-site-header .bh-hero-nav-links {
+  min-width: 0;
+  max-width: 100%;
+}
+
+img,
+video,
+iframe,
+canvas,
+svg {
+  max-width: 100%;
+}
+
+video,
+iframe {
+  max-width: 100%;
+}
+
+.bh-founder-media-video,
+.bh-founder-media-host video {
+  width: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+a,
+button,
+[role="button"],
+input[type="submit"],
+input[type="button"],
+summary {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: color-mix(in oklab, var(--bh-purple) 18%, transparent);
+}
+
+input,
+textarea,
+select {
+  font-size: 1rem;
+  max-width: 100%;
+  scroll-margin-top: calc(5.5rem + env(safe-area-inset-top, 0px));
+  scroll-margin-bottom: calc(6rem + var(--bh-keyboard-inset, 0px));
+}
+
+@media (pointer: coarse) {
+  .bh-hero-nav-link,
+  .bh-site-header-link,
+  .bh-site-header-brand,
+  .bh-hero-nav-brand,
+  .bh-language-switcher-link,
+  .bh-app-nav-link,
+  .bh-app-account-menu-item,
+  .bh-app-header-brand,
+  .bh-text-link,
+  .bh-legal-link,
+  .bh-consent-label,
+  .bh-journey-stage-nav-link {
+    min-height: var(--bh-tap-min);
+    min-width: var(--bh-tap-min);
+  }
+
+  .bh-hero-nav-link,
+  .bh-site-header-link,
+  .bh-language-switcher-link,
+  .bh-app-nav-link,
+  .bh-app-account-menu-item,
+  .bh-text-link,
+  .bh-legal-link,
+  .bh-consent-label {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .bh-consent-item {
+    min-height: var(--bh-tap-min);
+  }
+}
+
+.bh-lumina-chat-scroll,
+.bh-journey-stage-nav-list,
+.bh-app-consent-table-wrap {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+.bh-journey-stage-nav-list {
+  overscroll-behavior-x: contain;
+  padding-bottom: 0.5rem;
+}
+
+html[data-bh-keyboard="open"] .bh-lumina-chat-column {
+  min-height: 0;
+  max-height: calc(var(--bh-vv-height, 100dvh) - 5.5rem);
+}
+
+@media (prefers-reduced-data: reduce) {
+  .bh-hero-noise,
+  .bh-hero-glow,
+  .bh-hero-beam {
+    display: none;
+  }
+
+  .bh-hero-media img {
+    animation: none !important;
+  }
+}
+
+@media (max-width: 379px) {
+  .bh-app-header-badge {
+    display: none;
+  }
+
+  .bh-hero-nav-brand,
+  .bh-site-header-brand {
+    letter-spacing: 0.18em;
+  }
+}
+
+@media (max-width: 767px) {
+  .bh-hero-nav-link,
+  .bh-site-header-link {
+    letter-spacing: 0.16em;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .bh-journey-stage-nav-label {
+    max-width: 5.75rem;
+    overflow-wrap: anywhere;
+    white-space: normal;
+  }
+}
