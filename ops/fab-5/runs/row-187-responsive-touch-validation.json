@@ -1,0 +1,122 @@
+{
+  "generatedAt": "2026-08-27T15:36:52.505Z",
+  "row": 187,
+  "aosWorkId": "al-187",
+  "title": "Fix Responsive and Touch Issues",
+  "owner": "imani",
+  "founderAcceptanceRecorded": false,
+  "merged": false,
+  "result": "PASS",
+  "passed": 18,
+  "failed": 0,
+  "tests": [
+    {
+      "id": "K1",
+      "name": "keyboardInsetPx reports keyboard overlap",
+      "result": "PASS",
+      "detail": "inset math covers keyboard, offset, and invalid input"
+    },
+    {
+      "id": "K2",
+      "name": "applyKeyboardInset writes custom property",
+      "result": "PASS",
+      "detail": "--bh-keyboard-inset=128px"
+    },
+    {
+      "id": "K3",
+      "name": "measureAndApplyKeyboardInset uses visualViewport",
+      "result": "PASS",
+      "detail": "inset=348"
+    },
+    {
+      "id": "K4",
+      "name": "clearKeyboardInset removes property",
+      "result": "PASS",
+      "detail": "property cleared"
+    },
+    {
+      "id": "V1",
+      "name": "Root viewport covers device width and keyboard",
+      "result": "PASS",
+      "detail": "viewport metadata and ViewportStability mount present"
+    },
+    {
+      "id": "V2",
+      "name": "Design tokens include tap and keyboard insets",
+      "result": "PASS",
+      "detail": "44px tap token and keyboard inset token present"
+    },
+    {
+      "id": "O1",
+      "name": "Overflow and wrap guards",
+      "result": "PASS",
+      "detail": "horizontal clip, wrapping, and hero subtext no longer forced nowrap"
+    },
+    {
+      "id": "T1",
+      "name": "Tap targets on public and app chrome",
+      "result": "PASS",
+      "detail": "nav, language, consent, footer, and app toggle use 44px targets"
+    },
+    {
+      "id": "T2",
+      "name": "Consent and chapter inputs are touch-safe",
+      "result": "PASS",
+      "detail": "16px inputs prevent iOS zoom; checkboxes enlarged"
+    },
+    {
+      "id": "S1",
+      "name": "Scrolling and safe areas",
+      "result": "PASS",
+      "detail": "touch scrolling, safe-area padding, and dynamic viewport height"
+    },
+    {
+      "id": "B1",
+      "name": "Keyboard overlap padding on Lumina composer",
+      "result": "PASS",
+      "detail": "composer dock and focused fields reserve keyboard space"
+    },
+    {
+      "id": "M1",
+      "name": "Media containment",
+      "result": "PASS",
+      "detail": "img/video cannot blow out the layout"
+    },
+    {
+      "id": "P1",
+      "name": "Mobile performance reductions",
+      "result": "PASS",
+      "detail": "Ken Burns/glow/noise disabled on small screens; reduced motion kept"
+    },
+    {
+      "id": "H1",
+      "name": "Site header still uses shared nav classes",
+      "result": "PASS",
+      "detail": "site header wrap rules can attach to existing markup"
+    },
+    {
+      "id": "A1",
+      "name": "Age gate radios use enlarged touch rows",
+      "result": "PASS",
+      "detail": "eligibility radios no longer use 16px-only hit targets"
+    },
+    {
+      "id": "N1",
+      "name": "Mobile drawer locks background scroll",
+      "result": "PASS",
+      "detail": "architect mobile nav prevents background scroll"
+    },
+    {
+      "id": "C1",
+      "name": "Section shells clip horizontally without hiding wrapped text",
+      "result": "PASS",
+      "detail": "section overflow-x-clip"
+    },
+    {
+      "id": "X1",
+      "name": "Auth and payment files untouched by this deliverable",
+      "result": "PASS",
+      "detail": "no Stripe/auth rewrite required for responsive/touch work"
+    }
+  ]
+}

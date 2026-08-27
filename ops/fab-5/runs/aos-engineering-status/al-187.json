@@ -6,15 +6,27 @@
   "source": "command_center",
   "sourceReference": "August Launch row 187",
   "softwareChange": true,
-  "status": "in_progress",
-  "founderAcceptanceRecorded": false,
-  "founderAcceptanceAuthority": "Kimberly Walker (human)",
+  "status": "acceptance_ready",
+  "branch": "cursor/aos-imani-al-187-5c1c",
+  "pullRequest": "https://github.com/TheBackHalf/website/pull/71",
   "merged": false,
   "deployed": false,
+  "founderAcceptanceRecorded": false,
+  "founderAcceptanceAuthority": "Kimberly Walker (human)",
   "secretsExposed": false,
   "authWeakened": false,
   "stripeOrDnsChanged": false,
-  "scope": [
+  "validation": {
+    "typecheck": "npx tsc --noEmit exit 0",
+    "test": "npm test / scripts/fab-5/row-187-validate.ts 18 PASS",
+    "build": "npm run build exit 0",
+    "browserProbe": "375px and 1280px routes /, /es, /register, /login, /journey, /contact, /lumina: no horizontal overflow, no undersized measured tap targets, viewport-fit=cover and interactive-widget=resizes-content present"
+  },
+  "evidence": [
+    "ops/fab-5/runs/row-187-responsive-touch-validation.json",
+    "https://github.com/TheBackHalf/website/pull/71"
+  ],
+  "scopeCompleted": [
     "overflow and clipped text",
     "keyboard overlap",
     "tap targets",
@@ -22,5 +34,7 @@
     "media containment",
     "mobile performance"
   ],
-  "notes": "Engineering implementation in progress. Validation, typecheck, and build have not been recorded yet. Founder acceptance is not claimed."
+  "nextAction": "review_pr",
+  "niaRetest": "Nia retests participant experience after merge. Live-device Mobile Device Testing (row 186) remains a parallel dependency.",
+  "notes": "Engineering complete on an isolated branch. Command Center row is not marked Complete. Founder acceptance is not claimed."
 }
