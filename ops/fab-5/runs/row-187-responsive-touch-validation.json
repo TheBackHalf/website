@@ -1,0 +1,111 @@
+{
+  "generatedAt": "2026-08-27T14:42:33.497Z",
+  "row": 187,
+  "aosWorkId": "al-187",
+  "deliverable": "Fix Responsive and Touch Issues",
+  "primaryOwner": "imani",
+  "supportingOwners": [
+    "nia"
+  ],
+  "technicalStatus": "ready_for_retest",
+  "percentCompleteRecorded": 80,
+  "rowMarkedComplete": false,
+  "founderAcceptance": null,
+  "founderAcceptanceAuthority": "Kimberly Walker (human)",
+  "nextAction": "Nia retests participant experience on priority iPhone/Android sizes. Founder acceptance remains open.",
+  "liveVisualPassClaimed": false,
+  "productionRuntimeProofClaimed": false,
+  "dependency": "Mobile Device Testing (row 186) remains a workbook dependency.",
+  "passed": 13,
+  "failed": 0,
+  "tests": [
+    {
+      "id": "viewport-fit",
+      "name": "Root viewport covers safe-area insets",
+      "result": "PASS",
+      "detail": "viewportFit=cover and device-width"
+    },
+    {
+      "id": "keyboard-widget",
+      "name": "Root viewport resizes content when the software keyboard opens",
+      "result": "PASS",
+      "detail": "interactiveWidget=resizes-content"
+    },
+    {
+      "id": "zoom-preserved",
+      "name": "Pinch-to-zoom is not disabled",
+      "result": "PASS",
+      "detail": "userScalable/maximumScale not locked"
+    },
+    {
+      "id": "inset-mounted",
+      "name": "Visual viewport inset is mounted in the root layout",
+      "result": "PASS",
+      "detail": "VisualViewportInset in app/layout.tsx"
+    },
+    {
+      "id": "inset-math",
+      "name": "Keyboard inset math covers iOS visualViewport shrink",
+      "result": "PASS",
+      "detail": "0 / 300 / 260 / 0"
+    },
+    {
+      "id": "overflow-clip",
+      "name": "Document root clips horizontal overflow",
+      "result": "PASS",
+      "detail": "html/body overflow-x: clip"
+    },
+    {
+      "id": "tap-targets",
+      "name": "Launch-critical controls use a 44px tap floor",
+      "result": "PASS",
+      "detail": "44px floor on nav, switcher, ratings, chapter, age gate"
+    },
+    {
+      "id": "keyboard-dock",
+      "name": "Lumina composer dock tracks keyboard inset",
+      "result": "PASS",
+      "detail": "composer dock bottom uses --bh-keyboard-inset"
+    },
+    {
+      "id": "scroll-lock",
+      "name": "Architect mobile nav locks background scroll",
+      "result": "PASS",
+      "detail": "html/body overflow hidden while open"
+    },
+    {
+      "id": "nowrap-wide-only",
+      "name": "Hero supporting sentence wraps below 1280px",
+      "result": "PASS",
+      "detail": "nowrap at xl / 1280px only"
+    },
+    {
+      "id": "media-bounds",
+      "name": "Replaced media cannot overflow the content box",
+      "result": "PASS",
+      "detail": "img/video/canvas max-width 100%"
+    },
+    {
+      "id": "mobile-performance",
+      "name": "Hero kenburns is disabled on small viewports",
+      "result": "PASS",
+      "detail": "mobile hero animation: none"
+    },
+    {
+      "id": "safe-area",
+      "name": "Notch and home-indicator safe areas are applied",
+      "result": "PASS",
+      "detail": "safe-area-inset + keyboard token"
+    }
+  ],
+  "defectsAddressed": [
+    "horizontal overflow",
+    "clipped hero/nav text at tablet widths",
+    "software keyboard overlap",
+    "sub-44px tap targets",
+    "background scroll under mobile nav",
+    "media overflow",
+    "mobile hero animation cost"
+  ],
+  "note": "Mechanical source proof only. Does not replace Nia participant retest or Founder acceptance."
+}
