@@ -1,0 +1,77 @@
+{
+  "generatedAt": "2026-08-27T15:06:06.475Z",
+  "workId": "al-187",
+  "row": 187,
+  "excelRow": 188,
+  "deliverable": "Fix Responsive and Touch Issues",
+  "operatingAgent": "imani",
+  "markedComplete": false,
+  "founderAcceptance": "open",
+  "founderAcceptanceAuthority": "Kimberly Walker (human)",
+  "tests": [
+    {
+      "id": "viewport-export",
+      "name": "Root layout exports a Next.js viewport object",
+      "result": "PASS",
+      "detail": "width=device-width, viewport-fit=cover, interactive-widget=resizes-content"
+    },
+    {
+      "id": "viewport-insets",
+      "name": "Visual viewport keyboard inset is wired into the root layout",
+      "result": "PASS",
+      "detail": "Client hook writes --bh-keyboard-inset and scrolls focused fields into view"
+    },
+    {
+      "id": "overflow-clip",
+      "name": "Document prevents horizontal overflow",
+      "result": "PASS",
+      "detail": "html/body overflow-x-clip plus iOS text-size-adjust lock"
+    },
+    {
+      "id": "tap-targets",
+      "name": "Launch-critical controls use a 44px minimum tap target",
+      "result": "PASS",
+      "detail": "Language switcher, app toggle, account, footer, journey nav, CTAs"
+    },
+    {
+      "id": "keyboard-overlap",
+      "name": "Sticky composer and form fields respect keyboard inset",
+      "result": "PASS",
+      "detail": "Lumina dock padding and form scroll-margin use --bh-keyboard-inset"
+    },
+    {
+      "id": "clipped-text",
+      "name": "Hero supporting sentence no longer forces a single nowrap line",
+      "result": "PASS",
+      "detail": "Removed desktop nowrap lock; headings wrap with break-words"
+    },
+    {
+      "id": "scrolling",
+      "name": "Mobile nav locks body scroll and contains overscroll",
+      "result": "PASS",
+      "detail": "App drawer scroll lock, overscroll-contain, dvh shells"
+    },
+    {
+      "id": "media",
+      "name": "Embedded media stays inside the viewport",
+      "result": "PASS",
+      "detail": "Global media max-width plus founder video max-height"
+    },
+    {
+      "id": "performance",
+      "name": "Touch delay and Ken Burns respect reduced motion / manipulation",
+      "result": "PASS",
+      "detail": "touch-action: manipulation on interactive controls; existing reduced-motion gate kept"
+    },
+    {
+      "id": "no-secrets",
+      "name": "Changed files do not contain credential assignment patterns",
+      "result": "PASS",
+      "detail": "No secret-looking assignments in Row 187 files"
+    }
+  ],
+  "passed": 10,
+  "failed": 0,
+  "total": 10,
+  "readyForReview": true
+}

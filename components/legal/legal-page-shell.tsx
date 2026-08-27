@@ -25,7 +25,7 @@ export function LegalPageShell({ document, locale = "en" }: LegalPageShellProps)
     <>
       <SkipLink href="#legal-main">{dictionary.common.skipToMain}</SkipLink>
 
-      <main id="legal-main" className="min-h-screen bg-bh-cream text-bh-ink">
+      <main id="legal-main" className="min-h-dvh bg-bh-cream text-bh-ink">
         <PageHero locale={locale} className="pb-10 md:pb-14">
           <div className="bh-page-hero-content-left mx-auto max-w-3xl pt-12 text-center md:text-left">
             <p className="bh-eyebrow">{dictionary.common.legal}</p>

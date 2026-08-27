@@ -1,0 +1,20 @@
+{
+  "workId": "al-187",
+  "source": "command_center August Launch row 187",
+  "deliverable": "Fix Responsive and Touch Issues",
+  "operatingAgent": "imani",
+  "technicalStatus": "implemented_unmerged",
+  "workbookComplete": false,
+  "founderAcceptance": "open",
+  "founderAcceptanceAuthority": "Kimberly Walker (human)",
+  "dependency": "Mobile Device Testing (row 186) remains open; Nia retest still required",
+  "validation": {
+    "script": "npm run fab5:row187",
+    "passed": 10,
+    "failed": 0,
+    "total": 10,
+    "evidence": "ops/fab-5/runs/row-187-responsive-touch-validation.json"
+  },
+  "nextAction": "review_pr_then_nia_device_retest",
+  "generatedAt": "2026-08-27T15:06:06.475Z"
+}

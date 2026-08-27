@@ -22,7 +22,7 @@ export function ContactPageView({ locale }: ContactPageViewProps) {
     <>
       <SkipLink href="#contact-main">{dictionary.common.skipToMain}</SkipLink>
 
-      <main id="contact-main" className="min-h-screen bg-bh-cream text-bh-ink">
+      <main id="contact-main" className="min-h-dvh bg-bh-cream text-bh-ink">
         <PageHero locale={locale}>
           <p className="bh-eyebrow">
             {locale === "en" ? contactPage.eyebrow : "Contacto"}

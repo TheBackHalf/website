@@ -22,7 +22,7 @@ export function SupportPageView({ locale }: SupportPageViewProps) {
     <>
       <SkipLink href="#support-main">{dictionary.common.skipToMain}</SkipLink>
 
-      <main id="support-main" className="min-h-screen bg-bh-cream text-bh-ink">
+      <main id="support-main" className="min-h-dvh bg-bh-cream text-bh-ink">
         <PageHero locale={locale}>
           <p className="bh-eyebrow">{english ? supportPage.eyebrow : "Soporte"}</p>
           <SectionHeading as="h1" className="mt-6 text-4xl md:text-6xl lg:text-7xl">
