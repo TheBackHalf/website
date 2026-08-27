@@ -35,7 +35,7 @@ export function ConsentCheckbox({
 
   return (
     <div className="bh-consent-item">
-      <div className="flex items-start gap-3">
+      <div className="bh-touch-choice flex items-start gap-3">
         <input
           id={id}
           type="checkbox"
@@ -44,7 +44,7 @@ export function ConsentCheckbox({
           onChange={(event) => onChange(event.target.checked)}
           aria-invalid={Boolean(error)}
           aria-describedby={error ? errorId : undefined}
-          className="bh-consent-checkbox mt-1 shrink-0"
+          className="bh-consent-checkbox bh-touch-choice-control mt-1 shrink-0"
         />
         <label htmlFor={id} className="bh-consent-label" lang="en">
           {label ? (

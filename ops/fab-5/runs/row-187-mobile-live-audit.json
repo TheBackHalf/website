@@ -1,0 +1,932 @@
+{
+  "at": "2026-08-27T16:24:10.230Z",
+  "base": "http://127.0.0.1:3010",
+  "passed": 28,
+  "failed": 0,
+  "results": [
+    {
+      "route": "/",
+      "viewport": "iphone-se",
+      "status": 200,
+      "overflowX": 0,
+      "nowrapHero": false,
+      "toggleVisible": true,
+      "smallTargets": [
+        {
+          "tag": "a",
+          "className": "bh-eyebrow bh-eyebrow-on-dark inline-block transition hover:text-bh-champagne",
+          "text": "MEET LUMINA",
+          "width": 121,
+          "height": 16
+        },
+        {
+          "tag": "a",
+          "className": "bh-footer-brand",
+          "text": "The Back Half",
+          "width": 160,
+          "height": 37
+        }
+      ],
+      "smallTargetCount": 2,
+      "drawer": {
+        "open": true,
+        "firstLinkHeight": 44
+      },
+      "pass": true
+    },
+    {
+      "route": "/login",
+      "viewport": "iphone-se",
+      "status": 200,
+      "overflowX": 0,
+      "nowrapHero": false,
+      "toggleVisible": true,
+      "smallTargets": [
+        {
+          "tag": "a",
+          "className": "bh-skip-link",
+          "text": "Skip to main content",
+          "width": 158,
+          "height": 36
+        },
+        {
+          "tag": "a",
+          "className": "underline underline-offset-4 transition hover:text-bh-ink",
+          "text": "Forgot password?",
+          "width": 112,
+          "height": 18
+        },
+        {
+          "tag": "a",
+          "className": "underline underline-offset-4 transition hover:text-bh-ink",
+          "text": "Need an account? Become an Architect",
+          "width": 184,
+          "height": 38
+        },
+        {
+          "tag": "a",
+          "className": "bh-footer-brand",
+          "text": "The Back Half",
+          "width": 160,
+          "height": 37
+        }
+      ],
+      "smallTargetCount": 4,
+      "drawer": {
+        "open": true,
+        "firstLinkHeight": 44
+      },
+      "pass": true
+    },
+    {
+      "route": "/register",
+      "viewport": "iphone-se",
+      "status": 200,
+      "overflowX": 0,
+      "nowrapHero": false,
+      "toggleVisible": true,
+      "smallTargets": [
+        {
+          "tag": "a",
+          "className": "bh-skip-link",
+          "text": "Skip to main content",
+          "width": 158,
+          "height": 36
+        },
+        {
+          "tag": "a",
+          "className": "bh-footer-brand",
+          "text": "The Back Half",
+          "width": 160,
+          "height": 37
+        }
+      ],
+      "smallTargetCount": 2,
+      "drawer": {
+        "open": true,
+        "firstLinkHeight": 44
+      },
+      "pass": true
+    },
+    {
+      "route": "/journey",
+      "viewport": "iphone-se",
+      "status": 200,
+      "overflowX": 0,
+      "nowrapHero": false,
+      "toggleVisible": true,
+      "smallTargets": [
+        {
+          "tag": "a",
+          "className": "bh-skip-link",
+          "text": "Skip to main content",
+          "width": 158,
+          "height": 36
+        },
+        {
+          "tag": "a",
+          "className": "bh-footer-brand",
+          "text": "The Back Half",
+          "width": 160,
+          "height": 37
+        }
+      ],
+      "smallTargetCount": 2,
+      "drawer": {
+        "open": true,
+        "firstLinkHeight": 44
+      },
+      "pass": true
+    },
+    {
+      "route": "/contact",
+      "viewport": "iphone-se",
+      "status": 200,
+      "overflowX": 0,
+      "nowrapHero": false,
+      "toggleVisible": true,
+      "smallTargets": [
+        {
+          "tag": "a",
+          "className": "bh-skip-link",
+          "text": "Skip to main content",
+          "width": 158,
+          "height": 36
+        },
+        {
+          "tag": "a",
+          "className": "underline decoration-bh-purple/30",
+          "text": "support@thebackhalf.org",
+          "width": 180,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "className": "bh-text-link bh-text-link-utility",
+          "text": "SUPPORT",
+          "width": 80,
+          "height": 18
+        },
+        {
+          "tag": "a",
+          "className": "bh-footer-brand",
+          "text": "The Back Half",
+          "width": 160,
+          "height": 37
+        }
+      ],
+      "smallTargetCount": 4,
+      "drawer": {
+        "open": true,
+        "firstLinkHeight": 44
+      },
+      "pass": true
+    },
+    {
+      "route": "/checkout",
+      "viewport": "iphone-se",
+      "status": 200,
+      "overflowX": 0,
+      "nowrapHero": false,
+      "toggleVisible": true,
+      "smallTargets": [
+        {
+          "tag": "a",
+          "className": "bh-skip-link",
+          "text": "Skip to main content",
+          "width": 158,
+          "height": 36
+        },
+        {
+          "tag": "a",
+          "className": "bh-footer-brand",
+          "text": "The Back Half",
+          "width": 160,
+          "height": 37
+        }
+      ],
+      "smallTargetCount": 2,
+      "drawer": {
+        "open": true,
+        "firstLinkHeight": 44
+      },
+      "pass": true
+    },
+    {
+      "route": "/es",
+      "viewport": "iphone-se",
+      "status": 200,
+      "overflowX": 0,
+      "nowrapHero": false,
+      "toggleVisible": true,
+      "smallTargets": [
+        {
+          "tag": "a",
+          "className": "bh-eyebrow bh-eyebrow-on-dark inline-block transition hover:text-bh-champagne",
+          "text": "CONOCE A LUMINA",
+          "width": 167,
+          "height": 16
+        },
+        {
+          "tag": "a",
+          "className": "bh-footer-brand",
+          "text": "The Back Half",
+          "width": 160,
+          "height": 37
+        }
+      ],
+      "smallTargetCount": 2,
+      "drawer": {
+        "open": true,
+        "firstLinkHeight": 44
+      },
+      "pass": true
+    },
+    {
+      "route": "/",
+      "viewport": "iphone-14",
+      "status": 200,
+      "overflowX": 0,
+      "nowrapHero": false,
+      "toggleVisible": true,
+      "smallTargets": [
+        {
+          "tag": "a",
+          "className": "bh-eyebrow bh-eyebrow-on-dark inline-block transition hover:text-bh-champagne",
+          "text": "MEET LUMINA",
+          "width": 121,
+          "height": 16
+        },
+        {
+          "tag": "a",
+          "className": "bh-footer-brand",
+          "text": "The Back Half",
+          "width": 160,
+          "height": 37
+        }
+      ],
+      "smallTargetCount": 2,
+      "drawer": {
+        "open": true,
+        "firstLinkHeight": 44
+      },
+      "pass": true
+    },
+    {
+      "route": "/login",
+      "viewport": "iphone-14",
+      "status": 200,
+      "overflowX": 0,
+      "nowrapHero": false,
+      "toggleVisible": true,
+      "smallTargets": [
+        {
+          "tag": "a",
+          "className": "bh-skip-link",
+          "text": "Skip to main content",
+          "width": 158,
+          "height": 36
+        },
+        {
+          "tag": "a",
+          "className": "underline underline-offset-4 transition hover:text-bh-ink",
+          "text": "Forgot password?",
+          "width": 112,
+          "height": 18
+        },
+        {
+          "tag": "a",
+          "className": "underline underline-offset-4 transition hover:text-bh-ink",
+          "text": "Need an account? Become an Architect",
+          "width": 243,
+          "height": 18
+        },
+        {
+          "tag": "a",
+          "className": "bh-footer-brand",
+          "text": "The Back Half",
+          "width": 160,
+          "height": 37
+        }
+      ],
+      "smallTargetCount": 4,
+      "drawer": {
+        "open": true,
+        "firstLinkHeight": 44
+      },
+      "pass": true
+    },
+    {
+      "route": "/register",
+      "viewport": "iphone-14",
+      "status": 200,
+      "overflowX": 0,
+      "nowrapHero": false,
+      "toggleVisible": true,
+      "smallTargets": [
+        {
+          "tag": "a",
+          "className": "bh-skip-link",
+          "text": "Skip to main content",
+          "width": 158,
+          "height": 36
+        },
+        {
+          "tag": "a",
+          "className": "bh-footer-brand",
+          "text": "The Back Half",
+          "width": 160,
+          "height": 37
+        }
+      ],
+      "smallTargetCount": 2,
+      "drawer": {
+        "open": true,
+        "firstLinkHeight": 44
+      },
+      "pass": true
+    },
+    {
+      "route": "/journey",
+      "viewport": "iphone-14",
+      "status": 200,
+      "overflowX": 0,
+      "nowrapHero": false,
+      "toggleVisible": true,
+      "smallTargets": [
+        {
+          "tag": "a",
+          "className": "bh-skip-link",
+          "text": "Skip to main content",
+          "width": 158,
+          "height": 36
+        },
+        {
+          "tag": "a",
+          "className": "bh-footer-brand",
+          "text": "The Back Half",
+          "width": 160,
+          "height": 37
+        }
+      ],
+      "smallTargetCount": 2,
+      "drawer": {
+        "open": true,
+        "firstLinkHeight": 44
+      },
+      "pass": true
+    },
+    {
+      "route": "/contact",
+      "viewport": "iphone-14",
+      "status": 200,
+      "overflowX": 0,
+      "nowrapHero": false,
+      "toggleVisible": true,
+      "smallTargets": [
+        {
+          "tag": "a",
+          "className": "bh-skip-link",
+          "text": "Skip to main content",
+          "width": 158,
+          "height": 36
+        },
+        {
+          "tag": "a",
+          "className": "underline decoration-bh-purple/30",
+          "text": "support@thebackhalf.org",
+          "width": 180,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "className": "bh-text-link bh-text-link-utility",
+          "text": "SUPPORT",
+          "width": 80,
+          "height": 18
+        },
+        {
+          "tag": "a",
+          "className": "bh-footer-brand",
+          "text": "The Back Half",
+          "width": 160,
+          "height": 37
+        }
+      ],
+      "smallTargetCount": 4,
+      "drawer": {
+        "open": true,
+        "firstLinkHeight": 44
+      },
+      "pass": true
+    },
+    {
+      "route": "/checkout",
+      "viewport": "iphone-14",
+      "status": 200,
+      "overflowX": 0,
+      "nowrapHero": false,
+      "toggleVisible": true,
+      "smallTargets": [
+        {
+          "tag": "a",
+          "className": "bh-skip-link",
+          "text": "Skip to main content",
+          "width": 158,
+          "height": 36
+        },
+        {
+          "tag": "a",
+          "className": "bh-footer-brand",
+          "text": "The Back Half",
+          "width": 160,
+          "height": 37
+        }
+      ],
+      "smallTargetCount": 2,
+      "drawer": {
+        "open": true,
+        "firstLinkHeight": 44
+      },
+      "pass": true
+    },
+    {
+      "route": "/es",
+      "viewport": "iphone-14",
+      "status": 200,
+      "overflowX": 0,
+      "nowrapHero": false,
+      "toggleVisible": true,
+      "smallTargets": [
+        {
+          "tag": "a",
+          "className": "bh-eyebrow bh-eyebrow-on-dark inline-block transition hover:text-bh-champagne",
+          "text": "CONOCE A LUMINA",
+          "width": 167,
+          "height": 16
+        },
+        {
+          "tag": "a",
+          "className": "bh-footer-brand",
+          "text": "The Back Half",
+          "width": 160,
+          "height": 37
+        }
+      ],
+      "smallTargetCount": 2,
+      "drawer": {
+        "open": true,
+        "firstLinkHeight": 44
+      },
+      "pass": true
+    },
+    {
+      "route": "/",
+      "viewport": "pixel-5",
+      "status": 200,
+      "overflowX": 0,
+      "nowrapHero": false,
+      "toggleVisible": true,
+      "smallTargets": [
+        {
+          "tag": "a",
+          "className": "bh-eyebrow bh-eyebrow-on-dark inline-block transition hover:text-bh-champagne",
+          "text": "MEET LUMINA",
+          "width": 121,
+          "height": 16
+        },
+        {
+          "tag": "a",
+          "className": "bh-footer-brand",
+          "text": "The Back Half",
+          "width": 160,
+          "height": 37
+        }
+      ],
+      "smallTargetCount": 2,
+      "drawer": {
+        "open": true,
+        "firstLinkHeight": 44
+      },
+      "pass": true
+    },
+    {
+      "route": "/login",
+      "viewport": "pixel-5",
+      "status": 200,
+      "overflowX": 0,
+      "nowrapHero": false,
+      "toggleVisible": true,
+      "smallTargets": [
+        {
+          "tag": "a",
+          "className": "bh-skip-link",
+          "text": "Skip to main content",
+          "width": 158,
+          "height": 36
+        },
+        {
+          "tag": "a",
+          "className": "underline underline-offset-4 transition hover:text-bh-ink",
+          "text": "Forgot password?",
+          "width": 112,
+          "height": 18
+        },
+        {
+          "tag": "a",
+          "className": "underline underline-offset-4 transition hover:text-bh-ink",
+          "text": "Need an account? Become an Architect",
+          "width": 243,
+          "height": 18
+        },
+        {
+          "tag": "a",
+          "className": "bh-footer-brand",
+          "text": "The Back Half",
+          "width": 160,
+          "height": 37
+        }
+      ],
+      "smallTargetCount": 4,
+      "drawer": {
+        "open": true,
+        "firstLinkHeight": 44
+      },
+      "pass": true
+    },
+    {
+      "route": "/register",
+      "viewport": "pixel-5",
+      "status": 200,
+      "overflowX": 0,
+      "nowrapHero": false,
+      "toggleVisible": true,
+      "smallTargets": [
+        {
+          "tag": "a",
+          "className": "bh-skip-link",
+          "text": "Skip to main content",
+          "width": 158,
+          "height": 36
+        },
+        {
+          "tag": "a",
+          "className": "bh-footer-brand",
+          "text": "The Back Half",
+          "width": 160,
+          "height": 37
+        }
+      ],
+      "smallTargetCount": 2,
+      "drawer": {
+        "open": true,
+        "firstLinkHeight": 44
+      },
+      "pass": true
+    },
+    {
+      "route": "/journey",
+      "viewport": "pixel-5",
+      "status": 200,
+      "overflowX": 0,
+      "nowrapHero": false,
+      "toggleVisible": true,
+      "smallTargets": [
+        {
+          "tag": "a",
+          "className": "bh-skip-link",
+          "text": "Skip to main content",
+          "width": 158,
+          "height": 36
+        },
+        {
+          "tag": "a",
+          "className": "bh-footer-brand",
+          "text": "The Back Half",
+          "width": 160,
+          "height": 37
+        }
+      ],
+      "smallTargetCount": 2,
+      "drawer": {
+        "open": true,
+        "firstLinkHeight": 44
+      },
+      "pass": true
+    },
+    {
+      "route": "/contact",
+      "viewport": "pixel-5",
+      "status": 200,
+      "overflowX": 0,
+      "nowrapHero": false,
+      "toggleVisible": true,
+      "smallTargets": [
+        {
+          "tag": "a",
+          "className": "bh-skip-link",
+          "text": "Skip to main content",
+          "width": 158,
+          "height": 36
+        },
+        {
+          "tag": "a",
+          "className": "underline decoration-bh-purple/30",
+          "text": "support@thebackhalf.org",
+          "width": 180,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "className": "bh-text-link bh-text-link-utility",
+          "text": "SUPPORT",
+          "width": 80,
+          "height": 18
+        },
+        {
+          "tag": "a",
+          "className": "bh-footer-brand",
+          "text": "The Back Half",
+          "width": 160,
+          "height": 37
+        }
+      ],
+      "smallTargetCount": 4,
+      "drawer": {
+        "open": true,
+        "firstLinkHeight": 44
+      },
+      "pass": true
+    },
+    {
+      "route": "/checkout",
+      "viewport": "pixel-5",
+      "status": 200,
+      "overflowX": 0,
+      "nowrapHero": false,
+      "toggleVisible": true,
+      "smallTargets": [
+        {
+          "tag": "a",
+          "className": "bh-skip-link",
+          "text": "Skip to main content",
+          "width": 158,
+          "height": 36
+        },
+        {
+          "tag": "a",
+          "className": "bh-footer-brand",
+          "text": "The Back Half",
+          "width": 160,
+          "height": 37
+        }
+      ],
+      "smallTargetCount": 2,
+      "drawer": {
+        "open": true,
+        "firstLinkHeight": 44
+      },
+      "pass": true
+    },
+    {
+      "route": "/es",
+      "viewport": "pixel-5",
+      "status": 200,
+      "overflowX": 0,
+      "nowrapHero": false,
+      "toggleVisible": true,
+      "smallTargets": [
+        {
+          "tag": "a",
+          "className": "bh-eyebrow bh-eyebrow-on-dark inline-block transition hover:text-bh-champagne",
+          "text": "CONOCE A LUMINA",
+          "width": 167,
+          "height": 16
+        },
+        {
+          "tag": "a",
+          "className": "bh-footer-brand",
+          "text": "The Back Half",
+          "width": 160,
+          "height": 37
+        }
+      ],
+      "smallTargetCount": 2,
+      "drawer": {
+        "open": true,
+        "firstLinkHeight": 44
+      },
+      "pass": true
+    },
+    {
+      "route": "/",
+      "viewport": "tablet",
+      "status": 200,
+      "overflowX": 0,
+      "nowrapHero": false,
+      "toggleVisible": false,
+      "smallTargets": [
+        {
+          "tag": "a",
+          "className": "bh-eyebrow bh-eyebrow-on-dark inline-block transition hover:text-bh-champagne",
+          "text": "MEET LUMINA",
+          "width": 121,
+          "height": 15
+        },
+        {
+          "tag": "a",
+          "className": "bh-footer-brand",
+          "text": "The Back Half",
+          "width": 160,
+          "height": 37
+        }
+      ],
+      "smallTargetCount": 2,
+      "pass": true
+    },
+    {
+      "route": "/login",
+      "viewport": "tablet",
+      "status": 200,
+      "overflowX": 0,
+      "nowrapHero": false,
+      "toggleVisible": false,
+      "smallTargets": [
+        {
+          "tag": "a",
+          "className": "bh-skip-link",
+          "text": "Skip to main content",
+          "width": 158,
+          "height": 36
+        },
+        {
+          "tag": "a",
+          "className": "underline underline-offset-4 transition hover:text-bh-ink",
+          "text": "Forgot password?",
+          "width": 112,
+          "height": 18
+        },
+        {
+          "tag": "a",
+          "className": "underline underline-offset-4 transition hover:text-bh-ink",
+          "text": "Need an account? Become an Architect",
+          "width": 243,
+          "height": 18
+        },
+        {
+          "tag": "a",
+          "className": "bh-footer-brand",
+          "text": "The Back Half",
+          "width": 160,
+          "height": 37
+        }
+      ],
+      "smallTargetCount": 4,
+      "pass": true
+    },
+    {
+      "route": "/register",
+      "viewport": "tablet",
+      "status": 200,
+      "overflowX": 0,
+      "nowrapHero": false,
+      "toggleVisible": false,
+      "smallTargets": [
+        {
+          "tag": "a",
+          "className": "bh-skip-link",
+          "text": "Skip to main content",
+          "width": 158,
+          "height": 36
+        },
+        {
+          "tag": "a",
+          "className": "bh-footer-brand",
+          "text": "The Back Half",
+          "width": 160,
+          "height": 37
+        }
+      ],
+      "smallTargetCount": 2,
+      "pass": true
+    },
+    {
+      "route": "/journey",
+      "viewport": "tablet",
+      "status": 200,
+      "overflowX": 0,
+      "nowrapHero": false,
+      "toggleVisible": false,
+      "smallTargets": [
+        {
+          "tag": "a",
+          "className": "bh-skip-link",
+          "text": "Skip to main content",
+          "width": 158,
+          "height": 36
+        },
+        {
+          "tag": "a",
+          "className": "bh-footer-brand",
+          "text": "The Back Half",
+          "width": 160,
+          "height": 37
+        }
+      ],
+      "smallTargetCount": 2,
+      "pass": true
+    },
+    {
+      "route": "/contact",
+      "viewport": "tablet",
+      "status": 200,
+      "overflowX": 0,
+      "nowrapHero": false,
+      "toggleVisible": false,
+      "smallTargets": [
+        {
+          "tag": "a",
+          "className": "bh-skip-link",
+          "text": "Skip to main content",
+          "width": 158,
+          "height": 36
+        },
+        {
+          "tag": "a",
+          "className": "underline decoration-bh-purple/30",
+          "text": "support@thebackhalf.org",
+          "width": 180,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "className": "bh-text-link bh-text-link-utility",
+          "text": "SUPPORT",
+          "width": 80,
+          "height": 18
+        },
+        {
+          "tag": "a",
+          "className": "bh-footer-brand",
+          "text": "The Back Half",
+          "width": 160,
+          "height": 37
+        }
+      ],
+      "smallTargetCount": 4,
+      "pass": true
+    },
+    {
+      "route": "/checkout",
+      "viewport": "tablet",
+      "status": 200,
+      "overflowX": 0,
+      "nowrapHero": false,
+      "toggleVisible": false,
+      "smallTargets": [
+        {
+          "tag": "a",
+          "className": "bh-skip-link",
+          "text": "Skip to main content",
+          "width": 158,
+          "height": 36
+        },
+        {
+          "tag": "a",
+          "className": "bh-footer-brand",
+          "text": "The Back Half",
+          "width": 160,
+          "height": 37
+        }
+      ],
+      "smallTargetCount": 2,
+      "pass": true
+    },
+    {
+      "route": "/es",
+      "viewport": "tablet",
+      "status": 200,
+      "overflowX": 0,
+      "nowrapHero": false,
+      "toggleVisible": false,
+      "smallTargets": [
+        {
+          "tag": "a",
+          "className": "bh-eyebrow bh-eyebrow-on-dark inline-block transition hover:text-bh-champagne",
+          "text": "CONOCE A LUMINA",
+          "width": 167,
+          "height": 15
+        },
+        {
+          "tag": "a",
+          "className": "bh-footer-brand",
+          "text": "The Back Half",
+          "width": 160,
+          "height": 37
+        }
+      ],
+      "smallTargetCount": 2,
+      "pass": true
+    }
+  ]
+}

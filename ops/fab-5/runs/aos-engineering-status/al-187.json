@@ -1,0 +1,21 @@
+{
+  "aosWorkId": "al-187",
+  "source": "command_center",
+  "sourceReference": "August Launch row 187",
+  "title": "Fix Responsive and Touch Issues",
+  "ownerAgent": "imani",
+  "softwareChangeApplied": true,
+  "founderAcceptanceRecorded": false,
+  "validation": {
+    "passed": 11,
+    "failed": 0,
+    "script": "npm run fab5:row187",
+    "evidence": "ops/fab-5/runs/row-187-responsive-touch-validation.json",
+    "liveAudit": "ops/fab-5/runs/row-187-mobile-live-audit.json",
+    "liveAuditResult": "28/28 PASS failed=0",
+    "typecheck": "run separately: npm run typecheck",
+    "build": "run separately: npm run build"
+  },
+  "nextAction": "Nia retests participant mobile experience. Founder acceptance stays with Kimberly Walker (human).",
+  "at": "2026-08-27T16:29:57.436Z"
+}

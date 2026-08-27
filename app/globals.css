@@ -148,11 +148,38 @@
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-bh-cream text-bh-ink font-sans;
-  }
   html {
     @apply scroll-smooth;
+    overflow-x: clip;
+    overscroll-behavior-x: none;
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-bh-cream text-bh-ink font-sans;
+    min-height: 100dvh;
+    overflow-x: clip;
+  }
+  img:not([data-nimg="fill"]),
+  video,
+  canvas {
+    max-width: 100%;
+    height: auto;
+  }
+  iframe,
+  embed,
+  object {
+    max-width: 100%;
+  }
+  a,
+  button,
+  [role="button"],
+  input,
+  select,
+  textarea,
+  label,
+  summary {
+    touch-action: manipulation;
   }
   @media (prefers-reduced-motion: reduce) {
     html {
@@ -189,7 +216,7 @@
   }
 
   .bh-cta {
-    @apply mt-10 inline-flex items-center justify-center rounded-sm bg-bh-purple px-12 py-4 font-sans text-sm font-medium uppercase text-white transition duration-500 hover:bg-bh-purple-deep hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bh-purple/40 focus-visible:ring-offset-2 focus-visible:ring-offset-bh-cream focus-visible:text-white active:text-white disabled:pointer-events-none disabled:opacity-60 disabled:text-white;
+    @apply mt-10 inline-flex min-h-11 max-w-full items-center justify-center rounded-sm bg-bh-purple px-6 py-4 text-center font-sans text-sm font-medium uppercase text-white transition duration-500 hover:bg-bh-purple-deep hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bh-purple/40 focus-visible:ring-offset-2 focus-visible:ring-offset-bh-cream focus-visible:text-white active:text-white disabled:pointer-events-none disabled:opacity-60 disabled:text-white sm:px-12;
     font-size: var(--bh-text-sm);
     letter-spacing: var(--bh-tracking-cta);
     box-shadow: var(--bh-shadow-cta);
@@ -359,7 +386,7 @@
 
   /* ——— Hero: immersive cinematic plane ——— */
   .bh-hero {
-    @apply relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-bh-night;
+    @apply relative flex min-h-dvh flex-col items-center justify-center overflow-hidden bg-bh-night;
   }
 
   .bh-hero-media {
@@ -430,64 +457,33 @@
 
   .bh-hero-nav {
     @apply absolute inset-x-0 top-0 z-20 px-5 py-6 md:px-10 md:py-8;
+    padding-top: max(1.5rem, env(safe-area-inset-top));
+    padding-left: max(1.25rem, env(safe-area-inset-left));
+    padding-right: max(1.25rem, env(safe-area-inset-right));
   }
 
   .bh-hero-nav-inner {
-    @apply mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-x-6 border-b border-white/15 pb-5;
-    row-gap: 1.65rem;
+    @apply mx-auto flex w-full max-w-6xl min-w-0 items-center justify-between gap-x-4 border-b border-white/15 pb-5 sm:gap-x-6;
+    row-gap: 1rem;
   }
 
   .bh-hero-nav-brand {
-    @apply shrink-0 font-sans text-[0.7rem] font-medium tracking-[0.38em] text-white/95 uppercase transition hover:text-bh-champagne;
+    @apply inline-flex min-h-11 shrink-0 items-center font-sans text-[0.7rem] font-medium tracking-[0.38em] text-white/95 uppercase transition hover:text-bh-champagne;
   }
 
   .bh-hero-nav-link {
-    @apply font-sans font-medium uppercase text-white/65 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bh-champagne/80 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent md:tracking-[0.32em];
+    @apply inline-flex min-h-11 items-center font-sans font-medium uppercase text-white/65 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bh-champagne/80 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent md:tracking-[0.32em];
     font-size: var(--bh-text-xs);
     letter-spacing: var(--bh-tracking-nav);
     transition-duration: var(--bh-duration-fast);
   }
 
   .bh-hero-nav-actions {
-    @apply flex flex-wrap items-center justify-end gap-x-3 gap-y-3 sm:gap-x-4 md:gap-x-6;
+    @apply flex min-w-0 shrink-0 items-center justify-end gap-x-3 gap-y-3 sm:gap-x-4 md:gap-x-6;
   }
 
   .bh-hero-nav-links {
     @apply flex flex-wrap items-center justify-end gap-x-4 gap-y-2 sm:gap-x-5 md:gap-x-8;
-  }
-
-  .bh-hero-nav .bh-hero-nav-actions {
-    display: contents;
-  }
-
-  .bh-hero-nav .bh-hero-nav-links {
-    @apply w-full flex-nowrap justify-center;
-    flex: 1 1 100%;
-    gap: 1.05rem;
-  }
-
-  .bh-hero-nav .bh-hero-nav-link {
-    white-space: nowrap;
-  }
-
-  @media (min-width: 640px) {
-    .bh-hero-nav .bh-hero-nav-links {
-      gap: 1.35rem;
-    }
-  }
-
-  @media (min-width: 768px) {
-    .bh-hero-nav .bh-hero-nav-actions {
-      @apply flex flex-nowrap items-center justify-end gap-x-6;
-      display: flex;
-    }
-
-    .bh-hero-nav .bh-hero-nav-links {
-      flex: 0 1 auto;
-      width: auto;
-      justify-content: flex-end;
-      gap: 2rem;
-    }
   }
 
   .bh-hero-eyebrow {
@@ -495,7 +491,8 @@
   }
 
   .bh-hero-headline {
-    @apply font-display text-white;
+    @apply font-display max-w-full text-white;
+    overflow-wrap: break-word;
     text-shadow:
       0 2px 40px oklch(0.14 0.035 300 / 0.45),
       0 0 80px oklch(0.72 0.12 320 / 0.25);
@@ -523,12 +520,9 @@
     color: #ffffff;
   }
 
-  /* Standard desktop: keep the full supporting sentence on one line */
-  @media (min-width: 1024px) {
-    #hero .bh-hero-subtext {
-      max-width: none;
-      white-space: nowrap;
-    }
+  #hero .bh-hero-subtext {
+    overflow-wrap: break-word;
+    text-wrap: pretty;
   }
 
   .bh-hero-cta {
@@ -705,12 +699,12 @@
   }
 
   .bh-journey-stage-nav-list {
-    @apply flex snap-x snap-mandatory gap-2 overflow-x-auto pb-2 md:flex-wrap md:justify-center md:gap-3 md:overflow-visible md:pb-0;
+    @apply flex snap-x snap-mandatory gap-2 overflow-x-auto overscroll-x-contain pb-2 [-webkit-overflow-scrolling:touch] md:flex-wrap md:justify-center md:gap-3 md:overflow-visible md:pb-0;
     scrollbar-width: thin;
   }
 
   .bh-journey-stage-nav-link {
-    @apply flex shrink-0 snap-start flex-col items-center gap-1.5 rounded-sm border border-white/15 bg-white/5 px-3 py-3 transition duration-300 hover:border-bh-champagne/40 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bh-champagne md:min-w-[7.5rem] md:px-4 md:py-4;
+    @apply flex min-h-11 shrink-0 snap-start flex-col items-center justify-center gap-1.5 rounded-sm border border-white/15 bg-white/5 px-3 py-3 transition duration-300 hover:border-bh-champagne/40 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bh-champagne md:min-w-[7.5rem] md:px-4 md:py-4;
   }
 
   .bh-journey-stage-nav-link-light {
@@ -726,7 +720,7 @@
   }
 
   .bh-journey-stage-nav-label {
-    @apply max-w-[6.5rem] text-center font-sans text-[0.58rem] font-medium leading-snug tracking-[0.18em] text-white/85 uppercase md:max-w-none md:text-[0.62rem] md:tracking-[0.22em];
+    @apply max-w-[7.25rem] text-center font-sans text-[0.58rem] font-medium leading-snug tracking-[0.14em] text-white/85 uppercase [overflow-wrap:anywhere] md:max-w-none md:text-[0.62rem] md:tracking-[0.22em];
   }
 
   .bh-journey-stage-nav-link-light .bh-journey-stage-nav-label {
@@ -811,15 +805,15 @@
   }
 
   .bh-site-header-inner {
-    @apply mx-auto flex w-full max-w-6xl items-center justify-between gap-6 border-b border-bh-purple/10 pb-5;
+    @apply mx-auto flex w-full min-w-0 max-w-6xl items-center justify-between gap-3 border-b border-bh-purple/10 pb-5 sm:gap-6;
   }
 
   .bh-site-header-brand {
-    @apply shrink-0 font-sans text-[0.7rem] font-medium tracking-[0.38em] text-bh-ink uppercase transition hover:text-bh-purple;
+    @apply inline-flex min-h-11 shrink-0 items-center font-sans text-[0.7rem] font-medium tracking-[0.38em] text-bh-ink uppercase transition hover:text-bh-purple;
   }
 
   .bh-site-header-link {
-    @apply font-sans font-medium uppercase text-bh-muted transition hover:text-bh-purple focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bh-purple/30 focus-visible:ring-offset-2 focus-visible:ring-offset-bh-cream md:tracking-[0.32em];
+    @apply inline-flex min-h-11 items-center font-sans font-medium uppercase text-bh-muted transition hover:text-bh-purple focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bh-purple/30 focus-visible:ring-offset-2 focus-visible:ring-offset-bh-cream md:tracking-[0.32em];
     font-size: var(--bh-text-xs);
     letter-spacing: var(--bh-tracking-nav);
     transition-duration: var(--bh-duration-fast);
@@ -836,7 +830,8 @@
   }
 
   .bh-form-input {
-    @apply w-full rounded-sm border border-bh-purple/15 bg-bh-pearl px-4 py-3 font-sans text-base font-light text-bh-ink outline-none transition placeholder:text-bh-muted/70 focus-visible:border-bh-purple/40 focus-visible:ring-2 focus-visible:ring-bh-purple/15 disabled:cursor-not-allowed disabled:opacity-70;
+    @apply w-full min-h-11 rounded-sm border border-bh-purple/15 bg-bh-pearl px-4 py-3 font-sans text-base font-light text-bh-ink outline-none transition placeholder:text-bh-muted/70 focus-visible:border-bh-purple/40 focus-visible:ring-2 focus-visible:ring-bh-purple/15 disabled:cursor-not-allowed disabled:opacity-70;
+    scroll-margin-bottom: calc(var(--bh-keyboard-inset, 0px) + 7rem);
     transition-duration: var(--bh-duration-fast);
   }
 
@@ -916,7 +911,7 @@
   }
 
   .bh-consent-checkbox {
-    @apply size-4 rounded-sm border border-bh-purple/30 accent-bh-purple focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bh-purple/30 focus-visible:ring-offset-2;
+    @apply size-5 rounded-sm border border-bh-purple/30 accent-bh-purple focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bh-purple/30 focus-visible:ring-offset-2;
   }
 
   .bh-consent-label {
@@ -937,7 +932,7 @@
   }
 
   .bh-language-switcher-link {
-    @apply rounded-full px-3 py-1.5 font-sans text-[0.62rem] font-medium tracking-[0.18em] text-white/70 uppercase transition outline-none focus-visible:ring-2 focus-visible:ring-bh-champagne/80 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent;
+    @apply inline-flex min-h-11 min-w-11 items-center justify-center rounded-full px-3 py-1.5 font-sans text-[0.62rem] font-medium tracking-[0.18em] text-white/70 uppercase transition outline-none focus-visible:ring-2 focus-visible:ring-bh-champagne/80 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent;
   }
 
   .bh-language-switcher-link-light {
@@ -974,13 +969,13 @@
 
   /* ——— Navigation (footer / legal) ——— */
   .bh-nav-footer {
-    @apply flex flex-wrap justify-center gap-x-6 gap-y-4 font-sans font-medium uppercase text-bh-muted sm:gap-x-8 md:justify-end;
+    @apply flex flex-wrap justify-center gap-x-6 gap-y-2 font-sans font-medium uppercase text-bh-muted sm:gap-x-8 md:justify-end;
     font-size: var(--bh-text-sm);
     letter-spacing: var(--bh-tracking-nav);
   }
 
   .bh-nav-footer-link {
-    @apply transition hover:text-bh-purple focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bh-purple/30 focus-visible:ring-offset-2 focus-visible:ring-offset-bh-cream;
+    @apply inline-flex min-h-11 items-center transition hover:text-bh-purple focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bh-purple/30 focus-visible:ring-offset-2 focus-visible:ring-offset-bh-cream;
     transition-duration: var(--bh-duration-fast);
   }
 
@@ -991,7 +986,7 @@
   }
 
   .bh-nav-legal-link {
-    @apply transition hover:text-bh-purple focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bh-purple/30 focus-visible:ring-offset-2 focus-visible:ring-offset-bh-cream;
+    @apply inline-flex min-h-11 items-center transition hover:text-bh-purple focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bh-purple/30 focus-visible:ring-offset-2 focus-visible:ring-offset-bh-cream;
   }
 
   /* ——— Footer shell ——— */
@@ -1062,6 +1057,7 @@
 
   .bh-app-header {
     @apply sticky top-0 z-[var(--bh-z-nav)] border-b border-bh-purple/10 bg-bh-pearl/95 backdrop-blur-sm;
+    padding-top: env(safe-area-inset-top);
   }
 
   .bh-app-header-inner {
@@ -1105,7 +1101,7 @@
   }
 
   .bh-app-nav-link {
-    @apply block rounded-sm px-3 py-2.5 font-sans text-sm font-medium tracking-[0.04em] text-bh-muted transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bh-purple/30 focus-visible:ring-offset-2 focus-visible:ring-offset-bh-cream hover:bg-bh-pearl hover:text-bh-purple;
+    @apply flex min-h-11 items-center rounded-sm px-3 py-2.5 font-sans text-sm font-medium tracking-[0.04em] text-bh-muted transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bh-purple/30 focus-visible:ring-offset-2 focus-visible:ring-offset-bh-cream hover:bg-bh-pearl hover:text-bh-purple;
   }
 
   .bh-app-nav-link-active {
@@ -1113,7 +1109,7 @@
   }
 
   .bh-app-mobile-toggle {
-    @apply inline-flex size-10 items-center justify-center rounded-sm border border-bh-purple/15 text-bh-ink transition hover:bg-bh-pearl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bh-purple/30 md:hidden;
+    @apply inline-flex size-11 items-center justify-center rounded-sm border border-bh-purple/15 text-bh-ink transition hover:bg-bh-pearl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bh-purple/30 md:hidden;
   }
 
   .bh-app-mobile-toggle-icon {
@@ -1133,7 +1129,7 @@
   }
 
   .bh-app-account-trigger {
-    @apply inline-flex size-10 items-center justify-center rounded-full border border-bh-purple/15 bg-bh-cream transition hover:border-bh-purple/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bh-purple/30 focus-visible:ring-offset-2;
+    @apply inline-flex size-11 items-center justify-center rounded-full border border-bh-purple/15 bg-bh-cream transition hover:border-bh-purple/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bh-purple/30 focus-visible:ring-offset-2;
   }
 
   .bh-app-account-avatar {
@@ -1153,7 +1149,7 @@
   }
 
   .bh-app-account-menu-item {
-    @apply w-full rounded-sm px-3 py-2 text-left font-sans text-sm text-bh-muted transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bh-purple/30 disabled:cursor-not-allowed disabled:opacity-70;
+    @apply inline-flex min-h-11 w-full items-center rounded-sm px-3 py-2 text-left font-sans text-sm text-bh-muted transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bh-purple/30 disabled:cursor-not-allowed disabled:opacity-70;
   }
 
   .bh-app-page {
@@ -1548,7 +1544,7 @@
   }
 
   .bh-chapter-question-tab {
-    @apply inline-flex min-h-10 items-center gap-2 rounded-sm border border-bh-purple/15 bg-white/60 px-3 py-2 font-sans text-sm text-bh-ink;
+    @apply inline-flex min-h-11 items-center gap-2 rounded-sm border border-bh-purple/15 bg-white/60 px-3 py-2 font-sans text-sm text-bh-ink;
   }
 
   .bh-chapter-question-tab-active {
@@ -1862,7 +1858,8 @@
   }
 
   .bh-lumina-chat-composer-dock {
-    @apply sticky bottom-0 border-t border-bh-purple/10 bg-bh-pearl/95 px-4 pt-4 pb-[max(1rem,env(safe-area-inset-bottom))] backdrop-blur-sm sm:px-5 md:px-6;
+    @apply sticky bottom-0 border-t border-bh-purple/10 bg-bh-pearl/95 px-4 pt-4 backdrop-blur-sm sm:px-5 md:px-6;
+    padding-bottom: max(1rem, env(safe-area-inset-bottom), var(--bh-keyboard-inset, 0px));
   }
 
   .bh-lumina-chat-composer {
@@ -1899,6 +1896,86 @@
   @media (min-width: 768px) and (max-width: 1023px) {
     .bh-lumina-chat-column {
       @apply min-h-[min(30rem,68dvh)];
+    }
+  }
+
+  /* ——— Public mobile nav + touch targets (Row 187) ——— */
+  .bh-public-nav {
+    @apply relative flex shrink-0 items-center;
+  }
+
+  .bh-public-language-desktop {
+    @apply hidden md:block;
+  }
+
+  .bh-public-nav-drawer-language {
+    @apply mt-6 border-t border-bh-purple/10 pt-4;
+  }
+
+  .bh-public-nav-desktop {
+    @apply hidden md:block;
+  }
+
+  .bh-public-nav-toggle {
+    @apply inline-flex size-11 items-center justify-center rounded-sm border border-white/20 text-white transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bh-champagne/80 md:hidden;
+  }
+
+  .bh-public-nav:not(.bh-public-nav-dark) .bh-public-nav-toggle {
+    @apply border-bh-purple/20 text-bh-ink hover:bg-bh-pearl focus-visible:ring-bh-purple/30;
+  }
+
+  .bh-public-nav-toggle-icon {
+    @apply text-lg leading-none;
+  }
+
+  .bh-public-nav-backdrop {
+    @apply fixed inset-0 z-[var(--bh-z-overlay)] bg-bh-night/40 md:hidden;
+  }
+
+  .bh-public-nav-drawer {
+    @apply invisible pointer-events-none fixed inset-y-0 right-0 z-[calc(var(--bh-z-overlay)+1)] w-[min(18rem,88vw)] translate-x-full border-l border-bh-purple/10 bg-bh-pearl px-5 py-8 shadow-lg transition-transform duration-300 md:hidden;
+    padding-top: max(2rem, env(safe-area-inset-top));
+    padding-bottom: max(2rem, env(safe-area-inset-bottom));
+  }
+
+  .bh-public-nav-drawer-open {
+    @apply visible pointer-events-auto translate-x-0;
+  }
+
+  .bh-public-nav-drawer-list {
+    @apply flex flex-col gap-1;
+  }
+
+  .bh-public-nav-drawer-link {
+    @apply flex min-h-11 items-center rounded-sm px-3 py-2 font-sans text-sm font-medium tracking-[0.08em] text-bh-ink uppercase transition hover:bg-bh-cream hover:text-bh-purple focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bh-purple/30;
+  }
+
+  .bh-touch-choice {
+    @apply min-h-11;
+  }
+
+  .bh-touch-choice-control {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .bh-heading,
+  .bh-hero-subtext,
+  .bh-body {
+    overflow-wrap: break-word;
+  }
+
+  @media (max-width: 379px) {
+    .bh-hero-nav-brand,
+    .bh-site-header-brand {
+      letter-spacing: 0.22em;
+      font-size: 0.62rem;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .bh-hero-media img {
+      animation: none;
     }
   }
 }

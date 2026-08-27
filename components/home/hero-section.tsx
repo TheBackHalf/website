@@ -80,7 +80,7 @@ export function HeroSection({ locale = "en" }: HeroSectionProps) {
 
 
 
-        <p className="bh-hero-subtext relative mt-7 max-w-2xl text-lg leading-8 md:mt-10 md:max-w-4xl md:text-xl md:leading-9 lg:max-w-none lg:whitespace-nowrap lg:text-[clamp(1.05rem,1.45vw,1.5rem)] lg:leading-10 lg:tracking-[-0.015em]">
+        <p className="bh-hero-subtext relative mt-7 max-w-2xl text-lg leading-8 md:mt-10 md:max-w-4xl md:text-xl md:leading-9 lg:text-[clamp(1.05rem,1.45vw,1.5rem)] lg:leading-10 lg:tracking-[-0.015em]">
 
           {locale === "en"
 
