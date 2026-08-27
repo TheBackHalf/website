@@ -121,7 +121,7 @@ export function LoginForm({
           <p className="mt-4 font-sans text-sm font-light text-bh-muted">
             <Link
               href={getForgotPasswordPath(locale)}
-              className="underline underline-offset-4 transition hover:text-bh-ink"
+              className="inline-flex min-h-11 items-center underline underline-offset-4 transition hover:text-bh-ink"
             >
               {forgotPasswordLabel}
             </Link>
@@ -162,7 +162,7 @@ export function LoginForm({
             <p className="font-sans text-sm font-light text-bh-muted">
               <Link
                 href={getRegistrationPath(locale)}
-                className="underline underline-offset-4 transition hover:text-bh-ink"
+                className="inline-flex min-h-11 items-center underline underline-offset-4 transition hover:text-bh-ink"
               >
                 {createAccountLabel}
               </Link>

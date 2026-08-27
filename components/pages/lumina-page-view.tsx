@@ -24,7 +24,7 @@ export function LuminaPageView({ locale }: LuminaPageViewProps) {
         {getDictionary(locale).common.skipToMain}
       </SkipLink>
 
-      <main className="min-h-screen bg-bh-cream text-bh-ink">
+      <main className="min-h-dvh bg-bh-cream text-bh-ink">
         <LuminaPageContent locale={locale} />
       </main>
     </>

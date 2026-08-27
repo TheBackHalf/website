@@ -17,7 +17,7 @@ export function NotEligibleView({ locale }: NotEligibleViewProps) {
       <SkipLink href="#not-eligible-main">{dictionary.common.skipToMain}</SkipLink>
       <main
         id="not-eligible-main"
-        className="min-h-screen bg-bh-cream text-bh-ink"
+        className="min-h-dvh bg-bh-cream text-bh-ink"
         data-bh-not-eligible="true"
       >
         <PageHero locale={locale}>

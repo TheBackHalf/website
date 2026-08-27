@@ -41,7 +41,7 @@ export function HomePageView({ locale }: HomePageViewProps) {
 
   return (
 
-    <main className="min-h-screen bg-bh-cream text-bh-ink">
+    <main className="min-h-dvh bg-bh-cream text-bh-ink">
 
       <HeroSection locale={locale} />
 

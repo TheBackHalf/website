@@ -32,7 +32,7 @@ function EligibilityPageInner({ locale, next }: EligibilityPageViewProps) {
   return (
     <>
       <SkipLink href="#eligibility-main">{dictionary.common.skipToMain}</SkipLink>
-      <main id="eligibility-main" className="min-h-screen bg-bh-cream text-bh-ink">
+      <main id="eligibility-main" className="min-h-dvh bg-bh-cream text-bh-ink">
         <PageHero locale={locale}>
           <p className="bh-eyebrow">{dictionary.common.siteName}</p>
           <SectionHeading as="h1" className="mt-6 text-4xl md:text-6xl">

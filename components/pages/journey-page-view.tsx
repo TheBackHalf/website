@@ -25,7 +25,7 @@ export function JourneyPageView({ locale }: JourneyPageViewProps) {
       <SkipLink href="#journey-main">
         {getDictionary(locale).common.skipToMain}
       </SkipLink>
-      <main id="journey-main" className="min-h-screen bg-bh-cream text-bh-ink">
+      <main id="journey-main" className="min-h-dvh bg-bh-cream text-bh-ink">
         <JourneyHero locale={locale} />
         {getJourneyStages(locale).map((stage) => (
           <JourneyStageSection key={stage.id} stage={stage} locale={locale} />

@@ -23,7 +23,7 @@ export function ForgotPasswordPageView({
       </SkipLink>
       <main
         id="forgot-password-main"
-        className="min-h-screen bg-bh-cream text-bh-ink"
+        className="min-h-dvh bg-bh-cream text-bh-ink"
       >
         <PageHero locale={locale}>
           <p className="bh-eyebrow">{dictionary.common.siteName}</p>

@@ -22,7 +22,7 @@ export function ContactPageView({ locale }: ContactPageViewProps) {
     <>
       <SkipLink href="#contact-main">{dictionary.common.skipToMain}</SkipLink>
 
-      <main id="contact-main" className="min-h-screen bg-bh-cream text-bh-ink">
+      <main id="contact-main" className="min-h-dvh bg-bh-cream text-bh-ink">
         <PageHero locale={locale}>
           <p className="bh-eyebrow">
             {locale === "en" ? contactPage.eyebrow : "Contacto"}
@@ -57,7 +57,7 @@ export function ContactPageView({ locale }: ContactPageViewProps) {
               : "Para soporte de Architect, escribe a The Back Half Support o usa el formulario de Soporte. No incluyas contraseñas ni datos de tarjetas de pago. El formulario de soporte para Architects es para participantes elegibles de 18 años o más."}
           </p>
           <p className="mt-4 font-sans text-base font-light text-bh-ink">
-            <a className="underline decoration-bh-purple/30" href={SUPPORT_MAILTO}>
+            <a className="inline-flex min-h-11 items-center underline decoration-bh-purple/30" href={SUPPORT_MAILTO}>
               {SUPPORT_MAILBOX}
             </a>
           </p>
