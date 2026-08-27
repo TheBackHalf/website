@@ -1,4 +1,11 @@
 import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
+import {
+  createPostgresKeyedStore,
+  createUnconfiguredParticipantStore,
+  getParticipantPersistenceBackend,
+  JOURNEY_COLLECTIONS,
+  journeyFileOverrideDir,
+} from "@/lib/journey/durable-records";
 import type {
   JourneyProgressDatabase,
   JourneyProgressRecord,
@@ -27,6 +34,7 @@ export type JourneyProgressStore = {
     status: JourneyProgressStatus;
   }): Promise<JourneyProgressRecord>;
   listProgress(): Promise<JourneyProgressRecord[]>;
+  deleteForUser(userId: string): Promise<number>;
 };
 
 export function createFileJourneyProgressStore(options?: {
@@ -144,6 +152,64 @@ export function createFileJourneyProgressStore(options?: {
         return database.records;
       });
     },
+
+    deleteForUser(userId) {
+      return enqueueWrite(async () => {
+        const trimmed = userId.trim();
+        if (!trimmed) return 0;
+        const database = await readDatabase();
+        const remaining = database.records.filter((entry) => entry.userId !== trimmed);
+        const removed = database.records.length - remaining.length;
+        if (removed > 0) {
+          database.records = remaining;
+          await writeDatabase(database);
+        }
+        return removed;
+      });
+    },
+  };
+}
+
+function createPostgresJourneyProgressStore(): JourneyProgressStore {
+  const keyed = createPostgresKeyedStore<JourneyProgressRecord>(
+    JOURNEY_COLLECTIONS.progress,
+  );
+  return {
+    findProgressForUser(userId) {
+      return keyed.findForUser(userId.trim());
+    },
+    async upsertProgress(input) {
+      const userId = input.userId.trim();
+      const chapterId = input.chapterId.trim();
+      const status =
+        typeof input.status === "string" ? input.status.trim() : "";
+      if (!userId || !chapterId || !status) {
+        throw new Error("Invalid journey progress payload.");
+      }
+      const previous = await keyed.findForUser(userId);
+      const next: JourneyProgressRecord = {
+        userId,
+        chapterId,
+        status: status as JourneyProgressStatus,
+        updatedAt: new Date().toISOString(),
+      };
+      await keyed.save(next);
+      try {
+        const { emitJourneyProgressAnalytics } = await import(
+          "@/lib/analytics/product-hooks"
+        );
+        await emitJourneyProgressAnalytics(previous, next);
+      } catch {
+        // Analytics must not block Journey progress.
+      }
+      return next;
+    },
+    listProgress() {
+      return keyed.list();
+    },
+    deleteForUser(userId) {
+      return keyed.deleteForUser(userId);
+    },
   };
 }
 
@@ -151,7 +217,19 @@ let storeInstance: JourneyProgressStore | null = null;
 
 export function getJourneyProgressStore(): JourneyProgressStore {
   if (!storeInstance) {
-    storeInstance = createFileJourneyProgressStore();
+    const override = journeyFileOverrideDir();
+    const backend = getParticipantPersistenceBackend(Boolean(override));
+    if (backend === "file_test_override") {
+      storeInstance = createFileJourneyProgressStore({ dataDir: override });
+    } else if (backend === "supabase_postgres") {
+      storeInstance = createPostgresJourneyProgressStore();
+    } else if (backend === "unconfigured_production") {
+      storeInstance = createUnconfiguredParticipantStore<JourneyProgressStore>(
+        "journey_progress",
+      );
+    } else {
+      storeInstance = createFileJourneyProgressStore();
+    }
   }
   return storeInstance;
 }

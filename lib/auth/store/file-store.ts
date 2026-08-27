@@ -29,6 +29,7 @@ function normalizeUserRecord(user: UserRecord): UserRecord {
       typeof user.ageEligibleConfirmedAt === "string"
         ? user.ageEligibleConfirmedAt
         : undefined,
+    deletedAt: typeof user.deletedAt === "string" ? user.deletedAt : undefined,
   };
 }
 
@@ -412,6 +413,43 @@ export function createFileAuthStore(
         const database = await readDatabase(dbFile);
         database.resendTimestamps[normalizeEmail(email)] = timestamp;
         await writeDatabase(dataDir, dbFile, database);
+      });
+    },
+
+    anonymizeDeletedUser(id) {
+      return enqueueWrite(async () => {
+        const database = await readDatabase(dbFile);
+        const index = database.users.findIndex((user) => user.id === id);
+        if (index === -1) return undefined;
+        const current = normalizeUserRecord(database.users[index]!);
+        if (current.deletedAt) return current;
+        const compact = id.replace(/-/g, "").toUpperCase().replace(/[01OI]/g, "2");
+        let arcCode = `ARC-${compact.slice(0, 6)}`;
+        let suffix = 0;
+        while (
+          database.users.some(
+            (user) => user.id !== id && user.arcCode === arcCode,
+          )
+        ) {
+          suffix += 1;
+          arcCode = `ARC-${compact.slice(0, 5)}${suffix}`;
+        }
+        const updated: UserRecord = {
+          ...current,
+          email: `deleted.${id.replace(/-/g, "")}@invalid.thebackhalf.internal`,
+          firstName: "Deleted",
+          lastName: "Architect",
+          passwordHash: undefined,
+          googleId: undefined,
+          emailVerified: false,
+          pronunciation: undefined,
+          arcCode,
+          deletedAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+        };
+        database.users[index] = updated;
+        await writeDatabase(dataDir, dbFile, database);
+        return updated;
       });
     },
   };

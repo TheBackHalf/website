@@ -43,9 +43,11 @@ CREATE TABLE IF NOT EXISTS bh_auth_users (
   time_zone TEXT,
   age_eligible BOOLEAN,
   age_eligible_confirmed_at TIMESTAMPTZ,
+  deleted_at TIMESTAMPTZ,
   created_at TIMESTAMPTZ NOT NULL,
   updated_at TIMESTAMPTZ NOT NULL
 );
+ALTER TABLE bh_auth_users ADD COLUMN IF NOT EXISTS deleted_at TIMESTAMPTZ;
 CREATE INDEX IF NOT EXISTS bh_auth_users_created_idx ON bh_auth_users (created_at);
 
 CREATE TABLE IF NOT EXISTS bh_auth_consents (

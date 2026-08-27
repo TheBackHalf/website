@@ -50,20 +50,21 @@ export async function applyEscalation(ticket: SupportTicket): Promise<SupportTic
     at: new Date().toISOString(),
   };
 
-  await appendDecision({
-    id: `support-escalation-${ticket.id}`,
-    at: new Date().toISOString().slice(0, 10),
-    type: targets.includes("founder") ? "action_required" : "support_escalation",
-    status: "open",
-    founderAcceptance: null,
-    summary: `${ticket.id} ${reason ?? "Escalated."} Category ${ticket.category} priority ${ticket.priority}. Owners: ${targets
-      .map((owner) => SUPPORT_OWNER_TITLES[owner])
-      .join("; ")}.`,
-    owner: "michelle",
-    requiresFounderAcceptance: targets.includes("founder"),
-    ticketId: ticket.id,
-    test: ticket.test === true,
-  });
+  if (ticket.test !== true) {
+    await appendDecision({
+      id: `support-escalation-${ticket.id}`,
+      at: new Date().toISOString().slice(0, 10),
+      type: targets.includes("founder") ? "action_required" : "support_escalation",
+      status: "open",
+      founderAcceptance: null,
+      summary: `${ticket.id} ${reason ?? "Escalated."} Category ${ticket.category} priority ${ticket.priority}. Owners: ${targets
+        .map((owner) => SUPPORT_OWNER_TITLES[owner])
+        .join("; ")}.`,
+      owner: "michelle",
+      requiresFounderAcceptance: targets.includes("founder"),
+      ticketId: ticket.id,
+    });
+  }
 
   return {
     ...ticket,

@@ -1,11 +1,16 @@
 import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
-import path from "node:path";
 import {
   appendMessage,
   createConversation,
   createMessage,
   sortMessagesChronologically,
 } from "@/lib/lumina/conversation";
+import {
+  createUnconfiguredParticipantStore,
+  getParticipantPersistenceBackend,
+  luminaFileOverrideDir,
+} from "@/lib/journey/durable-records";
+import { createPostgresLuminaStore } from "@/lib/lumina/postgres-store";
 import {
   clearLuminaMemoryPayload,
   emptyLuminaMemoryRecord,
@@ -154,6 +159,8 @@ export type LuminaStore = {
   findMemoryForUser(userId: string): Promise<LuminaMemoryRecord | undefined>;
   saveMemory(record: LuminaMemoryRecord): Promise<LuminaMemoryRecord>;
   clearMemoryPayloadForUser(userId: string): Promise<LuminaMemoryRecord>;
+  listConversationsForUser(userId: string): Promise<LuminaConversation[]>;
+  eraseParticipantDataForUser(userId: string): Promise<void>;
 };
 
 export type CreateFileLuminaStoreOptions = {
@@ -296,6 +303,28 @@ export function createFileLuminaStore(
         return saved;
       });
     },
+
+    listConversationsForUser(userId) {
+      return enqueueWrite(async () => {
+        const database = await readDatabase(dbFile);
+        return database.conversations
+          .filter((entry) => entry.userId === userId)
+          .map((entry) => normalizeConversation(entry));
+      });
+    },
+
+    eraseParticipantDataForUser(userId) {
+      return enqueueWrite(async () => {
+        const database = await readDatabase(dbFile);
+        database.conversations = database.conversations.filter(
+          (entry) => entry.userId !== userId,
+        );
+        database.memories = database.memories.filter(
+          (entry) => entry.userId !== userId,
+        );
+        await writeDatabase(dataDir, dbFile, database);
+      });
+    },
   };
 }
 
@@ -303,7 +332,17 @@ let luminaStore: LuminaStore | undefined;
 
 export function getLuminaStore(): LuminaStore {
   if (!luminaStore) {
-    luminaStore = createFileLuminaStore();
+    const override = luminaFileOverrideDir();
+    const backend = getParticipantPersistenceBackend(Boolean(override));
+    if (backend === "file_test_override") {
+      luminaStore = createFileLuminaStore({ dataDir: override });
+    } else if (backend === "supabase_postgres") {
+      luminaStore = createPostgresLuminaStore();
+    } else if (backend === "unconfigured_production") {
+      luminaStore = createUnconfiguredParticipantStore<LuminaStore>("lumina");
+    } else {
+      luminaStore = createFileLuminaStore();
+    }
   }
   return luminaStore;
 }

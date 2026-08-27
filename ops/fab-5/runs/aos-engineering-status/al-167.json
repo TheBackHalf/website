@@ -1,0 +1,56 @@
+{
+  "aosWorkId": "al-167",
+  "source": "command_center",
+  "sourceReference": "August Launch row 167",
+  "title": "Operationalize Privacy Rights and Data Governance",
+  "ownerAgent": "imani",
+  "repositorySoftwareChange": true,
+  "status": "ACCEPTANCE_READY",
+  "founderAcceptance": null,
+  "founderAccepted": false,
+  "rowMarkedComplete": false,
+  "priorFounderDecision": "NEEDS_CHANGES",
+  "summary": "Corrected Row 167 after Founder NEEDS CHANGES: EN/ES intake on the deployable app, Journey/Lumina deletion against launch-dashboard Postgres, contradictory deletion-unavailable copy removed, retained financial/consent/legal-hold records disclosed, in-product form plus Support ticket bridge. Live privacy@ mailbox remains FOUNDER_ACTION_REQUIRED for that slice only. Founder acceptance is not recorded. Do not merge. Do not mark the August Launch row complete.",
+  "evidence": [
+    "ops/fab-5/privacy-data-map.json",
+    "ops/fab-5/privacy-legal-holds.json",
+    "ops/fab-5/ROW-167-PRIVACY-RIGHTS-DATA-GOVERNANCE.md",
+    "lib/privacy/",
+    "lib/journey/durable-records.ts",
+    "lib/lumina/postgres-store.ts",
+    "/privacy/request",
+    "/es/privacy/request",
+    "/ops/admin/privacy-rights",
+    "ops/fab-5/runs/row-167-privacy-rights-validation.json"
+  ],
+  "validation": {
+    "script": "npm run fab5:row167",
+    "required": ["npx tsc --noEmit", "npm run fab5:row167"],
+    "results": {
+      "tsc": "pass",
+      "fab5:row167": "PASS",
+      "acceptanceReady": true,
+      "intakeInDeployableApp": true,
+      "httpIntake": {
+        "en": "/privacy/request 200",
+        "es": "/es/privacy/request 200",
+        "enInquiry": "BH-PR-20260826-G8Q5V",
+        "esDeletion": "BH-PR-20260826-ZQMAQ"
+      }
+    }
+  },
+  "founderActionRequired": {
+    "slice": "live_privacy_mailbox",
+    "mailbox": "privacy@thebackhalf.org",
+    "reason": "In-product form and Support ticket bridge are operational. Live privacy@ mailbox connection remains a Founder Workspace action if that inbox is unconnected."
+  },
+  "constraintsHonored": {
+    "didNotPushMain": true,
+    "didNotMerge": true,
+    "didNotWeakenAuth": true,
+    "didNotExposeSecrets": true,
+    "didNotChangeStripeCloudflareVercelDns": true,
+    "didNotMarkFounderAcceptanceComplete": true,
+    "didNotMarkRowComplete": true
+  }
+}

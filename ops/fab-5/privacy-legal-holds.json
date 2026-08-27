@@ -1,0 +1,6 @@
+{
+  "record": "ops/fab-5/privacy-legal-holds.json",
+  "row": 167,
+  "note": "Operational preservation register. Agents must not conclude legal-hold scope or duration. Qualified human legal review is required for authoritative hold instructions.",
+  "holds": []
+}

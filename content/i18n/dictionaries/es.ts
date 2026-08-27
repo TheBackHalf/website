@@ -479,7 +479,7 @@ export const esDictionary: Dictionary = {
       memoryUpdateError:
         "No pudimos actualizar la memoria de Lumina. Inténtalo de nuevo.",
       memoryClearDistinctNote:
-        "Borrar la memoria de Lumina es distinto de la eliminación de cuenta, que aún no está disponible.",
+        "Borrar la memoria de Lumina es distinto de la eliminación de cuenta. Para eliminar tu cuenta y el contenido de participante, usa el proceso de derechos de privacidad. Los registros financieros, de auditoría de consentimiento y de retención legal pueden conservarse.",
       accountEmail: "Correo de la cuenta",
       accountRole: "Rol de la cuenta",
       roleArchitect: "Architect",
@@ -496,7 +496,7 @@ export const esDictionary: Dictionary = {
       googleNotLinked: "Cuenta de Google no vinculada",
       signOut: "Cerrar sesión",
       accountDeletionUnavailable:
-        "La eliminación de cuenta aún no está disponible. No se ha configurado un proceso aprobado de eliminación o desactivación.",
+        "Para solicitar acceso, corrección, eliminación, exportación o retiro de consentimiento, usa el proceso de derechos de privacidad. Verificamos la identidad antes de entregar o eliminar información personal. La eliminación verificada no es un borrado total: pueden conservarse registros financieros, de auditoría de consentimiento, correspondencia, respaldos, proveedores y retención legal.",
     },
     journey: {
       title: "El Journey",

@@ -40,6 +40,7 @@ type UserRow = {
   time_zone: string | null;
   age_eligible: boolean | null;
   age_eligible_confirmed_at: Date | string | null;
+  deleted_at: Date | string | null;
   created_at: Date | string;
   updated_at: Date | string;
 };
@@ -107,6 +108,7 @@ function fromUserRow(row: UserRow): UserRecord {
     timeZone: row.time_zone ?? undefined,
     ageEligible: row.age_eligible === true ? true : row.age_eligible === false ? false : undefined,
     ageEligibleConfirmedAt: optionalIso(row.age_eligible_confirmed_at),
+    deletedAt: optionalIso(row.deleted_at),
     createdAt: iso(row.created_at),
     updatedAt: iso(row.updated_at),
   };
@@ -506,6 +508,58 @@ export function createPostgresAuthStore(): AuthStore {
         ON CONFLICT (email) DO UPDATE SET last_resend_at = EXCLUDED.last_resend_at
       `;
     },
+
+    async anonymizeDeletedUser(id) {
+      const sql = requireSql();
+      await ensureAuthSchema(sql);
+      const currentRows = await sql<UserRow[]>`
+        SELECT * FROM bh_auth_users WHERE id = ${id} LIMIT 1
+      `;
+      const current = currentRows[0] ? fromUserRow(currentRows[0]) : undefined;
+      if (!current) return undefined;
+      if (current.deletedAt) return current;
+      const compact = id.replace(/-/g, "").toUpperCase().replace(/[01OI]/g, "2");
+      let arcCode = `ARC-${compact.slice(0, 6)}`;
+      let suffix = 0;
+      while (true) {
+        const taken = await sql<{ id: string }[]>`
+          SELECT id FROM bh_auth_users WHERE arc_code = ${arcCode} AND id <> ${id} LIMIT 1
+        `;
+        if (!taken[0]) break;
+        suffix += 1;
+        arcCode = `ARC-${compact.slice(0, 5)}${suffix}`;
+      }
+      const now = new Date().toISOString();
+      const deletedEmail = `deleted.${id.replace(/-/g, "")}@invalid.thebackhalf.internal`;
+      const updated: UserRecord = {
+        ...current,
+        email: deletedEmail,
+        firstName: "Deleted",
+        lastName: "Architect",
+        passwordHash: undefined,
+        googleId: undefined,
+        emailVerified: false,
+        pronunciation: undefined,
+        arcCode,
+        deletedAt: now,
+        updatedAt: now,
+      };
+      await sql`
+        UPDATE bh_auth_users SET
+          email = ${deletedEmail},
+          first_name = ${updated.firstName},
+          last_name = ${updated.lastName},
+          password_hash = NULL,
+          google_id = NULL,
+          arc_code = ${arcCode},
+          email_verified = FALSE,
+          pronunciation = NULL,
+          deleted_at = ${now},
+          updated_at = ${now}
+        WHERE id = ${id}
+      `;
+      return updated;
+    },
   };
 }
 
@@ -536,5 +590,6 @@ export function createUnconfiguredProductionAuthStore(): AuthStore {
     deletePasswordResetTokensForUser: reject,
     getLastResendAt: reject,
     setLastResendAt: reject,
+    anonymizeDeletedUser: reject,
   };
 }

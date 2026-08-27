@@ -5,6 +5,13 @@
 import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import path from "node:path";
 import {
+  createPostgresKeyedStore,
+  createUnconfiguredParticipantStore,
+  getParticipantPersistenceBackend,
+  JOURNEY_COLLECTIONS,
+  journeyFileOverrideDir,
+} from "@/lib/journey/durable-records";
+import {
   createEmptyChapter1Record,
   emptyAlivenessProjectAnswers,
   emptyAwakeningReflectionAnswers,
@@ -202,6 +209,7 @@ function normalizeDatabase(raw: Chapter1Database): Chapter1Database {
 export type Chapter1Store = {
   findChapter1ForUser(userId: string): Promise<Chapter1Record | undefined>;
   saveChapter1(record: Chapter1Record): Promise<Chapter1Record>;
+  deleteForUser(userId: string): Promise<number>;
 };
 
 export function createFileChapter1Store(options?: {
@@ -288,14 +296,58 @@ export function createFileChapter1Store(options?: {
         return normalized;
       });
     },
+
+    deleteForUser(userId) {
+      return enqueueWrite(async () => {
+        const trimmed = userId.trim();
+        if (!trimmed) return 0;
+        const database = await readDatabase();
+        const remaining = database.records.filter((entry) => entry.userId !== trimmed);
+        const removed = database.records.length - remaining.length;
+        if (removed > 0) {
+          database.records = remaining;
+          await writeDatabase(database);
+        }
+        return removed;
+      });
+    },
   };
 }
 
 let storeInstance: Chapter1Store | null = null;
 
+function createPostgresChapter1Store(): Chapter1Store {
+  const keyed = createPostgresKeyedStore<Chapter1Record>(JOURNEY_COLLECTIONS.chapter1);
+  return {
+    findChapter1ForUser(userId) {
+      return keyed.findForUser(userId.trim());
+    },
+    async saveChapter1(record) {
+      const normalized = normalizeRecord(record);
+      if (!normalized) {
+        throw new Error("Invalid Chapter I payload.");
+      }
+      return keyed.save(normalized);
+    },
+    deleteForUser(userId) {
+      return keyed.deleteForUser(userId);
+    },
+  };
+}
+
 export function getChapter1Store(): Chapter1Store {
   if (!storeInstance) {
-    storeInstance = createFileChapter1Store();
+    const override = journeyFileOverrideDir();
+    const backend = getParticipantPersistenceBackend(Boolean(override));
+    if (backend === "file_test_override") {
+      storeInstance = createFileChapter1Store({ dataDir: override });
+    } else if (backend === "supabase_postgres") {
+      storeInstance = createPostgresChapter1Store();
+    } else if (backend === "unconfigured_production") {
+      storeInstance = createUnconfiguredParticipantStore<Chapter1Store>("journey_chapter_1");
+    } else {
+      storeInstance = createFileChapter1Store();
+    }
   }
   return storeInstance;
 }

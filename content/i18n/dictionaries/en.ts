@@ -457,7 +457,7 @@ export const enDictionary: Dictionary = {
       memoryDisabledSuccess: "Lumina memory is disabled. New durable writes are blocked.",
       memoryUpdateError: "We could not update Lumina memory. Please try again.",
       memoryClearDistinctNote:
-        "Clearing Lumina memory is separate from account deletion, which is not available yet.",
+        "Clearing Lumina memory is separate from account deletion. To delete your account and participant content, use the privacy rights request process. Financial, consent-audit, and legal-hold records may be retained.",
       accountEmail: "Account email",
       accountRole: "Account role",
       roleArchitect: "Architect",
@@ -474,7 +474,7 @@ export const enDictionary: Dictionary = {
       googleNotLinked: "Google account not linked",
       signOut: "Sign out",
       accountDeletionUnavailable:
-        "Account deletion is not available yet. An approved deletion or deactivation process has not been configured.",
+        "To request access, correction, deletion, export, or consent withdrawal, use the privacy rights request process. Identity is verified before personal information is released or deleted. Verified deletion is not complete erasure: financial, consent-audit, correspondence, backup, vendor, and legal-hold records may be retained.",
     },
     journey: {
       title: "The Journey",

@@ -133,6 +133,7 @@ export type AnalyticsStore = {
   listEventsByUserId(userId: string): Promise<AnalyticsEventRecord[]>;
   listEvents(): Promise<AnalyticsEventRecord[]>;
   deleteTestEventsByKeys(keys: string[]): Promise<number>;
+  unlinkUserId(userId: string): Promise<number>;
 };
 
 function toRecord(
@@ -210,6 +211,22 @@ export function createFileAnalyticsStore(
           await writeDatabase(database);
         }
         return removed;
+      });
+    },
+
+    unlinkUserId(userId) {
+      return enqueueWrite(async () => {
+        const trimmed = userId.trim();
+        if (!trimmed) return 0;
+        const database = await readDatabase();
+        let count = 0;
+        database.events = database.events.map((entry) => {
+          if (entry.userId !== trimmed) return entry;
+          count += 1;
+          return { ...entry, userId: undefined };
+        });
+        if (count > 0) await writeDatabase(database);
+        return count;
       });
     },
   };
@@ -314,6 +331,21 @@ export function createPostgresAnalyticsStore(): AnalyticsStore {
       `;
       return rows.length;
     },
+
+    async unlinkUserId(userId) {
+      const trimmed = userId.trim();
+      if (!trimmed) return 0;
+      const sql = getAnalyticsSql();
+      if (!sql) throw new AnalyticsPersistenceError("analytics_postgres_unconfigured");
+      await ensureAnalyticsSchema(sql);
+      const rows = await sql<{ id: string }[]>`
+        UPDATE analytics_events
+        SET user_id = NULL
+        WHERE user_id = ${trimmed}
+        RETURNING id
+      `;
+      return rows.length;
+    },
   };
 }
 
@@ -330,6 +362,7 @@ function createUnconfiguredProductionStore(): AnalyticsStore {
     listEventsByUserId: error,
     listEvents: error,
     deleteTestEventsByKeys: error,
+    unlinkUserId: error,
   };
 }
 

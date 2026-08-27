@@ -80,8 +80,9 @@ export function SupportTicketConsole({
               Daily Launch Dashboard
             </a>
             {" · "}
-            <a href="/ops/admin" className="underline decoration-bh-purple/30">
-              Admin
+            {" · "}
+            <a href="/ops/admin/privacy-rights" className="underline decoration-bh-purple/30">
+              Privacy rights
             </a>
           </>
         ) : null}

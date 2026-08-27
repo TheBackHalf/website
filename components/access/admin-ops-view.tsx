@@ -33,6 +33,8 @@ export async function AdminOpsView({ locale }: AdminOpsViewProps) {
         </a>
         {" · "}
         <a href="/ops/admin/support">Support tickets</a>
+        {" · "}
+        <a href="/ops/admin/privacy-rights">Privacy rights</a>
       </p>
 
       <section className="bh-app-settings-section mt-8" aria-labelledby="admin-accounts">
