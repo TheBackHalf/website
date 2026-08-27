@@ -1,0 +1,257 @@
+{
+  "aosWorkId": "al-186",
+  "row": 186,
+  "excelRow": 187,
+  "source": "command_center",
+  "sourceReference": "August Launch row 186",
+  "deliverable": "Test Priority Mobile Devices",
+  "description": "Test current iPhone and Android sizes, Safari and Chrome, portrait/landscape, forms, chat, videos, downloads, and checkout.",
+  "primaryOwner": "imani",
+  "primaryOwnerTitle": "Imani Heartbeat — Chief Technology & Risk Officer",
+  "supportingOwners": ["nia"],
+  "assignedOperatingAgent": "imani",
+  "softwareChangeApplied": false,
+  "productMarketingLegalUnchanged": true,
+  "stripeCloudflareVercelDnsUnchanged": true,
+  "secretsPrinted": false,
+  "authenticationWeakened": false,
+  "founderAccepted": false,
+  "founderAcceptance": null,
+  "founderAcceptanceRecorded": false,
+  "rowMarkedComplete": false,
+  "markedComplete": false,
+  "percentCompleteRecorded": 90,
+  "status": "ACCEPTANCE_READY",
+  "technicalStatus": "ready_for_founder_acceptance",
+  "launchRoadmapUnchanged": true,
+  "founderNotesUnchanged": true,
+  "otherRowsUnchanged": true,
+  "generatedAt": "2026-08-27T15:10:00.000Z",
+  "testedAt": "2026-08-27T14:33:00.000Z",
+  "branch": "cursor/aos-imani-al-186-83c5",
+  "targetHost": {
+    "canonical": "https://thebackhalf.org",
+    "canonicalResolvedFromThisEnvironment": false,
+    "canonicalDnsError": "Could not resolve host: thebackhalf.org",
+    "productionVercelHost": "https://website-two-psi-49.vercel.app",
+    "productionVercelStatus": 200,
+    "aliasedPreviewHostBlockedBySso": "https://website-lnnyla7rc-back-half.vercel.app"
+  },
+  "method": {
+    "engine": "puppeteer-chrome-device-emulation",
+    "browserAvailable": "Google Chrome (Linux)",
+    "nativeSafariAvailable": false,
+    "nativeIosAndroidHardwareAvailable": false,
+    "safariCoverage": "iOS Safari and iOS Chrome user-agent strings plus Chrome mobile viewport/touch emulation. WebKit/Safari.app was not available on this Linux host.",
+    "visualPass": "Chrome window resized to 390x850 (iPhone 16 portrait) against the same production host.",
+    "runCount": 80,
+    "pass2InteractiveSteps": 24,
+    "pass3AuthAttempted": true
+  },
+  "devices": [
+    {
+      "id": "iphone-se",
+      "label": "iPhone SE (3rd gen)",
+      "cssViewport": "375x667",
+      "family": "iphone",
+      "browserEmulation": "safari-ua",
+      "orientations": ["portrait"]
+    },
+    {
+      "id": "iphone-16",
+      "label": "iPhone 16",
+      "cssViewport": "393x852",
+      "family": "iphone",
+      "browserEmulation": "safari-ua",
+      "orientations": ["portrait", "landscape"]
+    },
+    {
+      "id": "iphone-16-pro-max",
+      "label": "iPhone 16 Pro Max",
+      "cssViewport": "440x956",
+      "family": "iphone",
+      "browserEmulation": "chrome-ios-ua",
+      "orientations": ["portrait"]
+    },
+    {
+      "id": "pixel-9",
+      "label": "Pixel 9",
+      "cssViewport": "412x915",
+      "family": "android",
+      "browserEmulation": "chrome",
+      "orientations": ["portrait", "landscape"]
+    },
+    {
+      "id": "galaxy-s24",
+      "label": "Galaxy S24",
+      "cssViewport": "360x780",
+      "family": "android",
+      "browserEmulation": "chrome",
+      "orientations": ["portrait"]
+    }
+  ],
+  "surfaces": {
+    "layout": {
+      "paths": ["/", "/journey", "/lumina", "/contact"],
+      "result": "PASS",
+      "notes": "All public pages returned HTTP 200. No horizontal overflow (scrollWidth - innerWidth <= 2) on any tested device or orientation. Homepage hero, language toggle, and BEGIN YOUR JOURNEY CTA remain in view at iPhone 16 and Pixel 9 portrait."
+    },
+    "forms": {
+      "result": "PASS_WITH_FINDINGS",
+      "pathsExercised": [
+        "/eligibility",
+        "/register",
+        "/login",
+        "/forgot-password",
+        "/support"
+      ],
+      "ageGate": "Present on registration, support, checkout offer, and architect routes. Yes + Confirm unlocks the underlying form. Radios are 16x16 CSS pixels; labels wrap them.",
+      "afterAgeGate": {
+        "register": {
+          "fields": ["firstName", "lastName", "email", "password", "passwordConfirm"],
+          "textInputFontPx": 16,
+          "textInputHeightPx": 50,
+          "widthPortraitPx": 303,
+          "typedWithoutSubmit": true,
+          "consentCheckboxes": 4
+        },
+        "login": {
+          "fields": ["email", "password"],
+          "textInputFontPx": 16,
+          "textInputHeightPx": 50,
+          "typedWithoutSubmit": true
+        },
+        "forgotPassword": {
+          "fields": ["email"],
+          "textInputFontPx": 16,
+          "typedWithoutSubmit": true
+        },
+        "support": {
+          "fields": ["name", "email", "category", "subject", "isArchitect", "message"],
+          "textInputFontPx": 16,
+          "messageHeightPx": 182,
+          "typedWithoutSubmit": true
+        }
+      },
+      "contact": "Not a form by design. Mailbox + Support CTA only. /contact returned 200 with no <form>.",
+      "iosZoomRisk": "Text inputs use .bh-form-input text-base (16px). Age-gate radios measured 14px font; they are not text fields and do not trigger iOS input zoom."
+    },
+    "chat": {
+      "result": "PARTIAL",
+      "publicLumina": {
+        "path": "/lumina",
+        "opening": "PASS — MEET LUMINA trigger opens marketing content. No overflow.",
+        "authenticatedComposer": false
+      },
+      "authenticatedLumina": {
+        "path": "/architect/lumina",
+        "unauthenticatedResult": "redirect /login?next=%2Farchitect%2Flumina",
+        "composerNotReached": true
+      },
+      "codeReview": {
+        "composerDockUsesSafeArea": true,
+        "sendButtonMinHeight": "min-h-11",
+        "mobileColumnMinHeight": "min(28rem, 65dvh)",
+        "openingUses100vh": "min-h-[calc(100vh-6rem)] — iOS Safari chrome can shrink usable height versus 100dvh"
+      }
+    },
+    "videos": {
+      "result": "PARTIAL",
+      "publicJourney": {
+        "path": "/journey",
+        "http": 200,
+        "videoElements": 0,
+        "note": "Public Journey marketing page has no <video> elements."
+      },
+      "authenticatedChapterVideo": {
+        "path": "/architect/journey/chapter-1",
+        "unauthenticatedResult": "redirect /login?next=%2Farchitect%2Fjourney%2Fchapter-1",
+        "runtimeNotReached": true
+      },
+      "codeReview": {
+        "playsInline": true,
+        "controls": true,
+        "frame": "aspect-video w-full overflow-hidden",
+        "preload": "metadata"
+      }
+    },
+    "downloads": {
+      "result": "PARTIAL",
+      "authenticatedResources": {
+        "path": "/architect/resources",
+        "unauthenticatedResult": "redirect /login?next=%2Farchitect%2Fresources",
+        "runtimeNotReached": true
+      },
+      "codeReview": {
+        "chapterDownloadButtons": "Chapters 3–7 expose download controls with min-h-11 patterns in app-shell CSS.",
+        "printRoutes": [
+          "/blueprint/print/guidebook",
+          "/blueprint/print/certificate",
+          "/blueprint/print/architects-commitment"
+        ]
+      }
+    },
+    "checkout": {
+      "result": "PASS_AUTH_GATED_OFFER",
+      "catalog": {
+        "path": "/checkout",
+        "http": 200,
+        "heading": "Choose your path",
+        "offers": ["/checkout/blueprint", "/checkout/bundle", "/checkout/community"],
+        "overflow": 0,
+        "ctaVisible": "CONTINUE"
+      },
+      "offer": {
+        "path": "/checkout/blueprint",
+        "unauthenticatedResult": "redirect /login?next=%2Fcheckout%2Fblueprint",
+        "stripeHostedPageEntered": false,
+        "note": "Stripe configuration was not modified. Hosted Stripe Checkout was not opened."
+      }
+    }
+  },
+  "matrix": {
+    "navigationFailures": [],
+    "http5xx": [],
+    "horizontalOverflow": [],
+    "portrait": "PASS — iPhone SE, iPhone 16, iPhone 16 Pro Max, Pixel 9, Galaxy S24",
+    "landscape": "PASS — iPhone 16 and Pixel 9 on /, /register, /lumina, /checkout, /checkout/blueprint (offer redirects to login; login form fills landscape width without overflow). Register first/last name become two columns at md (landscape 852/915 CSS px)."
+  },
+  "findingsForRow187": [
+    {
+      "id": "AL186-F1",
+      "severity": "medium",
+      "surface": "public header and footer links",
+      "issue": "Manifesto, Contact, Support, Privacy Policy, and brand/language links measure 15–25px tall (below 44x44 WCAG 2.2 target). Skip-to-main is 36px tall.",
+      "devices": ["iphone-16", "pixel-9", "galaxy-s24", "iphone-se", "iphone-16-pro-max"]
+    },
+    {
+      "id": "AL186-F2",
+      "severity": "low",
+      "surface": "age gate and consent checkboxes",
+      "issue": "Native radio/checkbox controls are 16x16. Age-gate radios are wrapped in labels (larger hit area). Consent checkboxes on registration are 16x16.",
+      "devices": ["all tested"]
+    },
+    {
+      "id": "AL186-F3",
+      "severity": "low",
+      "surface": "Lumina opening / iOS Safari",
+      "issue": "Lumina opening uses min-h-[calc(100vh-6rem)]. Cinematic entrance already uses 100dvh + safe-area-inset. iOS Safari dynamic toolbar may compress the opening. viewport meta is width=device-width, initial-scale=1 without viewport-fit=cover.",
+      "devices": ["iphone family — not confirmed on native Safari"]
+    },
+    {
+      "id": "AL186-F4",
+      "severity": "info",
+      "surface": "authenticated chat, videos, downloads",
+      "issue": "Runtime of Lumina composer, founder <video>, and Architect download buttons was not reached on production because those routes require a signed-in Architect. A repo e2e account was attempted and did not authenticate. Do not treat this as a layout failure.",
+      "devices": ["all tested"]
+    }
+  ],
+  "validation": {
+    "typecheck": "not_required — status-only file, no production TypeScript change",
+    "tests": "not_required — package.json has no npm test script; this deliverable is device testing, not a product change",
+    "build": "not_run — change cannot affect production runtime"
+  },
+  "remainingBlockers": "Native Safari on current iPhone hardware and Chrome on current Android hardware were not available in this Cloud Agent environment. Authenticated Lumina chat, chapter videos, and Architect downloads still need a production test Architect session. Canonical thebackhalf.org did not resolve from this environment.",
+  "nextAction": "Founder Acceptance Review. Kimberly Walker (human) is the sole acceptance authority. Do not mark Row 186 Complete. Row 187 (Fix Responsive and Touch Issues) can consume AL186-F1 through AL186-F3. Optional: confirm the same matrix on physical iPhone Safari and Android Chrome, and on an authenticated Architect session for chat, videos, and downloads.",
+  "notes": "Imani executed Command Center row 186 as a test-only engineering job. No product, marketing, or legal files were changed. Stripe, Cloudflare DNS, Vercel custom-domain, and thebackhalf.org nameservers were not modified. Founder approval was not recorded."
+}
