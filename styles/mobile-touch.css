@@ -91,10 +91,13 @@ select {
   .bh-app-header-brand,
   .bh-text-link,
   .bh-legal-link,
-  .bh-consent-label,
-  .bh-journey-stage-nav-link {
+  .bh-consent-label {
     min-height: var(--bh-tap-min);
     min-width: var(--bh-tap-min);
+  }
+
+  .bh-journey-stage-nav-link {
+    min-height: var(--bh-tap-min);
   }
 
   .bh-hero-nav-link,
@@ -155,6 +158,10 @@ html[data-bh-keyboard="open"] .bh-lumina-chat-column {
 }
 
 @media (max-width: 767px) {
+  .bh-hero {
+    justify-content: flex-start;
+  }
+
   .bh-hero-nav-link,
   .bh-site-header-link {
     letter-spacing: 0.16em;
@@ -162,9 +169,7 @@ html[data-bh-keyboard="open"] .bh-lumina-chat-column {
     text-align: center;
   }
 
-  .bh-journey-stage-nav-label {
-    max-width: 5.75rem;
-    overflow-wrap: anywhere;
-    white-space: normal;
+  .bh-hero > .bh-reveal {
+    padding-top: 1.25rem;
   }
 }
